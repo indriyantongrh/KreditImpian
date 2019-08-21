@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LoginRegister.Register">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/image12"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="2dp"
+                android:paddingHorizontal="100dp"
+                android:src="@drawable/logobiru" />
+
+            <!--Login Panel-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                >
+
+                <!--Icon Layout-->
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/orange_left_corner_bg"
+
+                    >
+
+                    <LinearLayout
+
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:gravity="center_horizontal|center_vertical"
+                        >
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="40dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/username">
+                        </ImageView>
+                    </LinearLayout>
+                    <!-- Border-->
+                    <LinearLayout
+                        android:background="@drawable/warnaputih"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="3dp"></LinearLayout>
+
+                    <LinearLayout
+
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:gravity="center_horizontal|center_vertical"
+                        >
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="40dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/email">
+                        </ImageView>
+                    </LinearLayout>
+
+                    <!-- Border-->
+                    <LinearLayout
+                        android:background="@drawable/warnaputih"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="3dp"></LinearLayout>
+
+                    <LinearLayout
+
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:gravity="center_horizontal|center_vertical"
+                        >
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="40dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/password">
+                        </ImageView>
+                    </LinearLayout>
+                    <!-- Border-->
+                    <LinearLayout
+                        android:background="@drawable/warnaputih"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="3dp"></LinearLayout>
+
+                    <LinearLayout
+
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:gravity="center_horizontal|center_vertical"
+                        >
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="40dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/nomortelepon">
+                        </ImageView>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:background="@drawable/whiterightcornerbg"
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="60dp">
+
+                        <EditText
+                            android:id="@+id/username"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textSize="16dp"
+                            android:background="@android:color/transparent"
+                            android:inputType="text"
+                            android:hint="Username Anda"
+                            />
+
+                    </LinearLayout>
+
+                    <!--Border-->
+                    <LinearLayout
+                        android:background="#FF6802"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"></LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="60dp">
+
+                        <EditText
+                            android:id="@+id/email"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textSize="16dp"
+                            android:background="@android:color/transparent"
+                            android:inputType="textEmailAddress"
+                            android:hint="Email Anda"
+                            />
+
+                    </LinearLayout>
+
+                    <!--Border-->
+                    <LinearLayout
+                        android:background="#FF6802"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"></LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="60dp">
+
+                        <EditText
+                            android:id="@+id/password"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textSize="16dp"
+                            android:background="@android:color/transparent"
+                            android:inputType="textPassword"
+                            android:hint="Password Anda"
+                            />
+
+                    </LinearLayout>
+
+                    <!--Border-->
+                    <LinearLayout
+                        android:background="#FF6802"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"></LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="60dp">
+
+                        <EditText
+                            android:id="@+id/nomortelepon"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textSize="16dp"
+                            android:background="@android:color/transparent"
+                            android:inputType="number"
+                            android:hint="Nomor Anda"
+                            />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <!--Button-->
+            <Button
+                android:id="@+id/btnbuatakun"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="16dp"
+                android:text="BUAT AKUN"
+                android:textStyle="bold"
+                android:textColor="#fff"
+                android:textSize="20sp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/btnorange"
+                ></Button>
+
+
+            <!--Register Tex-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="40dp"
+                android:layout_gravity="center"
+                >
+                
+                <TextView
+                    android:id="@+id/btnLogin"
+                    android:text="Sudah memiliki akun ? Silahkan Login"
+                    android:textSize="17sp"
+                    android:textColor="#000"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Kredit Impian</string>
+
+
+    <string name="title_beranda">Beranda</string>
+    <string name="title_marketplace">Marketplace</string>
+    <string name="title_simulasikredit">Simulasi Kredit</string>
+    <string name="title_akun">Akun</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
