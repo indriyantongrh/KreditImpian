@@ -7,11 +7,365 @@
     tools:context=".Akun.FragmentAkun">
 
 
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <FrameLayout
+        android:id="@+id/frame_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+
+    <LinearLayout
+        android:id="@+id/linera1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="0dp">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/ThemeOverlay.AppCompat"
+            tools:ignore="MissingConstraints">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:foregroundGravity="center"
+                android:src="@drawable/logoputih"/>
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:id="@+id/linera2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="0dp">
+
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="5dp"
+            app:cardCornerRadius="7dp"
+            android:layout_margin="5dp"
+            android:layout_below="@+id/toolbar"
+            android:background = "#00ffffff">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:background="@drawable/bg"
+                android:layout_height="290dp">
+
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/image"
+                    android:layout_width="120dp"
+                    android:layout_height="110dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="80dp"
+                    android:foregroundGravity="center"
+                    android:clickable="true"
+                    android:elevation="5dp"
+                    android:focusable="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/icon_user"
+                    app:civ_border_color="#FFFFFFFF"
+                    app:civ_border_width="3dp"
+                    app:civ_fill_color="#efeeee" />
+                <Button
+                    android:id="@+id/btn_simpan_gambar"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:backgroundTint="#efc770"
+                    android:layout_below="@+id/image"
+                    android:layout_centerHorizontal="true"
+                    android:text="SIMPAN"
+                    android:visibility="gone"/>
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignEnd="@+id/image"
+                    android:layout_centerVertical="true"
+                    android:elevation="6dp"
+                    android:visibility="invisible"
+                    android:layout_alignRight="@+id/image" />
+                <TextView
+                    android:id="@+id/txt_nama_akun"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/btn_simpan_gambar"
+                    android:gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:textAppearance="@android:style/TextAppearance.WindowTitle"
+                    android:textColor="#fff"
+                    android:textSize="19sp"
+                    android:textStyle="bold"
+                    android:text="Indriyanto Nugroho"/>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btndetailakun"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="5dp"
+            app:cardCornerRadius="7dp"
+            android:layout_margin="5dp"
+            android:layout_below="@+id/card1"
+            android:background = "#00ffffff">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:background="@drawable/borderhitam"
+                android:layout_height="50dp">
+
+                <ImageView
+                    android:id="@+id/akun"
+                    android:layout_width="50sp"
+                    android:layout_height="50sp"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/akunhitam" />
+
+                <TextView
+                    android:id="@+id/text24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/akun"
+                    android:gravity="center"
+                    android:paddingTop="9dp"
+                    android:text="Detail Akun"
+                    android:textColor="#000"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btnstatuspesanan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="5dp"
+            app:cardCornerRadius="6dp"
+            android:layout_margin="5dp"
+            android:layout_below="@+id/btndetailakun"
+            android:background = "@drawable/cardvieworange">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:background="@drawable/borderhitam"
+                android:layout_height="50dp">
+
+                <ImageView
+                    android:id="@+id/statuspesanan"
+                    android:layout_width="50sp"
+                    android:layout_height="50sp"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/statuspesananhitam" />
+
+                <TextView
+                    android:id="@+id/txtStatuspesanan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/statuspesanan"
+                    android:gravity="center"
+                    android:paddingTop="9dp"
+                    android:text="Status Pesanan"
+                    android:textColor="#000"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btnhistorypesanan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="5dp"
+            app:cardCornerRadius="6dp"
+            android:layout_margin="5dp"
+            android:layout_below="@+id/btnstatuspesanan"
+            android:background = "@drawable/cardvieworange">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:background="@drawable/borderhitam"
+                android:layout_height="50dp">
+
+                <ImageView
+                    android:id="@+id/historypesanan"
+                    android:layout_width="50sp"
+                    android:layout_height="50sp"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/historypesanan" />
+
+                <TextView
+                    android:id="@+id/bexthistorypesanan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/historypesanan"
+                    android:gravity="center"
+                    android:paddingTop="9dp"
+                    android:text="Status Pesanan"
+                    android:textColor="#000"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btnfavorite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="5dp"
+            app:cardCornerRadius="6dp"
+            android:layout_margin="5dp"
+            android:layout_below="@+id/btnhistorypesanan"
+            android:background = "@drawable/cardvieworange">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:background="@drawable/borderhitam"
+                android:layout_height="50dp">
+
+                <ImageView
+                    android:id="@+id/favorite"
+                    android:layout_width="50sp"
+                    android:layout_height="50sp"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/favorite" />
+
+                <TextView
+                    android:id="@+id/textfavorite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/favorite"
+                    android:gravity="center"
+                    android:paddingTop="9dp"
+                    android:text="Fovorite"
+                    android:textColor="#000"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btnkonfirmasi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="5dp"
+            app:cardCornerRadius="6dp"
+            android:layout_margin="5dp"
+            android:layout_below="@+id/btnfavorite"
+            android:background = "@drawable/cardvieworange">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:background="@drawable/borderhitam"
+                android:layout_height="50dp">
+
+                <ImageView
+                    android:id="@+id/konfirmasi"
+                    android:layout_width="50sp"
+                    android:layout_height="50sp"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/konfirmasipembayaran" />
+
+                <TextView
+                    android:id="@+id/textkonfirmasi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/konfirmasi"
+                    android:gravity="center"
+                    android:paddingTop="9dp"
+                    android:text="Konfirmasi Pembayaran"
+                    android:textColor="#000"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btngantipassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="5dp"
+            app:cardCornerRadius="6dp"
+            android:layout_margin="5dp"
+            android:layout_below="@+id/btnkonfirmasi"
+            android:background = "@drawable/cardvieworange">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:background="@drawable/borderhitam"
+                android:layout_height="50dp">
+
+                <ImageView
+                    android:id="@+id/gantipassword"
+                    android:layout_width="50sp"
+                    android:layout_height="50sp"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/passwordhitam" />
+
+                <TextView
+                    android:id="@+id/textubahpassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/gantipassword"
+                    android:gravity="center"
+                    android:paddingTop="9dp"
+                    android:text="Ganti Password"
+                    android:textColor="#000"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btnlogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="5dp"
+            app:cardCornerRadius="6dp"
+            android:layout_margin="5dp"
+            android:layout_below="@+id/btngantipassword"
+            android:background = "@drawable/cardvieworange">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:background="@drawable/borderhitam"
+                android:layout_height="50dp">
+
+                <ImageView
+                    android:id="@+id/logout"
+                    android:layout_width="50sp"
+                    android:layout_height="50sp"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/logout" />
+
+                <TextView
+                    android:id="@+id/textlogout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/logout"
+                    android:gravity="center"
+                    android:paddingTop="9dp"
+                    android:text="Logout"
+                    android:textColor="#000"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
 
 </FrameLayout>
