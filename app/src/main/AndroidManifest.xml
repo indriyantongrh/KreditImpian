@@ -9,16 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Akun.DataDiri"></activity>
+        <activity android:name=".Akun.DetailAkun" />
         <activity
             android:name=".MenuUtama.MenuUtama"
-            android:theme="@style/NoActionbar"/>
+            android:theme="@style/NoActionbar" />
         <activity
             android:name=".LoginRegister.LoginUser"
             android:theme="@style/NoActionbar" />
         <activity
             android:name=".LoginRegister.Register"
             android:theme="@style/NoActionbar" />
-
         <activity
             android:name=".MainActivity"
             android:theme="@style/NoActionbar">

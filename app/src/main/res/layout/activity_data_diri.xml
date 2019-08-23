@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context=".Akun.DataDiri">
+
+    <FrameLayout
+        android:id="@+id/frame_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+    <LinearLayout
+        android:id="@+id/linera1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="0dp"
+        tools:ignore="MissingConstraints">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/ThemeOverlay.AppCompat"
+            tools:ignore="MissingConstraints">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:foregroundGravity="center"
+                android:src="@drawable/logoputih"/>
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            tools:ignore="MissingConstraints">
+
+            <LinearLayout
+                android:id="@+id/linera2"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:gravity="center"
+                    android:textSize="20dp"
+                    android:paddingBottom="10dp"
+                    android:textColor="#000"
+                    android:text="Data pribadi"/>
+
+
+                <LinearLayout
+
+                    android:orientation="vertical"
+                    android:layout_width="350dp"
+                    android:background="@drawable/borderhitam"
+                    android:layout_height="37dp">
+
+                    <EditText
+                        android:id="@+id/txtnamadepan"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Nama Depan"
+                        android:inputType="text"
+                        android:textSize="16dp" />
+
+                </LinearLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"></LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="350dp"
+
+                    android:background="@drawable/borderhitam"
+                    android:layout_height="37dp">
+
+                    <EditText
+                        android:id="@+id/txtnamatengah"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Nama Tengah"
+                        android:inputType="text"
+                        android:textSize="16dp" />
+
+                </LinearLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"></LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="350dp"
+                    android:background="@drawable/borderhitam"
+                    android:layout_height="37dp">
+
+                    <EditText
+                        android:id="@+id/txtnamabelakang"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Nama Belakang"
+                        android:inputType="text"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"></LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="350dp"
+                    android:background="@drawable/borderhitam"
+                    android:layout_height="37dp">
+
+                    <EditText
+                        android:id="@+id/txttempatlahir"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Tempat lahir"
+                        android:inputType="text"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"></LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="350dp"
+                    android:background="@drawable/borderhitam"
+                    android:layout_height="37dp">
+
+                    <EditText
+                        android:id="@+id/txttanggallahir"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Tanggal Lahir"
+                        android:inputType="text"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"></LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="350dp"
+                    android:background="@drawable/borderhitam"
+                    android:layout_height="37dp">
+
+                    <Spinner
+                        android:id="@+id/spinnerjeniskelamin"
+                        android:entries="@array/jeniskelamin"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"></Spinner>
+                </LinearLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"></LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="350dp"
+                    android:background="@drawable/borderhitam"
+                    android:layout_height="37dp">
+
+                    <Spinner
+                        android:id="@+id/spinnerstatus"
+                        android:entries="@array/status"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"></Spinner>
+                </LinearLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"></LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="350dp"
+                    android:background="@drawable/borderhitam"
+                    android:layout_height="37dp">
+
+                    <Spinner
+                        android:id="@+id/spinneragama"
+                        android:entries="@array/agama"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"></Spinner>
+                </LinearLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"></LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="350dp"
+                    android:background="@drawable/borderhitam"
+                    android:layout_height="37dp">
+
+                    <EditText
+                        android:id="@+id/txtpekerjaan"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Pekerjaan"
+                        android:inputType="text"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"></LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="350dp"
+                    android:background="@drawable/borderhitam"
+                    android:layout_height="37dp">
+
+                    <EditText
+                        android:id="@+id/txtpendapatan"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Pendapatan"
+                        android:inputType="text"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"></LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="350dp"
+                    android:background="@drawable/borderhitam"
+                    android:layout_height="37dp">
+
+                    <EditText
+                        android:id="@+id/txtjumlahtanggungan"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Jumlah Tanggungan"
+                        android:inputType="text"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"></LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="350dp"
+                    android:background="@drawable/borderhitam"
+                    android:layout_height="37dp">
+
+                    <Spinner
+                        android:id="@+id/spinnerkredit"
+                        android:entries="@array/kredit"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"></Spinner>
+                </LinearLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"></LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="350dp"
+                    android:background="@drawable/borderhitam"
+                    android:layout_height="37dp">
+
+                    <Spinner
+                        android:id="@+id/spinnerstatusrumah"
+                        android:entries="@array/statusrumah"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"></Spinner>
+                </LinearLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"></LinearLayout>
+
+
+                <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="350dp"
+                android:background="@drawable/borderhitam"
+                android:layout_height="37dp">
+
+                <EditText
+                    android:id="@+id/txtalamatemail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@android:color/transparent"
+                    android:hint="Alamat Email"
+                    android:inputType="text"
+                    android:textSize="16dp" />
+            </LinearLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"></LinearLayout>
+
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="350dp"
+                    android:background="@drawable/borderhitam"
+                    android:layout_height="37dp">
+
+                    <EditText
+                        android:id="@+id/txtibukandung"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Nama Ibu Kandung"
+                        android:inputType="text"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"></LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="350dp"
+                    android:background="@drawable/borderhitam"
+                    android:layout_height="37dp">
+
+                    <EditText
+                        android:id="@+id/txtnomorhandphone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Nomor Handphone"
+                        android:inputType="text"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"></LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="350dp"
+                    android:background="@drawable/borderhitam"
+                    android:layout_height="37dp">
+
+                    <EditText
+                        android:id="@+id/txtnomortlp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Nomor Telepon"
+                        android:inputType="text"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"></LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="350dp"
+                    android:background="@drawable/borderhitam"
+                    android:layout_height="37dp">
+
+                    <EditText
+                        android:id="@+id/txtfacebook"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Facebook"
+                        android:inputType="text"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"></LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="350dp"
+                    android:background="@drawable/borderhitam"
+                    android:layout_height="37dp">
+
+                    <EditText
+                        android:id="@+id/txttwitter"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Twitter"
+                        android:inputType="text"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"></LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="350dp"
+                    android:background="@drawable/borderhitam"
+                    android:layout_height="37dp">
+
+                    <EditText
+                        android:id="@+id/txtinstagram"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Instagram"
+                        android:inputType="text"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"></LinearLayout>
+
+                <!--Button-->
+                <Button
+                    android:id="@+id/btnsimpan"
+                    style="?android:textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="16dp"
+                    android:text="SIMPAN DATA"
+                    android:textStyle="bold"
+                    android:textColor="#fff"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/btnorange"
+                    ></Button>
+
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
