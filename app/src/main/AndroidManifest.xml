@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Akun.UploadDokumenPendukung"></activity>
+        <activity android:name=".GantidanRisetPassword.GantiPassword"></activity>
+        <activity android:name=".KonfirmasiPembayaran.KonfirmasiPembayaran" />
+        <activity android:name=".Favorite.Favorite" />
+        <activity android:name=".HistoryPesanan.HistoryPesanan" />
+        <activity android:name=".StatusPesanan.StatusPesanan" />
+        <activity android:name=".Akun.UploadDokumenPendukung" />
         <activity android:name=".Akun.DataSaudara" />
         <activity android:name=".Akun.AlamatKantor" />
         <activity android:name=".Akun.AlamatPengiriman" />

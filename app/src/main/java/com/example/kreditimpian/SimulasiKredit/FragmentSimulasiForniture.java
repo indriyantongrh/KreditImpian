@@ -1,24 +1,26 @@
 package com.example.kreditimpian.SimulasiKredit;
 
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import androidx.fragment.app.Fragment;
 
 import com.example.kreditimpian.R;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link FragmentSimulasiKredit.OnFragmentInteractionListener} interface
+ * {@link FragmentSimulasiForniture.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link FragmentSimulasiKredit#newInstance} factory method to
+ * Use the {@link FragmentSimulasiForniture#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentSimulasiKredit extends Fragment {
+public class FragmentSimulasiForniture extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -30,7 +32,7 @@ public class FragmentSimulasiKredit extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public FragmentSimulasiKredit() {
+    public FragmentSimulasiForniture() {
         // Required empty public constructor
     }
 
@@ -40,11 +42,11 @@ public class FragmentSimulasiKredit extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentSimulasiKredit.
+     * @return A new instance of fragment FragmentSimulasiForniture.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragmentSimulasiKredit newInstance(String param1, String param2) {
-        FragmentSimulasiKredit fragment = new FragmentSimulasiKredit();
+    public static FragmentSimulasiForniture newInstance(String param1, String param2) {
+        FragmentSimulasiForniture fragment = new FragmentSimulasiForniture();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -65,7 +67,7 @@ public class FragmentSimulasiKredit extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragment_simulasi_kredit, container, false);
+        return inflater.inflate(R.layout.fragment_fragment_simulasi_forniture, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -75,7 +77,7 @@ public class FragmentSimulasiKredit extends Fragment {
         }
     }
 
-/*    @Override
+    @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener) {
@@ -84,7 +86,7 @@ public class FragmentSimulasiKredit extends Fragment {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
         }
-    }*/
+    }
 
     @Override
     public void onDetach() {
