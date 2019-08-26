@@ -44,6 +44,15 @@
         <item>Kontrak</item>
     </string-array>
 
+    <string-array name="provinsi">
+        <item>Pilih Provinsi</item>
+    </string-array>
+
+    <string-array name="kota">
+        <item>Pilih Kota</item>
+    </string-array>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
