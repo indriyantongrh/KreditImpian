@@ -20,11 +20,11 @@
             <ImageView
                 android:id="@+id/image12"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="2dp"
-                android:paddingHorizontal="100dp"
-                android:src="@drawable/logobiru" />
+                android:layout_height="150dp"
+                android:paddingHorizontal="10dp"
+                android:paddingTop="45dp"
+                android:layout_marginBottom="15dp"
+                android:src="@drawable/logobirukredit" />
 
             <!--Login Panel-->
             <LinearLayout
@@ -241,12 +241,12 @@
                 android:id="@+id/btnbuatakun"
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="45dp"
                 android:layout_marginTop="16dp"
                 android:text="BUAT AKUN"
                 android:textStyle="bold"
                 android:textColor="#fff"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:background="@drawable/btnorange"
@@ -265,7 +265,7 @@
                 <TextView
                     android:id="@+id/btnLogin"
                     android:text="Sudah memiliki akun ? Silahkan Login"
-                    android:textSize="17sp"
+                    android:textSize="14sp"
                     android:textColor="#000"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />

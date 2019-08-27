@@ -31,7 +31,9 @@
             android:theme="@style/NoActionbar" />
         <activity
             android:name=".MainActivity"
-            android:theme="@style/NoActionbar">
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

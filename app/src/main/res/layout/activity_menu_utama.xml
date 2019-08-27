@@ -18,11 +18,10 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat"
         tools:ignore="MissingConstraints">
         <ImageView
-            android:paddingTop="10dp"
+            android:paddingTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:foregroundGravity="center"
-            android:src="@drawable/logoputih"/>
+            android:src="@drawable/logoputihkredit"/>
     </androidx.appcompat.widget.Toolbar>
 
 

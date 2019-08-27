@@ -8,24 +8,27 @@
     android:orientation="vertical"
     tools:context=".LoginRegister.LoginUser">
 
-
+<!--
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent">-->
+
+    <ImageView
+        android:id="@+id/image12"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:paddingHorizontal="10dp"
+        android:paddingTop="45dp"
+        android:layout_marginBottom="15dp"
+        android:src="@drawable/logobirukredit" />
+
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/image12"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginTop="80dp"
-                android:layout_marginBottom="2dp"
-                android:paddingHorizontal="100dp"
-                android:src="@drawable/logobiru" />
+
 
             <!--Login Panel-->
             <LinearLayout
@@ -147,12 +150,12 @@
                 android:id="@+id/btnLogin"
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="45dp"
                 android:layout_marginTop="16dp"
                 android:text="MASUK"
                 android:textStyle="bold"
                 android:textColor="#fff"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:background="@drawable/btnorange"
@@ -180,8 +183,6 @@
         </LinearLayout>
 
 
-
-    </ScrollView>
 
 
 
