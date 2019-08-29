@@ -7,6 +7,10 @@
     <string name="title_simulasikredit">Simulasi Kredit</string>
     <string name="title_akun">Akun</string>
 
+    <string name="start">Mulai</string>
+    <string name="next">Lanjut</string>
+    <string name="skip">Lewati</string>
+
     <string-array name="jeniskelamin">
         <item>Pilih Jenis Kelamin</item>
         <item>Laki-laki</item>

@@ -4,42 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/warnaputih"
-    tools:context=".MainActivity">
+    android:background="#fff">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:gravity="center_horizontal|center_vertical"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
         android:orientation="vertical"
         tools:ignore="MissingConstraints">
 
         <ImageView
             android:id="@+id/image12"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="160dp"
             android:paddingHorizontal="0dp"
-            android:src="@drawable/splashscreen" />
+            android:paddingBottom="20dp"
+            android:src="@drawable/iconsearch" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Kredit Apapun Semudah Belanja Online"
+            android:text="Cari"
             android:textColor="#000"
             android:textSize="19sp"
             android:textStyle="bold"
+            android:gravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:paddingTop="10dp"
-            android:text="Yuk buktikan! Buat akun nya, lalu  wujudkan Impian Anda!"
+            android:text="Cari Impian anda"
             android:textColor="#000"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -58,7 +58,7 @@
         android:paddingBottom="20dp"
         tools:ignore="MissingConstraints">
 
-    <!--Button-->
+        <!--Button-->
         <Button
             android:id="@+id/btnmulai"
             style="?android:textAppearanceSmall"
@@ -73,8 +73,8 @@
             android:textSize="18sp"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="634dp"
-            android:visibility="gone"></Button>
+            android:visibility="gone"
+            tools:layout_editor_absoluteY="634dp"></Button>
 
     </LinearLayout>
 

@@ -3,15 +3,681 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="55dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Beranda.FragmentBeranda">
 
 
 
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <FrameLayout
+        android:id="@+id/frame_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
+
+
+    <LinearLayout
+        android:id="@+id/linera1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="0dp">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="?attr/colorPrimary"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat"
+                    tools:ignore="MissingConstraints">
+
+                    <ImageView
+                        android:id="@+id/logo"
+                        android:paddingTop="15dp"
+                        android:layout_width="320dp"
+                        android:layout_height="wrap_content"
+                        android:foregroundGravity="center"
+                        android:paddingLeft="36dp"
+                        android:src="@drawable/logoputihkredit"/>
+
+                    <ImageButton
+                        android:id="@+id/notifikasi"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@color/colorOrange"
+                        android:src="@drawable/notifikasiputih"/>
+
+                </androidx.appcompat.widget.Toolbar>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            tools:ignore="MissingConstraints">
+
+            <LinearLayout
+                android:id="@+id/linera2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#fff"
+                android:padding="0dp">
+
+
+                    <!--layout Fitur Kredit Impian-->
+                    <LinearLayout
+                        android:id="@+id/fiturekreditimpian"
+                        android:layout_width="match_parent"
+                        android:layout_height="130dp"
+                        android:layout_marginLeft="5dp"
+                        android:gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="10dp">
+
+                        <!--Button Foto Impian Anda-->
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/btnfoto"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentLeft="true"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="#fff"
+                            app:cardCornerRadius="0dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:id="@+id/imageView1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_centerInParent="true"
+                                    android:layout_margin="8dp"
+                                    android:src="@drawable/iconcamera" />
+
+                                <TextView
+                                    android:id="@+id/text1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:gravity="center"
+                                    android:text="Foto Impian"
+                                    android:textColor="#000"
+                                    android:textSize="13sp" />
+
+                            </RelativeLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <!--Button Upload Impian Anda-->
+                           <androidx.cardview.widget.CardView
+                            android:id="@+id/btnupload"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:layout_centerInParent="true"
+                            android:clickable="true"
+                            android:focusable="true"
+                               android:layout_marginLeft="20dp"
+                               android:layout_marginRight="20dp"
+                               android:background="#fff"
+                            app:cardCornerRadius="0dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                >
+
+                                <ImageView
+                                    android:id="@+id/imageView24"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="8dp"
+                                    android:src="@drawable/iconupload80px" />
+
+                                <TextView
+                                    android:id="@+id/textupload"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:gravity="center"
+                                    android:text="Upload Impian"
+                                    android:textColor="#000"
+                                    android:textSize="12sp" />
+
+                                 </RelativeLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <!--Button Cari Impian Anda-->
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/btncari"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:layout_centerInParent="true"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="#fff"
+                            app:cardCornerRadius="0dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                >
+
+                                <ImageView
+                                    android:id="@+id/imageView2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="8dp"
+                                    android:src="@drawable/iconsearch" />
+
+                                <TextView
+                                    android:id="@+id/textcari"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:gravity="center"
+                                    android:text="Cari Impian"
+                                    android:textColor="#000"
+                                    android:textSize="12sp" />
+                            </RelativeLayout>
+                        </androidx.cardview.widget.CardView>
+
+                    </LinearLayout>
+<!--
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="25dp"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="#000"
+                    android:textSize="15sp"
+                    android:text="Kategori"/>
+
+
+                <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:background="@drawable/borderhitam"
+                android:orientation="horizontal">
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/btnhandphone"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="16dp"
+                        android:layout_weight="1"
+                        android:onClick="e"
+                        android:background="#fff"
+                        android:src="@drawable/handphone"
+                        tools:ignore="OnClick" />
+
+                    <TextView
+                        android:id="@+id/textcari3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:gravity="center"
+                        android:text="Handphone"
+                        android:textColor="#000"
+                        android:textSize="12sp" />
+
+                    <ImageButton
+                        android:id="@+id/btnfashion"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="16dp"
+                        android:layout_weight="1"
+                        android:background="#fff"
+                        android:src="@drawable/fashion" />
+
+                    <TextView
+                        android:id="@+id/textfashion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:gravity="center"
+                        android:text="Fashion"
+                        android:textColor="#000"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/btnlaptop"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="16dp"
+                        android:layout_weight="1"
+                        android:onClick="e"
+                        android:background="#fff"
+                        android:src="@drawable/laptop"
+                        tools:ignore="OnClick" />
+
+                    <TextView
+                        android:id="@+id/textlaptop"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:gravity="center"
+                        android:text="Laptop"
+                        android:textColor="#000"
+                        android:textSize="12sp" />
+
+                    <ImageButton
+                        android:id="@+id/btnolahraga"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="16dp"
+                        android:layout_weight="1"
+                        android:background="#fff"
+                        android:src="@drawable/olahraga" />
+
+                    <TextView
+                        android:id="@+id/textcaeri"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:gravity="center"
+                        android:text="Cari Impian"
+                        android:textColor="#000"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/btnforniture"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="16dp"
+                        android:layout_weight="1"
+                        android:onClick="e"
+                        android:background="#fff"
+                        android:src="@drawable/foniture"
+                        tools:ignore="OnClick" />
+
+                    <TextView
+                        android:id="@+id/textforniture"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:gravity="center"
+                        android:text="Forniture"
+                        android:textColor="#000"
+                        android:textSize="12sp" />
+
+                    <ImageButton
+                        android:id="@+id/btnproperty"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="16dp"
+                        android:layout_weight="1"
+                        android:background="#fff"
+                        android:src="@drawable/property" />
+
+                    <TextView
+                        android:id="@+id/textproperty"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:gravity="center"
+                        android:text="Property"
+                        android:textColor="#000"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/btnotomotif"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="16dp"
+                        android:layout_weight="1"
+                        android:onClick="e"
+                        android:background="#fff"
+                        android:src="@drawable/otomotif"
+                        tools:ignore="OnClick" />
+
+                    <TextView
+                        android:id="@+id/textotomotif"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:gravity="center"
+                        android:text="Otomotif"
+                        android:textColor="#000"
+                        android:textSize="12sp" />
+
+                    <ImageButton
+                        android:id="@+id/btnlainnya"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="16dp"
+                        android:layout_weight="1"
+                        android:background="#fff"
+                        android:src="@drawable/lainya" />
+
+                    <TextView
+                        android:id="@+id/textlainnya"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:gravity="center"
+                        android:text="Lainnya"
+                        android:textColor="#000"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+            </LinearLayout>
+-->
+
+
+                <!--Kategori-->
+
+                <TextView
+                    android:id="@+id/text_masakan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rv_beranda"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="Mau nyari barang apa nih"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="10dp" />
+
+                <!--Baris Pertama-->
+                <RelativeLayout
+                    android:id="@+id/layout_kategori_masakan1"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_below="@+id/text_masakan"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp">
+
+                    <!--Card Handphone-->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/btn_handphone"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_marginLeft="20dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="15dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/imageView12"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerHorizontal="true"
+                                android:layout_margin="10dp"
+                                android:src="@drawable/handphone" />
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:gravity="center"
+                        android:layout_below="@+id/btn_handphone"
+                        android:text="Handphone"
+                        android:textStyle="bold"
+                        android:layout_alignStart="@id/btn_handphone"
+                        android:layout_alignEnd="@+id/btn_handphone"
+                        android:textSize="10sp" />
+
+                    <!--Card Laptop-->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/btn_laptop"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_centerHorizontal="true"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="15dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/imageView23"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_margin="10dp"
+                                android:src="@drawable/laptop" />
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:gravity="center"
+                        android:text="Laptop"
+                        android:textStyle="bold"
+                        android:textSize="13sp" />
+
+                    <!--Card Forniture-->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/btn_pakan"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="20dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="15dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/imageView3"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_margin="10dp"
+                                android:src="@drawable/forniture" />
+
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:gravity="center"
+                        android:text="Forniture"
+                        android:textStyle="bold"
+                        android:layout_alignStart="@id/btn_pakan"
+                        android:layout_alignEnd="@+id/btn_pakan"
+                        android:textSize="13sp" />
+
+
+
+
+
+                </RelativeLayout>
+
+                <!--Baris ke dua-->
+                <RelativeLayout
+                    android:id="@+id/layout_kategori_masakan2"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_below="@+id/layout_kategori_masakan1"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp">
+
+                    <!--Card Fashion-->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/btn_fashion"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_marginLeft="20dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="15dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/imageView4"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_margin="10dp"
+                                android:src="@drawable/fashion" />
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:gravity="center"
+                        android:text="Fashion"
+                        android:textStyle="bold"
+                        android:layout_alignStart="@id/btn_fashion"
+                        android:layout_alignEnd="@+id/btn_fashion"
+                        android:textSize="11sp" />
+
+
+                    <!--Card Olahraga-->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/btn_olahraga"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_centerHorizontal="true"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="15dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/imageView5"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_margin="10dp"
+                                android:src="@drawable/olahraga" />
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:gravity="center"
+                        android:text="Olahraga"
+                        android:textStyle="bold"
+                        android:layout_alignStart="@id/btn_olahraga"
+                        android:layout_alignEnd="@+id/btn_olahraga"
+                        android:textSize="13sp" />
+
+                    -----------------Card sayur
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/btn_property"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="20dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="15dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/imageView6"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_margin="10dp"
+                                android:src="@drawable/property" />
+
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:gravity="center"
+                        android:text="Property"
+                        android:textStyle="bold"
+                        android:layout_alignStart="@id/btn_property"
+                        android:layout_alignEnd="@+id/btn_property"
+                        android:textSize="13sp" />
+
+                </RelativeLayout>
+
+
+
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
 </FrameLayout>

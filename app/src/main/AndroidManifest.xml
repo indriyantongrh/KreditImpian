@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GantidanRisetPassword.GantiPassword"></activity>
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".GantidanRisetPassword.GantiPassword" />
         <activity android:name=".KonfirmasiPembayaran.KonfirmasiPembayaran" />
         <activity android:name=".Favorite.Favorite" />
         <activity android:name=".HistoryPesanan.HistoryPesanan" />
@@ -30,7 +31,7 @@
             android:name=".LoginRegister.Register"
             android:theme="@style/NoActionbar" />
         <activity
-            android:name=".MainActivity"
+            android:name=".WelcomSplashScreen"
             android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar">
