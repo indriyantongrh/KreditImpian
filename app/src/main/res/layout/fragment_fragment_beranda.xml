@@ -436,17 +436,19 @@
                     android:textStyle="bold"
                     android:layout_marginStart="10dp" />
 
-                <!--Baris Pertama-->
+
+
+                <!--Baris ke dua-->
                 <RelativeLayout
-                    android:id="@+id/layout_kategori_masakan1"
+                    android:id="@+id/baris1"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
-                    android:layout_below="@+id/text_masakan"
+                    android:layout_below="@+id/layout_kategori_masakan1"
                     android:layout_marginHorizontal="30dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp">
 
-                    <!--Card Handphone-->
+                    <!--Card Fashion-->
                     <androidx.cardview.widget.CardView
                         android:id="@+id/btn_handphone"
                         android:layout_width="55dp"
@@ -461,10 +463,9 @@
                             android:layout_height="match_parent">
 
                             <ImageView
-                                android:id="@+id/imageView12"
+                                android:id="@+id/imageView42"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_centerHorizontal="true"
                                 android:layout_margin="10dp"
                                 android:src="@drawable/handphone" />
                         </RelativeLayout>
@@ -475,14 +476,14 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
                         android:gravity="center"
-                        android:layout_below="@+id/btn_handphone"
-                        android:text="Handphone"
+                        android:text="Fashion"
                         android:textStyle="bold"
                         android:layout_alignStart="@id/btn_handphone"
                         android:layout_alignEnd="@+id/btn_handphone"
-                        android:textSize="10sp" />
+                        android:textSize="9sp" />
 
-                    <!--Card Laptop-->
+
+                    <!--Card Olahraga-->
                     <androidx.cardview.widget.CardView
                         android:id="@+id/btn_laptop"
                         android:layout_width="55dp"
@@ -497,7 +498,7 @@
                             android:layout_height="match_parent">
 
                             <ImageView
-                                android:id="@+id/imageView23"
+                                android:id="@+id/imageView52"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_margin="10dp"
@@ -510,13 +511,16 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
                         android:gravity="center"
-                        android:text="Laptop"
+                        android:text="laptop"
                         android:textStyle="bold"
-                        android:textSize="13sp" />
+                        android:layout_alignStart="@id/btn_laptop"
+                        android:layout_alignEnd="@+id/btn_laptop"
+                        android:textSize="9sp" />
 
-                    <!--Card Forniture-->
+                    -----------------Card sayur
+
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/btn_pakan"
+                        android:id="@+id/btn_forniture"
                         android:layout_width="55dp"
                         android:layout_height="55dp"
                         android:layout_alignParentRight="true"
@@ -530,7 +534,7 @@
                             android:layout_height="match_parent">
 
                             <ImageView
-                                android:id="@+id/imageView3"
+                                android:id="@+id/imageView62"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_margin="10dp"
@@ -546,15 +550,12 @@
                         android:gravity="center"
                         android:text="Forniture"
                         android:textStyle="bold"
-                        android:layout_alignStart="@id/btn_pakan"
-                        android:layout_alignEnd="@+id/btn_pakan"
-                        android:textSize="13sp" />
-
-
-
-
+                        android:layout_alignStart="@id/btn_forniture"
+                        android:layout_alignEnd="@+id/btn_forniture"
+                        android:textSize="9sp" />
 
                 </RelativeLayout>
+
 
                 <!--Baris ke dua-->
                 <RelativeLayout
@@ -598,7 +599,7 @@
                         android:textStyle="bold"
                         android:layout_alignStart="@id/btn_fashion"
                         android:layout_alignEnd="@+id/btn_fashion"
-                        android:textSize="11sp" />
+                        android:textSize="9sp" />
 
 
                     <!--Card Olahraga-->
@@ -633,7 +634,7 @@
                         android:textStyle="bold"
                         android:layout_alignStart="@id/btn_olahraga"
                         android:layout_alignEnd="@+id/btn_olahraga"
-                        android:textSize="13sp" />
+                        android:textSize="9sp" />
 
                     -----------------Card sayur
 
@@ -670,7 +671,7 @@
                         android:textStyle="bold"
                         android:layout_alignStart="@id/btn_property"
                         android:layout_alignEnd="@+id/btn_property"
-                        android:textSize="13sp" />
+                        android:textSize="9sp" />
 
                 </RelativeLayout>
 
