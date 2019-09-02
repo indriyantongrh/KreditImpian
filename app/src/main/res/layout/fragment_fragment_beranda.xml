@@ -43,8 +43,8 @@
 
                     <ImageButton
                         android:id="@+id/notifikasi"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:background="@color/colorOrange"
                         android:src="@drawable/notifikasiputih"/>
 
@@ -76,8 +76,8 @@
                         android:layout_marginRight="5dp"
                         android:layout_marginBottom="10dp">
 
-                        <!--Button Foto Impian Anda-->
-                        <androidx.cardview.widget.CardView
+                        <!-- Button Foto Impian Anda-->;
+                           <androidx.cardview.widget.CardView
                             android:id="@+id/btnfoto"
                             android:layout_width="100dp"
                             android:layout_height="match_parent"
@@ -95,8 +95,10 @@
                                     android:id="@+id/imageView1"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:layout_centerInParent="true"
-                                    android:layout_margin="8dp"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_marginEnd="8dp"
+                                    android:layout_marginBottom="8dp"
                                     android:src="@drawable/iconcamera" />
 
                                 <TextView
@@ -112,7 +114,7 @@
                             </RelativeLayout>
                         </androidx.cardview.widget.CardView>
 
-                        <!--Button Upload Impian Anda-->
+                        <!-- Button Upload Impian Anda-->;
                            <androidx.cardview.widget.CardView
                             android:id="@+id/btnupload"
                             android:layout_width="100dp"
@@ -185,240 +187,46 @@
                             </RelativeLayout>
                         </androidx.cardview.widget.CardView>
 
+
+
                     </LinearLayout>
-<!--
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingTop="25dp"
-                android:paddingRight="20dp"
-                android:paddingLeft="20dp"
-                android:orientation="vertical"
-                >
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textColor="#000"
-                    android:textSize="15sp"
-                    android:text="Kategori"/>
 
 
-                <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:background="@drawable/borderhitam"
-                android:orientation="horizontal">
-
-
-                <LinearLayout
+                <!--Image Slider-->
+                <RelativeLayout
+                    android:id="@+id/layout_top"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_height="200dp">
 
-                    <ImageButton
-                        android:id="@+id/btnhandphone"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"
-                        android:layout_margin="16dp"
-                        android:layout_weight="1"
-                        android:onClick="e"
-                        android:background="#fff"
-                        android:src="@drawable/handphone"
-                        tools:ignore="OnClick" />
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/textcari3"
+                        <com.example.kreditimpian._sliders.SliderView
+                            android:id="@+id/sliderView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+
+                    </FrameLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_indicator"/>
+
+                    <LinearLayout
+                        android:id="@+id/pagesContainer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
-                        android:gravity="center"
-                        android:text="Handphone"
-                        android:textColor="#000"
-                        android:textSize="12sp" />
+                        android:layout_gravity="bottom"
+                        android:layout_marginBottom="8dp"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal"/>
 
-                    <ImageButton
-                        android:id="@+id/btnfashion"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"
-                        android:layout_margin="16dp"
-                        android:layout_weight="1"
-                        android:background="#fff"
-                        android:src="@drawable/fashion" />
+                </RelativeLayout>
 
-                    <TextView
-                        android:id="@+id/textfashion"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:gravity="center"
-                        android:text="Fashion"
-                        android:textColor="#000"
-                        android:textSize="12sp" />
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageButton
-                        android:id="@+id/btnlaptop"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"
-                        android:layout_margin="16dp"
-                        android:layout_weight="1"
-                        android:onClick="e"
-                        android:background="#fff"
-                        android:src="@drawable/laptop"
-                        tools:ignore="OnClick" />
-
-                    <TextView
-                        android:id="@+id/textlaptop"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:gravity="center"
-                        android:text="Laptop"
-                        android:textColor="#000"
-                        android:textSize="12sp" />
-
-                    <ImageButton
-                        android:id="@+id/btnolahraga"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"
-                        android:layout_margin="16dp"
-                        android:layout_weight="1"
-                        android:background="#fff"
-                        android:src="@drawable/olahraga" />
-
-                    <TextView
-                        android:id="@+id/textcaeri"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:gravity="center"
-                        android:text="Cari Impian"
-                        android:textColor="#000"
-                        android:textSize="12sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageButton
-                        android:id="@+id/btnforniture"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"
-                        android:layout_margin="16dp"
-                        android:layout_weight="1"
-                        android:onClick="e"
-                        android:background="#fff"
-                        android:src="@drawable/foniture"
-                        tools:ignore="OnClick" />
-
-                    <TextView
-                        android:id="@+id/textforniture"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:gravity="center"
-                        android:text="Forniture"
-                        android:textColor="#000"
-                        android:textSize="12sp" />
-
-                    <ImageButton
-                        android:id="@+id/btnproperty"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"
-                        android:layout_margin="16dp"
-                        android:layout_weight="1"
-                        android:background="#fff"
-                        android:src="@drawable/property" />
-
-                    <TextView
-                        android:id="@+id/textproperty"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:gravity="center"
-                        android:text="Property"
-                        android:textColor="#000"
-                        android:textSize="12sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageButton
-                        android:id="@+id/btnotomotif"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"
-                        android:layout_margin="16dp"
-                        android:layout_weight="1"
-                        android:onClick="e"
-                        android:background="#fff"
-                        android:src="@drawable/otomotif"
-                        tools:ignore="OnClick" />
-
-                    <TextView
-                        android:id="@+id/textotomotif"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:gravity="center"
-                        android:text="Otomotif"
-                        android:textColor="#000"
-                        android:textSize="12sp" />
-
-                    <ImageButton
-                        android:id="@+id/btnlainnya"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"
-                        android:layout_margin="16dp"
-                        android:layout_weight="1"
-                        android:background="#fff"
-                        android:src="@drawable/lainya" />
-
-                    <TextView
-                        android:id="@+id/textlainnya"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:gravity="center"
-                        android:text="Lainnya"
-                        android:textColor="#000"
-                        android:textSize="12sp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-            </LinearLayout>
--->
 
 
                 <!--Kategori-->
@@ -430,20 +238,19 @@
                     android:layout_below="@+id/rv_beranda"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
-                    android:text="Mau nyari barang apa nih"
-                    android:textColor="@color/colorPrimary"
+                    android:text="Pilih Kategori"
+                    android:textColor="@color/colorOrange"
                     android:textSize="15sp"
                     android:textStyle="bold"
                     android:layout_marginStart="10dp" />
 
 
 
-                <!--Baris ke dua-->
+                <!--Baris pertama-->
                 <RelativeLayout
                     android:id="@+id/baris1"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
-                    android:layout_below="@+id/layout_kategori_masakan1"
                     android:layout_marginHorizontal="30dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp">
@@ -478,17 +285,19 @@
                         android:gravity="center"
                         android:text="Fashion"
                         android:textStyle="bold"
+                        android:textColor="@color/colorOrange"
                         android:layout_alignStart="@id/btn_handphone"
                         android:layout_alignEnd="@+id/btn_handphone"
                         android:textSize="9sp" />
 
 
-                    <!--Card Olahraga-->
+                    <!--Card laptop-->
                     <androidx.cardview.widget.CardView
                         android:id="@+id/btn_laptop"
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="30dp"
+                        android:layout_toRightOf="@id/btn_handphone"
                         android:clickable="true"
                         android:focusable="true"
                         app:cardCornerRadius="15dp">
@@ -511,13 +320,52 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
                         android:gravity="center"
-                        android:text="laptop"
+                        android:text="Laptop"
                         android:textStyle="bold"
+                        android:textColor="@color/colorOrange"
                         android:layout_alignStart="@id/btn_laptop"
                         android:layout_alignEnd="@+id/btn_laptop"
                         android:textSize="9sp" />
 
-                    -----------------Card sayur
+
+                    <!--Card laptop-->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/btn_otomotif"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_toRightOf="@id/btn_laptop"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="15dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/imgotomotif"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_margin="10dp"
+                                android:src="@drawable/otomotif" />
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:gravity="center"
+                        android:text="otomotif"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorOrange"
+                        android:layout_alignStart="@id/btn_otomotif"
+                        android:layout_alignEnd="@+id/btn_otomotif"
+                        android:textSize="9sp" />
+
+
+
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/btn_forniture"
@@ -550,6 +398,7 @@
                         android:gravity="center"
                         android:text="Forniture"
                         android:textStyle="bold"
+                        android:textColor="@color/colorOrange"
                         android:layout_alignStart="@id/btn_forniture"
                         android:layout_alignEnd="@+id/btn_forniture"
                         android:textSize="9sp" />
@@ -597,6 +446,7 @@
                         android:gravity="center"
                         android:text="Fashion"
                         android:textStyle="bold"
+                        android:textColor="@color/colorOrange"
                         android:layout_alignStart="@id/btn_fashion"
                         android:layout_alignEnd="@+id/btn_fashion"
                         android:textSize="9sp" />
@@ -607,7 +457,8 @@
                         android:id="@+id/btn_olahraga"
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="30dp"
+                        android:layout_toRightOf="@id/btn_fashion"
                         android:clickable="true"
                         android:focusable="true"
                         app:cardCornerRadius="15dp">
@@ -632,14 +483,51 @@
                         android:gravity="center"
                         android:text="Olahraga"
                         android:textStyle="bold"
+                        android:textColor="@color/colorOrange"
                         android:layout_alignStart="@id/btn_olahraga"
                         android:layout_alignEnd="@+id/btn_olahraga"
                         android:textSize="9sp" />
 
-                    -----------------Card sayur
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/btn_property"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_toRightOf="@id/btn_olahraga"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="15dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/imageView36"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_margin="10dp"
+                                android:src="@drawable/property" />
+
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:gravity="center"
+                        android:text="Property"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorOrange"
+                        android:layout_alignStart="@id/btn_property"
+                        android:layout_alignEnd="@+id/btn_property"
+                        android:textSize="9sp" />
+
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/btn_lainya"
                         android:layout_width="55dp"
                         android:layout_height="55dp"
                         android:layout_alignParentRight="true"
@@ -657,7 +545,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_margin="10dp"
-                                android:src="@drawable/property" />
+                                android:src="@drawable/lainya" />
 
                         </RelativeLayout>
                     </androidx.cardview.widget.CardView>
@@ -667,13 +555,15 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
                         android:gravity="center"
-                        android:text="Property"
+                        android:text="Lainnya"
                         android:textStyle="bold"
-                        android:layout_alignStart="@id/btn_property"
-                        android:layout_alignEnd="@+id/btn_property"
+                        android:textColor="@color/colorOrange"
+                        android:layout_alignStart="@id/btn_lainya"
+                        android:layout_alignEnd="@+id/btn_lainya"
                         android:textSize="9sp" />
 
                 </RelativeLayout>
+
 
 
 

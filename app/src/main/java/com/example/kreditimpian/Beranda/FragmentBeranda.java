@@ -9,8 +9,16 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.example.kreditimpian.R;
+import com.example.kreditimpian._sliders.FragmentSlider;
+import com.example.kreditimpian._sliders.SliderIndicator;
+import com.example.kreditimpian._sliders.SliderPagerAdapter;
+import com.example.kreditimpian._sliders.SliderView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +33,13 @@ public class FragmentBeranda extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+
+    private SliderPagerAdapter mAdapter;
+    private SliderIndicator mIndicator;
+
+    private SliderView sliderView;
+    private LinearLayout mLinearLayout;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -67,7 +82,14 @@ public class FragmentBeranda extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragment_beranda, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_fragment_beranda, container, false);
+
+
+        sliderView = (SliderView) rootView.findViewById(R.id.sliderView);
+        mLinearLayout = (LinearLayout) rootView.findViewById(R.id.pagesContainer);
+        setupSlider();
+
+        return rootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -107,5 +129,21 @@ public class FragmentBeranda extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+
+    private void setupSlider() {
+        sliderView.setDurationScroll(800);
+        List<Fragment> fragments = new ArrayList<>();
+        fragments.add(FragmentSlider.newInstance("https://demo.kreditimpian.id/themes/default/assets/img/banner/banner1.png"));
+        fragments.add(FragmentSlider.newInstance("https://demo.kreditimpian.id/themes/default/assets/img/banner/banner2.png"));
+        fragments.add(FragmentSlider.newInstance("https://demo.kreditimpian.id/themes/default/assets/img/banner/banner5.png"));
+        fragments.add(FragmentSlider.newInstance("https://demo.kreditimpian.id/themes/default/assets/img/banner/banner7.png"));
+
+        mAdapter = new SliderPagerAdapter(getFragmentManager(), fragments);
+        sliderView.setAdapter(mAdapter);
+        mIndicator = new SliderIndicator(getActivity(), mLinearLayout, sliderView, R.drawable.indicator_circle);
+        mIndicator.setPageCount(fragments.size());
+        mIndicator.show();
     }
 }
