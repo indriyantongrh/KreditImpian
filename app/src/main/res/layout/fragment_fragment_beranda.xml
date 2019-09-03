@@ -77,8 +77,7 @@
                         android:layout_marginRight="5dp"
                         android:layout_marginBottom="10dp">
 
-                        <!-- Button Foto Impian Anda-->;
-
+                        <!-- Button Foto Impian Anda-->
                             <RelativeLayout
                                 android:layout_alignParentLeft="true"
                                 android:clickable="true"
