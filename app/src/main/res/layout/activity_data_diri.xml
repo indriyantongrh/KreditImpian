@@ -65,9 +65,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="fill_parent"
                     android:gravity="center"
-                    android:textSize="20dp"
+                    android:textSize="35dp"
                     android:paddingBottom="10dp"
                     android:textColor="#000"
+                    android:fontFamily="@font/jipatharegular"
                     android:text="Data pribadi"/>
 
 
@@ -87,7 +88,8 @@
                         android:background="@android:color/transparent"
                         android:hint="Nama Depan"
                         android:inputType="text"
-                        android:textSize="16dp" />
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="26dp" />
 
                 </LinearLayout>
 
@@ -113,7 +115,8 @@
                         android:background="@android:color/transparent"
                         android:hint="Nama Tengah"
                         android:inputType="text"
-                        android:textSize="16dp" />
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="26dp" />
 
                 </LinearLayout>
 
@@ -138,7 +141,8 @@
                         android:background="@android:color/transparent"
                         android:hint="Nama Belakang"
                         android:inputType="text"
-                        android:textSize="16dp" />
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="26dp" />
                 </LinearLayout>
 
                 <!--Border-->
@@ -161,8 +165,9 @@
                         android:layout_marginRight="10dp"
                         android:background="@android:color/transparent"
                         android:hint="Tempat lahir"
+                        android:fontFamily="@font/jipatharegular"
                         android:inputType="text"
-                        android:textSize="16dp" />
+                        android:textSize="26dp" />
                 </LinearLayout>
 
                 <!--Border-->
@@ -185,8 +190,9 @@
                         android:layout_marginRight="10dp"
                         android:background="@android:color/transparent"
                         android:hint="Tanggal Lahir"
+                        android:fontFamily="@font/jipatharegular"
                         android:inputType="text"
-                        android:textSize="16dp" />
+                        android:textSize="26dp" />
                 </LinearLayout>
 
                 <!--Border-->
@@ -205,6 +211,8 @@
                         android:id="@+id/spinnerjeniskelamin"
                         android:entries="@array/jeniskelamin"
                         android:layout_width="match_parent"
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="26dp"
                         android:layout_height="match_parent"></Spinner>
                 </LinearLayout>
 
@@ -224,6 +232,8 @@
                         android:id="@+id/spinnerstatus"
                         android:entries="@array/status"
                         android:layout_width="match_parent"
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="26dp"
                         android:layout_height="match_parent"></Spinner>
                 </LinearLayout>
 
@@ -243,6 +253,8 @@
                         android:id="@+id/spinneragama"
                         android:entries="@array/agama"
                         android:layout_width="match_parent"
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="26dp"
                         android:layout_height="match_parent"></Spinner>
                 </LinearLayout>
 
@@ -266,8 +278,9 @@
                         android:layout_marginRight="10dp"
                         android:background="@android:color/transparent"
                         android:hint="Pekerjaan"
+                        android:fontFamily="@font/jipatharegular"
                         android:inputType="text"
-                        android:textSize="16dp" />
+                        android:textSize="26dp" />
                 </LinearLayout>
 
                 <!--Border-->
@@ -291,7 +304,8 @@
                         android:background="@android:color/transparent"
                         android:hint="Pendapatan"
                         android:inputType="text"
-                        android:textSize="16dp" />
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="26dp" />
                 </LinearLayout>
 
                 <!--Border-->
@@ -315,7 +329,8 @@
                         android:background="@android:color/transparent"
                         android:hint="Jumlah Tanggungan"
                         android:inputType="text"
-                        android:textSize="16dp" />
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="26dp" />
                 </LinearLayout>
 
                 <!--Border-->
@@ -334,6 +349,8 @@
                         android:id="@+id/spinnerkredit"
                         android:entries="@array/kredit"
                         android:layout_width="match_parent"
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="26dp"
                         android:layout_height="match_parent"></Spinner>
                 </LinearLayout>
 
@@ -353,6 +370,8 @@
                         android:id="@+id/spinnerstatusrumah"
                         android:entries="@array/statusrumah"
                         android:layout_width="match_parent"
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="26dp"
                         android:layout_height="match_parent"></Spinner>
                 </LinearLayout>
 
@@ -378,7 +397,8 @@
                     android:background="@android:color/transparent"
                     android:hint="Alamat Email"
                     android:inputType="text"
-                    android:textSize="16dp" />
+                    android:fontFamily="@font/jipatharegular"
+                    android:textSize="26dp" />
             </LinearLayout>
 
                 <!--Border-->
@@ -403,7 +423,8 @@
                         android:background="@android:color/transparent"
                         android:hint="Nama Ibu Kandung"
                         android:inputType="text"
-                        android:textSize="16dp" />
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="26dp" />
                 </LinearLayout>
 
                 <!--Border-->
@@ -427,7 +448,8 @@
                         android:background="@android:color/transparent"
                         android:hint="Nomor Handphone"
                         android:inputType="text"
-                        android:textSize="16dp" />
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="26dp" />
                 </LinearLayout>
 
                 <!--Border-->
@@ -451,7 +473,8 @@
                         android:background="@android:color/transparent"
                         android:hint="Nomor Telepon"
                         android:inputType="text"
-                        android:textSize="16dp" />
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="26dp" />
                 </LinearLayout>
 
                 <!--Border-->
@@ -475,7 +498,8 @@
                         android:background="@android:color/transparent"
                         android:hint="Facebook"
                         android:inputType="text"
-                        android:textSize="16dp" />
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="26dp" />
                 </LinearLayout>
 
                 <!--Border-->
@@ -499,7 +523,8 @@
                         android:background="@android:color/transparent"
                         android:hint="Twitter"
                         android:inputType="text"
-                        android:textSize="16dp" />
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="26dp" />
                 </LinearLayout>
 
                 <!--Border-->
@@ -523,7 +548,8 @@
                         android:background="@android:color/transparent"
                         android:hint="Instagram"
                         android:inputType="text"
-                        android:textSize="16dp" />
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="26dp" />
                 </LinearLayout>
 
                 <!--Border-->
@@ -542,7 +568,8 @@
                     android:text="SIMPAN DATA"
                     android:textStyle="bold"
                     android:textColor="#fff"
-                    android:textSize="20sp"
+                    android:textSize="30sp"
+                    android:fontFamily="@font/jipatharegular"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/btnorange"

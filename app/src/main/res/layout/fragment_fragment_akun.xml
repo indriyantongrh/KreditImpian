@@ -102,18 +102,20 @@
                     android:elevation="6dp"
                     android:visibility="invisible"
                     android:layout_alignRight="@+id/image" />
+
                 <TextView
                     android:id="@+id/txt_nama_akun"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/btn_simpan_gambar"
-                    android:gravity="center"
+                    android:layout_below="@+id/image"
                     android:layout_marginTop="20dp"
+                    android:fontFamily="@font/jipatharegular"
+                    android:gravity="center"
+                    android:text="Indriyanto Nugroho"
                     android:textAppearance="@android:style/TextAppearance.WindowTitle"
                     android:textColor="#fff"
-                    android:textSize="19sp"
-                    android:textStyle="bold"
-                    android:text="Indriyanto Nugroho"/>
+                    android:textSize="35sp"
+                    android:textStyle="bold" />
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
@@ -145,10 +147,11 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/akun"
                     android:gravity="center"
-                    android:paddingTop="9dp"
                     android:text="Detail Akun"
                     android:textColor="#000"
-                    android:textSize="15sp" />
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/jipatharegular"
+                    android:textSize="26sp" />
 
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
@@ -181,10 +184,11 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/statuspesanan"
                     android:gravity="center"
-                    android:paddingTop="9dp"
                     android:text="Status Pesanan"
                     android:textColor="#000"
-                    android:textSize="15sp" />
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/jipatharegular"
+                    android:textSize="26sp" />
 
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
@@ -217,10 +221,11 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/historypesanan"
                     android:gravity="center"
-                    android:paddingTop="9dp"
                     android:text="Status Pesanan"
                     android:textColor="#000"
-                    android:textSize="15sp" />
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/jipatharegular"
+                    android:textSize="26sp" />
 
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
@@ -252,10 +257,11 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/favorite"
                     android:gravity="center"
-                    android:paddingTop="9dp"
                     android:text="Fovorite"
                     android:textColor="#000"
-                    android:textSize="15sp" />
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/jipatharegular"
+                    android:textSize="26sp" />
 
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
@@ -287,10 +293,11 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/konfirmasi"
                     android:gravity="center"
-                    android:paddingTop="9dp"
                     android:text="Konfirmasi Pembayaran"
                     android:textColor="#000"
-                    android:textSize="15sp" />
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/jipatharegular"
+                    android:textSize="26sp" />
 
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
@@ -322,10 +329,11 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/gantipassword"
                     android:gravity="center"
-                    android:paddingTop="9dp"
                     android:text="Ganti Password"
                     android:textColor="#000"
-                    android:textSize="15sp" />
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/jipatharegular"
+                    android:textSize="26sp" />
 
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
@@ -358,10 +366,11 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/logout"
                     android:gravity="center"
-                    android:paddingTop="9dp"
                     android:text="Logout"
                     android:textColor="#000"
-                    android:textSize="15sp" />
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/jipatharegular"
+                    android:textSize="26sp" />
 
             </RelativeLayout>
         </androidx.cardview.widget.CardView>

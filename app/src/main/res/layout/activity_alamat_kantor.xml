@@ -65,9 +65,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="fill_parent"
                     android:gravity="center"
-                    android:textSize="20dp"
                     android:paddingBottom="10dp"
                     android:textColor="#000"
+                    android:fontFamily="@font/jipatharegular"
+                    android:textSize="35sp"
                     android:text="Alamat Kantor"/>
 
 
@@ -108,6 +109,7 @@
                         android:id="@+id/spinnerkota_kantor"
                         android:entries="@array/kota"
                         android:layout_width="match_parent"
+
                         android:layout_height="match_parent"></Spinner>
                 </LinearLayout>
 
@@ -133,7 +135,8 @@
                         android:background="@android:color/transparent"
                         android:hint="Kode Post"
                         android:inputType="text"
-                        android:textSize="16dp" />
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="26dp" />
 
                 </LinearLayout>
 
@@ -160,7 +163,8 @@
                         android:gravity="top"
                         android:lines="9"
                         android:inputType="text"
-                        android:textSize="16dp" />
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="26dp" />
 
                 </LinearLayout>
 
@@ -181,9 +185,10 @@
                     android:text="SIMPAN DATA"
                     android:textStyle="bold"
                     android:textColor="#fff"
-                    android:textSize="20sp"
+                    android:textSize="30sp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
+                    android:fontFamily="@font/jipatharegular"
                     android:background="@drawable/btnorange"
                     ></Button>
 

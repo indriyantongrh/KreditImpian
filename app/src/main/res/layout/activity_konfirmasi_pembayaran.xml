@@ -65,7 +65,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="fill_parent"
                     android:gravity="center"
-                    android:textSize="20dp"
+                    android:fontFamily="@font/jipatharegular"
+                    android:textSize="40dp"
                     android:paddingBottom="10dp"
                     android:textColor="#000"
                     android:text="Konfirmasi Pembayaran"/>
@@ -96,7 +97,8 @@
                         android:background="@android:color/transparent"
                         android:hint="Nama lengkap"
                         android:inputType="text"
-                        android:textSize="16dp" />
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="26dp" />
 
                 </LinearLayout>
 
@@ -124,7 +126,8 @@
                         android:background="@android:color/transparent"
                         android:hint="Nomor Pesanan"
                         android:inputType="text"
-                        android:textSize="16dp" />
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="26dp" />
 
                 </LinearLayout>
 
@@ -151,7 +154,8 @@
                         android:background="@android:color/transparent"
                         android:hint="Nama Bank"
                         android:inputType="text"
-                        android:textSize="16dp" />
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="26dp" />
 
                 </LinearLayout>
 
@@ -178,7 +182,8 @@
                         android:background="@android:color/transparent"
                         android:hint="Nama Lengkap Sesuai di Bank"
                         android:inputType="text"
-                        android:textSize="16dp" />
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="26dp" />
 
                 </LinearLayout>
 
@@ -206,7 +211,8 @@
                         android:background="@android:color/transparent"
                         android:hint="Nominal"
                         android:inputType="text"
-                        android:textSize="16dp" />
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="26dp" />
 
                 </LinearLayout>
 
@@ -227,7 +233,8 @@
                     android:text="Pilih gambar"
                     android:textStyle="bold"
                     android:textColor="#fff"
-                    android:textSize="20sp"
+                    android:fontFamily="@font/jipatharegular"
+                    android:textSize="35dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/btnorange"
@@ -258,7 +265,8 @@
                     android:text="Konfirmasi"
                     android:textStyle="bold"
                     android:textColor="#fff"
-                    android:textSize="20sp"
+                    android:fontFamily="@font/jipatharegular"
+                    android:textSize="35dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/btnorange"

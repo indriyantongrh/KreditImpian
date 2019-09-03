@@ -77,29 +77,24 @@
                         android:layout_marginBottom="10dp">
 
                         <!-- Button Foto Impian Anda-->;
-                           <androidx.cardview.widget.CardView
-                            android:id="@+id/btnfoto"
-                            android:layout_width="100dp"
-                            android:layout_height="match_parent"
-                            android:layout_alignParentLeft="true"
-                            android:clickable="true"
-                            android:focusable="true"
-                            android:background="#fff"
-                            app:cardCornerRadius="0dp">
 
                             <RelativeLayout
-                                android:layout_width="match_parent"
+                                android:layout_alignParentLeft="true"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:layout_width="100dp"
                                 android:layout_height="match_parent">
 
-                                <ImageView
-                                    android:id="@+id/imageView1"
+                                <ImageButton
+                                    android:id="@+id/btn_fotoimpian"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_centerHorizontal="true"
                                     android:layout_marginStart="8dp"
                                     android:layout_marginEnd="8dp"
                                     android:layout_marginBottom="8dp"
-                                    android:src="@drawable/iconcamera" />
+                                    android:background="@android:color/transparent"
+                                    android:src="@drawable/iconcamera80px" />
 
                                 <TextView
                                     android:id="@+id/text1"
@@ -107,36 +102,32 @@
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentBottom="true"
                                     android:gravity="center"
+                                    android:fontFamily="@font/jipatharegular"
                                     android:text="Foto Impian"
                                     android:textColor="#000"
-                                    android:textSize="13sp" />
+                                    android:textSize="23sp" />
 
                             </RelativeLayout>
-                        </androidx.cardview.widget.CardView>
 
                         <!-- Button Upload Impian Anda-->;
-                           <androidx.cardview.widget.CardView
-                            android:id="@+id/btnupload"
-                            android:layout_width="100dp"
-                            android:layout_height="match_parent"
-                            android:layout_centerInParent="true"
-                            android:clickable="true"
-                            android:focusable="true"
-                               android:layout_marginLeft="20dp"
-                               android:layout_marginRight="20dp"
-                               android:background="#fff"
-                            app:cardCornerRadius="0dp">
 
                             <RelativeLayout
-                                android:layout_width="match_parent"
+                                android:layout_width="100dp"
                                 android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginRight="20dp"
+                                android:background="#fff"
                                 >
 
-                                <ImageView
-                                    android:id="@+id/imageView24"
+                                <ImageButton
+                                    android:id="@+id/btnupload"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_margin="8dp"
+                                    android:background="@android:color/transparent"
                                     android:src="@drawable/iconupload80px" />
 
                                 <TextView
@@ -146,34 +137,29 @@
                                     android:layout_alignParentBottom="true"
                                     android:gravity="center"
                                     android:text="Upload Impian"
+                                    android:fontFamily="@font/jipatharegular"
                                     android:textColor="#000"
-                                    android:textSize="12sp" />
+                                    android:textSize="23sp" />
 
                                  </RelativeLayout>
-                        </androidx.cardview.widget.CardView>
+
 
                         <!--Button Cari Impian Anda-->
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/btncari"
-                            android:layout_width="100dp"
-                            android:layout_height="match_parent"
-                            android:layout_centerInParent="true"
-                            android:clickable="true"
-                            android:focusable="true"
-                            android:background="#fff"
-                            app:cardCornerRadius="0dp">
-
-                            <RelativeLayout
-                                android:layout_width="match_parent"
+                        <RelativeLayout
+                                android:layout_width="100dp"
                                 android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                android:clickable="true"
+                                android:focusable="true"
                                 >
 
-                                <ImageView
-                                    android:id="@+id/imageView2"
+                                <ImageButton
+                                    android:id="@+id/btncari"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_margin="8dp"
-                                    android:src="@drawable/iconsearch" />
+                                    android:background="@android:color/transparent"
+                                    android:src="@drawable/iconsearch80x" />
 
                                 <TextView
                                     android:id="@+id/textcari"
@@ -182,10 +168,11 @@
                                     android:layout_alignParentBottom="true"
                                     android:gravity="center"
                                     android:text="Cari Impian"
+                                    android:fontFamily="@font/jipatharegular"
                                     android:textColor="#000"
-                                    android:textSize="12sp" />
+                                    android:textSize="23sp" />
                             </RelativeLayout>
-                        </androidx.cardview.widget.CardView>
+
 
 
 
@@ -284,12 +271,13 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
                         android:gravity="center"
-                        android:text="Fashion"
+                        android:text="Handphone"
                         android:textStyle="bold"
                         android:textColor="@color/colorOrange"
                         android:layout_alignStart="@id/btn_handphone"
                         android:layout_alignEnd="@+id/btn_handphone"
-                        android:textSize="9sp" />
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="14sp" />
 
 
                     <!--Card laptop-->
@@ -326,7 +314,8 @@
                         android:textColor="@color/colorOrange"
                         android:layout_alignStart="@id/btn_laptop"
                         android:layout_alignEnd="@+id/btn_laptop"
-                        android:textSize="9sp" />
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="14sp" />
 
 
                     <!--Card laptop-->
@@ -358,12 +347,13 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
                         android:gravity="center"
-                        android:text="otomotif"
+                        android:text="Otomotif"
                         android:textStyle="bold"
                         android:textColor="@color/colorOrange"
                         android:layout_alignStart="@id/btn_otomotif"
                         android:layout_alignEnd="@+id/btn_otomotif"
-                        android:textSize="9sp" />
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="14sp" />
 
 
 
@@ -402,7 +392,8 @@
                         android:textColor="@color/colorOrange"
                         android:layout_alignStart="@id/btn_forniture"
                         android:layout_alignEnd="@+id/btn_forniture"
-                        android:textSize="9sp" />
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="14sp" />
 
                 </RelativeLayout>
 
@@ -450,7 +441,8 @@
                         android:textColor="@color/colorOrange"
                         android:layout_alignStart="@id/btn_fashion"
                         android:layout_alignEnd="@+id/btn_fashion"
-                        android:textSize="9sp" />
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="14sp" />
 
 
                     <!--Card Olahraga-->
@@ -487,7 +479,8 @@
                         android:textColor="@color/colorOrange"
                         android:layout_alignStart="@id/btn_olahraga"
                         android:layout_alignEnd="@+id/btn_olahraga"
-                        android:textSize="9sp" />
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="14sp" />
 
 
                     <androidx.cardview.widget.CardView
@@ -524,7 +517,8 @@
                         android:textColor="@color/colorOrange"
                         android:layout_alignStart="@id/btn_property"
                         android:layout_alignEnd="@+id/btn_property"
-                        android:textSize="9sp" />
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="14sp" />
 
 
                     <androidx.cardview.widget.CardView
@@ -561,7 +555,8 @@
                         android:textColor="@color/colorOrange"
                         android:layout_alignStart="@id/btn_lainya"
                         android:layout_alignEnd="@+id/btn_lainya"
-                        android:textSize="9sp" />
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="14sp" />
 
                 </RelativeLayout>
 

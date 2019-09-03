@@ -15,12 +15,24 @@
         <activity android:name=".Favorite.Favorite" />
         <activity android:name=".HistoryPesanan.HistoryPesanan" />
         <activity android:name=".StatusPesanan.StatusPesanan" />
-        <activity android:name=".Akun.UploadDokumenPendukung" />
-        <activity android:name=".Akun.DataSaudara" />
-        <activity android:name=".Akun.AlamatKantor" />
-        <activity android:name=".Akun.AlamatPengiriman" />
-        <activity android:name=".Akun.DataDiri" />
-        <activity android:name=".Akun.DetailAkun" />
+        <activity
+            android:name=".Akun.UploadDokumenPendukung"
+            android:theme="@style/NoActionbar"/>
+        <activity
+            android:name=".Akun.DataSaudara"
+            android:theme="@style/NoActionbar"/>
+        <activity
+            android:name=".Akun.AlamatKantor"
+            android:theme="@style/NoActionbar"/>
+        <activity
+            android:name=".Akun.AlamatPengiriman"
+            android:theme="@style/NoActionbar"/>
+        <activity
+            android:name=".Akun.DataDiri"
+            android:theme="@style/NoActionbar"/>
+        <activity
+            android:name=".Akun.DetailAkun"
+            android:theme="@style/NoActionbar"/>
         <activity
             android:name=".MenuUtama.MenuUtama"
             android:theme="@style/NoActionbar" />

@@ -64,9 +64,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="fill_parent"
                     android:gravity="center"
-                    android:textSize="20dp"
+                    android:textSize="30dp"
                     android:paddingBottom="10dp"
                     android:textColor="#000"
+                    android:fontFamily="@font/jipatharegular"
                     android:text="Data Saudara tidak se-rumah"/>
 
 
@@ -86,7 +87,8 @@
                         android:background="@android:color/transparent"
                         android:hint="Nama Lengkap"
                         android:inputType="text"
-                        android:textSize="16dp" />
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="26dp" />
 
                 </LinearLayout>
 
@@ -112,7 +114,8 @@
                         android:background="@android:color/transparent"
                         android:hint="Nomor Handphone"
                         android:inputType="text"
-                        android:textSize="16dp" />
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="26dp" />
 
                 </LinearLayout>
 
@@ -176,7 +179,8 @@
                         android:background="@android:color/transparent"
                         android:hint="Kode Pos"
                         android:inputType="text"
-                        android:textSize="16dp" />
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="26dp" />
 
                 </LinearLayout>
 
@@ -203,7 +207,8 @@
                         android:gravity="top"
                         android:lines="9"
                         android:inputType="text"
-                        android:textSize="16dp" />
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="26dp" />
 
                 </LinearLayout>
 
