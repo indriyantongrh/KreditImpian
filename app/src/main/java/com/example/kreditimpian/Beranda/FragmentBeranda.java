@@ -4,8 +4,10 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +18,8 @@ import com.example.kreditimpian._sliders.FragmentSlider;
 import com.example.kreditimpian._sliders.SliderIndicator;
 import com.example.kreditimpian._sliders.SliderPagerAdapter;
 import com.example.kreditimpian._sliders.SliderView;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +33,10 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class FragmentBeranda extends Fragment {
+
+
+    CardView btn_lainya;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -85,6 +93,7 @@ public class FragmentBeranda extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_fragment_beranda, container, false);
 
 
+
         sliderView = (SliderView) rootView.findViewById(R.id.sliderView);
         mLinearLayout = (LinearLayout) rootView.findViewById(R.id.pagesContainer);
         setupSlider();
@@ -115,6 +124,7 @@ public class FragmentBeranda extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
 
     /**
      * This interface must be implemented by activities that contain this
