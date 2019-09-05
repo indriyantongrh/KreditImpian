@@ -69,7 +69,7 @@
                     android:gravity="center"
                     android:text="Pilih Kategori"
                     android:textColor="@color/colorOrange"
-                    android:textSize="20sp"
+                    android:textSize="27sp"
                     android:textStyle="bold"
                     android:fontFamily="@font/jipatharegular"
                     android:layout_marginStart="10dp" />
@@ -409,6 +409,231 @@
                         android:textSize="14sp" />
 
 
+                        <!--Card tour and travel-->
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/btn_tourandtravel"
+                            android:layout_width="55dp"
+                            android:layout_height="55dp"
+                            android:layout_marginLeft="30dp"
+                            android:layout_toRightOf="@id/btn_elektronik"
+                            android:clickable="true"
+                            android:focusable="true"
+                            app:cardCornerRadius="15dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:id="@+id/imageView11"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="10dp"
+                                    android:src="@drawable/travel" />
+                            </RelativeLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:gravity="center"
+                            android:text="Travel"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorOrange"
+                            android:layout_alignStart="@id/btn_tourandtravel"
+                            android:layout_alignEnd="@+id/btn_tourandtravel"
+                            android:fontFamily="@font/jipatharegular"
+                            android:textSize="15sp" />
+
+
+                        <!--Card Haji dan Umroh-->
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/btn_haji"
+                            android:layout_width="55dp"
+                            android:layout_height="55dp"
+                            android:layout_marginLeft="30dp"
+                            android:layout_toRightOf="@id/btn_tourandtravel"
+                            android:clickable="true"
+                            android:focusable="true"
+                            app:cardCornerRadius="15dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:id="@+id/imageView51"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="10dp"
+                                    android:src="@drawable/holytour" />
+                            </RelativeLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:gravity="center"
+                            android:text="Haji"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorOrange"
+                            android:layout_alignStart="@id/btn_haji"
+                            android:layout_alignEnd="@+id/btn_haji"
+                            android:fontFamily="@font/jipatharegular"
+                            android:textSize="15sp" />
+
+                        <!--Card UMKM-->
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/btn_umkm"
+                            android:layout_width="55dp"
+                            android:layout_height="55dp"
+                            android:layout_marginLeft="30dp"
+                            android:layout_toRightOf="@id/btn_haji"
+                            android:clickable="true"
+                            android:focusable="true"
+                            app:cardCornerRadius="15dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:id="@+id/imageView36e"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="10dp"
+                                    android:src="@drawable/umkm" />
+
+                            </RelativeLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:gravity="center"
+                            android:text="UMKM"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorOrange"
+                            android:layout_alignStart="@id/btn_umkm"
+                            android:layout_alignEnd="@+id/btn_umkm"
+                            android:fontFamily="@font/jipatharegular"
+                            android:textSize="15sp" />
+
+                        <!--Card corporate-->
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/btn_coorporate"
+                            android:layout_width="55dp"
+                            android:layout_height="55dp"
+                            android:layout_marginLeft="30dp"
+                            android:clickable="true"
+                            android:layout_toRightOf="@id/btn_umkm"
+                            android:focusable="true"
+                            app:cardCornerRadius="15dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:id="@+id/imageView622"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="10dp"
+                                    android:src="@drawable/corporate" />
+
+                            </RelativeLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:gravity="center"
+                            android:text="Corporate"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorOrange"
+                            android:layout_alignStart="@id/btn_coorporate"
+                            android:layout_alignEnd="@+id/btn_coorporate"
+                            android:fontFamily="@font/jipatharegular"
+                            android:textSize="15sp" />
+
+                        <!--Card pendanaan-->
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/btn_pendanaan"
+                            android:layout_width="55dp"
+                            android:layout_height="55dp"
+                            android:layout_marginLeft="30dp"
+                            android:layout_toRightOf="@+id/btn_coorporate"
+                            android:clickable="true"
+                            android:focusable="true"
+                            app:cardCornerRadius="15dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:id="@+id/imageView1112"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="10dp"
+                                    android:src="@drawable/pendanaan" />
+                            </RelativeLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:gravity="center"
+                            android:text="Pendanaan"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorOrange"
+                            android:layout_alignStart="@id/btn_pendanaan"
+                            android:layout_alignEnd="@+id/btn_pendanaan"
+                            android:fontFamily="@font/jipatharegular"
+                            android:textSize="15sp" />
+
+
+                        <!--Card Multi Product-->
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/btn_multiproduct"
+                            android:layout_width="60dp"
+                            android:layout_height="55dp"
+                            android:layout_marginLeft="30dp"
+                            android:layout_toRightOf="@id/btn_pendanaan"
+                            android:clickable="true"
+                            android:focusable="true"
+                            app:cardCornerRadius="15dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:id="@+id/imageView5144"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="10dp"
+                                    android:src="@drawable/multiproduct" />
+                            </RelativeLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:gravity="center"
+                            android:text="Multi Product"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorOrange"
+                            android:layout_alignStart="@id/btn_multiproduct"
+                            android:layout_alignEnd="@+id/btn_multiproduct"
+                            android:fontFamily="@font/jipatharegular"
+                            android:textSize="15sp" />
 
 
                 </RelativeLayout>

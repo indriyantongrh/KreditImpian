@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:padding="0dp"
+    android:focusable="true"
+    android:background = "#00ffffff"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="10dp">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="3dp"
+        android:backgroundTint="#fff">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            android:background="#fff"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="125dp"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/txt_judul"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="judul"
+                android:padding="3dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#636363"
+                android:textSize="25sp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:layout_below="@+id/image"
+                android:fontFamily="@font/jipitha"
+                android:textStyle="bold"/>
+
+
+
+            <TextView
+                android:id="@+id/txt_harga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rp. 500.000"
+                android:textSize="23sp"
+                android:layout_below="@id/txt_judul"
+                android:layout_marginStart="3dp"
+                android:textColor="#FF0000"
+                android:fontFamily="@font/jipitha"/>
+
+            <TextView
+                android:id="@+id/txt_hargadiscount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rp.600.000"
+                android:textSize="19sp"
+                android:layout_below="@+id/txt_harga"
+                android:layout_marginStart="3dp"
+                android:textColor="#9C9C9C"
+                android:fontFamily="@font/jipitha"/>
+
+
+
+            <TextView
+                android:id="@+id/txt_id_iklan"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txt_user_id"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txt_kategori"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txt_deskripsi"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txt_foto_1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txt_foto_2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txt_foto_3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txt_video"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txt_alamat"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txt_latitude"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txt_longitude"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txt_jam_posting"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

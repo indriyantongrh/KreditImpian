@@ -9,13 +9,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Adapter.AdapterPromo"></activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".GantidanRisetPassword.GantiPassword" />
-        <activity android:name=".KonfirmasiPembayaran.KonfirmasiPembayaran" />
-        <activity android:name=".Favorite.Favorite" />
-        <activity android:name=".HistoryPesanan.HistoryPesanan" />
-        <activity android:name=".StatusPesanan.StatusPesanan" />
+        <activity
+            android:name=".Beranda.SemuaKategori"
+            android:theme="@style/NoActionbar"></activity>
+        <activity
+            android:name=".Adapter.AdapterPromo" />
+        <activity
+            android:name=".MainActivity" />
+        <activity
+            android:name=".GantidanRisetPassword.GantiPassword" />
+        <activity
+            android:name=".KonfirmasiPembayaran.KonfirmasiPembayaran" />
+        <activity
+            android:name=".Favorite.Favorite" />
+        <activity
+            android:name=".HistoryPesanan.HistoryPesanan" />
+        <activity
+            android:name=".StatusPesanan.StatusPesanan" />
         <activity
             android:name=".Akun.UploadDokumenPendukung"
             android:theme="@style/NoActionbar" />

@@ -1,17 +1,26 @@
 package com.example.kreditimpian.Beranda;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toolbar;
 
 import com.example.kreditimpian.R;
 import com.example.kreditimpian._sliders.FragmentSlider;
@@ -36,6 +45,8 @@ public class FragmentBeranda extends Fragment {
 
 
     CardView btn_lainya;
+    private BottomSheetBehavior bottomSheetBehavior;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -92,14 +103,32 @@ public class FragmentBeranda extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_fragment_beranda, container, false);
 
+        btn_lainya = rootView.findViewById(R.id.btn_lainya);
+        btn_lainya.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getActivity(), SemuaKategori.class);
+                getActivity().startActivity(intent);
+
+            }
+        });
+
 
 
         sliderView = (SliderView) rootView.findViewById(R.id.sliderView);
         mLinearLayout = (LinearLayout) rootView.findViewById(R.id.pagesContainer);
         setupSlider();
 
+
         return rootView;
+
     }
+
+
+
+
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
