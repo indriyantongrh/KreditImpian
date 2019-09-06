@@ -12,8 +12,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.kreditimpian.Favorite.Favorite;
+import com.example.kreditimpian.GantidanRisetPassword.GantiPassword;
+import com.example.kreditimpian.HistoryPesanan.HistoryPesanan;
+import com.example.kreditimpian.KonfirmasiPembayaran.KonfirmasiPembayaran;
 import com.example.kreditimpian.MenuUtama.MenuUtama;
 import com.example.kreditimpian.R;
+import com.example.kreditimpian.StatusPesanan.StatusPesanan;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,7 +34,7 @@ public class FragmentAkun extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    CardView btndetailakun;
+    CardView btndetailakun, btnstatuspesanan, btnhistorypesanan,btnfavorite,btnkonfirmasi, btngantipassword,btnlogout ;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -85,6 +90,62 @@ public class FragmentAkun extends Fragment {
 
         });
 
+
+        btnstatuspesanan = view.findViewById(R.id.btnstatuspesanan);
+        btnstatuspesanan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getActivity(), StatusPesanan.class);
+                getActivity().startActivity(intent);
+            }
+
+        });
+
+
+        btnhistorypesanan = view.findViewById(R.id.btnhistorypesanan);
+        btnhistorypesanan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getActivity(), HistoryPesanan.class);
+                getActivity().startActivity(intent);
+            }
+
+        });
+
+        btnfavorite = view.findViewById(R.id.btnfavorite);
+        btnfavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getActivity(), Favorite.class);
+                getActivity().startActivity(intent);
+            }
+
+        });
+
+        btnkonfirmasi = view.findViewById(R.id.btnkonfirmasi);
+        btnkonfirmasi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getActivity(), KonfirmasiPembayaran.class);
+                getActivity().startActivity(intent);
+            }
+
+        });
+
+        btngantipassword = view.findViewById(R.id.btngantipassword);
+        btngantipassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getActivity(), GantiPassword.class);
+                getActivity().startActivity(intent);
+            }
+
+        });
         return view;
     }
 

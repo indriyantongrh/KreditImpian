@@ -17,15 +17,20 @@
         <activity
             android:name=".MainActivity" />
         <activity
-            android:name=".GantidanRisetPassword.GantiPassword" />
+            android:name=".GantidanRisetPassword.GantiPassword"
+            android:theme="@style/NoActionbar"/>
         <activity
-            android:name=".KonfirmasiPembayaran.KonfirmasiPembayaran" />
+            android:name=".KonfirmasiPembayaran.KonfirmasiPembayaran"
+            android:theme="@style/NoActionbar"/>
         <activity
-            android:name=".Favorite.Favorite" />
+            android:name=".Favorite.Favorite"
+            android:theme="@style/NoActionbar"/>
         <activity
-            android:name=".HistoryPesanan.HistoryPesanan" />
+            android:name=".HistoryPesanan.HistoryPesanan"
+            android:theme="@style/NoActionbar"/>
         <activity
-            android:name=".StatusPesanan.StatusPesanan" />
+            android:name=".StatusPesanan.StatusPesanan"
+            android:theme="@style/NoActionbar"/>
         <activity
             android:name=".Akun.UploadDokumenPendukung"
             android:theme="@style/NoActionbar" />
