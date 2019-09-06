@@ -2,6 +2,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.kreditimpian">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,27 +26,32 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".FormPengajuan.CaptureGambar"
+            android:theme="@style/NoActionbar"
+            ></activity>
+        <activity
+            android:name=".FormPengajuan.SuccessMengajukan"
+            android:theme="@style/NoActionbar" />
+        <activity
             android:name=".Beranda.SemuaKategori"
-            android:theme="@style/NoActionbar"></activity>
-        <activity
-            android:name=".Adapter.AdapterPromo" />
-        <activity
-            android:name=".MainActivity" />
+            android:theme="@style/NoActionbar" />
+        <activity android:name=".Adapter.AdapterPromo" />
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".GantidanRisetPassword.GantiPassword"
-            android:theme="@style/NoActionbar"/>
+            android:theme="@style/NoActionbar" />
         <activity
             android:name=".KonfirmasiPembayaran.KonfirmasiPembayaran"
-            android:theme="@style/NoActionbar"/>
+            android:theme="@style/NoActionbar" />
         <activity
             android:name=".Favorite.Favorite"
-            android:theme="@style/NoActionbar"/>
+            android:theme="@style/NoActionbar" />
         <activity
             android:name=".HistoryPesanan.HistoryPesanan"
-            android:theme="@style/NoActionbar"/>
+            android:theme="@style/NoActionbar" />
         <activity
             android:name=".StatusPesanan.StatusPesanan"
-            android:theme="@style/NoActionbar"/>
+            android:theme="@style/NoActionbar" />
         <activity
             android:name=".Akun.UploadDokumenPendukung"
             android:theme="@style/NoActionbar" />

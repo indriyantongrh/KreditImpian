@@ -17,11 +17,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
+import com.example.kreditimpian.FormPengajuan.CaptureGambar;
 import com.example.kreditimpian.R;
 import com.example.kreditimpian._sliders.FragmentSlider;
 import com.example.kreditimpian._sliders.SliderIndicator;
@@ -45,6 +47,7 @@ public class FragmentBeranda extends Fragment {
 
 
     CardView btn_lainya;
+    ImageButton btn_fotoimpian;
     private BottomSheetBehavior bottomSheetBehavior;
 
 
@@ -114,6 +117,16 @@ public class FragmentBeranda extends Fragment {
             }
         });
 
+        btn_fotoimpian = rootView.findViewById(R.id.btn_fotoimpian);
+        btn_fotoimpian.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getActivity(), CaptureGambar.class);
+                getActivity().startActivity(intent);
+
+            }
+        });
 
 
         sliderView = (SliderView) rootView.findViewById(R.id.sliderView);

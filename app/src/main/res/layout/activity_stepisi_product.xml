@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FormPengajuan.StepisiProduct">
+
+    <FrameLayout
+        android:id="@+id/frame_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+    <LinearLayout
+        android:id="@+id/linera1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="0dp"
+        tools:ignore="MissingConstraints">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/ThemeOverlay.AppCompat"
+            tools:ignore="MissingConstraints">
+
+            <ImageButton
+                android:id="@+id/btnback"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_toLeftOf="@id/btnback"
+                android:background="@android:color/transparent"
+                android:src="@drawable/backwhite"/>
+
+            <ImageView
+                android:id="@+id/logotop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:foregroundGravity="center"
+                android:layout_toRightOf="@id/btnback"
+                android:paddingRight="50dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="15dp"
+                android:src="@drawable/logoputihkredit"/>
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            tools:ignore="MissingConstraints">
+
+            <LinearLayout
+                android:id="@+id/linera2"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:gravity="center"
+                    android:fontFamily="@font/jipatharegular"
+                    android:textSize="40dp"
+                    android:paddingBottom="10dp"
+                    android:textColor="#000"
+                    android:src="@drawable/step1"/>
+
+
+
+
+                <!--Border-->
+                <LinearLayout
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"></LinearLayout>
+
+
+                <LinearLayout
+
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/borderhitam"
+                    android:layout_height="37dp">
+
+                    <EditText
+                        android:id="@+id/txtnamaproduk"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Nama Produk"
+                        android:inputType="text"
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="26dp" />
+
+                </LinearLayout>
+
+
+                <!--Border-->
+                <LinearLayout
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"></LinearLayout>
+
+
+                <LinearLayout
+
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/borderhitam"
+                    android:layout_height="37dp">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:background="@drawable/borderhitam"
+                        android:layout_height="37dp">
+
+                        <Spinner
+                            android:id="@+id/spinnerprovinsi_kategori"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:entries="@array/kategori"></Spinner>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"></LinearLayout>
+
+
+                <LinearLayout
+
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/borderhitam"
+                    android:layout_height="37dp">
+
+                    <EditText
+                        android:id="@+id/txtsumberpesanan"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Sumber Pesanan (Optional)"
+                        android:inputType="text"
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="26dp" />
+
+                </LinearLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"></LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/borderhitam"
+                    android:layout_height="120dp">
+
+                    <EditText
+                        android:id="@+id/txtdeskripsi"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Deskripsi Pesanan"
+                        android:gravity="top"
+                        android:lines="9"
+                        android:inputType="text"
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="26dp" />
+
+                </LinearLayout>
+
+
+                <!--Border-->
+                <LinearLayout
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"></LinearLayout>
+
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:paddingBottom="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+
+                <!--Border-->
+                <LinearLayout
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"></LinearLayout>
+
+
+                <Button
+                    android:id="@+id/btnajukansekarang"
+                    style="?android:textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Ajukan Sekarang"
+                    android:textStyle="bold"
+                    android:textColor="#fff"
+                    android:fontFamily="@font/jipatharegular"
+                    android:textSize="35dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/btnorange"
+                    ></Button>
+
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
