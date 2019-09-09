@@ -499,7 +499,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:gravity="center"
-            android:text="Haji"
+            android:text="Holy Tour"
             android:textStyle="bold"
             android:textColor="@color/colorOrange"
             android:layout_alignStart="@id/btn_haji"
@@ -575,8 +575,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:gravity="center"
-            android:text="C
-            orporate"
+            android:text="Corporate"
             android:textStyle="bold"
             android:textColor="@color/colorOrange"
             android:layout_alignStart="@id/btn_coorporate"

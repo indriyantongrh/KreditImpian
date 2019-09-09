@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FormPengajuan.StepisiProduct">
+    android:background="#fff"
+    tools:context=".FormPengajuan.StepIsiProductCari">
+
 
     <FrameLayout
         android:id="@+id/frame_container"
@@ -70,7 +72,7 @@
                     android:textSize="40dp"
                     android:paddingBottom="10dp"
                     android:textColor="#000"
-                    android:src="@drawable/step2"/>
+                    android:src="@drawable/step1"/>
 
 
 
@@ -190,7 +192,8 @@
                 </LinearLayout>
 
 
-                <!--Border-->
+<!--
+                &lt;!&ndash;Border&ndash;&gt;
                 <LinearLayout
                     android:background="#fff"
                     android:layout_width="match_parent"
@@ -202,6 +205,7 @@
                     android:paddingBottom="30dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
+-->
 
 
                 <!--Border-->
@@ -231,5 +235,7 @@
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

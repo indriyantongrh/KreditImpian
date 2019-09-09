@@ -16,7 +16,6 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 
-
     <LinearLayout
         android:id="@+id/linera1"
         android:layout_width="match_parent"
@@ -265,6 +264,79 @@
 
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnnotifikasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="5dp"
+                app:cardCornerRadius="6dp"
+                android:layout_margin="5dp"
+                android:layout_below="@+id/btnfavorite"
+                android:background = "@drawable/cardvieworange">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:background="@drawable/borderhitam"
+                    android:layout_height="40dp">
+
+                    <ImageView
+                        android:id="@+id/notifikasi"
+                        android:layout_width="50sp"
+                        android:layout_height="50sp"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/notofikasiblack" />
+
+                    <TextView
+                        android:id="@+id/textnotifikasi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/notifikasi"
+                        android:gravity="center"
+                        android:text="Notifikasi"
+                        android:textColor="#000"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="26sp" />
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnchat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="5dp"
+                app:cardCornerRadius="6dp"
+                android:layout_margin="5dp"
+                android:layout_below="@+id/btnnotifikasi"
+                android:background = "@drawable/cardvieworange">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:background="@drawable/borderhitam"
+                    android:layout_height="40dp">
+
+                    <ImageView
+                        android:id="@+id/chat"
+                        android:layout_width="50sp"
+                        android:layout_height="50sp"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/chat" />
+
+                    <TextView
+                        android:id="@+id/textchat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/chat"
+                        android:gravity="center"
+                        android:text="Chat"
+                        android:textColor="#000"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="26sp" />
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/btnkonfirmasi"

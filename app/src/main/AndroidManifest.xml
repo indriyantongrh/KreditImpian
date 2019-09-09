@@ -16,8 +16,6 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
-
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -26,9 +24,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".FormPengajuan.StepIsiProductCari"
+            android:theme="@style/NoActionbar"></activity>
+        <activity
+            android:name=".FormPengajuan.StepisiProduct"
+            android:theme="@style/NoActionbar" />
+        <activity
+            android:name=".FormPengajuan.UploadGambar"
+            android:theme="@style/NoActionbar" />
+        <activity
             android:name=".FormPengajuan.CaptureGambar"
-            android:theme="@style/NoActionbar"
-            ></activity>
+            android:theme="@style/NoActionbar" />
         <activity
             android:name=".FormPengajuan.SuccessMengajukan"
             android:theme="@style/NoActionbar" />

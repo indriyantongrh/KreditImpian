@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
-    tools:context=".FormPengajuan.CaptureGambar">
-
+    tools:context=".FormPengajuan.UploadGambar">
 
     <FrameLayout
         android:id="@+id/frame_container"
@@ -52,43 +51,23 @@
                 android:src="@drawable/logoputihkredit"/>
         </androidx.appcompat.widget.Toolbar>
 
-  <!--          <LinearLayout
-                android:id="@+id/linera2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
+        <!--          <LinearLayout
+                      android:id="@+id/linera2"
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:orientation="vertical"
 
-                android:padding="20dp">
+                      android:padding="20dp">
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:gravity="center"
+                      <ImageView
+                          android:layout_width="match_parent"
+                          android:layout_height="70dp"
+                          android:gravity="center"
 
-                    android:textSize="40dp"
-                    android:paddingBottom="10dp"
-                    android:textColor="#000"
-                    android:src="@drawable/step1"/>
-
-
-
-
-
-
-
-                <ImageView
-                    android:id="@+id/image"
-                    android:paddingBottom="30dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-
-
-                &lt;!&ndash;Border&ndash;&gt;
-                <LinearLayout
-                    android:background="#fff"
-                    android:layout_width="match_parent"
-                    android:layout_height="15dp"></LinearLayout>
+                          android:textSize="40dp"
+                          android:paddingBottom="10dp"
+                          android:textColor="#000"
+                          android:src="@drawable/step1"/>
 
 
 
@@ -96,15 +75,27 @@
 
 
 
+                      <ImageView
+                          android:id="@+id/image"
+                          android:paddingBottom="30dp"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content" />
 
 
-            </LinearLayout>-->
+
+                      &lt;!&ndash;Border&ndash;&gt;
+                      <LinearLayout
+                          android:background="#fff"
+                          android:layout_width="match_parent"
+                          android:layout_height="15dp"></LinearLayout>
+
+                  </LinearLayout>-->
 
 
         <LinearLayout
             android:id="@+id/lineartengah"
             android:layout_width="match_parent"
-            android:layout_height="528dp"
+            android:layout_height="502dp"
             android:orientation="vertical"
             android:paddingTop="30dp"
             tools:ignore="MissingConstraints">
@@ -121,13 +112,16 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingTop="20dp">
+                android:paddingLeft="10dp"
+                android:paddingTop="20dp"
+                android:paddingRight="10dp">
 
                 <ImageView
                     android:id="@+id/image"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingBottom="30dp" />
+                    android:paddingBottom="30dp"
+                    android:src="@drawable/upload" />
             </androidx.cardview.widget.CardView>
 
 
@@ -144,7 +138,7 @@
             <!--Button-->
 
             <Button
-                android:id="@+id/btnfoto"
+                android:id="@+id/btnpilih"
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -158,6 +152,7 @@
                 android:textSize="28dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
+                android:visibility="gone"
                 android:background="@drawable/btnorange"
                 ></Button>
 
@@ -179,6 +174,7 @@
         </LinearLayout>
 
     </LinearLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
