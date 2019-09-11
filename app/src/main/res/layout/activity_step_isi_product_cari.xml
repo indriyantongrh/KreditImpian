@@ -185,7 +185,7 @@
                         android:hint="Deskripsi Pesanan"
                         android:gravity="top"
                         android:lines="9"
-                        android:inputType="text"
+                        android:inputType="textMultiLine"
                         android:fontFamily="@font/jipatharegular"
                         android:textSize="26dp" />
 

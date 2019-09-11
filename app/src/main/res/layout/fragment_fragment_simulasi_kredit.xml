@@ -92,7 +92,7 @@
 
                         <!--Baris ke dua-->
                         <RelativeLayout
-                            android:id="@+id/baris2"
+                            android:id="@+id/baris2kategori"
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
                             android:gravity="center"
@@ -640,9 +640,17 @@
                     </RelativeLayout>
                 </HorizontalScrollView>
 
-
             </LinearLayout>
+
+
+
         </androidx.core.widget.NestedScrollView>
+
     </LinearLayout>
 
+    <FrameLayout
+        android:id="@+id/frame_containerkredit"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 </FrameLayout>

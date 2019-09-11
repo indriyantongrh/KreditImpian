@@ -3,14 +3,23 @@ package com.example.kreditimpian.SimulasiKredit;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
+import com.example.kreditimpian.Beranda.FragmentBeranda;
 import com.example.kreditimpian.R;
+import com.google.android.material.bottomnavigation.BottomNavigationMenu;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.internal.NavigationMenuItemView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,7 +33,7 @@ public class FragmentSimulasiKredit extends Fragment {
 
 
     CardView btn_handphone,btn_laptop,btn_otomotif,btn_forniture,btn_fashion,btn_olahraga,btn_property,btn_elektronik,btn_tourandtravel,btn_haji, btn_umkm, btn_coorporate,btn_pendanaan,btn_multiproduct ;
-
+    ActionBar toolbar;
 
 
 
@@ -85,8 +94,30 @@ public class FragmentSimulasiKredit extends Fragment {
         });
 
 
+
+        ///      toolbar = getSupportActionBar();
+        /// toolbar = view.findViewById(R.id.toolbar);
+       /// setSupportActionBar(toolbar);
+       /// toolbar.setLogo(R.drawable.logoputih);
+
+
+    ///            Fragment fragment;
+                // toolbar.setLogo(R.drawable.logoputih);
+                //toolbar.setTitle("@drawable/logoputih");
+         ///       fragment = new FragmentSimulasiGadget();
+         ///       loadFragment(fragment);
+                //return true;
+
+                //mTextMessage = (TextView) findViewById(R.id.message);
+          ///      RelativeLayout navigation = (RelativeLayout) view.findViewById(R.id.baris2kategori);
+             ////   navigation.onNavigationItemReselected(this);
+
+
         return view;
     }
+
+
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -111,6 +142,39 @@ public class FragmentSimulasiKredit extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
+  /*  private void loadFragment(Fragment fragment) {
+        Bundle bundle = new Bundle();
+        // bundle.putString("kode", kode);
+        //bundle.putString("key", key);
+        fragment.setArguments(bundle);
+        // load fragment
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+        transaction.replace(R.id.frame_containerkredit, fragment);
+        //transaction.addToBackStack(null);
+        transaction.commit();
+
+    }
+
+    @Override
+    public void onNavigationItemReselected(@NonNull MenuItem menuItem) {
+
+        Fragment fragment = null;
+
+        switch (menuItem.getItemId()){
+
+            case R.id.btn_handphone:
+                //  toolbar.setLogo(R.drawable.logoputih);
+                //   toolbar.setTitle("Beranda");
+                fragment = new FragmentSimulasiGadget();
+                loadFragment(fragment);
+                return;
+
+        }
+
+
+    }*/
 
     /**
      * This interface must be implemented by activities that contain this

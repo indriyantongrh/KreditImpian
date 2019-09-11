@@ -142,7 +142,7 @@
                         android:layout_height="60dp">
 
                         <EditText
-                            android:id="@+id/username"
+                            android:id="@+id/txtusername"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:layout_width="match_parent"
@@ -168,7 +168,7 @@
                         android:layout_height="60dp">
 
                         <EditText
-                            android:id="@+id/email"
+                            android:id="@+id/txtemail"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:layout_width="match_parent"
@@ -194,7 +194,7 @@
                         android:layout_height="60dp">
 
                         <EditText
-                            android:id="@+id/password"
+                            android:id="@+id/txtpassword"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:layout_width="match_parent"

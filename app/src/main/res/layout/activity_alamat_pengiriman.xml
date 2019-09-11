@@ -166,7 +166,7 @@
                         android:gravity="top"
                         android:lines="9"
                         android:fontFamily="@font/jipatharegular"
-                        android:inputType="text"
+                        android:inputType="textMultiLine"
                         android:textSize="26dp" />
 
                 </LinearLayout>
