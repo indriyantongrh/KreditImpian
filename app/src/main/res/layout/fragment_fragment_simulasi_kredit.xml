@@ -297,7 +297,7 @@
 
                             <!--Card Olahraga-->
                             <androidx.cardview.widget.CardView
-                                android:id="@+id/btn_olahraga"
+                                android:id="@+id/btn_hobi"
                                 android:layout_width="55dp"
                                 android:layout_height="55dp"
                                 android:layout_marginLeft="30dp"
@@ -327,8 +327,8 @@
                                 android:text="Hobi"
                                 android:textStyle="bold"
                                 android:textColor="@color/colorOrange"
-                                android:layout_alignStart="@id/btn_olahraga"
-                                android:layout_alignEnd="@+id/btn_olahraga"
+                                android:layout_alignStart="@id/btn_hobi"
+                                android:layout_alignEnd="@+id/btn_hobi"
                                 android:fontFamily="@font/jipatharegular"
                                 android:textSize="14sp" />
 
@@ -338,7 +338,7 @@
                                 android:layout_width="55dp"
                                 android:layout_height="55dp"
                                 android:layout_marginLeft="30dp"
-                                android:layout_toRightOf="@id/btn_olahraga"
+                                android:layout_toRightOf="@id/btn_hobi"
                                 android:clickable="true"
                                 android:focusable="true"
                                 app:cardCornerRadius="15dp">
@@ -476,7 +476,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentBottom="true"
                                 android:gravity="center"
-                                android:text="Haji"
+                                android:text="Holly Tour"
                                 android:textStyle="bold"
                                 android:textColor="@color/colorOrange"
                                 android:layout_alignStart="@id/btn_haji"

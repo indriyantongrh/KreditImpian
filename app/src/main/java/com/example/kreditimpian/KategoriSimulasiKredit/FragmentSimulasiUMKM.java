@@ -13,12 +13,13 @@ import android.view.ViewGroup;
 import com.example.kreditimpian.R;
 
 
-public class FragmentSimulasiOtomotif extends Fragment {
+public class FragmentSimulasiUMKM extends Fragment {
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_fragment_simulasi_otomotif, container, false);
+        View view = inflater.inflate(R.layout.fragment_fragment_simulasi_umkm, container, false);
 
 
         return view;

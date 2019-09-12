@@ -12,13 +12,21 @@ import android.view.ViewGroup;
 
 import com.example.kreditimpian.R;
 
+/**
+ * A simple {@link Fragment} subclass.
+ * Activities that contain this fragment must implement the
+ * {@link FragmentSimulasiMultiproduct.OnFragmentInteractionListener} interface
+ * to handle interaction events.
+ * Use the {@link FragmentSimulasiMultiproduct#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class FragmentSimulasiMultiproduct extends Fragment {
 
-public class FragmentSimulasiOtomotif extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_fragment_simulasi_otomotif, container, false);
+        View view = inflater.inflate(R.layout.fragment_fragment_simulasi_multiproduct, container, false);
 
 
         return view;

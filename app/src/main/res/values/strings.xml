@@ -11,6 +11,8 @@
     <string name="next">Lanjut</string>
     <string name="skip">Lewati</string>
 
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string-array name="jeniskelamin">
         <item>Pilih Jenis Kelamin</item>
         <item>Laki-laki</item>
@@ -52,15 +54,13 @@
         <item>Pilih Provinsi</item>
     </string-array>
 
+
     <string-array name="kota">
         <item>Pilih Kota</item>
     </string-array>
 
-
+    <!-- TODO: Remove or change this placeholder text -->
     <string-array name="kategori">
         <item>Pilih Kategori</item>
     </string-array>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
