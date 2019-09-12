@@ -3,23 +3,17 @@ package com.example.kreditimpian.SimulasiKredit;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.kreditimpian.Beranda.FragmentBeranda;
+import com.example.kreditimpian.KategoriSimulasiKredit.FragmentSimulasiGadget;
+import com.example.kreditimpian.KategoriSimulasiKredit.FragmentSimulasiLaptop;
 import com.example.kreditimpian.R;
-import com.google.android.material.bottomnavigation.BottomNavigationMenu;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.internal.NavigationMenuItemView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -85,15 +79,40 @@ public class FragmentSimulasiKredit extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_fragment_simulasi_kredit, container, false);
 
+
+
+
+        final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+
+        fragmentTransaction.add(R.id.frame_containerkredit, new FragmentSimulasiGadget());
+        fragmentTransaction.commit();
+
         btn_handphone = view.findViewById(R.id.btn_handphone);
         btn_handphone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(),"Sukses",Toast.LENGTH_SHORT).show();
+
+                FragmentTransaction fr=getFragmentManager().beginTransaction();
+                fr.replace(R.id.frame_containerkredit, new FragmentSimulasiGadget());
+                fr.commit();
+
+                ///Toast.makeText(getContext(),"Sukses",Toast.LENGTH_SHORT).show();
             }
         });
 
 
+        btn_laptop = view.findViewById(R.id.btn_laptop);
+        btn_laptop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                FragmentTransaction fr=getFragmentManager().beginTransaction();
+                fr.replace(R.id.frame_containerkredit, new FragmentSimulasiLaptop());
+                fr.commit();
+
+                ///Toast.makeText(getContext(),"Sukses",Toast.LENGTH_SHORT).show();
+            }
+        });
 
         ///      toolbar = getSupportActionBar();
         /// toolbar = view.findViewById(R.id.toolbar);

@@ -1,4 +1,4 @@
-package com.example.kreditimpian.SimulasiKredit;
+package com.example.kreditimpian.KategoriSimulasiKredit;
 
 import android.content.Context;
 import android.net.Uri;

@@ -1,4 +1,4 @@
-package com.example.kreditimpian.SimulasiKredit;
+package com.example.kreditimpian.KategoriSimulasiKredit;
 
 import android.content.Context;
 import android.net.Uri;
@@ -15,12 +15,12 @@ import com.example.kreditimpian.R;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link FragmentSimulasiForniture.OnFragmentInteractionListener} interface
+ * {@link FragmentSimulasiOlahraga.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link FragmentSimulasiForniture#newInstance} factory method to
+ * Use the {@link FragmentSimulasiOlahraga#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentSimulasiForniture extends Fragment {
+public class FragmentSimulasiOlahraga extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -32,7 +32,7 @@ public class FragmentSimulasiForniture extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public FragmentSimulasiForniture() {
+    public FragmentSimulasiOlahraga() {
         // Required empty public constructor
     }
 
@@ -42,11 +42,11 @@ public class FragmentSimulasiForniture extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentSimulasiForniture.
+     * @return A new instance of fragment FragmentSimulasiOlahraga.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragmentSimulasiForniture newInstance(String param1, String param2) {
-        FragmentSimulasiForniture fragment = new FragmentSimulasiForniture();
+    public static FragmentSimulasiOlahraga newInstance(String param1, String param2) {
+        FragmentSimulasiOlahraga fragment = new FragmentSimulasiOlahraga();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -67,7 +67,7 @@ public class FragmentSimulasiForniture extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragment_simulasi_forniture, container, false);
+        return inflater.inflate(R.layout.fragment_fragment_simulasi_olahraga, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
