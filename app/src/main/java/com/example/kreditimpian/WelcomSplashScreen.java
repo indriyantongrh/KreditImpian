@@ -123,7 +123,7 @@ public class WelcomSplashScreen extends AppCompatActivity {
 
     private void launchHomeScreen() {
         prefManager.setFirstTimeLaunch(false);
-        startActivity(new Intent(WelcomSplashScreen.this, LoginUser.class));
+        startActivity(new Intent(WelcomSplashScreen.this, SplashScreenDepan.class));
         finish();
     }
 
