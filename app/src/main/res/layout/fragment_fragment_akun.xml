@@ -220,7 +220,7 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/historypesanan"
                     android:gravity="center"
-                    android:text="Status Pesanan"
+                    android:text="History Pesanan"
                     android:textColor="#000"
                     android:layout_centerInParent="true"
                     android:fontFamily="@font/jipatharegular"

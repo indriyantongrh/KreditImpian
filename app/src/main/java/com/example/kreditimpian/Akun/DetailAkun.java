@@ -6,17 +6,28 @@ import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 
 import com.example.kreditimpian.R;
 
 public class DetailAkun extends AppCompatActivity {
 
-    CardView btndatapribadi, btnalamatpengiriman, btnalamatkantor, btndatasaudara,btnuploaddokumen ;
+    ImageButton btnback;
+
+    CardView btndatapribadi, btnalamatpengiriman, btnalamatkantor, btndatasaudara, btnuploaddokumen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_akun);
+
+        btnback = findViewById(R.id.btnback);
+        btnback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         btndatapribadi = findViewById(R.id.btndatapribadi);
         btndatapribadi.setOnClickListener(new View.OnClickListener() {
@@ -64,4 +75,11 @@ public class DetailAkun extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+
+    }
+
 }

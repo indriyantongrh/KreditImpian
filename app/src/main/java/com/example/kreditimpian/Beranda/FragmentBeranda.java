@@ -11,6 +11,7 @@ import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.provider.MediaStore;
 import android.util.Base64;
@@ -28,6 +29,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
+import com.example.kreditimpian.ButtomSheetKategori.CustomBottomSheetDialogFragment;
 import com.example.kreditimpian.FormPengajuan.CaptureGambar;
 import com.example.kreditimpian.FormPengajuan.StepIsiProductCari;
 import com.example.kreditimpian.FormPengajuan.UploadGambar;
@@ -46,6 +48,8 @@ import java.util.List;
 
 
 import com.example.kreditimpian.FormPengajuan.StepisiProduct;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
@@ -140,7 +144,18 @@ public class FragmentBeranda extends Fragment {
         });
 
 
-        btn_lainya = rootView.findViewById(R.id.btn_lainya);
+
+
+        View modal = rootView.findViewById(R.id.btn_lainya);
+        modal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BottomSheetDialogFragment bottomSheetDialogFragment = new CustomBottomSheetDialogFragment();
+                bottomSheetDialogFragment.show(getFragmentManager(), bottomSheetDialogFragment.getTag());
+            }
+        });
+
+  /*      btn_lainya = rootView.findViewById(R.id.btn_lainya);
         btn_lainya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -149,7 +164,7 @@ public class FragmentBeranda extends Fragment {
                 getActivity().startActivity(intent);
 
             }
-        });
+        });*/
 
         btn_fotoimpian = rootView.findViewById(R.id.btn_fotoimpian);
         btn_fotoimpian.setOnClickListener(new View.OnClickListener() {
