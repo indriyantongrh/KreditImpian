@@ -63,4 +63,23 @@
     <string-array name="kategori">
         <item>Pilih Kategori</item>
     </string-array>
+
+    <string-array name="tenor">
+        <item>6 bulan</item>
+        <item>9 bulan</item>
+        <item>12 bulan</item>
+        <item>18 bulan</item>
+        <item>24 bulan</item>
+        </string-array>
+
+    <string-array name="uangmuka">
+        <item>10%</item>
+        <item>15%</item>
+        <item>20%</item>
+        <item>25%</item>
+        <item>30%</item>
+        <item>35%</item>
+        <item>40%</item>
+        <item>45%</item>
+    </string-array>
 </resources>

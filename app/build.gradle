@@ -87,4 +87,7 @@ dependencies {
 
     //Buttomsheet
     implementation 'com.google.android.material:material:1.0.0-alpha3'
+
+    ///SeekBar
+    implementation 'com.xw.repo:bubbleseekbar:3.5-lite'
 }
