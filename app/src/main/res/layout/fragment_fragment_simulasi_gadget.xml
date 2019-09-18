@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="215dp"
-    android:paddingBottom="0dp"
+    android:paddingBottom="55dp"
     tools:context=".KategoriSimulasiKredit.FragmentSimulasiGadget">
 
     <androidx.core.widget.NestedScrollView
@@ -30,7 +30,51 @@
         android:text="Simulasi Handphone"
         android:textSize="35dp" />
 
-    <!--Seeker bar simulasi-->
+
+        <!--Cardview Harga barang-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/CardHarga"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            app:cardElevation="6dp"
+            app:cardCornerRadius="8dp"
+            android:layout_margin="5dp"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/colorOrange"
+            android:background ="@drawable/cardvieworange">
+            <RelativeLayout
+                android:layout_width="130dp"
+                android:background="@drawable/borderhitam"
+                android:backgroundTint="@color/colorOrange"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:id="@+id/textharga"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="#fff"
+                    android:fontFamily="@font/jipatharegular"
+                    android:text="Harga barang"
+                    android:textSize="20dp" />
+
+
+                <TextView
+                    android:id="@+id/txtvalue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Rp0"
+                    android:paddingTop="10dp"
+                    android:textColor="#fff"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/jipatharegular"
+                    android:textSize="30dp" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <!--Seeker bar simulasi-->
     <com.xw.repo.BubbleSeekBar
         android:id="@+id/bubbleseekBar"
         android:layout_width="fill_parent"
@@ -39,17 +83,17 @@
         app:bsb_track_color="#FF6802"
         app:bsb_bubble_text_color="#FF6802"
         app:bsb_second_track_color="#BF1E90FF"
-        app:bsb_max="4000000"
+        app:bsb_max="14000000"
         app:bsb_min="1000000"
         app:bsb_progress="1000000"
-        app:bsb_section_count="3"
+        app:bsb_section_count="7"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         app:bsb_section_text_position="bottom_sides"
         app:bsb_show_progress_in_float="false"
         app:bsb_show_section_mark="true"
         app:bsb_show_section_text="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         />
 
 
@@ -73,47 +117,6 @@
         android:text="Harga Barang :"
         android:textAppearance="?android:attr/textAppearanceLarge" />-->
 
-        <!--Cardview Harga barang-->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/CardHarga"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        app:cardElevation="6dp"
-        app:cardCornerRadius="8dp"
-        android:layout_margin="5dp"
-        android:layout_gravity="center"
-        android:backgroundTint="@color/colorOrange"
-        android:background ="@drawable/cardvieworange">
-        <RelativeLayout
-            android:layout_width="130dp"
-            android:background="@drawable/borderhitam"
-            android:backgroundTint="@color/colorOrange"
-            android:layout_height="50dp">
-
-            <TextView
-                android:id="@+id/textharga"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textColor="#fff"
-                android:fontFamily="@font/jipatharegular"
-                android:text="Harga barang"
-                android:textSize="20dp" />
-
-
-            <TextView
-                android:id="@+id/txtvalue"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Rp0"
-                android:paddingTop="10dp"
-                android:textColor="#fff"
-                android:layout_centerInParent="true"
-                android:fontFamily="@font/jipatharegular"
-                android:textSize="30dp" />
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
 
         <!--Untuk Spinner Uang muka dan Tenor-->
         <LinearLayout
@@ -123,12 +126,29 @@
             android:layout_marginTop="20dp"
             android:orientation="horizontal">
 
+            <!--Spinner Uang Muka-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="160dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/borderhitam"
+                android:layout_height="37dp">
+
+                <Spinner
+                    android:id="@+id/spinneruangmuka"
+                    android:layout_width="match_parent"
+                    android:spinnerMode="dropdown"
+
+                    android:layout_height="match_parent"></Spinner>
+
+            </LinearLayout>
+
             <!--Spinner Tenor-->
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="150dp"
             android:background="@drawable/borderhitam"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             android:layout_height="37dp">
 
             <Spinner
@@ -140,22 +160,7 @@
                 android:layout_height="match_parent"></Spinner>
         </LinearLayout>
 
-        <!--Spinner Uang Muka-->
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="150dp"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/borderhitam"
-            android:layout_height="37dp">
 
-            <Spinner
-                android:id="@+id/spinneruangmuka"
-                android:layout_width="match_parent"
-                android:spinnerMode="dropdown"
-                android:entries="@array/uangmuka"
-                android:layout_height="match_parent"></Spinner>
-
-        </LinearLayout>
 
         </LinearLayout>
 
@@ -220,7 +225,7 @@
                                 android:gravity="center"
                                 android:textColor="#fff"
                                 android:fontFamily="@font/jipatharegular"
-                                android:text="Tagihan"
+                                android:text="Bulanan"
                                 android:textSize="20dp" />
 
 
