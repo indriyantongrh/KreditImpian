@@ -86,7 +86,7 @@
         app:bsb_max="14000000"
         app:bsb_min="1000000"
         app:bsb_progress="1000000"
-        app:bsb_section_count="7"
+        app:bsb_section_count="2"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         app:bsb_section_text_position="bottom_sides"
@@ -182,15 +182,76 @@
                 android:background="@drawable/borderhitam"
                 android:layout_height="wrap_content">
 
+
+                <!--Text Bayar dimuka dan admin-->
+                <TextView
+                    android:id="@+id/textdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="#000"
+                    android:fontFamily="@font/jipatharegular"
+                    android:text="Bayar dimuka dan biaya administrasi"
+                    android:textSize="30dp" />
+
+                <!--Linear Jumlah DP-->
+                <LinearLayout
+                    android:id="@+id/jumlahdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textdp"
+                    android:gravity="center"
+                    android:paddingBottom="0dp"
+                    android:orientation="horizontal">
+
+                    <!--Card Dp-->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/carddp"
+                        android:layout_below="@+id/textdp"
+                        android:layout_width="130dp"
+                        android:layout_height="wrap_content"
+                        app:cardElevation="6dp"
+                        app:cardCornerRadius="8dp"
+                        android:layout_margin="7dp"
+                        android:layout_gravity="center|center_horizontal"
+                        android:backgroundTint="@color/colorOrange"
+                        android:background ="@drawable/cardvieworange">
+                        <RelativeLayout
+                            android:layout_width="130dp"
+                            android:background="@drawable/borderhitam"
+                            android:backgroundTint="@color/colorOrange"
+                            android:layout_height="30dp">
+
+
+                            <TextView
+                                android:id="@+id/txtjumlahdp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="Rp0"
+                                android:textColor="#fff"
+                                android:layout_centerInParent="true"
+                                android:fontFamily="@font/jipatharegular"
+                                android:textSize="30dp" />
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+
+
                 <TextView
                     android:id="@+id/textcicilan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textColor="#000"
+                    android:layout_below="@+id/jumlahdp"
                     android:fontFamily="@font/jipatharegular"
                     android:text="Cicilan ulanan Anda:"
                     android:textSize="30dp" />
+
+
 
                 <!--Linear Tagihan dan Tenor-->
                 <LinearLayout
@@ -300,67 +361,18 @@
 
                 </LinearLayout>
 
-                <!--Text Bayar dimuka dan admin-->
+
                 <TextView
-                    android:id="@+id/textdp"
+                    android:id="@+id/txtperhitungan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textColor="#000"
+                    android:textColor="@color/colorOrange"
+                    android:textStyle="italic"
                     android:layout_below="@+id/tenordantagihan"
                     android:fontFamily="@font/jipatharegular"
-                    android:text="Bayar dimuka dan biaya administrasi"
-                    android:textSize="30dp" />
-
-                <!--Linear Jumlah DP-->
-                <LinearLayout
-                    android:id="@+id/jumlahdp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/textdp"
-                    android:gravity="center"
-                    android:paddingBottom="20dp"
-                    android:orientation="horizontal">
-
-                    <!--Card Dp-->
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/carddp"
-                        android:layout_below="@+id/textdp"
-                        android:layout_width="130dp"
-                        android:layout_height="wrap_content"
-                        app:cardElevation="6dp"
-                        app:cardCornerRadius="8dp"
-                        android:layout_margin="7dp"
-                        android:layout_gravity="center|center_horizontal"
-                        android:backgroundTint="@color/colorOrange"
-                        android:background ="@drawable/cardvieworange">
-                        <RelativeLayout
-                            android:layout_width="130dp"
-                            android:background="@drawable/borderhitam"
-                            android:backgroundTint="@color/colorOrange"
-                            android:layout_height="30dp">
-
-
-                            <TextView
-                                android:id="@+id/txtjumlahdp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:text="Rp0"
-                                android:textColor="#fff"
-                                android:layout_centerInParent="true"
-                                android:fontFamily="@font/jipatharegular"
-                                android:textSize="30dp" />
-                        </RelativeLayout>
-                    </androidx.cardview.widget.CardView>
-
-
-                </LinearLayout>
-
-
-
-
-
+                    android:text="Perhitungan ini hanya simulasi kredit \n dapatkan promo dari Mitra Kredit Impian"
+                    android:textSize="20dp" />
 
             </RelativeLayout>
         </androidx.cardview.widget.CardView>

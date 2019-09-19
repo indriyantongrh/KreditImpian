@@ -3,6 +3,7 @@ package com.example.kreditimpian.Beranda;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -38,11 +39,13 @@ import com.example.kreditimpian._sliders.FragmentSlider;
 import com.example.kreditimpian._sliders.SliderIndicator;
 import com.example.kreditimpian._sliders.SliderPagerAdapter;
 import com.example.kreditimpian._sliders.SliderView;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,17 +53,12 @@ import java.util.List;
 import com.example.kreditimpian.FormPengajuan.StepisiProduct;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link FragmentBeranda.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link FragmentBeranda#newInstance} factory method to
- * create an instance of this fragment.
- */
+import static androidx.media.MediaBrowserServiceCompat.RESULT_OK;
+
+
 public class FragmentBeranda extends Fragment {
 
-
+    private ShimmerFrameLayout mShimmerViewContainer;
     CardView btn_lainya;
     ImageButton btn_fotoimpian,btnupload, btncari, btnupgrade;
     private BottomSheetBehavior bottomSheetBehavior;
@@ -83,42 +81,7 @@ public class FragmentBeranda extends Fragment {
     private SliderView sliderView;
     private LinearLayout mLinearLayout;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
-    private OnFragmentInteractionListener mListener;
-
-    public FragmentBeranda() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentBeranda.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static FragmentBeranda newInstance(String param1, String param2) {
-        FragmentBeranda fragment = new FragmentBeranda();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -127,12 +90,13 @@ public class FragmentBeranda extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_fragment_beranda, container, false);
 
         imagefoto = rootView.findViewById(R.id.imagefoto);
-
+        //mShimmerViewContainer = rootView.findViewById(R.id.shimmer_view_container);
 
         btnupload = rootView.findViewById(R.id.btnupload);
         btnupload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Stopping Shimmer Effect's animation after data is loaded to ListView
 
                 ///   Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 //// startActivityForResult(intent, 0);
@@ -150,6 +114,7 @@ public class FragmentBeranda extends Fragment {
         modal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 BottomSheetDialogFragment bottomSheetDialogFragment = new CustomBottomSheetDialogFragment();
                 bottomSheetDialogFragment.show(getFragmentManager(), bottomSheetDialogFragment.getTag());
             }
@@ -171,11 +136,13 @@ public class FragmentBeranda extends Fragment {
             @Override
             public void onClick(View view) {
 
-             ///   Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-               //// startActivityForResult(intent, 0);
+              Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
-               Intent intent = new Intent(getActivity(), CaptureGambar.class);
-               getActivity().startActivity(intent);
+               startActivityForResult(intent, 0);
+
+
+            ///   Intent intent = new Intent(getActivity(), CaptureGambar.class);
+              /// getActivity().startActivity(intent);
 
             }
         });
@@ -197,12 +164,26 @@ public class FragmentBeranda extends Fragment {
 
         sliderView = (SliderView) rootView.findViewById(R.id.sliderView);
         mLinearLayout = (LinearLayout) rootView.findViewById(R.id.pagesContainer);
+
         setupSlider();
 
 
         return rootView;
 
     }
+
+
+/*    @Override
+    public void onResume() {
+        super.onResume();
+        mShimmerViewContainer.startShimmerAnimation();
+    }
+
+    @Override
+    public void onPause() {
+        mShimmerViewContainer.stopShimmerAnimation();
+        super.onPause();
+    }*/
 
 
     //untuk upload image, compress .JPEG ke bitmap
@@ -261,47 +242,6 @@ public class FragmentBeranda extends Fragment {
 
 
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
-/*    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }*/
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
-
-
     private void setupSlider() {
         sliderView.setDurationScroll(800);
         List<Fragment> fragments = new ArrayList<>();
@@ -310,10 +250,16 @@ public class FragmentBeranda extends Fragment {
         fragments.add(FragmentSlider.newInstance("https://demo.kreditimpian.id/themes/default/assets/img/banner/banner-2.png"));
         fragments.add(FragmentSlider.newInstance("https://demo.kreditimpian.id/themes/default/assets/img/banner/banner-3.png"));
 
+
+
         mAdapter = new SliderPagerAdapter(getFragmentManager(), fragments);
         sliderView.setAdapter(mAdapter);
         mIndicator = new SliderIndicator(getActivity(), mLinearLayout, sliderView, R.drawable.indicator_circle);
         mIndicator.setPageCount(fragments.size());
         mIndicator.show();
+
+
     }
+
+
 }

@@ -274,6 +274,23 @@ public class FragmentSimulasiGadget extends Fragment {
 
                     txtjumlahdp.setText(String.valueOf(kursindonesia.format(uangadmin)));
 
+                }else if (spinneruangmuka.getSelectedItem().equals("30%")){
+                    uangmuka = rupiah*0.30;  //perhitungan
+                    uangadmin = uangmuka+150000;
+                    txtjumlahdp.setText(Double.toString(uangadmin));  //output
+
+
+                    uangadmin = Double.parseDouble(txtjumlahdp.getText().toString());
+                    kursindonesia = (DecimalFormat)
+                            DecimalFormat.getCurrencyInstance();
+                    formatRp = new DecimalFormatSymbols();
+                    formatRp.setCurrencySymbol("Rp.");
+                    formatRp.setMonetaryDecimalSeparator(',');
+                    formatRp.setGroupingSeparator('.');
+                    kursindonesia.setDecimalFormatSymbols(formatRp);
+
+                    txtjumlahdp.setText(String.valueOf(kursindonesia.format(uangadmin)));
+
                 }else if (spinneruangmuka.getSelectedItem().equals("35%")){
                     uangmuka = rupiah*0.35;  //perhitungan
                     uangadmin = uangmuka+150000;

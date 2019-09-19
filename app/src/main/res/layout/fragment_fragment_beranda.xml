@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:shimmer="http://schemas.android.com/apk/res-auto"
     android:paddingBottom="55dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Beranda.FragmentBeranda">
@@ -51,6 +52,17 @@
                         android:src="@drawable/notifikasiputih"/>
 
                 </androidx.appcompat.widget.Toolbar>
+
+        <!--Effect loading seperti gojek-->
+<!--        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_view_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical"
+            shimmer:duration="100">-->
+
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="fill_parent"
@@ -202,6 +214,15 @@
                     </LinearLayout>
 
 
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/shimmer_view_container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:orientation="vertical"
+                    shimmer:duration="100">
+
                 <!--Image Slider-->
                 <RelativeLayout
                     android:id="@+id/layout_top"
@@ -235,7 +256,7 @@
                         android:orientation="horizontal"/>
 
                 </RelativeLayout>
-
+                </com.facebook.shimmer.ShimmerFrameLayout>
 
 
 
@@ -674,5 +695,7 @@
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
+
     </LinearLayout>
+
 </FrameLayout>
