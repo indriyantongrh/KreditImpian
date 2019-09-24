@@ -136,13 +136,11 @@ public class FragmentBeranda extends Fragment {
             @Override
             public void onClick(View view) {
 
-              Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-               startActivityForResult(intent, 0);
 
 
-            ///   Intent intent = new Intent(getActivity(), CaptureGambar.class);
-              /// getActivity().startActivity(intent);
+
+             Intent intent = new Intent(getActivity(), CaptureGambar.class);
+             getActivity().startActivity(intent);
 
             }
         });
@@ -260,6 +258,8 @@ public class FragmentBeranda extends Fragment {
 
 
     }
+
+
 
 
 }

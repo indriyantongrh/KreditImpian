@@ -104,7 +104,7 @@
         <LinearLayout
             android:id="@+id/lineartengah"
             android:layout_width="match_parent"
-            android:layout_height="528dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingTop="30dp"
             tools:ignore="MissingConstraints">
@@ -171,6 +171,7 @@
                 android:layout_marginRight="20dp"
                 android:background="@drawable/btnorange"
                 android:fontFamily="@font/jipatharegular"
+                android:onClick="sendimage"
                 android:text="Selanjutnya"
                 android:textColor="#fff"
                 android:textSize="28dp"

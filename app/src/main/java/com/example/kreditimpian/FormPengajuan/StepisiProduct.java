@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.widget.ImageView;
 
+import com.android.volley.toolbox.ImageLoader;
 import com.example.kreditimpian.R;
 
 import java.io.ByteArrayInputStream;
@@ -17,6 +18,7 @@ public class StepisiProduct extends AppCompatActivity {
 
     ImageView image;
     String img;
+    private ImageLoader imageLoader;
 
 
     Bitmap bitmap, decoded;
@@ -29,9 +31,27 @@ public class StepisiProduct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stepisi_product);
 
-        image = findViewById(R.id.image);
+        image = findViewById(R.id.imagefoto);
 
-        Bundle extras = getIntent().getExtras();
+        Bundle bundle = getIntent().getExtras();
+        if (bundle!=null){
+
+            int resid = bundle.getInt("resID");
+            image.setImageResource(resid);
+        }
+
+
+/*        final String path = getIntent().getStringExtra("imagePath");
+        decoded = BitmapFactory.decodeFile(path);*/
+
+/*        if(getIntent().hasExtra("byteArray")) {
+            ImageView image= new ImageView(this);
+            Bitmap decode_1 = BitmapFactory.decodeByteArray(
+                    getIntent().getByteArrayExtra("byteArray"),0,getIntent().getByteArrayExtra("byteArray").length);
+            image.setImageBitmap(decode_1);
+        }*/
+
+ ///       Bundle extras = getIntent().getExtras();
 ///        img = extras.getString(img);
         //imageView.setImageBitmap(imageBitmap);
         //setToImageView(getStringImage());
