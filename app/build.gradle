@@ -95,16 +95,4 @@ dependencies {
     implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
 
 
-    //compile project(':magicalcamera')
-    implementation 'com.frosquivel:magicalcamera:6.0.0'
-    implementation 'com.github.clans:fab:1.6.3'
-    implementation 'com.afollestad.material-dialogs:core:0.8.5.9'
-    implementation 'com.afollestad.material-dialogs:commons:0.8.6.1'
-    implementation 'com.squareup.picasso:picasso:2.5.2'
-    implementation 'com.larswerkman:HoloColorPicker:1.5'
-    implementation 'com.github.rey5137:material:1.2.4'
-    implementation 'com.github.rey5137:material:1.2.3.1-SNAPSHOT'
-    implementation 'com.github.paolorotolo:appintro:4.1.0'
-    implementation 'com.wang.avi:library:2.1.3'
-
 }
