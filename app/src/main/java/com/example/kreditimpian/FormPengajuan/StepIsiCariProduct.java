@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.example.kreditimpian.R;
 
-public class StepIsiProductCari extends AppCompatActivity {
+public class StepIsiCariProduct extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FormPengajuan.StepisiProduct">
+    android:background="#fff"
+    tools:context=".FormPengajuan.StepFotoProduct">
 
     <FrameLayout
         android:id="@+id/frame_container"
@@ -70,7 +71,7 @@
                     android:textSize="40dp"
                     android:paddingBottom="10dp"
                     android:textColor="#000"
-                    android:src="@drawable/step2"/>
+                    android:src="@drawable/step1"/>
 
 
 
@@ -82,8 +83,40 @@
                     android:layout_height="15dp"></LinearLayout>
 
 
-                <LinearLayout
 
+            <LinearLayout
+                android:id="@+id/linerahorizontol"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:background="#fff"
+                android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:id="@+id/imageupload"
+                        android:layout_width="120dp"
+                        android:layout_height="150dp"
+                        android:background="#fff">
+
+                              <ImageView
+                                  android:id="@+id/imagefoto"
+                                  android:layout_width="match_parent"
+                                  android:src="@drawable/camera"
+                                  android:layout_height="match_parent" />
+
+
+                    </RelativeLayout>
+
+
+            <LinearLayout
+                android:id="@+id/linera200"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:background="#fff"
+                android:orientation="vertical">
+
+
+
+                <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:background="@drawable/borderhitam"
@@ -161,6 +194,8 @@
 
                 </LinearLayout>
 
+            </LinearLayout>
+            </LinearLayout>
                 <!--Border-->
                 <LinearLayout
                     android:background="#fff"
@@ -197,12 +232,6 @@
                     android:layout_height="15dp"></LinearLayout>
 
 
-                <ImageView
-                    android:id="@+id/imagefoto"
-                    android:paddingBottom="30dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
 
                 <!--Border-->
                 <LinearLayout
@@ -215,13 +244,13 @@
                     android:id="@+id/btnajukansekarang"
                     style="?android:textAppearanceSmall"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
                     android:layout_marginTop="16dp"
                     android:text="Ajukan Sekarang"
                     android:textStyle="bold"
                     android:textColor="#fff"
                     android:fontFamily="@font/jipatharegular"
-                    android:textSize="35dp"
+                    android:textSize="25dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/btnorange"

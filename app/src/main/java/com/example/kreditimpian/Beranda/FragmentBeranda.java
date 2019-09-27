@@ -1,38 +1,24 @@
 package com.example.kreditimpian.Beranda;
 
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.provider.MediaStore;
 import android.util.Base64;
-import android.util.Log;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toolbar;
 
 import com.example.kreditimpian.ButtomSheetKategori.CustomBottomSheetDialogFragment;
-import com.example.kreditimpian.FormPengajuan.CaptureGambar;
-import com.example.kreditimpian.FormPengajuan.StepIsiProductCari;
+import com.example.kreditimpian.FormPengajuan.StepIsiCariProduct;
+import com.example.kreditimpian.FormPengajuan.StepUploadProduct;
 import com.example.kreditimpian.FormPengajuan.UploadGambar;
 import com.example.kreditimpian.R;
 import com.example.kreditimpian._sliders.FragmentSlider;
@@ -41,19 +27,15 @@ import com.example.kreditimpian._sliders.SliderPagerAdapter;
 import com.example.kreditimpian._sliders.SliderView;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 
-import com.example.kreditimpian.FormPengajuan.StepisiProduct;
+import com.example.kreditimpian.FormPengajuan.StepFotoProduct;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
-
-import static androidx.media.MediaBrowserServiceCompat.RESULT_OK;
 
 
 public class FragmentBeranda extends Fragment {
@@ -101,7 +83,7 @@ public class FragmentBeranda extends Fragment {
                 ///   Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 //// startActivityForResult(intent, 0);
 
-                Intent intent = new Intent(getActivity(), UploadGambar.class);
+                Intent intent = new Intent(getActivity(), StepUploadProduct.class);
                 getActivity().startActivity(intent);
 
             }
@@ -139,7 +121,7 @@ public class FragmentBeranda extends Fragment {
 
 
 
-             Intent intent = new Intent(getActivity(), CaptureGambar.class);
+             Intent intent = new Intent(getActivity(), StepFotoProduct.class);
              getActivity().startActivity(intent);
 
             }
@@ -153,7 +135,7 @@ public class FragmentBeranda extends Fragment {
                 ///   Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 //// startActivityForResult(intent, 0);
 
-                Intent intent = new Intent(getActivity(), StepIsiProductCari.class);
+                Intent intent = new Intent(getActivity(), StepIsiCariProduct.class);
                 getActivity().startActivity(intent);
 
             }

@@ -1,53 +1,43 @@
 package com.example.kreditimpian.FormPengajuan;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.MediaController;
 import android.widget.Toast;
 
 import com.example.kreditimpian.R;
+
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 import pub.devrel.easypermissions.EasyPermissions;
 
-import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
-import static android.Manifest.permission_group.CAMERA;
+import static android.provider.MediaStore.ACTION_IMAGE_CAPTURE;
 
 public class CaptureGambar extends AppCompatActivity {
 
@@ -85,29 +75,20 @@ public class CaptureGambar extends AppCompatActivity {
     static final int CAPTURE_IMAGE_REQUEST = 1;
     Uri photoURI =null;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_capture_gambar);
 
-        image = findViewById(R.id.image);
-
-
+        image = findViewById(R.id.imagerequest);
 
         btnfoto = findViewById(R.id.btnfoto);
         btnfoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
-/*                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    captureImage();
-                }
-                else
-                {
-                   /// captureImage2();
-            }
-                */
 
             /////pakai alert dialog
                 android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(CaptureGambar.this);
@@ -116,7 +97,7 @@ public class CaptureGambar extends AppCompatActivity {
                 builder.setPositiveButton("Kamera", new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface dialog, int which) {
-                        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        Intent takePictureIntent = new Intent(ACTION_IMAGE_CAPTURE);
                         if (takePictureIntent.resolveActivity(CaptureGambar.this.getPackageManager()) != null) {
 
                             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE_1);
@@ -145,31 +126,6 @@ public class CaptureGambar extends AppCompatActivity {
             
         });
 
-/*        btnselanjutnya = findViewById(R.id.btnselanjutnya);
-        btnselanjutnya.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-              ///  startActivity(new Intent(getApplicationContext(),StepisiProduct.class).putExtra("img",getStringImage(bitmap)));
-
-
-
-*//*
-                Intent intent = new Intent(getApplication(), StepisiProduct.class);
-                intent.putExtra("imagePath", decoded_1);
-                startActivity(intent);
-*//*
-
- *//*               ///Bitmap _bitmap; // your bitmap
-                ByteArrayOutputStream _bs = new ByteArrayOutputStream();
-                decoded_1.compress(Bitmap.CompressFormat.PNG, 50, _bs);
-                intent.putExtra("byteArray", _bs.toByteArray());
-                startActivity(intent);
-*//*
-            }
-
-
-        });*/
-
     }
 
 
@@ -184,7 +140,7 @@ public class CaptureGambar extends AppCompatActivity {
     private void captureImage2() {
 
         try {
-            Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+            Intent cameraIntent = new Intent(ACTION_IMAGE_CAPTURE);
             photoFile = createImageFile4();
             if(photoFile!=null)
             {
@@ -209,7 +165,7 @@ public class CaptureGambar extends AppCompatActivity {
         }
         else {
 
-            Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            Intent takePictureIntent = new Intent(ACTION_IMAGE_CAPTURE);
             startActivityForResult(takePictureIntent, CAPTURE_IMAGE_REQUEST);
 
             if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
@@ -426,9 +382,11 @@ public class CaptureGambar extends AppCompatActivity {
 
     public void sendimage (View v)
     {
-        Intent i = new Intent (CaptureGambar.this, StepisiProduct.class);
+       Intent i = new Intent (CaptureGambar.this, StepFotoProduct.class);
         i.putExtra("resID", bitmap);
         startActivity(i);
+
+
     }
 
 

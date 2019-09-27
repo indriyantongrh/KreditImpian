@@ -13,12 +13,26 @@
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="capture">Capture</string>
+
+    <string name="camera_not_supported">Your Device doesn\\\'t Support Camera.</string>
+
+    <string name="capture_image_failed">Failed to capture image.</string>
+
+    <string name="permission_message">Both permissions are required. Please allow both permission to take picture.</string>
+
+    <string name="cancel_message">Cancelled by user.</string>
+
+    <string name="capture_deny_message">Capture image won\'t work without both permissions.</string>
+
+
     <string-array name="jeniskelamin">
         <item>Pilih Jenis Kelamin</item>
         <item>Laki-laki</item>
         <item>Perempuan</item>
     </string-array>
 
+    <!-- TODO: Remove or change this placeholder text -->
     <string-array name="status">
         <item>Pilih Status</item>
         <item>Lajang</item>
@@ -42,6 +56,7 @@
         <item>Tidak</item>
     </string-array>
 
+
     <string-array name="statusrumah">
         <item>Status tempat tinggal</item>
         <item>Ikut Orang tua</item>
@@ -49,29 +64,22 @@
         <item>Kost</item>
         <item>Kontrak</item>
     </string-array>
-
     <string-array name="provinsi">
         <item>Pilih Provinsi</item>
     </string-array>
-
-
     <string-array name="kota">
         <item>Pilih Kota</item>
     </string-array>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string-array name="kategori">
         <item>Pilih Kategori</item>
     </string-array>
-
     <string-array name="tenor">
         <item>6 bulan</item>
         <item>9 bulan</item>
         <item>12 bulan</item>
         <item>18 bulan</item>
         <item>24 bulan</item>
-        </string-array>
-
+    </string-array>
     <string-array name="uangmuka">
         <item>10%</item>
         <item>15%</item>
@@ -83,12 +91,5 @@
         <item>45%</item>
     </string-array>
 
-
-    <string name="capture">Capture</string>
-    <string name="camera_not_supported">Your Device doesn\\\'t Support Camera.</string>
-    <string name="capture_image_failed">Failed to capture image.</string>
-    <string name="permission_message">Both permissions are required. Please allow both permission to take picture.</string>
-    <string name="cancel_message">Cancelled by user.</string>
-    <string name="capture_deny_message">Capture image won\'t work without both permissions.</string>
 
 </resources>
