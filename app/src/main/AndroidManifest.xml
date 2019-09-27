@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.kreditimpian">
+    package="com.application.kreditimpian">
 
     <application
         android:allowBackup="true"
@@ -12,75 +12,75 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".FormPengajuan.StepUploadProduct"
+            android:name="com.application.kreditimpian.FormPengajuan.StepUploadProduct"
             android:theme="@style/NoActionbar"></activity>
         <activity
-            android:name=".SplashScreenDepan"
+            android:name="com.application.kreditimpian.SplashScreenDepan"
             android:theme="@style/NoActionbar" />
         <activity
-            android:name=".FormPengajuan.StepIsiCariProduct"
+            android:name="com.application.kreditimpian.FormPengajuan.StepIsiCariProduct"
             android:theme="@style/NoActionbar" />
         <activity
-            android:name=".FormPengajuan.StepFotoProduct"
+            android:name="com.application.kreditimpian.FormPengajuan.StepFotoProduct"
             android:theme="@style/NoActionbar" />
         <activity
-            android:name=".FormPengajuan.UploadGambar"
+            android:name="com.application.kreditimpian.FormPengajuan.UploadGambar"
             android:theme="@style/NoActionbar" />
         <activity
-            android:name=".FormPengajuan.CaptureGambar"
+            android:name="com.application.kreditimpian.FormPengajuan.CaptureGambar"
             android:theme="@style/NoActionbar" />
         <activity
-            android:name=".FormPengajuan.SuccessMengajukan"
+            android:name="com.application.kreditimpian.FormPengajuan.SuccessMengajukan"
             android:theme="@style/NoActionbar" />
         <activity
-            android:name=".Beranda.SemuaKategori"
+            android:name="com.application.kreditimpian.Beranda.SemuaKategori"
             android:theme="@style/NoActionbar" />
-        <activity android:name=".Adapter.AdapterPromo" />
-        <activity android:name=".MainActivity" />
+        <activity android:name="com.application.kreditimpian.Adapter.AdapterPromo" />
+        <activity android:name="com.application.kreditimpian.MainActivity" />
         <activity
-            android:name=".GantidanRisetPassword.GantiPassword"
-            android:theme="@style/NoActionbar" />
-        <activity
-            android:name=".KonfirmasiPembayaran.KonfirmasiPembayaran"
+            android:name="com.application.kreditimpian.GantidanRisetPassword.GantiPassword"
             android:theme="@style/NoActionbar" />
         <activity
-            android:name=".Favorite.Favorite"
+            android:name="com.application.kreditimpian.KonfirmasiPembayaran.KonfirmasiPembayaran"
             android:theme="@style/NoActionbar" />
         <activity
-            android:name=".HistoryPesanan.HistoryPesanan"
+            android:name="com.application.kreditimpian.Favorite.Favorite"
             android:theme="@style/NoActionbar" />
         <activity
-            android:name=".StatusPesanan.StatusPesanan"
+            android:name="com.application.kreditimpian.HistoryPesanan.HistoryPesanan"
             android:theme="@style/NoActionbar" />
         <activity
-            android:name=".Akun.UploadDokumenPendukung"
+            android:name="com.application.kreditimpian.StatusPesanan.StatusPesanan"
             android:theme="@style/NoActionbar" />
         <activity
-            android:name=".Akun.DataSaudara"
+            android:name="com.application.kreditimpian.Akun.UploadDokumenPendukung"
             android:theme="@style/NoActionbar" />
         <activity
-            android:name=".Akun.AlamatKantor"
+            android:name="com.application.kreditimpian.Akun.DataSaudara"
             android:theme="@style/NoActionbar" />
         <activity
-            android:name=".Akun.AlamatPengiriman"
+            android:name="com.application.kreditimpian.Akun.AlamatKantor"
             android:theme="@style/NoActionbar" />
         <activity
-            android:name=".Akun.DataDiri"
+            android:name="com.application.kreditimpian.Akun.AlamatPengiriman"
             android:theme="@style/NoActionbar" />
         <activity
-            android:name=".Akun.DetailAkun"
+            android:name="com.application.kreditimpian.Akun.DataDiri"
             android:theme="@style/NoActionbar" />
         <activity
-            android:name=".MenuUtama.MenuUtama"
+            android:name="com.application.kreditimpian.Akun.DetailAkun"
             android:theme="@style/NoActionbar" />
         <activity
-            android:name=".LoginRegister.LoginUser"
+            android:name="com.application.kreditimpian.MenuUtama.MenuUtama"
             android:theme="@style/NoActionbar" />
         <activity
-            android:name=".LoginRegister.Register"
+            android:name="com.application.kreditimpian.LoginRegister.LoginUser"
             android:theme="@style/NoActionbar" />
         <activity
-            android:name=".WelcomSplashScreen"
+            android:name="com.application.kreditimpian.LoginRegister.Register"
+            android:theme="@style/NoActionbar" />
+        <activity
+            android:name="com.application.kreditimpian.WelcomSplashScreen"
             android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar">

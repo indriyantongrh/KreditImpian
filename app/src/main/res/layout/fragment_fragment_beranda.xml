@@ -233,7 +233,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent">
 
-                        <com.example.kreditimpian._sliders.SliderView
+                        <com.application.kreditimpian._sliders.SliderView
                             android:id="@+id/sliderView"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"/>
