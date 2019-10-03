@@ -1,4 +1,4 @@
-package com.application.kreditimpian.FragKategoriPendanaan;
+package com.application.kreditimpian.FragSemuaKategori;
 
 import android.content.Context;
 import android.net.Uri;
@@ -13,15 +13,14 @@ import android.view.ViewGroup;
 import com.application.kreditimpian.R;
 
 
-public class KategoriPendanaan extends Fragment {
+public class FragSemuaKategori extends Fragment {
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_kategori_pendanaan, container, false);
+        return inflater.inflate(R.layout.fragment_frag_semua_kategori, container, false);
     }
-
 
 }

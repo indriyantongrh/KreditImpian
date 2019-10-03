@@ -103,12 +103,57 @@
                         android:layout_marginBottom="10dp">
 
 
-                    <!--Card Fashion-->
+
+
+
+                        <!--CardSemua -->
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/btn_semua"
+                            android:layout_width="55dp"
+                            android:layout_height="55dp"
+                            android:layout_marginLeft="0dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            app:cardCornerRadius="15dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:id="@+id/imageViewSemua"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="10dp"
+                                    android:src="@drawable/pilihsemua" />
+                            </RelativeLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:gravity="center"
+                            android:text="Semua"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorOrange"
+                            android:layout_alignStart="@id/btn_semua"
+                            android:layout_alignEnd="@+id/btn_semua"
+                            android:fontFamily="@font/jipatharegular"
+                            android:textSize="14sp" />
+
+
+
+
+
+
+                        <!--Card Fashion-->
                     <androidx.cardview.widget.CardView
                         android:id="@+id/btn_handphone"
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:layout_marginLeft="0dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_toRightOf="@id/btn_semua"
                         android:clickable="true"
                         android:focusable="true"
                         app:cardCornerRadius="15dp">
@@ -297,7 +342,7 @@
 
                     <!--Card Olahraga-->
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/btn_olahraga"
+                        android:id="@+id/btn_hobi"
                         android:layout_width="55dp"
                         android:layout_height="55dp"
                         android:layout_marginLeft="30dp"
@@ -315,7 +360,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_margin="10dp"
-                                android:src="@drawable/olahraga" />
+                                android:src="@drawable/hobi" />
                         </RelativeLayout>
                     </androidx.cardview.widget.CardView>
 
@@ -327,8 +372,8 @@
                         android:text="Hobi"
                         android:textStyle="bold"
                         android:textColor="@color/colorOrange"
-                        android:layout_alignStart="@id/btn_olahraga"
-                        android:layout_alignEnd="@+id/btn_olahraga"
+                        android:layout_alignStart="@id/btn_hobi"
+                        android:layout_alignEnd="@+id/btn_hobi"
                         android:fontFamily="@font/jipatharegular"
                         android:textSize="14sp" />
 
@@ -338,7 +383,7 @@
                         android:layout_width="55dp"
                         android:layout_height="55dp"
                         android:layout_marginLeft="30dp"
-                        android:layout_toRightOf="@id/btn_olahraga"
+                        android:layout_toRightOf="@id/btn_hobi"
                         android:clickable="true"
                         android:focusable="true"
                         app:cardCornerRadius="15dp">
@@ -653,5 +698,12 @@
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frame_containermarketplace"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
 
 </FrameLayout>
