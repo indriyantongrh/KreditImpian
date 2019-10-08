@@ -15,11 +15,12 @@ public interface RequestInterface {
     /*API KreditImpian*/
     //Insert User Baru
     @FormUrlEncoded
-    @POST("member")
+    @POST("create")
     Call<SuccessMessage> registrasi_user(@Field("id") String id,
                                          @Field("email") String email,
                                          @Field("username") String username,
-                                         @Field("password") String password);
+                                         @Field("password") String password,
+                                         @Field("phone") String phone);
 
 
 

@@ -5,7 +5,7 @@ package com.application.kreditimpian.Api;
  */
 
 public class SuccessMessage {
-    String success;
+    String  success;
     String message;
 
     public String getSuccess() {

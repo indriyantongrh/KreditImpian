@@ -38,7 +38,7 @@ public class Register extends AppCompatActivity {
     private static final String TAG = Register.class.getSimpleName();
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
-    private String url = "https://api.kreditimpian.com/";  //directory php ning server
+    private String url = "https://dev.kreditimpian.com/api/members/";  //directory php ning server
     String tag_json_obj = "json_obj_req";
     Intent i;
     int success;
@@ -51,6 +51,7 @@ public class Register extends AppCompatActivity {
         txtusername = (EditText) findViewById(R.id.txtusername);
         txtemail = (EditText) findViewById(R.id.txtemail);
         txtpassword = (EditText) findViewById(R.id.txtpassword);
+        nomortelepon = (EditText) findViewById(R.id.nomortelepon);
 
         btnbuatakun = findViewById(R.id.btnbuatakun);
         btnbuatakun.setOnClickListener(new View.OnClickListener() {
@@ -82,6 +83,7 @@ public class Register extends AppCompatActivity {
         String username = txtusername.getText().toString();
         String email = txtemail.getText().toString();
         String password = txtpassword.getText().toString();
+        String phone = nomortelepon.getText().toString();
         ///String password = txt_password.getText().toString();
 
         OkHttpClient client = new OkHttpClient.Builder()
@@ -92,14 +94,14 @@ public class Register extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create(new Gson())).build();
 
         RequestInterface api = retrofit.create(RequestInterface.class);
-        Call<SuccessMessage> call = api.registrasi_user(id, username, email, password);
+        Call<SuccessMessage> call = api.registrasi_user(id, username, email, password, phone);
         call.enqueue(new Callback<SuccessMessage>() {
             @Override
             public void onResponse(Call<SuccessMessage> call, Response<SuccessMessage> response) {
                 String success = response.body().getSuccess();
                 String message = response.body().getMessage();
                 pDialog.dismiss();
-                if (success.equals("0")) {
+                if (success.equals("true")) {
                     Toast.makeText(Register.this, message, Toast.LENGTH_SHORT).show();
 //                    Intent intent = new Intent(DetailBookingTempat.this, Riwayat_booking.class);
 //                    intent.putExtra("user_id",id_user);
