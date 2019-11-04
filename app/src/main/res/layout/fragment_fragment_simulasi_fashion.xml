@@ -4,8 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="215dp"
-    android:paddingBottom="55dp"
-
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".KategoriSimulasiKredit.FragmentSimulasiFashion">
 
@@ -20,6 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#fff"
+            android:paddingBottom="100dp"
             android:orientation="vertical">
 
             <TextView

@@ -6,12 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="215dp"
-    android:paddingBottom="55dp"
+
     tools:context=".KategoriSimulasiKredit.FragmentSimulasiGadget">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+
         tools:ignore="MissingConstraints">
 
 
@@ -19,6 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#fff"
+        android:paddingBottom="100dp"
         android:orientation="vertical">
 
     <TextView
