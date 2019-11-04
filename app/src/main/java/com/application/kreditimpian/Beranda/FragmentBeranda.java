@@ -1,24 +1,38 @@
 package com.application.kreditimpian.Beranda;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.ColorSpace;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import com.application.kreditimpian.Adapter.AdapterMitra;
+import com.application.kreditimpian.Akun.FragmentAkun;
+import com.application.kreditimpian.Api.JSONResponse;
+import com.application.kreditimpian.Api.RequestInterface;
+import com.application.kreditimpian.BuildConfig;
 import com.application.kreditimpian.ButtomSheetKategori.CustomBottomSheetDialogFragment;
 import com.application.kreditimpian.FormPengajuan.StepIsiCariProduct;
 import com.application.kreditimpian.FormPengajuan.StepUploadProduct;
+import com.application.kreditimpian.Mitra.ListMitra;
+import com.application.kreditimpian.Model.ModelMitra;
 import com.application.kreditimpian.R;
 import com.application.kreditimpian._sliders.FragmentSlider;
 import com.application.kreditimpian._sliders.SliderIndicator;
@@ -30,11 +44,20 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 import com.application.kreditimpian.FormPengajuan.StepFotoProduct;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+
+import okhttp3.OkHttpClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class FragmentBeranda extends Fragment {
@@ -44,10 +67,22 @@ public class FragmentBeranda extends Fragment {
     ImageButton btn_fotoimpian,btnupload, btncari, btnupgrade;
     private BottomSheetBehavior bottomSheetBehavior;
 
+    RecyclerView rv_mitra;
+
     ImageView imagefoto;
     Bitmap bitmap, decoded;
     int PICK_IMAGE_REQUEST = 1;
     int bitmap_size = 60; // range 1 - 100
+
+
+    ConnectivityManager conMgr;
+    AdapterMitra adapterMitra;
+    private ArrayList<ModelMitra> mArrayList;
+
+    public static final String BASE_URL = BuildConfig.BASE_URL;
+
+    Dialog pDialog;
+
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -70,6 +105,7 @@ public class FragmentBeranda extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_fragment_beranda, container, false);
 
+        rv_mitra = rootView.findViewById(R.id.rv_mitra);
         imagefoto = rootView.findViewById(R.id.imagefoto);
         //mShimmerViewContainer = rootView.findViewById(R.id.shimmer_view_container);
 
@@ -147,10 +183,51 @@ public class FragmentBeranda extends Fragment {
         setupSlider();
 
 
+       // initViewMitra();
+        getListMitra();
+
         return rootView;
 
     }
 
+    private void getListMitra() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://dev.kreditimpian.com/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        RequestInterface requestInterface = retrofit.create(RequestInterface.class);
+        Call<List<ModelMitra>> call = requestInterface.getMitra();
+
+        call.enqueue(new Callback<List<ModelMitra>>() {
+            @Override
+            public void onResponse(Call<List<ModelMitra>> call, Response<List<ModelMitra>> response) {
+                Toast.makeText(getActivity(), "Succes", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<List<ModelMitra>> call, Throwable t) {
+                Toast.makeText(getActivity(), "Filed", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+    }
+
+    //////////////////////////////
+private void initViewMitra() {
+    rv_mitra.setHasFixedSize(true);
+    final RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+    rv_mitra.setLayoutManager(layoutManager);
+}
+
+    public void initJsonMitra(ArrayList<ModelMitra> mArrayList) {
+        adapterMitra = new AdapterMitra(getActivity(), mArrayList);
+        rv_mitra.setAdapter(adapterMitra);
+        adapterMitra.notifyDataSetChanged();
+    }
+
+
+////////////////////////////
 
 /*    @Override
     public void onResume() {

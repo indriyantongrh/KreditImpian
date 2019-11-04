@@ -1,14 +1,18 @@
 package com.application.kreditimpian.Api;
 
-/*import id.pasarburung.pasarburung.Model.ModelArtikel;
-import id.pasarburung.pasarburung.Model.ModelBeranda;
-import id.pasarburung.pasarburung.Model.ModelIklan;
-import id.pasarburung.pasarburung.Model.ModelKomentar;
-import id.pasarburung.pasarburung.Model.ModelListBurung;
-import id.pasarburung.pasarburung.Model.ModelLomba;
-import id.pasarburung.pasarburung.Model.ModelProfilUser;*/
+
+
+import com.application.kreditimpian.Model.ModelMitra;
 
 public class JSONResponse {
+
+    private ModelMitra[] result;
+
+    public ModelMitra[] getMitra() {
+        return result;
+    }
+
+
 
 /*    private ModelProfilUser[] user;
 

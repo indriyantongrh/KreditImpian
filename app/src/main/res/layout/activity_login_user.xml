@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:background="#fff"
     android:orientation="vertical"
     tools:context=".LoginRegister.LoginUser">
 
@@ -163,6 +163,24 @@
                 android:layout_marginRight="20dp"
                 android:background="@drawable/btnorange"
                 ></Button>
+
+
+            <!--Register Tex-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="40dp"
+                android:layout_gravity="center"
+                >
+
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/sign_in_button"
+                android:layout_gravity="center"
+                android:layout_width="200dp"
+                android:layout_height="50dp" />
+
+            </LinearLayout>
 
 
             <!--Register Tex-->

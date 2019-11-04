@@ -4,78 +4,80 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.application.kreditimpian.Favorite.Favorite;
 import com.application.kreditimpian.GantidanRisetPassword.GantiPassword;
 import com.application.kreditimpian.HistoryPesanan.HistoryPesanan;
 import com.application.kreditimpian.KonfirmasiPembayaran.KonfirmasiPembayaran;
+import com.application.kreditimpian.LoginRegister.LoginUser;
 import com.application.kreditimpian.R;
 import com.application.kreditimpian.StatusPesanan.StatusPesanan;
+import com.bumptech.glide.Glide;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link FragmentAkun.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link FragmentAkun#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.concurrent.Executor;
+
+
 public class FragmentAkun extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
+    ImageView image;
     CardView btndetailakun, btnstatuspesanan, btnhistorypesanan,btnfavorite,btnkonfirmasi, btngantipassword,btnlogout ;
+    TextView txt_nama_akun;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    GoogleSignInClient mGoogleSignInClient;
+    private GoogleApiClient mGoogleApiClient;
 
-    private OnFragmentInteractionListener mListener;
-
-    public FragmentAkun() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentAkun.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static FragmentAkun newInstance(String param1, String param2) {
-        FragmentAkun fragment = new FragmentAkun();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_fragment_akun, container, false);
+
+        txt_nama_akun = view.findViewById(R.id.txt_nama_akun);
+        image = view.findViewById(R.id.image);
+
+        // Configure sign-in to request the user's ID, email address, and basic
+        // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+
+        // Build a GoogleSignInClient with the options specified by gso.
+        mGoogleSignInClient = GoogleSignIn.getClient(getContext(), gso);
+
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(getActivity());
+        if (acct != null) {
+            String personName = acct.getDisplayName();
+            String personGivenName = acct.getGivenName();
+            String personFamilyName = acct.getFamilyName();
+            String personEmail = acct.getEmail();
+            String personId = acct.getId();
+            Uri personPhoto = acct.getPhotoUrl();
+
+            txt_nama_akun.setText(personName);
+            Glide.with(this).load(String.valueOf(personPhoto)).into(image);
+
+        }
 
         btndetailakun = view.findViewById(R.id.btndetailakun);
         btndetailakun.setOnClickListener(new View.OnClickListener() {
@@ -144,45 +146,49 @@ public class FragmentAkun extends Fragment {
             }
 
         });
+
+        btnlogout = view.findViewById(R.id.btnlogout);
+        btnlogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    // ...
+                    case R.id.btnlogout:
+                        signOut();
+                        break;
+                    // ...
+                }
+            }
+        });
+
         return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+
+
+
+    private void signOut() {
+        mGoogleSignInClient.signOut()
+                .addOnCompleteListener(getActivity(), new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Toast.makeText(getActivity(),"Anda berhasil keluar!", Toast.LENGTH_LONG).show();
+                        getActivity().finish();
+                    }
+                });
     }
 
-/*    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }*/
+
 
     @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+    public void onStart() {
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        mGoogleApiClient = new GoogleApiClient.Builder(getActivity())
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build();
+        mGoogleApiClient.connect();
+        super.onStart();
     }
 }

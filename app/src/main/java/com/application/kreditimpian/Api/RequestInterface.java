@@ -1,5 +1,11 @@
 package com.application.kreditimpian.Api;
 
+import android.graphics.ColorSpace;
+
+import com.application.kreditimpian.Model.ModelMitra;
+
+import java.util.List;
+
 import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -23,7 +29,9 @@ public interface RequestInterface {
                                          @Field("phone") String phone);
 
 
-
+    //tanpa limit
+    @GET("api/companies")
+    Call<List<ModelMitra>> getMitra();
 
 
     /*Batas API*/
