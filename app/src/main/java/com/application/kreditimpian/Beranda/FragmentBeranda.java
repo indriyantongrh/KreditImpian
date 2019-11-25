@@ -184,13 +184,13 @@ public class FragmentBeranda extends Fragment {
 
 
        // initViewMitra();
-        getListMitra();
+      ///  getListMitra();
 
         return rootView;
 
     }
 
-    private void getListMitra() {
+/*    private void getListMitra() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://dev.kreditimpian.com/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -211,7 +211,7 @@ public class FragmentBeranda extends Fragment {
 
             }
         });
-    }
+    }*/
 
     //////////////////////////////
 private void initViewMitra() {
@@ -301,10 +301,10 @@ private void initViewMitra() {
     private void setupSlider() {
         sliderView.setDurationScroll(800);
         List<Fragment> fragments = new ArrayList<>();
-        fragments.add(FragmentSlider.newInstance("https://demo.kreditimpian.id/themes/default/assets/img/banner/banner1.png"));
-        fragments.add(FragmentSlider.newInstance("https://demo.kreditimpian.id/themes/default/assets/img/banner/banner-1.png"));
-        fragments.add(FragmentSlider.newInstance("https://demo.kreditimpian.id/themes/default/assets/img/banner/banner-2.png"));
-        fragments.add(FragmentSlider.newInstance("https://demo.kreditimpian.id/themes/default/assets/img/banner/banner-3.png"));
+        fragments.add(FragmentSlider.newInstance("https://kreditimpian.com/storage/images/posts/media/banner-tambahan3.jpg"));
+        fragments.add(FragmentSlider.newInstance("https://kreditimpian.com/storage/images/posts/media/banner.gif"));
+        fragments.add(FragmentSlider.newInstance("https://kreditimpian.com/storage/images/posts/media/toga.gif"));
+        fragments.add(FragmentSlider.newInstance("https://kreditimpian.com/storage/images/posts/media/banner2.png"));
 
 
 

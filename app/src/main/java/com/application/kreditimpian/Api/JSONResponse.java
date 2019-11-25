@@ -1,16 +1,7 @@
 package com.application.kreditimpian.Api;
 
 
-
-import com.application.kreditimpian.Model.ModelMitra;
-
 public class JSONResponse {
-
-    private ModelMitra[] result;
-
-    public ModelMitra[] getMitra() {
-        return result;
-    }
 
 
 

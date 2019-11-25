@@ -10,7 +10,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField "String", "BASE_URL", "\"https://api.kreditimpian.com/\""
+        buildConfigField "String", "BASE_URL", "\"https://demo.kreditimpian.com/api/\""
     }
     buildTypes {
         release {
@@ -49,6 +49,8 @@ dependencies {
     implementation 'com.android.volley:volley:1.1.0'
     implementation 'me.relex:circleindicator:1.2.2@aar'
     implementation 'de.hdodenhof:circleimageview:2.2.0'
+
+
 
     //retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.2.0'
@@ -100,4 +102,7 @@ dependencies {
 
     ///GoogleSignIn
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
+    //DesignOTP
+    implementation 'com.mukesh:otpview:1.0.1'
+
 }

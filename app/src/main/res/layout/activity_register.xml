@@ -92,6 +92,28 @@
 
                     <LinearLayout
 
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    >
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="40dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/password">
+                    </ImageView>
+                </LinearLayout>
+                    <!-- Border-->
+                    <LinearLayout
+                        android:background="@drawable/warnaputih"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"></LinearLayout>
+
+                    <LinearLayout
+
                         android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
@@ -204,6 +226,32 @@
                             android:background="@android:color/transparent"
                             android:inputType="textPassword"
                             android:hint="Password Anda"
+                            />
+
+                    </LinearLayout>
+
+                    <!--Border-->
+                    <LinearLayout
+                        android:background="#FF6802"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"></LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="60dp">
+
+                        <EditText
+                            android:id="@+id/txtconfirmpassword"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/jipatharegular"
+                            android:textSize="26dp"
+                            android:background="@android:color/transparent"
+                            android:inputType="textPassword"
+                            android:hint="Ulangi Password Anda"
                             />
 
                     </LinearLayout>

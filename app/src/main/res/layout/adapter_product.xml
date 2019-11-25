@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:padding="0dp"
+    android:focusable="true"
+    android:backgroundTint="@color/colorPrimary"
+    android:background = "#00ffffff"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="10dp">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="3dp"
+        android:background="@color/colorPrimary"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="#fff"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="125dp"
+                android:src="@mipmap/iconapps"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/txt_nama_product"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="judul"
+                android:padding="3dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#636363"
+                android:textSize="20sp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:layout_below="@+id/image"
+                android:fontFamily="@font/jipitha"
+                android:textStyle="bold"/>
+
+
+
+            <TextView
+                android:id="@+id/txt_harga_asli"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Harga Asli"
+                android:textSize="19sp"
+                android:layout_below="@id/txt_nama_product"
+                android:layout_marginStart="3dp"
+                android:textColor="#9C9C9C"
+                android:fontFamily="@font/jipitha"/>
+
+            <TextView
+                android:id="@+id/txt_harga_diskon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Harga Diskon"
+                android:textSize="20sp"
+                android:layout_below="@+id/txt_harga_asli"
+                android:layout_marginStart="3dp"
+                android:textColor="#9C9C9C"
+                android:fontFamily="@font/jipitha"/>
+
+
+
+            <TextView
+                android:id="@+id/txt_id"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txt_id_product_category"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txt_id_currency"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txt_description"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txt_sku"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txt_stock"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txt_price_capital"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txt_discount"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txt_condition"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txt_deliverable"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txt_downloadable"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txt_target_gender"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txt_target_age"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txt_visibility"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txt_weight_value"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txt_weight"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

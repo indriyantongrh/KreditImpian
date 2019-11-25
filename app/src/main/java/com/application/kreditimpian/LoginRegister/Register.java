@@ -13,12 +13,14 @@ import android.widget.Toast;
 
 import com.application.kreditimpian.Api.RequestInterface;
 import com.application.kreditimpian.Api.SuccessMessage;
+import com.application.kreditimpian.BuildConfig;
 import com.application.kreditimpian.R;
 import com.google.gson.Gson;
 
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
+import okhttp3.internal.http2.ErrorCode;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -30,7 +32,7 @@ public class Register extends AppCompatActivity {
     String id;
     Button btnbuatakun;
     TextView btnLogin;
-    TextView txtusername, txtemail,txtpassword,nomortelepon;
+    TextView txtusername, txtemail,txtpassword,txtconfirmpassword,nomortelepon;
 
     Intent intent;
 
@@ -38,7 +40,6 @@ public class Register extends AppCompatActivity {
     private static final String TAG = Register.class.getSimpleName();
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
-    private String url = "https://dev.kreditimpian.com/api/members/";  //directory php ning server
     String tag_json_obj = "json_obj_req";
     Intent i;
     int success;
@@ -51,6 +52,7 @@ public class Register extends AppCompatActivity {
         txtusername = (EditText) findViewById(R.id.txtusername);
         txtemail = (EditText) findViewById(R.id.txtemail);
         txtpassword = (EditText) findViewById(R.id.txtpassword);
+        txtconfirmpassword =(EditText) findViewById(R.id.txtconfirmpassword);
         nomortelepon = (EditText) findViewById(R.id.nomortelepon);
 
         btnbuatakun = findViewById(R.id.btnbuatakun);
@@ -82,33 +84,32 @@ public class Register extends AppCompatActivity {
         //mengambil data dari edittext
         String username = txtusername.getText().toString();
         String email = txtemail.getText().toString();
-        String password = txtpassword.getText().toString();
         String phone = nomortelepon.getText().toString();
+        String password = txtpassword.getText().toString();
+        String password_confirm = txtconfirmpassword.getText().toString();
+
         ///String password = txt_password.getText().toString();
 
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(100, TimeUnit.SECONDS)
                 .readTimeout(100, TimeUnit.SECONDS).build();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(url).client(client)
+                .baseUrl(BuildConfig.BASE_URL).client(client)
                 .addConverterFactory(GsonConverterFactory.create(new Gson())).build();
 
         RequestInterface api = retrofit.create(RequestInterface.class);
-        Call<SuccessMessage> call = api.registrasi_user(id, username, email, password, phone);
+        Call<SuccessMessage> call = api.create_member(id, username, email, phone, password, password_confirm);
         call.enqueue(new Callback<SuccessMessage>() {
             @Override
             public void onResponse(Call<SuccessMessage> call, Response<SuccessMessage> response) {
-                String success = response.body().getSuccess();
-                String message = response.body().getMessage();
+                //String status = response.body().getStatus();
+              //  String message = response.body().getMessage();
                 pDialog.dismiss();
-                if (success.equals("true")) {
-                    Toast.makeText(Register.this, message, Toast.LENGTH_SHORT).show();
-//                    Intent intent = new Intent(DetailBookingTempat.this, Riwayat_booking.class);
-//                    intent.putExtra("user_id",id_user);
-//                    startActivity(intent);
-                    finish();
+                if (response.isSuccessful()) {
+                    Toast.makeText(Register.this, "Registrasi berhasil, silahkan login.", Toast.LENGTH_SHORT).show();
+                        finish();
                 } else {
-                    Toast.makeText(Register.this, message, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Register.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -116,7 +117,7 @@ public class Register extends AppCompatActivity {
             public void onFailure(Call<SuccessMessage> call, Throwable t) {
                 t.printStackTrace();
                 pDialog.dismiss();
-                Toast.makeText(Register.this, "Registrasi gagal, cek koneksi dan form anda", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Register.this, "Register member tidak berhasil, ulangi lagi.", Toast.LENGTH_SHORT).show();
             }
         });
 

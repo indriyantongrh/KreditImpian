@@ -1,7 +1,5 @@
 package com.application.kreditimpian.Api;
 
-import android.graphics.ColorSpace;
-
 import com.application.kreditimpian.Model.ModelMitra;
 
 import java.util.List;
@@ -21,17 +19,47 @@ public interface RequestInterface {
     /*API KreditImpian*/
     //Insert User Baru
     @FormUrlEncoded
-    @POST("create")
-    Call<SuccessMessage> registrasi_user(@Field("id") String id,
+    @POST("members/create")
+    Call<SuccessMessage> create_member ( @Field("id") String id,
+                                        @Field("username") String username,
+                                        @Field("email") String email,
+                                        @Field("phone") String phone,
+                                        @Field("password") String password,
+                                        @Field("password_confirm") String password_confirm);
+
+
+
+
+    @FormUrlEncoded
+    @POST("registrasi_member.php")
+    Call<SuccessMessage> registrasi_member(@Field("id") String id,
                                          @Field("email") String email,
+                                         @Field("msisdn") String msisdn,
                                          @Field("username") String username,
-                                         @Field("password") String password,
-                                         @Field("phone") String phone);
+                                         @Field("password") String password);
+
+
+    @FormUrlEncoded
+    @POST("register_member.php")
+    Call<SuccessMessage> registrasi(@Field("id") String id,
+                                    @Field("namalengkap") String namalengkap,
+                                    @Field("email") String email,
+                                    @Field("nomortelepon") String nomortelepon,
+                                    @Field("password") String password);
 
 
     //tanpa limit
     @GET("api/companies")
     Call<List<ModelMitra>> getMitra();
+
+
+    //tanpa limit
+    @GET("api/products")
+    Call<JSONResponse> getResult();
+
+
+
+
 
 
     /*Batas API*/
