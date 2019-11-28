@@ -1,6 +1,7 @@
 package com.application.kreditimpian.Api;
 
 import com.application.kreditimpian.Model.ModelMitra;
+import com.application.kreditimpian.ResponseMessage.ResponseLogin;
 
 import java.util.List;
 
@@ -20,12 +21,18 @@ public interface RequestInterface {
     //Insert User Baru
     @FormUrlEncoded
     @POST("members/create")
-    Call<SuccessMessage> create_member ( @Field("id") String id,
+    Call<ResponseMessage> create_member ( @Field("id") String id,
                                         @Field("username") String username,
                                         @Field("email") String email,
                                         @Field("phone") String phone,
                                         @Field("password") String password,
                                         @Field("password_confirm") String password_confirm);
+
+    @FormUrlEncoded
+    @POST("system/users/authenticate")
+    Call<ResponseLogin> login_member(@Field("id") String id,
+                                    @Field("username") String username,
+                                     @Field("password") String password);
 
 
 
@@ -37,6 +44,8 @@ public interface RequestInterface {
                                          @Field("msisdn") String msisdn,
                                          @Field("username") String username,
                                          @Field("password") String password);
+
+
 
 
     @FormUrlEncoded

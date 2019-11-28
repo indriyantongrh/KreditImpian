@@ -20,9 +20,19 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.application.kreditimpian.Api.PreferenceHelper;
+import com.application.kreditimpian.Api.RequestInterface;
+import com.application.kreditimpian.Api.SaveSharePreference;
+import com.application.kreditimpian.Api.ResponseMessage;
+import com.application.kreditimpian.Api.SuccessMessage;
+import com.application.kreditimpian.Api.api.BaseApiService;
+import com.application.kreditimpian.Api.api.SharedPrefManager;
+import com.application.kreditimpian.Api.api.UtilsApi;
+import com.application.kreditimpian.BuildConfig;
 import com.application.kreditimpian.MainActivity;
 import com.application.kreditimpian.MenuUtama.MenuUtama;
 import com.application.kreditimpian.R;
+import com.application.kreditimpian.ResponseMessage.ResponseLogin;
 import com.application.kreditimpian.Utility.AppController;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -31,16 +41,31 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+import com.google.gson.Gson;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.OkHttpClient;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK;
+import static android.text.TextUtils.isEmpty;
 
 public class LoginUser extends AppCompatActivity {
-    private String url = "https://demo.kreditimpian.com/ApiAndro/login_member.php";
-
+    ///private String url = "https://demo.kreditimpian.com/ApiAndro/login_member.php";
+    private String url = BuildConfig.BASE_URL+"system/users/authenticate";
     private static final String TAG = LoginUser.class.getSimpleName();
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
@@ -58,16 +83,16 @@ public class LoginUser extends AppCompatActivity {
     String tag_json_obj = "json_obj_req";
     SharedPreferences sharedpreferences;
     Boolean session = false;
-    String id, value_email, value_token, value_nomorhp;
+    String id, value_email, value_token, value_nomorhp, email;
     public static final String my_shared_preferences = "my_shared_preferences";
     public static final String session_status = "session_status";
 
-
+    ProgressDialog loading;
 
     Button btnLogin;
     TextView btnregister;
-    EditText txtemail, txtpassword;
-
+    EditText txtusername, txtpassword;
+    BaseApiService mApiService;
     SignInButton signin;
     GoogleSignInClient mGoogleSignInClient;
     int RC_SIGN_IN=0;
@@ -76,8 +101,9 @@ public class LoginUser extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_user);
-        txtemail =findViewById(R.id.txtemail);
+        txtusername =findViewById(R.id.txtusername);
         txtpassword =findViewById(R.id.txtpassword);
+
 
 
         btnregister = findViewById(R.id.btnregister);
@@ -92,34 +118,26 @@ public class LoginUser extends AppCompatActivity {
 
 
 
-        // Cek session login jika TRUE maka langsung buka MainActivity
-        sharedpreferences = getSharedPreferences(my_shared_preferences, Context.MODE_PRIVATE);
-        session = sharedpreferences.getBoolean(session_status, false);
-        id = sharedpreferences.getString(TAG_ID, null);
-        value_email = sharedpreferences.getString(TAG_EMAIL, null);
-        value_token = sharedpreferences.getString(TAG_TOKEN, null);
-        value_nomorhp = sharedpreferences.getString(TAG_NOMORHP, null);
-
-
-        if (session) {
-            Intent intent = new Intent(LoginUser.this, MenuUtama.class);
-            intent.putExtra(TAG_ID, id);
-            intent.putExtra(TAG_EMAIL, value_email);
-            intent.putExtra(TAG_NOMORHP, value_nomorhp);
-            intent.putExtra(TAG_TOKEN, value_token);
-
-            finish();
-            startActivity(intent);
-        }
 
 
         btnLogin = findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               //// checkLogin();
-                Intent intent = new Intent(LoginUser.this, MenuUtama.class);
-                startActivity(intent);
+
+               String username = txtusername.getText().toString();
+                String password = txtpassword.getText().toString();
+                if (isEmpty(username))
+                    txtusername.setError("Username harap diisi");
+                else if (isEmpty(password))
+                    txtpassword.setError("Password harap diisi");
+
+                else
+
+                LoginUser();
+                //Intent intent = new Intent(LoginUser.this, MenuUtama.class);
+                ///startActivity(intent);
+
 
             }
         });
@@ -194,97 +212,102 @@ public class LoginUser extends AppCompatActivity {
     }
 */
 
-    private void checkLogin() {
+
+
+
+
+
+
+
+    public void LoginUser() {
+        //membuat progress dialog
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
-        pDialog.setMessage("Logging in ...");
+        pDialog.setMessage("Tunggu proses login ...");
         pDialog.show();
 
-        StringRequest strReq = new StringRequest(Request.Method.POST, url, new com.android.volley.Response.Listener<String>() {
+        //mengambil data dari edittext
+        ///String namalengkap = txtnamalengkap.getText().toString();
+        final String username = txtusername.getText().toString();
+        String password = txtpassword.getText().toString();
 
+        OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(50, TimeUnit.SECONDS)
+                .readTimeout(50, TimeUnit.SECONDS).build();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BuildConfig.BASE_URL).client(client)
+                .addConverterFactory(GsonConverterFactory.create(new Gson())).build();
+
+        RequestInterface api = retrofit.create(RequestInterface.class);
+        Call<ResponseLogin> call = api.login_member(id, username ,  password);
+        call.enqueue(new Callback<ResponseLogin>() {
             @Override
-            public void onResponse(String response) {
-                Log.e(TAG, "Login Response: " + response.toString());
-                pDialog.hide();
+            public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
+                pDialog.dismiss();
 
-                try {
-                    JSONObject jObj = new JSONObject(response);
-                    success = jObj.getInt(TAG_SUCCESS);
-
-                    // Check for error node in json
-                    if (success == 1) {
-                        id = jObj.getString(TAG_ID);
-                        value_email = jObj.getString(TAG_EMAIL);
-                        // value_token = jObj.getString(TAG_TOKEN);
-                        id = jObj.getString(TAG_ID);
-
-                        Log.e("Successfully Login!", jObj.toString());
-
-                        Toast.makeText(getApplicationContext(), jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
-
-                        // menyimpan login ke session
-                        SharedPreferences.Editor editor = sharedpreferences.edit();
-                        editor.putBoolean(session_status, true);
-                        editor.putString(TAG_ID, id);
-                        editor.putString(TAG_EMAIL, value_email);
-                        editor.putString(TAG_NOMORHP, value_nomorhp);
-                        editor.putString(TAG_TOKEN, value_token);
-
-
-
-
-                        editor.apply();
-
-                        // Memanggil main activity
-                        Intent intent = new Intent(LoginUser.this, MainActivity.class);
-                        intent.putExtra(TAG_ID, id);
-                        intent.putExtra(TAG_EMAIL, value_email);
-                        intent.putExtra(TAG_NOMORHP, value_nomorhp);
-                        intent.putExtra(TAG_TOKEN, value_token);
-
-                        finish();
+                if(response.isSuccessful()){
+                   /// ResObj resObj = response.body();
+                    if(response.body().getResult() != null){
+                        //login start main activity
+                        Intent intent = new Intent(LoginUser.this, MenuUtama.class);
+                        Toast.makeText(LoginUser.this, "Selamat datang "+id, Toast.LENGTH_SHORT).show();
+                        intent.putExtra("email", email);
                         startActivity(intent);
+
                     } else {
-                        Toast.makeText(getApplicationContext(),
-                                jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginUser.this, "The username or password is incorrect", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(LoginUser.this, "Error! Please try again!", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+
+                /*if (response.isSuccessful()) {
+                    if (response.body().getResult() != null) {
+                        Toast.makeText(getApplicationContext(), "gagal login" + response.body().getStatus(), Toast.LENGTH_SHORT).show();
+
+
+
+                       *//* Toast.makeText(LoginUser.this, "Login berhasil", Toast.LENGTH_SHORT).show();
+                    //LoginUser.this.finish();
+                    // Toast.makeText(Register.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(LoginUser.this, MenuUtama.class);
+                    intent.putExtra("id",id);
+                    startActivity(intent);
+                    finish();*//*
+                    } else {
+                        Toast.makeText(LoginUser.this, "Login berhasil" + response.body().getStatus(), Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(LoginUser.this, MenuUtama.class);
+                        intent.putExtra("email", email);
+                        startActivity(intent);
+                        ///Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
+
+                        //Toast.makeText(Register.this, "", Toast.LENGTH_SHORT).show();
+
+                    }else{
+                        Toast.makeText(LoginUser.this, "Error! Please try again!", Toast.LENGTH_SHORT).show();
 
                     }
-                } catch (JSONException e) {
-                    // JSON error
-                    e.printStackTrace();
-                }
 
-            }
-        }, new com.android.volley.Response.ErrorListener() {
+                }*/
+
+
 
             @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e(TAG, "Login Error: " + error.getMessage());
-                Toast.makeText(getApplicationContext(),
-                        error.getMessage(), Toast.LENGTH_LONG).show();
-
-                pDialog.hide();
-
+            public void onFailure(Call<ResponseLogin> call, Throwable t) {
+                t.printStackTrace();
+                pDialog.dismiss();
+                Toast.makeText(LoginUser.this, "Koneksi internet terputus.", Toast.LENGTH_SHORT).show();
             }
-        }) {
+        });
 
-            @Override
-            protected Map<String, String> getParams() {
-                // Posting parameters to login url
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("email", txtemail.getText().toString());
-                /// params.put("username", txtusername.getText().toString());
-                ////params.put("nomor_hp", txtusername.getText().toString());
-                params.put("password", txtpassword.getText().toString());
 
-                return params;
-            }
 
-        };
-
-        // Adding request to request queue
-        AppController.getInstance().addToRequestQueue(strReq, tag_json_obj);
     }
+
+
+
 
     @Override
     public void onBackPressed() {

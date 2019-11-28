@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.application.kreditimpian.Api.RequestInterface;
+import com.application.kreditimpian.Api.ResponseMessage;
 import com.application.kreditimpian.Api.SuccessMessage;
 import com.application.kreditimpian.BuildConfig;
 import com.application.kreditimpian.R;
@@ -26,6 +27,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+
+import static android.text.TextUtils.isEmpty;
 
 public class Register extends AppCompatActivity {
 
@@ -59,6 +62,22 @@ public class Register extends AppCompatActivity {
         btnbuatakun.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String username = txtusername.getText().toString();
+                String email = txtemail.getText().toString();
+                String phone = nomortelepon.getText().toString();
+                String password = txtpassword.getText().toString();
+                String password_confirm = txtconfirmpassword.getText().toString();
+                 if (isEmpty(username))
+                    txtusername.setError("Username harap diisi");
+                else if (isEmpty(email))
+                    txtemail.setError("Email harap diisi");
+                 else if (isEmpty(password))
+                     txtpassword.setError("Password harap diisi");
+                 else if (isEmpty(password_confirm))
+                     txtconfirmpassword.setError("Konfirmasi harap diisi");
+                else if (isEmpty(phone))
+                    nomortelepon.setError("Nomor Telepon harap diisi");
+                else
                 TambahUser();
             }
         });
@@ -98,26 +117,28 @@ public class Register extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create(new Gson())).build();
 
         RequestInterface api = retrofit.create(RequestInterface.class);
-        Call<SuccessMessage> call = api.create_member(id, username, email, phone, password, password_confirm);
-        call.enqueue(new Callback<SuccessMessage>() {
+        Call<ResponseMessage> call = api.create_member(id, username, email, phone, password, password_confirm);
+        call.enqueue(new Callback<ResponseMessage>() {
             @Override
-            public void onResponse(Call<SuccessMessage> call, Response<SuccessMessage> response) {
+            public void onResponse(Call<ResponseMessage> call, Response<ResponseMessage> response) {
                 //String status = response.body().getStatus();
               //  String message = response.body().getMessage();
                 pDialog.dismiss();
                 if (response.isSuccessful()) {
                     Toast.makeText(Register.this, "Registrasi berhasil, silahkan login.", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(Register.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         finish();
                 } else {
                     Toast.makeText(Register.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(Register.this, "", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<SuccessMessage> call, Throwable t) {
+            public void onFailure(Call<ResponseMessage> call, Throwable t) {
                 t.printStackTrace();
                 pDialog.dismiss();
-                Toast.makeText(Register.this, "Register member tidak berhasil, ulangi lagi.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Register.this, "Register member tidak berhasil, Koneksi internet terputus.", Toast.LENGTH_SHORT).show();
             }
         });
 

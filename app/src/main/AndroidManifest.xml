@@ -32,7 +32,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".FragSemuaKategori.DetailSemuaKategori"></activity>
+        <activity android:name=".LoginRegister.SmsOTPRegister"></activity>
+        <activity android:name=".FragSemuaKategori.DetailSemuaKategori" />
         <activity android:name=".Mitra.DetailMitra" />
         <activity android:name=".Adapter.AdapterMitra" />
         <activity android:name=".Mitra.ListMitra" />
