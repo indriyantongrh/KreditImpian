@@ -1,6 +1,10 @@
 package com.application.kreditimpian.Akun;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -15,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.application.kreditimpian.Api.api.SharedPrefManager;
 import com.application.kreditimpian.Favorite.Favorite;
 import com.application.kreditimpian.GantidanRisetPassword.GantiPassword;
 import com.application.kreditimpian.HistoryPesanan.HistoryPesanan;
@@ -36,6 +41,8 @@ import com.google.android.gms.tasks.Task;
 
 import java.util.concurrent.Executor;
 
+import static android.content.Context.MODE_PRIVATE;
+
 
 public class FragmentAkun extends Fragment {
 
@@ -46,6 +53,19 @@ public class FragmentAkun extends Fragment {
     GoogleSignInClient mGoogleSignInClient;
     private GoogleApiClient mGoogleApiClient;
 
+    SharedPrefManager sharedPrefManager;
+
+    public final static String TAG_ID = "id";
+    public final static String TAG_EMAIL = "email";
+
+
+    String tag_json_obj = "json_obj_req";
+    SharedPreferences sharedpreferences;
+    Boolean session = false;
+    String id, value_email, value_token, value_nomorhp, email;
+    public static final String my_shared_preferences = "my_shared_preferences";
+    public static final String session_status = "session_status";
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -53,8 +73,15 @@ public class FragmentAkun extends Fragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_fragment_akun, container, false);
 
+
+
         txt_nama_akun = view.findViewById(R.id.txt_nama_akun);
+
         image = view.findViewById(R.id.image);
+        sharedpreferences = getActivity().getSharedPreferences(LoginUser.my_shared_preferences, MODE_PRIVATE);
+        ///SharedPreferences preferences = this.getActivity().getSharedPreferences("my_shared_preferences", Context.MODE_PRIVATE);
+        String username = sharedpreferences.getString("username", "Data not Found");
+        txt_nama_akun.setText(username);
 
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
@@ -151,13 +178,64 @@ public class FragmentAkun extends Fragment {
         btnlogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switch (v.getId()) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+                builder.setTitle("Logout");
+                builder.setMessage("Apa yakin ingin Logout ?");
+
+                builder.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        sharedpreferences = getActivity().getSharedPreferences(LoginUser.my_shared_preferences, MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedpreferences.edit();
+                        editor.putBoolean(LoginUser.session_status, false);
+                        editor.putString(TAG_ID, null);
+                        editor.putString(TAG_EMAIL, null);
+                        editor.clear();
+                        editor.commit();
+                        editor.apply();
+
+                        Intent intent = new Intent(getActivity(), LoginUser.class);
+                        startActivity(intent);
+                        getActivity().finish();
+
+                      /*  sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, false);
+                        startActivity(new Intent(getContext(), LoginUser.class)
+                                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+                        getActivity();
+
+*/
+                        dialog.dismiss();
+                    }
+
+                });
+                builder.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        // Do nothing
+                        dialog.dismiss();
+                    }
+                });
+
+                AlertDialog alert = builder.create();
+                alert.show();
+                //// Toast.makeText(this,"Keluar aplikasi!", Toast.LENGTH_LONG).show();
+
+
+
+
+
+
+               /* switch (v.getId()) {
                     // ...
                     case R.id.btnlogout:
                         signOut();
                         break;
                     // ...
-                }
+                }*/
             }
         });
 

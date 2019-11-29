@@ -3,20 +3,14 @@ package com.application.kreditimpian.Api.api;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-/**
- * Created by fariz ramadhan.
- * website : www.farizdotid.com
- * github : https://github.com/farizdotid
- * linkedin : https://www.linkedin.com/in/farizramadhan/
- */
 
 
 public class SharedPrefManager {
 
     public static final String SP_Kreditimpian = "KreditimpianApp";
 
-    public static final String SP_ID = "spid";
-    public static final String SP_EMAIL = "spEmail";
+    public static final String SP_ID = "id";
+    public static final String SP_EMAIL = "email";
 
     public static final String SP_SUDAH_LOGIN = "spSudahLogin";
 
@@ -44,11 +38,11 @@ public class SharedPrefManager {
     }
 
     public String getSPID(){
-        return sp.getString(SP_ID, "");
+        return sp.getString(SP_ID, "ID member not found");
     }
 
     public String getSPEmail(){
-        return sp.getString(SP_EMAIL, "");
+        return sp.getString(SP_EMAIL, "Email member not found");
     }
 
     public Boolean getSPSudahLogin(){

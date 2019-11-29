@@ -6,6 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
@@ -13,7 +17,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.application.kreditimpian.Akun.FragmentAkun;
+import com.application.kreditimpian.Api.api.SharedPrefManager;
 import com.application.kreditimpian.Beranda.FragmentBeranda;
+import com.application.kreditimpian.LoginRegister.LoginUser;
 import com.application.kreditimpian.Marketplace.FragmentMarketplace;
 import com.application.kreditimpian.R;
 import com.application.kreditimpian.SimulasiKredit.FragmentSimulasiKredit;
@@ -23,14 +29,21 @@ public class MenuUtama extends AppCompatActivity {
 
     private TextView mTextMessage;
     ActionBar toolbar;
-
-
+    SharedPrefManager sharedPrefManager;
+    SharedPreferences sharedpreferences;
+    String id,email,username;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_utama);
-
+        //sharedpreferences = getApplicationContext().getSharedPreferences(LoginUser.my_shared_preferences, Context.MODE_PRIVATE);
+        ///Toast.makeText(getApplicationContext(), "ini id ke-"+sharedpreferences +username, Toast.LENGTH_SHORT).show();
         toolbar = getSupportActionBar();
+
+
+        SharedPreferences preferences = getSharedPreferences("my_shared_preferences", Context.MODE_PRIVATE);
+        String username = preferences.getString("username", "Data not Found");
+        Toast.makeText(getApplicationContext(), "ini id ke-" +username, Toast.LENGTH_SHORT).show();
 /*        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setLogo(R.drawable.logoputih);*/
@@ -89,8 +102,6 @@ public class MenuUtama extends AppCompatActivity {
 
     private void loadFragment(Fragment fragment) {
         Bundle bundle = new Bundle();
-        // bundle.putString("kode", kode);
-        //bundle.putString("key", key);
         fragment.setArguments(bundle);
         // load fragment
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -102,7 +113,7 @@ public class MenuUtama extends AppCompatActivity {
 
     }
 
-    boolean doubleBackToExitPressedOnce = false;
+  /*  boolean doubleBackToExitPressedOnce = false;
 
     @Override
     public void onBackPressed() {
@@ -123,7 +134,42 @@ public class MenuUtama extends AppCompatActivity {
             }
         }, 2000);
     }
+*/
 
 
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MenuUtama.this);
+
+        /// builder.setTitle("Keluar ");
+        builder.setMessage("Apakah kamu yakin ingin keluar dari aplikasi ?");
+
+        builder.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+
+
+
+                moveTaskToBack(true);
+                finish();
+                //// new DetailAplikasiSaya.HapusData().execute();
+                dialog.dismiss();
+            }
+
+        });
+        builder.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                // Do nothing
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog alert = builder.create();
+        alert.show();
+        //// Toast.makeText(this,"Keluar aplikasi!", Toast.LENGTH_LONG).show();
+
+    }
 
 }

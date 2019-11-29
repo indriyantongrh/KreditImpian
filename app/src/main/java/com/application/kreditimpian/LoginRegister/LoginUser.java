@@ -10,30 +10,18 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.application.kreditimpian.Api.PreferenceHelper;
 import com.application.kreditimpian.Api.RequestInterface;
-import com.application.kreditimpian.Api.SaveSharePreference;
-import com.application.kreditimpian.Api.ResponseMessage;
-import com.application.kreditimpian.Api.SuccessMessage;
-import com.application.kreditimpian.Api.api.BaseApiService;
 import com.application.kreditimpian.Api.api.SharedPrefManager;
-import com.application.kreditimpian.Api.api.UtilsApi;
 import com.application.kreditimpian.BuildConfig;
-import com.application.kreditimpian.MainActivity;
 import com.application.kreditimpian.MenuUtama.MenuUtama;
 import com.application.kreditimpian.R;
 import com.application.kreditimpian.ResponseMessage.ResponseLogin;
-import com.application.kreditimpian.Utility.AppController;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -43,24 +31,15 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.google.gson.Gson;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK;
 import static android.text.TextUtils.isEmpty;
 
 public class LoginUser extends AppCompatActivity {
@@ -77,8 +56,7 @@ public class LoginUser extends AppCompatActivity {
 
     public final static String TAG_ID = "id";
     public final static String TAG_EMAIL = "email";
-    public final static String TAG_NOMORHP = "phone";
-    public final static String TAG_TOKEN = "token";
+
 
     String tag_json_obj = "json_obj_req";
     SharedPreferences sharedpreferences;
@@ -92,11 +70,11 @@ public class LoginUser extends AppCompatActivity {
     Button btnLogin;
     TextView btnregister;
     EditText txtusername, txtpassword;
-    BaseApiService mApiService;
+
     SignInButton signin;
     GoogleSignInClient mGoogleSignInClient;
     int RC_SIGN_IN=0;
-
+    SharedPrefManager sharedPrefManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,6 +96,31 @@ public class LoginUser extends AppCompatActivity {
 
 
 
+/*        sharedPrefManager = new SharedPrefManager(this);
+        if (sharedPrefManager.getSPSudahLogin()){
+            startActivity(new Intent(LoginUser.this, MenuUtama.class)
+            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+            finish();
+        }*/
+
+
+        // Cek session login jika TRUE maka langsung buka MainActivity
+        sharedpreferences = getSharedPreferences(my_shared_preferences, Context.MODE_PRIVATE);
+        session = sharedpreferences.getBoolean(session_status, false);
+        id = sharedpreferences.getString(TAG_ID, "id tidak ditemukan");
+        email = sharedpreferences.getString(TAG_EMAIL, "email tidak ditemukan");
+
+
+
+        if (session) {
+            Intent intent = new Intent(LoginUser.this, MenuUtama.class);
+            intent.putExtra(TAG_ID, id);
+            intent.putExtra(TAG_EMAIL, email);
+
+
+            finish();
+            startActivity(intent);
+        }
 
 
         btnLogin = findViewById(R.id.btnLogin);
@@ -248,11 +251,29 @@ public class LoginUser extends AppCompatActivity {
                 if(response.isSuccessful()){
                    /// ResObj resObj = response.body();
                     if(response.body().getResult() != null){
+
+
+                        // menyimpan login ke session
+                        sharedpreferences = getSharedPreferences(my_shared_preferences, Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedpreferences.edit();
+                        editor.putBoolean(session_status, true);
+                        editor.putString(TAG_ID, id);
+                        editor.putString(TAG_EMAIL, email);
+
+                        editor.apply();
+
+                        /// sharedPrefManager.saveSPString(SharedPrefManager.SP_EMAIL, email);
+                        // Shared Pref ini berfungsi untuk menjadi trigger session login
+                        ///sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, true);
                         //login start main activity
                         Intent intent = new Intent(LoginUser.this, MenuUtama.class);
-                        Toast.makeText(LoginUser.this, "Selamat datang "+id, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginUser.this, "Selamat datang "+username, Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(LoginUser.this, "Selamat datang "+id, Toast.LENGTH_SHORT).show();
                         intent.putExtra("email", email);
+                        intent.putExtra("id", id);
+                        intent.putExtra(TAG_EMAIL, email);
                         startActivity(intent);
+                        finish();
 
                     } else {
                         Toast.makeText(LoginUser.this, "The username or password is incorrect", Toast.LENGTH_SHORT).show();
