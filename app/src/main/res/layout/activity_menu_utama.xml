@@ -7,26 +7,26 @@
     android:background="#fff"
     tools:context=".MenuUtama.MenuUtama">
 
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:ignore="MissingConstraints">
+<!--<RelativeLayout-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    tools:ignore="MissingConstraints">-->
 
-    <androidx.appcompat.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        app:popupTheme="@style/ThemeOverlay.AppCompat"
-        tools:ignore="MissingConstraints">
-        <ImageView
-            android:paddingTop="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/logoputihkredit"/>
-    </androidx.appcompat.widget.Toolbar>
+<!--    <androidx.appcompat.widget.Toolbar-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="?attr/actionBarSize"-->
+<!--        android:background="?attr/colorPrimary"-->
+<!--        app:popupTheme="@style/ThemeOverlay.AppCompat"-->
+<!--        tools:ignore="MissingConstraints">-->
+<!--        <ImageView-->
+<!--            android:paddingTop="15dp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:src="@drawable/logoputihkredit"/>-->
+<!--    </androidx.appcompat.widget.Toolbar>-->
 
 
-</RelativeLayout>
+<!--</RelativeLayout>-->
 
     <FrameLayout
         android:id="@+id/frame_container"

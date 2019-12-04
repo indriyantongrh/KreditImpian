@@ -9,6 +9,8 @@ import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,6 +18,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Base64;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -34,6 +39,7 @@ import com.application.kreditimpian.MenuUtama.MenuUtama;
 import com.application.kreditimpian.Model.ModelMitra;
 
 import com.application.kreditimpian.R;
+import com.application.kreditimpian.TransactionProcess.Cart;
 import com.application.kreditimpian._sliders.FragmentSlider;
 import com.application.kreditimpian._sliders.SliderIndicator;
 import com.application.kreditimpian._sliders.SliderPagerAdapter;
@@ -86,7 +92,7 @@ public class FragmentBeranda extends Fragment {
 
     private SliderPagerAdapter mAdapter;
     private SliderIndicator mIndicator;
-
+    ActionBar toolbar;
     private SliderView sliderView;
     private LinearLayout mLinearLayout;
     SharedPreferences sharedpreferences;
@@ -324,6 +330,43 @@ private void initViewMitra() {
     }
 
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menutopbar, menu);
+
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if (id == R.id.favorite){
+            Toast.makeText(getActivity(), "ini favorite", Toast.LENGTH_SHORT).show();
+
+        }
+        if (id == R.id.cartshop){
+            Toast.makeText(getActivity(), "Ini keranjang", Toast.LENGTH_SHORT).show();
+        }
+        return super.onOptionsItemSelected(item);
+
+
+
+    }
+
+    private void gotocartshop() {
+        Intent intent_profile = new Intent(getActivity(), Cart.class);
+        intent_profile.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent_profile);
+    }
 
 
 }

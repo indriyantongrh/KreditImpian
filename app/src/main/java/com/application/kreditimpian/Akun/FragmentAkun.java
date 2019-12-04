@@ -80,13 +80,13 @@ public class FragmentAkun extends Fragment {
 
         sharedPrefManager = new SharedPrefManager(getActivity());
         String username = sharedPrefManager.getSpUsername();
-
+        txt_nama_akun.setText(username);
         //sharedpreferences = getActivity().getSharedPreferences(LoginUser.my_shared_preferences, Context.MODE_PRIVATE);
         //id = sharedpreferences.getString("id", "Not found");
         ///username = sharedPrefManager.getSpUsername("username", "Not found");
         ///email = sharedpreferences.getString("email", "Not found");
 
-        txt_nama_akun.setText(username);
+
 
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.

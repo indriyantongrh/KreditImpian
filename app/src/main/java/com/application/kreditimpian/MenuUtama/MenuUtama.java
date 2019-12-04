@@ -44,17 +44,14 @@ public class MenuUtama extends AppCompatActivity {
         Toast.makeText(getApplication(), "ini id ke-"+ id, Toast.LENGTH_SHORT).show();
 
 
-
-
+        sharedPrefManager = new SharedPrefManager(this);
+        String username = sharedPrefManager.getSpUsername();
 
         toolbar = getSupportActionBar();
-/*        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setLogo(R.drawable.logoputih);*/
 
         Fragment fragment;
-       // toolbar.setLogo(R.drawable.logoputih);
-        //toolbar.setTitle("@drawable/logoputih");
+        toolbar.setIcon(R.drawable.logoputih);
+       toolbar.setTitle("Beranda");
         fragment = new FragmentBeranda();
         loadFragment(fragment);
         //return true;
@@ -74,30 +71,31 @@ public class MenuUtama extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             Fragment fragment;
+
             switch (item.getItemId()) {
                 case R.id.navigation_beranda:
-                  //  toolbar.setLogo(R.drawable.logoputih);
-                    //   toolbar.setTitle("Beranda");
+                    //toolbar.setIcon(R.drawable.logoputih);
+                    toolbar.setTitle("Beranda");
                     fragment = new FragmentBeranda();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_marketplace:
                  //   toolbar.setLogo(R.drawable.logoputih);
-                 //   toolbar.setTitle("Marketplace");
+                    toolbar.setTitle("Cari Impian Anda Yuk");
                     fragment = new FragmentMarketplace();
                     loadFragment(fragment);
                     return true;
 
                 case R.id.navigation_simulasikredit:
                 //    toolbar.setLogo(R.drawable.logoputih);
-                 //   toolbar.setTitle("Simulasi Kredit");
+                    toolbar.setTitle("Simulasi Kredit");
                     fragment = new FragmentSimulasiKredit();
                     loadFragment(fragment);
                     return true;
 
                 case R.id.navigation_akun:
                 //    toolbar.setLogo(R.drawable.logoputih);
-                 //   toolbar.setTitle("Akun");
+                    toolbar.setTitle("Akun Saya");
                     fragment = new FragmentAkun();
                     loadFragment(fragment);
                     return true;

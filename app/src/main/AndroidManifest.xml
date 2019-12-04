@@ -32,7 +32,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".LoginRegister.SmsOTPRegister"></activity>
+        <activity android:name=".TransactionProcess.Cart"></activity>
+        <activity android:name=".LoginRegister.SmsOTPRegister" />
         <activity android:name=".FragSemuaKategori.DetailSemuaKategori" />
         <activity android:name=".Mitra.DetailMitra" />
         <activity android:name=".Adapter.AdapterMitra" />
@@ -98,7 +99,7 @@
             android:theme="@style/NoActionbar" />
         <activity
             android:name=".MenuUtama.MenuUtama"
-            android:theme="@style/NoActionbar" />
+            />
         <activity
             android:name=".LoginRegister.LoginUser"
             android:theme="@style/NoActionbar" />

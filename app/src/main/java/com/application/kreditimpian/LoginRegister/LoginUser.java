@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.application.kreditimpian.Api.JWTParser;
 import com.application.kreditimpian.Api.PreferenceHelper;
 import com.application.kreditimpian.Api.RequestInterface;
 import com.application.kreditimpian.Api.SessionManager;
@@ -266,6 +267,8 @@ public class LoginUser extends AppCompatActivity {
                 if(response.isSuccessful()){
                     pDialog.dismiss();
                     if(response.body().getResult() != null){
+
+
 
                         // Jika login berhasil
                         String id = response.body().getResult();
