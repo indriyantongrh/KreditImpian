@@ -16,6 +16,7 @@ import com.application.kreditimpian.Api.ResponseMessage;
 import com.application.kreditimpian.Api.SuccessMessage;
 import com.application.kreditimpian.BuildConfig;
 import com.application.kreditimpian.R;
+import com.application.kreditimpian.ResponseMessage.ResponseRegister;
 import com.google.gson.Gson;
 
 import java.util.concurrent.TimeUnit;
@@ -67,6 +68,15 @@ public class Register extends AppCompatActivity {
                 String phone = nomortelepon.getText().toString();
                 String password = txtpassword.getText().toString();
                 String password_confirm = txtconfirmpassword.getText().toString();
+
+/*                if (isValidEmail(txtemail.getText().toString())){
+
+                } else {
+                    txtemail.setError("Format email salah");
+                    Toast.makeText(Register.this,
+                            "Format email salah", Toast.LENGTH_SHORT).show();
+                }*/
+
                  if (isEmpty(username))
                     txtusername.setError("Username harap diisi");
                 else if (isEmpty(email))
@@ -117,25 +127,26 @@ public class Register extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create(new Gson())).build();
 
         RequestInterface api = retrofit.create(RequestInterface.class);
-        Call<ResponseMessage> call = api.create_member(id, username, email, phone, password, password_confirm);
-        call.enqueue(new Callback<ResponseMessage>() {
+        Call<ResponseRegister> call = api.create_member(id, username, email, phone, password, password_confirm);
+        call.enqueue(new Callback<ResponseRegister>() {
             @Override
-            public void onResponse(Call<ResponseMessage> call, Response<ResponseMessage> response) {
+            public void onResponse(Call<ResponseRegister> call, Response<ResponseRegister> response) {
                 //String status = response.body().getStatus();
               //  String message = response.body().getMessage();
                 pDialog.dismiss();
                 if (response.isSuccessful()) {
                     Toast.makeText(Register.this, "Registrasi berhasil, silahkan login.", Toast.LENGTH_SHORT).show();
-                   // Toast.makeText(Register.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                   ///Toast.makeText(Register.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         finish();
                 } else {
-                    Toast.makeText(Register.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                    //Toast.makeText(Register.this, "", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Register.this, "Periksa kembali data Anda!.", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(Register.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+
                 }
             }
 
             @Override
-            public void onFailure(Call<ResponseMessage> call, Throwable t) {
+            public void onFailure(Call<ResponseRegister> call, Throwable t) {
                 t.printStackTrace();
                 pDialog.dismiss();
                 Toast.makeText(Register.this, "Register member tidak berhasil, Koneksi internet terputus.", Toast.LENGTH_SHORT).show();
@@ -162,5 +173,24 @@ public class Register extends AppCompatActivity {
         finish();
         startActivity(intent);
     }
+
+
+    public static boolean isValidEmail(String email) {
+        boolean validate;
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+        String emailPattern2 = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+\\.+[a-z]+";
+
+        if (email.matches(emailPattern)) {
+            validate = true;
+        } else if (email.matches(emailPattern2)) {
+            validate = true;
+        } else {
+            validate = false;
+        }
+
+        return validate;
+    }
+
+
 
 }

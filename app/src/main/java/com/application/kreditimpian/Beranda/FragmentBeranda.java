@@ -1,10 +1,11 @@
 package com.application.kreditimpian.Beranda;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.ColorSpace;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 
@@ -14,7 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,15 +24,15 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.application.kreditimpian.Adapter.AdapterMitra;
-import com.application.kreditimpian.Akun.FragmentAkun;
-import com.application.kreditimpian.Api.JSONResponse;
-import com.application.kreditimpian.Api.RequestInterface;
+import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.BuildConfig;
 import com.application.kreditimpian.ButtomSheetKategori.CustomBottomSheetDialogFragment;
 import com.application.kreditimpian.FormPengajuan.StepIsiCariProduct;
 import com.application.kreditimpian.FormPengajuan.StepUploadProduct;
-import com.application.kreditimpian.Mitra.ListMitra;
+import com.application.kreditimpian.LoginRegister.LoginUser;
+import com.application.kreditimpian.MenuUtama.MenuUtama;
 import com.application.kreditimpian.Model.ModelMitra;
+
 import com.application.kreditimpian.R;
 import com.application.kreditimpian._sliders.FragmentSlider;
 import com.application.kreditimpian._sliders.SliderIndicator;
@@ -44,20 +44,13 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 
 import com.application.kreditimpian.FormPengajuan.StepFotoProduct;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
-import okhttp3.OkHttpClient;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import static com.application.kreditimpian.LoginRegister.LoginUser.TAG_ID;
 
 
 public class FragmentBeranda extends Fragment {
@@ -96,9 +89,11 @@ public class FragmentBeranda extends Fragment {
 
     private SliderView sliderView;
     private LinearLayout mLinearLayout;
+    SharedPreferences sharedpreferences;
+    SharedPrefManager sharedPrefManager;
 
 
-
+    String id, username;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -108,6 +103,16 @@ public class FragmentBeranda extends Fragment {
         rv_mitra = rootView.findViewById(R.id.rv_mitra);
         imagefoto = rootView.findViewById(R.id.imagefoto);
         //mShimmerViewContainer = rootView.findViewById(R.id.shimmer_view_container);
+
+
+        sharedPrefManager = new SharedPrefManager(getActivity());
+
+        Toast.makeText(getActivity(), "Identitas mu "+ sharedPrefManager.getSPID(), Toast.LENGTH_SHORT).show();
+
+/*        Result result = SharedPrefManager.getInstance(getActivity()).getResult();
+
+        Toast.makeText(getActivity(), "ini id ke-"+result.getId(), Toast.LENGTH_SHORT).show();*/
+
 
         btnupload = rootView.findViewById(R.id.btnupload);
         btnupload.setOnClickListener(new View.OnClickListener() {
@@ -190,7 +195,8 @@ public class FragmentBeranda extends Fragment {
 
     }
 
-/*    private void getListMitra() {
+
+    /*    private void getListMitra() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://dev.kreditimpian.com/")
                 .addConverterFactory(GsonConverterFactory.create())

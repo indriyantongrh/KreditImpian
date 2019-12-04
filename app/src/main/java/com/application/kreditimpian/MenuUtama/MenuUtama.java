@@ -11,13 +11,13 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.application.kreditimpian.Akun.FragmentAkun;
-import com.application.kreditimpian.Api.api.SharedPrefManager;
+import com.application.kreditimpian.Api.SessionManager;
+import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.Beranda.FragmentBeranda;
 import com.application.kreditimpian.LoginRegister.LoginUser;
 import com.application.kreditimpian.Marketplace.FragmentMarketplace;
@@ -32,18 +32,22 @@ public class MenuUtama extends AppCompatActivity {
     SharedPrefManager sharedPrefManager;
     SharedPreferences sharedpreferences;
     String id,email,username;
+    SessionManager sessionManager;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_utama);
-        //sharedpreferences = getApplicationContext().getSharedPreferences(LoginUser.my_shared_preferences, Context.MODE_PRIVATE);
-        ///Toast.makeText(getApplicationContext(), "ini id ke-"+sharedpreferences +username, Toast.LENGTH_SHORT).show();
+        sharedpreferences = getApplication().getSharedPreferences(LoginUser.my_shared_preferences, Context.MODE_PRIVATE);
+        id = sharedpreferences.getString("id", "0");
+        Toast.makeText(getApplication(), "ini id ke-"+ id, Toast.LENGTH_SHORT).show();
+
+
+
+
+
         toolbar = getSupportActionBar();
-
-
-        SharedPreferences preferences = getSharedPreferences("my_shared_preferences", Context.MODE_PRIVATE);
-        String username = preferences.getString("username", "Data not Found");
-        Toast.makeText(getApplicationContext(), "ini id ke-" +username, Toast.LENGTH_SHORT).show();
 /*        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setLogo(R.drawable.logoputih);*/
@@ -60,6 +64,8 @@ public class MenuUtama extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
     }
+
+
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -113,28 +119,6 @@ public class MenuUtama extends AppCompatActivity {
 
     }
 
-  /*  boolean doubleBackToExitPressedOnce = false;
-
-    @Override
-    public void onBackPressed() {
-
-        if (doubleBackToExitPressedOnce) {
-            super.onBackPressed();
-            return;
-        }
-
-        this.doubleBackToExitPressedOnce = true;
-        Toast.makeText(this, "Tekan tombol kembali lagi untuk keluar", Toast.LENGTH_SHORT).show();
-
-        new Handler().postDelayed(new Runnable() {
-
-            @Override
-            public void run() {
-                doubleBackToExitPressedOnce=false;
-            }
-        }, 2000);
-    }
-*/
 
 
     @Override

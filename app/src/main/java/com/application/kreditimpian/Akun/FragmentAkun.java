@@ -19,7 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.application.kreditimpian.Api.api.SharedPrefManager;
+import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.Favorite.Favorite;
 import com.application.kreditimpian.GantidanRisetPassword.GantiPassword;
 import com.application.kreditimpian.HistoryPesanan.HistoryPesanan;
@@ -34,12 +34,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.common.api.Status;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-
-import java.util.concurrent.Executor;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -62,7 +58,7 @@ public class FragmentAkun extends Fragment {
     String tag_json_obj = "json_obj_req";
     SharedPreferences sharedpreferences;
     Boolean session = false;
-    String id, value_email, value_token, value_nomorhp, email;
+    String id, value_email, value_token, value_nomorhp, email, username;;
     public static final String my_shared_preferences = "my_shared_preferences";
     public static final String session_status = "session_status";
 
@@ -78,9 +74,18 @@ public class FragmentAkun extends Fragment {
         txt_nama_akun = view.findViewById(R.id.txt_nama_akun);
 
         image = view.findViewById(R.id.image);
-        sharedpreferences = getActivity().getSharedPreferences(LoginUser.my_shared_preferences, MODE_PRIVATE);
+        ///sharedpreferences = getActivity().getSharedPreferences(LoginUser.my_shared_preferences, MODE_PRIVATE);
         ///SharedPreferences preferences = this.getActivity().getSharedPreferences("my_shared_preferences", Context.MODE_PRIVATE);
-        String username = sharedpreferences.getString("username", "Data not Found");
+        ///String username = sharedpreferences.getString("username", "Data not Found");
+
+        sharedPrefManager = new SharedPrefManager(getActivity());
+        String username = sharedPrefManager.getSpUsername();
+
+        //sharedpreferences = getActivity().getSharedPreferences(LoginUser.my_shared_preferences, Context.MODE_PRIVATE);
+        //id = sharedpreferences.getString("id", "Not found");
+        ///username = sharedPrefManager.getSpUsername("username", "Not found");
+        ///email = sharedpreferences.getString("email", "Not found");
+
         txt_nama_akun.setText(username);
 
         // Configure sign-in to request the user's ID, email address, and basic
@@ -187,18 +192,23 @@ public class FragmentAkun extends Fragment {
                 builder.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
-                        sharedpreferences = getActivity().getSharedPreferences(LoginUser.my_shared_preferences, MODE_PRIVATE);
+/*                        sharedpreferences = getActivity().getSharedPreferences(LoginUser.my_shared_preferences, MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedpreferences.edit();
                         editor.putBoolean(LoginUser.session_status, false);
                         editor.putString(TAG_ID, null);
                         editor.putString(TAG_EMAIL, null);
                         editor.clear();
                         editor.commit();
-                        editor.apply();
+                        editor.apply();*/
 
-                        Intent intent = new Intent(getActivity(), LoginUser.class);
-                        startActivity(intent);
+                        sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, false);
+                        startActivity(new Intent(getActivity(), LoginUser.class)
+                                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
                         getActivity().finish();
+
+                       /* Intent intent = new Intent(getActivity(), LoginUser.class);
+                        startActivity(intent);
+                        getActivity().finish();*/
 
                       /*  sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, false);
                         startActivity(new Intent(getContext(), LoginUser.class)

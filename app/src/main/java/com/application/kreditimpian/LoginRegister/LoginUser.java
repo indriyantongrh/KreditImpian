@@ -16,12 +16,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.application.kreditimpian.Api.PreferenceHelper;
 import com.application.kreditimpian.Api.RequestInterface;
-import com.application.kreditimpian.Api.api.SharedPrefManager;
+import com.application.kreditimpian.Api.SessionManager;
+import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.BuildConfig;
 import com.application.kreditimpian.MenuUtama.MenuUtama;
 import com.application.kreditimpian.R;
-import com.application.kreditimpian.ResponseMessage.ResponseLogin;
+import com.application.kreditimpian.ResponseMessage.ResponseLoginSucces;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -30,6 +32,10 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.google.gson.Gson;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.concurrent.TimeUnit;
 
@@ -54,14 +60,17 @@ public class LoginUser extends AppCompatActivity {
     Context mContext;
 
 
+    private PreferenceHelper preferenceHelper;
+
+
     public final static String TAG_ID = "id";
     public final static String TAG_EMAIL = "email";
-
+    public final static String TAG_USERNAME = "username";
 
     String tag_json_obj = "json_obj_req";
     SharedPreferences sharedpreferences;
     Boolean session = false;
-    String id, value_email, value_token, value_nomorhp, email;
+    String id,  email,username;
     public static final String my_shared_preferences = "my_shared_preferences";
     public static final String session_status = "session_status";
 
@@ -75,6 +84,9 @@ public class LoginUser extends AppCompatActivity {
     GoogleSignInClient mGoogleSignInClient;
     int RC_SIGN_IN=0;
     SharedPrefManager sharedPrefManager;
+
+    SessionManager sessionManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,7 +94,24 @@ public class LoginUser extends AppCompatActivity {
         txtusername =findViewById(R.id.txtusername);
         txtpassword =findViewById(R.id.txtpassword);
 
+        sharedPrefManager = new SharedPrefManager(this);
 
+        if (sharedPrefManager.getSPSudahLogin()){
+            startActivity(new Intent(LoginUser.this, MenuUtama.class)
+                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+            finish();
+        }
+
+        ///sessionManager = new SessionManager(this);
+/*
+        preferenceHelper = new PreferenceHelper(this);
+
+        if(preferenceHelper.getIsLogin()){
+            Intent intent = new Intent(LoginUser.this,MenuUtama.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            this.finish();
+        }*/
 
         btnregister = findViewById(R.id.btnregister);
         btnregister.setOnClickListener(new View.OnClickListener() {
@@ -94,16 +123,7 @@ public class LoginUser extends AppCompatActivity {
         });
 
 
-
-
-/*        sharedPrefManager = new SharedPrefManager(this);
-        if (sharedPrefManager.getSPSudahLogin()){
-            startActivity(new Intent(LoginUser.this, MenuUtama.class)
-            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
-            finish();
-        }*/
-
-
+/*
         // Cek session login jika TRUE maka langsung buka MainActivity
         sharedpreferences = getSharedPreferences(my_shared_preferences, Context.MODE_PRIVATE);
         session = sharedpreferences.getBoolean(session_status, false);
@@ -116,11 +136,11 @@ public class LoginUser extends AppCompatActivity {
             Intent intent = new Intent(LoginUser.this, MenuUtama.class);
             intent.putExtra(TAG_ID, id);
             intent.putExtra(TAG_EMAIL, email);
-
-
+            intent.putExtra(TAG_USERNAME, username);
             finish();
             startActivity(intent);
         }
+*/
 
 
         btnLogin = findViewById(R.id.btnLogin);
@@ -128,7 +148,7 @@ public class LoginUser extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-               String username = txtusername.getText().toString();
+                String username = txtusername.getText().toString();
                 String password = txtpassword.getText().toString();
                 if (isEmpty(username))
                     txtusername.setError("Username harap diisi");
@@ -205,7 +225,7 @@ public class LoginUser extends AppCompatActivity {
         }
     }
 
-/*
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -213,11 +233,6 @@ public class LoginUser extends AppCompatActivity {
 
 
     }
-*/
-
-
-
-
 
 
 
@@ -230,9 +245,9 @@ public class LoginUser extends AppCompatActivity {
         pDialog.show();
 
         //mengambil data dari edittext
-        ///String namalengkap = txtnamalengkap.getText().toString();
-        final String username = txtusername.getText().toString();
-        String password = txtpassword.getText().toString();
+
+        final String username = txtusername.getText().toString().trim();
+        final String password = txtpassword.getText().toString().trim();
 
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(50, TimeUnit.SECONDS)
@@ -242,38 +257,50 @@ public class LoginUser extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create(new Gson())).build();
 
         RequestInterface api = retrofit.create(RequestInterface.class);
-        Call<ResponseLogin> call = api.login_member(id, username ,  password);
-        call.enqueue(new Callback<ResponseLogin>() {
+        Call<ResponseLoginSucces> call = api.login_member(username,  password);
+
+        call.enqueue(new Callback<ResponseLoginSucces>() {
             @Override
-            public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
-                pDialog.dismiss();
+            public void onResponse(Call<ResponseLoginSucces> call, Response<ResponseLoginSucces> response) {
 
                 if(response.isSuccessful()){
-                   /// ResObj resObj = response.body();
+                    pDialog.dismiss();
                     if(response.body().getResult() != null){
 
+                        // Jika login berhasil
+                        String id = response.body().getResult();
+                        String email = response.body().getResult();
+                        String username = response.body().getResult();
+                        String msisdn = response.body().getResult();
+                        sharedPrefManager.saveSPString(SharedPrefManager.SP_ID, id);
+                        sharedPrefManager.saveSPString(SharedPrefManager.SP_EMAIL, email);
+                        sharedPrefManager.saveSPString(SharedPrefManager.SP_USERNAME, username);
+                        sharedPrefManager.saveSPString(SharedPrefManager.SP_MSISDN, msisdn);
 
-                        // menyimpan login ke session
-                        sharedpreferences = getSharedPreferences(my_shared_preferences, Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedpreferences.edit();
-                        editor.putBoolean(session_status, true);
-                        editor.putString(TAG_ID, id);
-                        editor.putString(TAG_EMAIL, email);
-
-                        editor.apply();
-
-                        /// sharedPrefManager.saveSPString(SharedPrefManager.SP_EMAIL, email);
-                        // Shared Pref ini berfungsi untuk menjadi trigger session login
-                        ///sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, true);
-                        //login start main activity
+                        Toast.makeText(getApplicationContext(), "Berhasil Login" +id, Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(LoginUser.this, MenuUtama.class);
-                        Toast.makeText(LoginUser.this, "Selamat datang "+username, Toast.LENGTH_SHORT).show();
-                       // Toast.makeText(LoginUser.this, "Selamat datang "+id, Toast.LENGTH_SHORT).show();
-                        intent.putExtra("email", email);
-                        intent.putExtra("id", id);
-                        intent.putExtra(TAG_EMAIL, email);
+                        sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, true);
                         startActivity(intent);
                         finish();
+
+                        // menyimpan login ke session
+//                        sharedpreferences = getSharedPreferences(my_shared_preferences, Context.MODE_PRIVATE);
+//                        SharedPreferences.Editor editor = sharedpreferences.edit();
+//                        editor.putBoolean(session_status, true);
+//                        editor.putString(TAG_ID, id);
+//                        editor.putString("email", email);
+//                        editor.putString("username", username);
+//                        editor.apply();
+//                        editor.commit();
+//
+//                        //login start main activity
+//                        Intent intent = new Intent(LoginUser.this, MenuUtama.class);
+//                        Toast.makeText(LoginUser.this, "Selamat datang "+username, Toast.LENGTH_SHORT).show();
+//                        intent.putExtra(TAG_ID, id);
+//                        intent.putExtra("email", email);
+//                        intent.putExtra("username", username);
+//                        startActivity(intent);
+//                        finish();
 
                     } else {
                         Toast.makeText(LoginUser.this, "The username or password is incorrect", Toast.LENGTH_SHORT).show();
@@ -283,40 +310,8 @@ public class LoginUser extends AppCompatActivity {
                 }
             }
 
-
-                /*if (response.isSuccessful()) {
-                    if (response.body().getResult() != null) {
-                        Toast.makeText(getApplicationContext(), "gagal login" + response.body().getStatus(), Toast.LENGTH_SHORT).show();
-
-
-
-                       *//* Toast.makeText(LoginUser.this, "Login berhasil", Toast.LENGTH_SHORT).show();
-                    //LoginUser.this.finish();
-                    // Toast.makeText(Register.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(LoginUser.this, MenuUtama.class);
-                    intent.putExtra("id",id);
-                    startActivity(intent);
-                    finish();*//*
-                    } else {
-                        Toast.makeText(LoginUser.this, "Login berhasil" + response.body().getStatus(), Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(LoginUser.this, MenuUtama.class);
-                        intent.putExtra("email", email);
-                        startActivity(intent);
-                        ///Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
-
-                        //Toast.makeText(Register.this, "", Toast.LENGTH_SHORT).show();
-
-                    }else{
-                        Toast.makeText(LoginUser.this, "Error! Please try again!", Toast.LENGTH_SHORT).show();
-
-                    }
-
-                }*/
-
-
-
             @Override
-            public void onFailure(Call<ResponseLogin> call, Throwable t) {
+            public void onFailure(Call<ResponseLoginSucces> call, Throwable t) {
                 t.printStackTrace();
                 pDialog.dismiss();
                 Toast.makeText(LoginUser.this, "Koneksi internet terputus.", Toast.LENGTH_SHORT).show();
@@ -328,6 +323,43 @@ public class LoginUser extends AppCompatActivity {
     }
 
 
+    private void parseLoginData(String response){
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+            if (jsonObject.getString("status").equals("204")) {
+
+                saveInfo(response);
+
+                Toast.makeText(LoginUser.this, "Login Successfully!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(LoginUser.this,MenuUtama.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                this.finish();
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void saveInfo(String response){
+
+        preferenceHelper.putIsLogin(true);
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+            if (jsonObject.getString("status").equals("200")) {
+                JSONArray dataArray = jsonObject.getJSONArray("Result");
+                for (int i = 0; i < dataArray.length(); i++) {
+
+                    JSONObject dataobj = dataArray.getJSONObject(i);
+                    preferenceHelper.putUsername(dataobj.getString("username"));
+                    preferenceHelper.putEmail(dataobj.getString("email"));
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     @Override

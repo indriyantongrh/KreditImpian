@@ -482,8 +482,8 @@ public class CaptureGambar extends AppCompatActivity {
     private boolean checkPermission() {
         ArrayList<String> permissions = new ArrayList<>();
         for (String permission : getAllPermissions()) {
-            int result = checkPermission(this, permission);
-            if (result != PackageManager.PERMISSION_GRANTED) {
+            int Result = checkPermission(this, permission);
+            if (Result != PackageManager.PERMISSION_GRANTED) {
                 permissions.add(permission);
             }
         }
@@ -526,8 +526,8 @@ public class CaptureGambar extends AppCompatActivity {
             case PERMISSION_REQUEST_CODE:
                 if (grantResults.length > 0) {
                     int counter = 0;//counter to traverse all permissions
-                    for (int result : grantResults) {
-                        if (result != PackageManager.PERMISSION_GRANTED) {
+                    for (int Result : grantResults) {
+                        if (Result != PackageManager.PERMISSION_GRANTED) {
                             //show alert dialog if any of the permission denied
                             showMessageOKCancel(getString(R.string.permission_message),
                                     new DialogInterface.OnClickListener() {
@@ -589,7 +589,7 @@ public class CaptureGambar extends AppCompatActivity {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);//Start intent with Action_Image_Capture
         fileUri = CameraUtils.getOutputMediaFileUri(this);//get fileUri from CameraUtils
         intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);//Send fileUri with intent
-        startActivityForResult(intent, CAMERA_REQUEST_CODE);//start activity for result with CAMERA_REQUEST_CODE
+        startActivityForResult(intent, CAMERA_REQUEST_CODE);//start activity for Result with CAMERA_REQUEST_CODE
     }
 
     @Override
