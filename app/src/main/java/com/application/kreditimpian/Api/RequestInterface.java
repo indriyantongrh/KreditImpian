@@ -40,38 +40,38 @@ public interface RequestInterface {
 
 
 
-    @FormUrlEncoded
-    @POST("registrasi_member.php")
-    Call<SuccessMessage> registrasi_member(@Field("id") String id,
-                                         @Field("email") String email,
-                                         @Field("msisdn") String msisdn,
-                                         @Field("username") String username,
-                                         @Field("password") String password);
-
-
-
-
-    @FormUrlEncoded
-    @POST("register_member.php")
-    Call<SuccessMessage> registrasi(@Field("id") String id,
-                                    @Field("namalengkap") String namalengkap,
-                                    @Field("email") String email,
-                                    @Field("nomortelepon") String nomortelepon,
-                                    @Field("password") String password);
-
-
-    @FormUrlEncoded
-    @POST("register_member.php")
-    Call<AllProductResponse> Allproduct();
-
-    //tanpa limit
-    @GET("api/companies")
-    Call<List<ModelMitra>> getMitra();
-
-
-    //tanpa limit
-    @GET("api/products")
-    Call<JSONResponse> getResult();
+//    @FormUrlEncoded
+//    @POST("registrasi_member.php")
+//    Call<SuccessMessage> registrasi_member(@Field("id") String id,
+//                                         @Field("email") String email,
+//                                         @Field("msisdn") String msisdn,
+//                                         @Field("username") String username,
+//                                         @Field("password") String password);
+//
+//
+//
+//
+//    @FormUrlEncoded
+//    @POST("register_member.php")
+//    Call<SuccessMessage> registrasi(@Field("id") String id,
+//                                    @Field("namalengkap") String namalengkap,
+//                                    @Field("email") String email,
+//                                    @Field("nomortelepon") String nomortelepon,
+//                                    @Field("password") String password);
+//
+//
+//    @FormUrlEncoded
+//    @POST("register_member.php")
+//    Call<AllProductResponse> Allproduct();
+//
+//    //tanpa limit
+//    @GET("api/companies")
+//    Call<List<ModelMitra>> getMitra();
+//
+//
+//    //tanpa limit
+//    @GET("products")
+//    Call<JSONResponse> getResult();
 
 
 

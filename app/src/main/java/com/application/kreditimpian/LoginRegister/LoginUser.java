@@ -33,11 +33,13 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Base64;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -48,6 +50,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import static android.text.TextUtils.isEmpty;
+import java.io.UnsupportedEncodingException;
+import java.util.Base64;
 
 public class LoginUser extends AppCompatActivity {
     ///private String url = "https://demo.kreditimpian.com/ApiAndro/login_member.php";
@@ -266,7 +270,14 @@ public class LoginUser extends AppCompatActivity {
 
                 if(response.isSuccessful()){
                     pDialog.dismiss();
+
+
                     if(response.body().getResult() != null){
+                        //DecodeBase64JWTtoString
+                        ///String jsonStr = new String(Base64.getDecoder().decode(response.body().getResult().split("\\.")[1].getBytes()), "UTF-8");
+
+//                        // Gson
+                        ///id = new Gson().fromJson(jsonStr, JsonObject.class).get("id").getAsString();
 
 
 

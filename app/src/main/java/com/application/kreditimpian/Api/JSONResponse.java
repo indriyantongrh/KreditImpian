@@ -1,8 +1,15 @@
 package com.application.kreditimpian.Api;
 
 
-public class JSONResponse {
 
+
+public class JSONResponse {
+//
+//    private AllProductAdapter[] allProductAdapter;
+//
+//    public  AllProductAdapter[] getAllProductAdapter(){
+//        return  allProductAdapter;
+//    }
 
 
 /*    private ModelProfilUser[] user;

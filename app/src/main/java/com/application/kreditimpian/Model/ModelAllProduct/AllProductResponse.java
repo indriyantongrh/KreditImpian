@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 public class AllProductResponse{
 
 	@SerializedName("result")
-	private ResultItem[] result;
+	private List<ResultItem> result;
 
 	@SerializedName("reason")
 	private String reason;
@@ -20,11 +20,11 @@ public class AllProductResponse{
 	@SerializedName("status")
 	private int status;
 
-	public void setResult(ResultItem[] result){
+	public void setResult(List<ResultItem> result){
 		this.result = result;
 	}
 
-	public ResultItem[] getResult(){
+	public List<ResultItem> getResult(){
 		return result;
 	}
 
