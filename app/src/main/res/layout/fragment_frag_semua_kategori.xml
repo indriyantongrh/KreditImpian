@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="215dp"
-    android:paddingBottom="55dp"
+    android:paddingTop="165dp"
+    android:paddingBottom="5dp"
     tools:context=".FragSemuaKategori.FragSemuaKategori">
 
     <LinearLayout

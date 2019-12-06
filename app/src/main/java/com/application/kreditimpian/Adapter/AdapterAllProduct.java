@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,8 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.application.kreditimpian.Model.ModelAllProduct.ResultItem;
 import com.application.kreditimpian.R;
+import com.bumptech.glide.Glide;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,17 +47,27 @@ public class AdapterAllProduct extends RecyclerView.Adapter<AdapterAllProduct.Al
         holder.txt_id_product_category.setText(resultItem.getIdCurrency());
         holder.txt_name_product.setText(resultItem.getName());
         holder.txt_price_capital.setText(resultItem.getPriceCapital());
-        holder.txt_price_sale.setText(resultItem.getPriceCapital());
+//        Locale localeID = new Locale("in", "ID");
+//        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+//        holder.txt_price_capital.setText(formatRupiah.format(resultItem.getPriceCapital()));
+
+        holder.txt_price_sale.setText(resultItem.getPriceSale());
         holder.txt_description.setText(resultItem.getDescription());
         holder.txt_sku.setText(resultItem.getSku());
         holder.txt_stock.setText(resultItem.getStock());
+        //holder.image.setText(resultItem.getImage());
         holder.txt_condition.setText(resultItem.getCondition());
         holder.txt_deliverable.setText(resultItem.getDeliverable());
         holder.txt_downloadable.setText(resultItem.getDownloadable());
         holder.txt_target_gender.setText(resultItem.getTargetGender());
         holder.txt_target_age.setText(resultItem.getTargetAge());
         holder.txt_visibility.setText(resultItem.getVisibility());
-
+        holder.txt_image.setText(resultItem.getImage());
+        Glide.with(mContext)
+                .load(resultItem.getImage())
+                .placeholder(R.drawable.no_image)
+                .error(R.drawable.no_image)
+                .into(holder.image);
 
 
 
@@ -77,6 +91,8 @@ public class AdapterAllProduct extends RecyclerView.Adapter<AdapterAllProduct.Al
         TextView txt_name_product;
         @BindView(R.id.txt_price_capital)
         TextView txt_price_capital;
+
+
         @BindView(R.id.txt_price_sale)
         TextView txt_price_sale;
         @BindView(R.id.txt_description)
@@ -97,6 +113,13 @@ public class AdapterAllProduct extends RecyclerView.Adapter<AdapterAllProduct.Al
         TextView txt_target_age;
         @BindView(R.id.txt_visibility)
         TextView txt_visibility;
+        @BindView(R.id.image)
+        ImageView image;
+        @BindView(R.id.txt_image)
+        TextView txt_image;
+
+
+
 
         public AllproductHolder(@NonNull View itemView) {
             super(itemView);

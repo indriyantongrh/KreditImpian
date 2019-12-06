@@ -6,11 +6,11 @@
     <item android:id="@+id/cartshop"
         android:title="Keranjang"
         app:showAsAction="always"
-        android:icon="@drawable/cartwhite"/>
+        android:icon="@drawable/cart_2"/>
 
     <item android:id="@+id/favorite"
         android:title="Keranjang"
         app:showAsAction="always"
-        android:icon="@drawable/favoritewhite"/>
+        android:icon="@drawable/favorite"/>
 
 </menu>

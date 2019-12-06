@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -49,6 +50,7 @@ public class FragSemuaKategori extends Fragment {
 
     @BindView(R.id.listAllProduct)
     RecyclerView listAllProduct;
+    @BindView(R.id.swipeRefresh)
     SwipeRefreshLayout swipeRefresh;
     ProgressDialog progressBar;
 
@@ -57,11 +59,6 @@ public class FragSemuaKategori extends Fragment {
     AdapterAllProduct adapterAllProduct;
     BaseApiService mApiService;
 
-//    //RecyclerView listAllProduct;
-//    private ArrayList<ResultItem> mArrayList;
-//    AllProductAdapter allProductAdapter;
-//    SharedPreferences sharedpreferences;
-//    String id, id_transaksi;
 
 
     @Override
@@ -70,12 +67,28 @@ public class FragSemuaKategori extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_frag_semua_kategori, container, false);
 
+        swipeRefresh = rootView.findViewById(R.id.swipeRefresh);
+        swipeRefresh.setColorScheme(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+
+        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getResultList();
+                swipeRefresh.setRefreshing(false);
+            }
+        });
+
+
         ButterKnife.bind(this, rootView);
         mContext = getActivity();
         mApiService = UtilsApi.getAPIService();
 
         adapterAllProduct = new AdapterAllProduct(getActivity(), resultItemList);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+        //RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+        GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2, GridLayoutManager.VERTICAL, false);
         listAllProduct.setLayoutManager(mLayoutManager);
         listAllProduct.setItemAnimator(new DefaultItemAnimator());
 
@@ -94,15 +107,15 @@ public class FragSemuaKategori extends Fragment {
             @Override
             public void onResponse(Call<AllProductResponse> call, Response<AllProductResponse> response) {
                 if (response.isSuccessful()){
+                    swipeRefresh.setRefreshing(false);
                     progressBar.dismiss();
-
                     final List<ResultItem> Allproduct = response.body().getResult();
 
                     listAllProduct.setAdapter(new AdapterAllProduct(mContext, Allproduct));
                     adapterAllProduct.notifyDataSetChanged();
                 } else {
                     progressBar.dismiss();
-                    Toast.makeText(mContext, "Gagal mengambil data dosen", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "Gagal Refresh", Toast.LENGTH_SHORT).show();
                 }
             }
 

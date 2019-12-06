@@ -28,9 +28,31 @@ public interface BaseApiService {
 //    Call<ResponseBody> registerRequest(@Field("nama") String nama,
 //                                       @Field("email") String email,
 //                                       @Field("password") String password);
-
+    //getAllProduct
     @GET("products")
     Call<AllProductResponse> getResult();
+
+    //getAllProductGadget
+    @GET("products?id_product_category=1")
+    Call<AllProductResponse> getResultGadget();
+
+    //getAllProductElektronik
+    @GET("products?id_product_category=2")
+    Call<AllProductResponse> getResultElektronik();
+
+    //getAllProductForniture
+    @GET("products?id_product_category=3")
+    Call<AllProductResponse> getResultForniture();
+
+    //getAllProductOtomotif
+    @GET("products?id_product_category=4")
+    Call<AllProductResponse> getResultOtomotif();
+
+    //getAllProductFashion
+    @GET("products?id_product_category=5")
+    Call<AllProductResponse> getResultFashion();
+
+
 //
 //    @GET("dosen/{namadosen}")
 //    Call<ResponseDosenDetail> getDetailDosen(@Path("namadosen") String namadosen);
