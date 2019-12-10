@@ -49,8 +49,13 @@ public class DetailProduct extends AppCompatActivity {
     ImageView imageView;
 //    @BindView(R.id.txt_image)
 //    TextView txt_image;
+    @BindView(R.id.txt_weight_value)
+    TextView txt_weight_value;
+//    @BindView(R.id.txt_weight)
+//    TextView txt_weight;
 
-    String id, id_product_category,id_currency,name,price_capital, price_sale,description , condition,stock, image;
+
+    String id, id_product_category,id_currency,name,price_capital, price_sale,description , condition,stock, image, weight_value;
     ///Integer image;
 
 
@@ -75,7 +80,8 @@ public class DetailProduct extends AppCompatActivity {
         condition = getIntent().getStringExtra("condition");
         stock = getIntent().getStringExtra("stock");
         image = getIntent().getStringExtra("image");
-        //int imageproduct = getIntent().getIntExtra("image", 0);
+        weight_value = getIntent().getStringExtra("weight_value");
+//        //int imageproduct = getIntent().getIntExtra("image", 0);
 
 
         txt_id.setText(id);
@@ -94,6 +100,9 @@ public class DetailProduct extends AppCompatActivity {
                 .placeholder(R.drawable.no_image)
                 .error(R.drawable.no_image)
                 .into(imageView);
+
+        txt_weight_value.setText(weight_value);
+
 
     }
 

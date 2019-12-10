@@ -42,6 +42,7 @@ public class KategoriElektronik extends Fragment {
 
     Context mContext;
     List<ResultItem> resultItemList = new ArrayList<>();
+
     AdapterAllProduct adapterAllProduct;
     BaseApiService mApiService;
 
