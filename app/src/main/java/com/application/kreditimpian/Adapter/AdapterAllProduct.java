@@ -78,6 +78,7 @@ public class AdapterAllProduct extends RecyclerView.Adapter<AdapterAllProduct.Al
                 .error(R.drawable.no_image)
                 .into(holder.image);
 
+
 //        holder.txt_weight_value.setText(metadataItem.getWeightValue());
 //        holder.txt_weight.setText(metadataItem.getWeight());
 
