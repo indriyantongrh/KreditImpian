@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -32,7 +33,6 @@ public class AdapterAllProduct extends RecyclerView.Adapter<AdapterAllProduct.Al
 
    List<ResultItem> resultItemList;
    Context mContext;
-    private ProductAdapterCallback mAdapterCallback;
 
     public AdapterAllProduct(Context context, List<ResultItem> dosenList){
         this.mContext = context;
@@ -57,7 +57,6 @@ public class AdapterAllProduct extends RecyclerView.Adapter<AdapterAllProduct.Al
 //        Locale localeID = new Locale("in", "ID");
 //        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
 //        holder.txt_price_capital.setText(formatRupiah.format(resultItem.getPriceCapital()));
-
         holder.txt_price_sale.setText(resultItem.getPriceSale());
         holder.txt_description.setText(resultItem.getDescription());
         holder.txt_sku.setText(resultItem.getSku());
@@ -76,7 +75,35 @@ public class AdapterAllProduct extends RecyclerView.Adapter<AdapterAllProduct.Al
                 .error(R.drawable.no_image)
                 .into(holder.image);
 
-        ///final String id = resultItem.getId();
+        final String id = resultItem.getId();
+        final String id_currency = resultItem.getIdCurrency();
+        final String id_product_category = resultItem.getIdProductCategory();
+        final String name = resultItem.getName();
+        final String description = resultItem.getDescription();
+        final String stock = resultItem.getStock();
+        final String price_capital = resultItem.getPriceCapital();
+        final String price_sale = resultItem.getPriceSale();
+        final String condition = resultItem.getCondition();
+        final String image = resultItem.getImage();
+
+        holder.btnclick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent detailproduct = new Intent(v.getContext(), DetailProduct.class);
+                detailproduct.putExtra("id", id);
+                detailproduct.putExtra("id_product_category", id_product_category);
+                detailproduct.putExtra("id_currency", id_currency);
+                detailproduct.putExtra("name", name);
+                detailproduct.putExtra("price_capital", price_capital);
+                detailproduct.putExtra("price_sale", price_sale);
+                detailproduct.putExtra("description", description);
+                detailproduct.putExtra("stock", stock);
+                detailproduct.putExtra("condition", condition);
+                detailproduct.putExtra("image", image);
+                v.getContext().startActivity(detailproduct);
+            }
+        });
 
 
     }
@@ -88,6 +115,8 @@ public class AdapterAllProduct extends RecyclerView.Adapter<AdapterAllProduct.Al
 
     public class AllproductHolder extends RecyclerView.ViewHolder {
 
+        @BindView(R.id.btnclick)
+        CardView btnclick;
         @BindView(R.id.txt_id)
         TextView txt_id;
         @BindView(R.id.txt_id_product_category)
@@ -130,16 +159,16 @@ public class AdapterAllProduct extends RecyclerView.Adapter<AdapterAllProduct.Al
 
             ButterKnife.bind(this, itemView);
 
-
+/*
 
             //Inisialisasi onclick pada itemview dan memanggil interface yang sudah kita buat tadi.
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    /*
+                    *//*
                     Memanggil interface dan juga methodnya. getAdapterPosition ini adalah method bawaan
                     adapter untuk memanggil index posisi.
-                     */
+                     *//*
                     Intent intent = new Intent(v.getContext(), DetailProduct.class) ;
 
                     intent.putExtra("id", txt_id.getText());
@@ -163,7 +192,7 @@ public class AdapterAllProduct extends RecyclerView.Adapter<AdapterAllProduct.Al
                     v.getContext().startActivity(intent);
 
                 }
-            });
+            });*/
         }
 
 
@@ -171,13 +200,6 @@ public class AdapterAllProduct extends RecyclerView.Adapter<AdapterAllProduct.Al
 
     }
 
-    public interface ProductAdapterCallback {
-        /*
-        Disini kalian bisa membuat beberapa fungsi dengan parameter sesuai kebutuhan. Kebutuhan
-        disini adalah untuk mendapatkan pada posisi mana user mengklik listnya.
-         */
 
-        void onRowProductAdapterClicked(int position);
-    }
 
 }

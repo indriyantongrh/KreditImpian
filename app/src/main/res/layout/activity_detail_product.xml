@@ -17,6 +17,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+
             android:orientation="vertical">
 
             <RelativeLayout
@@ -24,24 +25,30 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="8dp"
                 android:background="#fff"
                 android:orientation="vertical"
                 tools:ignore="MissingConstraints">
 
-                <ImageView
-                    android:id="@+id/image"
+                <RelativeLayout
+                    android:id="@+id/Relativeimage"
                     android:layout_width="match_parent"
-                    android:layout_height="225dp"
-                    android:scaleType="centerCrop"
+                    android:layout_height="225dp">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:src="@drawable/no_image" />
 
+                </RelativeLayout>
 
                 <TextView
                     android:id="@+id/txt_name_product"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/image"
+                    android:layout_below="@+id/Relativeimage"
                     android:ellipsize="end"
                     android:fontFamily="@font/jipitha"
                     android:maxLines="3"

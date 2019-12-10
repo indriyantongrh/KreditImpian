@@ -8,6 +8,8 @@ import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -43,12 +45,13 @@ public class DetailProduct extends AppCompatActivity {
 //    TextView txt_target_age;
 //    @BindView(R.id.txt_visibility)
 //    TextView txt_visibility;
-//    @BindView(R.id.image)
-//    ImageView image;
+    @BindView(R.id.imageView)
+    ImageView imageView;
 //    @BindView(R.id.txt_image)
 //    TextView txt_image;
 
-    String id, id_product_category,id_currency,name,price_capital, price_sale,description , condition,stock;
+    String id, id_product_category,id_currency,name,price_capital, price_sale,description , condition,stock, image;
+    ///Integer image;
 
 
     @Override
@@ -71,6 +74,8 @@ public class DetailProduct extends AppCompatActivity {
         description = getIntent().getStringExtra("description");
         condition = getIntent().getStringExtra("condition");
         stock = getIntent().getStringExtra("stock");
+        image = getIntent().getStringExtra("image");
+        //int imageproduct = getIntent().getIntExtra("image", 0);
 
 
         txt_id.setText(id);
@@ -82,6 +87,14 @@ public class DetailProduct extends AppCompatActivity {
         txt_description.loadDataWithBaseURL(null, String.valueOf(Html.fromHtml(getIntent().getStringExtra("description"))), "text/html", "utf-8", null);
         txt_condition.setText(condition);
         txt_stock.setText(stock);
+        ///image.setImageResource(imageproduct);
+
+        Glide.with(DetailProduct.this)
+                .load(image)
+                .placeholder(R.drawable.no_image)
+                .error(R.drawable.no_image)
+                .into(imageView);
+
     }
 
 
