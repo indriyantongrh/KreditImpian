@@ -13,7 +13,7 @@
 //import androidx.annotation.NonNull;
 //import androidx.recyclerview.widget.RecyclerView;
 //
-//import com.application.kreditimpian.DetailProduct;
+//import com.application.kreditimpian.DetailProduct2;
 //import com.application.kreditimpian.FragSemuaKategori.DetailSemuaKategori;
 //import com.application.kreditimpian.Model.ModelAllProduct.AllProductResponse;
 //import com.application.kreditimpian.Model.ModelAllProduct.ResultItem;
@@ -141,7 +141,7 @@
 ////
 ////        @Override
 ////        public void onClick(View view) {
-////            Intent detail = new Intent(view.getContext(), DetailProduct.class);
+////            Intent detail = new Intent(view.getContext(), DetailProduct2.class);
 ////
 /////*            detail.putExtra("id_pelamarmasuk", txt_id_pelamarmasuk.getText());
 ////            detail.putExtra("id_user", txt_id_user.getText());
@@ -280,7 +280,7 @@
 //////
 //////        @Override
 //////        public void onClick(View view) {
-//////            Intent detail = new Intent(view.getContext(), DetailProduct.class);
+//////            Intent detail = new Intent(view.getContext(), DetailProduct2.class);
 //////
 ///////*            detail.putExtra("id_pelamarmasuk", txt_id_pelamarmasuk.getText());
 //////            detail.putExtra("id_user", txt_id_user.getText());

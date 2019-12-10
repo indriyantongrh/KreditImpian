@@ -3,6 +3,7 @@ package com.application.kreditimpian.Api.api_v2;
 
 
 import com.application.kreditimpian.Model.ModelAllProduct.AllProductResponse;
+import com.application.kreditimpian.ResponseMessage.ResponseLoginSucces;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -16,11 +17,11 @@ import retrofit2.http.Path;
 
 public interface BaseApiService {
 
-//    // Fungsi ini untuk memanggil
-//    @FormUrlEncoded
-//    @POST("login.php")
-//    Call<ResponseBody> loginRequest(@Field("email") String email,
-//                                    @Field("password") String password);
+    // Fungsi ini untuk memanggil
+    @FormUrlEncoded
+    @POST("system/users/authenticate")
+    Call<ResponseLoginSucces> loginRequest(@Field("username") String email,
+                                           @Field("password") String password);
 //
 //    // Fungsi ini untuk memanggil API
 //    @FormUrlEncoded

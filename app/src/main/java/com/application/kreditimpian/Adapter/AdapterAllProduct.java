@@ -1,16 +1,19 @@
 package com.application.kreditimpian.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.application.kreditimpian.DetailProduct;
 import com.application.kreditimpian.Model.ModelAllProduct.ResultItem;
 import com.application.kreditimpian.R;
 import com.bumptech.glide.Glide;
@@ -21,11 +24,15 @@ import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+import static android.media.CamcorderProfile.get;
 
 public class AdapterAllProduct extends RecyclerView.Adapter<AdapterAllProduct.AllproductHolder> {
 
    List<ResultItem> resultItemList;
    Context mContext;
+    private ProductAdapterCallback mAdapterCallback;
 
     public AdapterAllProduct(Context context, List<ResultItem> dosenList){
         this.mContext = context;
@@ -69,7 +76,7 @@ public class AdapterAllProduct extends RecyclerView.Adapter<AdapterAllProduct.Al
                 .error(R.drawable.no_image)
                 .into(holder.image);
 
-
+        ///final String id = resultItem.getId();
 
 
     }
@@ -91,8 +98,6 @@ public class AdapterAllProduct extends RecyclerView.Adapter<AdapterAllProduct.Al
         TextView txt_name_product;
         @BindView(R.id.txt_price_capital)
         TextView txt_price_capital;
-
-
         @BindView(R.id.txt_price_sale)
         TextView txt_price_sale;
         @BindView(R.id.txt_description)
@@ -120,11 +125,59 @@ public class AdapterAllProduct extends RecyclerView.Adapter<AdapterAllProduct.Al
 
 
 
-
         public AllproductHolder(@NonNull View itemView) {
             super(itemView);
 
             ButterKnife.bind(this, itemView);
+
+
+
+            //Inisialisasi onclick pada itemview dan memanggil interface yang sudah kita buat tadi.
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    /*
+                    Memanggil interface dan juga methodnya. getAdapterPosition ini adalah method bawaan
+                    adapter untuk memanggil index posisi.
+                     */
+                    Intent intent = new Intent(v.getContext(), DetailProduct.class) ;
+
+                    intent.putExtra("id", txt_id.getText());
+                    intent.putExtra("id_product_category", txt_id_product_category.getText());
+                    intent.putExtra("id_currency", txt_id_currency.getText());
+                    intent.putExtra("name", txt_name_product.getText());
+                    intent.putExtra("price_capital", txt_price_capital.getText());
+                    intent.putExtra("price_sale", txt_price_sale.getText());
+                    intent.putExtra("description", txt_description.getText());
+//                    intent.putExtra("sku", txt_sku.getText());
+                    intent.putExtra("stock", txt_stock.getText());
+                    intent.putExtra("condition", txt_condition.getText());
+//                    intent.putExtra("deliverable", txt_deliverable.getText());
+//                    intent.putExtra("downloadable", txt_downloadable.getText());
+//                    intent.putExtra("target_gender", txt_target_gender.getText());
+//                    intent.putExtra("target_age", txt_target_age.getText());
+//                    intent.putExtra("visibility", txt_visibility.getText());
+//                    intent.putExtra("image", txt_image.getText());
+                    //intent.putExtra("id", image.getImageAlpha());
+
+                    v.getContext().startActivity(intent);
+
+                }
+            });
         }
+
+
+
+
     }
+
+    public interface ProductAdapterCallback {
+        /*
+        Disini kalian bisa membuat beberapa fungsi dengan parameter sesuai kebutuhan. Kebutuhan
+        disini adalah untuk mendapatkan pada posisi mana user mengklik listnya.
+         */
+
+        void onRowProductAdapterClicked(int position);
+    }
+
 }
