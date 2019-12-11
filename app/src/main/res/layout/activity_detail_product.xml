@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#F5F5F5"
+        android:layout_marginBottom="55dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -234,6 +235,77 @@
                     tools:ignore="WebViewLayout" />
 
             </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relativeinformationmerchant"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="8dp"
+                android:background="#fff"
+                android:orientation="vertical"
+                android:paddingBottom="9dp"
+                tools:ignore="MissingConstraints">
+
+                <TextView
+                    android:id="@+id/text_Information_Store"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:fontFamily="@font/jipitha"
+                    android:text="Informasi Merchant"
+                    android:textSize="28sp"
+                    android:paddingStart="20dp"
+                    android:textColor="#636363"
+                    android:textStyle="bold" />
+
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imageStore"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="10dp"
+                    android:focusable="true"
+                    android:layout_centerVertical="true"
+                    android:foregroundGravity="left"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/store"
+                    android:layout_below="@+id/text_Information_Store"
+                    app:civ_border_color="#FFFFFFFF"
+                    app:civ_border_width="2dp"
+                     />
+
+
+                <TextView
+                    android:id="@+id/name_merchant"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/imageStore"
+                    android:layout_toRightOf="@+id/imageStore"
+                    android:text="Name Merchant"
+                    android:layout_marginStart="10dp"
+                    android:layout_below="@+id/text_Information_Store"
+                    android:fontFamily="@font/sairaregular"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp"
+                    />
+
+                <TextView
+                    android:id="@+id/location_merchant"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/name_merchant"
+                    android:layout_toEndOf="@+id/imageStore"
+                    android:layout_toRightOf="@+id/imageStore"
+                    android:text="Location Merchant"
+                    android:textAlignment="center"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/jipatharegular"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
+
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
