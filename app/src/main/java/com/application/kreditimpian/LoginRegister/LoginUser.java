@@ -34,6 +34,7 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.google.gson.internal.bind.JsonTreeWriter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -296,6 +297,7 @@ public class LoginUser extends AppCompatActivity {
                         sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, true);
                         startActivity(intent);
                         finish();
+
 
                         // menyimpan login ke session
 //                        sharedpreferences = getSharedPreferences(my_shared_preferences, Context.MODE_PRIVATE);
