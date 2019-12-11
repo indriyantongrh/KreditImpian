@@ -79,8 +79,8 @@ public class AdapterAllProduct extends RecyclerView.Adapter<AdapterAllProduct.Al
                 .into(holder.image);
 
 
-//        holder.txt_weight_value.setText(metadataItem.getWeightValue());
-//        holder.txt_weight.setText(metadataItem.getWeight());
+        holder.txt_weight_value.setText(resultItem.getMetadata().getWeightValue());
+        holder.txt_weight.setText(resultItem.getMetadata().getWeight());
 
         final String id = resultItem.getId();
         final String id_currency = resultItem.getIdCurrency();
@@ -92,8 +92,8 @@ public class AdapterAllProduct extends RecyclerView.Adapter<AdapterAllProduct.Al
         final String price_sale = resultItem.getPriceSale();
         final String condition = resultItem.getCondition();
         final String image = resultItem.getImage();
-//        final String weight_value = metadataItem.getWeightValue();
-//        final String weight = metadataItem.getWeight();
+        final String weight_value = resultItem.getMetadata().getWeightValue();
+        final String weight = resultItem.getMetadata().getWeight();
 
         holder.btnclick.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,8 +110,8 @@ public class AdapterAllProduct extends RecyclerView.Adapter<AdapterAllProduct.Al
                 detailproduct.putExtra("stock", stock);
                 detailproduct.putExtra("condition", condition);
                 detailproduct.putExtra("image", image);
-//                detailproduct.putExtra("weight_value", weight_value);
-//                detailproduct.putExtra("weight", weight);
+                detailproduct.putExtra("weight_value", weight_value);
+                detailproduct.putExtra("weight", weight);
                 v.getContext().startActivity(detailproduct);
             }
         });
