@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:paddingTop="215dp"
 
-    tools:context=".KategoriSimulasiKredit.FragmentSimulasiGadget">
+    tools:context=".SimulasiKredit.KategoriSimulasiKredit.FragmentSimulasiGadget">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="fill_parent"

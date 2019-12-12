@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:paddingTop="215dp"
     android:paddingBottom="55dp"
-    tools:context=".FragKategoriUmkm.KategoriUmkm">
+    tools:context=".Marketplace.FragKategoriUmkm.KategoriUmkm">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView

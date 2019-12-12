@@ -14,7 +14,7 @@
 //import androidx.recyclerview.widget.RecyclerView;
 //
 //import com.application.kreditimpian.DetailProduct2;
-//import com.application.kreditimpian.FragSemuaKategori.DetailSemuaKategori;
+//import com.application.kreditimpian.Marketplace.FragSemuaKategori.DetailSemuaKategori;
 //import com.application.kreditimpian.Model.ModelAllProduct.AllProductResponse;
 //import com.application.kreditimpian.Model.ModelAllProduct.ResultItem;
 //import com.application.kreditimpian.R;

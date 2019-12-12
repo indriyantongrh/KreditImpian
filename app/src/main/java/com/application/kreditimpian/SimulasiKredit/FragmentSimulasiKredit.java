@@ -10,20 +10,20 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.application.kreditimpian.KategoriSimulasiKredit.FragmentSimulasiCorporate;
-import com.application.kreditimpian.KategoriSimulasiKredit.FragmentSimulasiElektronik;
-import com.application.kreditimpian.KategoriSimulasiKredit.FragmentSimulasiFashion;
-import com.application.kreditimpian.KategoriSimulasiKredit.FragmentSimulasiForniture;
-import com.application.kreditimpian.KategoriSimulasiKredit.FragmentSimulasiGadget;
-import com.application.kreditimpian.KategoriSimulasiKredit.FragmentSimulasiHobi;
-import com.application.kreditimpian.KategoriSimulasiKredit.FragmentSimulasiHolytour;
-import com.application.kreditimpian.KategoriSimulasiKredit.FragmentSimulasiLaptop;
-import com.application.kreditimpian.KategoriSimulasiKredit.FragmentSimulasiMultiproduct;
-import com.application.kreditimpian.KategoriSimulasiKredit.FragmentSimulasiOtomotif;
-import com.application.kreditimpian.KategoriSimulasiKredit.FragmentSimulasiPendanaan;
-import com.application.kreditimpian.KategoriSimulasiKredit.FragmentSimulasiProperty;
-import com.application.kreditimpian.KategoriSimulasiKredit.FragmentSimulasiTravel;
-import com.application.kreditimpian.KategoriSimulasiKredit.FragmentSimulasiUMKM;
+import com.application.kreditimpian.SimulasiKredit.KategoriSimulasiKredit.FragmentSimulasiCorporate;
+import com.application.kreditimpian.SimulasiKredit.KategoriSimulasiKredit.FragmentSimulasiElektronik;
+import com.application.kreditimpian.SimulasiKredit.KategoriSimulasiKredit.FragmentSimulasiFashion;
+import com.application.kreditimpian.SimulasiKredit.KategoriSimulasiKredit.FragmentSimulasiForniture;
+import com.application.kreditimpian.SimulasiKredit.KategoriSimulasiKredit.FragmentSimulasiGadget;
+import com.application.kreditimpian.SimulasiKredit.KategoriSimulasiKredit.FragmentSimulasiHobi;
+import com.application.kreditimpian.SimulasiKredit.KategoriSimulasiKredit.FragmentSimulasiHolytour;
+import com.application.kreditimpian.SimulasiKredit.KategoriSimulasiKredit.FragmentSimulasiLaptop;
+import com.application.kreditimpian.SimulasiKredit.KategoriSimulasiKredit.FragmentSimulasiMultiproduct;
+import com.application.kreditimpian.SimulasiKredit.KategoriSimulasiKredit.FragmentSimulasiOtomotif;
+import com.application.kreditimpian.SimulasiKredit.KategoriSimulasiKredit.FragmentSimulasiPendanaan;
+import com.application.kreditimpian.SimulasiKredit.KategoriSimulasiKredit.FragmentSimulasiProperty;
+import com.application.kreditimpian.SimulasiKredit.KategoriSimulasiKredit.FragmentSimulasiTravel;
+import com.application.kreditimpian.SimulasiKredit.KategoriSimulasiKredit.FragmentSimulasiUMKM;
 import com.application.kreditimpian.R;
 
 

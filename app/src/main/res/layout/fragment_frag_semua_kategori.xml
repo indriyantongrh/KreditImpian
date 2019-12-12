@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:paddingTop="165dp"
     android:paddingBottom="5dp"
-    tools:context=".FragSemuaKategori.FragSemuaKategori">
+    tools:context=".Marketplace.FragSemuaKategori.FragSemuaKategori">
 
     <LinearLayout
         android:layout_width="match_parent"

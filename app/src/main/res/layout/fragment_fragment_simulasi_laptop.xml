@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingTop="215dp"
     android:paddingBottom="55dp"
-    tools:context=".KategoriSimulasiKredit.FragmentSimulasiLaptop">
+    tools:context=".SimulasiKredit.KategoriSimulasiKredit.FragmentSimulasiLaptop">
 
 
     <androidx.core.widget.NestedScrollView

@@ -110,5 +110,7 @@ dependencies {
     implementation 'com.jakewharton:butterknife:10.2.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
 
+    //JWT
+    implementation 'io.jsonwebtoken:jjwt-jackson:0.10.7'
     //implementation 'com.cossacklabs.com:themis:+' // better to check which version is current latest and link to it
 }

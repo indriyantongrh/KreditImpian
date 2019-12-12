@@ -1,6 +1,5 @@
 package com.application.kreditimpian.Marketplace;
 
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -16,21 +15,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.application.kreditimpian.FragKategoriCorporate.KategoriCorporate;
-import com.application.kreditimpian.FragKategoriElektronik.KategoriElektronik;
-import com.application.kreditimpian.FragKategoriFashion.KategoriFashion;
-import com.application.kreditimpian.FragKategoriForniture.KategoriForniture;
-import com.application.kreditimpian.FragKategoriHaji.KategoriHaji;
-import com.application.kreditimpian.FragKategoriHobi.KategoriHobi;
-import com.application.kreditimpian.FragKategoriKomputer.KategoriKomputer;
-import com.application.kreditimpian.FragKategoriMultiproduct.KategoriMultiproduct;
-import com.application.kreditimpian.FragKategoriOtomotif.KategoriOtomotif;
-import com.application.kreditimpian.FragKategoriPendanaan.KategoriPendanaan;
-import com.application.kreditimpian.FragKategoriProperty.KategoriProperty;
-import com.application.kreditimpian.FragKategoriTravel.KategoriTravel;
-import com.application.kreditimpian.FragKategoriUmkm.KategoriUmkm;
-import com.application.kreditimpian.FragKategorihandphone.KategoriHandphone;
-import com.application.kreditimpian.FragSemuaKategori.FragSemuaKategori;
+import com.application.kreditimpian.Marketplace.FragKategoriCorporate.KategoriCorporate;
+import com.application.kreditimpian.Marketplace.FragKategoriElektronik.KategoriElektronik;
+import com.application.kreditimpian.Marketplace.FragKategoriFashion.KategoriFashion;
+import com.application.kreditimpian.Marketplace.FragKategoriForniture.KategoriForniture;
+import com.application.kreditimpian.Marketplace.FragKategoriHaji.KategoriHaji;
+import com.application.kreditimpian.Marketplace.FragKategoriHobi.KategoriHobi;
+import com.application.kreditimpian.Marketplace.FragKategoriKomputer.KategoriKomputer;
+import com.application.kreditimpian.Marketplace.FragKategoriMultiproduct.KategoriMultiproduct;
+import com.application.kreditimpian.Marketplace.FragKategoriOtomotif.KategoriOtomotif;
+import com.application.kreditimpian.Marketplace.FragKategoriPendanaan.KategoriPendanaan;
+import com.application.kreditimpian.Marketplace.FragKategoriProperty.KategoriProperty;
+import com.application.kreditimpian.Marketplace.FragKategoriTravel.KategoriTravel;
+import com.application.kreditimpian.Marketplace.FragKategoriUmkm.KategoriUmkm;
+import com.application.kreditimpian.Marketplace.FragKategorihandphone.KategoriHandphone;
+import com.application.kreditimpian.Marketplace.FragSemuaKategori.FragSemuaKategori;
 import com.application.kreditimpian.R;
 
 

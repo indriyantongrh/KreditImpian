@@ -283,16 +283,16 @@ public class LoginUser extends AppCompatActivity {
 
 
                         // Jika login berhasil
-                        String id = response.body().getResult();
-                        String email = response.body().getResult();
-                        String username = response.body().getResult();
-                        String msisdn = response.body().getResult();
+                        String id = response.body().getResult().toString();
+                        String email = response.body().getResult().toString();
+                        String username = response.body().getResult().toString();
+                        String msisdn = response.body().getResult().toString();
                         sharedPrefManager.saveSPString(SharedPrefManager.SP_ID, id);
                         sharedPrefManager.saveSPString(SharedPrefManager.SP_EMAIL, email);
                         sharedPrefManager.saveSPString(SharedPrefManager.SP_USERNAME, username);
                         sharedPrefManager.saveSPString(SharedPrefManager.SP_MSISDN, msisdn);
 
-                        Toast.makeText(getApplicationContext(), "Berhasil Login" +id, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Berhasil Login" +email, Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(LoginUser.this, MenuUtama.class);
                         sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, true);
                         startActivity(intent);

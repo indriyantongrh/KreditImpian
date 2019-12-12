@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="165dp"
-    tools:context=".FragKategoriElektronik.KategoriElektronik">
+    tools:context=".Marketplace.FragKategoriElektronik.KategoriElektronik">
 
     <LinearLayout
         android:layout_width="match_parent"

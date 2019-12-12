@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:paddingTop="215dp"
     android:paddingBottom="55dp"
-    tools:context=".FragKategoriKomputer.KategoriKomputer">
+    tools:context=".Marketplace.FragKategoriKomputer.KategoriKomputer">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
