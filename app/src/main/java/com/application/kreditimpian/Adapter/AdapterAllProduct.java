@@ -20,6 +20,8 @@ import com.application.kreditimpian.Model.ModelAllProduct.ResultItem;
 import com.application.kreditimpian.R;
 import com.bumptech.glide.Glide;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.util.List;
 import java.util.Locale;
@@ -35,6 +37,9 @@ public class AdapterAllProduct extends RecyclerView.Adapter<AdapterAllProduct.Al
    List<ResultItem> resultItemList;
   //// List<Metadata> metadataList;
    Context mContext;
+    DecimalFormat kursindonesia;
+    Double rupiah,rupiahspinner;
+    DecimalFormatSymbols formatRp;
 
     public AdapterAllProduct(Context context, List<ResultItem> resulList){
         this.mContext = context;
@@ -56,11 +61,19 @@ public class AdapterAllProduct extends RecyclerView.Adapter<AdapterAllProduct.Al
         holder.txt_id_currency.setText(resultItem.getIdCurrency());
         holder.txt_id_product_category.setText(resultItem.getIdCurrency());
         holder.txt_name_product.setText(resultItem.getName());
-        holder.txt_price_capital.setText(resultItem.getPriceCapital());
-//        Locale localeID = new Locale("in", "ID");
-//        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
-//        holder.txt_price_capital.setText(formatRupiah.format(resultItem.getPriceCapital()));
-        holder.txt_price_sale.setText(resultItem.getPriceSale());
+//        holder.txt_price_capital.setText(resultItem.getPriceCapital());
+//        holder.txt_price_sale.setText(resultItem.getPriceSale());
+
+        ///convert String to Rupiah Curerncy
+        Locale localeID = new Locale("in", "ID");
+        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+        int Price_Capital = (Integer.parseInt(resultItem.getPriceCapital()));
+        int Price_Sale = (Integer.parseInt(resultItem.getPriceSale()));
+
+        holder.txt_price_capital.setText(formatRupiah.format(Price_Capital));
+        holder.txt_price_sale.setText(formatRupiah.format(Price_Sale));
+
+
         holder.txt_description.setText(resultItem.getDescription());
         holder.txt_sku.setText(resultItem.getSku());
         holder.txt_stock.setText(resultItem.getStock());
@@ -99,7 +112,9 @@ public class AdapterAllProduct extends RecyclerView.Adapter<AdapterAllProduct.Al
             @Override
             public void onClick(View v) {
 
+
                 Intent detailproduct = new Intent(v.getContext(), DetailProduct.class);
+
                 detailproduct.putExtra("id", id);
                 detailproduct.putExtra("id_product_category", id_product_category);
                 detailproduct.putExtra("id_currency", id_currency);
