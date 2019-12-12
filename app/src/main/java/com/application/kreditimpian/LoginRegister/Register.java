@@ -135,8 +135,8 @@ public class Register extends AppCompatActivity {
               //  String message = response.body().getMessage();
                 pDialog.dismiss();
                 if (response.isSuccessful()) {
-                    Toast.makeText(Register.this, "Registrasi berhasil, silahkan login.", Toast.LENGTH_SHORT).show();
-                   ///Toast.makeText(Register.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    ///Toast.makeText(Register.this, "Registrasi berhasil, silahkan login.", Toast.LENGTH_SHORT).show();
+                   Toast.makeText(Register.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         finish();
                 } else {
                     Toast.makeText(Register.this, "Periksa kembali data Anda!.", Toast.LENGTH_SHORT).show();
