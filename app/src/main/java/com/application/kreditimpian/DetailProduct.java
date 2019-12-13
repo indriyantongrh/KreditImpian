@@ -53,9 +53,19 @@ public class DetailProduct extends AppCompatActivity {
     TextView txt_weight_value;
 //    @BindView(R.id.txt_weight)
 //    TextView txt_weight;
+//    @BindView(R.id.txt_name_merchant)
+//    TextView txt_name_merchant;
+//    @BindView(R.id.txt_location_merchant)
+//    TextView txt_location_merchant;
+//    @BindView(R.id.imagemerchant)
+//    ImageView imagemerchant;
+//    @BindView(R.id.txt_image_merchant)
+//    TextView txt_image_merchant;
 
 
-    String id, id_product_category,id_currency,name,price_capital, price_sale,description , condition,stock, image, weight_value,weight;
+
+    String id, id_product_category,id_currency,name,price_capital, price_sale,description , condition,stock, image, weight_value,
+            weight, nameMerchant;
     ///Integer image;
 
 
@@ -82,6 +92,7 @@ public class DetailProduct extends AppCompatActivity {
         image = getIntent().getStringExtra("image");
         weight_value = getIntent().getStringExtra("weight_value");
         weight = getIntent().getStringExtra("weight");
+        ///nameMerchant = getIntent().getStringExtra("name");
 
 
 
@@ -103,6 +114,7 @@ public class DetailProduct extends AppCompatActivity {
                 .into(imageView);
 //
         txt_weight_value.setText(weight_value+weight);
+        ///txt_name_merchant.setText(nameMerchant);
 
 
     }

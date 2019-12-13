@@ -53,6 +53,18 @@ public interface BaseApiService {
     @GET("products?id_product_category=5")
     Call<AllProductResponse> getResultFashion();
 
+    //getAllProductHobi
+    @GET("products?id_product_category=6")
+    Call<AllProductResponse> getResultHobi();
+
+    //getAllProductHobi
+    @GET("products?id_product_category=7")
+    Call<AllProductResponse> getResultProperty();
+
+    //getAllProductGadget
+    @GET("products?id_product_category=")
+    Call<AllProductResponse> getResultPropert();
+
 
 //
 //    @GET("dosen/{namadosen}")
