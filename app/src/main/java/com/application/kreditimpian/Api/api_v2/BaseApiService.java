@@ -34,13 +34,9 @@ public interface BaseApiService {
     @GET("products")
     Call<ResponseProduct> getResult();
 
-    //getAllProductGadget
-    @GET("products?id_product_category=1")
-    Call<AllProductResponse> getResultGadget();
-
-    //getAllProductElektronik
+    //getAllProductFashion
     @GET("products?id_product_category=2")
-    Call<AllProductResponse> getResultElektronik();
+    Call<AllProductResponse> getResultFashion();
 
     //getAllProductForniture
     @GET("products?id_product_category=3")
@@ -50,21 +46,35 @@ public interface BaseApiService {
     @GET("products?id_product_category=4")
     Call<AllProductResponse> getResultOtomotif();
 
-    //getAllProductFashion
+    //getAllProductMultiproduct
     @GET("products?id_product_category=5")
-    Call<AllProductResponse> getResultFashion();
+    Call<AllProductResponse> getResultMultiproduct();
 
-    //getAllProductHobi
-    @GET("products?id_product_category=6")
-    Call<AllProductResponse> getResultHobi();
-
-    //getAllProductHobi
-    @GET("products?id_product_category=7")
-    Call<AllProductResponse> getResultProperty();
+    //getAllProductKomputer
+    @GET("products?id_product_category=11")
+    Call<AllProductResponse> getResultKonputer();
 
     //getAllProductGadget
-    @GET("products?id_product_category=")
-    Call<AllProductResponse> getResultPropert();
+    @GET("products?id_product_category=12")
+    Call<AllProductResponse> getResultGadget();
+
+    //getAllProductElektronik
+    @GET("products?id_product_category=15")
+    Call<AllProductResponse> getResultElektronik();
+
+    //getAllProductHobi
+    @GET("products?id_product_category=16")
+    Call<AllProductResponse> getResultHobi();
+
+    //getAllProductCoorporate
+    @GET("products?id_product_category=17")
+    Call<AllProductResponse> getResultCoorporate();
+
+    //getAllProductHobi
+    @GET("products?id_product_category=18")
+    Call<AllProductResponse> getResultProperty();
+
+
 
 
 //
