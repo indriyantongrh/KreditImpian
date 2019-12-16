@@ -2,13 +2,20 @@ package com.application.kreditimpian;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.application.kreditimpian.Model.ModelProduct.ResultItem;
 import com.bumptech.glide.Glide;
+
+import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -53,22 +60,22 @@ public class DetailProduct extends AppCompatActivity {
     TextView txt_weight_value;
 //    @BindView(R.id.txt_weight)
 //    TextView txt_weight;
-//    @BindView(R.id.txt_name_merchant)
-//    TextView txt_name_merchant;
-//    @BindView(R.id.txt_location_merchant)
-//    TextView txt_location_merchant;
+    @BindView(R.id.txt_name_merchant)
+    TextView txt_name_merchant;
+    @BindView(R.id.txt_location_merchant)
+    TextView txt_location_merchant;
 //    @BindView(R.id.imagemerchant)
 //    ImageView imagemerchant;
 //    @BindView(R.id.txt_image_merchant)
 //    TextView txt_image_merchant;
 
-
-
-    String id, id_product_category,id_currency,name,price_capital, price_sale,description , condition,stock, image, weight_value,
-            weight, nameMerchant;
+    String id, id_product_category,id_currency,nameProduct,price_capital, price_sale,description , condition,stock, imageProduct, weight_value,
+            weight, nameMerchant, city, imageMerchant;
     ///Integer image;
 
-
+    //List<ResultItem> resultItemList = new ArrayList<ResultItem>();
+    List<ResultItem> resultItemList;
+    private ArrayList<ResultItem> mArrayListResult;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,26 +87,38 @@ public class DetailProduct extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
+        final ResultItem resultItem = new ResultItem();
+
+        ///convert String to Rupiah Curerncy
+        Locale localeID = new Locale("in", "ID");
+        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+
+
+
         id = getIntent().getStringExtra("id");
         id_product_category = getIntent().getStringExtra("id_product_category");
         id_currency = getIntent().getStringExtra("id_currency");
-        name = getIntent().getStringExtra("name");
+        nameProduct = getIntent().getStringExtra("name");
         price_capital = getIntent().getStringExtra("price_capital");
         price_sale = getIntent().getStringExtra("price_sale");
         description = getIntent().getStringExtra("description");
         condition = getIntent().getStringExtra("condition");
         stock = getIntent().getStringExtra("stock");
-        image = getIntent().getStringExtra("image");
+        imageProduct = getIntent().getStringExtra("image");
         weight_value = getIntent().getStringExtra("weight_value");
         weight = getIntent().getStringExtra("weight");
         ///nameMerchant = getIntent().getStringExtra("name");
-
+        city = getIntent().getStringExtra("city");
+//        ///imageMerchant = getIntent().getStringExtra("image");
+//
+//
+//
 
 
         txt_id.setText(id);
-        txt_id_product_category.setText(id_product_category);
-        txt_id_currency.setText(id_currency);
-        txt_name_product.setText(name);
+        txt_id_product_category.setText(id_currency);
+        txt_id_currency.setText(id_product_category);
+        txt_name_product.setText(nameProduct);
         txt_price_capital.setText(price_capital);
         txt_price_sale.setText(price_sale);
         txt_description.loadDataWithBaseURL(null, String.valueOf(Html.fromHtml(getIntent().getStringExtra("description"))), "text/html", "utf-8", null);
@@ -108,13 +127,21 @@ public class DetailProduct extends AppCompatActivity {
         ///image.setImageResource(imageproduct);
 
         Glide.with(DetailProduct.this)
-                .load(image)
+                .load(imageProduct)
                 .placeholder(R.drawable.no_image)
                 .error(R.drawable.no_image)
                 .into(imageView);
-//
+
         txt_weight_value.setText(weight_value+weight);
         ///txt_name_merchant.setText(nameMerchant);
+        txt_location_merchant.setText(city);
+///        txt_image_merchant.setText(imageMerchant);
+//        Glide.with(DetailProduct.this)
+//                .load(imageMerchant)
+//                .placeholder(R.drawable.store)
+//                .error(R.drawable.store)
+//                .into(imagemerchant);
+
 
 
     }

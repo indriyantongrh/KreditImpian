@@ -17,10 +17,13 @@ import android.widget.Toast;
 
 import com.application.kreditimpian.Adapter.AdapterAllProduct;
 
+import com.application.kreditimpian.Adapter.AdapterProduct;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
-import com.application.kreditimpian.Model.ModelAllProduct.AllProductResponse;
-import com.application.kreditimpian.Model.ModelAllProduct.ResultItem;
+//import com.application.kreditimpian.Model.ModelAllProduct.AllProductResponse;
+//import com.application.kreditimpian.Model.ModelAllProduct.ResultItem;
+import com.application.kreditimpian.Model.ModelProduct.ResponseProduct;
+import com.application.kreditimpian.Model.ModelProduct.ResultItem;
 import com.application.kreditimpian.R;
 
 import java.util.ArrayList;
@@ -42,8 +45,11 @@ public class FragSemuaKategori extends Fragment {
     ProgressDialog progressBar;
 
     Context mContext;
+//    List<ResultItem> resultItemList = new ArrayList<>();
+//    AdapterAllProduct adapterAllProduct;
+
     List<ResultItem> resultItemList = new ArrayList<>();
-    AdapterAllProduct adapterAllProduct;
+    AdapterProduct adapterProduct;
     BaseApiService mApiService;
 
 
@@ -73,7 +79,7 @@ public class FragSemuaKategori extends Fragment {
         mContext = getActivity();
         mApiService = UtilsApi.getAPIService();
 
-        adapterAllProduct = new AdapterAllProduct(getActivity(), resultItemList);
+        adapterProduct = new AdapterProduct(getActivity(), resultItemList);
         //RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2, GridLayoutManager.VERTICAL, false);
         listAllProduct.setLayoutManager(mLayoutManager);
@@ -90,16 +96,16 @@ public class FragSemuaKategori extends Fragment {
     private void getResultList(){
         progressBar = ProgressDialog.show(getActivity(), null, "Harap Tunggu...", true, false);
 
-        mApiService.getResult().enqueue(new Callback<AllProductResponse>() {
+        mApiService.getResult().enqueue(new Callback<ResponseProduct>() {
             @Override
-            public void onResponse(Call<AllProductResponse> call, Response<AllProductResponse> response) {
+            public void onResponse(Call<ResponseProduct> call, Response<ResponseProduct> response) {
                 if (response.isSuccessful()){
                     swipeRefresh.setRefreshing(false);
                     progressBar.dismiss();
                     final List<ResultItem> Allproduct = response.body().getResult();
 
-                    listAllProduct.setAdapter(new AdapterAllProduct(mContext, Allproduct));
-                    adapterAllProduct.notifyDataSetChanged();
+                    listAllProduct.setAdapter(new AdapterProduct(mContext, Allproduct));
+                    adapterProduct.notifyDataSetChanged();
                 } else {
                     progressBar.dismiss();
                     Toast.makeText(mContext, "Gagal Refresh", Toast.LENGTH_SHORT).show();
@@ -107,7 +113,7 @@ public class FragSemuaKategori extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<AllProductResponse> call, Throwable t) {
+            public void onFailure(Call<ResponseProduct> call, Throwable t) {
                 progressBar.dismiss();
                 Toast.makeText(mContext, "Koneksi Internet Bermasalah", Toast.LENGTH_SHORT).show();
             }

@@ -7,62 +7,52 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.application.kreditimpian.DetailProduct;
-import com.application.kreditimpian.Model.ModelAllProduct.Metadata;
-import com.application.kreditimpian.Model.ModelAllProduct.ResultItem;
+import com.application.kreditimpian.Model.ModelProduct.ResultItem;
 import com.application.kreditimpian.R;
 import com.bumptech.glide.Glide;
 
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.util.List;
 import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
-import static android.media.CamcorderProfile.get;
+/**
+ * Created by indriyanto Nugroho on 13 Des 2019.
+ */
+public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ProductHolder> {
 
-public class AdapterAllProduct extends RecyclerView.Adapter<AdapterAllProduct.AllproductHolder> {
+    List<ResultItem> resultItemList;
+    Context mContext;
 
-   List<ResultItem> resultItemList;
-  //// List<Metadata> metadataList;
-   Context mContext;
-    DecimalFormat kursindonesia;
-    Double rupiah,rupiahspinner;
-    DecimalFormatSymbols formatRp;
-
-    public AdapterAllProduct(Context context, List<ResultItem> resulList){
+    public AdapterProduct(Context context, List<ResultItem> resultList){
         this.mContext = context;
-        resultItemList = resulList;
+        resultItemList = resultList;
+
     }
 
     @NonNull
     @Override
-    public AllproductHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_product, parent,false);
-        return new AllproductHolder(itemView);
+    public ProductHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_product, parent,false);
+        return new ProductHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AllproductHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ProductHolder holder, int position) {
         final ResultItem resultItem = resultItemList.get(position);
-        ///final Metadata metadataItem = metadataList.get(position);
+
         holder.txt_id.setText(resultItem.getId());
         holder.txt_id_currency.setText(resultItem.getIdCurrency());
         holder.txt_id_product_category.setText(resultItem.getIdCurrency());
         holder.txt_name_product.setText(resultItem.getName());
-//        holder.txt_price_capital.setText(resultItem.getPriceCapital());
-//        holder.txt_price_sale.setText(resultItem.getPriceSale());
 
         ///convert String to Rupiah Curerncy
         Locale localeID = new Locale("in", "ID");
@@ -94,22 +84,31 @@ public class AdapterAllProduct extends RecyclerView.Adapter<AdapterAllProduct.Al
 
         holder.txt_weight_value.setText(resultItem.getMetadata().getWeightValue());
         holder.txt_weight.setText(resultItem.getMetadata().getWeight());
-        ///holder.txt_name_merchant.setText(resultItem.getMerchant().getMetadata().get);
-
+        holder.txt_name_merchant.setText(resultItem.getMerchant().getName());
+        holder.txt_location_merchant.setText(resultItem.getMerchant().getCity());
+//        holder.txt_image_merchant.setText(resultItem.getMerchant().getImage());
+//        Glide.with(mContext)
+//                .load(resultItem.getMerchant().getImage())
+//                .placeholder(R.drawable.store)
+//                .error(R.drawable.store)
+//                .into(holder.imagemerchant);
 
         final String id = resultItem.getId();
         final String id_currency = resultItem.getIdCurrency();
         final String id_product_category = resultItem.getIdProductCategory();
-        final String name = resultItem.getName();
+        final String nameProduct = resultItem.getName();
         final String description = resultItem.getDescription();
         final String stock = resultItem.getStock();
         final String price_capital = resultItem.getPriceCapital();
         final String price_sale = resultItem.getPriceSale();
         final String condition = resultItem.getCondition();
-        final String image = resultItem.getImage();
+        final String imageProduct = resultItem.getImage();
         final String weight_value = resultItem.getMetadata().getWeightValue();
         final String weight = resultItem.getMetadata().getWeight();
-        ///final String nameMerchant = resultItem.getMerchant().getName();
+        final String nameMerchant = resultItem.getMerchant().getName();
+        final String city = resultItem.getMerchant().getCity();
+
+        final String imageMerchant = resultItem.getMerchant().getImage();
 
         holder.btnclick.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,16 +120,18 @@ public class AdapterAllProduct extends RecyclerView.Adapter<AdapterAllProduct.Al
                 detailproduct.putExtra("id", id);
                 detailproduct.putExtra("id_product_category", id_product_category);
                 detailproduct.putExtra("id_currency", id_currency);
-                detailproduct.putExtra("name", name);
+                detailproduct.putExtra("name", resultItem.getName());
                 detailproduct.putExtra("price_capital", price_capital);
                 detailproduct.putExtra("price_sale", price_sale);
                 detailproduct.putExtra("description", description);
                 detailproduct.putExtra("stock", stock);
                 detailproduct.putExtra("condition", condition);
-                detailproduct.putExtra("image", image);
+                detailproduct.putExtra("image", imageProduct);
                 detailproduct.putExtra("weight_value", weight_value);
                 detailproduct.putExtra("weight", weight);
-                ////detailproduct.putExtra("name", nameMerchant);
+                ///detailproduct.putExtra("name", nameMerchant);
+                detailproduct.putExtra("city", city);
+               /// detailproduct.putExtra("image", imageMerchant);
                 v.getContext().startActivity(detailproduct);
             }
         });
@@ -143,7 +144,7 @@ public class AdapterAllProduct extends RecyclerView.Adapter<AdapterAllProduct.Al
         return resultItemList.size();
     }
 
-    public class AllproductHolder extends RecyclerView.ViewHolder {
+    public class ProductHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.btnclick)
         CardView btnclick;
@@ -185,63 +186,21 @@ public class AdapterAllProduct extends RecyclerView.Adapter<AdapterAllProduct.Al
         TextView txt_weight_value;
         @BindView(R.id.txt_weight)
         TextView txt_weight;
-//        @BindView(R.id.txt_name_merchant)
-//        TextView txt_name_merchant;
-//        @BindView(R.id.txt_location_merchant)
-//        TextView txt_location_merchant;
-//        @BindView(R.id.imagemerchant)
-//        ImageView imagemerchant;
-//        @BindView(R.id.txt_image_merchant)
-//        TextView txt_image_merchant;
+        @BindView(R.id.txt_name_merchant)
+        TextView txt_name_merchant;
+        @BindView(R.id.txt_location_merchant)
+        TextView txt_location_merchant;
+        @BindView(R.id.imagemerchant)
+        ImageView imagemerchant;
+        @BindView(R.id.txt_image_merchant)
+        TextView txt_image_merchant;
 
 
-
-        public AllproductHolder(@NonNull View itemView) {
+        public ProductHolder(@NonNull View itemView) {
             super(itemView);
 
             ButterKnife.bind(this, itemView);
 
-/*
-
-            //Inisialisasi onclick pada itemview dan memanggil interface yang sudah kita buat tadi.
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    *//*
-                    Memanggil interface dan juga methodnya. getAdapterPosition ini adalah method bawaan
-                    adapter untuk memanggil index posisi.
-                     *//*
-                    Intent intent = new Intent(v.getContext(), DetailProduct.class) ;
-
-                    intent.putExtra("id", txt_id.getText());
-                    intent.putExtra("id_product_category", txt_id_product_category.getText());
-                    intent.putExtra("id_currency", txt_id_currency.getText());
-                    intent.putExtra("name", txt_name_product.getText());
-                    intent.putExtra("price_capital", txt_price_capital.getText());
-                    intent.putExtra("price_sale", txt_price_sale.getText());
-                    intent.putExtra("description", txt_description.getText());
-//                    intent.putExtra("sku", txt_sku.getText());
-                    intent.putExtra("stock", txt_stock.getText());
-                    intent.putExtra("condition", txt_condition.getText());
-//                    intent.putExtra("deliverable", txt_deliverable.getText());
-//                    intent.putExtra("downloadable", txt_downloadable.getText());
-//                    intent.putExtra("target_gender", txt_target_gender.getText());
-//                    intent.putExtra("target_age", txt_target_age.getText());
-//                    intent.putExtra("visibility", txt_visibility.getText());
-//                    intent.putExtra("image", txt_image.getText());
-                    //intent.putExtra("id", image.getImageAlpha());
-
-                    v.getContext().startActivity(intent);
-
-                }
-            });*/
         }
-
-
-
-
     }
-
-
-
 }

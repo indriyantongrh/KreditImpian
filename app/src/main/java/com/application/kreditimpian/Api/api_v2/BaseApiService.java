@@ -3,6 +3,7 @@ package com.application.kreditimpian.Api.api_v2;
 
 
 import com.application.kreditimpian.Model.ModelAllProduct.AllProductResponse;
+import com.application.kreditimpian.Model.ModelProduct.ResponseProduct;
 import com.application.kreditimpian.ResponseMessage.ResponseLoginSucces;
 
 import okhttp3.ResponseBody;
@@ -31,7 +32,7 @@ public interface BaseApiService {
 //                                       @Field("password") String password);
     //getAllProduct
     @GET("products")
-    Call<AllProductResponse> getResult();
+    Call<ResponseProduct> getResult();
 
     //getAllProductGadget
     @GET("products?id_product_category=1")
