@@ -75,8 +75,6 @@ public interface BaseApiService {
     Call<AllProductResponse> getResultProperty();
 
 
-
-
 //
 //    @GET("dosen/{namadosen}")
 //    Call<ResponseDosenDetail> getDetailDosen(@Path("namadosen") String namadosen);
