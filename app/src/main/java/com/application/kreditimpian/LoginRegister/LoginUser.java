@@ -273,9 +273,6 @@ public class LoginUser extends AppCompatActivity {
                 if(response.isSuccessful()){
                     pDialog.dismiss();
 
-
-
-
                     if(response.body().getResult() != null){
                         //DecodeBase64JWTtoString
                         ///String jsonStr = new String(Base64.getDecoder().decode(response.body().getResult().split("\\.")[1].getBytes()), "UTF-8");
@@ -283,7 +280,7 @@ public class LoginUser extends AppCompatActivity {
                         ///id = new Gson().fromJson(jsonStr, JsonObject.class).get("id").getAsString();
 
                         try {
-                            JWTUtils.decodeJWT(response.body().toString());
+                            JWTUtils.decoded(response.body().getResult());
                         }
                         catch (Exception e)
                         {

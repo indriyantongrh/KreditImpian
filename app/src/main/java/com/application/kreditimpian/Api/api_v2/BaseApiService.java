@@ -4,6 +4,7 @@ package com.application.kreditimpian.Api.api_v2;
 
 import com.application.kreditimpian.Model.ModelAllProduct.AllProductResponse;
 import com.application.kreditimpian.Model.ModelProduct.ResponseProduct;
+import com.application.kreditimpian.Model.ModelUser.UserResponse;
 import com.application.kreditimpian.ResponseMessage.ResponseLoginSucces;
 
 import okhttp3.ResponseBody;
@@ -14,6 +15,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 
 public interface BaseApiService {
@@ -73,6 +75,10 @@ public interface BaseApiService {
     //getAllProductHobi
     @GET("products?id_product_category=18")
     Call<AllProductResponse> getResultProperty();
+
+    //getUserMember
+    @GET("members/{id}")
+    Call<UserResponse> getUsermember(@Path("id") String id);
 
 
 //

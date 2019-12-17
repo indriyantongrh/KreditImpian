@@ -1,17 +1,23 @@
 package com.application.kreditimpian;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Html;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.application.kreditimpian.Marketplace.FragSemuaKategori.Constans;
+import com.application.kreditimpian.Model.ModelProduct.ImagesItem;
 import com.application.kreditimpian.Model.ModelProduct.ResultItem;
 import com.bumptech.glide.Glide;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +25,7 @@ import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import me.relex.circleindicator.CircleIndicator;
 
 public class DetailProduct extends AppCompatActivity {
 
@@ -76,6 +83,13 @@ public class DetailProduct extends AppCompatActivity {
     //List<ResultItem> resultItemList = new ArrayList<ResultItem>();
     List<ResultItem> resultItemList;
     private ArrayList<ResultItem> mArrayListResult;
+    List<ImagesItem> imageItemList;
+
+    DecimalFormat kursindonesia;
+    Double rupiah,rupiahspinner;
+    DecimalFormatSymbols formatRp;
+    Double pricerCapital;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,38 +103,62 @@ public class DetailProduct extends AppCompatActivity {
 
         final ResultItem resultItem = new ResultItem();
 
-        ///convert String to Rupiah Curerncy
-        Locale localeID = new Locale("in", "ID");
-        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
 
 
 
-        id = getIntent().getStringExtra("id");
-        id_product_category = getIntent().getStringExtra("id_product_category");
-        id_currency = getIntent().getStringExtra("id_currency");
-        nameProduct = getIntent().getStringExtra("name");
-        price_capital = getIntent().getStringExtra("price_capital");
-        price_sale = getIntent().getStringExtra("price_sale");
-        description = getIntent().getStringExtra("description");
-        condition = getIntent().getStringExtra("condition");
-        stock = getIntent().getStringExtra("stock");
-        imageProduct = getIntent().getStringExtra("image");
-        weight_value = getIntent().getStringExtra("weight_value");
-        weight = getIntent().getStringExtra("weight");
-        ///nameMerchant = getIntent().getStringExtra("name");
-        city = getIntent().getStringExtra("city");
+
+//        id = getIntent().getStringExtra("id");
+//        id_product_category = getIntent().getStringExtra("id_product_category");
+//        id_currency = getIntent().getStringExtra("id_currency");
+//        nameProduct = getIntent().getStringExtra("name");
+//        price_capital = getIntent().getStringExtra("price_capital");
+//        price_sale = getIntent().getStringExtra("price_sale");
+//        description = getIntent().getStringExtra("description");
+//        condition = getIntent().getStringExtra("condition");
+//        stock = getIntent().getStringExtra("stock");
+//        imageProduct = getIntent().getStringExtra("image");
+//        weight_value = getIntent().getStringExtra("weight_value");
+//        weight = getIntent().getStringExtra("weight");
+//        nameMerchant = getIntent().getStringExtra("name");
+//        city = getIntent().getStringExtra("city");
 //        ///imageMerchant = getIntent().getStringExtra("image");
 //
 //
 //
 
 
+        Intent intent = getIntent();
+        id = intent.getStringExtra(Constans.KEY_ID);
+        id_currency = intent.getStringExtra(Constans.KEY_ID_CURRENCY);
+        id_product_category = intent.getStringExtra(Constans.KEY_ID_PRODUCT_CATEGORY);
+        nameProduct = intent.getStringExtra(Constans.KEY_NAME_PRODUCT);
+
+        ///convert String to Rupiah Curerncy
+        Locale localeID = new Locale("in", "ID");
+        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+        int price_capital = (Integer.parseInt(intent.getStringExtra(Constans.KEY_PRICE_CAPITAL)));
+        int price_sale = (Integer.parseInt(intent.getStringExtra(Constans.KEY_PRICE_SALE)));
+
+        //price_capital = intent.getStringExtra(Constans.KEY_PRICE_CAPITAL);
+        ///price_sale = intent.getStringExtra(Constans.KEY_PRICE_SALE);
+        description = intent.getStringExtra(Constans.KEY_DESCRIPTIOM);
+        condition = intent.getStringExtra(Constans.KEY_CONDITION);
+        stock = intent.getStringExtra(Constans.KEY_STOCK);
+        imageProduct = intent.getStringExtra(Constans.KEY_IMAGE);
+        weight_value = intent.getStringExtra(Constans.KEY_WEIGHT_VALUE);
+        weight = intent.getStringExtra(Constans.KEY_WEIGHT);
+       // nameMerchant = intent.getStringExtra(Constans.KEY_NAME_MERCHNAT);
+        ///city = intent.getStringExtra(Constans.KEY_CITY_MERCHANT);
+
+
+
+
         txt_id.setText(id);
         txt_id_product_category.setText(id_currency);
         txt_id_currency.setText(id_product_category);
         txt_name_product.setText(nameProduct);
-        txt_price_capital.setText(price_capital);
-        txt_price_sale.setText(price_sale);
+        txt_price_capital.setText(formatRupiah.format(price_capital));
+        txt_price_sale.setText(formatRupiah.format(price_sale));
         txt_description.loadDataWithBaseURL(null, String.valueOf(Html.fromHtml(getIntent().getStringExtra("description"))), "text/html", "utf-8", null);
         txt_condition.setText(condition);
         txt_stock.setText(stock);
@@ -133,8 +171,8 @@ public class DetailProduct extends AppCompatActivity {
                 .into(imageView);
 
         txt_weight_value.setText(weight_value+weight);
-        ///txt_name_merchant.setText(nameMerchant);
-        txt_location_merchant.setText(city);
+        //txt_name_merchant.setText(nameMerchant);
+        //txt_location_merchant.setText(city);
 ///        txt_image_merchant.setText(imageMerchant);
 //        Glide.with(DetailProduct.this)
 //                .load(imageMerchant)
@@ -145,6 +183,8 @@ public class DetailProduct extends AppCompatActivity {
 
 
     }
+
+
 
 
     private void setActionBarTitle(String title) {

@@ -2,6 +2,7 @@ package com.application.kreditimpian.Marketplace.FragSemuaKategori;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -22,6 +23,7 @@ import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
 //import com.application.kreditimpian.Model.ModelAllProduct.AllProductResponse;
 //import com.application.kreditimpian.Model.ModelAllProduct.ResultItem;
+import com.application.kreditimpian.DetailProduct;
 import com.application.kreditimpian.Model.ModelProduct.ResponseProduct;
 import com.application.kreditimpian.Model.ModelProduct.ResultItem;
 import com.application.kreditimpian.R;
@@ -61,10 +63,10 @@ public class FragSemuaKategori extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_frag_semua_kategori, container, false);
 
         swipeRefresh = rootView.findViewById(R.id.swipeRefresh);
-        swipeRefresh.setColorScheme(android.R.color.holo_blue_bright,
-                android.R.color.holo_green_light,
+        swipeRefresh.setColorScheme(android.R.color.holo_orange_dark,
                 android.R.color.holo_orange_light,
-                android.R.color.holo_red_light);
+                android.R.color.holo_orange_dark,
+                android.R.color.holo_orange_light);
 
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -106,6 +108,9 @@ public class FragSemuaKategori extends Fragment {
 
                     listAllProduct.setAdapter(new AdapterProduct(mContext, Allproduct));
                     adapterProduct.notifyDataSetChanged();
+
+                    initDataIntent(Allproduct);
+
                 } else {
                     progressBar.dismiss();
                     Toast.makeText(mContext, "Gagal Refresh", Toast.LENGTH_SHORT).show();
@@ -118,6 +123,48 @@ public class FragSemuaKategori extends Fragment {
                 Toast.makeText(mContext, "Koneksi Internet Bermasalah", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+
+    private void initDataIntent(final List<ResultItem> detaiList){
+        listAllProduct.addOnItemTouchListener(
+                new RecyclerItemClickListener(mContext, new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+
+                         String id = detaiList.get(position).getId();
+                         String id_currency = detaiList.get(position).getIdCurrency();
+                         String id_product_category = detaiList.get(position).getIdProductCategory();
+                         String nameProduct = detaiList.get(position).getName();
+                         String description = detaiList.get(position).getDescription();
+                         String stock = detaiList.get(position).getStock();
+                         String price_capital = detaiList.get(position).getPriceCapital();
+                         String price_sale = detaiList.get(position).getPriceSale();
+                         String condition = detaiList.get(position).getCondition();
+                         String imageProduct = detaiList.get(position).getImage();
+                         String weight_value = detaiList.get(position).getMetadata().getWeightValue();
+                         String weight = detaiList.get(position).getMetadata().getWeight();
+                         //String nameMerchant = detaiList.get(position).getMerchant().getName();
+                         //String city = detaiList.get(position).getMerchant().getCity();
+
+
+                        Intent detailproduct = new Intent(mContext, DetailProduct.class);
+                        detailproduct.putExtra(Constans.KEY_ID, id);
+                        detailproduct.putExtra(Constans.KEY_ID_PRODUCT_CATEGORY, id_product_category);
+                        detailproduct.putExtra(Constans.KEY_ID_CURRENCY, id_currency);
+                        detailproduct.putExtra(Constans.KEY_NAME_PRODUCT, nameProduct);
+                        detailproduct.putExtra(Constans.KEY_PRICE_CAPITAL, price_capital);
+                        detailproduct.putExtra(Constans.KEY_PRICE_SALE, price_sale);
+                        detailproduct.putExtra(Constans.KEY_DESCRIPTIOM, description);
+                        detailproduct.putExtra(Constans.KEY_STOCK, stock);
+                        detailproduct.putExtra(Constans.KEY_CONDITION, condition);
+                        detailproduct.putExtra(Constans.KEY_IMAGE, imageProduct);
+                        detailproduct.putExtra(Constans.KEY_WEIGHT_VALUE, weight_value);
+                        detailproduct.putExtra(Constans.KEY_WEIGHT, weight);
+                        //detailproduct.putExtra(Constans.KEY_NAME_MERCHNAT, nameMerchant);
+                        ///detailproduct.putExtra(Constans.KEY_CITY_MERCHANT, city);
+                        startActivity(detailproduct);
+                    }
+                }));
     }
 
 //    private void initViews(){

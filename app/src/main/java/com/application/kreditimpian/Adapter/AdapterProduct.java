@@ -13,6 +13,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.application.kreditimpian.DetailProduct;
+import com.application.kreditimpian.Model.ModelProduct.ImagesItem;
 import com.application.kreditimpian.Model.ModelProduct.ResultItem;
 import com.application.kreditimpian.R;
 import com.bumptech.glide.Glide;
@@ -30,6 +31,7 @@ import butterknife.ButterKnife;
 public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ProductHolder> {
 
     List<ResultItem> resultItemList;
+    List<ImagesItem> imageItemList;
     Context mContext;
 
     public AdapterProduct(Context context, List<ResultItem> resultList){
@@ -48,6 +50,7 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ProductH
     @Override
     public void onBindViewHolder(@NonNull ProductHolder holder, int position) {
         final ResultItem resultItem = resultItemList.get(position);
+       /// final ImagesItem imageItem = imageItemList.get(position);
 
         holder.txt_id.setText(resultItem.getId());
         holder.txt_id_currency.setText(resultItem.getIdCurrency());
@@ -75,6 +78,10 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ProductH
         holder.txt_target_age.setText(resultItem.getTargetAge());
         holder.txt_visibility.setText(resultItem.getVisibility());
         holder.txt_image.setText(resultItem.getImage());
+//        holder.txt_image1.setText(imageItem.getImage());
+//        holder.txt_image2.setText(imageItem.getImage());
+//        holder.txt_image3.setText(imageItem.getImage());
+//        holder.txt_image4.setText(imageItem.getImage());
         Glide.with(mContext)
                 .load(resultItem.getImage())
                 .placeholder(R.drawable.no_image)
@@ -84,8 +91,8 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ProductH
 
         holder.txt_weight_value.setText(resultItem.getMetadata().getWeightValue());
         holder.txt_weight.setText(resultItem.getMetadata().getWeight());
-        holder.txt_name_merchant.setText(resultItem.getMerchant().getName());
-        holder.txt_location_merchant.setText(resultItem.getMerchant().getCity());
+        //holder.txt_name_merchant.setText(resultItem.getMerchant().getName());
+        ///holder.txt_location_merchant.setText(resultItem.getMerchant().getCity());
 //        holder.txt_image_merchant.setText(resultItem.getMerchant().getImage());
 //        Glide.with(mContext)
 //                .load(resultItem.getMerchant().getImage())
@@ -93,48 +100,48 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ProductH
 //                .error(R.drawable.store)
 //                .into(holder.imagemerchant);
 
-        final String id = resultItem.getId();
-        final String id_currency = resultItem.getIdCurrency();
-        final String id_product_category = resultItem.getIdProductCategory();
-        final String nameProduct = resultItem.getName();
-        final String description = resultItem.getDescription();
-        final String stock = resultItem.getStock();
-        final String price_capital = resultItem.getPriceCapital();
-        final String price_sale = resultItem.getPriceSale();
-        final String condition = resultItem.getCondition();
-        final String imageProduct = resultItem.getImage();
-        final String weight_value = resultItem.getMetadata().getWeightValue();
-        final String weight = resultItem.getMetadata().getWeight();
-        final String nameMerchant = resultItem.getMerchant().getName();
-        final String city = resultItem.getMerchant().getCity();
-
-        final String imageMerchant = resultItem.getMerchant().getImage();
-
-        holder.btnclick.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-                Intent detailproduct = new Intent(v.getContext(), DetailProduct.class);
-
-                detailproduct.putExtra("id", id);
-                detailproduct.putExtra("id_product_category", id_product_category);
-                detailproduct.putExtra("id_currency", id_currency);
-                detailproduct.putExtra("name", resultItem.getName());
-                detailproduct.putExtra("price_capital", price_capital);
-                detailproduct.putExtra("price_sale", price_sale);
-                detailproduct.putExtra("description", description);
-                detailproduct.putExtra("stock", stock);
-                detailproduct.putExtra("condition", condition);
-                detailproduct.putExtra("image", imageProduct);
-                detailproduct.putExtra("weight_value", weight_value);
-                detailproduct.putExtra("weight", weight);
-                ///detailproduct.putExtra("name", nameMerchant);
-                detailproduct.putExtra("city", city);
-               /// detailproduct.putExtra("image", imageMerchant);
-                v.getContext().startActivity(detailproduct);
-            }
-        });
+//        final String id = resultItem.getId();
+//        final String id_currency = resultItem.getIdCurrency();
+//        final String id_product_category = resultItem.getIdProductCategory();
+//        final String nameProduct = resultItem.getName();
+//        final String description = resultItem.getDescription();
+//        final String stock = resultItem.getStock();
+//        final String price_capital = resultItem.getPriceCapital();
+//        final String price_sale = resultItem.getPriceSale();
+//        final String condition = resultItem.getCondition();
+//        final String imageProduct = resultItem.getImage();
+//        final String weight_value = resultItem.getMetadata().getWeightValue();
+//        final String weight = resultItem.getMetadata().getWeight();
+//        final String nameMerchant = resultItem.getMerchant().getName();
+//        final String city = resultItem.getMerchant().getCity();
+//
+//        final String imageMerchant = resultItem.getMerchant().getImage();
+//
+//        holder.btnclick.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//
+//                Intent detailproduct = new Intent(v.getContext(), DetailProduct.class);
+//
+//                detailproduct.putExtra("id", id);
+//                detailproduct.putExtra("id_product_category", id_product_category);
+//                detailproduct.putExtra("id_currency", id_currency);
+//                detailproduct.putExtra("name", resultItem.getName());
+//                detailproduct.putExtra("price_capital", price_capital);
+//                detailproduct.putExtra("price_sale", price_sale);
+//                detailproduct.putExtra("description", description);
+//                detailproduct.putExtra("stock", stock);
+//                detailproduct.putExtra("condition", condition);
+//                detailproduct.putExtra("image", imageProduct);
+//                detailproduct.putExtra("weight_value", weight_value);
+//                detailproduct.putExtra("weight", weight);
+//                ///detailproduct.putExtra("name", nameMerchant);
+//                detailproduct.putExtra("city", city);
+//               /// detailproduct.putExtra("image", imageMerchant);
+//                v.getContext().startActivity(detailproduct);
+//            }
+//        });
 
 
     }
@@ -182,6 +189,14 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ProductH
         ImageView image;
         @BindView(R.id.txt_image)
         TextView txt_image;
+        @BindView(R.id.txt_image1)
+        TextView txt_image1;
+        @BindView(R.id.txt_image2)
+        TextView txt_image2;
+        @BindView(R.id.txt_image3)
+        TextView txt_image3;
+        @BindView(R.id.txt_image4)
+        TextView txt_image4;
         @BindView(R.id.txt_weight_value)
         TextView txt_weight_value;
         @BindView(R.id.txt_weight)

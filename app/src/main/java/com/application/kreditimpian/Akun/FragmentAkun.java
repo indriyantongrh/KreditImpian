@@ -1,6 +1,7 @@
 package com.application.kreditimpian.Akun;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,12 +21,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.application.kreditimpian.Adapter.AdapterProduct;
 import com.application.kreditimpian.Api.SharedPrefManager;
+import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Favorite.Favorite;
 import com.application.kreditimpian.GantidanRisetPassword.GantiPassword;
 import com.application.kreditimpian.HistoryPesanan.HistoryPesanan;
 import com.application.kreditimpian.KonfirmasiPembayaran.KonfirmasiPembayaran;
 import com.application.kreditimpian.LoginRegister.LoginUser;
+import com.application.kreditimpian.Model.ModelProduct.ResponseProduct;
+import com.application.kreditimpian.Model.ModelUser.ResultItem;
+import com.application.kreditimpian.Model.ModelUser.UserResponse;
 import com.application.kreditimpian.R;
 import com.application.kreditimpian.StatusPesanan.StatusPesanan;
 import com.bumptech.glide.Glide;
@@ -36,6 +43,16 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -61,8 +78,8 @@ public class FragmentAkun extends Fragment {
     String id, value_email, value_token, value_nomorhp, email, username;;
     public static final String my_shared_preferences = "my_shared_preferences";
     public static final String session_status = "session_status";
-
-
+    BaseApiService mApiService;
+    Context mContext;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -70,7 +87,7 @@ public class FragmentAkun extends Fragment {
         View view= inflater.inflate(R.layout.fragment_fragment_akun, container, false);
 
 
-
+        ///getResultUser();
         txt_nama_akun = view.findViewById(R.id.txt_nama_akun);
 
         image = view.findViewById(R.id.image);
@@ -279,4 +296,28 @@ public class FragmentAkun extends Fragment {
         mGoogleApiClient.connect();
         super.onStart();
     }
+
+//    private void getResultUser(String id) {
+//        ///progressBar = ProgressDialog.show(getActivity(), null, "Harap Tunggu...", true, false);
+//
+//        mApiService.getUsermember(id).enqueue(new Callback<UserResponse>() {
+//            @Override
+//            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+//                if (response.isSuccessful()) {
+//                    if (response.body().) {
+//                        Toast.makeText(mContext, "Behasil NOl", Toast.LENGTH_SHORT).show();
+//                    } else {
+//                        txt_nama_akun.setText(response.body().getResult());
+//                    }
+//                } else {
+//                    Toast.makeText(mContext, "Gagal mengambil data detail", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<UserResponse> call, Throwable t) {
+//                Toast.makeText(mContext, "Koneksi internet bermasalah", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//    }
 }
