@@ -39,9 +39,9 @@ public class MenuUtama extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_utama);
-        sharedpreferences = getApplication().getSharedPreferences(LoginUser.my_shared_preferences, Context.MODE_PRIVATE);
-        id = sharedpreferences.getString("id", "0");
-        Toast.makeText(getApplication(), "ini id ke-"+ id, Toast.LENGTH_SHORT).show();
+//        sharedpreferences = getApplication().getSharedPreferences(LoginUser.my_shared_preferences, Context.MODE_PRIVATE);
+//        id = sharedpreferences.getString("id", "0");
+//        Toast.makeText(getApplication(), "ini id ke-"+ id, Toast.LENGTH_SHORT).show();
 
 
         sharedPrefManager = new SharedPrefManager(this);

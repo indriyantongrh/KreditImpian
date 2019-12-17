@@ -113,7 +113,7 @@ public class FragmentBeranda extends Fragment {
 
         sharedPrefManager = new SharedPrefManager(getActivity());
 
-        Toast.makeText(getActivity(), "Identitas mu "+ sharedPrefManager.getSPID(), Toast.LENGTH_SHORT).show();
+       /// Toast.makeText(getActivity(), "Identitas mu "+ sharedPrefManager.getSPID(), Toast.LENGTH_SHORT).show();
 
 /*        Result result = SharedPrefManager.getInstance(getActivity()).getResult();
 

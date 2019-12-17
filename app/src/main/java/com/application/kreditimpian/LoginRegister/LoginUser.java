@@ -22,6 +22,7 @@ import com.application.kreditimpian.Api.RequestInterface;
 import com.application.kreditimpian.Api.SessionManager;
 import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.BuildConfig;
+import com.application.kreditimpian.DecodeUtils.JWTUtils;
 import com.application.kreditimpian.MenuUtama.MenuUtama;
 import com.application.kreditimpian.R;
 import com.application.kreditimpian.ResponseMessage.ResponseLoginSucces;
@@ -273,26 +274,36 @@ public class LoginUser extends AppCompatActivity {
                     pDialog.dismiss();
 
 
+
+
                     if(response.body().getResult() != null){
                         //DecodeBase64JWTtoString
                         ///String jsonStr = new String(Base64.getDecoder().decode(response.body().getResult().split("\\.")[1].getBytes()), "UTF-8");
-
 //                        // Gson
                         ///id = new Gson().fromJson(jsonStr, JsonObject.class).get("id").getAsString();
 
+                        try {
+                            JWTUtils.decodeJWT(response.body().toString());
+                        }
+                        catch (Exception e)
+                        {
+
+                        }
 
 
                         // Jika login berhasil
-                        String id = response.body().getResult().toString();
-                        String email = response.body().getResult().toString();
-                        String username = response.body().getResult().toString();
-                        String msisdn = response.body().getResult().toString();
+                        String id = response.body().getResult();
+                        String email = response.body().getResult();
+                        String username = response.body().getResult();
+                        String msisdn = response.body().getResult();
                         sharedPrefManager.saveSPString(SharedPrefManager.SP_ID, id);
                         sharedPrefManager.saveSPString(SharedPrefManager.SP_EMAIL, email);
                         sharedPrefManager.saveSPString(SharedPrefManager.SP_USERNAME, username);
                         sharedPrefManager.saveSPString(SharedPrefManager.SP_MSISDN, msisdn);
 
-                        Toast.makeText(getApplicationContext(), "Berhasil Login" +email, Toast.LENGTH_SHORT).show();
+
+
+                        Toast.makeText(getApplicationContext(), "Berhasil Login" +id, Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(LoginUser.this, MenuUtama.class);
                         sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, true);
                         startActivity(intent);

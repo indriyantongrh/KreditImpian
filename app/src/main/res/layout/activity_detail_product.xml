@@ -223,9 +223,21 @@
                     android:textColor="#636363"
                     android:textStyle="bold" />
 
+                <TextView
+                    android:id="@+id/text_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_below="@+id/text_stock"
+                    android:fontFamily="@font/jipitha"
+                    android:text="Deskripsi Produk"
+                    android:textSize="28sp"
+                    android:textColor="#636363"
+                    android:textStyle="bold" />
+
                 <WebView
                     android:id="@+id/txt_description"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/text_description"
                     android:layout_marginStart="6dp"
@@ -233,6 +245,8 @@
                     android:text="Isi Deskripsi Produk"
                     android:textSize="26sp"
                     tools:ignore="WebViewLayout" />
+
+
 
             </RelativeLayout>
 
