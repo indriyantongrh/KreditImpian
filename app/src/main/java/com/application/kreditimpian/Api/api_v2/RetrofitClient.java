@@ -1,5 +1,7 @@
 package com.application.kreditimpian.Api.api_v2;
 
+import com.application.kreditimpian.Api.network.interceptor.TokenAuthenticator;
+
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -13,7 +15,10 @@ public class RetrofitClient {
     public static Retrofit getClient(String baseUrl){
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
+        OkHttpClient client = new OkHttpClient.Builder()
+                                    .addInterceptor(interceptor)
+                                    ///.addInterceptor(new TokenAuthenticator())
+                                    .build();
 
         if (retrofit == null){
             retrofit = new Retrofit.Builder()

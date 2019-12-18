@@ -21,9 +21,13 @@ import com.application.kreditimpian.Api.PreferenceHelper;
 import com.application.kreditimpian.Api.RequestInterface;
 import com.application.kreditimpian.Api.SessionManager;
 import com.application.kreditimpian.Api.SharedPrefManager;
+import com.application.kreditimpian.Api.api_v2.BaseApiService;
+import com.application.kreditimpian.Api.api_v2.UtilsApi;
 import com.application.kreditimpian.BuildConfig;
 import com.application.kreditimpian.DecodeUtils.JWTUtils;
+import com.application.kreditimpian.MainActivity;
 import com.application.kreditimpian.MenuUtama.MenuUtama;
+import com.application.kreditimpian.Model.UserModel.User;
 import com.application.kreditimpian.R;
 import com.application.kreditimpian.ResponseMessage.ResponseLoginSucces;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -65,7 +69,7 @@ public class LoginUser extends AppCompatActivity {
     ProgressDialog pDialog;
 
     Context mContext;
-
+    ProgressDialog progressDialog;
 
     private PreferenceHelper preferenceHelper;
 
@@ -91,7 +95,7 @@ public class LoginUser extends AppCompatActivity {
     GoogleSignInClient mGoogleSignInClient;
     int RC_SIGN_IN=0;
     SharedPrefManager sharedPrefManager;
-
+    BaseApiService mApiService;
     SessionManager sessionManager;
 
     @Override
@@ -101,6 +105,7 @@ public class LoginUser extends AppCompatActivity {
         txtusername =findViewById(R.id.txtusername);
         txtpassword =findViewById(R.id.txtpassword);
 
+        mApiService = UtilsApi.getAPIService();
         sharedPrefManager = new SharedPrefManager(this);
 
         if (sharedPrefManager.getSPSudahLogin()){
@@ -163,8 +168,8 @@ public class LoginUser extends AppCompatActivity {
                     txtpassword.setError("Password harap diisi");
 
                 else
-
-                    LoginUser();
+                    //UserLogin();
+                   LoginUser();
                 //Intent intent = new Intent(LoginUser.this, MenuUtama.class);
                 ///startActivity(intent);
 
@@ -242,6 +247,38 @@ public class LoginUser extends AppCompatActivity {
     }
 
 
+    public void UserLogin(){
+
+        progressDialog.show();
+        Call<ResponseLoginSucces> postLogin = mApiService.loginRequest(txtusername.getText().toString(),
+                txtpassword.getText().toString());
+        postLogin.enqueue(new Callback<ResponseLoginSucces>() {
+            @Override
+            public void onResponse(Call<ResponseLoginSucces> call, Response<ResponseLoginSucces> response) {
+                progressDialog.dismiss();
+
+                if (response.body().getResult() != null) {
+                    User user = response.body().getUser();
+                    sharedPrefManager.saveSPString(SharedPrefManager.SP_USERNAME, user.getUsername());
+                    sharedPrefManager.saveSPString(SharedPrefManager.SP_TOKEN, "Bearer " +response.body().getResult());
+                    sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, true);
+                    startActivity(new Intent(mContext, MenuUtama.class)
+                            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+                    finish();
+                } else {
+                    Toast.makeText(mContext, "Emai/Password salah", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseLoginSucces> call, Throwable t) {
+                progressDialog.dismiss();
+            }
+        });
+
+    }
+
 
 
     public void LoginUser() {
@@ -269,62 +306,39 @@ public class LoginUser extends AppCompatActivity {
         call.enqueue(new Callback<ResponseLoginSucces>() {
             @Override
             public void onResponse(Call<ResponseLoginSucces> call, Response<ResponseLoginSucces> response) {
-
                 if(response.isSuccessful()){
                     pDialog.dismiss();
 
                     if(response.body().getResult() != null){
-                        //DecodeBase64JWTtoString
-                        ///String jsonStr = new String(Base64.getDecoder().decode(response.body().getResult().split("\\.")[1].getBytes()), "UTF-8");
-//                        // Gson
-                        ///id = new Gson().fromJson(jsonStr, JsonObject.class).get("id").getAsString();
-
-                        try {
-                            JWTUtils.decoded(response.body().getResult());
-                        }
-                        catch (Exception e)
-                        {
-
-                        }
+//                        try {
+//                            JWTUtils.decoded(response.body().getResult());
+//                        }
+//                        catch (Exception e)
+//                        {
+//
+//                        }
 
 
                         // Jika login berhasil
-                        String id = response.body().getResult();
-                        String email = response.body().getResult();
-                        String username = response.body().getResult();
-                        String msisdn = response.body().getResult();
-                        sharedPrefManager.saveSPString(SharedPrefManager.SP_ID, id);
-                        sharedPrefManager.saveSPString(SharedPrefManager.SP_EMAIL, email);
-                        sharedPrefManager.saveSPString(SharedPrefManager.SP_USERNAME, username);
-                        sharedPrefManager.saveSPString(SharedPrefManager.SP_MSISDN, msisdn);
+                        String result = response.body().getResult();
+                        sharedPrefManager.saveSPString(SharedPrefManager.SP_TOKEN, result);
+//                        String id = response.body().getResult();
+//                        String email = response.body().getResult();
+//                        String username = response.body().getResult();
+//                        String msisdn = response.body().getResult();
+//                        sharedPrefManager.saveSPString(SharedPrefManager.SP_ID, id);
+//                        sharedPrefManager.saveSPString(SharedPrefManager.SP_EMAIL, email);
+//                        sharedPrefManager.saveSPString(SharedPrefManager.SP_USERNAME, username);
+//                        sharedPrefManager.saveSPString(SharedPrefManager.SP_MSISDN, msisdn);
 
-
-
-                        Toast.makeText(getApplicationContext(), "Berhasil Login" +id, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Berhasil Login", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(LoginUser.this, MenuUtama.class);
                         sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, true);
                         startActivity(intent);
                         finish();
 
 
-                        // menyimpan login ke session
-//                        sharedpreferences = getSharedPreferences(my_shared_preferences, Context.MODE_PRIVATE);
-//                        SharedPreferences.Editor editor = sharedpreferences.edit();
-//                        editor.putBoolean(session_status, true);
-//                        editor.putString(TAG_ID, id);
-//                        editor.putString("email", email);
-//                        editor.putString("username", username);
-//                        editor.apply();
-//                        editor.commit();
-//
-//                        //login start main activity
-//                        Intent intent = new Intent(LoginUser.this, MenuUtama.class);
-//                        Toast.makeText(LoginUser.this, "Selamat datang "+username, Toast.LENGTH_SHORT).show();
-//                        intent.putExtra(TAG_ID, id);
-//                        intent.putExtra("email", email);
-//                        intent.putExtra("username", username);
-//                        startActivity(intent);
-//                        finish();
+
 
                     } else {
                         Toast.makeText(LoginUser.this, "The username or password is incorrect", Toast.LENGTH_SHORT).show();

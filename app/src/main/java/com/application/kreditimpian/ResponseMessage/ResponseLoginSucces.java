@@ -1,6 +1,8 @@
 package com.application.kreditimpian.ResponseMessage;
 
 
+import com.application.kreditimpian.Model.UserModel.User;
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 
@@ -23,6 +25,18 @@ public class ResponseLoginSucces{
 
 	@SerializedName("id")
 	private String id;
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	@Expose
+	@SerializedName("user")
+	User user;
 
 	public String getId() {
 		return id;

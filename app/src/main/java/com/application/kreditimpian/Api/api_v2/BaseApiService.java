@@ -23,15 +23,9 @@ public interface BaseApiService {
     // Fungsi ini untuk memanggil
     @FormUrlEncoded
     @POST("system/users/authenticate")
-    Call<ResponseLoginSucces> loginRequest(@Field("username") String email,
+    Call<ResponseLoginSucces> loginRequest(@Field("username") String username,
                                            @Field("password") String password);
-//
-//    // Fungsi ini untuk memanggil API
-//    @FormUrlEncoded
-//    @POST("register.php")
-//    Call<ResponseBody> registerRequest(@Field("nama") String nama,
-//                                       @Field("email") String email,
-//                                       @Field("password") String password);
+
     //getAllProduct
     @GET("products")
     Call<ResponseProduct> getResult();

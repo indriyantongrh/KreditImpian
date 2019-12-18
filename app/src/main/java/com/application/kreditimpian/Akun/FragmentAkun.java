@@ -96,7 +96,7 @@ public class FragmentAkun extends Fragment {
         ///String username = sharedpreferences.getString("username", "Data not Found");
 
         sharedPrefManager = new SharedPrefManager(getActivity());
-        String username = sharedPrefManager.getSpUsername();
+        String username = sharedPrefManager.getSPToken();
         txt_nama_akun.setText(username);
         //sharedpreferences = getActivity().getSharedPreferences(LoginUser.my_shared_preferences, Context.MODE_PRIVATE);
         //id = sharedpreferences.getString("id", "Not found");
