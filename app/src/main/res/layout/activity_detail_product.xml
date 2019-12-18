@@ -242,7 +242,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/text_description"
                     android:layout_marginStart="6dp"
-                    android:fontFamily="@font/jipitha"
+                    android:fontFamily="@font/sairaregular"
                     android:text="Isi Deskripsi Produk"
                     android:textSize="26sp"
                     tools:ignore="WebViewLayout" />

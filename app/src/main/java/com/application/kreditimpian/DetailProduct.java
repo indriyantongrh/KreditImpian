@@ -159,7 +159,8 @@ public class DetailProduct extends AppCompatActivity {
         txt_name_product.setText(nameProduct);
         txt_price_capital.setText(formatRupiah.format(price_capital));
         txt_price_sale.setText(formatRupiah.format(price_sale));
-        txt_description.loadDataWithBaseURL(null, String.valueOf(Html.fromHtml(getIntent().getStringExtra("description"))), "text/html", "utf-8", null);
+        ///txt_description.loadDataWithBaseURL(null, String.valueOf(Html.fromHtml(getIntent().getStringExtra("description"))), "text/html", "utf-8", null);
+        txt_description.loadDataWithBaseURL(null, description, "text/html", "utf-8", null);
         txt_condition.setText(condition);
         txt_stock.setText(stock);
         ///image.setImageResource(imageproduct);
