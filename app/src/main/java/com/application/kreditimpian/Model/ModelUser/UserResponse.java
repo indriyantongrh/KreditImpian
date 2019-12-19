@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 public class UserResponse{
 
 	@SerializedName("result")
-	private List<ResultItem> result;
+	private ResultItem result;
 
 	@SerializedName("reason")
 	private String reason;
@@ -22,11 +22,11 @@ public class UserResponse{
 	@SerializedName("status")
 	private int status;
 
-	public void setResult(List<ResultItem> result){
+	public void setResult(ResultItem result){
 		this.result = result;
 	}
 
-	public List<ResultItem> getResult(){
+	public ResultItem getResult(){
 		return result;
 	}
 

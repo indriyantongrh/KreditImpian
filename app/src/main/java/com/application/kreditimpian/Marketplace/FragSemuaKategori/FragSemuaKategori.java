@@ -14,6 +14,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.application.kreditimpian.Adapter.AdapterAllProduct;
@@ -27,6 +28,7 @@ import com.application.kreditimpian.DetailProduct;
 import com.application.kreditimpian.Model.ModelProduct.ResponseProduct;
 import com.application.kreditimpian.Model.ModelProduct.ResultItem;
 import com.application.kreditimpian.R;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +47,13 @@ public class FragSemuaKategori extends Fragment {
     @BindView(R.id.swipeRefresh)
     SwipeRefreshLayout swipeRefresh;
     ProgressDialog progressBar;
+    @BindView(R.id.empty)
+    ImageView empty;
+
+
+//    @BindView(R.id.shimmer_view_container)
+//    ShimmerFrameLayout shimmerFrameLayout;
+
 
     Context mContext;
 //    List<ResultItem> resultItemList = new ArrayList<>();
@@ -98,21 +107,28 @@ public class FragSemuaKategori extends Fragment {
     private void getResultList(){
         progressBar = ProgressDialog.show(getActivity(), null, "Harap Tunggu...", true, false);
 
+
         mApiService.getResult().enqueue(new Callback<ResponseProduct>() {
             @Override
             public void onResponse(Call<ResponseProduct> call, Response<ResponseProduct> response) {
                 if (response.isSuccessful()){
-                    swipeRefresh.setRefreshing(false);
-                    progressBar.dismiss();
-                    final List<ResultItem> Allproduct = response.body().getResult();
+                    ///progressBar.dismiss();
+                    if (response.body().getStatus()==200) {
+                        swipeRefresh.setRefreshing(false);
+                        progressBar.dismiss();
+                        final List<ResultItem> Allproduct = response.body().getResult();
 
-                    listAllProduct.setAdapter(new AdapterProduct(mContext, Allproduct));
-                    adapterProduct.notifyDataSetChanged();
-
-                    initDataIntent(Allproduct);
-
+                        listAllProduct.setAdapter(new AdapterProduct(mContext, Allproduct));
+                        adapterProduct.notifyDataSetChanged();
+                        empty.setVisibility(View.GONE);
+                        initDataIntent(Allproduct);
+                    }else {
+                        progressBar.dismiss();
+                        empty.setVisibility(View.VISIBLE);
+                    }
                 } else {
                     progressBar.dismiss();
+
                     Toast.makeText(mContext, "Gagal Refresh", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -166,51 +182,5 @@ public class FragSemuaKategori extends Fragment {
                     }
                 }));
     }
-
-//    private void initViews(){
-//
-//        ///list_lowonganpelamar.setAdapter(adapterRecyclerViewLowonganPelamar);
-//        listAllProduct.setHasFixedSize(true);
-//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
-//        listAllProduct.setLayoutManager(layoutManager);
-//
-//
-//    }
-//    private void loadJSON(){
-//        Retrofit retrofit = new Retrofit.Builder()
-//                .baseUrl(BASE_URL)
-//                .addConverterFactory(GsonConverterFactory.create())
-//                .client(new OkHttpClient().newBuilder()
-//                        .connectTimeout(30, TimeUnit.SECONDS)
-//                        .readTimeout(30, TimeUnit.SECONDS)
-//                        .writeTimeout(30, TimeUnit.SECONDS)
-//                        .build())
-//                .build();
-//        progressBar.setVisibility(android.view.View.VISIBLE);
-//        RequestInterface request = retrofit.create(RequestInterface.class);
-//        Call<JSONResponse> call = request.getResult();
-//        call.enqueue(new Callback<JSONResponse>() {
-//            @Override
-//            public void onResponse(Call<JSONResponse> call, Response<JSONResponse> response) {
-//                JSONResponse jsonResponse = response.body();
-//                progressBar.setVisibility(android.view.View.INVISIBLE);
-//                swipeRefresh.setRefreshing(false);
-//                mArrayList = new ArrayList<>(Arrays.asList(jsonResponse.getAllProductAdapter()));
-//                //mAdapter = new AdapterPencarianMenu(mArrayList);
-//
-//                allProductAdapter = new AllProductAdapter(getContext(),mArrayList);
-//                listAllProduct.setAdapter(allProductAdapter);
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<JSONResponse> call, Throwable t) {
-//                Log.d("Error",t.getMessage());
-//            }
-//        });
-//    }
-
-
-
 
 }

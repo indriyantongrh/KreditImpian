@@ -30,8 +30,9 @@ import com.application.kreditimpian.HistoryPesanan.HistoryPesanan;
 import com.application.kreditimpian.KonfirmasiPembayaran.KonfirmasiPembayaran;
 import com.application.kreditimpian.LoginRegister.LoginUser;
 import com.application.kreditimpian.Model.ModelProduct.ResponseProduct;
-import com.application.kreditimpian.Model.ModelUser.ResultItem;
+import com.application.kreditimpian.Model.ModelProduct.ResultItem;
 import com.application.kreditimpian.Model.ModelUser.UserResponse;
+import com.application.kreditimpian.Model.UserModel.User;
 import com.application.kreditimpian.R;
 import com.application.kreditimpian.StatusPesanan.StatusPesanan;
 import com.bumptech.glide.Glide;
@@ -87,7 +88,7 @@ public class FragmentAkun extends Fragment {
         View view= inflater.inflate(R.layout.fragment_fragment_akun, container, false);
 
 
-        ///getResultUser();
+
         txt_nama_akun = view.findViewById(R.id.txt_nama_akun);
 
         image = view.findViewById(R.id.image);
@@ -97,13 +98,10 @@ public class FragmentAkun extends Fragment {
 
         sharedPrefManager = new SharedPrefManager(getActivity());
         String username = sharedPrefManager.getSPToken();
-        txt_nama_akun.setText(username);
-        //sharedpreferences = getActivity().getSharedPreferences(LoginUser.my_shared_preferences, Context.MODE_PRIVATE);
-        //id = sharedpreferences.getString("id", "Not found");
-        ///username = sharedPrefManager.getSpUsername("username", "Not found");
-        ///email = sharedpreferences.getString("email", "Not found");
+        Toast.makeText(getActivity(), "Ini Token anda" +username, Toast.LENGTH_SHORT).show();
+//        txt_nama_akun.setText(username);
 
-
+        ///getUsername();
 
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
@@ -297,17 +295,55 @@ public class FragmentAkun extends Fragment {
         super.onStart();
     }
 
-//    private void getResultUser(String id) {
+
+    private void getUsername(){
+        mApiService.getUsermember(SharedPrefManager.SP_TOKEN).enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+
+                if (response.isSuccessful()){
+                    String username = response.body().getUsername();
+                    txt_nama_akun.setText(username);
+                } else {
+
+                    Toast.makeText(mContext, "Gagal Refresh", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                Toast.makeText(mContext, "Koneksi Internet Bermasalah", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+//    private void getResultUser() {
 //        ///progressBar = ProgressDialog.show(getActivity(), null, "Harap Tunggu...", true, false);
 //
-//        mApiService.getUsermember(id).enqueue(new Callback<UserResponse>() {
+//        Call<UserResponse> getUser = mApiService.getUsermember(sharedPrefManager.getSPToken());
+//        getUser.enqueue(new Callback<UserResponse>() {
+//            @Override
+//            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+//                if (response.body().isSuccess()) {
+//                    Toast.makeText(getActivity(), response.body().getReason(), Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<UserResponse> call, Throwable t) {
+//
+//            }
+//        });
+//
+//        mApiService.getUsermember(SharedPrefManager.SP_TOKEN).enqueue(new Callback<UserResponse>() {
 //            @Override
 //            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
 //                if (response.isSuccessful()) {
-//                    if (response.body().) {
+//                    if (response.body().getResult()) {
 //                        Toast.makeText(mContext, "Behasil NOl", Toast.LENGTH_SHORT).show();
 //                    } else {
-//                        txt_nama_akun.setText(response.body().getResult());
+//                        txt_nama_akun.setText(response.body().getResult().toString());
 //                    }
 //                } else {
 //                    Toast.makeText(mContext, "Gagal mengambil data detail", Toast.LENGTH_SHORT).show();
