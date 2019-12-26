@@ -2,10 +2,13 @@ package com.application.kreditimpian.Api.api_v2;
 
 
 
+import androidx.viewpager.widget.PagerAdapter;
+
 import com.application.kreditimpian.Model.ModelAllProduct.AllProductResponse;
 import com.application.kreditimpian.Model.ModelProduct.ResponseProduct;
-import com.application.kreditimpian.Model.ModelUser.ResultItem;
 import com.application.kreditimpian.Model.ModelUser.UserResponse;
+import com.application.kreditimpian.Model.ModelUserDetail.ResponseUserDetail;
+import com.application.kreditimpian.Model.ModelUserDetail.ResultItem;
 import com.application.kreditimpian.Model.UserModel.User;
 import com.application.kreditimpian.ResponseMessage.ResponseLoginSucces;
 
@@ -16,6 +19,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
@@ -74,8 +78,9 @@ public interface BaseApiService {
     Call<ResponseProduct> getResultProperty();
 
     //getUserMember
-    @GET("members/{id}")
-    Call<User> getUsermember(@Header("Authorization") String result);
+    @Headers({ "Content-Type: application/x-www-form-urlencoded"})
+    @GET("system/users")
+    Call<ResponseLoginSucces> getUsermember(@Header("Authorization") String result);
 
 
 

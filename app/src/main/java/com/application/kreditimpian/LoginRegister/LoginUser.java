@@ -69,7 +69,7 @@ public class LoginUser extends AppCompatActivity {
     ProgressDialog pDialog;
 
     Context mContext;
-    ProgressDialog progressDialog;
+    //ProgressDialog progressDialog;
 
     private PreferenceHelper preferenceHelper;
 
@@ -168,8 +168,8 @@ public class LoginUser extends AppCompatActivity {
                     txtpassword.setError("Password harap diisi");
 
                 else
-                    //UserLogin();
-                   LoginUser();
+                    UserLogin();
+                   ///LoginUser();
                 //Intent intent = new Intent(LoginUser.this, MenuUtama.class);
                 ///startActivity(intent);
 
@@ -249,31 +249,35 @@ public class LoginUser extends AppCompatActivity {
 
     public void UserLogin(){
 
-        progressDialog.show();
+        pDialog = new ProgressDialog(this);
+        pDialog.setCancelable(false);
+        pDialog.setMessage("Tunggu proses login ...");
+        pDialog.show();
+
         Call<ResponseLoginSucces> postLogin = mApiService.loginRequest(txtusername.getText().toString(),
                 txtpassword.getText().toString());
         postLogin.enqueue(new Callback<ResponseLoginSucces>() {
             @Override
             public void onResponse(Call<ResponseLoginSucces> call, Response<ResponseLoginSucces> response) {
-                progressDialog.dismiss();
+                pDialog.dismiss();
 
-                if (response.body().getResult() != null) {
-                    User user = response.body().getUser();
-                    sharedPrefManager.saveSPString(SharedPrefManager.SP_USERNAME, user.getUsername());
+                if (response.body().getStatus()==200) {
+                    //User user = response.body().getUser();
+                    ///sharedPrefManager.saveSPString(SharedPrefManager.SP_USERNAME, user.getUsername());
                     sharedPrefManager.saveSPString(SharedPrefManager.SP_TOKEN, "Bearer " +response.body().getResult());
                     sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, true);
-                    startActivity(new Intent(mContext, MenuUtama.class)
+                    startActivity(new Intent(LoginUser.this, MenuUtama.class)
                             .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
                     finish();
                 } else {
-                    Toast.makeText(mContext, "Emai/Password salah", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginUser.this, "Username dan Password anda tidak cocok", Toast.LENGTH_SHORT).show();
                 }
 
             }
 
             @Override
             public void onFailure(Call<ResponseLoginSucces> call, Throwable t) {
-                progressDialog.dismiss();
+                pDialog.dismiss();
             }
         });
 

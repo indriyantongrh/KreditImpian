@@ -30,12 +30,15 @@ import com.application.kreditimpian.HistoryPesanan.HistoryPesanan;
 import com.application.kreditimpian.KonfirmasiPembayaran.KonfirmasiPembayaran;
 import com.application.kreditimpian.LoginRegister.LoginUser;
 import com.application.kreditimpian.Model.ModelProduct.ResponseProduct;
-import com.application.kreditimpian.Model.ModelProduct.ResultItem;
 import com.application.kreditimpian.Model.ModelUser.UserResponse;
+import com.application.kreditimpian.Model.ModelUserDetail.ResponseUserDetail;
+import com.application.kreditimpian.Model.ModelUserDetail.ResultItem;
 import com.application.kreditimpian.Model.UserModel.User;
 import com.application.kreditimpian.R;
+import com.application.kreditimpian.ResponseMessage.ResponseLoginSucces;
 import com.application.kreditimpian.StatusPesanan.StatusPesanan;
 import com.bumptech.glide.Glide;
+import com.fasterxml.jackson.databind.ser.Serializers;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -87,14 +90,9 @@ public class FragmentAkun extends Fragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_fragment_akun, container, false);
 
-
-
         txt_nama_akun = view.findViewById(R.id.txt_nama_akun);
-
         image = view.findViewById(R.id.image);
-        ///sharedpreferences = getActivity().getSharedPreferences(LoginUser.my_shared_preferences, MODE_PRIVATE);
-        ///SharedPreferences preferences = this.getActivity().getSharedPreferences("my_shared_preferences", Context.MODE_PRIVATE);
-        ///String username = sharedpreferences.getString("username", "Data not Found");
+
 
         sharedPrefManager = new SharedPrefManager(getActivity());
         String username = sharedPrefManager.getSPToken();
@@ -207,30 +205,14 @@ public class FragmentAkun extends Fragment {
                 builder.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
-/*                        sharedpreferences = getActivity().getSharedPreferences(LoginUser.my_shared_preferences, MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedpreferences.edit();
-                        editor.putBoolean(LoginUser.session_status, false);
-                        editor.putString(TAG_ID, null);
-                        editor.putString(TAG_EMAIL, null);
-                        editor.clear();
-                        editor.commit();
-                        editor.apply();*/
+
 
                         sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, false);
                         startActivity(new Intent(getActivity(), LoginUser.class)
                                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
                         getActivity().finish();
 
-                       /* Intent intent = new Intent(getActivity(), LoginUser.class);
-                        startActivity(intent);
-                        getActivity().finish();*/
 
-                      /*  sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, false);
-                        startActivity(new Intent(getContext(), LoginUser.class)
-                                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
-                        getActivity();
-
-*/
                         dialog.dismiss();
                     }
 
@@ -297,22 +279,18 @@ public class FragmentAkun extends Fragment {
 
 
     private void getUsername(){
-        mApiService.getUsermember(SharedPrefManager.SP_TOKEN).enqueue(new Callback<User>() {
+        Call<ResponseLoginSucces> getUser = mApiService.getUsermember("Bearer "+sharedPrefManager.getSPToken());
+        getUser.enqueue(new Callback<ResponseLoginSucces>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-
-                if (response.isSuccessful()){
-                    String username = response.body().getUsername();
-                    txt_nama_akun.setText(username);
-                } else {
-
-                    Toast.makeText(mContext, "Gagal Refresh", Toast.LENGTH_SHORT).show();
+            public void onResponse(Call<ResponseLoginSucces> call, Response<ResponseLoginSucces> response) {
+                if (response.code() == 200) {
+                    Toast.makeText(getActivity(), response.body().getResultItem().getEmail(), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<User> call, Throwable t) {
-                Toast.makeText(mContext, "Koneksi Internet Bermasalah", Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<ResponseLoginSucces> call, Throwable t) {
+
             }
         });
 

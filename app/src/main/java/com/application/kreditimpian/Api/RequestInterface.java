@@ -33,7 +33,6 @@ public interface RequestInterface {
                                           @Field("phone") String phone,
                                           @Field("password") String password,
                                           @Field("password_confirm") String password_confirm);
-
     @FormUrlEncoded
     @POST("system/users/authenticate")
     Call<ResponseLoginSucces> login_member(@Field("username") String username,
