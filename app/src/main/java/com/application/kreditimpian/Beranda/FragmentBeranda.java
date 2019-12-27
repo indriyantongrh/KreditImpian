@@ -34,6 +34,7 @@ import com.application.kreditimpian.BuildConfig;
 import com.application.kreditimpian.ButtomSheetKategori.CustomBottomSheetDialogFragment;
 import com.application.kreditimpian.FormPengajuan.StepIsiCariProduct;
 import com.application.kreditimpian.FormPengajuan.StepUploadProduct;
+import com.application.kreditimpian.FormPengajuan.UpgradeImpian.UpgradeImpian;
 import com.application.kreditimpian.LoginRegister.LoginUser;
 import com.application.kreditimpian.MenuUtama.MenuUtama;
 import com.application.kreditimpian.Model.ModelMitra;
@@ -187,6 +188,19 @@ public class FragmentBeranda extends Fragment {
             }
         });
 
+        btnupgrade = rootView.findViewById(R.id.btnupgrade);
+        btnupgrade.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                ///   Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                //// startActivityForResult(intent, 0);
+
+                Intent intent = new Intent(getActivity(), UpgradeImpian.class);
+                getActivity().startActivity(intent);
+
+            }
+        });
 
         sliderView = (SliderView) rootView.findViewById(R.id.sliderView);
         mLinearLayout = (LinearLayout) rootView.findViewById(R.id.pagesContainer);

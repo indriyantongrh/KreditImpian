@@ -70,6 +70,10 @@
     <string-array name="kota">
         <item>Pilih Kota</item>
     </string-array>
+    <string-array name="tahunkendaraan">
+        <item>Pilih Tahun Kendaraan</item>
+    </string-array>
+
     <string-array name="kategori">
         <item>Pilih Kategori</item>
     </string-array>
@@ -90,6 +94,9 @@
         <item>40%</item>
         <item>45%</item>
     </string-array>
+    <string name="title_activity_upgrade_impian">Upgrade Impian</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
 
 
 </resources>
