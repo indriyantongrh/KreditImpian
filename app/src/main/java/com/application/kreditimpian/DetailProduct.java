@@ -147,7 +147,7 @@ public class DetailProduct extends AppCompatActivity {
         imageProduct = intent.getStringExtra(Constans.KEY_IMAGE);
         weight_value = intent.getStringExtra(Constans.KEY_WEIGHT_VALUE);
         weight = intent.getStringExtra(Constans.KEY_WEIGHT);
-       // nameMerchant = intent.getStringExtra(Constans.KEY_NAME_MERCHNAT);
+        nameMerchant = intent.getStringExtra(Constans.KEY_NAME_MERCHNAT);
         ///city = intent.getStringExtra(Constans.KEY_CITY_MERCHANT);
 
 

@@ -1,5 +1,7 @@
 package com.application.kreditimpian.Api.api_v2;
 
+import android.content.Context;
+
 import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.Api.network.interceptor.TokenAuthenticator;
 
@@ -31,6 +33,26 @@ public class RetrofitClient {
 //    }
 
 
+//    private static OkHttpClient client = new OkHttpClient();
+//    private static Retrofit retrofit = null;
+//
+//    public static Retrofit getClient(Context context, String baseUrl){
+//        TokenAuthenticator interceptor = new TokenAuthenticator(context);
+//        OkHttpClient client = new OkHttpClient.Builder()
+//                .addInterceptor(interceptor)
+//                .build();
+//
+//        if (retrofit == null){
+//            retrofit = new Retrofit.Builder()
+//                    .baseUrl(baseUrl)
+//                    .addConverterFactory(GsonConverterFactory.create())
+//                    .client(client)
+//                    .build();
+//        }
+//        return retrofit;
+//    }
+
+
 
     SharedPrefManager sharedPrefManager;
     private static Retrofit retrofit = null;
@@ -40,7 +62,7 @@ public class RetrofitClient {
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder()
                                     .addInterceptor(interceptor)
-                                    ///.addInterceptor(new TokenAuthenticator())
+                                    //.addInterceptor(new TokenAuthenticator(ontext))
                                     .build();
 
         if (retrofit == null){

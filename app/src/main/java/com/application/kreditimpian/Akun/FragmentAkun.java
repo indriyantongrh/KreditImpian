@@ -21,6 +21,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
 import com.application.kreditimpian.Adapter.AdapterProduct;
 import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
@@ -50,8 +52,12 @@ import com.google.android.gms.tasks.Task;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -96,10 +102,16 @@ public class FragmentAkun extends Fragment {
 
         sharedPrefManager = new SharedPrefManager(getActivity());
         String username = sharedPrefManager.getSPToken();
-        Toast.makeText(getActivity(), "Ini Token anda" +username, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(),username, Toast.LENGTH_SHORT).show();
 //        txt_nama_akun.setText(username);
 
-        ///getUsername();
+
+
+       /// getUsername();
+
+
+
+
 
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
@@ -251,7 +263,6 @@ public class FragmentAkun extends Fragment {
 
 
 
-
     private void signOut() {
         mGoogleSignInClient.signOut()
                 .addOnCompleteListener(getActivity(), new OnCompleteListener<Void>() {
@@ -283,7 +294,7 @@ public class FragmentAkun extends Fragment {
         getUser.enqueue(new Callback<ResponseLoginSucces>() {
             @Override
             public void onResponse(Call<ResponseLoginSucces> call, Response<ResponseLoginSucces> response) {
-                if (response.code() == 200) {
+                if (response != null) {
                     Toast.makeText(getActivity(), response.body().getResultItem().getEmail(), Toast.LENGTH_SHORT).show();
                 }
             }
@@ -295,6 +306,8 @@ public class FragmentAkun extends Fragment {
         });
 
     }
+
+
 
 //    private void getResultUser() {
 //        ///progressBar = ProgressDialog.show(getActivity(), null, "Harap Tunggu...", true, false);

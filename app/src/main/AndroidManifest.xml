@@ -32,7 +32,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".CartCheckout.Cart"></activity>
+        <activity android:name=".CartCheckout.Cart" />
         <activity android:name=".DetailProduct" />
         <activity android:name=".TransactionProcess.Cart" />
         <activity android:name=".LoginRegister.SmsOTPRegister" />

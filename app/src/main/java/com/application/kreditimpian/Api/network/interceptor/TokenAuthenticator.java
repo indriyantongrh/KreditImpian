@@ -1,5 +1,6 @@
 package com.application.kreditimpian.Api.network.interceptor;
 
+import android.content.Context;
 import android.content.Intent;
 
 
@@ -18,6 +19,9 @@ import okhttp3.Response;
 public class TokenAuthenticator implements Interceptor {
 
     SharedPrefManager sharedPrefManager;
+    public TokenAuthenticator(Context context){
+        sharedPrefManager=new SharedPrefManager(context);
+    }
 
 
     @Override

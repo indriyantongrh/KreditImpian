@@ -41,6 +41,13 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.internal.bind.JsonTreeWriter;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.protocol.HTTP;
+import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -48,6 +55,7 @@ import org.json.JSONObject;
 import java.util.Base64;
 import java.util.concurrent.TimeUnit;
 
+import io.jsonwebtoken.io.IOException;
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -282,6 +290,7 @@ public class LoginUser extends AppCompatActivity {
         });
 
     }
+
 
 
 

@@ -4,8 +4,9 @@ package com.application.kreditimpian.Api.api_v2;
 
 import androidx.viewpager.widget.PagerAdapter;
 
-import com.application.kreditimpian.Model.ModelAllProduct.AllProductResponse;
+
 import com.application.kreditimpian.Model.ModelProduct.ResponseProduct;
+import com.application.kreditimpian.Model.ModelProductNew.ProductResponse;
 import com.application.kreditimpian.Model.ModelUser.UserResponse;
 import com.application.kreditimpian.Model.ModelUserDetail.ResponseUserDetail;
 import com.application.kreditimpian.Model.ModelUserDetail.ResultItem;
@@ -35,7 +36,7 @@ public interface BaseApiService {
 
     //getAllProduct
     @GET("products")
-    Call<ResponseProduct> getResult();
+    Call<ResponseProduct> getResult(@Header("Authorization") String result);
 
     //getAllProductFashion
     @GET("products?id_product_category=2")
@@ -51,7 +52,7 @@ public interface BaseApiService {
 
     //getAllProductMultiproduct
     @GET("products?id_product_category=5")
-    Call<AllProductResponse> getResultMultiproduct();
+    Call<ResponseProduct> getResultMultiproduct();
 
     //getAllProductKomputer
     @GET("products?id_product_category=11")
@@ -71,7 +72,7 @@ public interface BaseApiService {
 
     //getAllProductCoorporate
     @GET("products?id_product_category=17")
-    Call<AllProductResponse> getResultCoorporate();
+    Call<ResponseProduct> getResultCoorporate();
 
     //getAllProductHobi
     @GET("products?id_product_category=18")

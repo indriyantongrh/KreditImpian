@@ -17,9 +17,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.application.kreditimpian.Adapter.AdapterAllProduct;
-
 import com.application.kreditimpian.Adapter.AdapterProduct;
+import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
 //import com.application.kreditimpian.Model.ModelAllProduct.AllProductResponse;
@@ -28,7 +27,6 @@ import com.application.kreditimpian.DetailProduct;
 import com.application.kreditimpian.Model.ModelProduct.ResponseProduct;
 import com.application.kreditimpian.Model.ModelProduct.ResultItem;
 import com.application.kreditimpian.R;
-import com.facebook.shimmer.ShimmerFrameLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,19 +49,15 @@ public class FragSemuaKategori extends Fragment {
     ImageView empty;
 
 
-//    @BindView(R.id.shimmer_view_container)
-//    ShimmerFrameLayout shimmerFrameLayout;
-
 
     Context mContext;
-//    List<ResultItem> resultItemList = new ArrayList<>();
-//    AdapterAllProduct adapterAllProduct;
+
 
     List<ResultItem> resultItemList = new ArrayList<>();
     AdapterProduct adapterProduct;
     BaseApiService mApiService;
 
-
+    SharedPrefManager sharedPrefManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -84,7 +78,7 @@ public class FragSemuaKategori extends Fragment {
                 swipeRefresh.setRefreshing(false);
             }
         });
-
+        sharedPrefManager = new SharedPrefManager(getActivity());
 
         ButterKnife.bind(this, rootView);
         mContext = getActivity();
@@ -108,7 +102,7 @@ public class FragSemuaKategori extends Fragment {
         progressBar = ProgressDialog.show(getActivity(), null, "Harap Tunggu...", true, false);
 
 
-        mApiService.getResult().enqueue(new Callback<ResponseProduct>() {
+        mApiService.getResult(sharedPrefManager.getSPToken()).enqueue(new Callback<ResponseProduct>() {
             @Override
             public void onResponse(Call<ResponseProduct> call, Response<ResponseProduct> response) {
                 if (response.isSuccessful()){
