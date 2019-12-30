@@ -18,14 +18,17 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.application.kreditimpian.Adapter.AdapterProduct;
+import com.application.kreditimpian.Adapter.AdapterProductNew;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
 
 import com.application.kreditimpian.DetailProduct;
 import com.application.kreditimpian.Marketplace.FragSemuaKategori.Constans;
 import com.application.kreditimpian.Marketplace.FragSemuaKategori.RecyclerItemClickListener;
-import com.application.kreditimpian.Model.ModelProduct.ResponseProduct;
-import com.application.kreditimpian.Model.ModelProduct.ResultItem;
+//import com.application.kreditimpian.Model.ModelProduct.ResponseProduct;
+//import com.application.kreditimpian.Model.ModelProduct.ResultItem;
+import com.application.kreditimpian.Model.ModelProductNew.ProductResponse;
+import com.application.kreditimpian.Model.ModelProductNew.ResultItem;
 import com.application.kreditimpian.R;
 
 import java.util.ArrayList;
@@ -50,7 +53,9 @@ public class KategoriHandphone extends Fragment {
 
     Context mContext;
     List<ResultItem> resultItemList = new ArrayList<>();
-    AdapterProduct adapterProduct;
+    AdapterProductNew adapterProductNew;
+//    List<ResultItem> resultItemList = new ArrayList<>();
+//    AdapterProduct adapterProduct;
     BaseApiService mApiService;
 
 
@@ -79,7 +84,7 @@ public class KategoriHandphone extends Fragment {
         mContext = getActivity();
         mApiService = UtilsApi.getAPIService();
 
-        adapterProduct = new AdapterProduct(getActivity(), resultItemList);
+        adapterProductNew = new AdapterProductNew(getActivity(), resultItemList);
         //RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2, GridLayoutManager.VERTICAL, false);
         listProductGadget.setLayoutManager(mLayoutManager);
@@ -94,9 +99,9 @@ public class KategoriHandphone extends Fragment {
     private void getResultList(){
         progressBar = ProgressDialog.show(getActivity(), null, "Harap Tunggu...", true, false);
 
-        mApiService.getResultGadget().enqueue(new Callback<ResponseProduct>() {
+        mApiService.getResultGadget().enqueue(new Callback<ProductResponse>() {
             @Override
-            public void onResponse(Call<ResponseProduct> call, Response<ResponseProduct> response) {
+            public void onResponse(Call<ProductResponse> call, Response<ProductResponse> response) {
                 if (response.isSuccessful()){
                     ///progressBar.dismiss();
                     if (response.body().getStatus()==200) {
@@ -104,8 +109,8 @@ public class KategoriHandphone extends Fragment {
                         progressBar.dismiss();;
                         final List<ResultItem> Allproduct = response.body().getResult();
 
-                        listProductGadget.setAdapter(new AdapterProduct(mContext, Allproduct));
-                        adapterProduct.notifyDataSetChanged();
+                        listProductGadget.setAdapter(new AdapterProductNew(mContext, Allproduct));
+                        adapterProductNew.notifyDataSetChanged();
                         empty.setVisibility(View.GONE);
                         initDataIntent(Allproduct);
                     }else {
@@ -120,7 +125,7 @@ public class KategoriHandphone extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<ResponseProduct> call, Throwable t) {
+            public void onFailure(Call<ProductResponse> call, Throwable t) {
                 progressBar.dismiss();
                 Toast.makeText(mContext, "Koneksi Internet Bermasalah", Toast.LENGTH_SHORT).show();
             }
@@ -133,8 +138,8 @@ public class KategoriHandphone extends Fragment {
                     @Override public void onItemClick(View view, int position) {
 
                         String id = detaiList.get(position).getId();
-                        String id_currency = detaiList.get(position).getIdCurrency();
-                        String id_product_category = detaiList.get(position).getIdProductCategory();
+                        String id_currency = detaiList.get(position).getCurrency().getId();
+                        String id_product_category = detaiList.get(position).getCategory().getId();
                         String nameProduct = detaiList.get(position).getName();
                         String description = detaiList.get(position).getDescription();
                         String stock = detaiList.get(position).getStock();
@@ -144,7 +149,7 @@ public class KategoriHandphone extends Fragment {
                         String imageProduct = detaiList.get(position).getImage();
                         String weight_value = detaiList.get(position).getMetadata().getWeightValue();
                         String weight = detaiList.get(position).getMetadata().getWeight();
-                        //String nameMerchant = detaiList.get(position).getMerchant().getName();
+                        String nameMerchant = detaiList.get(position).getMerchant().getName();
                         //String city = detaiList.get(position).getMerchant().getCity();
 
 
@@ -161,7 +166,7 @@ public class KategoriHandphone extends Fragment {
                         detailproduct.putExtra(Constans.KEY_IMAGE, imageProduct);
                         detailproduct.putExtra(Constans.KEY_WEIGHT_VALUE, weight_value);
                         detailproduct.putExtra(Constans.KEY_WEIGHT, weight);
-                        //detailproduct.putExtra(Constans.KEY_NAME_MERCHNAT, nameMerchant);
+                        detailproduct.putExtra(Constans.KEY_NAME_MERCHNAT, nameMerchant);
                         ///detailproduct.putExtra(Constans.KEY_CITY_MERCHANT, city);
                         startActivity(detailproduct);
                     }

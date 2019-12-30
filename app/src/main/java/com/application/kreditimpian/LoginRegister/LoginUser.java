@@ -30,6 +30,7 @@ import com.application.kreditimpian.MenuUtama.MenuUtama;
 import com.application.kreditimpian.Model.UserModel.User;
 import com.application.kreditimpian.R;
 import com.application.kreditimpian.ResponseMessage.ResponseLoginSucces;
+import com.auth0.android.jwt.JWT;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -55,6 +56,7 @@ import org.json.JSONObject;
 import java.util.Base64;
 import java.util.concurrent.TimeUnit;
 
+import io.jsonwebtoken.io.Decoder;
 import io.jsonwebtoken.io.IOException;
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
@@ -64,6 +66,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import static android.text.TextUtils.isEmpty;
+import static com.application.kreditimpian.Api.JWTParser.decoded;
+
 import java.io.UnsupportedEncodingException;
 import java.util.Base64;
 
@@ -105,6 +109,10 @@ public class LoginUser extends AppCompatActivity {
     SharedPrefManager sharedPrefManager;
     BaseApiService mApiService;
     SessionManager sessionManager;
+
+    private JWT jwt;
+    private String decoded;
+    private String result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -274,9 +282,23 @@ public class LoginUser extends AppCompatActivity {
                     ///sharedPrefManager.saveSPString(SharedPrefManager.SP_USERNAME, user.getUsername());
                     sharedPrefManager.saveSPString(SharedPrefManager.SP_TOKEN, "Bearer " +response.body().getResult());
                     sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, true);
+
+//                    result = response.body().getResult();
+//
+//                    try {
+//                        decoded = JWTParser.decoded(result);
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
+
+
                     startActivity(new Intent(LoginUser.this, MenuUtama.class)
                             .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
                     finish();
+
+
+
+
                 } else {
                     Toast.makeText(LoginUser.this, "Username dan Password anda tidak cocok", Toast.LENGTH_SHORT).show();
                 }

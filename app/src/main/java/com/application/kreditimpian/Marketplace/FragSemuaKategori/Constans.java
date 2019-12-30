@@ -8,7 +8,7 @@ public class Constans {
     public static final String KEY_ID = "id";
     public static final String KEY_ID_PRODUCT_CATEGORY = "id_product_category";
     public static final String KEY_ID_CURRENCY = "id_currency";
-    public static final String KEY_NAME_PRODUCT = "name";
+    public static final String KEY_NAME_PRODUCT = "name_product";
     public static final String KEY_PRICE_CAPITAL = "price_capital";
     public static final String KEY_PRICE_SALE = "price_sale";
     public static final String KEY_DESCRIPTIOM = "description";

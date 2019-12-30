@@ -36,19 +36,19 @@ public interface BaseApiService {
 
     //getAllProduct
     @GET("products")
-    Call<ResponseProduct> getResult(@Header("Authorization") String result);
+    Call<ProductResponse> getResult(@Header("Authorization") String result);
 
     //getAllProductFashion
     @GET("products?id_product_category=2")
-    Call<ResponseProduct> getResultFashion();
+    Call<ProductResponse> getResultFashion();
 
     //getAllProductForniture
     @GET("products?id_product_category=3")
-    Call<ResponseProduct> getResultForniture();
+    Call<ProductResponse> getResultForniture();
 
     //getAllProductOtomotif
     @GET("products?id_product_category=4")
-    Call<ResponseProduct> getResultOtomotif();
+    Call<ProductResponse> getResultOtomotif();
 
     //getAllProductMultiproduct
     @GET("products?id_product_category=5")
@@ -56,19 +56,19 @@ public interface BaseApiService {
 
     //getAllProductKomputer
     @GET("products?id_product_category=11")
-    Call<ResponseProduct> getResultKomputer();
+    Call<ProductResponse> getResultKomputer();
 
     //getAllProductGadget
     @GET("products?id_product_category=12")
-    Call<ResponseProduct> getResultGadget();
+    Call<ProductResponse> getResultGadget();
 
     //getAllProductElektronik
     @GET("products?id_product_category=15")
-    Call<ResponseProduct> getResultElektronik();
+    Call<ProductResponse> getResultElektronik();
 
     //getAllProductHobi
     @GET("products?id_product_category=16")
-    Call<ResponseProduct> getResultHobi();
+    Call<ProductResponse> getResultHobi();
 
     //getAllProductCoorporate
     @GET("products?id_product_category=17")
@@ -76,7 +76,7 @@ public interface BaseApiService {
 
     //getAllProductHobi
     @GET("products?id_product_category=18")
-    Call<ResponseProduct> getResultProperty();
+    Call<ProductResponse> getResultProperty();
 
     //getUserMember
     @Headers({ "Content-Type: application/x-www-form-urlencoded"})

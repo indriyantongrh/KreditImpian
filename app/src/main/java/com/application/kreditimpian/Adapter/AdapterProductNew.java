@@ -87,7 +87,7 @@ public class AdapterProductNew extends RecyclerView.Adapter<AdapterProductNew.Pr
         holder.txt_weight_value.setText(resultItem.getMetadata().getWeightValue());
         holder.txt_weight.setText(resultItem.getMetadata().getWeight());
         holder.txt_name_merchant.setText(resultItem.getMerchant().getName());
-        //holder.txt_location_merchant.setText(resultItem.getMerchant().);
+        holder.txt_location_merchant.setText(resultItem.getMerchant().getCity());
 
     }
 

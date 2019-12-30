@@ -13,7 +13,8 @@ import android.widget.TextView;
 
 import com.application.kreditimpian.Marketplace.FragSemuaKategori.Constans;
 import com.application.kreditimpian.Model.ModelProduct.ImagesItem;
-import com.application.kreditimpian.Model.ModelProduct.ResultItem;
+//import com.application.kreditimpian.Model.ModelProduct.ResultItem;
+import com.application.kreditimpian.Model.ModelProductNew.ResultItem;
 import com.bumptech.glide.Glide;
 
 import java.text.DecimalFormat;
@@ -81,8 +82,9 @@ public class DetailProduct extends AppCompatActivity {
     ///Integer image;
 
     //List<ResultItem> resultItemList = new ArrayList<ResultItem>();
+//    List<ResultItem> resultItemList;
     List<ResultItem> resultItemList;
-    private ArrayList<ResultItem> mArrayListResult;
+    //private ArrayList<ResultItem> mArrayListResult;
     List<ImagesItem> imageItemList;
 
     DecimalFormat kursindonesia;
@@ -127,6 +129,7 @@ public class DetailProduct extends AppCompatActivity {
 //
 
 
+
         Intent intent = getIntent();
         id = intent.getStringExtra(Constans.KEY_ID);
         id_currency = intent.getStringExtra(Constans.KEY_ID_CURRENCY);
@@ -148,7 +151,7 @@ public class DetailProduct extends AppCompatActivity {
         weight_value = intent.getStringExtra(Constans.KEY_WEIGHT_VALUE);
         weight = intent.getStringExtra(Constans.KEY_WEIGHT);
         nameMerchant = intent.getStringExtra(Constans.KEY_NAME_MERCHNAT);
-        ///city = intent.getStringExtra(Constans.KEY_CITY_MERCHANT);
+        city = intent.getStringExtra(Constans.KEY_CITY_MERCHANT);
 
 
 
@@ -172,8 +175,8 @@ public class DetailProduct extends AppCompatActivity {
                 .into(imageView);
 
         txt_weight_value.setText(weight_value+weight);
-        //txt_name_merchant.setText(nameMerchant);
-        //txt_location_merchant.setText(city);
+        txt_name_merchant.setText(nameMerchant);
+        txt_location_merchant.setText(city);
 ///        txt_image_merchant.setText(imageMerchant);
 //        Glide.with(DetailProduct.this)
 //                .load(imageMerchant)
