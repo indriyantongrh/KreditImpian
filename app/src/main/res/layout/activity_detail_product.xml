@@ -68,6 +68,7 @@
                     android:layout_marginStart="6dp"
                     android:fontFamily="@font/cosimabold"
                     android:text="Harga Asli"
+                    android:visibility="visible"
                     android:background="@drawable/strikethrough"
                     android:textColor="#9C9C9C"
                     android:textSize="15sp" />

@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Html;
+import android.view.View;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -142,6 +143,12 @@ public class DetailProduct extends AppCompatActivity {
         int price_capital = (Integer.parseInt(intent.getStringExtra(Constans.KEY_PRICE_CAPITAL)));
         int price_sale = (Integer.parseInt(intent.getStringExtra(Constans.KEY_PRICE_SALE)));
 
+        if (price_capital == price_sale ) {
+            txt_price_capital.setVisibility(View.GONE);
+        } else {
+            txt_price_capital.setVisibility(View.VISIBLE);
+        }
+
         //price_capital = intent.getStringExtra(Constans.KEY_PRICE_CAPITAL);
         ///price_sale = intent.getStringExtra(Constans.KEY_PRICE_SALE);
         description = intent.getStringExtra(Constans.KEY_DESCRIPTIOM);
@@ -162,6 +169,12 @@ public class DetailProduct extends AppCompatActivity {
         txt_name_product.setText(nameProduct);
         txt_price_capital.setText(formatRupiah.format(price_capital));
         txt_price_sale.setText(formatRupiah.format(price_sale));
+
+//        if (txt_price_capital.getVisibility() == View.GONE) {
+//           price_capital == price_sale;
+//        }
+
+
         ///txt_description.loadDataWithBaseURL(null, String.valueOf(Html.fromHtml(getIntent().getStringExtra("description"))), "text/html", "utf-8", null);
         txt_description.loadDataWithBaseURL(null, description, "text/html", "utf-8", null);
         txt_condition.setText(condition);

@@ -58,9 +58,14 @@ public class AdapterProductNew extends RecyclerView.Adapter<AdapterProductNew.Pr
         int Price_Capital = (Integer.parseInt(resultItem.getPriceCapital()));
         int Price_Sale = (Integer.parseInt(resultItem.getPriceSale()));
 
+        if (Price_Capital == Price_Sale){
+            holder.txt_price_capital.setVisibility(View.GONE);
+        }else {
+            holder.txt_price_sale.setVisibility(View.VISIBLE);
+        }
+
         holder.txt_price_capital.setText(formatRupiah.format(Price_Capital));
         holder.txt_price_sale.setText(formatRupiah.format(Price_Sale));
-
 
         holder.txt_description.setText(resultItem.getDescription());
         holder.txt_sku.setText(resultItem.getSku());

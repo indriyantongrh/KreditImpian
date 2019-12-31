@@ -149,7 +149,7 @@ public class KategoriElektronik extends Fragment {
                         String weight_value = detaiList.get(position).getMetadata().getWeightValue();
                         String weight = detaiList.get(position).getMetadata().getWeight();
                         String nameMerchant = detaiList.get(position).getMerchant().getName();
-                        //String city = detaiList.get(position).getMerchant().getCity();
+                        String city = detaiList.get(position).getMerchant().getCity();
 
 
                         Intent detailproduct = new Intent(mContext, DetailProduct.class);
@@ -166,7 +166,7 @@ public class KategoriElektronik extends Fragment {
                         detailproduct.putExtra(Constans.KEY_WEIGHT_VALUE, weight_value);
                         detailproduct.putExtra(Constans.KEY_WEIGHT, weight);
                         detailproduct.putExtra(Constans.KEY_NAME_MERCHNAT, nameMerchant);
-                        ///detailproduct.putExtra(Constans.KEY_CITY_MERCHANT, city);
+                        detailproduct.putExtra(Constans.KEY_CITY_MERCHANT, city);
                         startActivity(detailproduct);
                     }
                 }));
