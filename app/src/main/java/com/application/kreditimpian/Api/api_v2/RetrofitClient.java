@@ -1,14 +1,18 @@
 package com.application.kreditimpian.Api.api_v2;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 
 import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.Api.network.interceptor.TokenAuthenticator;
 
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+
+import static com.application.kreditimpian.Api.SharedPrefManager.SP_TOKEN;
 
 
 public class RetrofitClient {

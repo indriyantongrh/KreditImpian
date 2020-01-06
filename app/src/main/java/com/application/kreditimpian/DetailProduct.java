@@ -12,6 +12,7 @@ import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.application.kreditimpian.FormPengajuan.UpgradeImpian.ViewPagerAdapter;
 import com.application.kreditimpian.Marketplace.FragSemuaKategori.Constans;
 import com.application.kreditimpian.Model.ModelProduct.ImagesItem;
 //import com.application.kreditimpian.Model.ModelProduct.ResultItem;
@@ -93,6 +94,11 @@ public class DetailProduct extends AppCompatActivity {
     DecimalFormatSymbols formatRp;
     Double pricerCapital;
 
+    //untukviewpager
+    ViewPager viewPager;
+    CircleIndicator indicator;
+    ViewPagerAdapter viewPagerAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -159,7 +165,6 @@ public class DetailProduct extends AppCompatActivity {
         weight = intent.getStringExtra(Constans.KEY_WEIGHT);
         nameMerchant = intent.getStringExtra(Constans.KEY_NAME_MERCHNAT);
         city = intent.getStringExtra(Constans.KEY_CITY_MERCHANT);
-
 
 
 

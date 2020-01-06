@@ -59,6 +59,7 @@ import java.util.concurrent.TimeUnit;
 import io.jsonwebtoken.io.Decoder;
 import io.jsonwebtoken.io.IOException;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -93,7 +94,7 @@ public class LoginUser extends AppCompatActivity {
     String tag_json_obj = "json_obj_req";
     SharedPreferences sharedpreferences;
     Boolean session = false;
-    String id,  email,username;
+    String id,  email,username,password;
     public static final String my_shared_preferences = "my_shared_preferences";
     public static final String session_status = "session_status";
 
@@ -131,15 +132,6 @@ public class LoginUser extends AppCompatActivity {
         }
 
         ///sessionManager = new SessionManager(this);
-/*
-        preferenceHelper = new PreferenceHelper(this);
-
-        if(preferenceHelper.getIsLogin()){
-            Intent intent = new Intent(LoginUser.this,MenuUtama.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-            this.finish();
-        }*/
 
         btnregister = findViewById(R.id.btnregister);
         btnregister.setOnClickListener(new View.OnClickListener() {
@@ -151,24 +143,6 @@ public class LoginUser extends AppCompatActivity {
         });
 
 
-/*
-        // Cek session login jika TRUE maka langsung buka MainActivity
-        sharedpreferences = getSharedPreferences(my_shared_preferences, Context.MODE_PRIVATE);
-        session = sharedpreferences.getBoolean(session_status, false);
-        id = sharedpreferences.getString(TAG_ID, "id tidak ditemukan");
-        email = sharedpreferences.getString(TAG_EMAIL, "email tidak ditemukan");
-
-
-
-        if (session) {
-            Intent intent = new Intent(LoginUser.this, MenuUtama.class);
-            intent.putExtra(TAG_ID, id);
-            intent.putExtra(TAG_EMAIL, email);
-            intent.putExtra(TAG_USERNAME, username);
-            finish();
-            startActivity(intent);
-        }
-*/
 
 
         btnLogin = findViewById(R.id.btnLogin);
@@ -217,7 +191,11 @@ public class LoginUser extends AppCompatActivity {
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
 
+
+
     }
+
+
 
 
     private void signIn() {
@@ -278,19 +256,13 @@ public class LoginUser extends AppCompatActivity {
                 pDialog.dismiss();
 
                 if (response.body().getStatus()==200) {
-                    //User user = response.body().getUser();
-                    ///sharedPrefManager.saveSPString(SharedPrefManager.SP_USERNAME, user.getUsername());
-                    sharedPrefManager.saveSPString(SharedPrefManager.SP_TOKEN, "Bearer " +response.body().getResult());
+
+
+
+                    sharedPrefManager.saveSPString(SharedPrefManager.SP_TOKEN, "Bearer"+response.body().getResult());
                     sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, true);
-
-//                    result = response.body().getResult();
-//
-//                    try {
-//                        decoded = JWTParser.decoded(result);
-//                    } catch (Exception e) {
-//                        e.printStackTrace();
-//                    }
-
+                    String username = txtusername.getText().toString();
+                    sharedPrefManager.saveSPString(SharedPrefManager.SP_USERNAME, username);
 
                     startActivity(new Intent(LoginUser.this, MenuUtama.class)
                             .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
@@ -310,6 +282,8 @@ public class LoginUser extends AppCompatActivity {
                 pDialog.dismiss();
             }
         });
+
+
 
     }
 
@@ -357,6 +331,8 @@ public class LoginUser extends AppCompatActivity {
                         // Jika login berhasil
                         String result = response.body().getResult();
                         sharedPrefManager.saveSPString(SharedPrefManager.SP_TOKEN, result);
+                        String username = txtusername.getText().toString();
+                        sharedPrefManager.saveSPString(SharedPrefManager.SP_USERNAME, username);
 //                        String id = response.body().getResult();
 //                        String email = response.body().getResult();
 //                        String username = response.body().getResult();
@@ -396,43 +372,8 @@ public class LoginUser extends AppCompatActivity {
     }
 
 
-    private void parseLoginData(String response){
-        try {
-            JSONObject jsonObject = new JSONObject(response);
-            if (jsonObject.getString("status").equals("204")) {
 
-                saveInfo(response);
 
-                Toast.makeText(LoginUser.this, "Login Successfully!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(LoginUser.this,MenuUtama.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-                this.finish();
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    private void saveInfo(String response){
-
-        preferenceHelper.putIsLogin(true);
-        try {
-            JSONObject jsonObject = new JSONObject(response);
-            if (jsonObject.getString("status").equals("200")) {
-                JSONArray dataArray = jsonObject.getJSONArray("Result");
-                for (int i = 0; i < dataArray.length(); i++) {
-
-                    JSONObject dataobj = dataArray.getJSONObject(i);
-                    preferenceHelper.putUsername(dataobj.getString("username"));
-                    preferenceHelper.putEmail(dataobj.getString("email"));
-                }
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
 
 
     @Override

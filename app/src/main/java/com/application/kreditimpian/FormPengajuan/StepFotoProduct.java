@@ -3,8 +3,11 @@ package com.application.kreditimpian.FormPengajuan;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -14,6 +17,7 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.application.kreditimpian.R;
@@ -27,7 +31,8 @@ import pub.devrel.easypermissions.EasyPermissions;
 import static android.provider.MediaStore.ACTION_IMAGE_CAPTURE;
 
 public class StepFotoProduct extends AppCompatActivity {
-
+    private static final int CAMERA_REQUEST = 1888;
+    private static final int MY_CAMERA_PERMISSION_CODE = 100;
     ImageView image, image1;
     String img;
     private ImageLoader imageLoader;
@@ -53,40 +58,50 @@ public class StepFotoProduct extends AppCompatActivity {
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                /////pakai alert dialog
-                android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(StepFotoProduct.this);
-                builder.setTitle("Pilihan");
-                builder.setMessage("Silahkan memilih kamera atau galeri");
-                builder.setPositiveButton("Kamera", new DialogInterface.OnClickListener() {
-
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent takePictureIntent = new Intent(ACTION_IMAGE_CAPTURE);
-                        if (takePictureIntent.resolveActivity(StepFotoProduct.this.getPackageManager()) != null) {
-
-                            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE_1);
-
-
-
-
-                        }
-                    }
-                });
-
-                android.app.AlertDialog alert = builder.create();
-                alert.show();
-
-
+                if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
+                {
+                    requestPermissions(new String[]{Manifest.permission.CAMERA}, MY_CAMERA_PERMISSION_CODE);
+                }
+                else
+                {
+                    Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(cameraIntent, CAMERA_REQUEST);
+                }
 
 
             }
         });
-
-
         }
 
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)
+    {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == MY_CAMERA_PERMISSION_CODE)
+        {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED)
+            {
+                Toast.makeText(this, "camera permission granted", Toast.LENGTH_LONG).show();
+                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(cameraIntent, CAMERA_REQUEST);
+            }
+            else
+            {
+                Toast.makeText(this, "camera permission denied", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK)
+        {
+            Bitmap photo = (Bitmap) data.getExtras().get("data");
+            image.setImageBitmap(photo);
+        }
+    }
 
     ///////////////////////////////////
 
@@ -140,43 +155,6 @@ public class StepFotoProduct extends AppCompatActivity {
     }
 
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        //ini untuk gambar
-        if (requestCode == PICK_IMAGE_REQUEST_1 && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            Uri filePath = data.getData();
-            try {
-                //mengambil fambar dari Gallery
-                bitmap = MediaStore.Images.Media.getBitmap(StepFotoProduct.this.getContentResolver(), filePath);
-                // 512 adalah resolusi tertinggi setelah image di resize, bisa di ganti.
-                setToImageView1(getResizedBitmap(bitmap, 512));
-
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            //ini untuk dari kamera
-        } else if (requestCode == REQUEST_IMAGE_CAPTURE_1 && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
-            //imageView.setImageBitmap(imageBitmap);
-            setToImageView1(getResizedBitmap(imageBitmap, 512));
-
-        } else {
-            super.onActivityResult(requestCode, resultCode, data);
-        }
-
-    }
-
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, StepFotoProduct.this);
-    }
 
 
     }

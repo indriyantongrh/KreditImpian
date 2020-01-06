@@ -101,9 +101,11 @@ public class FragmentAkun extends Fragment {
 
 
         sharedPrefManager = new SharedPrefManager(getActivity());
-        String username = sharedPrefManager.getSPToken();
-        Toast.makeText(getActivity(),username, Toast.LENGTH_SHORT).show();
-//        txt_nama_akun.setText(username);
+        String token = sharedPrefManager.getSPToken();
+        String username = sharedPrefManager.getSpUsername();
+
+        Toast.makeText(getActivity(),token, Toast.LENGTH_SHORT).show();
+        txt_nama_akun.setText(username);
 
 
 
@@ -289,23 +291,23 @@ public class FragmentAkun extends Fragment {
     }
 
 
-    private void getUsername(){
-        Call<ResponseLoginSucces> getUser = mApiService.getUsermember("Bearer "+sharedPrefManager.getSPToken());
-        getUser.enqueue(new Callback<ResponseLoginSucces>() {
-            @Override
-            public void onResponse(Call<ResponseLoginSucces> call, Response<ResponseLoginSucces> response) {
-                if (response != null) {
-                    Toast.makeText(getActivity(), response.body().getResultItem().getEmail(), Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseLoginSucces> call, Throwable t) {
-
-            }
-        });
-
-    }
+//    private void getUsername(){
+//        Call<ResponseLoginSucces> getUser = mApiService.getUsermember("Bearer "+sharedPrefManager.getSPToken());
+//        getUser.enqueue(new Callback<ResponseLoginSucces>() {
+//            @Override
+//            public void onResponse(Call<ResponseLoginSucces> call, Response<ResponseLoginSucces> response) {
+//                if (response != null) {
+//                    Toast.makeText(getActivity(), response.body().getResultItem().getEmail(), Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ResponseLoginSucces> call, Throwable t) {
+//
+//            }
+//        });
+//
+//    }
 
 
 

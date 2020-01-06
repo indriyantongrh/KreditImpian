@@ -82,69 +82,17 @@
                     android:layout_height="37dp">
 
                     <EditText
-                        android:id="@+id/txtnamadepan"
+                        android:id="@+id/txtnamalengkap"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@android:color/transparent"
-                        android:hint="Nama Depan"
+                        android:hint="Nama Lengkap"
                         android:inputType="text"
                         android:fontFamily="@font/jipatharegular"
                         android:textSize="26dp" />
 
-                </LinearLayout>
-
-                <!--Border-->
-                <LinearLayout
-                    android:background="#fff"
-                    android:layout_width="match_parent"
-                    android:layout_height="15dp"></LinearLayout>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-
-                    android:background="@drawable/borderhitam"
-                    android:layout_height="37dp">
-
-                    <EditText
-                        android:id="@+id/txtnamatengah"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:background="@android:color/transparent"
-                        android:hint="Nama Tengah"
-                        android:inputType="text"
-                        android:fontFamily="@font/jipatharegular"
-                        android:textSize="26dp" />
-
-                </LinearLayout>
-
-                <!--Border-->
-                <LinearLayout
-                    android:background="#fff"
-                    android:layout_width="match_parent"
-                    android:layout_height="15dp"></LinearLayout>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:background="@drawable/borderhitam"
-                    android:layout_height="37dp">
-
-                    <EditText
-                        android:id="@+id/txtnamabelakang"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:background="@android:color/transparent"
-                        android:hint="Nama Belakang"
-                        android:inputType="text"
-                        android:fontFamily="@font/jipatharegular"
-                        android:textSize="26dp" />
                 </LinearLayout>
 
                 <!--Border-->
@@ -273,6 +221,57 @@
                     android:layout_height="37dp">
 
                     <EditText
+                        android:id="@+id/txtnikktp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="NIK KTP"
+                        android:fontFamily="@font/jipatharegular"
+                        android:inputType="number"
+                        android:textSize="26dp" />
+                </LinearLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"></LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/borderhitam"
+                    android:layout_height="37dp">
+
+                    <EditText
+                        android:id="@+id/txtnomornpwp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Nomor NPWP (Optional)"
+                        android:fontFamily="@font/jipatharegular"
+                        android:inputType="number"
+                        android:textSize="26dp" />
+                </LinearLayout>
+
+
+                <!--Border-->
+                <LinearLayout
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"></LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/borderhitam"
+                    android:layout_height="37dp">
+
+                    <EditText
                         android:id="@+id/txtpekerjaan"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -283,7 +282,7 @@
                         android:fontFamily="@font/jipatharegular"
                         android:inputType="text"
                         android:textSize="26dp" />
-                </LinearLayout>
+            </LinearLayout>
 
                 <!--Border-->
                 <LinearLayout
@@ -473,7 +472,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@android:color/transparent"
-                        android:hint="Nomor Telepon"
+                        android:hint="Nomor Telepon Kantor"
                         android:inputType="text"
                         android:fontFamily="@font/jipatharegular"
                         android:textSize="26dp" />

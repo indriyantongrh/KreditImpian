@@ -63,7 +63,7 @@ import static com.application.kreditimpian.LoginRegister.LoginUser.TAG_ID;
 public class FragmentBeranda extends Fragment {
 
     private ShimmerFrameLayout mShimmerViewContainer;
-    CardView btn_lainya;
+    CardView btn_lainya, btn_handphone, btn_laptop,btn_otomotif, btn_forniture, btn_fashion, btn_olahraga, btn_property;
     ImageButton btn_fotoimpian,btnupload, btncari, btnupgrade;
     private BottomSheetBehavior bottomSheetBehavior;
 
@@ -109,6 +109,13 @@ public class FragmentBeranda extends Fragment {
 
         rv_mitra = rootView.findViewById(R.id.rv_mitra);
         imagefoto = rootView.findViewById(R.id.imagefoto);
+        btn_handphone  = rootView.findViewById(R.id.btn_handphone);
+        btn_laptop  = rootView.findViewById(R.id.btn_laptop);
+        btn_otomotif  = rootView.findViewById(R.id.btn_otomotif);
+        btn_forniture  = rootView.findViewById(R.id.btn_forniture);
+        btn_fashion  = rootView.findViewById(R.id.btn_fashion);
+        btn_olahraga  = rootView.findViewById(R.id.btn_olahraga);
+        btn_property = rootView.findViewById(R.id.btn_property);
         //mShimmerViewContainer = rootView.findViewById(R.id.shimmer_view_container);
 
 
@@ -136,40 +143,13 @@ public class FragmentBeranda extends Fragment {
             }
         });
 
-
-
-
-        View modal = rootView.findViewById(R.id.btn_lainya);
-        modal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                BottomSheetDialogFragment bottomSheetDialogFragment = new CustomBottomSheetDialogFragment();
-                bottomSheetDialogFragment.show(getFragmentManager(), bottomSheetDialogFragment.getTag());
-            }
-        });
-
-  /*      btn_lainya = rootView.findViewById(R.id.btn_lainya);
-        btn_lainya.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(getActivity(), SemuaKategori.class);
-                getActivity().startActivity(intent);
-
-            }
-        });*/
-
         btn_fotoimpian = rootView.findViewById(R.id.btn_fotoimpian);
         btn_fotoimpian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-
-
-
-             Intent intent = new Intent(getActivity(), StepFotoProduct.class);
-             getActivity().startActivity(intent);
+                Intent intent = new Intent(getActivity(), StepFotoProduct.class);
+                getActivity().startActivity(intent);
 
             }
         });
@@ -201,6 +181,86 @@ public class FragmentBeranda extends Fragment {
 
             }
         });
+
+        btn_handphone = rootView.findViewById(R.id.btn_handphone);
+        btn_handphone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), "Ini kategori handphone", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btn_laptop = rootView.findViewById(R.id.btn_laptop);
+        btn_laptop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), "Ini kategori Laptop", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btn_otomotif = rootView.findViewById(R.id.btn_otomotif);
+        btn_otomotif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), "Ini kategori Otomotif", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        btn_forniture = rootView.findViewById(R.id.btn_forniture);
+        btn_forniture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), "Ini kategori Fornitur", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btn_olahraga = rootView.findViewById(R.id.btn_olahraga);
+        btn_olahraga.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), "Ini kategori Olahraga", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btn_property = rootView.findViewById(R.id.btn_property);
+        btn_property.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), "Ini kategori Property", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btn_fashion = rootView.findViewById(R.id.btn_fashion);
+        btn_fashion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), "Ini kategori Fashion", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        View modal = rootView.findViewById(R.id.btn_lainya);
+        modal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                BottomSheetDialogFragment bottomSheetDialogFragment = new CustomBottomSheetDialogFragment();
+                bottomSheetDialogFragment.show(getFragmentManager(), bottomSheetDialogFragment.getTag());
+            }
+        });
+
+  /*      btn_lainya = rootView.findViewById(R.id.btn_lainya);
+        btn_lainya.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getActivity(), SemuaKategori.class);
+                getActivity().startActivity(intent);
+
+            }
+        });*/
+
 
         sliderView = (SliderView) rootView.findViewById(R.id.sliderView);
         mLinearLayout = (LinearLayout) rootView.findViewById(R.id.pagesContainer);

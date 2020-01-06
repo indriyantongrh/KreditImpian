@@ -217,49 +217,7 @@
                     </LinearLayout>
 
 
-                <com.facebook.shimmer.ShimmerFrameLayout
-                    android:id="@+id/shimmer_view_container"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="15dp"
-                    android:orientation="vertical"
-                    shimmer:duration="100">
 
-                <!--Image Slider-->
-                <RelativeLayout
-                    android:id="@+id/layout_top"
-                    android:layout_width="wrap_content"
-                    android:layout_height="130dp">
-
-                    <FrameLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent">
-
-                        <com.application.kreditimpian._sliders.SliderView
-                            android:id="@+id/sliderView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"/>
-
-                    </FrameLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/bg_indicator"/>
-
-                    <LinearLayout
-                        android:id="@+id/pagesContainer"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_gravity="bottom"
-                        android:layout_marginBottom="8dp"
-                        android:gravity="center_horizontal"
-                        android:orientation="horizontal"/>
-
-                </RelativeLayout>
-                </com.facebook.shimmer.ShimmerFrameLayout>
 
 
 
@@ -486,14 +444,16 @@
                 </RelativeLayout>
 
                 <!--Baris ke dua-->
+
+
                 <RelativeLayout
                     android:id="@+id/baris2"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
-                    android:gravity="center"
                     android:layout_marginHorizontal="0dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp">
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center">
 
                     <!--Card Fashion-->
                     <androidx.cardview.widget.CardView
@@ -521,15 +481,15 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:gravity="center"
-                        android:text="Fashion"
-                        android:textStyle="bold"
-                        android:textColor="@color/colorOrange"
                         android:layout_alignStart="@id/btn_fashion"
                         android:layout_alignEnd="@+id/btn_fashion"
+                        android:layout_alignParentBottom="true"
                         android:fontFamily="@font/jipatharegular"
-                        android:textSize="15sp" />
+                        android:gravity="center"
+                        android:text="Fashion"
+                        android:textColor="@color/colorOrange"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
 
 
                     <!--Card Olahraga-->
@@ -559,15 +519,15 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:gravity="center"
-                        android:text="Hobi"
-                        android:textStyle="bold"
-                        android:textColor="@color/colorOrange"
                         android:layout_alignStart="@id/btn_olahraga"
                         android:layout_alignEnd="@+id/btn_olahraga"
+                        android:layout_alignParentBottom="true"
                         android:fontFamily="@font/jipatharegular"
-                        android:textSize="15sp" />
+                        android:gravity="center"
+                        android:text="Hobi"
+                        android:textColor="@color/colorOrange"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
 
 
                     <androidx.cardview.widget.CardView
@@ -597,15 +557,15 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:gravity="center"
-                        android:text="Property"
-                        android:textStyle="bold"
-                        android:textColor="@color/colorOrange"
                         android:layout_alignStart="@id/btn_property"
                         android:layout_alignEnd="@+id/btn_property"
+                        android:layout_alignParentBottom="true"
                         android:fontFamily="@font/jipatharegular"
-                        android:textSize="15sp" />
+                        android:gravity="center"
+                        android:text="Property"
+                        android:textColor="@color/colorOrange"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
 
 
                     <androidx.cardview.widget.CardView
@@ -613,8 +573,8 @@
                         android:layout_width="55dp"
                         android:layout_height="55dp"
                         android:layout_marginLeft="30dp"
-                        android:clickable="true"
                         android:layout_toRightOf="@id/btn_property"
+                        android:clickable="true"
                         android:focusable="true"
                         app:cardCornerRadius="15dp">
 
@@ -635,18 +595,62 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:gravity="center"
-                        android:text="Lainnya"
-                        android:textStyle="bold"
-                        android:textColor="@color/colorOrange"
                         android:layout_alignStart="@id/btn_lainya"
                         android:layout_alignEnd="@+id/btn_lainya"
+                        android:layout_alignParentBottom="true"
                         android:fontFamily="@font/jipatharegular"
-                        android:textSize="15sp" />
+                        android:gravity="center"
+                        android:text="Lainnya"
+                        android:textColor="@color/colorOrange"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
 
                 </RelativeLayout>
 
+
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/shimmer_view_container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:orientation="vertical"
+                    shimmer:duration="100">
+
+                    <!--Image Slider-->
+                    <RelativeLayout
+                        android:id="@+id/layout_top"
+                        android:layout_width="wrap_content"
+                        android:layout_height="130dp">
+
+                        <FrameLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent">
+
+                            <com.application.kreditimpian._sliders.SliderView
+                                android:id="@+id/sliderView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"/>
+
+                        </FrameLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_indicator"/>
+
+                        <LinearLayout
+                            android:id="@+id/pagesContainer"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_gravity="bottom"
+                            android:layout_marginBottom="8dp"
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal"/>
+
+                    </RelativeLayout>
+                </com.facebook.shimmer.ShimmerFrameLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"

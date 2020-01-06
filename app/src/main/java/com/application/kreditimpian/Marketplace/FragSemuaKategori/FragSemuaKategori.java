@@ -103,10 +103,10 @@ public class FragSemuaKategori extends Fragment {
 
 
     private void getResultList(){
-        progressBar = ProgressDialog.show(getActivity(), null, "Harap Tunggu...", true, false);
+        progressBar = ProgressDialog.show(getActivity(), null, "Mencari Barang...", true, false);
 
 
-        mApiService.getResult(sharedPrefManager.getSPToken()).enqueue(new Callback<ProductResponse>() {
+        mApiService.getResult().enqueue(new Callback<ProductResponse>() {
             @Override
             public void onResponse(Call<ProductResponse> call, Response<ProductResponse> response) {
                 if (response.isSuccessful()){

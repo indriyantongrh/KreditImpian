@@ -65,10 +65,10 @@ public class KategoriFashion extends Fragment {
 
 
         swipeRefresh = rootView.findViewById(R.id.swipeRefresh);
-        swipeRefresh.setColorScheme(android.R.color.holo_blue_bright,
-                android.R.color.holo_green_light,
+        swipeRefresh.setColorScheme(android.R.color.holo_orange_dark,
                 android.R.color.holo_orange_light,
-                android.R.color.holo_red_light);
+                android.R.color.holo_orange_dark,
+                android.R.color.holo_orange_light);
 
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
