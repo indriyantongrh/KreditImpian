@@ -51,6 +51,10 @@ public class StepFotoProduct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stepisi_product);
 
+        setActionBarTitle("Foto Impian Anda!");
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);// set drawable icon
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         image = findViewById(R.id.imagefoto);
         imageupload = findViewById(R.id.imageupload);
 
@@ -155,6 +159,18 @@ public class StepFotoProduct extends AppCompatActivity {
     }
 
 
+
+    private void setActionBarTitle(String title) {
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(title);
+        }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
 
 
     }

@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
 public class ResponseMember{
 
 	@SerializedName("result")
-	private List<ResultItem> result;
+	private ResultItem[] result;
 
 	@SerializedName("reason")
 	private String reason;
@@ -21,11 +21,11 @@ public class ResponseMember{
 	@SerializedName("status")
 	private int status;
 
-	public void setResult(List<ResultItem> result){
+	public void setResult(ResultItem[] result){
 		this.result = result;
 	}
 
-	public List<ResultItem> getResult(){
+	public ResultItem[] getResult(){
 		return result;
 	}
 

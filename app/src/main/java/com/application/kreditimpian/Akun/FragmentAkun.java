@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.application.kreditimpian.Adapter.AdapterProduct;
+import com.application.kreditimpian.Api.JWTParser;
 import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Favorite.Favorite;
@@ -39,6 +40,9 @@ import com.application.kreditimpian.Model.UserModel.User;
 import com.application.kreditimpian.R;
 import com.application.kreditimpian.ResponseMessage.ResponseLoginSucces;
 import com.application.kreditimpian.StatusPesanan.StatusPesanan;
+import com.auth0.android.jwt.JWT;
+import com.auth0.jwt.exceptions.JWTDecodeException;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import com.bumptech.glide.Glide;
 import com.fasterxml.jackson.databind.ser.Serializers;
 import com.google.android.gms.auth.api.Auth;
@@ -49,6 +53,11 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.gson.Gson;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -90,6 +99,10 @@ public class FragmentAkun extends Fragment {
     public static final String session_status = "session_status";
     BaseApiService mApiService;
     Context mContext;
+
+    private JWT jwt;
+    private String decoded;
+    private String token;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -101,15 +114,28 @@ public class FragmentAkun extends Fragment {
 
 
         sharedPrefManager = new SharedPrefManager(getActivity());
+       /// String id = sharedPrefManager.getSPID();
         String token = sharedPrefManager.getSPToken();
         String username = sharedPrefManager.getSpUsername();
 
-        Toast.makeText(getActivity(),token, Toast.LENGTH_SHORT).show();
+        ///Toast.makeText(getActivity(),token, Toast.LENGTH_SHORT).show();
         txt_nama_akun.setText(username);
 
+//        //String JWTToken = sharedPrefManager.getSPToken();
+//        byte[] encodeJTW = android.util.Base64.decode(token, android.util.Base64.DEFAULT);
+
+//        DecodedJWT jwtIdent = JWT.decode(token);
+//        Toast.makeText(getActivity(),"ini hasil decode"+jwtIdent, Toast.LENGTH_SHORT).show();
+
+            /// getUsername();
 
 
-       /// getUsername();
+
+        try {
+            decoded = JWTParser.decoded(token);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
 

@@ -51,22 +51,20 @@
         <activity android:name=".Mitra.ListMitra" />
         <activity
             android:name=".FormPengajuan.StepUploadProduct"
-            android:theme="@style/NoActionbar" />
+            />
         <activity
             android:name=".SplashScreenDepan"
             android:theme="@style/NoActionbar" />
         <activity
             android:name=".FormPengajuan.StepIsiCariProduct"
-            android:theme="@style/NoActionbar" />
+            />
         <activity
-            android:name=".FormPengajuan.StepFotoProduct"
-            android:theme="@style/NoActionbar" />
+            android:name=".FormPengajuan.StepFotoProduct" />
         <activity
-            android:name=".FormPengajuan.UploadGambar"
-            android:theme="@style/NoActionbar" />
+            android:name=".FormPengajuan.UploadGambar" />
         <activity
             android:name=".FormPengajuan.CaptureGambar"
-            android:theme="@style/NoActionbar" />
+            />
         <activity
             android:name=".FormPengajuan.SuccessMengajukan"
             android:theme="@style/NoActionbar" />

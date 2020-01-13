@@ -107,6 +107,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingTop="30dp"
+            android:visibility="gone"
             tools:ignore="MissingConstraints">
 
             <ImageView

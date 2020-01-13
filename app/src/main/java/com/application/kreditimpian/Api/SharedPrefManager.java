@@ -3,12 +3,17 @@ package com.application.kreditimpian.Api;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.interfaces.DecodedJWT;
 
 
 public class SharedPrefManager {
 
     public static final String SP_Kreditimpian = "kreditimpian_v2_demo";
 
+
+
+    public static final String SP_DECODE = "decode";
     public static final String SP_ID = "id";
     public static final String SP_EMAIL = "email";
     public static final String SP_USERNAME = "username";
@@ -41,7 +46,7 @@ public class SharedPrefManager {
     }
 
     public String getSPID(){
-        return sp.getString(SP_ID, "");
+        return sp.getString(SP_ID, "Not Found");
     }
 
     public String getSPEmail(){
@@ -60,7 +65,14 @@ public class SharedPrefManager {
         return sp.getString(SP_TOKEN, "");
     }
 
+    public String  getSpDecode() {
+        return sp.getString(SP_DECODE,"");
+    }
+
     public Boolean getSPSudahLogin(){
         return sp.getBoolean(SP_SUDAH_LOGIN, false);
     }
+
+
+
 }

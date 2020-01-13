@@ -25,17 +25,24 @@ import com.application.kreditimpian.R;
 import com.application.kreditimpian.ResponseMessage.ResponseRegister;
 import com.google.gson.Gson;
 
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Field;
+
+import static com.application.kreditimpian.Api.SharedPrefManager.SP_TOKEN;
 
 public class DataDiri extends AppCompatActivity implements View.OnClickListener {
     private int mYear, mMonth, mDay;
@@ -49,6 +56,9 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
     SharedPrefManager sharedPrefManager;
     Context mContext;
     BaseApiService mApiService;
+    String fullname;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,29 +92,29 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             @Override
             public void onClick(View v) {
 
+//
+//                //mengambil data dari edittext
+//                String fullname = txtnamalengkap.getText().toString();
+//                String birthplace = txttempatlahir.getText().toString();
+//                String birthday = txttanggallahir.getText().toString();
+//                String gender = spinnerjeniskelamin.toString();
+//                String marital = spinnerstatus.toString();
+//                String religion = spinneragama.toString();
+//                String number_citizen = txtnikktp.getText().toString();
+//                String number_taxpayer = txtnomornpwp.getText().toString();
+//                String job = txtpekerjaan.getText().toString();
+//                String income = txtpendapatan.getText().toString();
+//                String family_dependent = txtjumlahtanggungan.getText().toString();
+//                String email = txtalamatemail.getText().toString();
+//                String phone = txtnomorhandphone.getText().toString();
+//                String installment = spinnerkredit.toString();
+//                String residence_status = spinnerstatusrumah.toString();
+//                String contact_office = txtnomortlp.getText().toString();
+//                String facebook = txtfacebook.getText().toString();
+//                String twitter = txttwitter.getText().toString();
+//                String instagram = txtinstagram.getText().toString();
 
-                //mengambil data dari edittext
-                String fullname = txtnamalengkap.getText().toString();
-                String birthplace = txttempatlahir.getText().toString();
-                String birthday = txttanggallahir.getText().toString();
-                String gender = spinnerjeniskelamin.toString();
-                String marital = spinnerstatus.toString();
-                String religion = spinneragama.toString();
-                String number_citizen = txtnikktp.getText().toString();
-                String number_taxpayer = txtnomornpwp.getText().toString();
-                String job = txtpekerjaan.getText().toString();
-                String income = txtpendapatan.getText().toString();
-                String family_dependent = txtjumlahtanggungan.getText().toString();
-                String email = txtalamatemail.getText().toString();
-                String phone = txtnomorhandphone.getText().toString();
-                String installment = spinnerkredit.toString();
-                String residence_status = spinnerstatusrumah.toString();
-                String contact_office = txtnomortlp.getText().toString();
-                String facebook = txtfacebook.getText().toString();
-                String twitter = txttwitter.getText().toString();
-                String instagram = txtinstagram.getText().toString();
-
-                requestRegister();
+                updatemember();
 
             }
         });
@@ -152,23 +162,20 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
     }
 
 
-    private void requestRegister(){
-
-        //membuat progress dialog
+    private void updatemember(){
         loading = new ProgressDialog(this);
         loading.setCancelable(false);
-        loading.setMessage("Update Data Diri ...");
+        loading.setMessage("Menyimpan data....");
         loading.show();
-
 
         //mengambil data dari edittext
         String token = sharedPrefManager.getSPToken().trim();
         String fullname = txtnamalengkap.getText().toString().trim();
         String birthplace = txttempatlahir.getText().toString().trim();
         String birthday = txttanggallahir.getText().toString().trim();
-        String gender = spinnerjeniskelamin.toString().trim();
-        String marital = spinnerstatus.toString().trim();
-        String religion = spinneragama.toString().trim();
+        String gender = spinnerjeniskelamin.getSelectedItem().toString().trim();
+        String marital = spinnerstatus.getSelectedItem().toString().trim();
+        String religion = spinneragama.getSelectedItem().toString().trim();
         String number_citizen = txtnikktp.getText().toString().trim();
         String number_taxpayer = txtnomornpwp.getText().toString().trim();
         String job = txtpekerjaan.getText().toString().trim();
@@ -177,106 +184,116 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         String family_dependent = txtjumlahtanggungan.getText().toString().trim();
         String email = txtalamatemail.getText().toString().trim();
         String phone = txtnomorhandphone.getText().toString().trim();
-        String installment = spinnerkredit.toString().trim();
-        String residence_status = spinnerstatusrumah.toString().trim();
+        String installment = spinnerkredit.getSelectedItem().toString().trim();
+        String residence_status = spinnerstatusrumah.getSelectedItem().toString().trim();
         String contact_office = txtnomortlp.getText().toString().trim();
         String facebook = txtfacebook.getText().toString().trim();
         String twitter = txttwitter.getText().toString().trim();
         String instagram = txtinstagram.getText().toString().trim();
 
+        mApiService.postDataDiri("Bearer " + sharedPrefManager.getSPToken(), fullname,birthday ,birthplace,job,income, family_dependent, installment,residence_status , parent_name, contact_office,facebook
+               ,twitter , instagram,gender ,marital ,religion ,number_citizen ,number_taxpayer).enqueue(new Callback<ResponseMember>() {
+            @Override
+            public void onResponse(Call<ResponseMember> call, Response<ResponseMember> response) {
 
-        mApiService.postDataDiri(token, fullname,birthday ,birthplace,job,income, family_dependent, installment,residence_status , parent_name, contact_office,facebook
-               ,twitter , instagram,gender ,marital ,religion ,number_citizen ,number_taxpayer)
+                if (response.isSuccessful()){
+                    Toast.makeText(DataDiri.this, "Data berhasil di simpan...", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(DataDiri.this, "Gagal Upload", Toast.LENGTH_SHORT).show();
+                }
 
-                .enqueue(new Callback<ResponseMember>() {
-                    @Override
-                    public void onResponse(Call<ResponseMember> call, Response<ResponseMember> response) {
+            }
 
-                        loading.dismiss();
-                        if (response.isSuccessful()){
-                            ///Toast.makeText(Register.this, "Registrasi berhasil, silahkan login.", Toast.LENGTH_SHORT).show();
-                            Toast.makeText(DataDiri.this , "Update Data Member Berhasil", Toast.LENGTH_SHORT).show();
-                            finish();
-                        } else {
-                            Toast.makeText(DataDiri.this, "Gagal Update data.", Toast.LENGTH_SHORT).show();
-                        }
-                    }
+            @Override
+            public void onFailure(Call<ResponseMember> call, Throwable t) {
 
-                    @Override
-                    public void onFailure(Call<ResponseMember> call, Throwable t) {
-                        Toast.makeText(mContext, "Koneksi Internet Bermasalah", Toast.LENGTH_SHORT).show();
-                        loading.hide();
-                    }
-                });
+            }
+        });
+
     }
 
-
-//    public void UpdateMember() {
+//    private void requestRegister(){
+//
 //        //membuat progress dialog
-//        pDialog = new ProgressDialog(this);
-//        pDialog.setCancelable(false);
-//        pDialog.setMessage("Proses tambah user ...");
-//        pDialog.show();
+//        loading = new ProgressDialog(this);
+//        loading.setCancelable(false);
+//        loading.setMessage("Update Data Diri ...");
+//        loading.show();
+//
 //
 //        //mengambil data dari edittext
-//        String fullname = txtnamalengkap.getText().toString();
-//        String birthplace = txttempatlahir.getText().toString();
-//        String birthday = txttanggallahir.getText().toString();
-//        String gender = spinnerjeniskelamin.toString();
-//        String marital = spinnerstatus.toString();
-//        String religion = spinneragama.toString();
-//        String number_citizen = txtnikktp.getText().toString();
-//        String number_taxpayer = txtnomornpwp.getText().toString();
-//        String job = txtpekerjaan.getText().toString();
-//        String income = txtpendapatan.getText().toString();
-//        String family_dependent = txtjumlahtanggungan.getText().toString();
-//        String email = txtalamatemail.getText().toString();
-//        String phone = txtnomorhandphone.getText().toString();
-//        String installment = spinnerkredit.toString();
-//        String residence_status = spinnerstatusrumah.toString();
-//        String contact_office = txtnomortlp.getText().toString();
-//        String facebook = txtfacebook.getText().toString();
-//        String twitter = txttwitter.getText().toString();
-//        String instagram = txtinstagram.getText().toString();
+//        String token = sharedPrefManager.getSPToken().trim();
+//        String fullname = txtnamalengkap.getText().toString().trim();
+//        String birthplace = txttempatlahir.getText().toString().trim();
+//        String birthday = txttanggallahir.getText().toString().trim();
+//        String gender = spinnerjeniskelamin.getSelectedItem().toString().trim();
+//        String marital = spinnerstatus.getSelectedItem().toString().trim();
+//        String religion = spinneragama.getSelectedItem().toString().trim();
+//        String number_citizen = txtnikktp.getText().toString().trim();
+//        String number_taxpayer = txtnomornpwp.getText().toString().trim();
+//        String job = txtpekerjaan.getText().toString().trim();
+//        String income = txtpendapatan.getText().toString().trim();
+//        String parent_name = txtibukandung.getText().toString().trim();
+//        String family_dependent = txtjumlahtanggungan.getText().toString().trim();
+//        String email = txtalamatemail.getText().toString().trim();
+//        String phone = txtnomorhandphone.getText().toString().trim();
+//        String installment = spinnerkredit.getSelectedItem().toString().trim();
+//        String residence_status = spinnerstatusrumah.getSelectedItem().toString().trim();
+//        String contact_office = txtnomortlp.getText().toString().trim();
+//        String facebook = txtfacebook.getText().toString().trim();
+//        String twitter = txttwitter.getText().toString().trim();
+//        String instagram = txtinstagram.getText().toString().trim();
 //
-//
-//
-//        ///String password = txt_password.getText().toString();
-//
-//        OkHttpClient client = new OkHttpClient.Builder()
-//                .connectTimeout(100, TimeUnit.SECONDS)
-//                .readTimeout(100, TimeUnit.SECONDS).build();
-//        Retrofit retrofit = new Retrofit.Builder()
-//                .baseUrl(BuildConfig.BASE_URL).client(client)
-//                .addConverterFactory(GsonConverterFactory.create(new Gson())).build();
-//
-//        RequestInterface api = retrofit.create(RequestInterface.class);
-//        Call<ResponseRegister> call = api.po(id, username, email, phone, password, password_confirm);
-//        call.enqueue(new Callback<ResponseRegister>() {
+//        OkHttpClient.Builder okhttpBuilder = new OkHttpClient.Builder();
+//        okhttpBuilder.addInterceptor(new Interceptor() {
+//            @NotNull
 //            @Override
-//            public void onResponse(Call<ResponseRegister> call, Response<ResponseRegister> response) {
-//                //String status = response.body().getStatus();
-//                //  String message = response.body().getMessage();
-//                pDialog.dismiss();
-//                if (response.isSuccessful()) {
-//                    ///Toast.makeText(Register.this, "Registrasi berhasil, silahkan login.", Toast.LENGTH_SHORT).show();
-//                    Toast.makeText(Register.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-//                    finish();
-//                } else {
-//                    Toast.makeText(Register.this, "Periksa kembali data Anda!.", Toast.LENGTH_SHORT).show();
-//                    //Toast.makeText(Register.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+//            public okhttp3.Response intercept(@NotNull Chain chain) throws IOException {
 //
-//                }
-//            }
+//                Request request = chain.request();
+//                Request.Builder newRequest = request.newBuilder()
+//                        .addHeader("Authorization","Bearer " + SP_TOKEN);
 //
-//            @Override
-//            public void onFailure(Call<ResponseRegister> call, Throwable t) {
-//                t.printStackTrace();
-//                pDialog.dismiss();
-//                Toast.makeText(Register.this, "Register member tidak berhasil, Koneksi internet terputus.", Toast.LENGTH_SHORT).show();
+//                return chain.proceed(newRequest.build());
+//
 //            }
 //        });
 //
+//        Retrofit retrofit = new Retrofit.Builder()
+//                .baseUrl(BuildConfig.BASE_URL).client(okhttpBuilder.build())
+//                .addConverterFactory(GsonConverterFactory.create(new Gson())).build();
+//
+//        BaseApiService api = retrofit.create(BaseApiService.class);
+//
+//
+//        Call<ResponseMember> call = api.postDataDiri(fullname,birthday ,birthplace,job,income, family_dependent, installment,residence_status , parent_name, contact_office,facebook
+//               ,twitter , instagram,gender ,marital ,religion ,number_citizen ,number_taxpayer);
+//
+//        call.enqueue(new Callback<ResponseMember>() {
+//                    @Override
+//                    public void onResponse(Call<ResponseMember> call, Response<ResponseMember> response) {
+//
+//                        loading.dismiss();
+//
+//
+//                        if (response.isSuccessful()){
+//                            ///Toast.makeText(Register.this, "Registrasi berhasil, silahkan login.", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(DataDiri.this , "Update Data Member Berhasil", Toast.LENGTH_SHORT).show();
+//                            finish();
+//                        } else {
+//                            Toast.makeText(DataDiri.this, "Gagal Update data.", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<ResponseMember> call, Throwable t) {
+//                        Toast.makeText(mContext, "Koneksi Internet Bermasalah", Toast.LENGTH_SHORT).show();
+//                        loading.hide();
+//                    }
+//                });
 //    }
+
+
+
 
 }

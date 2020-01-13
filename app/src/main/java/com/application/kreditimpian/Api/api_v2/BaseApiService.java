@@ -21,16 +21,24 @@ import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.HEAD;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
+import static com.application.kreditimpian.Api.SharedPrefManager.SP_TOKEN;
+
 
 public interface BaseApiService {
 
     // Fungsi ini untuk memanggil
+    @Headers({
+            "Accept: application/json",
+            "x-rainbow-client: android",
+            "x-rainbow-client-version: 1.10.7"
+    })
     @FormUrlEncoded
     @POST("system/users/authenticate")
     Call<ResponseLoginSucces> loginRequest(@Field("username") String username,
@@ -103,30 +111,57 @@ public interface BaseApiService {
 //                                      @Field("number_taxpayer") String number_taxpayer);
 
     //getUserMember
-    @Headers({ "Content-Type: application/x-www-form-urlencoded", "Authorization: Bearer"+ SharedPrefManager.SP_TOKEN})
-    @POST("members/{id}")
-    Call<ResponseMember> postDataDiri(@Field("id") String id,
-                                      @Field("fullname") String fullname,
-                                      @Field("birthplace") String birthplace,
-                                      @Field("birthday") String birthday,
-                                      @Field("job") String job,
-                                      @Field("income") String income,
-                                      @Field("family_dependent") String family_dependent,
-                                      @Field("installment") String installment,
-                                      @Field("residence_status") String residence_status,
-                                      @Field("parent_name") String parent_name,
-                                      @Field("contact_office") String contact_office,
-                                      @Field("facebook") String facebook,
-                                      @Field("twitter") String twitter,
-                                      @Field("instagram") String instagram,
-                                      @Field("gender") String gender,
-                                      @Field("marital") String marital,
-                                      @Field("religion") String religion,
-                                      @Field("number_citizen") String number_citizen,
-                                      @Field("number_taxpayer") String number_taxpayer);
+    ///@Headers({ "Content-Type: application/x-www-form-urlencoded", "Authorization: Bearer"+ SP_TOKEN})
+    @Headers({
+            "Accept: application/json"
+    })
+    ///@Header(@Header("Authorization") String "Bearer " + SP_TOKEN)
+    @POST("members/update")
+    @FormUrlEncoded
+    Call<ResponseMember> postDataDiri(@Header("Authorization") String SP_TOKEN,
+                                      @Query("fullname") String fullname,
+                                      @Query("birthplace") String birthplace,
+                                      @Query("birthday") String birthday,
+                                      @Query("job") String job,
+                                      @Query("income") String income,
+                                      @Query("family_dependent") String family_dependent,
+                                      @Query("installment") String installment,
+                                      @Query("residence_status") String residence_status,
+                                      @Query("parent_name") String parent_name,
+                                      @Query("contact_office") String contact_office,
+                                      @Query("facebook") String facebook,
+                                      @Query("twitter") String twitter,
+                                      @Query("instagram") String instagram,
+                                      @Query("gender") String gender,
+                                      @Query("marital") String marital,
+                                      @Query("religion") String religion,
+                                      @Query("number_citizen") String number_citizen,
+                                      @Query("number_taxpayer") String number_taxpayer);
 
 
+//    Call<ResponseMember> postDataDiri(@Field("fullname") String fullname,
+//                                      @Field("birthplace") String birthplace,
+//                                      @Field("birthday") String birthday,
+//                                      @Field("job") String job,
+//                                      @Field("income") String income,
+//                                      @Field("family_dependent") String family_dependent,
+//                                      @Field("installment") String installment,
+//                                      @Field("residence_status") String residence_status,
+//                                      @Field("parent_name") String parent_name,
+//                                      @Field("contact_office") String contact_office,
+//                                      @Field("facebook") String facebook,
+//                                      @Field("twitter") String twitter,
+//                                      @Field("instagram") String instagram,
+//                                      @Field("gender") String gender,
+//                                      @Field("marital") String marital,
+//                                      @Field("religion") String religion,
+//                                      @Field("number_citizen") String number_citizen,
+//                                      @Field("number_taxpayer") String number_taxpayer);
 
+
+    @GET("members?id={id}")
+    Call<ResponseMember> getMember(@Path("id") String id,
+                                    @Header("Authorization") String result);
 
 
 }

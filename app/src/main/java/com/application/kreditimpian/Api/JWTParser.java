@@ -9,6 +9,7 @@ import java.io.UnsupportedEncodingException;
 public class JWTParser {
 
     private static String[] split;
+
     public static String decoded(String JWTEncoded) throws Exception {
         try {
             split = JWTEncoded.split("\\.");
@@ -25,6 +26,8 @@ public class JWTParser {
         byte[] decodedBytes = Base64.decode(strEncoded, Base64.URL_SAFE);
         return new String(decodedBytes, "UTF-8");
     }
+
+
 //    public static void decoded(String JWTEncoded) throws Exception {
 //        try {
 //            String[] split = JWTEncoded.split("\\.");

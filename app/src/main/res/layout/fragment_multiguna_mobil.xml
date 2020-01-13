@@ -236,20 +236,19 @@
             android:layout_height="wrap_content"/>
 
         <Button
-            android:id="@+id/btnNext"
+            android:id="@+id/btnAjukansekarang"
             style="?android:textAppearanceSmall"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginTop="16dp"
-            android:text="Lanjutkan"
-            android:textStyle="bold"
-            android:textColor="#fff"
-            android:fontFamily="@font/jipatharegular"
-            android:textSize="25dp"
             android:layout_marginLeft="20dp"
+            android:layout_marginTop="16dp"
             android:layout_marginRight="20dp"
             android:background="@drawable/btnorange"
-            ></Button>
+            android:fontFamily="@font/jipatharegular"
+            android:text="Ajukan Sekarang"
+            android:textColor="#fff"
+            android:textSize="25dp"
+            android:textStyle="bold"></Button>
 
     </LinearLayout>
     </androidx.core.widget.NestedScrollView>

@@ -16,6 +16,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.application.kreditimpian.Api.ApiHeader.AuthorizationResponse;
+import com.application.kreditimpian.Api.ApiHeader.ServiceClient;
 import com.application.kreditimpian.Api.JWTParser;
 import com.application.kreditimpian.Api.PreferenceHelper;
 import com.application.kreditimpian.Api.RequestInterface;
@@ -31,16 +33,22 @@ import com.application.kreditimpian.Model.UserModel.User;
 import com.application.kreditimpian.R;
 import com.application.kreditimpian.ResponseMessage.ResponseLoginSucces;
 import com.auth0.android.jwt.JWT;
+import com.auth0.jwt.exceptions.JWTDecodeException;
+import com.auth0.jwt.interfaces.Claim;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.common.util.Base64Utils;
 import com.google.android.gms.tasks.Task;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.internal.bind.JsonTreeWriter;
+import com.google.gson.reflect.TypeToken;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -52,12 +60,19 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONStringer;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.Base64;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import butterknife.internal.Utils;
+import io.jsonwebtoken.Jwt;
 import io.jsonwebtoken.io.Decoder;
 import io.jsonwebtoken.io.IOException;
+import io.jsonwebtoken.lang.Assert;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import retrofit2.Call;
@@ -66,11 +81,15 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+
+import static android.text.TextUtils.htmlEncode;
 import static android.text.TextUtils.isEmpty;
 import static com.application.kreditimpian.Api.JWTParser.decoded;
+import static com.application.kreditimpian.Api.SharedPrefManager.SP_ID;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Base64;
+
 
 public class LoginUser extends AppCompatActivity {
     ///private String url = "https://demo.kreditimpian.com/ApiAndro/login_member.php";
@@ -94,7 +113,7 @@ public class LoginUser extends AppCompatActivity {
     String tag_json_obj = "json_obj_req";
     SharedPreferences sharedpreferences;
     Boolean session = false;
-    String id,  email,username,password;
+    String   email,username,password;
     public static final String my_shared_preferences = "my_shared_preferences";
     public static final String session_status = "session_status";
 
@@ -111,9 +130,11 @@ public class LoginUser extends AppCompatActivity {
     BaseApiService mApiService;
     SessionManager sessionManager;
 
+
+
     private JWT jwt;
     private String decoded;
-    private String result;
+    private String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -241,6 +262,9 @@ public class LoginUser extends AppCompatActivity {
     }
 
 
+
+
+
     public void UserLogin(){
 
         pDialog = new ProgressDialog(this);
@@ -257,17 +281,71 @@ public class LoginUser extends AppCompatActivity {
 
                 if (response.body().getStatus()==200) {
 
+                    ResponseLoginSucces LoginSueccess = response.body();
 
-
-                    sharedPrefManager.saveSPString(SharedPrefManager.SP_TOKEN, "Bearer"+response.body().getResult());
+                    sharedPrefManager.saveSPString(SharedPrefManager.SP_TOKEN, LoginSueccess.getResult());
                     sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, true);
                     String username = txtusername.getText().toString();
                     sharedPrefManager.saveSPString(SharedPrefManager.SP_USERNAME, username);
 
+                    Toast.makeText(LoginUser.this, "Selamat datang kembali "+username, Toast.LENGTH_LONG).show();
+
+                    token = sharedPrefManager.getSPToken();
+                    try {
+                        decoded = JWTParser.decoded(token);
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                    sharedPrefManager.saveSPString(SharedPrefManager.SP_DECODE, decoded);
+
+                    Gson gson =  new Gson();
+                    String json = gson.toJson(decoded);
+
+
+                    Toast.makeText(LoginUser.this, "Gson anda" + json, Toast.LENGTH_LONG).show();
+
+
+//
+//                    try {
+//                        JSONArray array = new JSONArray(json);
+//                        JSONObject jsonObject = array.getJSONObject(0);
+//                        String id = jsonObject.getString("id");
+//
+//                        ///sharedPrefManager.saveSPString(SP_ID, id);
+//                        Toast.makeText(LoginUser.this, "Percobaan abil id nya bismillah "+id, Toast.LENGTH_LONG).show();
+//
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+
+
+
+
+
+
+
+
+
+
+
+//                    try {
+//
+//
+//                        JSONObject jsonObject = new JSONObject(SharedPrefManager.SP_DECODE);
+//                        Log.d(TAG_EMAIL , jsonObject.getString("email"));
+//                    }
+//                    catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+
+
+
+
                     startActivity(new Intent(LoginUser.this, MenuUtama.class)
                             .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
                     finish();
-
 
 
 
@@ -286,7 +364,6 @@ public class LoginUser extends AppCompatActivity {
 
 
     }
-
 
 
 
@@ -370,8 +447,6 @@ public class LoginUser extends AppCompatActivity {
 
 
     }
-
-
 
 
 
