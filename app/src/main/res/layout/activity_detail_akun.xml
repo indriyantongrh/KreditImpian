@@ -25,6 +25,7 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
@@ -70,6 +71,7 @@
                     android:gravity="center"
                     android:textColor="#000"
                     android:paddingTop="10dp"
+                    android:visibility="gone"
                     android:paddingBottom="10dp"
                     android:fontFamily="@font/jipatharegular"
                     android:textSize="35dp"/>
@@ -227,6 +229,7 @@
                     android:layout_height="wrap_content"
                     app:cardElevation="5dp"
                     app:cardCornerRadius="6dp"
+                    android:visibility="gone"
                     android:layout_margin="5dp"
                     android:layout_below="@+id/btndatasaudara"
                     android:background = "@drawable/cardvieworange">

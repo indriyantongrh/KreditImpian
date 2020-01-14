@@ -8,9 +8,5 @@
         app:showAsAction="always"
         android:icon="@drawable/cart_2"/>
 
-    <item android:id="@+id/notifikasi"
-        android:title="Keranjang"
-        app:showAsAction="always"
-        android:icon="@drawable/notifikasiwhite"/>
 
 </menu>

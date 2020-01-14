@@ -300,11 +300,35 @@ public class LoginUser extends AppCompatActivity {
 
                     sharedPrefManager.saveSPString(SharedPrefManager.SP_DECODE, decoded);
 
-                    Gson gson =  new Gson();
-                    String json = gson.toJson(decoded);
+                    try {
 
+                        JSONObject obj = new JSONObject(decoded);
+                        String id = obj.getString("id");
+                        String email = obj.getString("email");
 
-                    Toast.makeText(LoginUser.this, "Gson anda" + json, Toast.LENGTH_LONG).show();
+                        sharedPrefManager.saveSPString(SP_ID, id);
+                        sharedPrefManager.saveSPString(SharedPrefManager.SP_EMAIL, email);
+
+                        Log.d("My Id", id+email+username);
+                        Log.d("My App", obj.toString());
+
+                    } catch (Throwable t) {
+                        Log.e("My App", "Could not parse malformed JSON: \"" + decoded + "\"");
+                    }
+
+//                    JSONArray arr = null;
+//                    try {
+//                        arr = new JSONArray(json);
+//                        JSONObject jObj = arr.getJSONObject(0);
+//                        String id = jObj.optString("id");
+//                        sharedPrefManager.saveSPString(SP_ID, id);
+//
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//
+//                    String idmember = sharedPrefManager.getSPID();
+//                    Toast.makeText(LoginUser.this, "Gson anda" + idmember, Toast.LENGTH_LONG).show();
 
 
 //
@@ -321,24 +345,6 @@ public class LoginUser extends AppCompatActivity {
 //                    }
 
 
-
-
-
-
-
-
-
-
-
-//                    try {
-//
-//
-//                        JSONObject jsonObject = new JSONObject(SharedPrefManager.SP_DECODE);
-//                        Log.d(TAG_EMAIL , jsonObject.getString("email"));
-//                    }
-//                    catch (JSONException e) {
-//                        e.printStackTrace();
-//                    }
 
 
 

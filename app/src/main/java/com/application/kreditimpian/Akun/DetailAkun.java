@@ -21,13 +21,10 @@ public class DetailAkun extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_akun);
 
-        btnback = findViewById(R.id.btnback);
-        btnback.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        setActionBarTitle("Data Member");
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);// set drawable icon
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         btndatapribadi = findViewById(R.id.btndatapribadi);
         btndatapribadi.setOnClickListener(new View.OnClickListener() {
@@ -80,6 +77,19 @@ public class DetailAkun extends AppCompatActivity {
     public void onBackPressed() {
         finish();
 
+    }
+
+
+    private void setActionBarTitle(String title) {
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(title);
+        }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
 }

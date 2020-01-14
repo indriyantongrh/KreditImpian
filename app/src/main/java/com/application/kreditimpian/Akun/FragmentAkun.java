@@ -79,8 +79,8 @@ import static android.content.Context.MODE_PRIVATE;
 public class FragmentAkun extends Fragment {
 
     ImageView image;
-    CardView btndetailakun, btnstatuspesanan, btnhistorypesanan,btnfavorite,btnkonfirmasi, btngantipassword,btnlogout ;
-    TextView txt_nama_akun;
+    CardView btndetailakun, btnstatuspesanan,btnchat ,btnhistorypesanan,btnfavorite,btnkonfirmasi, btngantipassword,btnlogout ;
+    TextView txt_nama_akun,textchat;
 
     GoogleSignInClient mGoogleSignInClient;
     private GoogleApiClient mGoogleApiClient;
@@ -115,11 +115,12 @@ public class FragmentAkun extends Fragment {
 
         sharedPrefManager = new SharedPrefManager(getActivity());
        /// String id = sharedPrefManager.getSPID();
+        String email = sharedPrefManager.getSPEmail();
         String token = sharedPrefManager.getSPToken();
         String username = sharedPrefManager.getSpUsername();
 
         ///Toast.makeText(getActivity(),token, Toast.LENGTH_SHORT).show();
-        txt_nama_akun.setText(username);
+        txt_nama_akun.setText(email);
 
 //        //String JWTToken = sharedPrefManager.getSPToken();
 //        byte[] encodeJTW = android.util.Base64.decode(token, android.util.Base64.DEFAULT);
@@ -137,7 +138,22 @@ public class FragmentAkun extends Fragment {
             e.printStackTrace();
         }
 
+        Gson gson =  new Gson();
+        String json = gson.toJson(decoded);
+        ///System.out.println(json);
+        //Toast.makeText(LoginUser.this, "Gson anda" + json, Toast.LENGTH_LONG).show();
 
+
+        JSONArray ja = null;
+        try {
+            ja = new JSONArray(json);
+            String result = ja.getJSONObject(0).getString("email");
+            System.out.println(result);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        Toast.makeText(getActivity(),"ini hasil decode"+decoded, Toast.LENGTH_SHORT).show();
 
 
 
@@ -173,6 +189,14 @@ public class FragmentAkun extends Fragment {
                 getActivity().startActivity(intent);
             }
 
+        });
+        textchat = view.findViewById(R.id.textchat);
+        btnchat = view.findViewById(R.id.btnchat);
+        btnchat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StringtoJson();
+            }
         });
 
 
@@ -303,6 +327,29 @@ public class FragmentAkun extends Fragment {
     }
 
 
+    private void StringtoJson(){
+        try {
+            decoded = JWTParser.decoded(token);
+            Log.d("My App", decoded);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        try {
+
+            JSONObject obj = new JSONObject(decoded);
+            String id = obj.getString("id");
+            String email = obj.getString("email");
+            String username = obj.getString("username");
+            Log.d("My Id", id+email+username);
+            Log.d("My App", obj.toString());
+
+        } catch (Throwable t) {
+            Log.e("My App", "Could not parse malformed JSON: \"" + decoded + "\"");
+        }
+
+    }
 
     @Override
     public void onStart() {

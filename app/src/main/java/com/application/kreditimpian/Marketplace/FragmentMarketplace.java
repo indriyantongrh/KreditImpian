@@ -1,5 +1,6 @@
 package com.application.kreditimpian.Marketplace;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -31,6 +32,7 @@ import com.application.kreditimpian.Marketplace.FragKategoriUmkm.KategoriUmkm;
 import com.application.kreditimpian.Marketplace.FragKategorihandphone.KategoriHandphone;
 import com.application.kreditimpian.Marketplace.FragSemuaKategori.FragSemuaKategori;
 import com.application.kreditimpian.R;
+import com.application.kreditimpian.TransactionProcess.Cart;
 
 
 public class FragmentMarketplace extends Fragment {
@@ -266,7 +268,7 @@ public class FragmentMarketplace extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menutopbar, menu);
+        inflater.inflate(R.menu.menutopbarmarketplace, menu);
 
         super.onCreateOptionsMenu(menu, inflater);
     }
@@ -277,17 +279,16 @@ public class FragmentMarketplace extends Fragment {
 
         int id = item.getItemId();
 
-        if (id == R.id.favorite){
-            Toast.makeText(getActivity(), "ini favorite", Toast.LENGTH_SHORT).show();
-
-        }
         if (id == R.id.cartshop){
-            Toast.makeText(getActivity(), "Ini keranjang", Toast.LENGTH_SHORT).show();
+            gotocartshop();
         }
         return super.onOptionsItemSelected(item);
+    }
 
-
-
+    private void gotocartshop() {
+        Intent intent_cart = new Intent(getActivity(), Cart.class);
+        intent_cart.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent_cart);
     }
 
 }

@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -56,6 +57,11 @@ import java.util.List;
 
 import com.application.kreditimpian.FormPengajuan.StepFotoProduct;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.google.gson.Gson;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import static com.application.kreditimpian.LoginRegister.LoginUser.TAG_ID;
 
@@ -120,6 +126,17 @@ public class FragmentBeranda extends Fragment {
 
 
         sharedPrefManager = new SharedPrefManager(getActivity());
+        String decode = sharedPrefManager.getSpDecode();
+        Gson gson = new Gson();
+        String jsonconvert = gson.toJson(decode);
+//        try {
+//            JSONArray jsonArray = new JSONArray(jsonconvert);
+//            JSONObject jsonObject = jsonArray.getJSONObject(1);
+//            String id = jsonObject.getString("id");
+//            System.out.println("Cek id saya : "+id);
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
 
        /// Toast.makeText(getActivity(), "Identitas mu "+ sharedPrefManager.getSPID(), Toast.LENGTH_SHORT).show();
 
@@ -250,16 +267,6 @@ public class FragmentBeranda extends Fragment {
             }
         });
 
-  /*      btn_lainya = rootView.findViewById(R.id.btn_lainya);
-        btn_lainya.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(getActivity(), SemuaKategori.class);
-                getActivity().startActivity(intent);
-
-            }
-        });*/
 
 
         sliderView = (SliderView) rootView.findViewById(R.id.sliderView);
@@ -267,9 +274,6 @@ public class FragmentBeranda extends Fragment {
 
         setupSlider();
 
-
-       // initViewMitra();
-      ///  getListMitra();
 
         return rootView;
 
@@ -423,12 +427,12 @@ private void initViewMitra() {
 
         int id = item.getItemId();
 
-        if (id == R.id.favorite){
-            Toast.makeText(getActivity(), "ini favorite", Toast.LENGTH_SHORT).show();
+        if (id == R.id.notifikasi){
+            Toast.makeText(getActivity(), "ini Notifikasi", Toast.LENGTH_SHORT).show();
 
         }
         if (id == R.id.cartshop){
-            Toast.makeText(getActivity(), "Ini keranjang", Toast.LENGTH_SHORT).show();
+            gotocartshop();
         }
         return super.onOptionsItemSelected(item);
 
@@ -437,9 +441,9 @@ private void initViewMitra() {
     }
 
     private void gotocartshop() {
-        Intent intent_profile = new Intent(getActivity(), Cart.class);
-        intent_profile.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent_profile);
+        Intent intent_cart = new Intent(getActivity(), Cart.class);
+        intent_cart.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent_cart);
     }
 
 

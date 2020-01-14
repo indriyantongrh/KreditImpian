@@ -25,6 +25,7 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
@@ -67,6 +68,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="fill_parent"
                     android:gravity="center"
+                    android:visibility="gone"
                     android:fontFamily="@font/jipatharegular"
                     android:textSize="40dp"
                     android:paddingBottom="10dp"
@@ -232,7 +234,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="16dp"
-                    android:text="Upload bukti "
+                    android:text="Pilih bukti transfer "
                     android:textStyle="bold"
                     android:textColor="#fff"
                     android:textSize="25sp"
@@ -264,7 +266,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="16dp"
-                    android:text="Konfirmasi"
+                    android:text="Konfirmasi Pembayaran"
                     android:textStyle="bold"
                     android:textColor="#fff"
                     android:textSize="25sp"

@@ -27,6 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
+            android:visibility="gone"
             app:popupTheme="@style/ThemeOverlay.AppCompat"
             tools:ignore="MissingConstraints">
 
@@ -68,6 +69,7 @@
                     android:layout_height="fill_parent"
                     android:gravity="center"
                     android:paddingBottom="10dp"
+                    android:visibility="gone"
                     android:textColor="#000"
                     android:fontFamily="@font/jipatharegular"
                     android:textSize="35sp"

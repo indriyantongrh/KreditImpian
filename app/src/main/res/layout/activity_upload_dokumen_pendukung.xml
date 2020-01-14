@@ -29,6 +29,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/ThemeOverlay.AppCompat"
+            android:visibility="gone"
             tools:ignore="MissingConstraints">
 
             <ImageButton
@@ -68,11 +69,39 @@
                     android:layout_height="fill_parent"
                     android:gravity="center"
                     android:textSize="20dp"
+                    android:visibility="gone"
                     android:paddingBottom="10dp"
                     android:textColor="#000"
                     android:text="Data Pendukung"/>
 
 
+                <!--Border-->
+                <LinearLayout
+                    android:background="#fff"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/sairaregular"
+                        android:text="Dikumen KTP"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/borderorange"
+                    android:layout_height="150dp">
+                    <ImageView
+                        android:id="@+id/imagektp"
+                        android:layout_width="match_parent"
+                        android:src="@drawable/upload"
+                        android:layout_height="match_parent" />
+
+
+                </LinearLayout>
 
                 <!--Border-->
                 <LinearLayout
@@ -80,60 +109,33 @@
                     android:layout_width="match_parent"
                     android:layout_height="15dp"></LinearLayout>
 
-                <!--Button-->
-                <Button
-                    android:id="@+id/btnktp"
-                    style="?android:textAppearanceSmall"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="16dp"
-                    android:text="Pilih Ktp"
-                    android:textStyle="bold"
-                    android:textColor="#fff"
-                    android:textSize="25sp"
-                    android:fontFamily="@font/jipatharegular"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@drawable/btnorange"
-                    ></Button>
-
-
-                <ImageView
-                    android:id="@+id/imagektp"
-                    android:paddingBottom="30dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
                 <!--Border-->
                 <LinearLayout
                     android:background="#fff"
+                    android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"></LinearLayout>
+                    android:layout_height="25dp">
 
-                <!--Button-->
-                <Button
-                    android:id="@+id/btnnpwp"
-                    style="?android:textAppearanceSmall"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/sairaregular"
+                        android:text="Upload NPWP(Optional)"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="16dp"
-                    android:text="Pilih NPWP"
-                    android:textStyle="bold"
-                    android:textColor="#fff"
-                    android:textSize="25sp"
-                    android:fontFamily="@font/jipatharegular"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@drawable/btnorange"
-                    ></Button>
+                    android:background="@drawable/borderorange"
+                    android:layout_height="150dp">
+                    <ImageView
+                        android:id="@+id/imagenpwp"
+                        android:layout_width="match_parent"
+                        android:src="@drawable/upload"
+                        android:layout_height="match_parent" />
 
 
-                <ImageView
-                    android:id="@+id/imagenpwp"
-                    android:paddingBottom="30dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
+                </LinearLayout>
 
                 <!--Border-->
                 <LinearLayout

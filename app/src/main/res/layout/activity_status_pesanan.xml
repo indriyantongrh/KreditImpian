@@ -24,6 +24,7 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
@@ -66,68 +67,50 @@
                     android:layout_height="fill_parent"
                     android:gravity="center"
                     android:textSize="20dp"
+                    android:visibility="gone"
                     android:paddingBottom="10dp"
                     android:textColor="#000"
                     android:text="Status Pesanan"/>
 
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/btndetailakun"
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="130dp"
-                    app:cardElevation="5dp"
-                    app:cardCornerRadius="7dp"
-                    android:layout_margin="5dp"
-                    android:layout_below="@+id/card1"
-                    android:background = "@drawable/borderhitam">
-                    <RelativeLayout
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+                    <!--        <ProgressBar
+                                android:id="@+id/progressBar"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_centerInParent="true" />-->
+
+
+                    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
                         android:layout_width="match_parent"
-                        android:background="@drawable/borderhitam"
-                        android:layout_height="130dp">
+                        android:id="@+id/swipeRefresh"
+                        android:layout_height="wrap_content">
 
-                        <ImageView
-                            android:id="@+id/imageproduk"
-                            android:layout_width="110dp"
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/ListPesanan"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_margin="10dp"
-                            android:src="@drawable/image" />
+                            android:layout_weight="1"
+                            android:paddingTop="1dp"
+                            android:scrollbars="vertical">
+                        </androidx.recyclerview.widget.RecyclerView>
+                    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+                </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/txtnamabarang"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_toRightOf="@id/imageproduk"
-                            android:gravity="center_horizontal"
-                            android:foregroundGravity="center_horizontal"
-                            android:paddingTop="15dp"
-                            android:text="Nama Barang"
-                            android:textColor="#000"
-                            android:textSize="18sp" />
-
-
-                        <TextView
-                            android:id="@+id/txtstatus"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/txtnamabarang"
-                            android:layout_marginLeft="0dp"
-                            android:layout_marginTop="51dp"
-                            android:paddingRight="10dp"
-                            android:layout_alignParentRight="true"
-                            android:layout_toRightOf="@id/imageproduk"
-                            android:foregroundGravity="center_horizontal"
-                            android:gravity="right"
-                            android:paddingTop="15dp"
-                            android:text="Status Produk"
-                            android:textColor="@color/colorOrange"
-                            android:textSize="12sp" />
-
-
-                    </RelativeLayout>
-                </androidx.cardview.widget.CardView>
-
-
-
+                <ImageView
+                    android:id="@+id/empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_marginTop="30dp"
+                    android:visibility="gone"
+                    android:src="@drawable/emptyproduct"/>
 
 
 

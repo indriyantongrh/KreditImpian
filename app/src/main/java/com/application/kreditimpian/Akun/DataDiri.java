@@ -5,13 +5,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -28,6 +35,8 @@ import com.google.gson.Gson;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
@@ -47,6 +56,7 @@ import static com.application.kreditimpian.Api.SharedPrefManager.SP_TOKEN;
 public class DataDiri extends AppCompatActivity implements View.OnClickListener {
     private int mYear, mMonth, mDay;
     ImageButton btnback;
+    ImageView imagektp,imagenpwp, imageself;
     Spinner spinnerjeniskelamin,spinnerstatus,spinneragama,spinnerstatusrumah,spinnerkredit;
     Button btnsimpan;
     EditText txtnamalengkap,txttempatlahir,txttanggallahir,txtnikktp,txtnomornpwp,txtpekerjaan,txtpendapatan,
@@ -58,15 +68,32 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
     BaseApiService mApiService;
     String fullname;
 
+    //untuk upload gambar
+    Bitmap bitmap, decoded_1, decoded_2, decoded_3;
+    int bitmap_size = 80; // range 1 - 100=
+    int PICK_IMAGE_REQUEST_1 = 1;
+    int PICK_IMAGE_REQUEST_2 = 2;
+    int PICK_IMAGE_REQUEST_3 = 3;
+    int REQUEST_IMAGE_CAPTURE_1 = 11;
+    int REQUEST_IMAGE_CAPTURE_2 = 12;
+    int REQUEST_IMAGE_CAPTURE_3 = 13;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_diri);
 
+        setActionBarTitle("Data Diri");
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);// set drawable icon
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
         sharedPrefManager = new SharedPrefManager(DataDiri.this);
         String token = sharedPrefManager.getSPToken();
 
+        imageself = findViewById(R.id.imageself);
+        imagenpwp = findViewById(R.id.imagenpwp);
+        imagektp = findViewById(R.id.imagektp);
         txtnamalengkap = findViewById(R.id.txtnamalengkap);
         txttempatlahir = findViewById(R.id.txttempatlahir);
         txttanggallahir = findViewById(R.id.txttanggallahir);
@@ -88,6 +115,98 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         txttwitter = findViewById(R.id.txttwitter);
         txtinstagram = findViewById(R.id.txtinstagram);
         btnsimpan = findViewById(R.id.btnsimpan);
+
+        imageself.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //pakai alert dialog
+                android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(DataDiri.this);
+                builder.setTitle("Pilih");
+                builder.setMessage("Silahkan memilih kamera atau galeri");
+                builder.setPositiveButton("Kamera", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        if (takePictureIntent.resolveActivity(DataDiri.this.getPackageManager()) != null) {
+                            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE_3);
+                        }
+                    }
+                });
+                builder.setNegativeButton("Galeri", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        showFileChooser3();
+                    }
+                });
+
+                android.app.AlertDialog alert = builder.create();
+                alert.show();
+            }
+        });
+
+
+        imagektp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //pakai alert dialog
+                android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(DataDiri.this);
+                builder.setTitle("Pilih");
+                builder.setMessage("Silahkan memilih kamera atau galeri");
+                builder.setPositiveButton("Kamera", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        if (takePictureIntent.resolveActivity(DataDiri.this.getPackageManager()) != null) {
+                            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE_1);
+                        }
+                    }
+                });
+                builder.setNegativeButton("Galeri", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        showFileChooser1();
+                    }
+                });
+
+                android.app.AlertDialog alert = builder.create();
+                alert.show();
+            }
+        });
+
+
+        imagenpwp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //pakai alert dialog
+                android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(DataDiri.this);
+                builder.setTitle("Pilih");
+                builder.setMessage("Silahkan memilih kamera atau galeri");
+                builder.setPositiveButton("Kamera", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        if (takePictureIntent.resolveActivity(DataDiri.this.getPackageManager()) != null) {
+                            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE_2);
+                        }
+                    }
+                });
+                builder.setNegativeButton("Galeri", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        showFileChooser2();
+                    }
+                });
+
+                android.app.AlertDialog alert = builder.create();
+                alert.show();
+
+            }
+        });
+
         btnsimpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -294,6 +413,141 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 //    }
 
 
+    //untuk memilih gambar dari galeri
+    private void showFileChooser1() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST_1);
+    }
 
+    //untuk memilih gambar dari galeri
+    private void showFileChooser2() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST_2);
+    }
+
+    //untuk memilih gambar dari galeri
+    private void showFileChooser3() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST_3);
+    }
+
+    //untuk set ke imageview
+    private void setToImageView1(Bitmap bmp) {
+        //compress image
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.JPEG, bitmap_size, bytes);
+        decoded_1 = BitmapFactory.decodeStream(new ByteArrayInputStream(bytes.toByteArray()));
+        //menampilkan gambar yang dipilih dari camera/gallery ke ImageView
+        imagektp.setImageBitmap(decoded_1);
+    }
+
+    //untuk set ke imageview
+    private void setToImageView2(Bitmap bmp) {
+        //compress image
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.JPEG, bitmap_size, bytes);
+        decoded_2 = BitmapFactory.decodeStream(new ByteArrayInputStream(bytes.toByteArray()));
+        //menampilkan gambar yang dipilih dari camera/gallery ke ImageView
+        imagenpwp.setImageBitmap(decoded_2);
+    }
+
+    //untuk set ke imageview
+    private void setToImageView3(Bitmap bmp) {
+        //compress image
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.JPEG, bitmap_size, bytes);
+        decoded_3 = BitmapFactory.decodeStream(new ByteArrayInputStream(bytes.toByteArray()));
+        //menampilkan gambar yang dipilih dari camera/gallery ke ImageView
+        imageself.setImageBitmap(decoded_3);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        //ini untuk gambar
+        if (requestCode == PICK_IMAGE_REQUEST_1 && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            Uri filePath = data.getData();
+            try {
+                //mengambil fambar dari Gallery
+                bitmap = MediaStore.Images.Media.getBitmap(DataDiri.this.getContentResolver(), filePath);
+                // 512 adalah resolusi tertinggi setelah image di resize, bisa di ganti.
+                setToImageView1(getResizedBitmap(bitmap, 512));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else if (requestCode == PICK_IMAGE_REQUEST_2 && resultCode == RESULT_OK && data != null && data.getData() != null) {
+                Uri filePath = data.getData();
+                try {
+                    //mengambil fambar dari Gallery
+                    bitmap = MediaStore.Images.Media.getBitmap(DataDiri.this.getContentResolver(), filePath);
+                    // 512 adalah resolusi tertinggi setelah image di resize, bisa di ganti.
+                    setToImageView2(getResizedBitmap(bitmap, 512));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }       }else if (requestCode == PICK_IMAGE_REQUEST_3 && resultCode == RESULT_OK && data != null && data.getData() != null) {
+                    Uri filePath = data.getData();
+                    try {
+                        //mengambil fambar dari Gallery
+                        bitmap = MediaStore.Images.Media.getBitmap(DataDiri.this.getContentResolver(), filePath);
+                        // 512 adalah resolusi tertinggi setelah image di resize, bisa di ganti.
+                        setToImageView3(getResizedBitmap(bitmap, 512));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+            //ini untuk dari kamera
+        } else if (requestCode == REQUEST_IMAGE_CAPTURE_1 && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            //imageView.setImageBitmap(imageBitmap);
+            setToImageView1(getResizedBitmap(imageBitmap, 512));
+        }else if (requestCode == REQUEST_IMAGE_CAPTURE_2 && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            //imageView.setImageBitmap(imageBitmap);
+            setToImageView2(getResizedBitmap(imageBitmap, 512));
+        }else if (requestCode == REQUEST_IMAGE_CAPTURE_3 && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            //imageView.setImageBitmap(imageBitmap);
+            setToImageView3(getResizedBitmap(imageBitmap, 512));
+        }
+    }
+
+    // fungsi resize image
+    public Bitmap getResizedBitmap(Bitmap image, int maxSize) {
+        int width = image.getWidth();
+        int height = image.getHeight();
+
+        float bitmapRatio = (float) width / (float) height;
+        if (bitmapRatio > 1) {
+            width = maxSize;
+            height = (int) (width / bitmapRatio);
+        } else {
+            height = maxSize;
+            width = (int) (height * bitmapRatio);
+        }
+        return Bitmap.createScaledBitmap(image, width, height, true);
+    }
+
+
+
+    private void setActionBarTitle(String title) {
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(title);
+        }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
 
 }

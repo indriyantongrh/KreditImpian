@@ -28,6 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
+            android:visibility="gone"
             app:popupTheme="@style/ThemeOverlay.AppCompat"
             tools:ignore="MissingConstraints">
 
@@ -70,8 +71,27 @@
                     android:textSize="35dp"
                     android:paddingBottom="10dp"
                     android:textColor="#000"
+                    android:visibility="gone"
                     android:fontFamily="@font/jipatharegular"
                     android:text="Data pribadi"/>
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imageself"
+                    android:layout_width="140dp"
+                    android:layout_height="120dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:clickable="true"
+                    android:elevation="5dp"
+                    android:focusable="true"
+                    android:layout_gravity="center"
+                    android:foregroundGravity="center"
+                    android:scaleType="centerCrop"
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/icon_user"
+                    app:civ_border_color="#FFFFFFFF"
+                    app:civ_border_width="3dp"
+                    app:civ_fill_color="#efeeee" />
 
 
                 <LinearLayout
@@ -208,6 +228,35 @@
                         android:layout_height="match_parent"></Spinner>
                 </LinearLayout>
 
+
+                <!--Border-->
+                <LinearLayout
+                    android:background="#fff"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/sairaregular"
+                        android:text="Dikumen KTP"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/borderorange"
+                    android:layout_height="100dp">
+                    <ImageView
+                        android:id="@+id/imagektp"
+                        android:layout_width="match_parent"
+                        android:src="@drawable/upload"
+                        android:layout_height="match_parent" />
+
+
+                </LinearLayout>
+
                 <!--Border-->
                 <LinearLayout
                     android:background="#fff"
@@ -231,6 +280,34 @@
                         android:fontFamily="@font/jipatharegular"
                         android:inputType="number"
                         android:textSize="26dp" />
+                </LinearLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:background="#fff"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/sairaregular"
+                        android:text="Dokumen NPWP(Optional)"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/borderorange"
+                    android:layout_height="100dp">
+                    <ImageView
+                        android:id="@+id/imagenpwp"
+                        android:layout_width="match_parent"
+                        android:src="@drawable/upload"
+                        android:layout_height="match_parent" />
+
+
                 </LinearLayout>
 
                 <!--Border-->
