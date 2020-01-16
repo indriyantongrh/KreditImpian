@@ -474,7 +474,8 @@
                     android:layout_marginRight="10dp"
                     android:background="@android:color/transparent"
                     android:hint="Alamat Email"
-                    android:inputType="text"
+                    android:inputType="none"
+                    android:editable="false"
                     android:fontFamily="@font/jipatharegular"
                     android:textSize="26dp" />
             </LinearLayout>
@@ -523,9 +524,10 @@
                         android:layout_height="match_parent"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
+                        android:inputType="none"
+                        android:editable="false"
                         android:background="@android:color/transparent"
                         android:hint="Nomor Handphone"
-                        android:inputType="text"
                         android:fontFamily="@font/jipatharegular"
                         android:textSize="26dp" />
                 </LinearLayout>

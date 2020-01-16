@@ -34,9 +34,7 @@ import com.application.kreditimpian.KonfirmasiPembayaran.KonfirmasiPembayaran;
 import com.application.kreditimpian.LoginRegister.LoginUser;
 import com.application.kreditimpian.Model.ModelProduct.ResponseProduct;
 import com.application.kreditimpian.Model.ModelUser.UserResponse;
-import com.application.kreditimpian.Model.ModelUserDetail.ResponseUserDetail;
-import com.application.kreditimpian.Model.ModelUserDetail.ResultItem;
-import com.application.kreditimpian.Model.UserModel.User;
+
 import com.application.kreditimpian.R;
 import com.application.kreditimpian.ResponseMessage.ResponseLoginSucces;
 import com.application.kreditimpian.StatusPesanan.StatusPesanan;
@@ -118,9 +116,12 @@ public class FragmentAkun extends Fragment {
         String email = sharedPrefManager.getSPEmail();
         String token = sharedPrefManager.getSPToken();
         String username = sharedPrefManager.getSpUsername();
+        String idprof = sharedPrefManager.getSpIdprofile();
+
+        Toast.makeText(getActivity(), "Id profile "+idprof, Toast.LENGTH_LONG).show();
 
         ///Toast.makeText(getActivity(),token, Toast.LENGTH_SHORT).show();
-        txt_nama_akun.setText(email);
+        txt_nama_akun.setText(username);
 
 //        //String JWTToken = sharedPrefManager.getSPToken();
 //        byte[] encodeJTW = android.util.Base64.decode(token, android.util.Base64.DEFAULT);
@@ -153,7 +154,7 @@ public class FragmentAkun extends Fragment {
             e.printStackTrace();
         }
 
-        Toast.makeText(getActivity(),"ini hasil decode"+decoded, Toast.LENGTH_SHORT).show();
+        ///Toast.makeText(getActivity(),"ini hasil decode"+decoded, Toast.LENGTH_SHORT).show();
 
 
 

@@ -1,9 +1,11 @@
 package com.application.kreditimpian.Beranda;
 
+import android.Manifest;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
@@ -12,6 +14,8 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -96,7 +100,7 @@ public class FragmentBeranda extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-
+    private static final int PERMISSION_REQUEST_CODE = 200;
     private SliderPagerAdapter mAdapter;
     private SliderIndicator mIndicator;
     ActionBar toolbar;
@@ -112,6 +116,13 @@ public class FragmentBeranda extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_fragment_beranda, container, false);
+
+        if (ContextCompat.checkSelfPermission(getActivity(),
+                Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED){
+
+        }else {
+            requestPermission();
+        }
 
         rv_mitra = rootView.findViewById(R.id.rv_mitra);
         imagefoto = rootView.findViewById(R.id.imagefoto);
@@ -385,7 +396,12 @@ private void initViewMitra() {
         return Bitmap.createScaledBitmap(image, width, height, true);
     }
 
+    private void requestPermission() {
 
+        ActivityCompat.requestPermissions(getActivity(),
+                new String[]{Manifest.permission.CAMERA},
+                PERMISSION_REQUEST_CODE);
+    }
 
 
     private void setupSlider() {

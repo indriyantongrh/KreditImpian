@@ -1,18 +1,24 @@
 package com.application.kreditimpian.Akun;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -22,14 +28,24 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.application.kreditimpian.Api.JSONResponse;
 import com.application.kreditimpian.Api.RequestInterface;
 import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
+import com.application.kreditimpian.Api.api_v2.RetrofitClient;
+import com.application.kreditimpian.Api.api_v2.UtilsApi;
 import com.application.kreditimpian.BuildConfig;
 import com.application.kreditimpian.LoginRegister.Register;
 import com.application.kreditimpian.Model.ModelMember.ResponseMember;
+
+import com.application.kreditimpian.Model.ModelUser.UserResponse;
+import com.application.kreditimpian.Model.ModelUserDetail.ResponseMembers;
+import com.application.kreditimpian.Model.ModelUserDetail.ResultItem;
 import com.application.kreditimpian.R;
 import com.application.kreditimpian.ResponseMessage.ResponseRegister;
+import com.bumptech.glide.Glide;
+import com.fasterxml.jackson.databind.ser.Serializers;
+import com.google.android.gms.common.internal.Objects;
 import com.google.gson.Gson;
 
 import org.jetbrains.annotations.NotNull;
@@ -38,7 +54,10 @@ import org.json.JSONObject;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Interceptor;
@@ -52,8 +71,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Field;
 
 import static com.application.kreditimpian.Api.SharedPrefManager.SP_TOKEN;
+import static com.application.kreditimpian.Api.api_v2.UtilsApi.BASE_URL_API;
 
 public class DataDiri extends AppCompatActivity implements View.OnClickListener {
+    private static final int PERMISSION_REQUEST_CODE = 200;
     private int mYear, mMonth, mDay;
     ImageButton btnback;
     ImageView imagektp,imagenpwp, imageself;
@@ -66,7 +87,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
     SharedPrefManager sharedPrefManager;
     Context mContext;
     BaseApiService mApiService;
-    String fullname;
+    String fullname, idprofile;
 
     //untuk upload gambar
     Bitmap bitmap, decoded_1, decoded_2, decoded_3;
@@ -78,6 +99,9 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
     int REQUEST_IMAGE_CAPTURE_2 = 12;
     int REQUEST_IMAGE_CAPTURE_3 = 13;
 
+    ResultItem reqresultItem;
+    List<ResultItem> resultItemList = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,9 +111,17 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);// set drawable icon
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
+        mApiService = UtilsApi.getAPIService();
         sharedPrefManager = new SharedPrefManager(DataDiri.this);
         String token = sharedPrefManager.getSPToken();
+        String email = sharedPrefManager.getSPEmail();
+        String msisdn = sharedPrefManager.getSpMsisdn();
+        String idprofile = sharedPrefManager.getSpIdprofile();
+        Log.d("Id Profile Data diri ", idprofile);
+
+
+
+
 
         imageself = findViewById(R.id.imageself);
         imagenpwp = findViewById(R.id.imagenpwp);
@@ -116,6 +148,12 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         txtinstagram = findViewById(R.id.txtinstagram);
         btnsimpan = findViewById(R.id.btnsimpan);
 
+
+        txtalamatemail.setText(email);
+        txtnomorhandphone.setText(msisdn);
+
+        getmemberDetail();
+        ///txtnamalengkap.setText(idprofile);
         imageself.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -233,12 +271,14 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 //                String twitter = txttwitter.getText().toString();
 //                String instagram = txtinstagram.getText().toString();
 
-                updatemember();
+               /// updatemember();
+               //getMember();
+                ///getmemberDetail();
 
             }
         });
 
-
+        ///getMember();
 
         txttanggallahir.setOnClickListener(this);
         btnback = findViewById(R.id.btnback);
@@ -248,7 +288,16 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                 finish();
             }
         });
+
+        if (ContextCompat.checkSelfPermission(DataDiri.this,
+                Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED){
+
+        }else {
+            requestPermission();
+        }
+
    }
+
 
         @Override
     public void onBackPressed() {
@@ -331,6 +380,113 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
     }
 
+
+    private void getmemberDetail(){
+       /// loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
+
+        mApiService.getMemberDetail().enqueue(new Callback<ResponseMembers>() {
+            @Override
+            public void onResponse(Call<ResponseMembers> call, Response<ResponseMembers> response) {
+                if(response.body() !=null){
+                    ResponseMembers responseMembers = response.body();
+                    List<ResultItem> details = responseMembers.getResult();
+                    for(ResultItem d : details){
+                        if(d.getId().equals(sharedPrefManager.getSpIdprofile())){
+                            reqresultItem = d;
+
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    txtnamalengkap.setText(reqresultItem.getMetadata().getFullname());
+                                    txttempatlahir.setText(reqresultItem.getMetadata().getBirthplace());
+                                    txttanggallahir.setText(reqresultItem.getMetadata().getBirthday());
+                                    txtpekerjaan.setText(reqresultItem.getMetadata().getJob());
+                                    txtpendapatan.setText("Rp. "+reqresultItem.getMetadata().getIncome());
+                                    txtjumlahtanggungan.setText(reqresultItem.getMetadata().getFamilyDependent());
+                                    txtnikktp.setText(reqresultItem.getMetadata().getNumberCitizen());
+                                    txtnomornpwp.setText(reqresultItem.getMetadata().getNumberTaxpayer());
+                                    txtibukandung.setText(reqresultItem.getMetadata().getParentName());
+                                    txtnomortlp.setText(reqresultItem.getMetadata().getContactOffice());
+                                    txtfacebook.setText("fb.com/"+reqresultItem.getMetadata().getFacebook());
+                                    txttwitter.setText("twitter.com/"+reqresultItem.getMetadata().getTwitter());
+                                    txtinstagram.setText("instagram.com/"+reqresultItem.getMetadata().getInstagram());
+//                                    Glide.with(mContext)
+//                                            .load(reqresultItem.getMetadata().getTaxpayer())
+//                                            .placeholder(R.drawable.iconupload)
+//                                            .error(R.drawable.iconupload)
+//                                            .into(imagenpwp);
+
+
+
+                                }
+                            });
+                        }
+
+                    }
+
+
+                }else {
+                   /// loading.dismiss();
+                    Toast.makeText(mContext, "Gagal Refresh", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseMembers> call, Throwable t) {
+                Toast.makeText(DataDiri.this, "Koneksi Anda bermasalah", Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+    }
+
+//    private void getMember(){
+//
+//        mApiService.getMemberDetail(sharedPrefManager.getSpIdprofile()).enqueue(new Callback<ResponseMembers>() {
+//
+//            @Override
+//            public void onResponse(Call<ResponseMembers> call, Response<ResponseMembers> response) {
+//
+//
+//                if (response.isSuccessful()) {
+//
+//                    ResponseMembers responseMembers = response.body();
+//                    List<ResultItem> detail = responseMembers.getResult();
+//                    Log.d("Member Detail", detail.toString());
+//
+//
+//                   for (ResultItem d : detail){
+//                       if(d.getId().equals(sharedPrefManager.getSpIdprofile()));
+//                        resultItem =d;
+//
+//                        runOnUiThread(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                              txtibukandung.setText(resultItem.getMetadata().getParentName());
+//
+//                            }
+//                        });
+//
+//                   }
+//
+//                   // final List<ResultItem> Detailmember = Arrays.asList(response.body().getResult());
+//
+//
+//                    //ResultItem userResponse = response.body().getResult();
+//                    ///txtnamalengkap.setText(Detailmember.);
+//
+//                }
+//            }
+//            @Override
+//            public void onFailure(Call call, Throwable t) {
+//                /*
+//                Error callback
+//                */
+//            }
+//        });
+//
+//    }
+
 //    private void requestRegister(){
 //
 //        //membuat progress dialog
@@ -412,6 +568,13 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 //                });
 //    }
 
+
+    private void requestPermission() {
+
+        ActivityCompat.requestPermissions(this,
+                new String[]{Manifest.permission.CAMERA},
+               PERMISSION_REQUEST_CODE);
+    }
 
     //untuk memilih gambar dari galeri
     private void showFileChooser1() {

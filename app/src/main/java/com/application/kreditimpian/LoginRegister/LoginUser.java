@@ -29,7 +29,7 @@ import com.application.kreditimpian.BuildConfig;
 import com.application.kreditimpian.DecodeUtils.JWTUtils;
 import com.application.kreditimpian.MainActivity;
 import com.application.kreditimpian.MenuUtama.MenuUtama;
-import com.application.kreditimpian.Model.UserModel.User;
+import com.application.kreditimpian.Model.ModelLoginMember.ResponseLoginMember;
 import com.application.kreditimpian.R;
 import com.application.kreditimpian.ResponseMessage.ResponseLoginSucces;
 import com.auth0.android.jwt.JWT;
@@ -303,13 +303,21 @@ public class LoginUser extends AppCompatActivity {
                     try {
 
                         JSONObject obj = new JSONObject(decoded);
+
                         String id = obj.getString("id");
                         String email = obj.getString("email");
+                        String msisdn = obj.getString("msisdn");
+                        String profile = obj.getString("profile");
+
+                        JSONObject objProfile = new JSONObject(profile);
+                        String idprof = objProfile.getString("id");
 
                         sharedPrefManager.saveSPString(SP_ID, id);
                         sharedPrefManager.saveSPString(SharedPrefManager.SP_EMAIL, email);
+                        sharedPrefManager.saveSPString(SharedPrefManager.SP_MSISDN, msisdn);
+                        sharedPrefManager.saveSPString(SharedPrefManager.SP_IDPROFILE, idprof);
 
-                        Log.d("My Id", id+email+username);
+                        Log.d("My Id Prof", idprof);
                         Log.d("My App", obj.toString());
 
                     } catch (Throwable t) {

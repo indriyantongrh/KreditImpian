@@ -2,6 +2,8 @@ package com.application.kreditimpian.FormPengajuan;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.Activity;
@@ -31,6 +33,7 @@ import pub.devrel.easypermissions.EasyPermissions;
 import static android.provider.MediaStore.ACTION_IMAGE_CAPTURE;
 
 public class StepFotoProduct extends AppCompatActivity {
+    private static final int PERMISSION_REQUEST_CODE = 200;
     private static final int CAMERA_REQUEST = 1888;
     private static final int MY_CAMERA_PERMISSION_CODE = 100;
     ImageView image, image1;
@@ -51,6 +54,12 @@ public class StepFotoProduct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stepisi_product);
 
+        if (ContextCompat.checkSelfPermission(StepFotoProduct.this,
+                Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED){
+
+        }else {
+            requestPermission();
+        }
         setActionBarTitle("Foto Impian Anda!");
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);// set drawable icon
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -76,6 +85,14 @@ public class StepFotoProduct extends AppCompatActivity {
             }
         });
         }
+
+
+    private void requestPermission() {
+
+        ActivityCompat.requestPermissions(this,
+                new String[]{Manifest.permission.CAMERA},
+                PERMISSION_REQUEST_CODE);
+    }
 
 
     @Override

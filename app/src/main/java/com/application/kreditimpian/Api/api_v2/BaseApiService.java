@@ -10,9 +10,9 @@ import com.application.kreditimpian.Model.ModelMember.ResponseMember;
 import com.application.kreditimpian.Model.ModelProduct.ResponseProduct;
 import com.application.kreditimpian.Model.ModelProductNew.ProductResponse;
 import com.application.kreditimpian.Model.ModelUser.UserResponse;
-import com.application.kreditimpian.Model.ModelUserDetail.ResponseUserDetail;
-import com.application.kreditimpian.Model.ModelUserDetail.ResultItem;
-import com.application.kreditimpian.Model.UserModel.User;
+
+
+import com.application.kreditimpian.Model.ModelUserDetail.ResponseMembers;
 import com.application.kreditimpian.ResponseMessage.ResponseLoginSucces;
 
 import okhttp3.ResponseBody;
@@ -43,6 +43,12 @@ public interface BaseApiService {
     @POST("system/users/authenticate")
     Call<ResponseLoginSucces> loginRequest(@Field("username") String username,
                                            @Field("password") String password);
+
+
+    //getMember
+    ///@FormUrlEncoded
+    @GET("members")
+    Call<ResponseMembers> getMemberDetail();
 
     //getAllProduct
     @GET("products?status=PUBLISH")

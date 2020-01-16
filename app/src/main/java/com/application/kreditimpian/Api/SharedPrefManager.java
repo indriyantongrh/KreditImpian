@@ -14,6 +14,7 @@ public class SharedPrefManager {
 
 
     public static final String SP_DECODE = "decode";
+    public static final String SP_IDPROFILE = "id";
     public static final String SP_ID = "id";
     public static final String SP_EMAIL = "email";
     public static final String SP_USERNAME = "username";
@@ -67,6 +68,10 @@ public class SharedPrefManager {
 
     public String  getSpDecode() {
         return sp.getString(SP_DECODE,"");
+    }
+
+    public String  getSpIdprofile() {
+        return sp.getString(SP_IDPROFILE,"");
     }
 
     public Boolean getSPSudahLogin(){

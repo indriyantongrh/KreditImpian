@@ -19,8 +19,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 public class StepUploadProduct extends AppCompatActivity {
-
-
+    private static final int PERMISSION_REQUEST_CODE = 200;
     ImageView image;
     Bitmap bitmap, decoded;
     int PICK_IMAGE_REQUEST = 1;

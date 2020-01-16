@@ -15,7 +15,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import java.util.Map;
 
 public class StepIsiCariProduct extends AppCompatActivity {
-
+    private static final int PERMISSION_REQUEST_CODE = 200;
     SharedPrefManager sharedPrefManager;
 
     @Override
