@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:shimmer="http://schemas.android.com/apk/res-auto"
-    android:paddingTop="165dp"
-    android:paddingBottom="5dp"
+    android:paddingTop="150dp"
     tools:context=".Marketplace.FragSemuaKategori.FragSemuaKategori">
 
 

@@ -15,20 +15,14 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 
-    <LinearLayout
-        android:id="@+id/linera1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="0dp">
 
-<!--                        <androidx.appcompat.widget.Toolbar-->
-<!--                            android:id="@+id/toolbar"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="?attr/actionBarSize"-->
-<!--                            android:background="?attr/colorPrimary"-->
-<!--                            app:popupTheme="@style/ThemeOverlay.AppCompat"-->
-<!--                            tools:ignore="MissingConstraints">-->
+                        <androidx.appcompat.widget.Toolbar
+                            android:id="@+id/toolbar"
+                            android:layout_width="match_parent"
+                            android:layout_height="?attr/actionBarSize"
+                            android:background="?attr/colorPrimary"
+                            app:popupTheme="@style/ThemeOverlay.AppCompat"
+                            tools:ignore="MissingConstraints">
 
 <!--                            <ImageView-->
 <!--                                android:id="@+id/logo"-->
@@ -41,7 +35,7 @@
 <!--                                android:src="@drawable/logoputihkredit"/>-->
 
 
-<!--                        </androidx.appcompat.widget.Toolbar>-->
+                        </androidx.appcompat.widget.Toolbar>
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="fill_parent"
@@ -52,35 +46,32 @@
             android:id="@+id/linera2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:orientation="vertical"
             android:padding="0dp">
-
-
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card1"
             android:layout_width="match_parent"
-            android:layout_height="220dp"
+            android:layout_height="70dp"
             app:cardElevation="5dp"
             app:cardCornerRadius="12dp"
             android:layout_margin="5dp"
-            android:layout_below="@+id/toolbar"
+            android:elevation="@dimen/padding_10"
             android:background = "#00ffffff">
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:background="@drawable/bg"
-                android:layout_height="290dp">
+                android:layout_height="wrap_content">
 
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/image"
-                    android:layout_width="120dp"
-                    android:layout_height="110dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="35dp"
+                    android:layout_width="90dp"
+                    android:layout_height="80dp"
                     android:clickable="true"
                     android:elevation="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
                     android:focusable="true"
                     android:foregroundGravity="center"
                     android:scaleType="centerCrop"
@@ -88,43 +79,24 @@
                     app:civ_border_color="#FFFFFFFF"
                     app:civ_border_width="3dp"
                     app:civ_fill_color="#efeeee" />
-                <Button
-                    android:id="@+id/btn_simpan_gambar"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="0dp"
-                    android:backgroundTint="#efc770"
-                    android:layout_below="@+id/image"
-                    android:layout_centerHorizontal="true"
-                    android:text="SIMPAN"
-                    android:visibility="gone"/>
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_alignEnd="@+id/image"
-                    android:layout_centerVertical="true"
-                    android:elevation="6dp"
-                    android:visibility="invisible"
-                    android:layout_alignRight="@+id/image" />
+
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:gravity="center"
-                    android:layout_below="@+id/image"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_toRightOf="@+id/image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/txthai"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/image"
-                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/image"
                     android:fontFamily="@font/cosimabold"
                     android:gravity="center"
-                    android:text="Hi!, "
+                    android:text="Hi, "
                     android:textAppearance="@android:style/TextAppearance.WindowTitle"
-                    android:textColor="#fff"
+                    android:textColor="@color/colorOrange"
                     android:textSize="17sp"
                     android:textStyle="bold" />
 
@@ -133,14 +105,13 @@
                     android:id="@+id/txt_nama_akun"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/image"
-                    android:layout_marginTop="10dp"
+
                     android:fontFamily="@font/cosimabold"
                     android:gravity="center"
                     android:text="Nama"
                     android:layout_toRightOf="@+id/txthai"
                     android:textAppearance="@android:style/TextAppearance.WindowTitle"
-                    android:textColor="#fff"
+                    android:textColor="@color/colorOrange"
                     android:textSize="17sp"
                     android:textStyle="bold" />
 
@@ -481,6 +452,6 @@
 
         </LinearLayout>
         </androidx.core.widget.NestedScrollView>
-    </LinearLayout>
+
 
 </FrameLayout>
