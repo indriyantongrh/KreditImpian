@@ -263,13 +263,11 @@ public class LoginUser extends AppCompatActivity {
 
 
 
-
-
     public void UserLogin(){
 
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
-        pDialog.setMessage("Tunggu proses login ...");
+        pDialog.setMessage("Login member...");
         pDialog.show();
 
         Call<ResponseLoginSucces> postLogin = mApiService.loginRequest(txtusername.getText().toString(),

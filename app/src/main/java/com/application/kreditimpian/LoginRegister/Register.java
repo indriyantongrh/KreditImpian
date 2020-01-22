@@ -11,8 +11,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.application.kreditimpian.Akun.DataDiri;
 import com.application.kreditimpian.Api.RequestInterface;
 import com.application.kreditimpian.Api.ResponseMessage;
+import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.Api.SuccessMessage;
 import com.application.kreditimpian.BuildConfig;
 import com.application.kreditimpian.R;
@@ -39,7 +41,7 @@ public class Register extends AppCompatActivity {
     TextView txtusername, txtemail,txtpassword,txtconfirmpassword,nomortelepon;
 
     Intent intent;
-
+    SharedPrefManager sharedPrefManager;
     ProgressDialog pDialog;
     private static final String TAG = Register.class.getSimpleName();
     private static final String TAG_SUCCESS = "success";
@@ -47,6 +49,10 @@ public class Register extends AppCompatActivity {
     String tag_json_obj = "json_obj_req";
     Intent i;
     int success;
+
+    private String KEY_USERNAME = "username";
+    private String KEY_EMAIL = "email";
+    private String KEY_NOMORHP = "phone";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,13 +75,6 @@ public class Register extends AppCompatActivity {
                 String password = txtpassword.getText().toString();
                 String password_confirm = txtconfirmpassword.getText().toString();
 
-/*                if (isValidEmail(txtemail.getText().toString())){
-
-                } else {
-                    txtemail.setError("Format email salah");
-                    Toast.makeText(Register.this,
-                            "Format email salah", Toast.LENGTH_SHORT).show();
-                }*/
 
                  if (isEmpty(username))
                     txtusername.setError("Username harap diisi");
@@ -107,7 +106,7 @@ public class Register extends AppCompatActivity {
         //membuat progress dialog
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
-        pDialog.setMessage("Proses tambah user ...");
+        pDialog.setMessage("Tunggu sebentar ya. ..");
         pDialog.show();
 
         //mengambil data dari edittext
@@ -136,8 +135,13 @@ public class Register extends AppCompatActivity {
                 pDialog.dismiss();
                 if (response.isSuccessful()) {
                     ///Toast.makeText(Register.this, "Registrasi berhasil, silahkan login.", Toast.LENGTH_SHORT).show();
-                   Toast.makeText(Register.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                        finish();
+                    ///Toast.makeText(Register.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(), SmsOTPRegister.class);
+                    intent.putExtra(KEY_USERNAME, username);
+                    intent.putExtra(KEY_EMAIL, email);
+                    intent.putExtra(KEY_NOMORHP, phone);
+                    startActivity(intent);
+                    finish();
                 } else {
                     Toast.makeText(Register.this, "Periksa kembali data Anda!.", Toast.LENGTH_SHORT).show();
                     //Toast.makeText(Register.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();

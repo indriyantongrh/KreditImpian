@@ -2,6 +2,7 @@ package com.application.kreditimpian.Beranda;
 
 import android.Manifest;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,6 +18,8 @@ import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -33,8 +36,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.application.kreditimpian.Adapter.AdapterMerchant;
 import com.application.kreditimpian.Adapter.AdapterMitra;
+import com.application.kreditimpian.Adapter.AdapterProductNew;
 import com.application.kreditimpian.Api.SharedPrefManager;
+import com.application.kreditimpian.Api.api_v2.BaseApiService;
+import com.application.kreditimpian.Api.api_v2.UtilsApi;
 import com.application.kreditimpian.BuildConfig;
 import com.application.kreditimpian.ButtomSheetKategori.CustomBottomSheetDialogFragment;
 import com.application.kreditimpian.FormPengajuan.StepIsiCariProduct;
@@ -42,8 +49,11 @@ import com.application.kreditimpian.FormPengajuan.StepUploadProduct;
 import com.application.kreditimpian.FormPengajuan.UpgradeImpian.UpgradeImpian;
 import com.application.kreditimpian.LoginRegister.LoginUser;
 import com.application.kreditimpian.MenuUtama.MenuUtama;
+import com.application.kreditimpian.Model.ModelMerchant.ResponseMerchant;
+import com.application.kreditimpian.Model.ModelMerchant.ResultItem;
 import com.application.kreditimpian.Model.ModelMitra;
 
+import com.application.kreditimpian.Model.ModelProductNew.ProductResponse;
 import com.application.kreditimpian.R;
 import com.application.kreditimpian.TransactionProcess.Cart;
 import com.application.kreditimpian._sliders.FragmentSlider;
@@ -66,6 +76,12 @@ import com.google.gson.Gson;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static com.application.kreditimpian.LoginRegister.LoginUser.TAG_ID;
 
@@ -109,6 +125,12 @@ public class FragmentBeranda extends Fragment {
     SharedPreferences sharedpreferences;
     SharedPrefManager sharedPrefManager;
 
+    @BindView(R.id.rv_merchant)
+    RecyclerView rv_merchant;
+    BaseApiService mApiService;
+    Context mContext;
+    List<ResultItem> resultItemList = new ArrayList<>();
+    AdapterMerchant adapterMerchant;
 
     String id, username;
     @Override
@@ -286,8 +308,55 @@ public class FragmentBeranda extends Fragment {
         setupSlider();
 
 
+        ButterKnife.bind(this, rootView);
+        mContext = getActivity();
+        mApiService = UtilsApi.getAPIService();
+
+        adapterMerchant = new AdapterMerchant(getActivity(), resultItemList);
+        GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 1, GridLayoutManager.HORIZONTAL, false);
+        rv_merchant.setLayoutManager(mLayoutManager);
+        rv_merchant.setItemAnimator(new DefaultItemAnimator());
+        getResultList();
+
         return rootView;
 
+    }
+
+
+    private void getResultList(){
+        ///progressBar = ProgressDialog.show(getActivity(), null, "Harap Tunggu...", true, false);
+
+        mApiService.getMerchnat().enqueue(new Callback<ResponseMerchant>() {
+            @Override
+            public void onResponse(Call<ResponseMerchant> call, Response<ResponseMerchant> response) {
+                if (response.isSuccessful()){
+                    ///progressBar.dismiss();
+                    if (response.body().getStatus()==200) {
+                        //swipeRefresh.setRefreshing(false);
+                        ///progressBar.dismiss();
+                        final List<ResultItem> AllMerchant = response.body().getResult();
+
+                        rv_merchant.setAdapter(new AdapterMerchant(mContext, AllMerchant));
+                        adapterMerchant.notifyDataSetChanged();
+                        ///empty.setVisibility(View.GONE);
+                        //initDataIntent(Allproduct);
+                    }else {
+                        //progressBar.dismiss();
+                        ///empty.setVisibility(View.VISIBLE);
+                    }
+
+                } else {
+                    //progressBar.dismiss();
+                    Toast.makeText(mContext, "Gagal Refresh", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseMerchant> call, Throwable t) {
+                ///progressBar.dismiss();
+                Toast.makeText(mContext, "Koneksi Internet Bermasalah", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 

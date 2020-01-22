@@ -2,33 +2,29 @@ package com.application.kreditimpian.Api.api_v2;
 
 
 
-import androidx.viewpager.widget.PagerAdapter;
-
-
-import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.Model.ModelMember.ResponseMember;
+import com.application.kreditimpian.Model.ModelMerchant.ResponseMerchant;
 import com.application.kreditimpian.Model.ModelProduct.ResponseProduct;
 import com.application.kreditimpian.Model.ModelProductNew.ProductResponse;
-import com.application.kreditimpian.Model.ModelUser.UserResponse;
 
 
 import com.application.kreditimpian.Model.ModelUserDetail.ResponseMembers;
+import com.application.kreditimpian.Model.ModelValidationSMS.ResponseOTP;
+import com.application.kreditimpian.Model.ModelValidationSMS.ResponseSmsOTP;
 import com.application.kreditimpian.ResponseMessage.ResponseLoginSucces;
 
-import okhttp3.ResponseBody;
+import java.util.HashMap;
+
 import retrofit2.Call;
-import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.HEAD;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
-
-import static com.application.kreditimpian.Api.SharedPrefManager.SP_TOKEN;
+import retrofit2.http.QueryMap;
 
 
 public interface BaseApiService {
@@ -45,10 +41,19 @@ public interface BaseApiService {
                                            @Field("password") String password);
 
 
+
+    @GET("ApiMobile/validasiotp")
+    Call<ResponseSmsOTP> getValidation(@QueryMap HashMap<String, String> params);
+
     //getMember
     ///@FormUrlEncoded
     @GET("members")
     Call<ResponseMembers> getMemberDetail();
+
+    ///getMerchant
+    //getAllProduct
+    @GET("companies?id_company_category=1")
+    Call<ResponseMerchant> getMerchnat();
 
     //getAllProduct
     @GET("products?status=PUBLISH")

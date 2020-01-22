@@ -20,6 +20,7 @@ import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -57,6 +58,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -151,6 +153,21 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
         txtalamatemail.setText(email);
         txtnomorhandphone.setText(msisdn);
+
+        /// spinner tagihan perbulan
+        String [] values =
+                {"Jenis Kelamin","FEMALE","MALE"};
+
+        List<String> gender = new ArrayList<String>();
+        gender.add(0, "Jenis Kelamin");
+        gender.add("FEMALE");
+        gender.add("MALE");
+
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(DataDiri.this, android.R.layout.simple_spinner_item, gender);
+            adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+            spinnerjeniskelamin.setAdapter(adapter);
+
+
 
         getmemberDetail();
         ///txtnamalengkap.setText(idprofile);
@@ -401,20 +418,46 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                                     txttempatlahir.setText(reqresultItem.getMetadata().getBirthplace());
                                     txttanggallahir.setText(reqresultItem.getMetadata().getBirthday());
                                     txtpekerjaan.setText(reqresultItem.getMetadata().getJob());
-                                    txtpendapatan.setText("Rp. "+reqresultItem.getMetadata().getIncome());
+                                    txtpendapatan.setText(reqresultItem.getMetadata().getIncome());
                                     txtjumlahtanggungan.setText(reqresultItem.getMetadata().getFamilyDependent());
                                     txtnikktp.setText(reqresultItem.getMetadata().getNumberCitizen());
                                     txtnomornpwp.setText(reqresultItem.getMetadata().getNumberTaxpayer());
                                     txtibukandung.setText(reqresultItem.getMetadata().getParentName());
                                     txtnomortlp.setText(reqresultItem.getMetadata().getContactOffice());
-                                    txtfacebook.setText("fb.com/"+reqresultItem.getMetadata().getFacebook());
-                                    txttwitter.setText("twitter.com/"+reqresultItem.getMetadata().getTwitter());
-                                    txtinstagram.setText("instagram.com/"+reqresultItem.getMetadata().getInstagram());
-//                                    Glide.with(mContext)
-//                                            .load(reqresultItem.getMetadata().getTaxpayer())
-//                                            .placeholder(R.drawable.iconupload)
-//                                            .error(R.drawable.iconupload)
-//                                            .into(imagenpwp);
+                                    txtfacebook.setText(reqresultItem.getMetadata().getFacebook());
+                                    txttwitter.setText(reqresultItem.getMetadata().getTwitter());
+                                    txtinstagram.setText(reqresultItem.getMetadata().getInstagram());
+                                    Glide.with(DataDiri.this)
+                                            .load(reqresultItem.getImage())
+                                            .placeholder(R.drawable.icon_user)
+                                            .error(R.drawable.icon_user)
+                                            .into(imageself);
+
+                                    Glide.with(DataDiri.this)
+                                            .load("https://development.kreditimpian.id/images/members/"+reqresultItem.getMetadata().getTaxpayer())
+                                            .placeholder(R.drawable.upload)
+                                            .error(R.drawable.upload)
+                                            .into(imagenpwp);
+
+
+                                    Glide.with(DataDiri.this)
+                                            .load("https://development.kreditimpian.id/images/members/"+reqresultItem.getMetadata().getCitizen())
+                                            .placeholder(R.drawable.upload)
+                                            .error(R.drawable.upload)
+                                            .into(imagektp);
+
+//                                    List<String> userType = new ArrayList<String>();
+//                                    userType.add(reqresultItem.getMetadata().getGender());
+//                                    userType.add("FEMALE");
+//                                    userType.add("MALE");
+//
+//
+//                                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(DataDiri.this,
+//                                                android.R.layout.simple_spinner_item,userType );
+//                                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//
+//                                        spinnerjeniskelamin.setAdapter(adapter);
+
 
 
 

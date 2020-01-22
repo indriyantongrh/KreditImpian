@@ -653,8 +653,10 @@
                 </com.facebook.shimmer.ShimmerFrameLayout>
 
                 <LinearLayout
+                    android:id="@+id/linearpromo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:layout_below="@+id/layout_artikel"
                     android:orientation="vertical">
 
@@ -663,7 +665,7 @@
                         android:layout_height="wrap_content">
 
                         <TextView
-                            android:id="@+id/text_lomba_burung"
+                            android:id="@+id/text_promo"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
@@ -675,7 +677,7 @@
                             android:textColor="@color/colorOrange" />
 
                         <TextView
-                            android:id="@+id/txt_lihat_lomba"
+                            android:id="@+id/txt_lihat_promo"
                             android:layout_alignParentEnd="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -697,7 +699,53 @@
 
                 </LinearLayout>
 
+                <LinearLayout
+                    android:id="@+id/linearmerchant"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/layout_artikel"
+                    android:orientation="vertical">
 
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/text_merchant"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="20dp"
+                            android:text="Merchant "
+                            android:textSize="23sp"
+                            android:fontFamily="@font/jipatharegular"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorOrange" />
+
+                        <TextView
+                            android:id="@+id/txt_lihat_merchant"
+                            android:layout_alignParentEnd="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="10dp"
+                            android:text="Lihat Lainnya >"
+                            android:textColor="@color/colorOrange"
+                            android:fontFamily="@font/jipatharegular"
+                            android:textStyle="bold" />
+                    </RelativeLayout>
+
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_merchant"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        app:cardBackgroundColor="#efefef"
+                        android:scrollbars="horizontal" />
+
+                </LinearLayout>
 
 
             </LinearLayout>

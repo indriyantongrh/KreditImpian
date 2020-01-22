@@ -95,7 +95,6 @@
 
 
                 <LinearLayout
-
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:background="@drawable/borderhitam"
@@ -179,7 +178,6 @@
 
                     <Spinner
                         android:id="@+id/spinnerjeniskelamin"
-                        android:entries="@array/jeniskelamin"
                         android:layout_width="match_parent"
                         android:fontFamily="@font/jipatharegular"
                         android:textSize="26dp"

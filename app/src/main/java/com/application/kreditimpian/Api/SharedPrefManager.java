@@ -12,7 +12,7 @@ public class SharedPrefManager {
     public static final String SP_Kreditimpian = "kreditimpian_v2_demo";
 
 
-
+    public static final String SP_MSISDNREGIS = "msisdn";
     public static final String SP_DECODE = "decode";
     public static final String SP_IDPROFILE = "id";
     public static final String SP_ID = "id";
@@ -68,6 +68,10 @@ public class SharedPrefManager {
 
     public String  getSpDecode() {
         return sp.getString(SP_DECODE,"");
+    }
+
+    public String  getSpMsisdnregis() {
+        return sp.getString(SP_MSISDNREGIS,"Kosong");
     }
 
     public String  getSpIdprofile() {
