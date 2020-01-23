@@ -22,10 +22,11 @@
             android:text="Verifikasi Akun"
             android:textStyle="bold"
             android:gravity="center"
-            android:textSize="22dp"/>
+            android:textSize="15dp"/>
 
         <TextView
             android:text="Masukan kode 6 digit yang kami kirim via sms"
+            android:textSize="12dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -37,7 +38,7 @@
             android:text="Nomor Telepon"
             android:textStyle="bold"
             android:gravity="center"
-            android:textSize="18dp"/>
+            android:textSize="15dp"/>
 
         <LinearLayout
             android:orientation="vertical"
@@ -60,7 +61,6 @@
                 android:background="@color/fui_transparent"
                 android:hint="Fullname"
                 android:inputType="text"
-
                 android:layout_gravity="center"
                 android:textColorHint="#fff"
                 android:textStyle="bold"

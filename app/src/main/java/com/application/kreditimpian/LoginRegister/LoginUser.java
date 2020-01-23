@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.application.kreditimpian.Akun.DataDiri;
 import com.application.kreditimpian.Api.ApiHeader.AuthorizationResponse;
 import com.application.kreditimpian.Api.ApiHeader.ServiceClient;
 import com.application.kreditimpian.Api.JWTParser;
@@ -29,13 +30,18 @@ import com.application.kreditimpian.BuildConfig;
 import com.application.kreditimpian.DecodeUtils.JWTUtils;
 import com.application.kreditimpian.MainActivity;
 import com.application.kreditimpian.MenuUtama.MenuUtama;
+import com.application.kreditimpian.Model.ModelLogin.DataItem;
+import com.application.kreditimpian.Model.ModelLogin.ResponseLogin;
 import com.application.kreditimpian.Model.ModelLoginMember.ResponseLoginMember;
+import com.application.kreditimpian.Model.ModelUserDetail.ResultItem;
+import com.application.kreditimpian.Model.ModelValidationSMS.ResponseSmsOTP;
 import com.application.kreditimpian.R;
 import com.application.kreditimpian.ResponseMessage.ResponseLoginSucces;
 import com.auth0.android.jwt.JWT;
 import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -65,6 +71,8 @@ import org.json.JSONStringer;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -179,7 +187,8 @@ public class LoginUser extends AppCompatActivity {
                     txtpassword.setError("Password harap diisi");
 
                 else
-                    UserLogin();
+                    LoginMemberValidation();
+                    //UserLogin();
                    ///LoginUser();
                 //Intent intent = new Intent(LoginUser.this, MenuUtama.class);
                 ///startActivity(intent);
@@ -257,6 +266,66 @@ public class LoginUser extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+
+
+    }
+
+
+    public void LoginMemberValidation(){
+
+        pDialog = new ProgressDialog(this);
+        pDialog.setCancelable(false);
+        pDialog.setMessage("Mencoba masuk...");
+        pDialog.show();
+
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("username", txtusername.getText().toString());
+        params.put("password", txtpassword.getText().toString());
+
+        Call<ResponseLogin> Validation = mApiService.getLogin(params) ;
+        Validation.enqueue(new Callback<ResponseLogin>() {
+            @Override
+            public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
+                pDialog.dismiss();
+
+
+                if (response.body().getResponseCode() == 200) {
+
+                    ResponseLogin responseLogin = response.body();
+                    List<DataItem> dataLogin = responseLogin.getData();
+                    for(DataItem d : dataLogin){
+
+                        Toast.makeText(LoginUser.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+
+                        sharedPrefManager.saveSPString(SharedPrefManager.SP_ID_USER, d.getIdUser());
+                        sharedPrefManager.saveSPString(SharedPrefManager.SP_ID_MEMBER, d.getIdMember());
+                        sharedPrefManager.saveSPString(SharedPrefManager.SP_USER_USERNAME, d.getUserUsername());
+                        sharedPrefManager.saveSPString(SharedPrefManager.SP_EMAIL, d.getEmail());
+                        sharedPrefManager.saveSPString(SharedPrefManager.SP_MSISDN, d.getMsisdn());
+                        sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, true);
+//                        String username = txtusername.getText().toString();
+//                        sharedPrefManager.saveSPString(SharedPrefManager.SP_USERNAME, username);
+
+                        startActivity(new Intent(LoginUser.this, MenuUtama.class)
+                                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+                        finish();
+
+
+                    }
+
+
+
+                } else {
+                    Toast.makeText(LoginUser.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseLogin> call, Throwable t) {
+                pDialog.dismiss();
+            }
+        });
 
 
     }

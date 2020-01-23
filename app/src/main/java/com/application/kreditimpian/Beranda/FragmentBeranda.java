@@ -18,6 +18,7 @@ import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -48,6 +49,13 @@ import com.application.kreditimpian.FormPengajuan.StepIsiCariProduct;
 import com.application.kreditimpian.FormPengajuan.StepUploadProduct;
 import com.application.kreditimpian.FormPengajuan.UpgradeImpian.UpgradeImpian;
 import com.application.kreditimpian.LoginRegister.LoginUser;
+import com.application.kreditimpian.Marketplace.FragKategoriFashion.KategoriFashion;
+import com.application.kreditimpian.Marketplace.FragKategoriForniture.KategoriForniture;
+import com.application.kreditimpian.Marketplace.FragKategoriHobi.KategoriHobi;
+import com.application.kreditimpian.Marketplace.FragKategoriKomputer.KategoriKomputer;
+import com.application.kreditimpian.Marketplace.FragKategoriOtomotif.KategoriOtomotif;
+import com.application.kreditimpian.Marketplace.FragKategoriProperty.KategoriProperty;
+import com.application.kreditimpian.Marketplace.FragKategorihandphone.KategoriHandphone;
 import com.application.kreditimpian.MenuUtama.MenuUtama;
 import com.application.kreditimpian.Model.ModelMerchant.ResponseMerchant;
 import com.application.kreditimpian.Model.ModelMerchant.ResultItem;
@@ -236,7 +244,13 @@ public class FragmentBeranda extends Fragment {
         btn_handphone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Ini kategori handphone", Toast.LENGTH_SHORT).show();
+                ///Toast.makeText(getActivity(), "Ini kategori handphone", Toast.LENGTH_SHORT).show();
+
+
+                FragmentTransaction fr=getFragmentManager().beginTransaction();
+                fr.replace(R.id.frame_container, new KategoriHandphone());
+                ///fr.addToBackStack(null);
+                fr.commit();
             }
         });
 
@@ -244,7 +258,11 @@ public class FragmentBeranda extends Fragment {
         btn_laptop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Ini kategori Laptop", Toast.LENGTH_SHORT).show();
+                ///Toast.makeText(getActivity(), "Ini kategori Laptop", Toast.LENGTH_SHORT).show();
+                FragmentTransaction fr=getFragmentManager().beginTransaction();
+                fr.replace(R.id.frame_container, new KategoriKomputer());
+                fr.addToBackStack(null);
+                fr.commit();
             }
         });
 
@@ -252,7 +270,12 @@ public class FragmentBeranda extends Fragment {
         btn_otomotif.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Ini kategori Otomotif", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "Ini kategori Otomotif", Toast.LENGTH_SHORT).show();
+                FragmentTransaction fr = getFragmentManager().beginTransaction();
+                fr.replace(R.id.frame_container, new KategoriOtomotif());
+                fr.addToBackStack(null);
+                fr.commit();
+
             }
         });
 
@@ -261,7 +284,10 @@ public class FragmentBeranda extends Fragment {
         btn_forniture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Ini kategori Fornitur", Toast.LENGTH_SHORT).show();
+                FragmentTransaction fr = getFragmentManager().beginTransaction();
+                fr.replace(R.id.frame_container, new KategoriForniture());
+                fr.addToBackStack(null);
+                fr.commit();
             }
         });
 
@@ -269,7 +295,13 @@ public class FragmentBeranda extends Fragment {
         btn_olahraga.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Ini kategori Olahraga", Toast.LENGTH_SHORT).show();
+
+                //Toast.makeText(getActivity(), "Ini kategori Olahraga", Toast.LENGTH_SHORT).show();
+                FragmentTransaction fr = getFragmentManager().beginTransaction();
+                fr.replace(R.id.frame_container, new KategoriHobi());
+                fr.addToBackStack(null);
+                fr.commit();
+
             }
         });
 
@@ -277,7 +309,11 @@ public class FragmentBeranda extends Fragment {
         btn_property.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Ini kategori Property", Toast.LENGTH_SHORT).show();
+                ///Toast.makeText(getActivity(), "Ini kategori Property", Toast.LENGTH_SHORT).show();
+                FragmentTransaction fr = getFragmentManager().beginTransaction();
+                fr.replace(R.id.frame_container, new KategoriProperty());
+                fr.addToBackStack(null);
+                fr.commit();
             }
         });
 
@@ -285,7 +321,12 @@ public class FragmentBeranda extends Fragment {
         btn_fashion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Ini kategori Fashion", Toast.LENGTH_SHORT).show();
+               /// Toast.makeText(getActivity(), "Ini kategori Fashion", Toast.LENGTH_SHORT).show();
+                FragmentTransaction fr = getFragmentManager().beginTransaction();
+                fr.replace(R.id.frame_container, new KategoriFashion());
+                fr.addToBackStack(null);
+                fr.commit();
+
             }
         });
 
@@ -493,43 +534,43 @@ private void initViewMitra() {
     }
 
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        setHasOptionsMenu(true);
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menutopbar, menu);
-
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        int id = item.getItemId();
-
-        if (id == R.id.notifikasi){
-            Toast.makeText(getActivity(), "ini Notifikasi", Toast.LENGTH_SHORT).show();
-
-        }
-        if (id == R.id.cartshop){
-            gotocartshop();
-        }
-        return super.onOptionsItemSelected(item);
-
-
-
-    }
-
-    private void gotocartshop() {
-        Intent intent_cart = new Intent(getActivity(), Cart.class);
-        intent_cart.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent_cart);
-    }
+//    @Override
+//    public void onCreate(@Nullable Bundle savedInstanceState) {
+//        setHasOptionsMenu(true);
+//        super.onCreate(savedInstanceState);
+//    }
+//
+//    @Override
+//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//        inflater.inflate(R.menu.menutopbar, menu);
+//
+//        super.onCreateOptionsMenu(menu, inflater);
+//    }
+//
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//
+//        int id = item.getItemId();
+//
+//        if (id == R.id.notifikasi){
+//            Toast.makeText(getActivity(), "ini Notifikasi", Toast.LENGTH_SHORT).show();
+//
+//        }
+//        if (id == R.id.cartshop){
+//            gotocartshop();
+//        }
+//        return super.onOptionsItemSelected(item);
+//
+//
+//
+//    }
+//
+//    private void gotocartshop() {
+//        Intent intent_cart = new Intent(getActivity(), Cart.class);
+//        intent_cart.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//        startActivity(intent_cart);
+//    }
 
 
 }

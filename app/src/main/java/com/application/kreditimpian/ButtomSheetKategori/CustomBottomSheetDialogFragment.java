@@ -5,9 +5,11 @@ import android.app.Dialog;
 import android.os.Bundle;
 
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import com.application.kreditimpian.R;
@@ -18,7 +20,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
  * Created by Nikola D. on 2/25/2016.
  */
 public class CustomBottomSheetDialogFragment extends BottomSheetDialogFragment {
-
+    CardView btn_tourandtravel,btn_haji,btn_umkm,btn_coorporate,btn_pendanaan,btn_multiproduct,btn_elektronik;
 
     private BottomSheetBehavior.BottomSheetCallback mBottomSheetBehaviorCallback = new BottomSheetBehavior.BottomSheetCallback() {
 
@@ -47,8 +49,7 @@ public class CustomBottomSheetDialogFragment extends BottomSheetDialogFragment {
     public void onViewCreated(View contentView, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(contentView, savedInstanceState);
 
-
-
+        
     }
 
     @SuppressLint("RestrictedApi")
@@ -57,13 +58,15 @@ public class CustomBottomSheetDialogFragment extends BottomSheetDialogFragment {
         super.setupDialog(dialog, style);
         View contentView = View.inflate(getContext(), R.layout.buttonsheet_kategori, null);
         dialog.setContentView(contentView);
+
+
+
         CoordinatorLayout.LayoutParams layoutParams =
                 (CoordinatorLayout.LayoutParams) ((View) contentView.getParent()).getLayoutParams();
         CoordinatorLayout.Behavior behavior = layoutParams.getBehavior();
         if (behavior != null && behavior instanceof BottomSheetBehavior) {
             ((BottomSheetBehavior) behavior).setBottomSheetCallback(mBottomSheetBehaviorCallback);
         }
-
     }
 
 

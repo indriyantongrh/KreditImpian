@@ -408,7 +408,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                     ResponseMembers responseMembers = response.body();
                     List<ResultItem> details = responseMembers.getResult();
                     for(ResultItem d : details){
-                        if(d.getId().equals(sharedPrefManager.getSpIdprofile())){
+                        if(d.getId().equals(sharedPrefManager.getSpIdMember())){
                             reqresultItem = d;
 
                             runOnUiThread(new Runnable() {

@@ -1,6 +1,7 @@
 package com.application.kreditimpian.MenuUtama;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -9,8 +10,11 @@ import androidx.fragment.app.FragmentTransaction;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +27,7 @@ import com.application.kreditimpian.LoginRegister.LoginUser;
 import com.application.kreditimpian.Marketplace.FragmentMarketplace;
 import com.application.kreditimpian.R;
 import com.application.kreditimpian.SimulasiKredit.FragmentSimulasiKredit;
+import com.application.kreditimpian.TransactionProcess.Cart;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MenuUtama extends AppCompatActivity {
@@ -51,7 +56,7 @@ public class MenuUtama extends AppCompatActivity {
 
         Fragment fragment;
         toolbar.setIcon(R.drawable.logoputih);
-       toolbar.setTitle("Beranda");
+        toolbar.setTitle("Kategori Impianmu");
         fragment = new FragmentBeranda();
         loadFragment(fragment);
         //return true;
@@ -75,7 +80,7 @@ public class MenuUtama extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_beranda:
                     //toolbar.setIcon(R.drawable.logoputih);
-                    toolbar.setTitle("Beranda");
+                    toolbar.setTitle("Kredit Impian");
                     fragment = new FragmentBeranda();
                     loadFragment(fragment);
                     return true;
@@ -153,5 +158,39 @@ public class MenuUtama extends AppCompatActivity {
         //// Toast.makeText(this,"Keluar aplikasi!", Toast.LENGTH_LONG).show();
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menutopbar, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if (id == R.id.notifikasi){
+            Toast.makeText(this, "ini Notifikasi", Toast.LENGTH_SHORT).show();
+
+        }
+        if (id == R.id.cartshop){
+            gotocartshop();
+        }
+        return super.onOptionsItemSelected(item);
+
+
+
+    }
+
+    private void gotocartshop() {
+        Intent intent_cart = new Intent(this, Cart.class);
+        intent_cart.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent_cart);
+    }
+
+
 
 }

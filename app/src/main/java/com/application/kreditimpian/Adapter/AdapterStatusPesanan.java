@@ -30,7 +30,7 @@ public class AdapterStatusPesanan extends RecyclerView.Adapter<AdapterStatusPesa
     @NonNull
     @Override
     public StatusPesananHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_status_pesanan, parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_history_pesanan, parent,false);
         return new StatusPesananHolder(view);
     }
 

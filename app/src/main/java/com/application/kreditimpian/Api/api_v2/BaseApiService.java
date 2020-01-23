@@ -2,6 +2,7 @@ package com.application.kreditimpian.Api.api_v2;
 
 
 
+import com.application.kreditimpian.Model.ModelLogin.ResponseLogin;
 import com.application.kreditimpian.Model.ModelMember.ResponseMember;
 import com.application.kreditimpian.Model.ModelMerchant.ResponseMerchant;
 import com.application.kreditimpian.Model.ModelProduct.ResponseProduct;
@@ -44,6 +45,9 @@ public interface BaseApiService {
 
     @GET("ApiMobile/validasiotp")
     Call<ResponseSmsOTP> getValidation(@QueryMap HashMap<String, String> params);
+
+    @GET("ApiMobile/loginproses")
+    Call<ResponseLogin> getLogin(@QueryMap HashMap<String, String> params);
 
     //getMember
     ///@FormUrlEncoded

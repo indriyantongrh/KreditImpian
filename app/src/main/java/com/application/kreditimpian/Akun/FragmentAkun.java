@@ -115,10 +115,11 @@ public class FragmentAkun extends Fragment {
        /// String id = sharedPrefManager.getSPID();
         String email = sharedPrefManager.getSPEmail();
         String token = sharedPrefManager.getSPToken();
-        String username = sharedPrefManager.getSpUsername();
+        String username = sharedPrefManager.getSpUserUsername();
         String idprof = sharedPrefManager.getSpIdprofile();
+        String id_user = sharedPrefManager.getSpIdUser();
 
-        Toast.makeText(getActivity(), "Id profile "+idprof, Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), "Id ANda "+id_user, Toast.LENGTH_LONG).show();
 
         ///Toast.makeText(getActivity(),token, Toast.LENGTH_SHORT).show();
         txt_nama_akun.setText(username);

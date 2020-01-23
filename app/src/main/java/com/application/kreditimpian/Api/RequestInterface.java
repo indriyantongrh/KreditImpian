@@ -2,7 +2,6 @@ package com.application.kreditimpian.Api;
 
 
 import com.application.kreditimpian.Model.ModelMitra;
-import com.application.kreditimpian.ResponseMessage.ResponseLogin;
 import com.application.kreditimpian.ResponseMessage.ResponseLoginSucces;
 import com.application.kreditimpian.ResponseMessage.ResponseRegister;
 
