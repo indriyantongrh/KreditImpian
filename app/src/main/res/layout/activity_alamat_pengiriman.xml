@@ -91,11 +91,11 @@
                     android:layout_height="37dp">
 
                     <Spinner
-                        android:id="@+id/spinnerprovinsi"
+                        android:id="@+id/spinnerkota_pengiriman"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/jipatharegular"
-                        android:entries="@array/provinsi"></Spinner>
+                        android:entries="@array/kota"></Spinner>
                 </LinearLayout>
 
                 <!--Border-->
@@ -111,8 +111,8 @@
                     android:layout_height="37dp">
 
                     <Spinner
-                        android:id="@+id/spinnerkota"
-                        android:entries="@array/kota"
+                        android:id="@+id/spinnerkecamatan_pengiriman"
+                        android:entries="@array/kecamatan"
                         android:layout_width="match_parent"
                         android:fontFamily="@font/jipatharegular"
                         android:layout_height="match_parent"></Spinner>

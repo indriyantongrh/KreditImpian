@@ -37,6 +37,7 @@ import com.application.kreditimpian.Api.api_v2.RetrofitClient;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
 import com.application.kreditimpian.BuildConfig;
 import com.application.kreditimpian.LoginRegister.Register;
+import com.application.kreditimpian.Model.ModelGeodirectories.ResponseGeodirectories;
 import com.application.kreditimpian.Model.ModelMember.ResponseMember;
 
 import com.application.kreditimpian.Model.ModelUser.UserResponse;
@@ -80,10 +81,11 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
     private int mYear, mMonth, mDay;
     ImageButton btnback;
     ImageView imagektp,imagenpwp, imageself;
-    Spinner spinnerjeniskelamin,spinnerstatus,spinneragama,spinnerstatusrumah,spinnerkredit;
+    Spinner spinnerjeniskelamin,spinnerstatus,spinneragama,spinnerstatusrumah,spinnerkredit,spinnerkota_saudaraa,spinnerkecamatn_saudara;
     Button btnsimpan;
     EditText txtnamalengkap,txttempatlahir,txttanggallahir,txtnikktp,txtnomornpwp,txtpekerjaan,txtpendapatan,
-            txtjumlahtanggungan,txtalamatemail,txtibukandung,txtnomorhandphone,txtnomortlp,txtfacebook,txttwitter,txtinstagram;
+            txtjumlahtanggungan,txtalamatemail,txtibukandung,txtnomorhandphone,txtnomortlp,txtfacebook,txttwitter,txtinstagram,
+            txtnamasaudara,txtnomorhandphonesaudara,txtkodepos_saudara, txtalamat_saudara;
 
     ProgressDialog loading;
     SharedPrefManager sharedPrefManager;
@@ -103,6 +105,8 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
     ResultItem reqresultItem;
     List<ResultItem> resultItemList = new ArrayList<>();
+
+    com.application.kreditimpian.Model.ModelGeodirectories.ResultItem reqResultCity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -150,6 +154,14 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         txtinstagram = findViewById(R.id.txtinstagram);
         btnsimpan = findViewById(R.id.btnsimpan);
 
+        ///formdatasaudara tidaq serumah
+
+         txtnamasaudara = findViewById(R.id.txtnamasaudara);
+         txtnomorhandphonesaudara= findViewById(R.id.txtnomorhandphonesaudara);
+         spinnerkota_saudaraa = findViewById(R.id.spinnerkota_saudaraa);
+         spinnerkecamatn_saudara = findViewById(R.id.spinnerkecamatn_saudara);
+         txtkodepos_saudara= findViewById(R.id.txtkodepos_saudara);
+         txtalamat_saudara= findViewById(R.id.txtalamat_saudara);
 
         txtalamatemail.setText(email);
         txtnomorhandphone.setText(msisdn);
@@ -167,10 +179,10 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
             spinnerjeniskelamin.setAdapter(adapter);
 
-
-
+        getGeoDistrictSaudara();
+        getGeoCitySaudara();
         getmemberDetail();
-        ///txtnamalengkap.setText(idprofile);
+
         imageself.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -482,6 +494,69 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
 
     }
+
+    private void getGeoCitySaudara(){
+
+        mApiService.getGeoCity().enqueue(new Callback<ResponseGeodirectories>() {
+            @Override
+            public void onResponse(Call<ResponseGeodirectories> call, Response<ResponseGeodirectories> response) {
+               if(response.body() !=null){
+                   List<com.application.kreditimpian.Model.ModelGeodirectories.ResultItem> getCity = response.body().getResult();
+                   List<String> listSpinner = new ArrayList<String>();
+                   for (int i = 0; i < getCity.size(); i++){
+                       listSpinner.add(getCity.get(i).getName());
+                   }
+                   // Set hasil result json ke dalam adapter spinner
+                   ArrayAdapter<String> adapter = new ArrayAdapter<String>(DataDiri.this,
+                           android.R.layout.simple_spinner_item, listSpinner);
+                   adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                   spinnerkota_saudaraa.setAdapter(adapter);
+               } else {
+                   loading.dismiss();
+                   Toast.makeText(mContext, "Gagal mengambil data dosen", Toast.LENGTH_SHORT).show();
+               }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseGeodirectories> call, Throwable t) {
+
+            }
+        });
+
+
+    }
+
+    private void getGeoDistrictSaudara(){
+
+        mApiService.getGeoDistrict().enqueue(new Callback<ResponseGeodirectories>() {
+            @Override
+            public void onResponse(Call<ResponseGeodirectories> call, Response<ResponseGeodirectories> response) {
+                if(response.body() !=null){
+                    List<com.application.kreditimpian.Model.ModelGeodirectories.ResultItem> getCity = response.body().getResult();
+                    List<String> listSpinner = new ArrayList<String>();
+                    for (int i = 0; i < getCity.size(); i++){
+                        listSpinner.add(getCity.get(i).getName());
+                    }
+                    // Set hasil result json ke dalam adapter spinner
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(DataDiri.this,
+                            android.R.layout.simple_spinner_item, listSpinner);
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    spinnerkecamatn_saudara.setAdapter(adapter);
+                } else {
+                    loading.dismiss();
+                    Toast.makeText(mContext, "Gagal mengambil data dosen", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseGeodirectories> call, Throwable t) {
+
+            }
+        });
+
+
+    }
+
 
 //    private void getMember(){
 //

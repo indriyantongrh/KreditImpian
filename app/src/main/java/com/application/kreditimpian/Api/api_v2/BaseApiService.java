@@ -2,6 +2,7 @@ package com.application.kreditimpian.Api.api_v2;
 
 
 
+import com.application.kreditimpian.Model.ModelGeodirectories.ResponseGeodirectories;
 import com.application.kreditimpian.Model.ModelLogin.ResponseLogin;
 import com.application.kreditimpian.Model.ModelMember.ResponseMember;
 import com.application.kreditimpian.Model.ModelMerchant.ResponseMerchant;
@@ -48,6 +49,12 @@ public interface BaseApiService {
 
     @GET("ApiMobile/loginproses")
     Call<ResponseLogin> getLogin(@QueryMap HashMap<String, String> params);
+
+    @GET("master/geodirectories?TYPE=DISTRICT")
+    Call<ResponseGeodirectories> getGeoDistrict();
+
+    @GET("master/geodirectories?TYPE=CITY")
+    Call<ResponseGeodirectories> getGeoCity();
 
     //getMember
     ///@FormUrlEncoded

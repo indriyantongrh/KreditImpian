@@ -139,7 +139,7 @@
                         android:id="@+id/spinnerprovinsi_saudaraa"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:entries="@array/provinsi"></Spinner>
+                        android:entries="@array/kota"></Spinner>
                 </LinearLayout>
 
                 <!--Border-->
@@ -156,7 +156,7 @@
 
                     <Spinner
                         android:id="@+id/spinnerkota_saudara"
-                        android:entries="@array/kota"
+                        android:entries="@array/kecamatan"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"></Spinner>
                 </LinearLayout>

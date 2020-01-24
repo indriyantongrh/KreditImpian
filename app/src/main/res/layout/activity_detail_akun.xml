@@ -156,6 +156,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cardElevation="5dp"
+                    android:visibility="gone"
                     app:cardCornerRadius="6dp"
                     android:layout_margin="5dp"
                     android:layout_below="@+id/btnalamatpengiriman"
@@ -194,6 +195,7 @@
                     app:cardElevation="5dp"
                     app:cardCornerRadius="6dp"
                     android:layout_margin="5dp"
+                    android:visibility="gone"
                     android:layout_below="@+id/btnalamatkantor"
                     android:background = "@drawable/cardvieworange">
                     <RelativeLayout

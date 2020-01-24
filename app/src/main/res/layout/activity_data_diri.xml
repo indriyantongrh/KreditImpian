@@ -636,6 +636,173 @@
                     android:layout_width="match_parent"
                     android:layout_height="15dp"></LinearLayout>
 
+
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="fill_parent"
+                        android:gravity="left"
+                        android:textSize="30dp"
+                        android:paddingBottom="10dp"
+                        android:textColor="#000"
+                        android:fontFamily="@font/jipatharegular"
+                        android:text="Data Saudara tidak se-rumah"/>
+
+
+                    <LinearLayout
+
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:background="@drawable/borderhitam"
+                        android:layout_height="37dp">
+
+                        <EditText
+                            android:id="@+id/txtnamasaudara"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:background="@android:color/transparent"
+                            android:hint="Nama Lengkap"
+                            android:inputType="text"
+                            android:fontFamily="@font/jipatharegular"
+                            android:textSize="26dp" />
+
+                    </LinearLayout>
+
+                    <!--Border-->
+                    <LinearLayout
+                        android:background="#fff"
+                        android:layout_width="match_parent"
+                        android:layout_height="15dp"></LinearLayout>
+
+                    <LinearLayout
+
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:background="@drawable/borderhitam"
+                        android:layout_height="37dp">
+
+                        <EditText
+                            android:id="@+id/txtnomorhandphonesaudara"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:background="@android:color/transparent"
+                            android:hint="Nomor Handphone"
+                            android:inputType="text"
+                            android:fontFamily="@font/jipatharegular"
+                            android:textSize="26dp" />
+
+                    </LinearLayout>
+
+                    <!--Border-->
+                    <LinearLayout
+                        android:background="#fff"
+                        android:layout_width="match_parent"
+                        android:layout_height="15dp"></LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:background="@drawable/borderhitam"
+                        android:layout_height="37dp">
+
+                        <Spinner
+                            android:id="@+id/spinnerkota_saudaraa"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:entries="@array/kota"></Spinner>
+                    </LinearLayout>
+
+                    <!--Border-->
+                    <LinearLayout
+                        android:background="#fff"
+                        android:layout_width="match_parent"
+                        android:layout_height="15dp"></LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:background="@drawable/borderhitam"
+                        android:layout_height="37dp">
+
+                        <Spinner
+                            android:id="@+id/spinnerkecamatn_saudara"
+                            android:entries="@array/kecamatan"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"></Spinner>
+                    </LinearLayout>
+
+                    <!--Border-->
+                    <LinearLayout
+                        android:background="#fff"
+                        android:layout_width="match_parent"
+                        android:layout_height="15dp"></LinearLayout>
+
+                    <LinearLayout
+
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:background="@drawable/borderhitam"
+                        android:layout_height="37dp">
+
+                        <EditText
+                            android:id="@+id/txtkodepos_saudara"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:background="@android:color/transparent"
+                            android:hint="Kode Pos"
+                            android:inputType="text"
+                            android:fontFamily="@font/jipatharegular"
+                            android:textSize="26dp" />
+
+                    </LinearLayout>
+
+                    <!--Border-->
+                    <LinearLayout
+                        android:background="#fff"
+                        android:layout_width="match_parent"
+                        android:layout_height="15dp"></LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:background="@drawable/borderhitam"
+                        android:layout_height="120dp">
+
+                        <EditText
+                            android:id="@+id/txtalamat_saudara"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:background="@android:color/transparent"
+                            android:hint="Alamat"
+                            android:gravity="top"
+                            android:lines="9"
+                            android:inputType="textMultiLine"
+                            android:fontFamily="@font/jipatharegular"
+                            android:textSize="26dp" />
+
+                    </LinearLayout>
+
+
+                    <!--Border-->
+                    <LinearLayout
+                        android:background="#fff"
+                        android:layout_width="match_parent"
+                        android:layout_height="15dp"></LinearLayout>
+
+
+
+
+
+
                 <!--Button-->
                 <Button
                     android:id="@+id/btnsimpan"

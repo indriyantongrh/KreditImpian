@@ -64,11 +64,11 @@
         <item>Kost</item>
         <item>Kontrak</item>
     </string-array>
-    <string-array name="provinsi">
-        <item>Pilih Provinsi</item>
-    </string-array>
     <string-array name="kota">
         <item>Pilih Kota</item>
+    </string-array>
+    <string-array name="kecamatan">
+        <item>Pilih Kecamatan</item>
     </string-array>
     <string-array name="tahunkendaraan">
         <item>Pilih Tahun Kendaraan</item>
