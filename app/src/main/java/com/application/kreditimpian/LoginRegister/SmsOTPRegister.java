@@ -25,6 +25,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.text.TextUtils.isEmpty;
+
 public class SmsOTPRegister extends AppCompatActivity {
     SharedPrefManager sharedPrefManager;
     TextView tvnomortelpon;
@@ -62,7 +64,11 @@ public class SmsOTPRegister extends AppCompatActivity {
         btnverifikasi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              SMSOTPValidation();
+                String kodeotp = txtkodeotp.getText().toString();
+                if (isEmpty(kodeotp))
+                    txtkodeotp.setError("Masukan Kode OTP");
+                else
+                SMSOTPValidation();
             }
         });
 

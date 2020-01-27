@@ -18,6 +18,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -79,6 +80,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Field;
 
+import static android.text.TextUtils.isEmpty;
 import static com.application.kreditimpian.Api.SharedPrefManager.SP_TOKEN;
 import static com.application.kreditimpian.Api.api_v2.UtilsApi.BASE_URL_API;
 
@@ -329,28 +331,41 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         btnsimpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //mengambil data dari edittext
+                String fullname = txtnamalengkap.getText().toString();
+                String birthplace = txttempatlahir.getText().toString();
+                String birthday = txttanggallahir.getText().toString();
+                String gender = spinnerjeniskelamin.toString();
+                String marital = spinnerstatus.toString();
+                String religion = spinneragama.toString();
+                String number_citizen = txtnikktp.getText().toString();
+                String number_taxpayer = txtnomornpwp.getText().toString();
+                String job = txtpekerjaan.getText().toString();
+                String income = txtpendapatan.getText().toString();
+                String family_dependent = txtjumlahtanggungan.getText().toString();
+                String email = txtalamatemail.getText().toString();
+                String phone = txtnomorhandphone.getText().toString();
+                String installment = spinnerkredit.toString();
+                String residence_status = spinnerstatusrumah.toString();
+                String contact_office = txtnomortlp.getText().toString();
+                String facebook = txtfacebook.getText().toString();
+                String twitter = txttwitter.getText().toString();
+                String instagram = txtinstagram.getText().toString();
 
-//
-//                //mengambil data dari edittext
-//                String fullname = txtnamalengkap.getText().toString();
-//                String birthplace = txttempatlahir.getText().toString();
-//                String birthday = txttanggallahir.getText().toString();
-//                String gender = spinnerjeniskelamin.toString();
-//                String marital = spinnerstatus.toString();
-//                String religion = spinneragama.toString();
-//                String number_citizen = txtnikktp.getText().toString();
-//                String number_taxpayer = txtnomornpwp.getText().toString();
-//                String job = txtpekerjaan.getText().toString();
-//                String income = txtpendapatan.getText().toString();
-//                String family_dependent = txtjumlahtanggungan.getText().toString();
-//                String email = txtalamatemail.getText().toString();
-//                String phone = txtnomorhandphone.getText().toString();
-//                String installment = spinnerkredit.toString();
-//                String residence_status = spinnerstatusrumah.toString();
-//                String contact_office = txtnomortlp.getText().toString();
-//                String facebook = txtfacebook.getText().toString();
-//                String twitter = txttwitter.getText().toString();
-//                String instagram = txtinstagram.getText().toString();
+                if (isEmpty(fullname))
+                    txtnamalengkap.setError("Masukan Nama lengkap");
+                else if(isEmpty(birthplace))
+                        txttempatlahir.setError("MAsukan tempat lahir");
+                else if(isEmpty(birthday))
+                    txttanggallahir.setError("Tanggal lahir kosong");
+                else if(isEmpty(number_citizen))
+                    txtnikktp.setError("Lengkapi nomor KTP Anda");
+                else if(isEmpty(number_taxpayer))
+                    txtnomornpwp.setError("Lenkapi nomor NPWP ");
+                else if(isEmpty(birthplace))
+                    txttempatlahir.setError("MAsukan tempat lahir");
+                else if(isEmpty(birthday))
+                    txttanggallahir.setError("Tanggal lahir kosong");
 
                 /// updatemember();
                 //getMember();
@@ -450,11 +465,13 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
-        pDialog.setMessage("Update member...");
+        pDialog.setMessage("Menyimpan data member");
         pDialog.show();
 
         HashMap<String, String> params = new HashMap<>();
         params.put("id_member",sharedPrefManager.getSpIdMember() );
+       /// params.put("avatar", getStringImage(decoded_3));
+        params.put("avatar", getStringImage(decoded_1));
         params.put("fullname", txtnamalengkap.getText().toString());
         params.put("phone", txtnomorhandphone.getText().toString());
         params.put("birthplace", txttempatlahir.getText().toString());
@@ -469,7 +486,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         params.put("number_citizen", txtnikktp.getText().toString());
         params.put("number_taxpayer", txtnomornpwp.getText().toString());
         params.put("parent_name", txtibukandung.getText().toString());
-        ///params.put("email", txtalamatemail.getText().toString());
+        params.put("email", txtalamatemail.getText().toString());
         params.put("contact_office", txtnomortlp.getText().toString());
         params.put("facebook", txtfacebook.getText().toString());
         params.put("instagram", txtinstagram.getText().toString());
@@ -484,7 +501,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             @Override
             public void onResponse(Call<ResponseMemberInsert> call, Response<ResponseMemberInsert> response) {
                 pDialog.dismiss();
-                if (response.body().getResponseCode() == 200) {
+                if (response.body() !=null) {
 
                     Toast.makeText(DataDiri.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
 
@@ -582,13 +599,13 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
                 }else {
                    /// loading.dismiss();
-                    Toast.makeText(mContext, "Gagal Refresh", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "Gagal mengambil data, silahkan ulangi lagi", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseMembers> call, Throwable t) {
-                Toast.makeText(DataDiri.this, "Koneksi Anda bermasalah", Toast.LENGTH_LONG).show();
+                Toast.makeText(DataDiri.this, "Koneksi Anda bermasalah,silahkan ulangi lagi", Toast.LENGTH_LONG).show();
                 onBackPressed();
             }
         });
@@ -804,5 +821,12 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         onBackPressed();
         return true;
     }
-
+    //untuk upload image, compress .JPEG ke bitmap
+    public String getStringImage(Bitmap bmp) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.JPEG, bitmap_size, baos);
+        byte[] imageBytes = baos.toByteArray();
+        String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+        return encodedImage;
+    }
 }
