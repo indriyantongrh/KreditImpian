@@ -36,10 +36,15 @@ import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Api.api_v2.RetrofitClient;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
 import com.application.kreditimpian.BuildConfig;
+import com.application.kreditimpian.LoginRegister.LoginUser;
 import com.application.kreditimpian.LoginRegister.Register;
+import com.application.kreditimpian.MenuUtama.MenuUtama;
 import com.application.kreditimpian.Model.ModelGeodirectories.ResponseGeodirectories;
+import com.application.kreditimpian.Model.ModelLogin.DataItem;
+import com.application.kreditimpian.Model.ModelLogin.ResponseLogin;
 import com.application.kreditimpian.Model.ModelMember.ResponseMember;
 
+import com.application.kreditimpian.Model.ModelMemberInsert.ResponseMemberInsert;
 import com.application.kreditimpian.Model.ModelUser.UserResponse;
 import com.application.kreditimpian.Model.ModelUserDetail.ResponseMembers;
 import com.application.kreditimpian.Model.ModelUserDetail.ResultItem;
@@ -60,6 +65,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -92,7 +98,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
     Context mContext;
     BaseApiService mApiService;
     String fullname, idprofile;
-
+    ProgressDialog pDialog;
     //untuk upload gambar
     Bitmap bitmap, decoded_1, decoded_2, decoded_3;
     int bitmap_size = 80; // range 1 - 100=
@@ -122,10 +128,9 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         String token = sharedPrefManager.getSPToken();
         String email = sharedPrefManager.getSPEmail();
         String msisdn = sharedPrefManager.getSpMsisdn();
-        String idprofile = sharedPrefManager.getSpIdprofile();
-        Log.d("Id Profile Data diri ", idprofile);
-
-
+        String id_member = sharedPrefManager.getSpIdMember();
+        getmemberDetail();
+        Toast.makeText(DataDiri.this, "Id member anda "+id_member, Toast.LENGTH_LONG).show();
 
 
 
@@ -166,6 +171,8 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         txtalamatemail.setText(email);
         txtnomorhandphone.setText(msisdn);
 
+
+
         /// spinner tagihan perbulan
         String [] values =
                 {"Jenis Kelamin","FEMALE","MALE"};
@@ -175,13 +182,38 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         gender.add("FEMALE");
         gender.add("MALE");
 
+        List<String> religion = new ArrayList<String>();
+        religion.add(0, "Pilih Agama");
+        religion.add("HINDU");
+        religion.add("ISLAM");
+        religion.add("KRISTEN");
+        religion.add("KATOLIK");
+        religion.add("BUDHA");
+
+        List<String> Status = new ArrayList<String>();
+        religion.add(0, "Pilih Status");
+        religion.add("LAJANG");
+        religion.add("MENIKAH");
+        religion.add("CERAI");
+
+        List<String> Kredit = new ArrayList<String>();
+        religion.add(0, "Apakah Anda memiliki kredit/cicilan yang sedang berjalan?");
+        religion.add("IYA");
+        religion.add("TIDAK");
+
+        List<String> TempatTinggal = new ArrayList<String>();
+        religion.add(0, "Status Tempat Tinggal");
+        religion.add("CONTRAC");
+        religion.add("RUMAH SENDIRI");
+        religion.add("KOS");
+        religion.add("IKUT ORANG TUA");
+
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(DataDiri.this, android.R.layout.simple_spinner_item, gender);
             adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
             spinnerjeniskelamin.setAdapter(adapter);
 
         getGeoDistrictSaudara();
         getGeoCitySaudara();
-        getmemberDetail();
 
         imageself.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -274,6 +306,26 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             }
         });
 
+
+
+
+        txttanggallahir.setOnClickListener(this);
+        btnback = findViewById(R.id.btnback);
+        btnback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+        if (ContextCompat.checkSelfPermission(DataDiri.this,
+                Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED){
+
+        }else {
+            requestPermission();
+        }
+
+
         btnsimpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -300,30 +352,14 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 //                String twitter = txttwitter.getText().toString();
 //                String instagram = txtinstagram.getText().toString();
 
-               /// updatemember();
-               //getMember();
+                /// updatemember();
+                //getMember();
                 ///getmemberDetail();
 
+                InsertMember();
+
             }
         });
-
-        ///getMember();
-
-        txttanggallahir.setOnClickListener(this);
-        btnback = findViewById(R.id.btnback);
-        btnback.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-
-        if (ContextCompat.checkSelfPermission(DataDiri.this,
-                Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED){
-
-        }else {
-            requestPermission();
-        }
 
    }
 
@@ -410,6 +446,65 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
     }
 
 
+    private void InsertMember(){
+
+        pDialog = new ProgressDialog(this);
+        pDialog.setCancelable(false);
+        pDialog.setMessage("Update member...");
+        pDialog.show();
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("id_member",sharedPrefManager.getSpIdMember() );
+        params.put("fullname", txtnamalengkap.getText().toString());
+        params.put("phone", txtnomorhandphone.getText().toString());
+        params.put("birthplace", txttempatlahir.getText().toString());
+        params.put("birthday", txttanggallahir.getText().toString());
+        params.put("gender", spinnerjeniskelamin.getSelectedItem().toString());
+        params.put("marital", spinnerstatus.getSelectedItem().toString());
+        params.put("religion", spinneragama.getSelectedItem().toString());
+        params.put("family_dependent", txtjumlahtanggungan.getText().toString());
+        params.put("installment", spinnerstatusrumah.getSelectedItem().toString());
+        params.put("job", txtpekerjaan.getText().toString());
+        params.put("income", txtpendapatan.getText().toString());
+        params.put("number_citizen", txtnikktp.getText().toString());
+        params.put("number_taxpayer", txtnomornpwp.getText().toString());
+        params.put("parent_name", txtibukandung.getText().toString());
+        ///params.put("email", txtalamatemail.getText().toString());
+        params.put("contact_office", txtnomortlp.getText().toString());
+        params.put("facebook", txtfacebook.getText().toString());
+        params.put("instagram", txtinstagram.getText().toString());
+        params.put("twitter", txttwitter.getText().toString());
+        params.put("nonsibling_name", txtnamasaudara.getText().toString());
+        params.put("nonsibling_mobile", txtnomorhandphonesaudara.getText().toString());
+        params.put("postal_code", txtkodepos_saudara.getText().toString());
+        params.put("nonsibling_address", txtalamat_saudara.getText().toString());
+
+
+        mApiService.InsertMember(params).enqueue(new Callback<ResponseMemberInsert>() {
+            @Override
+            public void onResponse(Call<ResponseMemberInsert> call, Response<ResponseMemberInsert> response) {
+                pDialog.dismiss();
+                if (response.body().getResponseCode() == 200) {
+
+                    Toast.makeText(DataDiri.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+
+
+                } else {
+                    Toast.makeText(DataDiri.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+
+
+            @Override
+            public void onFailure(Call<ResponseMemberInsert> call, Throwable t) {
+
+            }
+        });
+
+    }
+
+
     private void getmemberDetail(){
        /// loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
 
@@ -439,6 +534,11 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                                     txtfacebook.setText(reqresultItem.getMetadata().getFacebook());
                                     txttwitter.setText(reqresultItem.getMetadata().getTwitter());
                                     txtinstagram.setText(reqresultItem.getMetadata().getInstagram());
+                                    txtnamasaudara.setText(reqresultItem.getMetadata().getNonsiblingName());
+                                    txtnomorhandphonesaudara.setText(reqresultItem.getMetadata().getNonsiblingMobile());
+                                    txtalamat_saudara.setText(reqresultItem.getMetadata().getNonsiblingAddress());
+                                    txtkodepos_saudara.setText(reqresultItem.getMetadata().getPostalCode());
+
                                     Glide.with(DataDiri.this)
                                             .load(reqresultItem.getImage())
                                             .placeholder(R.drawable.icon_user)
@@ -489,6 +589,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             @Override
             public void onFailure(Call<ResponseMembers> call, Throwable t) {
                 Toast.makeText(DataDiri.this, "Koneksi Anda bermasalah", Toast.LENGTH_LONG).show();
+                onBackPressed();
             }
         });
 
@@ -558,133 +659,6 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
     }
 
 
-//    private void getMember(){
-//
-//        mApiService.getMemberDetail(sharedPrefManager.getSpIdprofile()).enqueue(new Callback<ResponseMembers>() {
-//
-//            @Override
-//            public void onResponse(Call<ResponseMembers> call, Response<ResponseMembers> response) {
-//
-//
-//                if (response.isSuccessful()) {
-//
-//                    ResponseMembers responseMembers = response.body();
-//                    List<ResultItem> detail = responseMembers.getResult();
-//                    Log.d("Member Detail", detail.toString());
-//
-//
-//                   for (ResultItem d : detail){
-//                       if(d.getId().equals(sharedPrefManager.getSpIdprofile()));
-//                        resultItem =d;
-//
-//                        runOnUiThread(new Runnable() {
-//                            @Override
-//                            public void run() {
-//                              txtibukandung.setText(resultItem.getMetadata().getParentName());
-//
-//                            }
-//                        });
-//
-//                   }
-//
-//                   // final List<ResultItem> Detailmember = Arrays.asList(response.body().getResult());
-//
-//
-//                    //ResultItem userResponse = response.body().getResult();
-//                    ///txtnamalengkap.setText(Detailmember.);
-//
-//                }
-//            }
-//            @Override
-//            public void onFailure(Call call, Throwable t) {
-//                /*
-//                Error callback
-//                */
-//            }
-//        });
-//
-//    }
-
-//    private void requestRegister(){
-//
-//        //membuat progress dialog
-//        loading = new ProgressDialog(this);
-//        loading.setCancelable(false);
-//        loading.setMessage("Update Data Diri ...");
-//        loading.show();
-//
-//
-//        //mengambil data dari edittext
-//        String token = sharedPrefManager.getSPToken().trim();
-//        String fullname = txtnamalengkap.getText().toString().trim();
-//        String birthplace = txttempatlahir.getText().toString().trim();
-//        String birthday = txttanggallahir.getText().toString().trim();
-//        String gender = spinnerjeniskelamin.getSelectedItem().toString().trim();
-//        String marital = spinnerstatus.getSelectedItem().toString().trim();
-//        String religion = spinneragama.getSelectedItem().toString().trim();
-//        String number_citizen = txtnikktp.getText().toString().trim();
-//        String number_taxpayer = txtnomornpwp.getText().toString().trim();
-//        String job = txtpekerjaan.getText().toString().trim();
-//        String income = txtpendapatan.getText().toString().trim();
-//        String parent_name = txtibukandung.getText().toString().trim();
-//        String family_dependent = txtjumlahtanggungan.getText().toString().trim();
-//        String email = txtalamatemail.getText().toString().trim();
-//        String phone = txtnomorhandphone.getText().toString().trim();
-//        String installment = spinnerkredit.getSelectedItem().toString().trim();
-//        String residence_status = spinnerstatusrumah.getSelectedItem().toString().trim();
-//        String contact_office = txtnomortlp.getText().toString().trim();
-//        String facebook = txtfacebook.getText().toString().trim();
-//        String twitter = txttwitter.getText().toString().trim();
-//        String instagram = txtinstagram.getText().toString().trim();
-//
-//        OkHttpClient.Builder okhttpBuilder = new OkHttpClient.Builder();
-//        okhttpBuilder.addInterceptor(new Interceptor() {
-//            @NotNull
-//            @Override
-//            public okhttp3.Response intercept(@NotNull Chain chain) throws IOException {
-//
-//                Request request = chain.request();
-//                Request.Builder newRequest = request.newBuilder()
-//                        .addHeader("Authorization","Bearer " + SP_TOKEN);
-//
-//                return chain.proceed(newRequest.build());
-//
-//            }
-//        });
-//
-//        Retrofit retrofit = new Retrofit.Builder()
-//                .baseUrl(BuildConfig.BASE_URL).client(okhttpBuilder.build())
-//                .addConverterFactory(GsonConverterFactory.create(new Gson())).build();
-//
-//        BaseApiService api = retrofit.create(BaseApiService.class);
-//
-//
-//        Call<ResponseMember> call = api.postDataDiri(fullname,birthday ,birthplace,job,income, family_dependent, installment,residence_status , parent_name, contact_office,facebook
-//               ,twitter , instagram,gender ,marital ,religion ,number_citizen ,number_taxpayer);
-//
-//        call.enqueue(new Callback<ResponseMember>() {
-//                    @Override
-//                    public void onResponse(Call<ResponseMember> call, Response<ResponseMember> response) {
-//
-//                        loading.dismiss();
-//
-//
-//                        if (response.isSuccessful()){
-//                            ///Toast.makeText(Register.this, "Registrasi berhasil, silahkan login.", Toast.LENGTH_SHORT).show();
-//                            Toast.makeText(DataDiri.this , "Update Data Member Berhasil", Toast.LENGTH_SHORT).show();
-//                            finish();
-//                        } else {
-//                            Toast.makeText(DataDiri.this, "Gagal Update data.", Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<ResponseMember> call, Throwable t) {
-//                        Toast.makeText(mContext, "Koneksi Internet Bermasalah", Toast.LENGTH_SHORT).show();
-//                        loading.hide();
-//                    }
-//                });
-//    }
 
 
     private void requestPermission() {

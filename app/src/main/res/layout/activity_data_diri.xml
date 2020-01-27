@@ -7,6 +7,7 @@
     android:orientation="horizontal"
     tools:context=".Akun.DataDiri">
 
+
     <FrameLayout
         android:id="@+id/frame_container"
         android:layout_width="match_parent"
@@ -21,7 +22,6 @@
         android:orientation="vertical"
         android:padding="0dp"
         tools:ignore="MissingConstraints">
-
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -56,6 +56,8 @@
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             tools:ignore="MissingConstraints">
+
+
 
             <LinearLayout
                 android:id="@+id/linera2"
@@ -822,6 +824,7 @@
 
 
             </LinearLayout>
+
         </androidx.core.widget.NestedScrollView>
     </LinearLayout>
 

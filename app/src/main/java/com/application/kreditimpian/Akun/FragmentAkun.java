@@ -77,7 +77,7 @@ import static android.content.Context.MODE_PRIVATE;
 public class FragmentAkun extends Fragment {
 
     ImageView image;
-    CardView btndetailakun, btnstatuspesanan,btnchat ,btnhistorypesanan,btnfavorite,btnkonfirmasi, btngantipassword,btnlogout ;
+    CardView btndetailakun, btnstatuspesanan,btnchat ,btnhistorypesanan,btnfavorite,btnkonfirmasi, btngantipassword,btnlogout,btnalamatpengiriman ;
     TextView txt_nama_akun,textchat;
 
     GoogleSignInClient mGoogleSignInClient;
@@ -118,8 +118,9 @@ public class FragmentAkun extends Fragment {
         String username = sharedPrefManager.getSpUserUsername();
         String idprof = sharedPrefManager.getSpIdprofile();
         String id_user = sharedPrefManager.getSpIdUser();
+        String id_member = sharedPrefManager.getSpIdMember();
 
-        Toast.makeText(getActivity(), "Id ANda "+id_user, Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), "Id member anda "+id_member, Toast.LENGTH_LONG).show();
 
         ///Toast.makeText(getActivity(),token, Toast.LENGTH_SHORT).show();
         txt_nama_akun.setText(username);
@@ -187,7 +188,7 @@ public class FragmentAkun extends Fragment {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(getActivity(), DetailAkun.class);
+                Intent intent = new Intent(getActivity(), DataDiri.class);
                 getActivity().startActivity(intent);
             }
 
@@ -202,12 +203,12 @@ public class FragmentAkun extends Fragment {
         });
 
 
-        btnstatuspesanan = view.findViewById(R.id.btnstatuspesanan);
-        btnstatuspesanan.setOnClickListener(new View.OnClickListener() {
+        btnalamatpengiriman = view.findViewById(R.id.btnalamatpengiriman);
+        btnalamatpengiriman.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(getActivity(), StatusPesanan.class);
+                Intent intent = new Intent(getActivity(), AlamatPengiriman.class);
                 getActivity().startActivity(intent);
             }
 

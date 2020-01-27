@@ -158,12 +158,11 @@
 
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/btnstatuspesanan"
+            android:id="@+id/btnalamatpengiriman"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardElevation="5dp"
             app:cardCornerRadius="6dp"
-            android:visibility="gone"
             android:layout_margin="5dp"
             android:layout_below="@+id/btndetailakun"
             android:background = "@drawable/cardvieworange">
@@ -177,17 +176,17 @@
                     android:layout_width="50sp"
                     android:layout_height="50sp"
                     android:layout_margin="10dp"
-                    android:src="@drawable/statuspesananhitam" />
+                    android:src="@drawable/delivery" />
 
                 <TextView
-                    android:id="@+id/txtStatuspesanan"
+                    android:id="@+id/txtstatuspesanan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/statuspesanan"
                     android:gravity="center"
-                    android:text="Status Pesanan"
-                    android:textColor="#000"
                     android:layout_centerInParent="true"
+                    android:text="Alamat Pengiriman"
+                    android:textColor="#000"
                     android:fontFamily="@font/jipatharegular"
                     android:textSize="26sp" />
 
@@ -202,7 +201,7 @@
             app:cardElevation="5dp"
             app:cardCornerRadius="6dp"
             android:layout_margin="5dp"
-            android:layout_below="@+id/btnstatuspesanan"
+            android:layout_below="@+id/btnalamatpengiriman"
             android:background = "@drawable/cardvieworange">
             <RelativeLayout
                 android:layout_width="match_parent"

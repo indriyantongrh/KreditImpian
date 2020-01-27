@@ -4,204 +4,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Akun.AlamatPengiriman">
 
-    <FrameLayout
-        android:id="@+id/frame_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 
-    <LinearLayout
-        android:id="@+id/linera1"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:layout_width="match_parent"
+            android:id="@+id/swipeRefresh"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints">
+
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/ListAlamat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingTop="1dp"
+                android:scrollbars="vertical">
+            </androidx.recyclerview.widget.RecyclerView>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="0dp"
-        tools:ignore="MissingConstraints">
+        android:layout_marginEnd="0dp"
+        android:layout_marginStart="0dp"
+        android:background="@color/colorOrange"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        >
 
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <Button
+            android:id="@+id/btnTambahAlamat"
+            style="?android:textAppearanceSmall"
             android:layout_width="match_parent"
-            android:visibility="gone"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/ThemeOverlay.AppCompat"
-            tools:ignore="MissingConstraints">
+            android:layout_height="wrap_content"
+            android:text="Tambah Alamat"
+            android:textStyle="bold"
+            android:textColor="#fff"
+            android:fontFamily="@font/jipatharegular"
+            android:textSize="25dp"
+            android:layout_gravity="center_vertical"
+            android:background="@color/colorOrange"
+            ></Button>
 
 
-            <ImageButton
-                android:id="@+id/btnback"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_toLeftOf="@id/btnback"
-                android:background="@android:color/transparent"
-                android:src="@drawable/backwhite"/>
-
-            <ImageView
-                android:id="@+id/logotop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:foregroundGravity="center"
-                android:layout_toRightOf="@id/btnback"
-                android:paddingRight="50dp"
-                android:paddingBottom="10dp"
-                android:paddingTop="15dp"
-                android:src="@drawable/logoputihkredit"/>
-        </androidx.appcompat.widget.Toolbar>
-
-        <androidx.core.widget.NestedScrollView
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            tools:ignore="MissingConstraints">
-
-            <LinearLayout
-                android:id="@+id/linera2"
-                android:layout_width="fill_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:padding="20dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="fill_parent"
-                    android:gravity="center"
-                    android:textSize="35dp"
-                    android:paddingBottom="10dp"
-                    android:visibility="gone"
-                    android:textColor="#000"
-                    android:fontFamily="@font/jipatharegular"
-                    android:text="Alamat Pengiriman"/>
-
-
-
-
-                <!--Border-->
-                <LinearLayout
-                    android:background="#fff"
-                    android:layout_width="match_parent"
-                    android:layout_height="15dp"></LinearLayout>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:background="@drawable/borderhitam"
-                    android:layout_height="37dp">
-
-                    <Spinner
-                        android:id="@+id/spinnerkota_pengiriman"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:fontFamily="@font/jipatharegular"
-                        android:entries="@array/kota"></Spinner>
-                </LinearLayout>
-
-                <!--Border-->
-                <LinearLayout
-                    android:background="#fff"
-                    android:layout_width="match_parent"
-                    android:layout_height="15dp"></LinearLayout>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:background="@drawable/borderhitam"
-                    android:layout_height="37dp">
-
-                    <Spinner
-                        android:id="@+id/spinnerkecamatan_pengiriman"
-                        android:entries="@array/kecamatan"
-                        android:layout_width="match_parent"
-                        android:fontFamily="@font/jipatharegular"
-                        android:layout_height="match_parent"></Spinner>
-                </LinearLayout>
-
-                <!--Border-->
-                <LinearLayout
-                    android:background="#fff"
-                    android:layout_width="match_parent"
-                    android:layout_height="15dp"></LinearLayout>
-
-                <LinearLayout
-
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:background="@drawable/borderhitam"
-                    android:layout_height="37dp">
-
-                    <EditText
-                        android:id="@+id/txtkodepospengiriman"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:background="@android:color/transparent"
-                        android:hint="Kode Post"
-                        android:fontFamily="@font/jipatharegular"
-                        android:inputType="text"
-                        android:textSize="26dp" />
-
-                </LinearLayout>
-
-                <!--Border-->
-                <LinearLayout
-                    android:background="#fff"
-                    android:layout_width="match_parent"
-                    android:layout_height="15dp"></LinearLayout>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:background="@drawable/borderhitam"
-                    android:layout_height="120dp">
-
-                    <EditText
-                        android:id="@+id/txtalamatpengririman"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:background="@android:color/transparent"
-                        android:hint="Alamat Anda"
-                        android:gravity="top"
-                        android:lines="9"
-                        android:fontFamily="@font/jipatharegular"
-                        android:inputType="textMultiLine"
-                        android:textSize="26dp" />
-
-                </LinearLayout>
-
-
-                     <!--Border-->
-                <LinearLayout
-                    android:background="#fff"
-                    android:layout_width="match_parent"
-                    android:layout_height="15dp"></LinearLayout>
-
-                <!--Button-->
-                <Button
-                    android:id="@+id/btnsimpan_pengiriman"
-                    style="?android:textAppearanceSmall"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="16dp"
-                    android:text="SIMPAN DATA"
-                    android:textStyle="bold"
-                    android:textColor="#fff"
-                    android:textSize="25sp"
-                    android:fontFamily="@font/jipatharegular"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@drawable/btnorange"
-                    ></Button>
-
-
-            </LinearLayout>
-        </androidx.core.widget.NestedScrollView>
-    </LinearLayout>
-
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 
 

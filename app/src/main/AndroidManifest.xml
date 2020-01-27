@@ -39,7 +39,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".DetailHistoryPesanan"></activity>
+        <activity android:name=".Akun.AlamatPengiriman"></activity>
+        <activity android:name=".DetailHistoryPesanan" />
         <activity android:name=".FormPengajuan.UpgradeImpian.UpgradeImpian" /> <!-- <activity android:name=".CartCheckout.Cart" /> -->
         <activity android:name=".DetailProduct" />
         <activity android:name=".TransactionProcess.Cart" />
@@ -72,7 +73,7 @@
         <activity android:name=".Akun.UploadDokumenPendukung" />
         <activity android:name=".Akun.DataSaudara" />
         <activity android:name=".Akun.AlamatKantor" />
-        <activity android:name=".Akun.AlamatPengiriman" />
+        <activity android:name=".Akun.TambahAlamatPengiriman" />
         <activity android:name=".Akun.DataDiri" />
         <activity android:name=".Akun.DetailAkun" />
         <activity android:name=".MenuUtama.MenuUtama" />
