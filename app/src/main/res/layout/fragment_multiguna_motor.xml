@@ -1,11 +1,264 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     tools:context=".FormPengajuan.UpgradeImpian.MultigunaMotor">
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="@dimen/text_margin"
+            android:background="@drawable/borderorange"
+            android:theme="@style/TextLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtjumlahpinjaman"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/padding_10"
+                android:layout_marginEnd="@dimen/padding_10"
+                android:fontFamily="@font/jipatharegular"
+                android:hint="@string/jumlah_pinjaman"
+                android:inputType="text"
+                android:paddingTop="@dimen/dimen0dp"
+                android:textSize="@dimen/tulisan26sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin"
+            android:layout_marginTop="@dimen/text_margin"
+            android:layout_marginEnd="@dimen/text_margin"
+            android:background="@drawable/borderorange"
+            android:theme="@style/TextLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout1">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txthargakendaraan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/padding_10"
+                android:layout_marginEnd="@dimen/padding_10"
+                android:fontFamily="@font/jipatharegular"
+                android:hint="@string/harga_kendaraan"
+                android:inputType="text"
+                android:paddingTop="@dimen/dimen0dp"
+                android:textSize="@dimen/tulisan26sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin"
+            android:layout_marginTop="@dimen/text_margin"
+            android:layout_marginEnd="@dimen/text_margin"
+            android:background="@drawable/borderorange"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout2">
+
+            <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                android:id="@+id/spinMerkMotor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/padding_10"
+                android:layout_marginEnd="@dimen/padding_10"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:smsp_floatingLabelText=""
+                app:smsp_hint="Merk Kendaraan"
+                app:smsp_hintColor="@color/colorOrange"
+                app:smsp_itemColor="@color/colorOrange"
+                app:smsp_itemListColor="@color/colorOrange"
+                app:smsp_multilineError="false"
+                app:smsp_selectedItemListColor="#FF5252"
+                app:smsp_underlineColor="@color/colorOrange"
+                app:smsp_itemListHintBackgroundColor="@color/colorOrange"
+                app:smsp_itemListHintColor="@android:color/white"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin"
+            android:layout_marginTop="@dimen/text_margin"
+            android:layout_marginEnd="@dimen/text_margin"
+            android:background="@drawable/borderorange"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout3">
+
+            <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                android:id="@+id/spinTipeMotor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/padding_10"
+                android:layout_marginEnd="@dimen/padding_10"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:smsp_floatingLabelText=""
+                app:smsp_hint="Tipe Kendaraan"
+                app:smsp_hintColor="@color/colorOrange"
+                app:smsp_itemColor="@color/colorOrange"
+                app:smsp_itemListColor="@color/colorOrange"
+                app:smsp_multilineError="false"
+                app:smsp_selectedItemListColor="#FF5252"
+                app:smsp_underlineColor="@color/colorOrange"
+                app:smsp_itemListHintBackgroundColor="@color/colorOrange"
+                app:smsp_itemListHintColor="@android:color/white" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin"
+            android:layout_marginTop="@dimen/text_margin"
+            android:layout_marginEnd="@dimen/text_margin"
+            android:background="@drawable/borderorange"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout4">
+
+            <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                android:id="@+id/spinThnMotor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/padding_10"
+                android:layout_marginEnd="@dimen/padding_10"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:smsp_hint="Tahun Kendaraan"
+                app:smsp_hintColor="@color/colorOrange"
+                app:smsp_itemListColor="@color/colorOrange"
+                app:smsp_multilineError="false"
+                app:smsp_selectedItemListColor="#FF5252"
+                app:smsp_underlineColor="@color/colorOrange" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin"
+            android:layout_marginTop="@dimen/text_margin"
+            android:layout_marginEnd="@dimen/text_margin"
+            android:background="@drawable/borderorange"
+            android:theme="@style/TextLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout5">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtlokasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/padding_10"
+                android:layout_marginEnd="@dimen/padding_10"
+                android:fontFamily="@font/jipatharegular"
+                android:hint="@string/lokasi"
+                android:inputType="text"
+                android:paddingTop="@dimen/dimen0dp"
+                android:textSize="@dimen/tulisan26sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/borderorange"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout6">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvMitra"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="@dimen/padding_10"
+                android:layout_marginBottom="@dimen/padding_10"
+                android:layout_marginStart="@dimen/padding_10"
+                android:layout_marginEnd="@dimen/padding_10"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/borderorange"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout7">
+
+            <ImageView
+                android:id="@+id/imageupload"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:contentDescription="@string/image"
+                android:src="@drawable/upload"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/btnAjukansekarang"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="@dimen/dots_margin_bottom"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="@dimen/dots_margin_bottom"
+            android:background="@drawable/btnorange"
+            android:fontFamily="@font/jipatharegular"
+            android:minHeight="40dp"
+            android:text="@string/ajukan_sekarang"
+            android:textColor="#fff"
+            android:textSize="@dimen/tulisan26sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout8" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--<androidx.core.widget.NestedScrollView
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
         tools:ignore="MissingConstraints">
@@ -18,7 +271,7 @@
             android:background="#fff"
             android:padding="20dp">
 
-            <!--Border-->
+            &lt;!&ndash;Border&ndash;&gt;
             <LinearLayout
                 android:background="#fff"
                 android:layout_width="match_parent"
@@ -46,7 +299,7 @@
             </LinearLayout>
 
 
-            <!--Border-->
+            &lt;!&ndash;Border&ndash;&gt;
             <LinearLayout
                 android:background="#fff"
                 android:layout_width="match_parent"
@@ -73,7 +326,7 @@
 
             </LinearLayout>
 
-            <!--Border-->
+            &lt;!&ndash;Border&ndash;&gt;
             <LinearLayout
                 android:background="#fff"
                 android:layout_width="match_parent"
@@ -101,7 +354,7 @@
             </LinearLayout>
 
 
-            <!--Border-->
+            &lt;!&ndash;Border&ndash;&gt;
             <LinearLayout
                 android:background="#fff"
                 android:layout_width="match_parent"
@@ -128,7 +381,7 @@
 
             </LinearLayout>
 
-            <!--Border-->
+            &lt;!&ndash;Border&ndash;&gt;
             <LinearLayout
                 android:background="#fff"
                 android:layout_width="match_parent"
@@ -144,11 +397,10 @@
                     android:id="@+id/spinnertahun_kendaraan"
                     android:entries="@array/tahunkendaraan"
                     android:layout_width="match_parent"
-
-                    android:layout_height="match_parent"></Spinner>
+                    android:layout_height="match_parent"/>
             </LinearLayout>
 
-            <!--Border-->
+            &lt;!&ndash;Border&ndash;&gt;
             <LinearLayout
                 android:background="#fff"
                 android:layout_width="match_parent"
@@ -176,7 +428,7 @@
 
             </LinearLayout>
 
-            <!--Border-->
+            &lt;!&ndash;Border&ndash;&gt;
             <LinearLayout
                 android:background="#fff"
                 android:layout_width="match_parent"
@@ -203,7 +455,7 @@
 
             </LinearLayout>
 
-            <!--Border-->
+            &lt;!&ndash;Border&ndash;&gt;
             <LinearLayout
                 android:background="#fff"
                 android:layout_marginTop="5dp"
@@ -250,9 +502,9 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:background="@drawable/btnorange"
-                ></Button>
+                />
 
         </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>-->
 
-</FrameLayout>
+</ScrollView>
