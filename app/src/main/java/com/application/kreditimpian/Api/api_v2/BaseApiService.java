@@ -2,17 +2,19 @@ package com.application.kreditimpian.Api.api_v2;
 
 
 
+import com.application.kreditimpian.Model.ModelAddress.ResponseAddress;
 import com.application.kreditimpian.Model.ModelGeodirectories.ResponseGeodirectories;
+import com.application.kreditimpian.Model.ModelListAlamat.ResponseListAlamat;
 import com.application.kreditimpian.Model.ModelLogin.ResponseLogin;
 import com.application.kreditimpian.Model.ModelMember.ResponseMember;
 import com.application.kreditimpian.Model.ModelMemberInsert.ResponseMemberInsert;
 import com.application.kreditimpian.Model.ModelMerchant.ResponseMerchant;
 import com.application.kreditimpian.Model.ModelProduct.ResponseProduct;
+import com.application.kreditimpian.Model.ModelProductBaru.ResponseProductBaru;
 import com.application.kreditimpian.Model.ModelProductNew.ProductResponse;
 
 
 import com.application.kreditimpian.Model.ModelUserDetail.ResponseMembers;
-import com.application.kreditimpian.Model.ModelValidationSMS.ResponseOTP;
 import com.application.kreditimpian.Model.ModelValidationSMS.ResponseSmsOTP;
 import com.application.kreditimpian.ResponseMessage.ResponseLoginSucces;
 
@@ -44,18 +46,36 @@ public interface BaseApiService {
                                            @Field("password") String password);
 
 
-
+    /*API Login and Validation OTP*/
     @GET("ApiMobile/validasiotp")
     Call<ResponseSmsOTP> getValidation(@QueryMap HashMap<String, String> params);
 
     @GET("ApiMobile/loginproses")
     Call<ResponseLogin> getLogin(@QueryMap HashMap<String, String> params);
 
+    /*Alamat APi*/
     @GET("master/geodirectories?TYPE=DISTRICT")
     Call<ResponseGeodirectories> getGeoDistrict();
 
     @GET("master/geodirectories?TYPE=CITY")
     Call<ResponseGeodirectories> getGeoCity();
+
+    @GET("ApiMobile/isrtmbradrs")
+    Call<ResponseAddress> InsertAddress(@QueryMap HashMap<String, String> params);
+
+    @GET("ApiMobile/membersaddresses")
+    Call<ResponseListAlamat> getAllAddesses(@Query("id_member") String id_member);
+
+    @GET("ApiMobile/delmbradrs")
+    Call<ResponseAddress> deleteAddreses(@Query("id") String id,
+                                         @Query("id_member") String id_member);
+
+    @GET("ApiMobile/updtmbradrs")
+    Call<ResponseAddress> updateAddreses(@Query("id") String id,
+                                         @QueryMap HashMap<String, String> params);
+
+    @GET("ApiMobile/gantipassword")
+    Call<ResponseAddress> ResetPassword(@Query("id_sysuser") String id_sysuser,@QueryMap HashMap<String, String> params);
 
     @GET("ApiMobile/insertprofile")
     Call<ResponseMemberInsert> InsertMember(@QueryMap HashMap<String, String> params);
@@ -72,47 +92,47 @@ public interface BaseApiService {
 
     //getAllProduct
     @GET("products?status=PUBLISH")
-    Call<ProductResponse> getResult();
+    Call<ResponseProductBaru> getResult();
 
     //getAllProductFashion
     @GET("products?id_product_category=2&status=PUBLISH")
-    Call<ProductResponse> getResultFashion();
+    Call<ResponseProductBaru> getResultFashion();
 
     //getAllProductForniture
     @GET("products?id_product_category=3&status=PUBLISH")
-    Call<ProductResponse> getResultForniture();
+    Call<ResponseProductBaru> getResultForniture();
 
     //getAllProductOtomotif
     @GET("products?id_product_category=4&status=PUBLISH")
-    Call<ProductResponse> getResultOtomotif();
+    Call<ResponseProductBaru> getResultOtomotif();
 
     //getAllProductMultiproduct
     @GET("products?id_product_category=5&status=PUBLISH")
-    Call<ResponseProduct> getResultMultiproduct();
+    Call<ResponseProductBaru> getResultMultiproduct();
 
     //getAllProductKomputer
     @GET("products?id_product_category=11&status=PUBLISH")
-    Call<ProductResponse> getResultKomputer();
+    Call<ResponseProductBaru> getResultKomputer();
 
     //getAllProductGadget
     @GET("products?id_product_category=12&status=PUBLISH")
-    Call<ProductResponse> getResultGadget();
+    Call<ResponseProductBaru> getResultGadget();
 
     //getAllProductElektronik
     @GET("products?id_product_category=15&status=PUBLISH")
-    Call<ProductResponse> getResultElektronik();
+    Call<ResponseProductBaru> getResultElektronik();
 
     //getAllProductHobi
     @GET("products?id_product_category=16&status=PUBLISH")
-    Call<ProductResponse> getResultHobi();
+    Call<ResponseProductBaru> getResultHobi();
 
     //getAllProductCoorporate
     @GET("products?id_product_category=17&status=PUBLISH")
-    Call<ResponseProduct> getResultCoorporate();
+    Call<ResponseProductBaru> getResultCoorporate();
 
     //getAllProductHobi
     @GET("products?id_product_category=18&status=PUBLISH")
-    Call<ProductResponse> getResultProperty();
+    Call<ResponseProductBaru> getResultProperty();
 
 //    //getUserMember
 //    @Headers({ "Content-Type: application/x-www-form-urlencoded", "Authorization: Bearer"+ SharedPrefManager.SP_TOKEN})

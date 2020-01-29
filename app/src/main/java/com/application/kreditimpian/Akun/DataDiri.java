@@ -351,26 +351,42 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                 String facebook = txtfacebook.getText().toString();
                 String twitter = txttwitter.getText().toString();
                 String instagram = txtinstagram.getText().toString();
+                String namasaudara = txtnamasaudara.getText().toString();
+                String nomorhpsaudara = txtnomorhandphonesaudara.getText().toString();
+                String kodepossaudara = txtkodepos_saudara.getText().toString();
+                String alamatsaudara = txtalamat_saudara.getText().toString();
 
                 if (isEmpty(fullname))
-                    txtnamalengkap.setError("Masukan Nama lengkap");
+                    txtnamalengkap.setError("Tidak boleh kosong");
                 else if(isEmpty(birthplace))
-                        txttempatlahir.setError("MAsukan tempat lahir");
+                        txttempatlahir.setError("Tidak boleh kosong");
                 else if(isEmpty(birthday))
-                    txttanggallahir.setError("Tanggal lahir kosong");
+                    txttanggallahir.setError("Tidak boleh kosong");
                 else if(isEmpty(number_citizen))
-                    txtnikktp.setError("Lengkapi nomor KTP Anda");
+                    txtnikktp.setError("Tidak boleh kosong");
                 else if(isEmpty(number_taxpayer))
-                    txtnomornpwp.setError("Lenkapi nomor NPWP ");
-                else if(isEmpty(birthplace))
-                    txttempatlahir.setError("MAsukan tempat lahir");
-                else if(isEmpty(birthday))
-                    txttanggallahir.setError("Tanggal lahir kosong");
-
-                /// updatemember();
-                //getMember();
-                ///getmemberDetail();
-
+                    txtnomornpwp.setError("Tidak boleh kosong");
+                else if(isEmpty(job))
+                    txtpekerjaan.setError("Tidak boleh kosong");
+                else if(isEmpty(income))
+                    txtpendapatan.setError("Tidak boleh kosong");
+                else if(isEmpty(family_dependent))
+                    txtjumlahtanggungan.setError("Tidak boleh kosong");
+                else if(isEmpty(contact_office))
+                    txtnomortlp.setError("Tidak boleh kosong");
+                else if(isEmpty(family_dependent))
+                    txtjumlahtanggungan.setError("Tidak boleh kosong");
+                else if(isEmpty(contact_office))
+                    txtnomortlp.setError("Tidak boleh kosong");
+                else if(isEmpty(namasaudara))
+                    txtnamasaudara.setError("Tidak boleh kosong");
+                else if(isEmpty(nomorhpsaudara))
+                    txtnomorhandphonesaudara.setError("Tidak boleh kosongg");
+                else if(isEmpty(kodepossaudara))
+                    txtkodepos_saudara.setError("Tidak boleh kosong");
+                else if(isEmpty(alamatsaudara))
+                    txtalamat_saudara.setError("Tidak boleh kosong");
+                else
                 InsertMember();
 
             }
@@ -630,8 +646,8 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                    spinnerkota_saudaraa.setAdapter(adapter);
                } else {
-                   loading.dismiss();
-                   Toast.makeText(mContext, "Gagal mengambil data dosen", Toast.LENGTH_SHORT).show();
+                 ///  loading.dismiss();
+                   Toast.makeText(mContext, "Gagal mengambil data ", Toast.LENGTH_SHORT).show();
                }
             }
 

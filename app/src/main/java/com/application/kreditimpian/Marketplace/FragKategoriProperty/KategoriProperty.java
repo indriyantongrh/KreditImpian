@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.application.kreditimpian.Adapter.AdapterProduct;
+import com.application.kreditimpian.Adapter.AdapterProductBaru;
 import com.application.kreditimpian.Adapter.AdapterProductNew;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
@@ -27,8 +28,10 @@ import com.application.kreditimpian.Marketplace.FragSemuaKategori.Constans;
 import com.application.kreditimpian.Marketplace.FragSemuaKategori.RecyclerItemClickListener;
 //import com.application.kreditimpian.Model.ModelProduct.ResponseProduct;
 //import com.application.kreditimpian.Model.ModelProduct.ResultItem;
-import com.application.kreditimpian.Model.ModelProductNew.ProductResponse;
-import com.application.kreditimpian.Model.ModelProductNew.ResultItem;
+//import com.application.kreditimpian.Model.ModelProductNew.ProductResponse;
+//import com.application.kreditimpian.Model.ModelProductNew.ResultItem;
+import com.application.kreditimpian.Model.ModelProductBaru.ResponseProductBaru;
+import com.application.kreditimpian.Model.ModelProductBaru.ResultItem;
 import com.application.kreditimpian.R;
 
 import java.util.ArrayList;
@@ -55,7 +58,7 @@ public class KategoriProperty extends Fragment {
 
     Context mContext;
     List<ResultItem> resultItemList = new ArrayList<>();
-    AdapterProductNew adapterProductNew;
+    AdapterProductBaru adapterProductBaru;
 
 
 //    List<ResultItem> resultItemList = new ArrayList<>();
@@ -89,7 +92,7 @@ public class KategoriProperty extends Fragment {
         mContext = getActivity();
         mApiService = UtilsApi.getAPIService();
 
-        adapterProductNew = new AdapterProductNew(getActivity(), resultItemList);
+        adapterProductBaru = new AdapterProductBaru(getActivity(), resultItemList);
         //RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2, GridLayoutManager.VERTICAL, false);
         listProductProperty.setLayoutManager(mLayoutManager);
@@ -104,9 +107,9 @@ public class KategoriProperty extends Fragment {
     private void getResultList(){
         progressBar = ProgressDialog.show(getActivity(), null, "Harap Tunggu...", true, false);
 
-        mApiService.getResultProperty().enqueue(new Callback<ProductResponse>() {
+        mApiService.getResultProperty().enqueue(new Callback<ResponseProductBaru>() {
             @Override
-            public void onResponse(Call<ProductResponse> call, Response<ProductResponse> response) {
+            public void onResponse(Call<ResponseProductBaru> call, Response<ResponseProductBaru> response) {
                 if (response.isSuccessful()){
 
                     ///progressBar.dismiss();
@@ -115,8 +118,8 @@ public class KategoriProperty extends Fragment {
                         progressBar.dismiss();
                         final List<ResultItem> Allproduct = response.body().getResult();
 
-                        listProductProperty.setAdapter(new AdapterProductNew(mContext, Allproduct));
-                        adapterProductNew.notifyDataSetChanged();
+                        listProductProperty.setAdapter(new AdapterProductBaru(mContext, Allproduct));
+                        adapterProductBaru.notifyDataSetChanged();
                         empty.setVisibility(View.GONE);
                         initDataIntent(Allproduct);
                     } else {
@@ -130,7 +133,7 @@ public class KategoriProperty extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<ProductResponse> call, Throwable t) {
+            public void onFailure(Call<ResponseProductBaru> call, Throwable t) {
                 progressBar.dismiss();
                 Toast.makeText(mContext, "Koneksi Internet Bermasalah", Toast.LENGTH_SHORT).show();
             }

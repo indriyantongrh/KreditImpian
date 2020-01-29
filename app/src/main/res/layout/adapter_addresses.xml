@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/btnclick"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardCornerRadius="5dp"
+    android:backgroundTint="#fff"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:layout_marginEnd="10dp">
+
+    <RelativeLayout
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:paddingBottom="10dp"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/txt_nama_alamat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nama alamat"
+            android:textStyle="italic|bold"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#636363"
+            android:textSize="11dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:layout_below="@+id/linearstatus"
+            android:layout_marginStart="8dp"
+            android:layout_toRightOf="@+id/LinearImage"
+            tools:ignore="NotSibling" />
+
+
+
+        <TextView
+            android:id="@+id/txt_name_penerima"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nama Penerima"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#636363"
+            android:textSize="14dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:layout_below="@+id/txt_nama_alamat"
+            android:layout_marginStart="8dp"
+            android:layout_toRightOf="@+id/LinearImage"
+            tools:ignore="NotSibling" />
+
+
+        <TextView
+            android:id="@+id/txt_nomor_handphone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nomor Telepon"
+            android:textSize="9dp"
+            android:layout_below="@+id/txt_name_penerima"
+            android:layout_marginStart="8dp"
+            android:layout_toRightOf="@+id/LinearImage"
+            />
+
+
+
+        <TextView
+            android:id="@+id/txt_alamat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alamat"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#636363"
+            android:textSize="14dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:layout_below="@+id/txt_nomor_handphone"
+            android:layout_marginStart="8dp"
+            android:layout_toRightOf="@+id/LinearImage"
+            tools:ignore="NotSibling" />
+
+        <TextView
+            android:id="@+id/txt_kodepost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kode Post"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#636363"
+            android:textSize="12dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:layout_below="@+id/txt_alamat"
+            android:layout_marginStart="8dp"
+            android:layout_toRightOf="@+id/LinearImage"
+            tools:ignore="NotSibling" />
+
+        <RelativeLayout
+            android:layout_below="@+id/txt_kodepost"
+            android:gravity="right"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/text_alamat_utama"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Alamat Utama"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorOrange"
+                android:textSize="11dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:clickable="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="8dp"
+                android:layout_toRightOf="@+id/LinearImage"
+                tools:ignore="NotSibling" />
+
+            <TextView
+                android:id="@+id/txt_alamat_utama"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="null"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorOrange"
+                android:textSize="11dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textStyle="bold"
+                android:paddingRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:clickable="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="8dp"
+                android:layout_toRightOf="@+id/text_alamat_utama"
+                tools:ignore="NotSibling" />
+
+
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/txt_id"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/txt_member"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/txt_main_address"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/id_geodirectory"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/district"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+
+
+
+</androidx.cardview.widget.CardView>
