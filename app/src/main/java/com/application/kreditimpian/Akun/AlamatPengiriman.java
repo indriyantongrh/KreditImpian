@@ -69,7 +69,6 @@ public class AlamatPengiriman extends AppCompatActivity {
             }
         });
 
-
         setActionBarTitle("Alamat Pengiriman");
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);// set drawable icon
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

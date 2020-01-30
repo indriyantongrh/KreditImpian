@@ -56,11 +56,11 @@ public interface BaseApiService {
     Call<ResponseLogin> getLogin(@QueryMap HashMap<String, String> params);
 
     /*Alamat APi*/
-    @GET("master/geodirectories?TYPE=DISTRICT")
-    Call<ResponseGeodirectories> getGeoDistrict();
+//    @GET("master/geodirectories?TYPE=DISTRICT")
+//    Call<ResponseGeodirectories> getGeoDistrict();
 
-    @GET("master/geodirectories?TYPE=CITY")
-    Call<ResponseGeodirectories> getGeoCity();
+//    @GET("master/geodirectories?TYPE=CITY")
+//    Call<ResponseGeodirectories> getGeoCity();
 
     @GET("ApiMobile/getdistrict")
     Call<ResponseGeodirectory> getDistrict();

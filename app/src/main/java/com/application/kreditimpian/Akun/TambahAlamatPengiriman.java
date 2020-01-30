@@ -213,7 +213,7 @@ public class TambahAlamatPengiriman extends AppCompatActivity {
 
                             if(position>0){
                                 String cityvalues = getCity.get(position - 1 ).getId();
-                                Toast.makeText(TambahAlamatPengiriman.this, " ini id City "+cityvalues, Toast.LENGTH_LONG).show();
+                                ///Toast.makeText(TambahAlamatPengiriman.this, " ini id City "+cityvalues, Toast.LENGTH_LONG).show();
 
                             }
                         }
@@ -236,7 +236,7 @@ public class TambahAlamatPengiriman extends AppCompatActivity {
 //                    });
                 } else {
                     loading.dismiss();
-                    Toast.makeText(TambahAlamatPengiriman.this, "Gagal mengambil data dosen", Toast.LENGTH_SHORT).show();
+                   /// Toast.makeText(TambahAlamatPengiriman.this, "Gagal mengambil data dosen", Toast.LENGTH_SHORT).show();
                 }
             }
 
