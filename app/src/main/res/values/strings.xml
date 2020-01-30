@@ -97,6 +97,308 @@
     <string name="title_activity_upgrade_impian">Upgrade Impian</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
+    <string name="jumlah_pinjaman">Jumlah Pinjaman</string>
+    <string name="harga_kendaraan">Harga Kendaraan</string>
+    <string name="image">image</string>
+    <string name="lokasi">Lokasi</string>
+    <string name="ajukan_sekarang">Ajukan Sekarang</string>
 
+    <string-array name="mitra">
+        <item>Adira</item>
+        <item>Buff</item>
+    </string-array>
+    <string-array name="listMerkMotor">
+        <item>HONDA</item>
+        <item>KAWASAKI</item>
+        <item>PIAGGIO</item>
+        <item>SUZUKI</item>
+        <item>YAMAHA</item>
+    </string-array>
+    <string-array name="motorTipeHonda">
+        <item>ABSOLUTE REVO</item>
+        <item>ABSOLUTE REVO CW</item>
+        <item>ABSOLUTE REVO DX</item>
+        <item>BEAT</item>
+        <item>BEAT CBS FI</item>
+        <item>BEAT CUSTIC</item>
+        <item>BEAT CW</item>
+        <item>BEAT CW FI</item>
+        <item>BEAT CW PLUS</item>
+        <item>BEAT FI CBS ESP PLUS</item>
+        <item>BEAT FI CBS ISS</item>
+        <item>BEAT FI CBS ISS PLUS</item>
+        <item>BEAT FI CW ESP PLUS</item>
+        <item>BEAT FI POP CBS ESP</item>
+        <item>BEAT FI POP CBS ISS</item>
+        <item>BEAT FI POP CBS MMC</item>
+        <item>BEAT FI POP CBS PLUS</item>
+        <item>BEAT FI POP CW</item>
+        <item>BEAT FI POP CW ESP</item>
+        <item>BEAT FI SPORTY CBS</item>
+        <item>BEAT FI SPORTY CW</item>
+        <item>BEAT FISPORTY CBSISS</item>
+        <item>BEAT FISPORTY CW ESP</item>
+        <item>BEAT FISPORTY CWPLUS</item>
+        <item>BEAT FISPRTY CBSPLUS</item>
+        <item>BEAT FUNKY</item>
+        <item>BEAT SPOKE FI</item>
+        <item>BEAT STD</item>
+        <item>BEATFISPRTCBSISSPLUS</item>
+        <item>BLADE CW</item>
+        <item>BLADE REPSOL</item>
+        <item>BLADE S</item>
+        <item>BLADE SE CW</item>
+        <item>CB 150 R</item>
+        <item>CB 150 R PLUS</item>
+        <item>CB 150 R STREETFIRE</item>
+        <item>CB VERZA 150</item>
+        <item>CB150R MMC SE</item>
+        <item>CBR 150 BUILTUP</item>
+        <item>CBR 150 R</item>
+        <item>CBR 150 RC</item>
+        <item>CBR 150 RCR</item>
+        <item>CBR 150 REPSOL</item>
+        <item>CBR 250</item>
+        <item>CBR 250 ABS</item>
+        <item>CBR 250 ABS MMC</item>
+        <item>CBR 250 MMC</item>
+        <item>CBR 250 REPSOL</item>
+        <item>CBR 250 RR</item>
+        <item>CBR 250R ABS</item>
+        <item>CBR 250R ABS REPSOL</item>
+        <item>CBR 250R STD</item>
+        <item>CBR- SPORT</item>
+        <item>CRF 150 L</item>
+        <item>CRF 250L</item>
+        <item>CRF 250 RALLY</item>
+        <item>Ce CS 1</item>
+        <item>FIT X</item>
+        <item>MEGA PRO</item>
+        <item>MEGA PRO CW</item>
+        <item>MEGA PRO NEOTECH</item>
+        <item>MEGA PRO NEOTECH CW</item>
+        <item>N VARIo CBS FIADVT</item>
+        <item>NBEAT FI CW + SPORTY</item>
+        <item>NBEATPOPESPCBSCWCOMC</item>
+        <item>NBEATPOPESPCBSCWPIXL</item>
+        <item>NEW BEAT FI CW PLUS</item>
+        <item>NEW BEAT FI SP PLUS</item>
+        <item>NEW BEAT STREET ESP</item>
+        <item>NEW BLADE 125FI SRE</item>
+        <item>NEW BLADE CW</item>
+        <item>NEW BLADE R 125 FI</item>
+        <item>NEW BLADE REPSOL</item>
+        <item>NEW BLADE S 125 FI</item>
+        <item>NEW BLADE STD</item>
+        <item>NEW CBR 150R STANDAR</item>
+        <item>NEW CBR 150RTRICOLOR</item>
+        <item>NEW MEGA PRO CW</item>
+        <item>NEW MEGA PRO CW FI</item>
+        <item>NEW MEGA PRO STD</item>
+        <item>NEW PCX 150 ABS</item>
+        <item>NEW REVO CW</item>
+        <item>NEW REVO FI CW</item>
+        <item>NEW REVO FI FIT</item>
+        <item>NEW REVO FI SW</item>
+        <item>NEW REVO SP</item>
+        <item>NEW SCOOPY RETRO</item>
+        <item>NEW SUPRA FIT</item>
+        <item>NEW SUPRA FIT CAKRAM</item>
+        <item>NEW SUPRA FIT CW</item>
+        <item>NEW SUPRA FIT S</item>
+        <item>NEW SUPRA X 125 CW</item>
+        <item>NEW SUPRA X 125 D3</item>
+        <item>NEW SUPRA X 125 DB</item>
+        <item>NEW SUPRA X 125 TR3</item>
+        <item>NEW SUPRA X 125PGMFI</item>
+        <item>NEW TIGER</item>
+        <item>NEW TIGER CW</item>
+        <item>NEW TIGER R1</item>
+        <item>NEW VARIO CW</item>
+        <item>NEW VARIO CW FI</item>
+        <item>NEW VARIO TECHNO</item>
+        <item>NEW VARIO TECHNO CBS</item>
+        <item>NEW VARIO TECHNO FI</item>
+        <item>NEWBEAT FICW-CBSPLUS</item>
+        <item>NEWBEATPESPCBSISSCOM</item>
+        <item>NEWBEATPESPCBSISSPIX</item>
+        <item>NEWBEATPOPESPCWCOMIC</item>
+        <item>NEWBEATPOPESPCWPIXEL</item>
+        <item>NEWSUPRA X 125 FI CW</item>
+        <item>NEWSUPRA X 125 FI SW</item>
+        <item>NEWVARIOTECHNOCBS FI</item>
+        <item>NMEGA PRO CWST FIGHT</item>
+        <item>NMEGA PRO SPST FIGHT</item>
+        <item>NSCOOPY FI CLSC MTRO</item>
+        <item>NSCOOPY FI SPRT MTRO</item>
+        <item>NVARIO 125 ESP CBS</item>
+        <item>NVARIO TECH FL ADV</item>
+        <item>PCX 150 ABS</item>
+        <item>PCX25</item>
+        <item>PCX150</item>
+        <item>REVO</item>
+        <item>REVO CW</item>
+        <item>REVO FIT</item>
+        <item>REVO TECHNO AT</item>
+        <item>REVO X</item>
+        <item>SCOOPY</item>
+        <item>SCOOPY ESP</item>
+        <item>SCOOPY FI CLASSIC</item>
+        <item>SONIC</item>
+        <item>SONIC 150 R</item>
+        <item>SPACY GARNISH</item>
+        <item>SPACY HELM IN CW</item>
+        <item>SPACY HELM IN PGMFI</item>
+        <item>SPACY HELM IN SPOKE</item>
+        <item>SUPRA 125 SF</item>
+        <item>SUPRA 125 SFC</item>
+        <item>SUPRA FIT</item>
+        <item>SUPRA FIT NEW CAKRAM</item>
+        <item>SUPRA FIT NEW TROMOL</item>
+        <item>SUPRA FIT X</item>
+        <item>SUPRA GTR 150 EXL</item>
+        <item>SUPRA GTR 150 SPORTY</item>
+        <item>SUPRA X 125 (NF125S)</item>
+        <item>SUPRA X 125 CC</item>
+        <item>SUPRA X 125 CW</item>
+        <item>SUPRA X 125 DD</item>
+        <item>SUPRA X 125 INJEKSI</item>
+        <item>SUPRA X 125 PGMFI</item>
+        <item>SUPRA X 125 PCMFI CW</item>
+        <item>SUPRA X 125 R</item>
+        <item>SUPRA X 125 S DISC</item>
+        <item>SUPRA X 125(NF125SC)</item>
+        <item>SUPRA X 125(NF125SD)</item>
+        <item>SUPRA X 125CC CAKRAM</item>
+        <item>SUPRA X NE 100 D</item>
+        <item>SUPRA X NF 125 SD</item>
+        <item>SUPRA X125CW HELM IN</item>
+        <item>SUPRA X125HELMIN INJ</item>
+        <item>TIGER</item>
+        <item>TIGER CW</item>
+        <item>TIGER GL 200</item>
+        <item>TIGER GL 200 SPORT</item>
+        <item>TIGER GLS 200-CW</item>
+        <item>VARIO 125 CBS ISS</item>
+        <item>VARIO 125 ESP CBS</item>
+        <item>VARIO 125 ESPCBS ISS</item>
+        <item>VARIO 125ESP CBS ISS</item>
+        <item>VARIO 150 ESP EXCLSV</item>
+        <item>VARIO 150 ESP SPORTY</item>
+        <item>VARIO CW</item>
+        <item>VARIO DB</item>
+        <item>VARIO STD</item>
+        <item>VARIO TECHNO 110</item>
+        <item>VARIO110 CBS</item>
+        <item>VARIO110 CBS ADY</item>
+        <item>VARIO110 CBS ISS</item>
+        <item>VARIO110 CBS ISS ADV</item>
+        <item>VERZA 150 CW</item>
+        <item>VERZA 150 CW MMC</item>
+        <item>VERZA 150 SP MMC</item>
+        <item>VERZA 150 SW</item>
+        <item>VERZAMEGA PRO</item>
+        <item>VERZATIGER</item>
+    </string-array>
+
+    <string-array name="motorTipeKawazaki">
+        <item>ATHELETE SE</item>
+        <item>ATHLETE</item>
+        <item>BAJAJ PULSAR 200NS</item>
+        <item>D TRACKER 150</item>
+        <item>D TRACKER X</item>
+        <item>D-TRACKER 150</item>
+        <item>D-TRACKER 150 SE</item>
+        <item>D-TRACKER 250</item>
+        <item>EDGE R</item>
+        <item>EDGE VR</item>
+        <item>ER6N</item>
+        <item>ER6N ABS</item>
+        <item>ESTRELLA</item>
+        <item>ESTRELLA SE</item>
+        <item>KLX 150</item>
+        <item>KLX 150 BF</item>
+        <item>KLX 150 BF SE</item>
+        <item>KLX 150 BF SE EXT</item>
+        <item>KLX 150 G</item>
+        <item>KLX 150 L</item>
+        <item>KLX 150 S</item>
+        <item>KLX 250</item>
+        <item>KSR 110</item>
+        <item>KSR PRO</item>
+        <item>NEW NINJA 150 RR</item>
+        <item>NEW NINJA 250 RR SE</item>
+        <item>NEW NINJA 250 R</item>
+        <item>NEW NINJA 250 R SE</item>
+        <item>NEW NINJA 250SE+ABS</item>
+        <item>NEW NINJA 300</item>
+        <item>NEW Z250 SL</item>
+        <item>NEW 2250 SL ABS</item>
+        <item>NINJA</item>
+        <item>NINJA - KR 150 M</item>
+        <item>NINJA 150</item>
+        <item>NINJA 150 RR SE</item>
+        <item>NINJA 150 VR</item>
+        <item>NINJA 250</item>
+        <item>NINJA 250 ABS FI</item>
+        <item>NINJA 250 ABS SE</item>
+        <item>NINJA 250 ABS SE LTD</item>
+        <item>NINJA 250 FI</item>
+        <item>NINJA 250 LTD</item>
+        <item>NINJA 250 R</item>
+        <item>NINJA 250 R SE</item>
+        <item>NINJA 250 SE</item>
+        <item>NINJA 250 SE BEET</item>
+        <item>NINJA 250 SL</item>
+        <item>NINJA 650</item>
+        <item>NINJA KR 150 K</item>
+        <item>NINJA KR 150 N</item>
+        <item>NINJA R</item>
+        <item>NINJA R - KR 150 L</item>
+        <item>NINJA R SE NEW 150</item>
+        <item>NINJA RR</item>
+        <item>NINJA RR 250 MONO</item>
+        <item>NINJA RR 250 MONOABS</item>
+        <item>NINJA S</item>
+        <item>NINJA SS</item>
+        <item>NINJA VR</item>
+        <item>NINJA-RR KR150P</item>
+        <item>VERSYS</item>
+        <item>VERSYS ABS</item>
+        <item>VULCAN S NEW</item>
+        <item>W175</item>
+        <item>W175 SE</item>
+        <item>Z 250</item>
+        <item>ZI 25</item>
+        <item>Z900</item>
+        <item>NINJA</item>
+    </string-array>
+    <string-array name="motorTipePiaggio">
+        <item>LIBERTY 150 ABS</item>
+        <item>LX 150</item>
+        <item>LX 150</item>
+        <item>LXV 125</item>
+        <item>LXV 150 IE</item>
+        <item>PRIMAVERA</item>
+        <item>PRIMAVERA 150 IE</item>
+        <item>PRIMAVERA 150 LE 3Y</item>
+        <item>S 150 3V</item>
+        <item>SPRINT 150 3V IE</item>
+        <item>SPRINT 150 ABS</item>
+        <item>SPRINT 150 ABS CRB</item>
+        <item>SPRINT I-GET 150</item>
+        <item>SPRINT SPORT IMT EDT</item>
+        <item>VESPA GTS</item>
+        <item>VESPA GTS 150 3V IE</item>
+        <item>VESPA LX 125 CARBU</item>
+        <item>VESPA LX 125 I-GET</item>
+        <item>VESPA LX 150 IE</item>
+        <item>VESPA LX 150 IE 3V</item>
+        <item>VESPA S 125</item>
+        <item>VESPA S 150</item>
+        <item>VESPA S 150 IE</item>
+        <item>VESPA S 150 IE 3V</item>
+        <item>VESPA SPRINT</item>
+    </string-array>
 
 </resources>

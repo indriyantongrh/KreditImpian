@@ -123,6 +123,8 @@ dependencies {
     //For PinView EditText
     implementation 'com.chaos.view:pinview:1.3.2'
 
+    implementation 'com.github.chivorns:smartmaterialspinner:1.1.6'
+
 
     //implementation 'com.cossacklabs.com:themis:+' // better to check which version is current latest and link to it
 }
