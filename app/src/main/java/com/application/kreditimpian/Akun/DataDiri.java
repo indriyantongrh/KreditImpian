@@ -21,6 +21,7 @@ import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -41,7 +42,8 @@ import com.application.kreditimpian.LoginRegister.LoginUser;
 import com.application.kreditimpian.LoginRegister.Register;
 import com.application.kreditimpian.MenuUtama.MenuUtama;
 import com.application.kreditimpian.Model.ModelGeodirectories.ResponseGeodirectories;
-import com.application.kreditimpian.Model.ModelLogin.DataItem;
+import com.application.kreditimpian.Model.ModelGeodirectory.DataItem;
+import com.application.kreditimpian.Model.ModelGeodirectory.ResponseGeodirectory;
 import com.application.kreditimpian.Model.ModelLogin.ResponseLogin;
 import com.application.kreditimpian.Model.ModelMember.ResponseMember;
 
@@ -94,6 +96,8 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
     EditText txtnamalengkap,txttempatlahir,txttanggallahir,txtnikktp,txtnomornpwp,txtpekerjaan,txtpendapatan,
             txtjumlahtanggungan,txtalamatemail,txtibukandung,txtnomorhandphone,txtnomortlp,txtfacebook,txttwitter,txtinstagram,
             txtnamasaudara,txtnomorhandphonesaudara,txtkodepos_saudara, txtalamat_saudara;
+    private HashMap<String, String> cityvalues;
+    private HashMap<String, String> districtvalue;
 
     ProgressDialog loading;
     SharedPrefManager sharedPrefManager;
@@ -214,8 +218,8 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
             spinnerjeniskelamin.setAdapter(adapter);
 
-        getGeoDistrictSaudara();
-        getGeoCitySaudara();
+        getGeoCity();
+        getGeoDistrict();
 
         imageself.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -629,67 +633,194 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
     }
 
-    private void getGeoCitySaudara(){
 
-        mApiService.getGeoCity().enqueue(new Callback<ResponseGeodirectories>() {
+    private void getGeoCity(){
+
+        cityvalues = new HashMap<>();
+        mApiService.getCity().enqueue(new Callback<ResponseGeodirectory>() {
             @Override
-            public void onResponse(Call<ResponseGeodirectories> call, Response<ResponseGeodirectories> response) {
-               if(response.body() !=null){
-                   List<com.application.kreditimpian.Model.ModelGeodirectories.ResultItem> getCity = response.body().getResult();
-                   List<String> listSpinner = new ArrayList<String>();
-                   for (int i = 0; i < getCity.size(); i++){
-                       listSpinner.add(getCity.get(i).getName());
-                   }
-                   // Set hasil result json ke dalam adapter spinner
-                   ArrayAdapter<String> adapter = new ArrayAdapter<String>(DataDiri.this,
-                           android.R.layout.simple_spinner_item, listSpinner);
-                   adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                   spinnerkota_saudaraa.setAdapter(adapter);
-               } else {
-                 ///  loading.dismiss();
-                   Toast.makeText(mContext, "Gagal mengambil data ", Toast.LENGTH_SHORT).show();
-               }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseGeodirectories> call, Throwable t) {
-
-            }
-        });
-
-
-    }
-
-    private void getGeoDistrictSaudara(){
-
-        mApiService.getGeoDistrict().enqueue(new Callback<ResponseGeodirectories>() {
-            @Override
-            public void onResponse(Call<ResponseGeodirectories> call, Response<ResponseGeodirectories> response) {
+            public void onResponse(Call<ResponseGeodirectory> call, Response<ResponseGeodirectory> response) {
                 if(response.body() !=null){
-                    List<com.application.kreditimpian.Model.ModelGeodirectories.ResultItem> getCity = response.body().getResult();
+                    //// String citySelected = spinnerkota_pengiriman.getItemAtPosition(p).toString();
+                    List<com.application.kreditimpian.Model.ModelGeodirectory.DataItem> getCity = response.body().getData();
                     List<String> listSpinner = new ArrayList<String>();
+                    String[] idcity = new String[getCity.size() +1];
+                    String[] city = new String[getCity.size() +1];
+                    city[0] = "-- Pilih Kota --";
                     for (int i = 0; i < getCity.size(); i++){
-                        listSpinner.add(getCity.get(i).getName());
+                        ///listSpinner.add(getCity.get(i).getIdParent());
+                        city[i + 1] = getCity.get(i).getName();
+                        idcity[i + 1] = getCity.get(i).getId();
+                        cityvalues.put(city[i + 1], idcity[i + 1] );
+//                         id = getCity.get(i).getId();
+//                         nameCity = getCity.get(i).getName();
+                        ///listSpinner.add(nameCity);
+
                     }
                     // Set hasil result json ke dalam adapter spinner
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(DataDiri.this,
-                            android.R.layout.simple_spinner_item, listSpinner);
+                            android.R.layout.simple_spinner_item, city);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    spinnerkecamatn_saudara.setAdapter(adapter);
+                    spinnerkota_saudaraa.setAdapter(adapter);
+                    spinnerkota_saudaraa.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                            if(position>0){
+                                String cityvalues = getCity.get(position - 1 ).getId();
+                                ///Toast.makeText(TambahAlamatPengiriman.this, " ini id City "+cityvalues, Toast.LENGTH_LONG).show();
+
+                            }
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+
+                        }
+                    });
+
+//                    spinnerkota_pengiriman.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                        @Override
+//                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                            int city_id = Integer.parseInt(listSpinner.get(position));
+//                            Log.i("your_city_id", String.valueOf(city_id));
+////                            int item = spinnerkota_pengiriman.getSelectedItemPosition();
+////
+////                            id = spinnerkota_pengiriman.getSelectedItem().toString()
+//                        }
+//                    });
                 } else {
                     loading.dismiss();
-                    Toast.makeText(mContext, "Gagal mengambil data dosen", Toast.LENGTH_SHORT).show();
+                    /// Toast.makeText(TambahAlamatPengiriman.this, "Gagal mengambil data dosen", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<ResponseGeodirectories> call, Throwable t) {
+            public void onFailure(Call<ResponseGeodirectory> call, Throwable t) {
 
             }
         });
 
 
     }
+
+    private void getGeoDistrict(){
+
+        districtvalue = new HashMap<>();
+        mApiService.getDistrict().enqueue(new Callback<ResponseGeodirectory>() {
+            @Override
+            public void onResponse(Call<ResponseGeodirectory> call, Response<ResponseGeodirectory> response) {
+                if(response.body() !=null){
+                    List<DataItem> getDistrictArray = response.body().getData();
+                    List<String> listSpinner = new ArrayList<String>();
+                    String[] iddistrict = new String[getDistrictArray.size() +1];
+                    String[] district = new String[getDistrictArray.size() +1];
+                    district[0] = "-- Pilih Kecamatan --";
+                    for (int i = 0; i < getDistrictArray.size(); i++){
+                        ///listSpinner.add(getCity.get(i).getIdParent());
+                        district[i + 1] = getDistrictArray.get(i).getName();
+                        iddistrict[i + 1] = getDistrictArray.get(i).getId();
+                        cityvalues.put(district[i + 1], iddistrict[i + 1] );
+
+//                        listSpinner.add(getDistrict.get(i).getId());
+//                        listSpinner.add(getDistrict.get(i).getName());
+                    }
+                    // Set hasil result json ke dalam adapter spinner
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(DataDiri.this,
+                            android.R.layout.simple_spinner_item, district);
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    spinnerkecamatn_saudara.setAdapter(adapter);
+                    spinnerkecamatn_saudara.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            if(position>0){
+                                String districtvalue = getDistrictArray.get(position - 1 ).getId();
+                                Toast.makeText(DataDiri.this, " ini id Kecamatan  "+districtvalue, Toast.LENGTH_LONG).show();
+
+                            }
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+
+                        }
+                    });
+                } else {
+                    loading.dismiss();
+                    Toast.makeText(DataDiri.this, "Gagal mengambil data dosen", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseGeodirectory> call, Throwable t) {
+
+            }
+        });
+
+
+    }
+
+//    private void getGeoCitySaudara(){
+//
+//        mApiService.getGeoCity().enqueue(new Callback<ResponseGeodirectories>() {
+//            @Override
+//            public void onResponse(Call<ResponseGeodirectories> call, Response<ResponseGeodirectories> response) {
+//               if(response.body() !=null){
+//                   List<com.application.kreditimpian.Model.ModelGeodirectories.ResultItem> getCity = response.body().getResult();
+//                   List<String> listSpinner = new ArrayList<String>();
+//                   for (int i = 0; i < getCity.size(); i++){
+//                       listSpinner.add(getCity.get(i).getName());
+//                   }
+//                   // Set hasil result json ke dalam adapter spinner
+//                   ArrayAdapter<String> adapter = new ArrayAdapter<String>(DataDiri.this,
+//                           android.R.layout.simple_spinner_item, listSpinner);
+//                   adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//                   spinnerkota_saudaraa.setAdapter(adapter);
+//               } else {
+//                 ///  loading.dismiss();
+//                   Toast.makeText(mContext, "Gagal mengambil data ", Toast.LENGTH_SHORT).show();
+//               }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ResponseGeodirectories> call, Throwable t) {
+//
+//            }
+//        });
+//
+//
+//    }
+//
+//    private void getGeoDistrictSaudara(){
+//
+//        mApiService.getDistrict().enqueue(new Callback<ResponseGeodirectory>() {
+//            @Override
+//            public void onResponse(Call<ResponseGeodirectory> call, Response<ResponseGeodirectory> response) {
+//                if(response.body() !=null){
+//                    List<com.application.kreditimpian.Model.ModelGeodirectories.ResultItem> getCity = response.body().getResult();
+//                    List<String> listSpinner = new ArrayList<String>();
+//                    for (int i = 0; i < getCity.size(); i++){
+//                        listSpinner.add(getCity.get(i).getName());
+//                    }
+//                    // Set hasil result json ke dalam adapter spinner
+//                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(DataDiri.this,
+//                            android.R.layout.simple_spinner_item, listSpinner);
+//                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//                    spinnerkecamatn_saudara.setAdapter(adapter);
+//                } else {
+//                    loading.dismiss();
+//                    Toast.makeText(mContext, "Gagal mengambil data dosen", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ResponseGeodirectories> call, Throwable t) {
+//
+//            }
+//        });
+//
+//
+//    }
 
 
 
