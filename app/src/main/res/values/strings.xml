@@ -102,10 +102,11 @@
     <string name="image">image</string>
     <string name="lokasi">Lokasi</string>
     <string name="ajukan_sekarang">Ajukan Sekarang</string>
+    <string name="asuransi">Asuransi</string>
 
     <string-array name="mitra">
         <item>Adira</item>
-        <item>Buff</item>
+        <item>Baff</item>
     </string-array>
     <string-array name="listMerkMotor">
         <item>HONDA</item>
@@ -388,7 +389,7 @@
         <item>SPRINT 150 ABS CRB</item>
         <item>SPRINT I-GET 150</item>
         <item>SPRINT SPORT IMT EDT</item>
-        <item>VESPA GTS</item>
+        <item>VESPA G TS</item>
         <item>VESPA GTS 150 3V IE</item>
         <item>VESPA LX 125 CARBU</item>
         <item>VESPA LX 125 I-GET</item>
@@ -399,6 +400,3077 @@
         <item>VESPA S 150 IE</item>
         <item>VESPA S 150 IE 3V</item>
         <item>VESPA SPRINT</item>
+    </string-array>
+    <string-array name="motorTipeSuzuki">
+        <item>ADDRESS FI 110</item>
+        <item>ADDRESS FI 110 R</item>
+        <item>ADDRESS MOTOGP CLR</item>
+        <item>ADDRESS PLAYFULL</item>
+        <item>ADDRESS STANDARD</item>
+        <item>ADDRESSAXELO 125 SP KOPLING</item>
+        <item>ADDRESSAXELO YOSIMURA</item>
+        <item>ADDRESSBURGMAN 200 ABS</item>
+        <item>ADDRESSFL 125 RCD - AXELO</item>
+        <item>ADDRESSFL 125 SCD - AXELO</item>
+        <item>ADDRESSFU 150 SC</item>
+        <item>ADDRESSFU 150 SC</item>
+        <item>ADDRESSFU 150 SCDX2 MOTO GP</item>
+        <item>ADDRESSGSX R 150</item>
+        <item>ADDRESSGSX S 150</item>
+        <item>ADDRESSHAYATE</item>
+        <item>ADDRESSINAZUMA GW 250</item>
+        <item>NEW SATRIA FACE LIFT</item>
+        <item>NEW SHOGUN 125</item>
+        <item>NEW SHOGUN 125 CW</item>
+        <item>NEW SHOGUN CW NR</item>
+        <item>NEW SHOGUN R</item>
+        <item>NEW SMASH</item>
+        <item>NEW SMASH - R</item>
+        <item>NEW SMASH CW</item>
+        <item>NEW SMASH CW NR</item>
+        <item>NEWSHOGUN125KOPLING</item>
+        <item>NEX BLACK FIRE</item>
+        <item>NEX FIv</item>
+        <item>NEX FI BLACK FIRE</item>
+        <item>NEX II</item>
+        <item>NEX UD 110 EEA</item>
+        <item>NEXUD 110 EEB</item>
+        <item>SATR FL15 YOUNG STAR</item>
+        <item>SATRIA</item>
+        <item>SATRIA 150</item>
+        <item>SATRIA 150 R</item>
+        <item>SATRIA 150 RU 125 LU</item>
+        <item>SATRIA BLACK FIRE</item>
+        <item>SATRIA F 150 CC</item>
+        <item>SATRIA F.150</item>
+        <item>SATRIA F115</item>
+        <item>SATRIA F115 MOTOGP</item>
+        <item>SATRIA F150 FIGH1AKS</item>
+        <item>SATRIA F150 FIGHTER</item>
+        <item>SATRIA F150 PREDATOR</item>
+        <item>SATRIA FU 150</item>
+        <item>SATRIA FU 150 MF</item>
+        <item>SATRIA FU 150 MFA</item>
+        <item>SATRIA FU 150 MFX</item>
+        <item>SATRIA FU 150 MOTOGP</item>
+        <item>SATRIA FU 150 SCDZ</item>
+        <item>SATRIA FU RACING EU3</item>
+        <item>SATRIA FU SE EURO3</item>
+        <item>SATRIA FU SPORTY EU3</item>
+        <item>SATRIA KOPLING</item>
+        <item>SATRIA WHITE FIGHTER</item>
+        <item>SHOGUN 125</item>
+        <item>SHOGUN 125 CW</item>
+        <item>SHOOTER 115 FI</item>
+        <item>SHOOTER R 115 FI</item>
+        <item>SHOOTER SR 115 FI</item>
+        <item>SKYDRIVE</item>
+        <item>SKYDRIVE RACING EDT</item>
+        <item>SKYWAVE CW</item>
+        <item>SKYWAVE NR</item>
+        <item>SKYWAVE UW 125 SC</item>
+        <item>SMASH CW</item>
+        <item>SMASH DB</item>
+        <item>SMASH FV 110</item>
+        <item>SMASH FV 110 CW</item>
+        <item>SMASH SR</item>
+        <item>SPIN CW NR</item>
+        <item>SPIN ONE TONE</item>
+        <item>SPIN ONE TONE CW</item>
+        <item>SPIN TWO TONE</item>
+        <item>SPIN TWO TONE CW</item>
+        <item>SUZUKI NEX 110</item>
+        <item>THUNDER</item>
+        <item>THUNDER 125</item>
+        <item>THUNDER 125 CC</item>
+        <item>THUNDER 125 KS</item>
+        <item>THUNDER EN 125</item>
+        <item>TITAN BLACK FIRE</item>
+        <item>TITAN BRAKE-DB</item>
+        <item>TITAN CW-RACING</item>
+        <item>TITAN TROMOL-DRUM</item>
+        <item>SATRIA</item>
+        <item>THUNDER</item>
+        <item>FU 150 SC</item>
+    </string-array>
+    <string-array name="motorTipeYamaha">
+        <item>AEROX 125 LC</item>
+        <item>AEROX 155 GP</item>
+        <item>AEROX 155 VVA</item>
+        <item>AEROX 155 VVA R</item>
+        <item>AEROX 155 VVA S</item>
+        <item>ALL NEW BYSON F1</item>
+        <item>ALL NEW R15 155 VVA</item>
+        <item>ALL NEW SOUL GT 125</item>
+        <item>ALL NEW VIXION</item>
+        <item>ALL NEW VIXION GP</item>
+        <item>ALL NEW VIXION R</item>
+        <item>ALL NEW X-RIDE 125</item>
+        <item>BYSON</item>
+        <item>BYSON CUSTOM</item>
+        <item>FINO CLASIC CUSTOM</item>
+        <item>FINO CLASSIC</item>
+        <item>FINO CLASSIC FI</item>
+        <item>FINO FASHION</item>
+        <item>FINO FASHION CUSTOM</item>
+        <item>FINO FI PREMIUM</item>
+        <item>FINO FI SPORTY</item>
+        <item>FINO GRANDE 125</item>
+        <item>FINO PREM 125 BLU CR</item>
+        <item>FINO PREMIUM FI SE</item>
+        <item>FINO SPORTY</item>
+        <item>FINO SPORTY CUSTOM</item>
+        <item>FINO SPORTY FI SE</item>
+        <item>FINO SPRT 125 BLU CR</item>
+        <item>FORCE 1 Z</item>
+        <item>FORCE ELEGAN</item>
+        <item>FORCE ONE</item>
+        <item>FORCE SE</item>
+        <item>FORCE SPORTY</item>
+        <item>GT 125</item>
+        <item>GT 125 GARUDA</item>
+        <item>JUP Z CW EL MT GP LV</item>
+        <item>JUPITER</item>
+        <item>JUPITER MX</item>
+        <item>JUPITER MX 150</item>
+        <item>JUPITER MX AT CUSTOM</item>
+        <item>JUPITER MX CW</item>
+        <item>JUPITER MX CW AT</item>
+        <item>JUPITER MX CW AT CUS</item>
+        <item>JUPITER MX CW CUSTOM</item>
+        <item>JUPITER MX KING 150</item>
+        <item>JUPITER MX SE</item>
+        <item>JUPITER MX-CWH</item>
+        <item>JUPITER MX-CWH SE</item>
+        <item>JUPITER Z</item>
+        <item>JUPITER Z CW</item>
+        <item>JUPITER Z CW FI</item>
+        <item>JUPITER Z CW FI CSTM</item>
+        <item>JUPITER Z CW SE</item>
+        <item>JUPITER Z FI</item>
+        <item>JUPITER Z X15 CW</item>
+        <item>JUPITER ZX15 SPOKE</item>
+        <item>JUPITER ZI</item>
+        <item>JUPITER ZI CW</item>
+        <item>JUPITER Z15 CW SE</item>
+        <item>JUPITER ZE CW SE</item>
+        <item>JUPITER ZX 15 CW SE</item>
+        <item>JUPITER ZX CUSTOM</item>
+        <item>JUPITER ZX SE</item>
+        <item>JUPITERMXCW ACLUTCH</item>
+        <item>JUP-MX CW MT GP LV</item>
+        <item>LEXAM</item>
+        <item>LEXI</item>
+        <item>LEXIS</item>
+        <item>MIO</item>
+        <item>MIO AERO</item>
+        <item>MIO CARGLOSS</item>
+        <item>MIO CW</item>
+        <item>MIO CW SPORTY</item>
+        <item>MIO CW STYLISH</item>
+        <item>MIO CW AERO</item>
+        <item>MIO CW GARNISH</item>
+        <item>MIO CW SE</item>
+        <item>MIO CW SE SPORTY</item>
+        <item>MIO CW SPORTY VER 2</item>
+        <item>MIO FINO</item>
+        <item>MIO GARNISH</item>
+        <item>MIO GT 125</item>
+        <item>MIO GT CUSTOM</item>
+        <item>MIO J</item>
+        <item>MIO J FI NONLED CSTM</item>
+        <item>MIO J SPORTY</item>
+        <item>MIO J-CW FI</item>
+        <item>MIO J-CW TEEN FI CTM</item>
+        <item>MIO J-FI</item>
+        <item>MIO J-TEEN FI</item>
+        <item>MIO M3 125</item>
+        <item>MIO M3 AKS SSS</item>
+        <item>MIO S</item>
+        <item>MIO SE</item>
+        <item>MIO SOUL</item>
+        <item>MIO SOUL GT</item>
+        <item>MIO SOUL GT CUSTOM</item>
+        <item>MIO SOUL GT LED CSTM</item>
+        <item>MIO SOUL GT STREET</item>
+        <item>MIO SOUL LE</item>
+        <item>MIO SOUL SPORTY</item>
+        <item>MIO SPORTY CUSTOM</item>
+        <item>MIO Z 125</item>
+        <item>MIO-GT MOTO GP LIV</item>
+        <item>MIOJCWTEENFI LEDCSTM</item>
+        <item>MIOSOULGT NONLEDCSTM</item>
+        <item>MT 25</item>
+        <item>MY KINO 15 GP</item>
+        <item>MX KING 150 GP MVSTR</item>
+        <item>N VIXION KS MT GP LV</item>
+        <item>NEW JUPITER MX AT CW</item>
+        <item>NEW JUPITER MX CW</item>
+        <item>NEW JUPITER Z</item>
+        <item>NEW JUPITER Z - CW</item>
+        <item>NEW JUPITER Z CW SE</item>
+        <item>NEW MIO GT</item>
+        <item>NEW MIO M3 CW</item>
+        <item>NEW MIO M3 CW CUSTOM</item>
+        <item>NEW MIO M3 SP</item>
+        <item>NEW SCORPIO Z CW</item>
+        <item>NEW VEGA ZR TROMOL</item>
+        <item>NEW VIXION</item>
+        <item>NEW V-IXION ADV</item>
+        <item>NEW V-IXION ADV GP</item>
+        <item>NEW V-IXION KS SE</item>
+        <item>NEW V-IXION(KS)</item>
+        <item>NEW V-IXION(NON KS)</item>
+        <item>N-MAX</item>
+        <item>NMAX ABS</item>
+        <item>R15</item>
+        <item>R15 CUSTOM</item>
+        <item>R15 GP MOVISTAR</item>
+        <item>R15 GP TECH 3</item>
+        <item>R25</item>
+        <item>R25 ABS</item>
+        <item>R25 CUSTOM</item>
+        <item>R25 GP MOVISTAR</item>
+        <item>R25 GP TECH 3</item>
+        <item>SCORPIO Z</item>
+        <item>SCORPIO Z CW</item>
+        <item>SCORPIO-Z LMTEDITION</item>
+        <item>SOUL GT 125 AKS</item>
+        <item>SOUL GT 125 AKS SSS</item>
+        <item>SOUL GT MUSCLE</item>
+        <item>STRICITY</item>
+        <item>VEGA</item>
+        <item>VEGA DB - SE</item>
+        <item>VEGA FORCE DB CW</item>
+        <item>VEGA FORCE DB SW</item>
+        <item>VEGA FORCE DRUM</item>
+        <item>VEGA R</item>
+        <item>VEGA R DB</item>
+        <item>VEGA R DB NEW</item>
+        <item>VEGA R DISK</item>
+        <item>VEGA R DISK CW</item>
+        <item>VEGA R DISK NEW</item>
+        <item>VEGA R NEW</item>
+        <item>VEGA R NEW GRAFFIC</item>
+        <item>VEGA RR</item>
+        <item>VEGA RR-DB</item>
+        <item>VEGA Z R NEW DB</item>
+        <item>VEGA ZR</item>
+        <item>VEGA ZR DB</item>
+        <item>VEGA ZR NEW DB</item>
+        <item>VEGA-R GRAFIK</item>
+        <item>VIXION</item>
+        <item>VIXION CUSTOMWITHACC</item>
+        <item>VIXION EXTREME</item>
+        <item>VIXION EXTRME 1 CSTM</item>
+        <item>VIXION L E</item>
+        <item>V-IXION NEW KS CS</item>TM
+        <item>V-IXION NEW NONKSCTM</item>
+        <item>VIXION SE</item>
+        <item>VIXION X-TREME 1</item>
+        <item>X - RIDE</item>
+        <item>X - RIDE ASE</item>
+        <item>X - RIDE SE</item>
+        <item>XABRE</item>
+        <item>XEON 125 CC</item>
+        <item>XEON CW 125</item>
+        <item>XEON RC</item>
+        <item>XEON RC CUSTOM</item>
+        <item>XEON-RC MOTO GP LIV</item>
+        <item>XMAX</item>
+        <item>FORCE 1 Z</item>
+        <item>FORCE ONE</item>
+        <item>VEGA</item>
+        <item>MIO CW SPORTY</item>
+        <item>MIO CW STYLISH</item>
+        <item>NMAX ABS</item>
+        <item>FREEGO</item>
+        <item>FREEGO S</item>
+        <item>FREEGO S ABS</item>
+    </string-array>
+    <string-array name="listMerkMobil">
+        <item>AUDI</item>
+        <item>BIMANTARA </item>
+        <item>BMW</item>
+        <item>CADILLAC</item>
+        <item>CHEROKEE</item>
+        <item>CHERY</item>
+        <item>CHEVROLET</item>
+        <item>CHRYSLER</item>
+        <item>CJ - 7</item>
+        <item>DAIHATSU</item>
+        <item>DATSUN</item>
+        <item>DONGFENG</item>
+        <item>FIAT</item>
+        <item>FORD </item>
+        <item>GEELY</item>
+        <item>HINO</item>
+        <item>HONDA</item>
+        <item>HUMMER</item>
+        <item>HYUNDAI</item>
+        <item>ISUZU</item>
+        <item>KIA</item>
+        <item>LAND ROVER</item>
+        <item>LEXUS</item>
+        <item>MAZDA</item>
+        <item>MERCEDES</item>
+        <item>MERCEDES BENZ</item>
+        <item>MINI</item>
+        <item>MITSUBISHI</item>
+        <item>MORRIS</item>
+        <item>NISSAN</item>
+        <item>OPEL</item>
+        <item>PEUGEOT</item>
+        <item>PORSCHE</item>
+        <item>PROTON</item>
+        <item>RANGE ROVER</item>
+        <item>RENAULT</item>
+        <item>SCANIA</item>
+        <item>SUBARU</item>
+        <item>SUZUKI</item>
+        <item>TATA</item>
+        <item>TIMOR</item>
+        <item>TOYOTA</item>
+        <item>UD TRUCKS</item>
+        <item>VOLVO</item>
+        <item>VW</item>
+        <item>WRANGLER</item>
+        <item>WULING</item>
+    </string-array>
+    <string-array name="listTipeAudi">
+        <item>A 62.8 A/T</item>
+        <item>A3 1.8 TURBO A/T</item>
+        <item>A4 1.8 AT</item>
+        <item>A6 2.0 T FSI</item>
+        <item>AUDI Q7 AT</item>
+        <item>Q5 2.0 T AT</item>
+    </string-array>
+    <string-array name="listTipeBimantara">
+        <item>ACCENT</item>
+    </string-array>
+    <string-array name="listTipeBmw">
+        <item>116I AT</item>
+        <item>318 I A/T</item>
+        <item>318 IA E46/M43</item>
+        <item>318I M43 E46</item>
+        <item>320 I</item>
+        <item>320 I AT</item>
+        <item>320D 2.0SPORT AT DSL</item>
+        <item>320I 2.0 E90 CKD AT</item>
+        <item>325 IA E 46 AT</item>
+        <item>328I 2.0 AT</item>
+        <item>330 I AT</item>
+        <item>520 I</item>
+        <item>523 I AT</item>
+    </string-array>
+    <string-array name="listTipeCadillac">
+        <item>ESCALADE</item>
+    </string-array>
+    <string-array name="listTipeCherokee">
+        <item>CHEROKEE 3.7L A/T</item>
+        <item>JEEP</item>
+    </string-array>
+    <string-array name="listTipeChery">
+        <item>CHERY QQ 1.1 S MT</item>
+        <item>CHERY QQ GX</item>
+    </string-array>
+    <string-array name="listTipeChevrolet">
+        <item>AVEO</item>
+        <item>AVEO 1.4 LT MT</item>
+        <item>AVEO 1.5 A/T</item>
+        <item>AVEO 1.5 L M/T</item>
+        <item>AVEO A/T</item>
+        <item>AVEO M/T</item>
+        <item>AVEO MT/AT</item>
+        <item>AVEO SPORTY MT</item>
+        <item>BLAZER DOHC</item>
+        <item>BLAZER MONTERA</item>
+        <item>CAPTIVA 2.4 A/T</item>
+        <item>CAPTIVA 2.4 M/T</item>
+        <item>CAPTIVA BSN 2.4LT AT</item>
+        <item>CAPTIVA BSN 2.4LT MT</item>
+        <item>CAPTIVA DIESEL AT</item>
+        <item>CAPTIVA DIESEL AWD</item>
+        <item>CAPTIVA DSL2.0 LAT</item>
+        <item>CAPTIVA DSL2.OLATFWD</item>
+        <item>CAPTIVA LT AT</item>
+        <item>CAPTIVA LT MT-MY 08</item>
+        <item>CRUZE 1,8 AT</item>
+        <item>CRUZE 1,8 MT</item>
+        <item>ESTATE 1.6 LS/MT</item>
+        <item>KALOS LT M/T</item>
+        <item>KALOS M/T LS</item>
+        <item>KALOS M/T LT</item>
+        <item>LOVA LS MT</item>
+        <item>NEW AVEO 1,4 LT A</item>T
+        <item>NEW AVEO LT AT 1.8</item>
+        <item>NEW AVEO LT MT 1.8</item>
+        <item>NEW ESTATE LS AT</item>
+        <item>NEW ESTATE LS MT</item>
+        <item>OPTRA LS</item>
+        <item>OPTRA LS 1.8 A/T</item>
+        <item>OPTRA LS 1.8 MT</item>
+        <item>OPTRA LT</item>
+        <item>OPTRA LT 1.8 A/T</item>
+        <item>ORLANDO LT</item>
+        <item>SPARK</item>
+        <item>SPARK 0.8L M/T</item>
+        <item>SPARK 1,2 MI</item>
+        <item>SPARK M/T</item>
+        <item>SPIN LS 1.2 MT</item>
+        <item>SPIN LS 1.5 MT</item>
+        <item>SPIN LT 1.2 MT</item>
+        <item>SPIN LT 1.3 MT</item>
+        <item>SPIN LT 1.5 MT</item>
+        <item>SPIN LTZ 1.3 MT</item>
+        <item>SPIN LTZ 1.5 A/T</item>
+        <item>SPIN LTZ 1.5 AT ACTV</item>
+        <item>SPIN LTZ 1.5 MT</item>
+        <item>TAVERA 2.2</item>
+        <item>TRAILBLAZER 2,5MT 4X2</item>
+        <item>TRAILBLAZER 28DSL AT</item>
+        <item>TRAX 1.4 LTZ AT</item>
+        <item>ZAFIRA 1.8 CD A/T</item>
+        <item>ZAFIRA 1.8 GL</item>
+        <item>ZAFIRA CD</item>
+        <item>ZEFIRA</item>
+        <item>COLORADO DC LT</item>
+        <item>COLORADO LT</item>
+        <item>COLORADO LTZ</item>
+        <item>NEW COLORADOEC 25 MT</item>
+        <item>NEW COLORADOLTDC25 MT</item>
+    </string-array>
+    <string-array name="listTipeChrysler">
+        <item>NEON 2.0L A/T</item>
+    </string-array>
+    <string-array name="listTipeDaihatsu">
+        <item>ALYA A/T</item>
+        <item>ALYA M/T</item>
+        <item>AYLA 1.0 X AT DELUXE</item>
+        <item>AYLA 1.0 X DELUXE</item>
+        <item>AYLA 1.2 R</item>
+        <item>AYLA 1.2 R AT</item>
+        <item>AYLA 1.2 R AT DELUXE</item>
+        <item>AYLA 1.2 R DELUXE</item>
+        <item>AYLA 1.2 X</item>
+        <item>AYLA 1.2 X AT</item>
+        <item>AYLA AIRBAG 1.0 X</item>
+        <item>AYLA AIRBAG 1.0 X AT</item>
+        <item>AYLA AIRBAG X AT MI</item>
+        <item>AYLA AIRBAG X MT MI</item>
+        <item>AYLA AT MI</item>
+        <item>AYLA D + MT</item>
+        <item>AYLA D MT</item>
+        <item>AYLA D MT MI</item>
+        <item>AYLA D PLUS MT MI</item>
+        <item>AYLA M AT</item>
+        <item>AYLA M AT MI</item>
+        <item>AYLA M AT SPORTY</item>
+        <item>AYLA M MT</item>
+        <item>AYLA M MT MI</item>
+        <item>AYLA M MT SPORTY</item>
+        <item>AYLA M SPORTY AT MI</item>
+        <item>AYLA M SPORTY MT MI</item>
+        <item>AYLA MT MI</item>
+        <item>AYLA X AT</item>
+        <item>AYLA X AT ELEGANT</item>
+        <item>AYLA X AT MI</item>
+        <item>AYLA X ELEGANT ATMI</item>
+        <item>AYLA X ELEGANT MT MI</item>
+        <item>AYLA X M/T MI</item>
+        <item>AYLA X MT</item>
+        <item>AYLA X MT ELEGANT</item>
+        <item>BLDVN S401RVBMREJJHF</item>
+        <item>ESPASSA</item>
+        <item>ESPASSA 1.3</item>
+        <item>ESPASSA 1.6</item>
+        <item>F600 XENIA 1.0</item>
+        <item>F601RV-GMDFJJ</item>
+        <item>F651RV GMRFJ 4X2 M/T</item>
+        <item>F700RG TX M/T</item>
+        <item>GRAN MAX 1.3 FF</item>
+        <item>GRAN MAX MB 1.3 D FH</item>
+        <item>GRAN MAX PU 13 STD</item>
+        <item>GRAND MAX 1.3 ANGKOT</item>
+        <item>GRANMAX 1.3 D FF</item>
+        <item>GRANMAX 1.3 D FF FH</item>
+        <item>GRANMAX 1.3M/T D OPT</item>
+        <item>GRANMAX 1.3M/T D STD</item>
+        <item>GRANMAX 1.3M/T F +AC</item>
+        <item>GRANMAX 1.3M/T F STD</item>
+        <item>GRANMAX 1.5 MTD PS</item>
+        <item>GRANMAX 1.5 M/T FPS</item>
+        <item>GRANMAX.50 PS FF</item>
+        <item>GRANMAX 1.5M/T D STD</item>
+        <item>GRANMAX 1.5M/T F STD</item>
+        <item>GRANMAX BLDVN 1.3 AC</item>
+        <item>GRANMAX BLDVN 1.3STD</item>
+        <item>GRANMAX BLV 1.5 AC</item>
+        <item>GRANMAX BLV 1.5 STD</item>
+        <item>GRANMAX BV 1.3 AC</item>
+        <item>GRANMAX MB 1.3 D SD</item>
+        <item>GRANMAX1,3 D</item>
+        <item>GRANMAX1,3AC AMBULAN</item>
+        <item>GRANMAX1.5M/T D PSOP</item>
+        <item>GRANMAX1.5M/T D PSTR</item>
+        <item>GRANMAX1.5M/T D STDO</item>
+        <item>GRANMAX1.5M/ID SIDIR</item>
+        <item>GRN MAX 1.3D M/T FAM</item>
+        <item>GRNMAX 1.5D PS FF PW</item>
+        <item>GRNMAX MB 1.5D PS FH</item>
+        <item>GRNMAX1.50 PS FF OPT</item>
+        <item>GRAN MAX PU 1.3 STD</item>
+        <item>GRANDMAX 1.5 AC PS</item>
+        <item>GRANDMAX BV 1,3 AC</item>
+        <item>GRANDMAX PU 1.3MTBOX</item>
+        <item>GRANDMAX PU 1.5 ACPS</item>
+        <item>GRANMAX 1,5MT BOXALM</item>
+        <item>GRANMAX 1.3 M/T 3 WAY</item>
+        <item>GRANMAX 1.3 M/T EXTR</item>
+        <item>GRANMAX 1.3 M/T FD</item>
+        <item>GRANMAX 1.3 M/T STD</item>
+        <item>GRANMAX 1.3M/T 3WEXT</item>
+        <item>GRANMAX 1.3M/T 3WSPR</item>
+        <item>GRANMAX 1.5 M/T 3WAY</item>
+        <item>GRANMAX 1.5 M/T FD</item>
+        <item>GRANMAX 1.5 M/T SPR</item>
+        <item>GRANMAX 1.5 M/T STD</item>
+        <item>GRANMAX 1.5M/T 3WEXT</item>
+        <item>GRANMAX 1.5M/T 3WSPR</item>
+        <item>GRANMAX 1.5PUBOXACPS</item>
+        <item>GRANMAX BOX 1,3 ALM</item>
+        <item>GRANMAX PU 1.5 MTBOX</item>
+        <item>GRANMAXBOXALM1.3PTFH</item>
+        <item>GRNDMAX1.3M/T BOXSTD</item>
+        <item>GRNDMAX1.5M/T BOXSTD</item>
+        <item>GRNDMAX1.5M/T3W ACPS</item>
+        <item>GRNDMAX1.5M/TSTDACPS</item>
+        <item>GRNDMXS402RPPMRRSJJ</item>
+        <item>GRNDMX1.3M/TBOXSLIDE</item>
+        <item>GRNDMX1.5M/TBOXSLIDE</item>
+        <item>GRNMAX 1.3 MT BOX AC</item>
+        <item>GRNMAX 1.3M/T AC SPR</item>
+        <item>GRNMAX 1.3M/T STD AC</item>
+        <item>GRNMAX 1.5M/T AC SPR</item>
+        <item>GRNMAX 1.5M/T STD AC</item>
+        <item>GRNMAX1.3M/T3W ACSPR</item>
+        <item>GRNMAX1.3M/T3W STDAC</item>
+        <item>GRNMAX1.5ACPS BOXSLD</item>
+        <item>GRNMAX1.5M/T3W ACSPR</item>
+        <item>GRNMAX1.5M/T3W STDAC</item>
+        <item>GRNMX S401 RPPMREJJHA</item>
+        <item>GRTNEWXENIA 1.3R CST</item>
+        <item>GRTNEWXENIA1.3RATCST</item>
+        <item>GRTNEWXENIADMTSTD</item>
+        <item>GRINEWXENIAMMTDLX</item>
+        <item>GRTNEWXENIAMMTSTD</item>
+        <item>GRTNEWXENIARATSPORTY</item>
+        <item>GRTNEWXENIARATSTD</item>
+        <item>GRTNEWXENIARMTSPORTY</item>
+        <item>GRTNEWXENIARMTSTD</item>
+        <item>GRTNEWXENIAXATDLX</item>
+        <item>GRTNEWXENIAXATSTD</item>
+        <item>GRTNEWXENIAXMTDLX</item>
+        <item>GRTNEWXENIAXMTSTD</item>
+        <item>GRN XENIA 1.3 R</item>
+        <item>GRN XENIA 1.3 R AT</item>
+        <item>GRN XENIA 1.3 R DLX</item>
+        <item>GRN XENIA 1.3 X</item>
+        <item>GRN XENIA 1.3 X AT</item>
+        <item>GRN XENIA 1.3 X DLX</item>
+        <item>GRN XENIA 1.5 R DLX</item>
+        <item>GRN XENIAL.3R AT DLX</item>
+        <item>GRN XENIA1.3X AT DLX</item>
+        <item>GRN XENIAL.5R AT DLX</item>
+        <item>HI MAX 1.0 STD</item>
+        <item>HI MAX 1.0 STD AC PS</item>
+        <item>L201RS CERIA</item>
+        <item>LUXIO 1,5 D MT FH</item>
+        <item>LUXIO 1,5 D MT MC</item>
+        <item>LUXIO 1,5 M MT FH</item>
+        <item>LUXIO 1,5 X AT MC</item>
+        <item>LUXIO 1,5 X MT FH</item>
+        <item>LUXIO 1,5 X MT MC</item>
+        <item>LUXIO 1,50 MT MC AMB</item>
+        <item>LUXIO 1.5 D M/T STD</item>
+        <item>LUXIO 1.5 M M/T ABS</item>
+        <item>LUXIO 1.5 M M/T STD</item>
+        <item>LUXIO 1.5 M MT ELITE</item>
+        <item>LUXIO 1.5 X A/T</item>
+        <item>LUXIO 1.5 X A/T ABS</item>
+        <item>LUXIO 1.5 X A/T ULTv</item>
+        <item>LUXIO 1.5 X M/T ABS</item>
+        <item>LUXIO 1.5 X M/T SID</item>
+        <item>LUXIO 1.5 X M/T ULT</item>
+        <item>LUXIO 1.5 X MT</item>
+        <item>LUXIO X AT PRESTIGE</item>
+        <item>LUXIO1.5 D MT PREMIO</item>
+        <item>LUXIO1.5 X ABSA/TULT</item>
+        <item>LUXIO1.5 X ABSM/TULT</item>
+        <item>LUXIO1.5DMTAMBULANCE</item>
+        <item>LUXIO1.5XM/TPRESTIGE</item>
+        <item>LXIO1.5M ABS MTELITE</item>
+        <item>NEW TERIOS 1.5 R</item>
+        <item>NEW TERIOS 1.5 R AT</item>
+        <item>NEW TERIOS 1.5 R DLX</item>
+        <item>NEW TERIOS 1.5 X</item>
+        <item>NEW TERIOS 1.5 X DLX</item>
+        <item>NEW TERIOS1.5R ATDLX</item>
+        <item>NEW TERIOS1.5X ATDLX</item>
+        <item>NEW XENIA 1.0 D MT</item>
+        <item>NEW XENIA 1.0 M MT</item>
+        <item>NEW XENIA 1.0M MTSTD</item>
+        <item>NEW XENIA 1.3 R AT</item>
+        <item>NEW XENIA 1.3 R MT</item>
+        <item>NEW XENIA 1.3 X MT</item>
+        <item>NEW XENIA 1.3RAT CST</item>
+        <item>NEW XENIA D DLX</item>
+        <item>RN MAX 1.3D M/T FAM</item>
+        <item>NEW XENIA DL.O STD+</item>
+        <item>NEW XENIA RA/T DLX</item>
+        <item>NEW XENIA X DLX</item>
+        <item>NEW XENIA 1.0D MT STD</item>
+        <item>NEW XENIA 1.0M MT FAM</item>
+        <item>NEW XENIA 1.0M MTSPRT</item>
+        <item>NEW XENIA 1.3R AT FAM</item>
+        <item>NEW XENIA 1.3R AT STD</item>
+        <item>NEW XENIA 1.3R ATSPRT</item>
+        <item>NEW XENIA 1.3R MT FAM</item>
+        <item>NEW XENIA 1.3R MT STD</item>
+        <item>NEW XENIA 1.3R MTSPRT</item>
+        <item>NEW XENIA 1.3X MT STD</item>
+        <item>NEW ZEBRA ZSX 7</item>
+        <item>NEWXENIA 1,0M MT DLX</item>
+        <item>NEWXENIA 1.3R MT DLX</item>
+        <item>NEWXENIA RAT ATTIVO</item>
+        <item>NEWXENIA RMT ATTIVO</item>
+        <item>PICK UP 1.3</item>
+        <item>PICK UP 1.5</item>
+        <item>PICK UP BLINDVAN</item>
+        <item>S402RP PMRFJJ KG</item>
+        <item>S402RP PMRFJJ KJ</item>
+        <item>S 91</item>
+        <item>S401RY-ZMDEJJ-HJ</item>
+        <item>S93</item>
+        <item>SIGRA 1.0 D</item>
+        <item>SIGRA 1.0 M</item>
+        <item>SIGRA 1.2 R</item>
+        <item>SIGRA 1.2 R AT</item>
+        <item>SIGRA 1.2 R AT DLX</item>
+        <item>SIGRA 1.2 R DLX</item>
+        <item>SIGRA 1 2 X</item>
+        <item>SIGRA 1.2 X AT</item>
+        <item>SIGRA 1.2 X AT DLX</item>
+        <item>SIGRA 1.2 X DLX</item>
+        <item>SIRION 1.3 A/T</item>
+        <item>SIRION 1.3 D FMC AT</item>
+        <item>SIRION 1.3 D FMC MT</item>
+        <item>SIRION 1.3 M/T</item>
+        <item>SIRION A/T</item>
+        <item>SIRION A/T</item>
+        <item>SIRION ALL NEW 1.3AT</item>
+        <item>SIRION ALL NEW 1.3MT</item>
+        <item>SIRION DYNAMIC M/T</item>
+        <item>SIRION M/T</item>
+        <item>SIRION1.3 D MC A/</item>T
+        <item>SIRION1.3 D MC M/T</item>
+        <item>SIRION1.3D FMC ATDLX</item>
+        <item>SIRION1.3D FMC MTDLX</item>
+        <item>SIRION) 3D MCAT SPRT</item>
+        <item>SIRION1.3D MCMT DRET</item>
+        <item>SIRIONI.3D MCMT SPRT</item>
+        <item>SIRION) 3M MCAT FMME</item>
+        <item>SIRION1.3M MCAT SPRT</item>
+        <item>SIRION1.3M MCMT FMME</item>
+        <item>SIRION1.3M MCMT SPRI</item>
+        <item>TARUNA</item>
+        <item>TARUNA CL</item>
+        <item>TARUNA CL +</item>
+        <item>TARUNA CL+OXXY</item>
+        <item>TARUNA CSR 1.6 EFI</item>
+        <item>TARUNA CSX</item>
+        <item>TARUNA CSX 1.5 EFI</item>
+        <item>TARUNA CSX F500</item>
+        <item>TARUNA CSX OXXY</item>
+        <item>TARUNA CX</item>
+        <item>TARUNA FGX</item>
+        <item>TARUNA FGX OXXY</item>
+        <item>TARUNA FGZ</item>
+        <item>TARUNA FL</item>
+        <item>TARUNA FL +</item>
+        <item>TARUNA FX</item>
+        <item>TARUNA FX OXXY</item>
+        <item>TERIOS 1.5 TX AT DLX</item>
+        <item>TERIOS AIRBAG TS+EXT</item>
+        <item>TERIOS R AT</item>
+        <item>TERIOS R AT ADV</item>
+        <item>TERIOS R AT CUSTOM</item>
+        <item>TERIOS R MT</item>
+        <item>TERIOS R MT ADV</item>
+        <item>TERIOS R MT CUSTOM</item>
+        <item>TERIOS TS +</item>
+        <item>TERIOS TS AT EXT</item>
+        <item>TERIOS TS AT MC</item>
+        <item>TERIOS TS AT MC EXT</item>
+        <item>TERIOS TS EXT 1.5 AT</item>
+        <item>TERIOS TS EXT 1.5M/T</item>
+        <item>TERIOS TS M/T</item>
+        <item>TERIOS TS M/T MC</item>
+        <item>TERIOS TS MT MC EXT</item>
+        <item>TERIOS TS STD 1.5M/T</item>
+        <item>TERIOS TS+ MT EXTRA</item>
+        <item>TERIOS TSM/T</item>
+        <item>TERIOS TX A/T</item>
+        <item>TERIOS TX A/T ADVENT</item>
+        <item>TERIOS TX A/T ADVENT</item>
+        <item>TERIOS TX A/T ELEGAN</item>
+        <item>TERIOS TX ADY 1.5A/T</item>
+        <item>TERIOS TX ADV 1.5M/T</item>
+        <item>TERIOS TX AT MC</item>
+        <item>TERIOS TX AT MC ADV</item>
+        <item>TERIOS TX ELG 1.5A/T</item>
+        <item>TERIOS TX ELG 1.5M/T</item>
+        <item>TERIOS TX M/T</item>
+        <item>TERIOS TX M/T</item>
+        <item>TERIOS TX M/T ADVENT</item>
+        <item>TERIOS TX M/T ELEGAN</item>
+        <item>TERIOS TX M/T ELEGAN</item>
+        <item>TERIOS TX MT DLX</item>
+        <item>TERIOS TX MT MC</item>
+        <item>TERIOS TX MT MC ADV</item>
+        <item>TERIOS TX STD 1.5A/T</item>
+        <item>TERIOS TX STD 1.5M/T</item>
+        <item>TERIOS TX1.5ATNEW AD</item>
+        <item>TERIOS TX1.5ATNEW EL</item>
+        <item>TERIOS TX1.5MTNEW AD</item>
+        <item>TERIOS TX1.5MTNEW EL</item>
+        <item>TERIOS X AT EXTRA</item>
+        <item>TERIOS X AT EXTRA</item>
+        <item>TERIOS X MT</item>
+        <item>TERIOS X MT EXTRA</item>
+        <item>TERIOSAIRBG TX AT</item>
+        <item>TERIOSARBG TS AT</item>
+        <item>TERIOSARBG TSAT+EXT</item>
+        <item>TERIOSARBG TX ADV</item>
+        <item>TS AT MC + XTRA</item>
+        <item>TS MT MC + XTRA</item>
+        <item>TX AT MC</item>
+        <item>TX AT MC ADVENTURE</item>
+        <item>TX MT MC</item>
+        <item>TX MT MC ADVENTURE</item>
+        <item>XENIA</item>
+        <item>XENIA 10 FAMILY</item>
+        <item>XENIA 1.0 SPORTY</item>
+        <item>XENIA 1.0 STD +</item>
+        <item>XENIA 1.3 AT DLX</item>
+        <item>XENIA 1.3 DLX FAMILY</item>
+        <item>XENIA 1.3 DLX SPORTY</item>
+        <item>XENIA 1000 DLX</item>
+        <item>XENIA 1000 STD</item>
+        <item>XENIA 1300 DLX</item>
+        <item>XENIA F6OORV-DLX</item>
+        <item>XENIA LI</item>
+        <item>XENIA LI FAM 1.0 M/T</item>
+        <item>XENIA LI FAMILY</item>
+        <item>XENIA LI MC</item>
+        <item>XENIA LI MC FAM</item>
+        <item>XENIA LI MC PLUS</item>
+        <item>XENIA LI MC SPORTY</item>
+        <item>XENIA LT PLUS</item>
+        <item>XENIA LI SE 1.0 M/T</item>
+        <item>XENIA LI SPORTY</item>
+        <item>XENIA LI SPRT 1.0M/T</item>
+        <item>XENIA LI STD 1.0 M/T</item>
+        <item>XENIA LI+ 1.0 M/T</item>
+        <item>XENIA MI</item>
+        <item>XENIA MI+</item>
+        <item>XENIA MI MC</item>
+        <item>XENIA MI MC PLUS</item>
+        <item>XENIA MI STD 1.0 M/T</item>
+        <item>XENIA MI+ 1.0 M/T</item>
+        <item>XENIA WT</item>
+        <item>XENIA VVT-I LI FAM</item>
+        <item>XENIA VVT-I LI SPORT</item>
+        <item>XENIA VVT-1 LI+</item>
+        <item>XENIA VVT-I MI</item>
+        <item>XENIA VVT-I MI+</item>
+        <item>XENIA VVT-I XI</item>
+        <item>XENIA VVT-I XI FAM</item>
+        <item>XENIA WYT-I XI SPORT</item>
+        <item>XENIA VVT-I XI+</item>
+        <item>XENIA X MC FAM</item>
+        <item>XENIA XI</item>
+        <item>XENIA XL +</item>
+        <item>XENIA XI 1.3 AT</item>
+        <item>XENIA XI FAM 1.3 M/T</item>
+        <item>XENIA XI FAMILY</item>
+        <item>XENIA XI MC</item>
+        <item>XENIA XL MC PLUS</item>
+        <item>XENIA XI MC SPORTY</item>
+        <item>XENIA XLSE 1 3 M/T</item>
+        <item>XENIA XI SPORTY</item>
+        <item>XENIA XI SPRT 1.3M/T</item>
+        <item>XENIA XI STD 1.3 M/T</item>
+        <item>XENIA Xl+ 1.3 M/T</item>
+        <item>XENIA1.3X MT STDPLUS</item>
+        <item>XENIA AIRBAGDMTL.OPLS</item>
+        <item>XENIA AIRBAGDMT1 OSTD</item>
+        <item>XENIA AIRBAGMMT1.ODLX</item>
+        <item>XENIA AIRBAGMMT1.OSPT</item>
+        <item>XENIA AIRBAGMMT1.OSTD</item>
+        <item>XENIA AIRBAGRAT1.3ATV</item>
+        <item>XENIA AIRBAGRAT1.3DLX</item>
+        <item>XENIAAIRBAGRATL.3SPT</item>
+        <item>XENIAAIRBAGRAT1.3STD</item>
+        <item>XENIAAIRBAGRMT1.3ATV</item>
+        <item>XENIAAIRBAGRMT1.3DLX</item>
+        <item>XENIAAIRBAGRMT1.3SPT</item>
+        <item>XENIAAIRBAGRMI1.3STD</item>
+        <item>XENIAAIRBAGXMT1.3DLX</item>
+        <item>XENIA AIRBAGXMT1.3PLS</item>
+        <item>XENIAAIRBAGXMT1.3STD</item>
+        <item>XENIAARBGRATDG1.3DLX</item>
+        <item>XENIAARBGRATDG).3SPT</item>
+        <item>XENIAARBGRMTDG1.3DLX</item>
+        <item>XENIAARBGRMTDG1.3SPT</item>
+        <item>XENIAARBGRMTDG1.3STD</item>
+        <item>XENIAARBGXMTDG1.3PLS</item>
+        <item>XENIAARBGXMTDG1.3STD</item>
+        <item>XENIAXI 1.3MTDLX FAS</item>
+        <item>ZEBRA</item>
+        <item>ZEBRA BLIND VAN</item>
+        <item>ZEBRA ZL</item>
+        <item>ZEBRA ZL 9</item>
+        <item>ZEBRA ZL PLUS</item>
+        <item>ZEBRA ZLX</item>
+        <item>ZEBRA ZLX 9</item>
+        <item>ZEBRA ZSX</item>
+        <item>ZEBRA</item>
+        <item>ZEBRA 1300 CC</item>
+        <item>ZEBRA PU 1.5</item>
+        <item>ZEBRA PU BOX 1.3</item>
+        <item>ZEBRA PU BOX 1.5</item>
+        <item>ESPASSA</item>
+        <item>ESPASSA 1.6</item>
+        <item>GRANDMAX PU 1.5 MT BOX</item>
+    </string-array>
+    <string-array name="listTipeDatsun">
+        <item>CROSS 1.2</item>
+        <item>CROSS 1.2 CVT</item>
+        <item>DATSUN GO + PANCA</item>
+        <item>DATSUN GO + TYPE A</item>
+        <item>DATSUN GO + TYPE D</item>
+        <item>DATSUN GO + TYPE T</item>
+        <item>DATSUN GO 1.2 T ULT</item>
+        <item>DATSUN GO PLUS</item>
+        <item>DATSUN GO TYPE T</item>
+        <item>DATSUN GO+ 1.2 T STY</item>
+        <item>DATSUN GO+A OPTION</item>
+        <item>DATSUN GO+T OPTION</item>
+        <item>DATSUNGO TYPETACTIVEp</item>
+        <item>DATSUN GO TYPETOPTION</item>
+        <item>N DATSUN GO 1.2 T CVT</item>
+        <item>N DATSUN GO 1.2 PNCTACT</item>
+        <item>N DATSUNGO1.2TACTCVT</item>
+        <item>NEW DATSUN GO 1.2 D</item>
+        <item>NEWDATSUN GOPLUS 1.2 T</item>
+    </string-array>
+    <string-array name="listTipeDodge">
+        <item>JOURNEY 2.4 A/T</item>
+    </string-array>
+    <string-array name="listTipeDongfeng">
+        <item>JGLORY 580 1.5LUX CVT</item>
+        <item>SUPER CAB 1.3 AC DSL</item>
+        <item>SUPER CAB 1.5STD GSL</item>
+    </string-array>
+    <string-array name="listTipeFiat">
+        <item>ABARTH 500 1.4 MT</item>
+    </string-array>
+    <string-array name="listTipeFord">
+        <item>ANEW ECOSPRT TREN AT</item>
+        <item>ANEW ECOSPRT TTNM AT</item>
+        <item>ANEW ECOSPT TREN MT</item>
+        <item>ANEW ECOSPT TTNM MT</item>
+        <item>ECOSPORTTITANIUM M/T</item>
+        <item>ECOSPRT TTNM 1,5L AT</item>
+        <item>ECOSPRTI 6FREESTYLEMT</item>
+        <item>ESCAPE 2.0 L 4X2 MT</item>
+        <item>ESCAPE 2.3 L XLT AT</item>
+        <item>ESCAPE 3.0 AT</item>
+        <item>ESCAPE LTD 4X2 2.3LAT</item>
+        <item>ESCAPE XLT 4X2 2.3LAT</item>
+        <item>EVEREST 4X2 AT XLT</item>
+        <item>EVEREST 4X4 MT</item>
+        <item>EVEREST2,5L XL4X4 MI</item>
+        <item>EVEREST2,5XLT 4X2M/T</item>
+        <item>EVEREST2.5LXLT 4X2A/T</item>
+        <item>EVEREST2.5LXLT 4X4A/T</item>
+        <item>EVERST TTNM PLS 2.2 AT</item>
+        <item>FIESTA 1.OL S AT</item>
+        <item>FIESTA 1.4 AT TREND</item>
+        <item>FIESTA 1.4 MT TREND</item>
+        <item>FIESTA 1.6 AT SPORT</item>
+        <item>FIESTA 1.6 L AT</item>
+        <item>FIESTA SPORT 1,6IM/T</item>
+        <item>FIESTA SPORT 1.5L MT</item>
+        <item>FIESTA SPORTY 1.5L AT</item>
+        <item>FIESTA TREND 1.5L AT</item>
+        <item>FIESTA TREND 1.5L MT</item>
+        <item>FOCUS</item>
+        <item>FOCUS 1.89 A/T</item>
+        <item>FOCUS2.OLAT TITANIUM</item>
+        <item>FOCUS5D2.OL AT SPORT</item>
+        <item>N ESCP2.3 4X2 AT XLT</item>
+        <item>N EVRST 2.5 4X4 MT</item>
+        <item>N EVRST2.5 4X2AT XLT</item>
+        <item>N EVRST2.5 4X2MT XLT</item>
+        <item>RDC XLS 2.2L 4X4 MT</item>
+        <item>RDC XLT 2.2L 4X4 MT</item>
+        <item>R DCB 2.2L 4X4 MT</item>
+        <item>R SCB 2.2L 4X4 MT</item>
+        <item>RANGER DC 4X2XLT MT</item>
+        <item>RANGER DC 4X4 BASE</item>
+        <item>RANGER DC 4X4 STD</item>
+        <item>RANGER DC 4X4XLT AT</item>
+        <item>RANGER DC 4X4XLT MT</item>
+        <item>RANGER DC 4X4XLTD MT</item>
+        <item>RANGER DC XLT 3.0 4X4</item>
+        <item>RANGER RAS 4X4</item>
+        <item>RANGER SC 2.5L 4X2MT</item>
+        <item>RANGER SC 4X2</item>
+        <item>RANGER SC 4X2 MT</item>
+        <item>RANGER SC 4X4</item>
+        <item>RAS CB 2.2L 4X4 MT</item>
+        <item>RDC2.2L4X4XLSPLUSMT</item>
+    </string-array>
+    <string-array name="listTipeGeely">
+        <item>ALC 1.3 GS M/T</item>
+        <item>LC 1.3 GT M/T</item>
+        <item>LC CROSS 1.3 GL M/T</item>
+        <item>MK2 1.5 GT M/T</item>
+        <item>PANDA GL 1.3 M/T</item>
+    </string-array>
+    <string-array name="listTipeHonda">
+        <item>ACCORD CM 5 M/T</item>
+        <item>ACCORD S 86 VTIL AT</item>
+        <item>ACCORD S86 MT</item>
+        <item>ACCORD S86 MT VTI-L</item>
+        <item>ACCORD S86 VTI 2,3MT</item>
+        <item>ACCORD VII 2.4 A/T</item>
+        <item>ACCORD VII 2.4 M/T</item>
+        <item>ACCORD VIIL 2.4 A/T</item>
+        <item>ACCORD VILL 3.5 A/T</item>
+        <item>ALLNEWCRY PRESTGE AT</item>
+        <item>ALLNEWCRY XCELENT AT</item>
+        <item>BRIO 1.2 RS</item>
+        <item>BRIO 1.2 RS CVT</item>
+        <item>BRIO CKD 1.2 S AT</item>
+        <item>BRIO E A/T</item>
+        <item>BRIO S A/T</item>
+        <item>BRIO S M/T</item>
+        <item>BRIO SATYA 1.2 E CVT</item>
+        <item>BRIO SATYA A MT</item>
+        <item>BRIO SATYA E M/T</item>
+        <item>BRIO SATYA S MT</item>
+        <item>BRIO SPORT E A/T</item>
+        <item>BRIO SPORT E M/T</item>
+        <item>BRV 1.5 E CVT CKD</item>
+        <item>BRV CVT PRESTIGE</item>
+        <item>BRV E AT</item>
+        <item>BRV E CVT</item>
+        <item>BRV E MT</item>
+        <item>BRV S MT</item>
+        <item>CITYV S A/T</item>
+        <item>CITYV E S CVT AT</item>
+        <item>CITYV GD 8 1.51DSIMT</item>
+        <item>CITYV GD8 1,5 VTI MT</item>
+        <item>CITYV GD8 1.5 IDSI AT</item>
+        <item>CITYV GD8 1.5 VTI AT</item>
+        <item>CITYV GM2 1.5 E</item>
+        <item>CITYV GM2 1.5 S MT</item>
+        <item>CITYV SX8 GM MT</item>
+        <item>CITYV TYPE Z</item>
+        <item>CITYV V-TECH A/T</item>
+        <item>CITYV V-TECH M/T</item>
+        <item>CIVIC 1.5 ES TRB</item>
+        <item>CIVIC 1.5 PRS TRB</item>
+        <item>CIVIC 1.5 TURBO CVT</item>
+        <item>CIVIC 1.8 L AT</item>
+        <item>CIVIC 1.8 L MT</item>
+        <item>CIVIC 2.0 L AT</item>
+        <item>CIVIC HB1.5 E CYTTRB</item>
+        <item>CIVIC HB1.5 S CYTTRB</item>
+        <item>CIVIC S5A AT VTI - S</item>
+        <item>CIVIC S5A VTI S MT</item>
+        <item>CIVIC VTI M/T</item>
+        <item>CRV 1.5 PRESTIGE TRB</item>
+        <item>CRV 2.0 AT</item>
+        <item>CR-V 2.0 MT</item>
+        <item>CR-V 4X2 A/T</item>
+        <item>CRV 4X2 M/T</item>
+        <item>CRV A</item>
+        <item>CR-V RD4 2WD AT</item>
+        <item>CRV RD4 2WD M/T</item>
+        <item>CRV RD4.2WD AT</item>
+        <item>CR-V RD5</item>
+        <item>CRV REI 2WD 2,4 AT</item>
+        <item>CRY REL 2WD 2.0ATCKD</item>
+        <item>CRV RE12WD 2,0 MTCKD</item>
+        <item>CRV RMI 2WD 2.0 AT</item>
+        <item>CR-Z ZEL 1.5 CVT</item>
+        <item>ELYSION 2.4 L 2WD AT</item>
+        <item>ELYSION 3.0 A/T</item>
+        <item>FIT</item>
+        <item>FIT 1.3 A/T</item>
+        <item>FIT 1.3 A/T</item>
+        <item>FREED 1.5 A/T</item>
+        <item>FREED E 1.5 A/T</item>
+        <item>FREED S A/T</item>
+        <item>HONDA BRIO E M/T</item>
+        <item>HR-V 1.5 A CKD</item>
+        <item>HR-V 1.5 A MT</item>
+        <item>HRV 1.5 E</item>
+        <item>HR-V 1,5 E AT</item>
+        <item>HR-V 1.5 E CVT</item>
+        <item>HR-V 1.5 E CVT SPE</item>
+        <item>HR-V 1.5 E CVT SPE</item>
+        <item>HR-V 1.5 S AT</item>
+        <item>HR-V 1.5 S CVT</item>
+        <item>HR-V 1.5 S MT</item>
+        <item>HR-V 1.6</item>
+        <item>HRV 1.8 E CVT</item>
+        <item>HR-V 1.8 PREST</item>
+        <item>HR-V 1.8 PRESTIGE AT</item>
+        <item>HR-V 1.8 RS CVT</item>
+        <item>HR-V E CVT</item>
+        <item>JAZZ</item>
+        <item>JAZZ 1.5 E A/T</item>
+        <item>JAZZ 1.51 - DSI AUTO</item>
+        <item>JAZZ 1.51 - DSI AUTO</item>
+        <item>JAZZ GD 3 1,5 A/T</item>
+        <item>JAZZ GE8 1.5 E MT</item>
+        <item>JAZZ GE8 1.55 MT</item>
+        <item>JAZZ IDSI A/T</item>
+        <item>JAZZ IDSI M/T</item>
+        <item>JAZZ RS AT</item>
+        <item>JAZZ V-TEC A/T</item>
+        <item>JAZZ V-TEC ABS A/T</item>
+        <item>JAZZ V-TEC ABS M/T</item>
+        <item>JAZZ V-TEC M/T</item>
+        <item>MOBILIO E A/T</item>
+        <item>MOBILIO E CVT MT</item>
+        <item>MOBILIO E M/T</item>
+        <item>MOBILIO E PRESTIGE</item>
+        <item>MOBILIO E RS AT</item>
+        <item>MOBILIO E RS MT</item>
+        <item>MOBILIO E-CVT</item>
+        <item>MOBILIO ECVTPRESTIGE</item>
+        <item>MOBILIO RS</item>
+        <item>MOBILIO RS CVT</item>
+        <item>MOBILIO RS M/T SE</item>
+        <item>MOBILIO RS MT</item>
+        <item>MOBILIO</item>
+        <item>MOBILIO SE E M/T</item>
+        <item>MOBILIOECVTPRSTGELTD</item>
+        <item>NEW CITY A/T</item>
+        <item>NEW CITY IDSI A/T</item>
+        <item>NEW CITY IDSI M/T</item>
+        <item>NEW CITY VTEC AT</item>
+        <item>NEW CIVIC 1.8 MT</item>
+        <item>NEW CIVIC 2.0 AT</item>
+        <item>NEW CIVIC VTI 1.8A/T</item>
+        <item>NEW CRV V-TEC 2.0</item>
+        <item>NEW CRV 2.0 A/T DOHC</item>
+        <item>NEW CRV 2.0 A/T SOHC</item>
+        <item>NEW CRV 2.0 M/T DOHC</item>
+        <item>NEW CRV 2.0 M/T SOHC</item>
+        <item>NEW CRV 2.4 A/T DOHC</item>
+        <item>NEW CR-V 2.4 AT</item>
+        <item>NEW CRV 2.4 M/T</item>
+        <item>NEW CR-Z ALPHA A/T</item>
+        <item>NEW FREED PSD A/T</item>
+        <item>NEW JAZZ RS 1.5 A/T</item>
+        <item>NEW JAZZ RS 1.5 A/T</item>
+        <item>NEW JAZZ RS 1.5 M/T</item>
+        <item>NEW JAZZ RS 1.5 M/T</item>
+        <item>NEW JAZZ RS-CVT</item>
+        <item>NEW JAZZ S 1,5 M/T</item>
+        <item>NEW JAZZ S 1.5 A/T</item>
+        <item>NEW JAZZ S 1.5 A/T</item>
+        <item>NEW JAZZ S 1.5 M/T</item>
+        <item>ODYSSEY 2.3</item>
+        <item>ODYSSEY 2.4</item>
+        <item>ODYSSEY 3.0</item>
+        <item>STEP</item>
+        <item>IGN 2.0 A</item>
+        <item>STREAM</item>
+        <item>STREAM</item>
+        <item>STREAM A/T</item>
+    </string-array>
+    <string-array name="listTipeHummer">
+        <item>H3 AT</item>
+    </string-array>
+    <string-array name="listTipeHyundai">
+        <item>ACCENT</item>
+        <item>ATOZ</item>
+        <item>ATOZ</item>
+        <item>ATOZ 1.1 GLS M/T</item>
+        <item>ATOZ G 1.1 M/T</item>
+        <item>ATOZ G M/T</item>
+        <item>ATOZ G M/T</item>
+        <item>ATOZ GLS A/T</item>
+        <item>ATOZ GLS M/T</item>
+        <item>ATOZ GLX M/T</item>
+        <item>ATOZ GLX M/T</item>
+        <item>AVEGA 1.5 G M/T</item>
+        <item>AVEGA 1.5 GL A/T</item>
+        <item>AVEGA 1.5 GL M/T</item>
+        <item>AVEGA 5 CL MI</item>
+        <item>AVEGA 1.6 SC AU</item>
+        <item>AVEGA 1.5 SG M/T</item>
+        <item>AVEGA GX AXI</item>
+        <item>AVEGA GX M/T</item>
+        <item>COUPE A/T</item>
+        <item>EXCEL M/T</item>
+        <item>GETZ 1341 CC M/T</item>
+        <item>GETZ A/T</item>
+        <item>GETZ A/T</item>
+        <item>GETZ G/M</item>
+        <item>GETZ M/T</item>
+        <item>GETZ MANUAL</item>
+        <item>GRAND AVEGA 1,4 A/T</item>
+        <item>GRAND AVEGA 1.4 M/T</item>
+        <item>GRAND AVEGA A/T</item>
+        <item>GRAND AVEGA M/T</item>
+        <item>GRAND I10 1.2 GLX</item>
+        <item>GRAND I10 1.2 GLX AT</item>
+        <item>GRAND I10 1.2 X</item>
+        <item>GRAND I10 1.2 X AT</item>
+        <item>HI ELEGANCE BENSN AT</item>
+        <item>HI ELEGANCE DISEL MT</item>
+        <item>HI XG 2.4 A/T</item>
+        <item>HI XG BENSIN AT</item>
+        <item>HI XG DIESEL AT</item>
+        <item>I 10 GL A/T</item>
+        <item>I 10 GL M/T</item>
+        <item>I 10 GLS A/T</item>
+        <item>I 10 GLS M/T</item>
+        <item>I 10 I CARE A/T</item>
+        <item>I 10 I CHIC M/T</item>
+        <item>I 10 I COOL M/T</item>
+        <item>I 20 GL A/T</item>
+        <item>I 20 GL M/T</item>
+        <item>l 20 SG M/T</item>
+        <item>MATRIX</item>
+        <item>MATRIX A/T</item>
+        <item>MATRIX M/T</item>
+        <item>NEW ACCENT A/T</item>
+        <item>NEW ACCENT M/T</item>
+        <item>NEW TUCSON GLS A/T</item>
+        <item>ROYALE CRDI</item>
+        <item>ROYALE GASOLINE</item>
+        <item>SANTALE FE</item>
+        <item>SANTALE FE MAN</item>
+        <item>SONATA</item>
+        <item>SONATA 2.4 AT</item>
+        <item>STAREX 2.5DIESEL M/T</item>
+        <item>TRAJET</item>
+        <item>TRAJET A/T</item>
+        <item>TRAJET GL8 M/T</item>
+        <item>TRAJET M/T</item>
+        <item>TUCSON A/T</item>
+        <item>1 36 LX + BAK BESI</item>
+        <item>HD MGTY1 36LH+BAK BSI</item>
+        <item>HD MIGHTY 1 36 B</item>
+    </string-array>
+    <string-array name="listTipeIsuzu">
+        <item>D-MAX DOUBLE CABIN</item>
+        <item>D-MAX RODEO LS</item>
+        <item>D-MAX SINGLE CABIN</item>
+        <item>LS M/T TURBO F</item>
+        <item>LS M/T TURBO FF</item>
+        <item>MU-X 2.5 AT</item>
+        <item>NEW PANTHER LS</item>
+        <item>NEW PANTHER LSV</item>
+        <item>NEW PANTHER LV</item>
+        <item>NEW PANTHER LV 25</item>
+        <item>NEW PANTHER TOURING</item>
+        <item>NHR 55/BUS</item>
+        <item>PANTHER</item>
+        <item>PANTHER 2.5 ROYAL</item>
+        <item>PANTHER D-MAX</item>
+        <item>PANTHER GRAN TOURING</item>
+        <item>PANTHER LM PLUS</item>
+        <item>PANTHER LM SMART</item>
+        <item>PANTHER LS 25 M/T FF</item>
+        <item>PANTHER LS A/T FF</item>
+        <item>PANTHER LS M/T 25NEW</item>
+        <item>PANTHER LV Adv C</item>
+        <item>PANTHER TBR 52</item>
+        <item>PANTHER TBR 541 LV25</item>
+        <item>PANTHER TBR 541LS25M</item>
+        <item>PANTHER TBR 54 STD</item>
+        <item>PANTHER TOURING A/T</item>
+        <item>PANTHER TOURING M/T</item>
+        <item>PANTHER TOURING MT-B</item>
+        <item>PANTHER TBR541 LM 25</item>
+        <item>PANTHER</item>
+        <item>PANTHER 2.5 FLD+BOX</item>
+        <item>PANTHER 3W WIDE DECK</item>
+        <item>PANTHER 54 PU BOX</item>
+        <item>PANTHER FLAT DECK+PS</item>
+        <item>PANTHER GD</item>
+        <item>PANTHER LC</item>
+        <item>PANTHER LC + BOX</item>
+        <item>PANTHER LOW DECK</item>
+        <item>PANTHER TBR 52</item>
+        <item>PANTHER TBR 54</item>
+        <item>PANTHER TBR 54 PS</item>
+        <item>PANTHER THREE WAY</item>
+        <item>PANTHER TURBO FD</item>
+        <item>PRONA ELF</item>
+        <item>TOURING M/T 2500 CC</item>
+        <item>BISON</item>
+        <item>BISONNA FB</item>
+        <item>BISONNA FB + BOX</item>
+        <item>BISONNA MOKO</item>
+        <item>BISONNA STANDARD</item>
+        <item>D-MAX RODEO LS M/T</item>
+        <item>D-MAX SC</item>
+        <item>D-MAX 3.0 4 X 4 SC</item>
+        <item>D-MAX 3.0 4X4 DC</item>
+        <item>DMAX DC 2.5 MI</item>
+        <item>ELF NHR 55</item>
+        <item>ELF NHR 55 CO PS+ AC</item>
+        <item>ELF NKR 55 90PS</item>
+        <item>FRR 90 Q 4X2</item>
+        <item>FRR90Q[4X2)+BAK BESI</item>
+        <item>FRR900(4x2)+BOX BESI</item>
+        <item>FRR900(4X2)+WING BOX</item>
+        <item>FTR 90 P+ BAK BESI</item>
+        <item>FTR 90 P+ BOX BESI</item>
+        <item>FTR 90 P-TH</item>
+        <item>FTR 90 S+BOX BESI</item>
+        <item>FTR 90 T</item>
+        <item>FTR 90 WING BOX</item>
+        <item>FTR 90S</item>
+        <item>FTR 90S + WING BOX</item>
+        <item>FVM 34 Q+BAK BESI</item>
+        <item>FIMO 4THP</item>
+        <item>FVM 34 U 6X2 BOX</item>
+        <item>FVM 34 U HI BLW TNG</item>
+        <item>FVM 34 U HP 6X2</item>
+        <item>FVM 34 W + WING BOX</item>
+        <item>FVM34THP6X2+FLAT BED</item>
+        <item>FVR 34 P TH + TWB</item>
+        <item>FVR34P(4x2)+TRKTR HD</item>
+        <item>FVR34P(6X2)+TRKTR HD</item>
+        <item>FVR34PTH+TRAILER 40FT</item>
+        <item>FVZ 34 N HP 6.1 6X4</item>
+        <item>FVZ 34 P 6X4</item>
+        <item>FVZ 34 P+LWB</item>
+        <item>FVZ 34K 6X4 + MIXER</item>
+        <item>FVZ 34N HP6.1 6X4 DUMP</item>
+        <item>FVZ34P(6X4)+BAK BESI</item>
+        <item>FVZ34P+DUMPTRUCKTRIN</item>
+        <item>FYZ34P(6X4)+DUMP</item>
+        <item>GIGA FRR 900 4X2</item>
+        <item>GIGA FTR 90 P CHASIS</item>
+        <item>GIGA FTR 90 P+TANGKI</item>
+        <item>GIGA FTR9OS+BAK BESI</item>
+        <item>GIGA FVM 34 Q</item>
+        <item>GIGA FVM 34 Q + DUMP</item>
+        <item>GIGA FVM 34 Q+TANGKI</item>
+        <item>GIGA FVM 34 U 6X2</item>
+        <item>GIGA FVM 34 W</item>
+        <item>GIGA FVM 34T+BAKBESI</item>
+        <item>GIGA FVM 34W+BAKBESI</item>
+        <item>GIGA FVM 34W+BOX</item>
+        <item>GIGA FVM 34W4BOX</item>
+        <item>GIGA FYM34T HP-285PS</item>
+        <item>GIGA FYR 34 L</item>
+        <item>GIGA FVR 34 L + DUMP</item>
+        <item>GIGA FVR 34 P CHASIS</item>
+        <item>GIGA FYR 34 S</item>
+        <item>GIGA FVR 34 S CHASIS</item>
+        <item>GIGA FVR 34P+BK BESI</item>
+        <item>GIGA FVR 34P+BOX ALM</item>
+        <item>GIGA FVR 34S+BK BESI</item>
+        <item>GIGA FVR 34S+BOX ALM</item>
+        <item>GIGA FVR 34P</item>
+        <item>GIGA FVR34S+WING BOX</item>
+        <item>GIGA FVZ 34 K</item>
+        <item>GIGA FVZ 34 T</item>
+        <item>GIGA FVZ 34P 6X4</item>
+        <item>GIGA EVZ 34P TH 6X4</item>
+        <item>GIGA GVR 34 H</item>
+        <item>GIGA GVR 34 P</item>
+        <item>GIGAFVM34THPWINGSBOX</item>
+        <item>GVR 34 H TH TRL 20FT</item>
+        <item>GVR34H+TRAILER 40FEET</item>
+        <item>GVZ 34 K TH</item>
+        <item>GVZ 34 K+TRAILER 40FT</item>
+        <item>NEW PANTHER</item>
+        <item>NHR 55</item>
+        <item>NHR 55</item>
+        <item>NHR 55</item>
+        <item>NHR 55 AMBULANCE</item>
+        <item>NHR 55 CO E2</item>
+        <item>NHR 55 EXECUTIVE</item>
+        <item>NHR 55 STD</item>
+        <item>NHR55 ACFULLHTCHBACK</item>
+        <item>NHR55 C/C E2</item>
+        <item>NHR55 C/C E2+BAKBESI</item>
+        <item>NHR55 C/C E2-BAKKAYU</item>
+        <item>NHR55 C/C E2-BOX ALM</item>
+        <item>NHR55 C/C E2-BOXBESI</item>
+        <item>NHR55 C/O E2</item>
+        <item>NHR55 E2FULLHTCHBACK</item>
+        <item>NHR 55 MKB E2 FULLHB</item>
+        <item>NKR 55</item>
+        <item>NKR 55 C/O E2</item>
+        <item>NKR 55 C/O E2</item>
+        <item>NKR 55 CC LWB</item>
+        <item>NKR 55 CO E2 LWBS</item>
+        <item>NKR 55 CO LWB</item>
+        <item>NKR 55 EXECUTIVE</item>
+        <item>NKR 55 L</item>
+        <item>NKR 55 LWB EXECUTIVE</item>
+        <item>NKR 55 LWB FULL HB</item>
+        <item>NKR 55 LWB MICROBUS</item>
+        <item>NKR 55 LWB STD</item>
+        <item>NKR 55 STD</item>
+        <item>NKR 66</item>
+        <item>NKR 71</item>
+        <item>NKR 71 / 120 PS</item>
+        <item>NKR 71 4T + BUS</item>
+        <item>NKR 71 C/C</item>
+        <item>NKR 71 C/C E2+TOWING</item>
+        <item>NKR 71 C/C HARIMAU</item>
+        <item>NKR 71 CC LWB</item>
+        <item>NKR 71 HARIMAU+DUMP</item>
+        <item>NKR 71 HD 120</item>
+        <item>NKR 71 HD 120 DUMP</item>
+        <item>NKR 71 HD 126 DUMP</item>
+        <item>NKR 71 HD+BAK BESI</item>
+        <item>NKR 71 HD+DUMP</item>
+        <item>NKR 71 HD+TANKI AIR</item>
+        <item>NKR 71 STD LWB + BOX</item>
+        <item>NKR 71HD-125PS</item>
+        <item>NKR55 ACFULLHTCHBACK</item>
+        <item>NKR55 C/C E2</item>
+        <item>NKR55 C/C E2 BX BESI</item>
+        <item>NKR55 C/C E2+BAKBESI</item>
+        <item>NKR 55 C/C E2-BAKKAYU</item>
+        <item>NKR55 C/C E2-BOX ALM</item>
+        <item>NKR55 C/O E2</item>
+        <item>NKR55 C/O E2 BXBESI</item>
+        <item>NKR55 C/O E2-2 R16</item>
+        <item>NKR55 CC LWB+BOX ALM</item>
+        <item>NKR 55 CCLWB+BAK BESI</item>
+        <item>NKR55 CCLWB+BOX BESI</item>
+        <item>NKR55 CO E2 LWB(R16)</item>
+        <item>NKR55 CO LWB</item>
+        <item>NKR55 E2FULLHTCHBACK</item>
+        <item>NKR55 LC/C E2</item>
+        <item>NKR55 LC/C E2 BXBESI</item>
+        <item>NKR55 LC/C E2+BKBESI</item>
+        <item>NKR55 LC/C E2+BKKAYU</item>
+        <item>NKR55 LC/C E2+BX ALM</item>
+        <item>NKR55CCE2LWB+BOXBESI</item>
+        <item>NKR55LONGLXKCBONDED</item>
+        <item>NKR71 C/C BOX BESI</item>
+        <item>NKR71 C/C E2</item>
+        <item>NKR71 C/C E2 BXBESI</item>
+        <item>NKR71 C/C E2+BK BESI</item>
+        <item>NKR71 C/C E2+BK KAYU</item>
+        <item>NKR71 C/C E2+BOX ALM</item>
+        <item>NKR71 C/C E2+DUMP</item>
+        <item>NKR71 C/C E2-2 LWB</item>
+        <item>NKR71 CC E2-TANGKI</item>
+        <item>NKR71 HD BOX BESI</item>
+        <item>NKR71 HD E2</item>
+        <item>NKR71 HD E2 BOX BESI</item>
+        <item>NKR71 HD E2+BAK BESI</item>
+        <item>NKR71 HD E2+BAK LYNG</item>
+        <item>NKR71 HD E2-BAKKAYU</item>
+        <item>NKR71 HD E2-BOX ALM</item>
+        <item>NKR71 HD E2-DUMP</item>
+        <item>NKR71 HD E2-TANGKI</item>
+        <item>NKR71CC LWB+BAK BESI</item>
+        <item>NKR71CCE2LWB BOXBESI</item>
+        <item>NKR7]CCE2LWB+BAK KYU</item>
+        <item>NKRZIHARIMAU+BAKKAYU</item>
+        <item>NKR71HD 125PS+TANGKI</item>
+        <item>NLR 55 BLX</item>
+        <item>NLR 55 BLX</item>
+        <item>NLR 55 BX</item>
+        <item>NLR 55 BX</item>
+        <item>NLR 55 T</item>
+        <item>NLR 55 T BAK BESI</item>
+        <item>NLR 55 T BOX BESI</item>
+        <item>NLR 55 TLX</item>
+        <item>NLR 55 TLX +BAK BESI</item>
+        <item>NLR 55 TLX +BOX BESI</item>
+        <item>NLR 55 TLX BAK KAYU</item>
+        <item>NLR 55 TLX BOX ALM</item>
+        <item>NLR 55 TX</item>
+        <item>NLR 55 TX + BOX ALM</item>
+        <item>NLR 71 BL</item>
+        <item>NLR 71 BL</item>
+        <item>NLR 71 L</item>
+        <item>NLR 71 T</item>
+        <item>NMR 71</item>
+        <item>NMR 71 + BOX</item>
+        <item>NMR 71 + WING BOX</item>
+        <item>NMR 71 5.3 + BOX</item>
+        <item>NMR 71 HD 5.8</item>
+        <item>NMR 71 HD 5.8 + BOX</item>
+        <item>NMR 71 HD 5.8 + DUMP</item>
+        <item>NMR 71 HD 6.1</item>
+        <item>NMR 71 HD 6.1</item>
+        <item>NMR 71 HD 6.1 + DUMP</item>
+        <item>NMR 71 HD 6.1 +MIXER</item>
+        <item>NMR 71 HD 6.5 BOX</item>
+        <item>NMR 71 HD 6.5 DUMP</item>
+        <item>NMR 71 HD5.8+BOX PDG</item>
+        <item>NMR 71 L</item>
+        <item>NMR 71 L + BAK BESI</item>
+        <item>NMR 71 L + BOX BESI</item>
+        <item>NMR 71 L + BOX KAYU</item>
+        <item>NMR 71 1 5.3</item>
+        <item>NMR 71 SD 5.3</item>
+        <item>NMR 71 SD BOX BESI</item>
+        <item>NMR 71 SDL 5.3</item>
+        <item>NMR 71 SDL BOX BESI</item>
+        <item>NMR 71 TOWING</item>
+        <item>NMR 71HD5.8+BAK KAYU</item>
+        <item>NMR71 5.3+BAK BESI</item>
+        <item>NMR71 5.3+BAK KAYU</item>
+        <item>NMR71 5.3+TANGKI</item>
+        <item>NMR71 HD 5.8+TANGKI</item>
+        <item>NMR71 HD5.8+BAK BESI</item>
+        <item>NMR71 HD6. 1 +BAK BESI</item>
+        <item>NMR71 HD6.1+BAK KAYU</item>
+        <item>NQR 71</item>
+        <item>NQR 71 CHASSIS</item>
+        <item>NQR71EC+KAROSERI BUS</item>
+        <item>PANTER TURBU FD</item>
+        <item>TBR 54 2,5 M/T BOX</item>
+        <item>TBR 54 PICKUP TURBO</item>
+        <item>TRAGA 2.5 BOX</item>
+        <item>TRAGA 2.5 FD</item>
+        <item>TRUCK BOX</item>
+        <item>FVM 34 U 6X2 BOX</item>
+    </string-array>
+    <string-array name="listTipeKia">
+        <item>ALL NEW PICANTO AT</item>
+        <item>ALL NEW PICANTO MT</item>
+        <item>ALL NEW SPORTAGE A/T</item>
+        <item>ALL NEW SPORTAGE M/T</item>
+        <item>ALLNEW PICANTO SE5AT</item>
+        <item>ALLNEW RIO AT 1.4 HB</item>
+        <item>ALLNEW RIO MT 1.4 HB</item>
+        <item>ALLNEWPCNTO1.2ATEXZ1</item>
+        <item>ALLNEWPCNTO1.2MTEXZ1</item>
+        <item>ALLNEWPICANTO TA A/T</item>
+        <item>ALLNEWPICANTO TA M/T</item>
+        <item>BIG UP</item>
+        <item>BIG UP JUMBO + BOX</item>
+        <item>BIG UP K.2700</item>
+        <item>CARENS II</item>
+        <item>CARENS II M/T SPORTY</item>
+        <item>CARENS SE M/T</item>
+        <item>CARNIVAL A/T</item>
+        <item>CARNIVAL MT DIESEL</item>
+        <item>CARRENSVAL AT</item>
+        <item>CARRENSVAL MT</item>
+        <item>CERATO FORTE 1.6 AT</item>
+        <item>MORNING LX Z2</item>
+        <item>MPV CARENS || A/T</item>
+        <item>MPV CARENS II M/T</item>
+        <item>NEW PREGIO 12S</item>
+        <item>NEWPICANTOCOSMOSEA/T</item>
+        <item>NEWPICANTOCOSMOSEM/T</item>
+        <item>PICANTO</item>
+        <item>PICANTO 1.1 M/T OPT</item>
+        <item>PICANTO COSMO EX AT</item>
+        <item>PICANTO COSMO EX MT</item>
+        <item>PICANTO EX 1.1 A/T</item>
+        <item>PICANTO EX 1.1 M/T</item>
+        <item>PICANTO GLS A/T</item>
+        <item>PICANTO GLS M/T</item>
+        <item>PICANTO GLS MT 1.1</item>
+        <item>PICANTO GLX</item>
+        <item>PICANTO SE AT OPT 2</item>
+        <item>PICANTO SE AT STD</item>
+        <item>PICANTO SE M/T OPT1</item>
+        <item>PICANTO SE M/T STD</item>
+        <item>PICANTO SE MT OPT 2</item>
+        <item>PICANTO TA 1.2 M/T</item>
+        <item>PREGIO 2.7 M/T</item>
+        <item>PRIDE A/T OPTION</item>
+        <item>PRIDE M/T OPTION</item>
+        <item>RIO 1.5 MT</item>
+        <item>RIO A/T</item>
+        <item>RIO NB M/T</item>
+        <item>RIO SE 1.4 MT(5P)</item>
+        <item>SEDONA 2.5 V6 AT</item>
+        <item>SEDONA 2.5 V6 MT</item>
+        <item>SORENTO A/T</item>
+        <item>SPORTAGE</item>
+        <item>SPORTAGE AT</item>
+        <item>SPORTAGE 1</item>
+        <item>SPORTAGE MT</item>
+        <item>TRAVELLO 2.7MT OPT 2</item>
+        <item>TRAVELLO 2.7MT OPT I</item>
+        <item>TRAVELLO PS</item>
+        <item>TRAVELLO STD</item>
+        <item>VISTO</item>
+    </string-array>
+    <string-array name="listTipeLandrover">
+        <item>DISCOVERY 3 2.9 AT</item>
+        <item>R ROVER SALLPAM 4400</item>
+        <item>R.ROV S2.7TDV6STD</item>
+        <item>R.ROVER EVOQUE 2.2L</item>
+        <item>RANGE ROVER2.0EVOQUE</item>
+    </string-array>
+    <string-array name="listTipeLexus">
+        <item>CT 200 1.8 H AT</item>
+        <item>LX 570 AT</item>
+        <item>NX 200T 2.0 AT</item>
+        <item>RX 270 STD A/T</item>
+    </string-array>
+    <string-array name="listTipeMazda">
+        <item>52,0 L A/T</item>
+        <item>BIANTE 2.0 AT</item>
+        <item>CX - 7</item>
+        <item>CX 5 GRAND TOURING</item>
+        <item>CX 5 SPORTY</item>
+        <item>CX 5 TOURING R17</item>
+        <item>CX 5 TOURING R19</item>
+        <item>E 2000</item>
+        <item>MAZDA 2 V A/T</item>
+        <item>MAZDA 2 GT A/T</item>
+        <item>MAZDA 2 IPM R A/T</item>
+        <item>MAZDA 2 IPM V A/T</item>
+        <item>MAZDA 2 IPM V M/T</item>
+        <item>MAZDA 2 SDN 1.5 V AT</item>
+        <item>MAZDA 3</item>
+        <item>MAZDA 6</item>
+        <item>MAZDA CX7</item>
+        <item>MAZDA CX9</item>
+        <item>MAZDA MX-5</item>
+        <item>MAZDA VX1 R MT</item>
+        <item>MAZDA VX1 V MT</item>
+        <item>MAZDA2 HB SPORT AT</item>
+        <item>MAZDA2 HB SPORT MT</item>
+        <item>MAZDA2 R A/T</item>
+        <item>MAZDA2 R M/T</item>
+        <item>MAZDA2 S A/T</item>
+        <item>MAZDA2 S M/T</item>
+        <item>MAZDACX72.3LAT4X2LOW</item>
+        <item>NEW BT-50 SC 4X2 2.2</item>
+        <item>NEW CX3 TOR 2.0 AT</item>
+        <item>NEW MAZDA 2 RZ A/T</item>
+        <item>NEW MAZDA 5 2.5 A/T</item>
+        <item>NEW MAZDA 8</item>
+        <item>NEW MAZDA BIANTE</item>
+        <item>NEW MAZDA2 R 1.5 A/T</item>
+        <item>NEW MAZDA2 R 1.5 M/T</item>
+        <item>NEW MAZDA2 S 1.5 A/T</item>
+        <item>NEW MAZDA2 S 1.5 M/T</item>
+        <item>RX - 8</item>
+        <item>TRIBUTE 2.0L 4X2 A/T</item>
+        <item>TRIBUTE 2.3L 4X2 A/T</item>
+        <item>TRIBUTE 3.0 AT 4X4</item>
+        <item>B 2500 DOUBLECAB 4X4</item>
+        <item>B 2500 SINGLE CAB 4X2</item>
+        <item>BT 50 RC 2.5 M/T MID</item>
+        <item>BT FC 4X4 2.5L</item>
+        <item>BT-50 4X2 M/T</item>
+        <item>BT-50 DC 4X4 2.5 HI</item>
+        <item>BT-50 DC 4X4 2.5 LOW</item>
+        <item>BT-50 DC 4X4 2.5 MID</item>
+        <item>BT50DC 4X4 2.5PROMID</item>
+        <item>DOUBLE CABIN BT-50</item>
+        <item>SINGLE CAB 4X4 BT-50</item>
+    </string-array>
+    <string-array name="listTipeMercedes">
+        <item>AXOR 4843 K 8X4 AMT</item>
+        <item>B170 AT</item>
+        <item>BENZ 180</item>
+        <item>BENZ 300 E</item>
+        <item>C 180 AT</item>
+        <item>C 200</item>
+        <item>C 230 MATIC</item>
+        <item>C 240</item>
+        <item>C 250 AVANTGARDE AMG</item>
+        <item>C 250 COUPE MAG</item>
+        <item>C 300 2.9 EST CBU AT</item>
+        <item>C280 2.8 A/T</item>
+        <item>CLA 200 1.6 AT</item>
+        <item>E 200 1.8 CGI AT CKD</item>
+        <item>Ε 2ΟΟΚ Α/T</item>
+        <item>E 230 A/T</item>
+        <item>E 240 AT</item>
+        <item>E 260</item>
+        <item>320 AT</item>
+        <item>E 400 3.0 AT CKD</item>
+        <item>E250 CGI AVANTGARDE</item>
+        <item>E250CGICABRIOELET AT</item>
+        <item>E350 3.5COUPE AT CBU</item>
+        <item>FORTWO 52KW MHD AT</item>
+        <item>GLA 200 1.5 AT</item>
+        <item>GLC 250 AT</item>
+        <item>MERCEDES A 150 A/T</item>
+        <item>MERCY 800 ATL 4.0 M/T</item>
+        <item>ML 250 AT CDI CKD</item>
+        <item>ML 350 4WD AT</item>
+        <item>NEW E 280 ELG</item>
+        <item>R 300 3.0 L CBU AT</item>
+        <item>S 300L MI</item>
+        <item>S 320 L A/T</item>
+        <item>SLK 200 KOMP A/T</item>
+        <item>SLS 6.2 AMG AT</item>
+    </string-array>
+    <string-array name="listTipeMini">
+        <item>COOPER 5 DOOR 1.5 AT</item>
+    </string-array>
+    <string-array name="listTipeMiitsubishi">
+        <item>COLT L 300</item>
+        <item>COLT T 120 SS</item>
+        <item>COLT T 120 SS 1500CC</item>
+        <item>COLT FE104</item>
+        <item>COLT FE304</item>
+        <item>COLT L 300</item>
+        <item>DELICA D5 2.0L 4X2</item>
+        <item>EN 517 HL + BAK BESI</item>
+        <item>EN 527 ML+BAK BESI</item>
+        <item>EN 527 ML2</item>
+        <item>EN 527 ML2+BAK</item>
+        <item>EN 527 ML2+DUMP</item>
+        <item>EN 527 ML2+TANGKI</item>
+        <item>EN 527 MS</item>
+        <item>EN 627 250PS</item>
+        <item>ESPASIO</item>
+        <item>FE 304</item>
+        <item>FE 304 BOX</item>
+        <item>FE 304 ENGKEL</item>
+        <item>FE 334 + BOX</item>
+        <item>FE 334 + DUMP</item>
+        <item>FE 334 H</item>
+        <item>FE 334 HD</item>
+        <item>FE 347 CH</item>
+        <item>FE 347+DUMP</item>
+        <item>FE 349 + BAK BESI</item>
+        <item>FE 349 + DUMP</item>
+        <item>FE 349 + TANGKI</item>
+        <item>FE 349 BAK KAYU</item>
+        <item>FE 349 H</item>
+        <item>FE 349 HD</item>
+        <item>FE 349 HD + DUMP</item>
+        <item>FE 71</item>
+        <item>FE 71 + BAK</item>
+        <item>FE 71 + BOX</item>
+        <item>FELI10 PS</item>
+        <item>FE 71 110PS 4.0 M/T</item>
+        <item>FE 7 BC</item>
+        <item>FE 7 BC + KRS</item>
+        <item>FE 71 L</item>
+        <item>FE 71 LBC</item>
+        <item>FE 71 PS</item>
+        <item>FE 71 PS BOX</item>
+        <item>FE 71 PS+BAK BESI</item>
+        <item>FE 71+ KAROSERI+AC</item>
+        <item>FE 71 +KRS BUS 4X4</item>
+        <item>FE 73</item>
+        <item>FE 73 - BAK</item>
+        <item>FE 73 + BOX</item>
+        <item>FE 73 + DUMP</item>
+        <item>FE 73 + TANGKI</item>
+        <item>FE 73 HD</item>
+        <item>FE 73 HD</item>
+        <item>FE 73 HD + BAK</item>
+        <item>FE 73 HD + BOX</item>
+        <item>FE 73 HD + TANGKI</item>
+        <item>FE 73 MT 4X2</item>
+        <item>FE 74</item>
+        <item>FE 74 + BAK</item>
+        <item>FE 74 + BOX</item>
+        <item>FE 74 + BUS</item>
+        <item>FE 74 + DUMP</item>
+        <item>FE 74 + TANGKI</item>
+        <item>FE 74 125PS STD DUMP</item>
+        <item>FE 74 HD</item>
+        <item>FE 74 HD</item>
+        <item>FE 74 HD + BAK</item>
+        <item>FE 74 HD + BOX</item>
+        <item>FE 74 HD + DUMP</item>
+        <item>FE 74 HD + TANGKI</item>
+        <item>FE 74 HD 125 PS</item>
+        <item>FE 74 HDV</item>
+        <item>FE 74 HDV + BOX</item>
+        <item>FE 74 HDV + DUMP</item>
+        <item>FE 74 HDV + WING BOX</item>
+        <item>FE 74 HDY+BAK BESI</item>
+        <item>FE 74 L</item>
+        <item>FE 74 L + BAK BESI</item>
+        <item>FE 74 L + BAK KAYU</item>
+        <item>FE 74 L + BOX BESI</item>
+        <item>FE 74 S</item>
+        <item>FE 74 S + BAK BESI</item>
+        <item>FE 74 S M/T</item>
+        <item>FE 74 S+BAK</item>
+        <item>FE 74 S+BOX</item>
+        <item>FE 74 S+DUMP</item>
+        <item>FE 74 S+TANGKI</item>
+        <item>FE 74HDV + BAK KAYU</item>
+        <item>FE 74S + BOX BESI</item>
+        <item>FE 74 HDV + DUMP</item>
+        <item>FE 74 HDV + WING BOX</item>
+        <item>FE 74 HDY+BAK BESI</item>
+        <item>FE 74 L</item>
+        <item>FE 74 L + BAK BESI</item>
+        <item>FE 74 L + BAK KAYU</item>
+        <item>FE 74 L + BOX BESI</item>
+        <item>FE 74 S</item>
+        <item>FE 74 S + BAK BESI</item>
+        <item>FE 74 S M/T</item>
+        <item>FE 74 S+BAK</item>
+        <item>FE 74 S+BOX</item>
+        <item>FE 74 S+DUMPnya</item>
+        <item>FE 745 125 PS</item>
+        <item>FE 75</item>
+        <item>FE 75 + BAK KAYU</item>
+        <item>FE 75 S HD+BAK</item>
+        <item>FE 75 S HD+BOX</item>
+        <item>FE 75 S HD+DUMP</item>
+        <item>FE 75 S HD+TANGKI</item>
+        <item>FE 75 S+BAK</item>
+        <item>FE 75 S+BOX</item>
+        <item>FE 75 S+DUMP</item>
+        <item>FE 75 SHDX HGG LMT</item>
+        <item>FE 84</item>
+        <item>FE 84 + BAK KAYU</item>
+        <item>FE 84 + DUMP</item>
+        <item>FE 84 + KAROSERI</item>
+        <item>FE 84 136 PS</item>
+        <item>FE 84 BC</item>
+        <item>FE 84 BC</item>
+        <item>FE 84 BC + KRS + AC</item>
+        <item>FE 84 CH</item>
+        <item>FE 84 G BC + KRS</item>
+        <item>FE 84 GHDL</item>
+        <item>FE 84 HDL</item>
+        <item>FE 84 HDL</item>
+        <item>FE 84 HDL + BAK BESI</item>
+        <item>FE 84 HDL + BOX</item>
+        <item>FE 84 HDL + DUMP</item>
+        <item>FE 84 HDL+BAK KAYU</item>
+        <item>FE 84+KRS BUS+AC4X4</item>
+        <item>FE SHDX HGG+BAK BESI</item>
+        <item>FE SHDX HGG+BAK KAYU</item>
+        <item>FE SHDX HGG+DUMP</item>
+        <item>FE SHDX HGG+TANGKI</item>
+        <item>FE SUPER HD</item>
+        <item>FE SUPER HD+DUMP</item>
+        <item>FE SUPER HD136PS+BOX</item>
+        <item>FE SUPER HDPS+BAK</item>
+        <item>FE SUPER HDPS+DUMP</item>
+        <item>FE SUPER HDX</item>
+        <item>FE SUPER HDX + BAK</item>
+        <item>FE SUPER HDX + DUMP</item>
+        <item>FE SUPER HDX + TANKI</item>
+        <item>FE SUPER HDX HGH GER</item>
+        <item>FE SUPERHD+TANKI</item>
+        <item>FE SUPERHDPS+BK BESI</item>
+        <item>FE-334</item>
+        <item>FE334 LIGHTTRUCK+BAK</item>
+        <item>FE71 LONG + BAK</item>
+        <item>FE71 LONG + BOX</item>
+        <item>FE71 LONG CHASIS+BOX</item>
+        <item>FEZILONG CHS+BK BESI</item>
+        <item>FE74HD 125PS+TANGKI</item>
+        <item>FE74HDV 125PS+TANGKI</item>
+        <item>FE74HDV+DUMP</item>
+        <item>FE74S 125P+BKKAYU</item>
+        <item>FE75 SHDX CHASIS</item>
+        <item>FE75SHDX DUMP TINGGI</item>
+        <item>FE83 BC+KAROSERI BUS</item>
+        <item>FE84BC + KRS + AC</item>
+        <item>FE84G BC (4X2) MT</item>
+        <item>FE84G BC (4X2)MT+KRS</item>
+        <item>FF 84 HDI + BAK BESI</item>
+        <item>FJ 2528 6X4+MIXER</item>
+        <item>FM 517 HL</item>
+        <item>FM 517 HL + BAK</item>
+        <item>FM 517 HL LONG</item>
+        <item>FM 517 HL+DUMP</item>
+        <item>FM 517 HS</item>
+        <item>FM 517 HS + BAK BESI</item>
+        <item>FM 517 HS WING BOX</item>
+        <item>FM 517 HS+DUMP</item>
+        <item>FM 517 HS+TANGKI</item>
+        <item>FM 517HL LNG BAKBESI</item>
+        <item>FM 517HL+BAKBESI</item>
+        <item>FM517HL + TANGKI</item>
+        <item>FM517HS + BAK KAYU</item>
+        <item>FM517HS+TRAILLER3AXL</item>
+        <item>FN517 ML2 6X2+TANGKI</item>
+        <item>FN517 ML2+BAK BESI</item>
+        <item>FN517ML26X2+BAK KAYU</item>
+        <item>FN517 ML2SPRLONG6X2MT</item>
+        <item>FN527M3L</item>
+        <item>FN527ML(6X4)220PS</item>
+        <item>FN527MS(6X4)220 PS</item>
+        <item>FT 517 VX</item>
+        <item>FU540UZ</item>
+        <item>FUSO FL1217</item>
+        <item>FUSO FJ2523-R</item>
+        <item>FUSO FM 517 H</item>
+        <item>FUSO EN 527 M2</item>
+        <item>FUSO EN 527 ML + BAK</item>
+        <item>FUSO FN 527 ML+ DUMP</item>
+        <item>FUSO FN 527 MS+DUMP</item>
+        <item>FUSO FN 527 MS+TANGKI</item>
+        <item>FUSO FN 617 ML (6X2)</item>
+        <item>FUSO FN517 ML2</item>
+        <item>FUSO FN517HL+TANGKI</item>
+        <item>FUSO FU 418 U + DUMP</item>
+        <item>FV 416 ) + MIXER</item>
+        <item>GALANT DOHC</item>
+        <item>GALLANT VR</item>
+        <item>GRANDIS</item>
+        <item>GRANDIS</item>
+        <item>GRDISGLSINCSI124SOHC</item>
+        <item>GRDISGT INCSI24SOHC</item>
+        <item>I 120 SS PU STD 1.5</item>
+        <item>KUDA</item>
+         <item>KUDA DIAMOND 1.6</item>
+         <item>KUDA DIAMOND 2000</item>
+         <item>KUDA GLS DIESEL</item>
+         <item>KUDA GRANDIA</item>
+         <item>KUDA GRANDIA 1.6</item>
+         <item>KUDA GRANDIA 2.0</item>
+         <item>KUDA VA 1 W PL</item>
+         <item>KUDA VB5W</item>
+        <item>L200 STRADA DBL CAB</item>
+        <item>L200 STRADA DC</item>
+        <item>L200 2.5L DOUBLECAB</item>
+        <item>L200 MEGA CAB</item>
+        <item>L200 SC</item>
+        <item>L200 STRADA</item>
+        <item>L200 SUPER PICK UP</item>
+        <item>L300</item>
+        <item>L300 BC OPTIONAL</item>
+        <item>L300 MB AMBULANCE</item>
+        <item>L300 MB HR DLX+AC</item>
+        <item>L300 MB HR STD</item>
+        <item>L300 2.5 CAB CHS</item>
+        <item>L300 3WAY</item>
+        <item>L300 BOX</item>
+        <item>L300 DEKRA+BOX</item>
+        <item>L300 FD</item>
+        <item>L300 PU FB</item>
+        <item>L300 STD 2.5 M/T</item>
+        <item>L300 STD 2.5 M/T+BOX</item>
+        <item>LANCER</item>
+        <item>LANCER EVO III GLX</item>
+        <item>LANCER GLXI</item>
+        <item>LANCER SOHC</item>
+        <item>MAVEN GLS</item>
+        <item>MAVEN GLX</item>
+        <item>MIRAGE EXCEED AT</item>
+        <item>MIRAGE GLS AT</item>
+        <item>MIRAGE GLX MT</item>
+        <item>MIRAGE SPORT</item>
+        <item>NEW GALANT</item>
+        <item>NEW LANCER</item>
+        <item>NEW LANCER GLXI</item>
+        <item>OUTLANDER PX A/T</item>
+        <item>OUTLANDER PX LIMITED</item>
+        <item>OUTLANDER SPRT PX AT</item>
+        <item>OUTLANDER SPTPX4X2AT</item>
+        <item>OUTLANDER2.0PXACT AT</item>
+        <item>OUTLANDERSPTGLS4X2AT</item>
+        <item>OUTLANDERSPTGLX4X2MT</item>
+        <item>PAJERO</item>
+        <item>PAJERO DAKAR 4X2 AT</item>
+        <item>PAJERO DAKAR 4X2 M/T</item>
+        <item>PAJERO DAKAR 4X4 AT</item>
+        <item>PAJERO DAKAR 4X4 MT</item>
+        <item>PAJERO GLX 4X2 M/T</item>
+        <item>PAJERO GLX 4X4 M/T</item>
+        <item>PAJERO SPRT SUPR EXC</item>
+        <item>PAJERO SPT DKR2.4LME</item>
+        <item>PAJERO SPT EXC 2.5</item>
+        <item>PAJEROSPORT V6 4X2 AT</item>
+        <item>PAJEROSPR RF2.4ATDSL</item>
+        <item>PAJEROSPR2.4DKRAT 4X4</item>
+        <item>PAJEROSPR2.4DKRULTAT</item>
+        <item>PAJEROSPRT 2.5D EA/T</item>
+        <item>PAJEROSPRT EXC AT4X2</item>
+        <item>PAJEROSPRT EXC AT4X4</item>
+        <item>PAJEROSPRT GLS2.5M/T</item>
+        <item>PAJEROSPRT GLX MT4X4</item>
+        <item>PAJEROSPRT 2,5HP 4X2 AT</item>
+        <item>PAJEROSPRTGLSAX2 MT</item>
+        <item>S TRITON DCEXC HP MT</item>
+        <item>STRADA CR 2,8L SC4X2</item>
+        <item>STRADA TRITON DC EXC</item>
+        <item>STRADA TRITON DC GLS</item>
+        <item>STRADA TRITON DC GLX</item>
+        <item>STRADA TRITON DC HDX</item>
+        <item>STRADA TRITON SC 2.8</item>
+        <item>STRADA TRITON SC GLX</item>
+        <item>STRADA TRITON SC HDX</item>
+        <item>STRADATRITONGLXSC4X2</item>
+        <item>STRD TRITON DCEXC AT</item>
+        <item>T 1 20 MPI 1.5</item>
+        <item>T 120 PU 3 WAY</item>
+        <item>T 120 SP</item>
+        <item>T120 SS</item>
+        <item>T 120 SS PU STD 1.5</item>
+        <item>I 120 SS 1.5</item>
+        <item>T 120 SS FB 1.5</item>
+        <item>T 120 SS FB+BOX</item>
+        <item>T 120 SS JUMBO</item>
+        <item>I 120 SS PU FD</item>
+        <item>T 120 SS PU SD</item>
+        <item>T 120 SS PU SPD</item>
+        <item>T 120SS 1.5 WD</item>
+        <item>T120SS MPL 1.5 PU FD</item>
+        <item>TRITON DC GLS AB</item>
+        <item>TRITON SC HDX 4X4 MT</item>
+        <item>XPANDER 1.5 EXC</item>
+        <item>XPANDER 1.5 EXC AERO</item>
+        <item>XPANDER 1.5 EXC AT</item>
+        <item>XPANDER 1.5 EXC SPC</item>
+        <item>XPANDER 1.5 GLS</item>
+        <item>XPANDER 1.5 GLS AERO</item>
+        <item>XPANDER 1.5 GLS SPC</item>
+        <item>XPANDER 1.5 GLX</item>
+        <item>XPANDER 1.5 GLX AERO</item>
+        <item>XPANDER 1.5 GLX SPC</item>
+        <item>XPANDER 1.5 SPR AT</item>
+        <item>XPANDER 1.5 SPT AERO</item>
+        <item>XPANDER 1.5 ULT AT</item>
+        <item>XPANDER 1.5EXC AERO+</item>
+        <item>XPANDER 1.5GLS AERO+</item>
+        <item>XPANDER 1.5GLX AERO+</item>
+        <item>XPANDER1.5EXC AERO AT</item>
+        <item>XPANDER1.5EXC AT SPC</item>
+        <item>XPANDER1.5EXCAERO+AT</item>
+        <item>XPANDER1.5SPR AT SPC</item>
+        <item>XPANDER1.5SPT AEROAT</item>
+        <item>XPANDERI.5SPTAERO+AT</item>
+        <item>XPANDER1.5ULT AEROAT</item>
+        <item>XPANDER1.5ULT AT SPC</item>
+        <item>XPANDERL.SULTAERO+AT</item>
+    </string-array>
+    <string-array name="listTipeMorris">
+        <item>MINI COOPER 1.6</item>
+    </string-array>
+    <string-array name="listTipeNissan">
+        <item>ALL N-TEANA 2.5V6 AT</item>
+        <item>ALMERA 1.2 MT</item>
+        <item>CWA 260 M+DUMP</item>
+        <item>CWA 260 MX</item>
+        <item>CWA 260 MX + DUMP</item>
+        <item>CWA 260 SX</item>
+        <item>CWA260MTRTN+BAKBESI</item>
+        <item>CWM 330 HT</item>
+        <item>DOUBLE CABIN 4X4</item>
+        <item>ELGRAND</item>
+        <item>EVALIA 1.5 XV AT</item>
+        <item>FRNTIER NVRA2.5DCA/T</item>
+        <item>FRNTR-NP3004X4WDMT5S</item>
+        <item>FRNTR-NVR2.5DCMTSSPD</item>
+        <item>FRONTIER NVRA 2.5A/T</item>
+        <item>FRONTIER NVRA 2.5M/T</item>
+        <item>FRONTIR NVR VL HI AT</item>
+        <item>FRONTIR NVR VL HI MT</item>
+        <item>GRAND LIVINA S 1.5MT</item>
+        <item>GRD LIVINA 1,8HWSA/T</item>
+        <item>GRD LYINA 1.5 A/TSV</item>
+        <item>GRD LIVINA 1.5 XGEAR</item>
+        <item>GRD LIVINA 1.5A/T XV</item>
+        <item>GRD LIVINA 1.5M/T SV</item>
+        <item>GRD LIVINA 1.5M/T XV</item>
+        <item>GRD LIVINA 1.8A/T XV</item>
+        <item>GRD LIVINA 1.8HWSM/T</item>
+        <item>GRD LIVINA 1.8M/T XY</item>
+        <item>GRD LIVINA 1.8XY A/T</item>
+        <item>GRD LIVINA 1.8XV M/T</item>
+        <item>GRD LIVINA HWS1.5A/T</item>
+        <item>GRD LIVINA HWST.5M/T</item>
+        <item>GRDLIVINA 1.5 ULT AT</item>
+        <item>GRDLIVINA 1.5 XV CVT</item>
+        <item>GRDLIVINA 1.5LSV CVT</item>
+        <item>GRDLIVINA 1.8A/T ULT</item>
+        <item>GRDLIVINA 1.8M/T ULT</item>
+        <item>GRDLIVINA1.5XGEARCVT</item>
+        <item>GRNDLVINA1.5ATAUTECH</item>
+        <item>GRNLIVINA SV 1.5 M/T</item>
+        <item>GRNLIVINA SV 1.8 A/T</item>
+        <item>GRNLIVINA SV 1.8 M/T</item>
+        <item>GRNLIVINA ULT 1.8A/T</item>
+        <item>GRNLIVINA ULT 1.8M/T</item>
+        <item>GRNLIVINA XV 1.5 A/T</item>
+        <item>GRNLIVINA XV 1.5 M/T</item>
+        <item>JUKENA CVT AT</item>
+        <item>JUKENA CVT RX AT</item>
+        <item>LATIO 1.5</item>
+        <item>LATIO 1.8 A/T</item>
+        <item>LIVINA 1.5 A/T XR</item>
+        <item>LIVINA 1.5 M/T XR</item>
+        <item>LIVINA 1.5 SV M/T</item>
+        <item>LIVINA X GEAR 1.5A/T</item>
+        <item>LIVINA X GEAR 1.5M/T</item>
+        <item>LIVINA XGEAR 1.5 A/T</item>
+        <item>LIVINA XGEAR 1.5 M/T</item>
+        <item>MARCH 1.2L AT</item>
+        <item>MARCH 1.2L MT</item>
+        <item>MARCH 1.2L MI NISMO</item>
+        <item>MARCH 1.2L XS</item>
+        <item>MARCH 1.4</item>
+        <item>MARCH 1300CC</item>
+        <item>MURANO 2.5 A/T</item>
+        <item>MURANO 3.5 A/T</item>
+        <item>NEW MARCH 1.5 A/T</item>
+        <item>NEW MARCH 1.5 M/T</item>
+        <item>NEW LIVINA 1.5 E</item>
+        <item>NEW LIVINA 1.5 EL</item>
+        <item>NEW LIVINA 1.5 EL AT</item>
+        <item>NEW LIVINA 1.5 VE AT</item>
+        <item>NEW LIVINA 1.5 VL AT</item>
+        <item>NEW TEANA V6 2.3 A/T</item>
+        <item>NEW XTRAIL 2.0 CVT</item>
+        <item>NEW XTRAIL 2.0 MT</item>
+        <item>NEW XTRAIL 2.5 CVT</item>
+        <item>PK 215 R</item>
+        <item>PK 215 R+ BOX</item>
+        <item>PK 215 R+WING BOX</item>
+        <item>PK 260 CT</item>
+        <item>PK 260 CT + TRAILER</item>
+        <item>PK 260 R+WING BOX</item>
+        <item>PK215 H</item>
+        <item>SERENA</item>
+        <item>SERENA AUTEOH</item>
+        <item>SERENA CT 2.0 A/T</item>
+        <item>SERENA HIGHWAY</item>
+        <item>SERENA HIGHWAY 2.0A/T</item>
+        <item>SUNNY B13</item>
+        <item>TEANA</item>
+        <item>TERANO GRANDROAD FI</item>
+        <item>TERANO GRANDROAD GI</item>
+        <item>TERANO KINGSROAD F1</item>
+        <item>TERANO KINGSROAD F2</item>
+        <item>TERANO KINGSROAD K1</item>
+        <item>TERANO KINGSROAD K2</item>
+        <item>TERANO SPIRIT</item>
+        <item>TERANO SPIRIT S1</item>
+        <item>TERANO SPIRIT S3</item>
+        <item>TERRANO KINGSROAD K3</item>
+        <item>RNO SPRT S2 2.5M/T</item>
+        <item>X - TRAIL ST</item>
+        <item>X - TRAIL XT</item>
+        <item>X TRAIL</item>
+        <item>X-TRAIL 2.0 AT CVT</item>
+        <item>X-TRAIL 2.0 AT HYB</item>
+        <item>XTRAIL 2.0 M/T</item>
+        <item>XTRAIL 4WD 2.5 A/T</item>
+        <item>XTRAIL ST 2.5 A/T</item>
+        <item>XTRAIL STT 2.0 M/T</item>
+        <item>XTRAIL STT 2.5 A/T</item>
+        <item>XTRAIL XT 2.5 A/T</item>
+    </string-array>
+    <string-array name="listTipeOpel">
+        <item>BLAZER DOHC</item>
+        <item>BLAZER ER DOHC 01</item>
+        <item>BLAZER MONTERA</item>
+        <item>BLAZER MONTERA SOHC</item>
+    </string-array>
+    <string-array name="listTipePeugeot">
+        <item>B206 A/T</item>
+        <item>206 M/T</item>
+        <item>207 CC 1.6 L A/T</item>
+        <item>207 SX AT</item>
+        <item>3008 TURBO A/T</item>
+        <item>307 A/T</item>
+        <item>307 SW 2.0 A/T</item>
+        <item>308 A/T</item>
+        <item>408 2.0 AT</item>
+        <item>PARTNER 1.4</item>
+    </string-array>
+    <string-array name="listTipePorsche">
+        <item>CAYENNE</item>
+    </string-array>
+    <string-array name="listTipeProton">
+        <item>EXORA 1.6 A/T HGL</item>
+        <item>EXORA 1.6 A/T MDL</item>
+        <item>EXORA 1.6 L A/T FL</item>
+        <item>EXORA 1.6 L M/T</item>
+        <item>EXORA 1.6 M/T MDL</item>
+        <item>EXORA B LINE STAR</item>
+        <item>EXORA 1.6 L M/T</item>
+        <item>EXORA 1.6 M/T MDL</item>
+        <item>EXORA B LINE STAR</item>
+        <item>EXORA 1.6 L M/T</item>
+        <item>EXORA 1.6 M/T MDL</item>
+        <item>EXORA B LINE STAR</item>
+        <item>EXORA EXECUTIVE AT</item>
+        <item>EXORA EXECUTIVE MT</item>
+        <item>EXORA STAR B LINE AT</item>
+        <item>EXORA STAR FL 1.6 AT</item>
+        <item>EXORA STAR FLX 1.6AT</item>
+        <item>EXORA STAR MT</item>
+        <item>GEN 2 PSN 1.6 ML M/T</item>
+        <item>GEN-2 1.6 A/T</item>
+        <item>GEN-2 1.6 M/T</item>
+        <item>NEO 1,6L M/T</item>
+        <item>NEO 1.6 AT HATCHBACK</item>
+        <item>NEO CPS</item>
+        <item>NEW EXORA PRIME AT</item>
+        <item>NEW SAGA 1.3 A/T</item>
+        <item>NEW SAGA 1.3 M/T</item>
+        <item>PERSONA AT HIGH LINE</item>
+        <item>PERSONA ELEGANCE A/T</item>
+        <item>PERSONA ELEGANCE M/T</item>
+        <item>PERSONA MT MEDIUM</item>
+        <item>PREVE 1.6 AT</item>
+        <item>PROTON EXORA BOLD AT</item>
+        <item>PROTON EXORA STAR AT</item>
+        <item>SAGA FL-X</item>
+        <item>SAVVY 1.2 A/T</item>
+        <item>SAVVY 1.2 M/T</item>
+        <item>STAR SUPREME AT</item>
+        <item>STAR SUPREME MT</item>
+        <item>SUPRIMA S 1.6 AT</item>
+    </string-array>
+    <string-array name="listTipeRangerover">
+        <item>RANGE ROVER 4.4V A/T</item>
+    </string-array>
+    <string-array name="listTipeRenault">
+        <item>DUSTER RXL 1.5 4X2MT</item>
+        <item>KWID 1.0 SCE</item>
+    </string-array>
+    <string-array name="listTipeSubaru">
+        <item>FORESTER 2.0 X AT</item>
+        <item>LEGACY 2.01 AWD CVT</item>
+        <item>XV 2.01 AWD CVT</item>
+    </string-array>
+    <string-array name="listTipeSuzuki">
+        <item>A1J310F GX (4X2) M/T</item>
+        <item>AERIO</item>
+        <item>AERIO A/T</item>
+        <item>AERIO M/T</item>
+        <item>APV2 1,5</item>
+        <item>APV .GA</item>
+        <item>APV .GL</item>
+        <item>APV .GX</item>
+        <item>APV 1.5</item>
+        <item>APV BLINDVAND</item>
+        <item>APV BOX</item>
+        <item>APV CHASIS</item>
+        <item>APV CHASIS+BOX</item>
+        <item>APV BLIND VAN HIGH</item>
+        <item>APV BLIND VAN LOW</item>
+        <item>APV GE</item>
+        <item>APV GE 1.5 M/T FF</item>
+        <item>APV GE 1.5 M/T FTA</item>
+        <item>APV GE M/T</item>
+        <item>APV GL AMBULANCE</item>
+        <item>APV GL ARENA 1.5 M/T</item>
+        <item>APV GL STD 1.5 M/T</item>
+        <item>APV GX 1.5 A/T</item>
+        <item>APV GX 1.5 M/T</item>
+        <item>APV GX A/T</item>
+        <item>APV GX ARENA 1.5 A/T</item>
+        <item>APV GX ARENA 1.5 M/T</item>
+        <item>APV LUXURY AT R15</item>
+        <item>APV LUXURY AT R17</item>
+        <item>APV LUXURY MT R15</item>
+        <item>APV LUXURY MT R17</item>
+        <item>APV MEGA CARRY 1.5FD</item>
+        <item>APV MEGA CARRY 1.5WD</item>
+        <item>APV MEGA CARRY AC+PS</item>
+        <item>APV MEGA CARRY BOX</item>
+        <item>APV MEGA CARRY FD PS</item>
+        <item>APV MEGA CARRY PU</item>
+        <item>APV MEGA CARRY XTRA</item>
+        <item>APV SGX ARENA 1.5M/T</item>
+        <item>APVGE-PS ARENA1.5M/T</item>
+        <item>APV PU AC PS</item>
+        <item>APV PU EXTRA AC PS</item>
+        <item>APV2 1,5</item>
+        <item>APVMEGACARRY WDEXTRA</item>
+        <item>APVMEGACARRY X AC+PS</item>
+        <item>APY SGX ARENA 1.5A/T</item>
+        <item>APY MEGA CARRY WD PS</item>
+        <item>BALENO</item>
+        <item>BALENO 1.4 GL</item>
+        <item>BALENO 1.4 GL AT</item>
+        <item>BALENO DX</item>
+        <item>BALENO MT</item>
+        <item>BALENO NEXT G A/T</item>
+        <item>BALENO NEXT G M/T</item>
+        <item>CARRY</item>
+        <item>CARRY 1.0</item>
+        <item>CARRY 1.5+BOX</item>
+        <item>CARRY PU 1.5 FD +BOX</item>
+        <item>CARRY PU 1.5 WD</item>
+        <item>CARRY PU FD 1.0 M/T</item>
+        <item>CARRY PU FD 1.5 M/T</item>
+        <item>CARRY PU STD 1.0 M/T</item>
+        <item>CARRY PU STD 1.5 M/T</item>
+        <item>CARRY ST 100</item>
+        <item>CARRY ST 150 F/D</item>
+        <item>CARRY ST 150 W/D</item>
+        <item>CARRY ST100+BOX BESI</item>
+        <item>CARRY REAL VAN</item>
+        <item>CARRY 1500 CC</item>
+        <item>CARRY ADVENTURA</item>
+        <item>CARRY DELUXE REALYAN</item>
+        <item>CARRY FUTURA</item>
+        <item>CARRY GX MB MT</item>
+        <item>CARRY PV 1.0 M/T</item>
+        <item>CARRY ST 100</item>
+        <item>CARRY ST 150 MINIBUS</item>
+        <item>CELLERIO CVT</item>
+        <item>CELLERIO MT</item>
+        <item>CIAZ 1.4</item>
+        <item>DRV 1.5</item>
+        <item>ERTIGA 1.2 DSL HYB</item>
+        <item>ERTIGA 1.4 MC DX</item>
+        <item>ERTIGA 1.4 MC DX AT</item>
+        <item>ERTIGA 1.4 MC SDX</item>
+        <item>ERTIGA DREZA AT</item>
+        <item>ERTIGA DREZA GS AT</item>
+        <item>ERTIGA DREZA GS MT</item>
+        <item>ERTIGA DREZA MT</item>
+        <item>ERTIGA GA M/T</item>
+        <item>ERTIGA GL A/T</item>
+        <item>ERTIGA GL DBL BLOWER</item>
+        <item>ERTIGA GL M/T</item>
+        <item>ERTIGA GL SPORTY A/T</item>
+        <item>ERTIGA GL SPORTY M/T</item>
+        <item>ERTIGA GLS MT</item>
+        <item>ERTIGA GX A/T</item>
+        <item>ERTIGA GX DBL BLOWER</item>
+        <item>ERTIGA GX M/T</item>
+        <item>ERTIGA STD PW</item>
+        <item>ERTIGAGL AT DBL BLWR</item>
+        <item>ERTIGAGX AT DBL BLWR</item>
+        <item>ERTIGAGX AT ELEGANT</item>
+        <item>ERTIGAGX MT ELEGANT</item>
+        <item>ESCUDO</item>
+        <item>ESCUDO 1.6 M/T</item>
+        <item>ESCUDO 2.0</item>
+        <item>ESCUDO 2.0 A/T</item>
+        <item>ESCUDO 2.0 ABS MT</item>
+        <item>ESCUDO 2.0 M/T</item>
+        <item>ESCUDO 2.0 MC/MT</item>
+        <item>ESCUDO NOMADE</item>
+        <item>ESCUDO SE 420</item>
+        <item>ESCUDO XL 7 A/T</item>
+        <item>ESCUDO XL 7 M/T</item>
+        <item>ESCUDOSE416 1.6L 2WD</item>
+        <item>EVERY 1.3</item>
+        <item>EVERY A/T</item>
+        <item>FUTURA</item>
+        <item>FUTURA 1.5 F/D</item>
+        <item>FUTURA 1.5 WD</item>
+        <item>FUTURA ST 1.3</item>
+        <item>FUTURA ST 1.6</item>
+        <item>FUTURA ST 1500</item>
+        <item>FUTURA DX 1.5</item>
+        <item>FUTURA ST 150</item>
+        <item>FUTURA ST 1500</item>
+        <item>GC415V APV DLX</item>
+        <item>GC 415 T (4X2) M/T</item>
+        <item>GRAND ESCUDO 1,6</item>
+        <item>GRAND ESCUDO XL-7A/T</item>
+        <item>GRAND ESCUDO XL-7M/T</item>
+        <item>GRAND VITARA 2.4 A/T</item>
+        <item>GRAND VITARA 2.4 M/T</item>
+        <item>GRAND VITARA JLX MT</item>
+        <item>GRANDVITARA JLX2WDAT</item>
+        <item>GRANDVTR JLX 2.0 A/T</item>
+        <item>GRANDVTR JLX 2.0 M/T</item>
+        <item>GRANDVTR JX 2.0 M/T</item>
+        <item>GRANDGRV 1.5</item>
+        <item>IGNIS 1.2 COM</item>
+        <item>IGNIS 1.2 GL</item>
+        <item>IGNIS 1.2 GL AGS</item>
+        <item>IGNIS 1.2 GL COM AGS</item>
+        <item>IGNIS 1.2 GL LUX AGS</item>
+        <item>IGNIS 1.2 GLX</item>
+        <item>IGNIS 1.2 GLX AT</item>
+        <item>IGNIS 1 2 GX</item>
+        <item>IGNIS 1.2 GX AGS</item>
+        <item>IGNIS 1.2 SPE</item>
+        <item>IGNIS 1.2 SPE AGS</item>
+        <item>IGNISJIMNY CARIBIAN 4 WD</item>
+        <item>KARIMUN</item>
+        <item>KARIMUN DX</item>
+        <item>KARIMUN ESTILO</item>
+        <item>KARIMUN GX</item>
+        <item>KARIMUN WAGON R GS</item>
+        <item>KARIMUN WGN R AGS GL</item>
+        <item>KARIMUN WGN R AGS GS</item>
+        <item>KARIMUN WGN R AGS GX</item>
+        <item>KARIMUN WGN R DILAGO</item>
+        <item>KARIMUNWAGON GX SPRT</item>
+        <item>KARIMUNWAGON R GA MT</item>
+        <item>KARIMUNWAGON R GL MT</item>
+        <item>KARIMUNWAGON R GX MT</item>
+        <item>KARMN ESTILLO 1.1M/T</item>
+        <item>KATANA GX</item>
+        <item>KRM WGN R BLIND VAN</item>
+        <item>MEGA CARRY AC+PS+BOX</item>
+        <item>MEGA CARRY XTRA BOX</item>
+        <item>MEGA CARRY+BOX</item>
+        <item>NEO BALENO 1.5 A/T</item>
+        <item>NEO BALENO 1.5 M/T</item>
+        <item>NEW ERTIGA 1.4 GL</item>
+        <item>NEW ERTIGA 1.4 GL AT</item>
+        <item>NEW ERTIGA 1.4 GX</item>
+        <item>NEW ERTIGA 1.4 GX AT</item>
+        <item>NEW ERTIGA 1.5 SPR</item>
+        <item>NEW ERTIGA 1.5GX ESP</item>
+        <item>NEW ERTIGA 1.5SPR AT</item>
+        <item>NEWERTIGA1.5GX ESPAT</item>
+        <item>NEW ERTIGA GLS MT</item>
+        <item>NEW SPLASH 1.2 A/T</item>
+        <item>NEW SPLASH 1.2 M/T</item>
+        <item>NEW SPLASH GL 1.2 MT</item>
+        <item>NEW SPLASH ST 1.2MT</item>
+        <item>NEW SWIFT GL AT</item>
+        <item>NEW SWIFT GL MT</item>
+        <item>NEW SWIFT GS AT</item>
+        <item>NEW SWIFT GS MT</item>
+        <item>NEW SWIFT GX AT</item>
+        <item>NEW SWIFT GX MT</item>
+        <item>PICK UP 1.0.</item>
+        <item>PU 1.5</item>
+        <item>REAL VAN DX</item>
+        <item>REAL VAN DX 1.5 M/T</item>
+        <item>REAL VAN GX</item>
+        <item>REAL VAN GX 1.5</item>
+        <item>REAL VAN GX 1.5 M/T</item>
+        <item>SIDE KICK DRAG ONE</item>
+        <item>SPLASH GL AT</item>
+        <item>SPLASH GL ELEGANT</item>
+        <item>SPLASH GL MT</item>
+        <item>ST 150 MB GX</item>
+        <item>ST 150 MB DX</item>
+        <item>ST 160 FUTURA</item>
+        <item>SWIFT</item>
+        <item>SWIFT 1.5 GX MT</item>
+        <item>SWIFT A/T</item>
+        <item>SWIFT GL A/T</item>
+        <item>SWIFT GL M/T</item>
+        <item>SWIFT GT 3 M/T</item>
+        <item>SWIFT GT A/T</item>
+        <item>SWIFT GT M/T</item>
+        <item>SWIFT GT2 1.5 A/T</item>
+        <item>SWIFT GT2 1.5 M/T</item>
+        <item>SWIFT GT3</item>
+        <item>SWIFT GT3 A/T</item>
+        <item>SWIFT SPORT AT</item>
+        <item>SWIFT SPORT MT</item>
+        <item>SWIFT ST</item>
+        <item>SWIFT ST 1.5 A/T</item>
+        <item>SX 4 A/T</item>
+        <item>SX 4 M/T</item>
+        <item>SX4 1.4 S-CROSS</item>
+        <item>SX4 1.4 S-CROSS AT</item>
+        <item>SX-4 A/T</item>
+        <item>SX4 CROSSOVER A/T</item>
+        <item>SX4 CROSSOVER M/T</item>
+        <item>SX4 CROSSROAD A/T</item>
+        <item>SX4 CROSSROAD M/T</item>
+        <item>SX-4 M/T</item>
+        <item>SX4 RCI A/T</item>
+        <item>SX4 RCI M/T</item>
+        <item>SX4 X ROAD 1.5 A/T</item>
+        <item>SX4 X ROAD 1.5 M/T</item>
+        <item>VITARA</item>
+        <item>WAGON R 1.0 GL AT</item>
+        <item>WAGON R 1.3 GL AT</item>
+        <item>WAGON R GS</item>
+        <item>WAGON R 1.3 GL AT</item>
+    </string-array>
+    <string-array name="listTipeTata">
+        <item>SUPER ACE 1.4DLS BLV</item>
+        <item>VISTA GZX 1.4 MT</item>
+        <item>ACE EX 2</item>
+        <item>SUPER ACE DLE</item>
+        <item>SUPER ACE DLS</item>
+        <item>XENON</item>
+        <item>XENON 3.0 HD</item>
+        <item>XENON RX</item>
+    </string-array>
+    <string-array name="listTipeTimor">
+        <item>515 I DOHC</item>
+        <item>S 515</item>
+        <item>515 I DOHC</item>
+    </string-array>
+    <string-array name="listTipeToyota">
+        <item>1 ST 1.3 AT</item>
+        <item>86 MT</item>
+        <item>AGYA 1.0 E MT</item>
+        <item>AGYA 1.0 G AT</item>
+        <item>AGYA 1.0 G AT TRD</item>
+        <item>AGYA 1.0 G MT</item>
+        <item>AGYA 1.0 G MT TRD</item>
+        <item>AGYA 1.2 G</item>
+        <item>AGYA 1.2 G AT</item>
+        <item>AGYA 1.2 G AT TRD</item>
+        <item>AGYA 1.2 G TRD</item>
+        <item>AGYA A/T</item>
+        <item>AGYA M/T</item>
+        <item>AGYA S AT TRD</item>
+        <item>AGYA S MT TRD</item>
+        <item>ALL NEW YARIS G A/T</item>
+        <item>ALL NEW YARIS G M/T</item>
+        <item>ALPHARD</item>
+        <item>ALPHARD 2.4 2WD AT</item>
+        <item>ALPHARD 2.4 G</item>
+        <item>ALPHARD 2.4 V AT</item>
+        <item>ALPHARD 2.4 WELCAB X</item>
+        <item>ALPHARD 2.4 X</item>
+        <item>ALPHARD 2.5 G AT</item>
+        <item>ALPHARD 2.5 SC AT</item>
+        <item>ALPHARD 3.5</item>
+        <item>ALPHARD V 3.0</item>
+        <item>ALTIS</item>
+        <item>ALTIS G</item>
+        <item>ALTIS G A/T M1</item>
+        <item>ALTIS G M/T M1</item>
+        <item>ALTIS J M/T M1</item>
+        <item>ALTIS V AT</item>
+        <item>AVANZA</item>
+        <item>AVANZA F601RM-GMDEJ</item>
+        <item>AVANZA 1.3 E</item>
+        <item>AVANZA 1.3 G</item>
+        <item>AVANZA E 1,3 AUTOMTC</item>
+        <item>AVANZA E 1,3 STD MT</item>
+        <item>AVANZA E 1.3MT DU</item>
+        <item>AVANZA E M/T</item>
+        <item>AVANZA E VVT-I</item>
+        <item>AVANZA G 1,3 AUTOMTC</item>
+        <item>AVANZA G 1.3 M/T</item>
+        <item>AVANZA G A/T</item>
+        <item>AVANZA G M/T</item>
+        <item>AVANZA G VVT-I</item>
+        <item>AVANZA GRAND</item>
+        <item>AVANZA S</item>
+        <item>AVANZA S VVT-I A/T</item>
+        <item>AVANZA S VVT-I M/T</item>
+        <item>AVANZA VELOZ 1.3 AT</item>
+        <item>AVANZA VELOZ 1.5 AT</item>
+        <item>AVANZA VELOZ 1.5 MT</item>
+        <item>AVANZA1.5G MT LUXERY</item>
+        <item>AVANZAVELOZ1,5GATLUX</item>
+        <item>AVANZAVELOZ1,5GMTLUX</item>
+        <item>AVANZAVELOZ1.5A/TLUX</item>
+        <item>AVANZAVELOZI.5M/TLUX</item>
+        <item>CALYA 1.2 E</item>
+        <item>CALYA 1.2 E AT</item>
+        <item>CALYA 1.2 E STD</item>
+        <item>CALYA 1.2 G</item>
+        <item>CALYA 1.2 G AT</item>
+        <item>CAMRY 2.4</item>
+        <item>CAMRY 2.4 A/T M1</item>
+        <item>CAMRY 2.4 M/T M1</item>
+        <item>CAMRY 3.0 A/T</item>
+        <item>CAMRY G 2.4 A/T</item>
+        <item>CAMRY G 2.4 A/T LUX</item>
+        <item>CAMRY Q 3.5 A/T</item>
+        <item>CAMRY SXV 2OR</item>
+        <item>CAMRY V 2.4 A/T</item>
+        <item>CAMRY V 2.4 A/T LUX</item>
+        <item>CHR 1.8 CVT</item>
+        <item>COROLLA</item>
+        <item>CORONA ABSOLUTE</item>
+        <item>CROWN 3.0L MT LXS</item>
+        <item>CROWN ROYAL SALON</item>
+        <item>DYNA</item>
+        <item>DYNA 110 ET + TANGKI</item>
+        <item>DYNA 110 ET BAK BESI</item>
+        <item>DYNA 110 ET NON PS</item>
+        <item>DYNA 110 ET+BAKKAYU</item>
+        <item>DYNA 110 ET+DUMP</item>
+        <item>DYNA 110 ETPS+BOX</item>
+        <item>DYNA 110 FT</item>
+        <item>DYNA 110 FT PS + BOX</item>
+        <item>DYNA 110 FT+BAK BESI</item>
+        <item>DYNA 110 FT+BAKKAYU</item>
+        <item>DYNA 110 PS ST + BOX</item>
+        <item>DYNA 110 ST</item>
+        <item>DYNA 110 ST NON PS</item>
+        <item>DYNA 110 ST+BAK BESI</item>
+        <item>DYNA 110 ST+BAKKAYU</item>
+        <item>DYNA 110ST NONPS+BOX</item>
+        <item>DYNA 115 ET</item>
+        <item>DYNA 115 ET + DUMP</item>
+        <item>DYNA 115 ST</item>
+        <item>DYNA 125 DUMP T LONG</item>
+        <item>DYNA 125 HI</item>
+        <item>DYNA 125HT+BAK KAYU</item>
+        <item>DYNA 130 HT</item>
+        <item>DYNA 130 HT + DUMP</item>
+        <item>DYNA 130 HT + TANKI</item>
+        <item>DYNA 130 HT PS H</item>
+        <item>DYNA 130 HT+BAK BESI</item>
+        <item>DYNA 130 HT+BAKKAYU</item>
+        <item>DYNA 130 HTHG PS</item>
+        <item>DYNA 130 HTHG+DUMP</item>
+        <item>DYNA 130 HTPS + DUMP</item>
+        <item>DYNA 130 PS HT GEAR</item>
+        <item>DYNA 130 PS HT HI</item>
+        <item>DYNA 130 PS XT</item>
+        <item>DYNA 130 PS XT LWB</item>
+        <item>DYNA 130 XT + DUMP</item>
+        <item>DYNA 130 XT+BAK KAYU</item>
+        <item>DYNA 130 XT+BAKBESI</item>
+        <item>DYNA 130 XT+TANKI</item>
+        <item>DYNA 130HTHDPS+DUMP</item>
+        <item>DYNA 4R 110 PS ST PS</item>
+        <item>DYNA 6 R 130 PS XT L</item>
+        <item>DYNA BUS BMC 110 FT</item>
+        <item>DYNA FT 110 PS</item>
+        <item>DYNA LG 4.0/WU340R-T</item>
+        <item>DYNA LONG 3.7 BU343R</item>
+        <item>DYNA LONG 4000</item>
+        <item>DYNA WU 342 R + DUMP</item>
+        <item>DYNA WU342R</item>
+        <item>DYNA110ET NPS+B KAYU</item>
+        <item>DYNA110ETPS+BAK BESI</item>
+        <item>DYNA110ETPS+BAKKAYU</item>
+        <item>DYNA110PS ST+BAKBESI</item>
+        <item>DYNA115 ET+BAK KAYU</item>
+        <item>DYNA130 HTHG PS+BKYU</item>
+        <item>DYNA130 PSHT BOX</item>
+        <item>DYNA 130 PSHTDROPSIDE</item>
+        <item>DYNA 130 XT PS+BKBESI</item>
+        <item>DYNA130HT HG PS+DUMP</item>
+        <item>DYNA130HT HI GR+BBSI</item>
+        <item>DYNA130HTHGNPS+BKAYU</item>
+        <item>DYNA 130HTHGPS+B.BESI</item>
+        <item>DYNA130HTHGPS+TANGKI</item>
+        <item>DYNA 110 ST NON PS</item>
+        <item>ESTIMA 3.0</item>
+        <item>ETIOS 1.2 M/T TOMS</item>
+        <item>ETIOS VALCO 1.2 J MT</item>
+        <item>ETIOS VALCO E 1.2 MT</item>
+        <item>ETIOS VALCO G 1.2 MT</item>
+        <item>FJ CRUISER 4X4 A/T</item>
+        <item>FORTUNER 2.4VRZATDSL</item>
+        <item>FORTUNER 2.7 V 4X4</item>
+        <item>FORTUNER 4X2</item>
+        <item>FORTUNER 4X2 GATDTRD</item>
+        <item>FORTUNER 4X2G AT DSL</item>
+        <item>FORTUNER 4X2G LUX AT</item>
+        <item>FORTUNER 4X2G MT DSL</item>
+        <item>FORTUNER 4X2GATD-TRD</item>
+        <item>FORTUNER 4X2GMTD-TRD</item>
+        <item>FORTUNER G 2.7 AT</item>
+        <item>FORTUNER G 4X2 AT</item>
+        <item>FORTUNER G 4X2 MT</item>
+        <item>FORTUNER G 4X4 AT</item>
+        <item>FORTUNER G4X2 ATLX</item>
+        <item>FORTUNER SPRT G4X2MT</item>
+        <item>FORTUNER V 4X4 AT</item>
+        <item>FORTUNER2.5L 4X2 GMT</item>
+        <item>FORTUNER2.7L 4X2 GLAT</item>
+        <item>FORTUNER2.7L 4X4VLAT</item>
+        <item>FORTUNER4X2M DSL TRD</item>
+        <item>FORTUNERG4X2DSLVNTAT</item>
+        <item>FORTUNERG4X2DSLYNTMT</item>
+        <item>FORTUNERG4X2TRDVNTAT</item>
+        <item>FORTUNERG4X2TRDYNTMT</item>
+        <item>FRTN2.7GATLXTRDBNSN</item>
+        <item>FRTNR 2.4 VRZ 4X2 AT</item>
+        <item>FRTNR 4X2 GAT2.5DSL</item>
+        <item>FRTNR 4X2GAT2.5DSLSP</item>
+        <item>FRTNR AX2GAT2.5DSLTD</item>
+        <item>FRTNR 4X2GMT 2.5DSL</item>
+        <item>FRTNR 4X2GMT2.5DSLSP</item>
+        <item>FRTNR 4X2GMT2.5DSLTD</item>
+        <item>FRTNR2.4VRZATLUXDSL</item>
+        <item>FRTNR2.5GAT4X4DIESEL</item>
+        <item>FRTNR2.7SRZAT BENSIN</item>
+        <item>FRTNFT 86 AT TRD</item>
+        <item>FRTNF-TRDSPRT 2.5L 4X2 GAT</item>
+        <item>FRTNF-TRDSPRT2.5L 4X2GMT</item>
+        <item>GRND NEW VELOZ 1.3MT</item>
+        <item>GRND NEW VELOZ 1.5MT</item>
+        <item>GRND NEW VELOZ AT</item>
+        <item>GRND NEW VELOZ AT DU</item>
+        <item>GRND NEW VELOZ GAT</item>
+        <item>GRND NEW VELOZ GATDU</item>
+        <item>GRND NEW VELOZ GMTDU</item>
+        <item>GRND NEW VELOZ MT</item>
+        <item>GRNDNW AVANZA E MTDU</item>
+        <item>GRNDNW AVANZA EAT</item>
+        <item>GRNDNW AVANZA EATDU</item>
+        <item>GRNDNW AVANZA EATSTD</item>
+        <item>GRNDNW AVANZA EMT</item>
+        <item>GRNDNW AVANZA EMTSTD</item>
+        <item>GRNDNW AVANZA GAT</item>
+        <item>GRNDNW AVANZA GATDU</item>
+        <item>GRNDNW AVANZA1.3GMT</item>
+        <item>GRNDNW AVANZA1.5GMT</item>
+        <item>GRNDNWAVANZA1.3GMTDU</item>
+        <item>GRNDNWAVANZA1.5GMTDU</item>
+        <item>GRNDNWAVANZAVELOZGMT</item>
+        <item>HARRIER</item>
+        <item>HARRIER 2.4 L A/T</item>
+        <item>HARRIER 2.4 PLP</item>
+        <item>HARRIER 3.0</item>
+        <item>HI ACE COMMUTER</item>
+        <item>HI ACE STD M/T</item>
+        <item>HI LUX 3.0 M/T DC</item>
+        <item>HI LUX 4X4 M/T DC</item>
+        <item>HILUX VIGO 2.5M/T4WD</item>
+        <item>HILUX 2,OL M/T</item>
+        <item>HILUX 2.0 SC + AMB</item>
+        <item>HILUX 2.5 SC DSL+AMB</item>
+        <item>HILUX 3.0 AT DC</item>
+        <item>HILUX 4X2 M/T SC</item>
+        <item>HILUX DC 4X4 EM</item>
+        <item>HILUX DC 4X4 GM</item>
+        <item>HILUX DC EM/T DSL</item>
+        <item>HILUX DC GM/T DSL</item>
+        <item>HILUX STD M/T DSL</item>
+        <item>INNOVA E AT</item>
+        <item>INNOVA EM/T BENSIN</item>
+        <item>INNOVA E M/T DIESEL</item>
+        <item>INNOVA E STD BENSIN</item>
+        <item>INNOVA E STD DIESEL</item>
+        <item>INNOVA G A/T BENSIN</item>
+        <item>INNOVA G A/T DIESEL</item>
+        <item>INNOVA G LUXURY A/T</item>
+        <item>INNOVA G LUXURY M/T</item>
+        <item>INNOVA G M/T BENSIN</item>
+        <item>INNOVA G M/T DIESEL</item>
+        <item>INNOVA J BSNS BENSIN</item>
+        <item>INNOVA J MT BENSIN</item>
+        <item>INNOVA Q A/T BENSIN</item>
+        <item>INNOVA Q A/T DIESEL</item>
+        <item>INNOVA Q M/T BENSIN</item>
+        <item>INNOVA Q M/T DIESEL</item>
+        <item>INNOVA V A/T BENSIN</item>
+        <item>INNOVA V A/T DIESEL</item>
+        <item>INNOVA V LUXURY A/T</item>
+        <item>INNOVA V LUXURY M/T</item>
+        <item>INNOVA V M/T BENSIN</item>
+        <item>INNOVA V M/T DIESEL</item>
+        <item>INNOVA V.27</item>
+        <item>INOVA E DELUXE 2000</item>
+        <item>INOVA E MANUAL BENSIN</item>
+        <item>INOVA G MANUAL BENSI</item>
+        <item>INOVA G MANUAL DIESE</item>
+        <item>INOVA V MANUAL BENSI</item>
+        <item>INOVA V MANUAL DIESE</item>
+        <item>IST 1,5 AT</item>
+        <item>IST 1.3 AT</item>
+        <item>IST 1.5</item>
+        <item>KIJANG GRAND EXTRA</item>
+        <item>KIJANG INNOVA</item>
+        <item>KIJANG KAPSUL EFI</item>
+        <item>KIJANG KAPSUL LGX</item>
+        <item>KIJANG KAPSUL LSX</item>
+        <item>KIJANG KAPSUL LX</item>
+        <item>KIJANG KAPSUL SSX</item>
+        <item>KIJANG KAPSUL SX</item>
+        <item>KIJANG KE / KAPSUL</item>
+        <item>KIJANG KE 70</item>
+        <item>KIJANG KE 80</item>
+        <item>KIJANG KE 83</item>
+        <item>KIJANG KRISTA</item>
+        <item>KIJANG LF 82</item>
+        <item>KIJANG LGX</item>
+        <item>KIJANG LGX DIESEL</item>
+        <item>KIJANG LSX</item>
+        <item>KIJANG LX</item>
+        <item>KIJANG SGX</item>
+        <item>KIJANG SSX</item>
+        <item>KIJANG SUPER</item>
+        <item>KIJANG SX</item>
+        <item>KIJANG UF81 GRND LUX</item>
+        <item>KIJANG FLAT DECK</item>
+        <item>KIJANG KF 60 FD</item>
+        <item>KIJANG KF 60 PU</item>
+        <item>KIJANG LF 60 DS</item>
+        <item>KIJANG SUPER</item>
+        <item>LAND CRUISER 4.2DA/T</item>
+        <item>LAND CRUISER A/T</item>
+        <item>LEXUS R270</item>
+        <item>LIMO TAXI</item>
+        <item>MARK X 2.5 AT</item>
+        <item>N RUSH1.5 SAT TRD DU</item>
+        <item>N RUSH1.5 SMT TRD DU</item>
+        <item>NAVI G A/T</item>
+        <item>NAVI V A/T</item>
+        <item>NAVI V A/T LUX</item>
+        <item>NEW AVANZA E 1.3 AT</item>
+        <item>NEW AVANZA E 1.3 MT</item>
+        <item>NEW AVANZA G 1.3 AT</item>
+        <item>NEW AVANZA G 1.3 MT</item>
+        <item>NEW AVANZA G 1.5 AT</item>
+        <item>NEW AVANZA G 1.5 MT</item>
+        <item>NEW AVANZA GSPORTYMT</item>
+        <item>NEW CAMRY V 2,5 A/T</item>
+        <item>NEW COROLLASEG 1.8MT</item>
+        <item>NEW DYNA 110 ET+BOX</item>
+        <item>NEW DYNA 130LT</item>
+        <item>NEW DYNA ET 110 PS</item>
+        <item>NEW DYNA HT 130 PS</item>
+        <item>NEW DYNA ST 110 PS</item>
+        <item>NEW HILUX SC 2.0 MT</item>
+        <item>NEWDYNA 130 XTPS+BOX</item>
+        <item>NEWDYNA 130XTPS+DUMP</item>
+        <item>NEWDYNA HT130PS+TANK</item>
+        <item>NEWHILUXDC2.4GDSL4X4</item>
+        <item>NEWHILUXDC25DSL E MT</item>
+        <item>NEWHILUXDC25DSL G MT</item>
+        <item>NEWHILUXDC25DSL V AT</item>
+        <item>NEWHILUXSC 2.5 DSLMT</item>
+        <item>NEWHILUXSCCHAS2.0 MT</item>
+        <item>NEWHILUXXTRACABIN2,5</item>
+        <item>NEW RUSH 1.5 G</item>
+        <item>NEW RUSH 1.5 G AT</item>
+        <item>NEW RUSH 1.5 TRD SPT</item>
+        <item>NEW RUSH1.5S AT TRD</item>
+        <item>NEW RUSH1.5TRD SPTAT</item>
+        <item>NEW VIOS G TRD AT</item>
+        <item>NEW VIOS G TRD MT</item>
+        <item>NEW YARIS 1.5 GA/T</item>
+        <item>NEW YARIS 1.5TRD SPT</item>
+        <item>NEW YARIS S M/T TRD</item>
+        <item>NEWAVANZA1,3GA/T LUX</item>
+        <item>NEWAVANZA1.3GM/T LUX</item>
+        <item>NEWHIACE COMMUTER MT</item>
+        <item>NEWRUSH 1.5 S MT TRD</item>
+        <item>NEWYARIS1.55.L/ATTRD</item>
+        <item>NEWNOAH 2.0 CVT</item>
+        <item>NEWPRADO 2.7 A/T BENSIN</item>
+        <item>NEWPRADO 2.7 M/T BENSIN</item>
+        <item>NEWPREVIA 2.4 L AT</item>
+        <item>NEWRAV - 4</item>
+        <item>RUSH 1.5 S M DRS UP</item>
+        <item>RUSH G LUXURY A/T</item>
+        <item>RUSH G LUXURY M/T</item>
+        <item>RUSH G VVTI 1.5 A/T</item>
+        <item>RUSH G VVTI 1.5 M/T</item>
+        <item>RUSH G VVTI M/T</item>
+        <item>RUSH S 1.5 SPT ULT</item>
+        <item>RUSH S VVTI 1.5 A/T</item>
+        <item>RUSH S VVTI 1.5 M/T</item>
+        <item>RUSH S VVTI A/T</item>
+        <item>RUSH S VVTI M/T</item>
+        <item>RUSH SPTVULTMO1.5SAT</item>
+        <item>RUSH SVVTI 1.5MT LTD</item>
+        <item>RUSHI,5SVVTIATTRDLTD</item>
+        <item>RUSH1.5G VVTI AT LTD</item>
+        <item>RUSH1.5G VVTI MT LTD</item>
+        <item>RUSH1.5SVVTIMTTRDLTD</item>
+        <item>SIENTA 1.5 E</item>
+        <item>SIENTA 1.5 E CVT</item>
+        <item>SIENTA 1.5 G</item>
+        <item>SIENTA 1.5 G CYT</item>
+        <item>SIENTA 1.5 Q CVT</item>
+        <item>SIENTA 1.5 V</item>
+        <item>SIENTA 1.5 V CVT</item>
+        <item>SOLUNA</item>
+        <item>SOLUNA GLI</item>
+        <item>SOLUNA GLI 1.5 A/T</item>
+        <item>SOLUNA XLI</item>
+        <item>SOLUNAST 110 PS LWB</item>
+        <item>SOLUNAT.PROBOX 1.5 AT DX</item>
+        <item>SOLUNATRANSMOVER 1.3 G</item>
+        <item>SOLUNAVELLFIRE 2,4 A/T</item>
+        <item>VENTURER 2.0 AT GAS</item>
+        <item>VENTURER 2.0 GAS</item>
+        <item>VENTURER 2.4 AT DSL</item>
+        <item>VENTURER 2.4 DSL</item>
+        <item>VIOS</item>
+        <item>VIOS E A/T</item>
+        <item>VIOS E M/T</item>
+        <item>VIOS G A/T</item>
+        <item>VIOS G M/T</item>
+        <item>VIOS G M/T DRESS UP</item>
+        <item>VIOSVOXY 2.0L AT CBU</item>
+        <item>VIOSWISH</item>
+        <item>YARIS 1.5 E A/T</item>
+        <item>YARIS 1.5 E M/T</item>
+        <item>YARIS 1.5 J A/T</item>
+        <item>YARIS 1.5 J M/T</item>
+        <item>YARIS 1.5 J M/T B</item>
+        <item>YARIS 1.5 S A/T</item>
+        <item>YARIS 1.5 S LTD A/T</item>
+        <item>YARIS 1.5 S MT</item>
+        <item>YARIS E 1.5 M/T LTD</item>
+        <item>YARIS HEYKERS 1.5</item>
+        <item>YARIS HEYKERS 1.5CVT</item>
+        <item>YARIS J MT</item>
+        <item>YARIS S 1.5 M/T</item>
+        <item>YARIS S MT TRD</item>
+        <item>YARIS S SPORTYVO AT</item>
+        <item>YARISTRD S SPRTIVOMT</item>
+        <item>130HTPSGEAR+BAKKAYU</item>
+    </string-array>
+    <string-array name="listTipeVolvo">
+        <item>S 40 2.0 A/T</item>
+    </string-array>
+    <string-array name="listTipeVw">
+        <item>GOLF 1.2 TSI MT</item>
+        <item>GOLF 1.4 TSI</item>
+        <item>GOLF 2.0 GTI</item>
+        <item>NEW BEETLE 2.0 L</item>
+        <item>POLO 1.2 TSI AT</item>
+        <item>POLO 1.4 AUTOMATIC</item>
+        <item>SCIROCCO 1.4 TSI</item>
+        <item>SCIROCCO 2.0 AT</item>
+        <item>TIGUAN 1.4 AT</item>
+        <item>TOURAN 1.4 STD</item>
+        <item>TOUREG</item>
+        <item>TRANSPORTER TDILONG</item>
+    </string-array>
+    <string-array name="listTipeWrangler">
+        <item>SPORT UNLIMITED</item>
+        <item>WRANGLER 3.6 AT</item>
+        <item>WRANGLER 3.8 AT</item>
+        <item>WRL RBCN GSLN 4D 3.8</item>
+        <item>WRL SHRA DSL 2D 2.8</item>
+        <item>WRL SHRA DSL 4D 2.8</item>
+    </string-array>
+    <string-array name="listTipeWuling">
+        <item>CONFERO 1.5</item>
+        <item>CONFERO 1.5 DB</item>
+        <item>CONFERO S 1.5 C</item>
+        <item>CONFERO S 1.5 C LUX</item>
+        <item>CONFERO S 1.5 C LUX+</item>
+        <item>CONFERO S 1.5 L</item>
+        <item>CONFERO S 1.5 L LUX</item>
+        <item>CONFERO S 1.5 L LUX+</item>
+        <item>CORTEZ 1.5 C</item>
+        <item>CORTEZ 1.5 S</item>
+        <item>CORTEZ 1.8 C</item>
+        <item>CORTEZ 1.8 C AMT</item>
+        <item>CORTEZ 1.8 C LUX+AMT</item>
+        <item>CORTEZ 1.8 L LUX+</item>
+        <item>CORTEZ 1.8 L LUX+AMT</item>
+    </string-array>
+    <string-array name="listTipeMercedesbenz">
+        <item>OH 1518 / 60</item>
+        <item>OH 1521 / 60</item>
+        <item>OH 1525</item>
+        <item>OH 1525+KRS+AC</item>
+        <item>OH 1526</item>
+        <item>OH 1526+KRS+AC</item>
+        <item>OH 1626</item>
+    </string-array>
+    <string-array name="listTipeScania">
+        <item>P380CB-6X4</item>
+    </string-array>
+    <string-array name="listTipeUdtrucks">
+        <item>CDA 260 S</item>
+        <item>CDA 260 X</item>
+        <item>CDE 280 WB 5.6</item>
+        <item>CWA 260 M</item>
+        <item>CWA 260 MX</item>
+        <item>CWA 260 SX</item>
+        <item>CWA260HT TRACTORHEAD</item>
+        <item>CWA260MX 6X4+TRL4OFT</item>
+        <item>CWA260MX+DUMP</item>
+        <item>CWM 330 H+TRAILER</item>
+        <item>CWM 330 HT</item>
+        <item>PK 215 L</item>
+        <item>PK 215 M</item>
+        <item>PK 215 R</item>
+        <item>PK 260 CT</item>
+        <item>PK26OR</item>
+        <item>QUESTER CKE 250 WB 6</item>
+        <item>QUESTER CWE 280</item>
+        <item>QUESTER CWE280 WB6.1</item>
+        <item>QUESTER GKE 280</item>
+        <item>QUESTER GWE 280 6X4</item>
+        <item>QUESTER GWE 370 T</item>
+    </string-array>
+    <string-array name="listTipeHino">
+        <item>110 HD + BOX</item>
+        <item>110 HD+DUMP</item>
+        <item>110 SD + BAK BESI</item>
+        <item>130HD X-POWER PS 6.8</item>
+        <item>130HDXPOWER+BAK BESI</item>
+        <item>130HDXPOWERPS+B.KAYU</item>
+        <item>A 215 + KRS BUS</item>
+        <item>DTR 110SDBL PRESTIGO</item>
+        <item>DTR11OSDBL+LGWLBS+AC</item>
+        <item>DUTRO</item>
+        <item>DUTRO 110 HD PS</item>
+        <item>DUTRO 110 HD PS+BOX</item>
+        <item>DUTRO 110 HD+TANGKI</item>
+        <item>DUTRO 110 HDPS+DUMP</item>
+        <item>DUTRO 110 LD</item>
+        <item>DUTRO 110 LD PS</item>
+        <item>DUTRO 110 LD PS+BOX</item>
+        <item>DUTRO 110 LD+BOX ALM</item>
+        <item>DUTRO 110 LD+TANGKI</item>
+        <item>DUTRO 110 LDL PS</item>
+        <item>DUTRO 110 LDL PS+BOX</item>
+        <item>DUTRO 110 SD</item>
+        <item>DUTRO 110 SD + BOX</item>
+        <item>DUTRO 110 SD PS</item>
+        <item>DUTRO 110 SDL</item>
+        <item>DUTRO 110 SDL PS+BOX</item>
+        <item>DUTRO 110 SDL+BK KYU</item>
+        <item>DUTRO 110 SDLWB</item>
+        <item>DUTRO 110 SDR</item>
+        <item>DUTRO 110LD+BAK BESI</item>
+        <item>DUTRO 110LD+BAK KAYU</item>
+        <item>DUTRO 110LD+BOX BESI</item>
+        <item>DUTRO 110LDL+BK BESI</item>
+        <item>DUTRO 110SD+BAK KAYU</item>
+        <item>DUTRO 110SDL+BAKBESI</item>
+        <item>DUTRO 110 HD</item>
+        <item>DUTRO 125 HT</item>
+        <item>DUTRO 125 HT+ DUMP</item>
+        <item>DUTRO 130 HD</item>
+        <item>DUTRO 130 HD + DUMP</item>
+        <item>DUTRO 130 HD + MIXER</item>
+        <item>DUTRO 130 HD +TANGKI</item>
+        <item>DUTRO 130 HD 4X4</item>
+        <item>DUTRO 130 HD 6,4 PS</item>
+        <item>DUTRO 130 HD 6.8 PS</item>
+        <item>DUTRO 130 HD PDS</item>
+        <item>DUTRO 130 HD PS</item>
+        <item>DUTRO 130 HD PS+DUMP</item>
+        <item>DUTRO 130 HD X POWER</item>
+        <item>DUTRO 130 HD+BOX</item>
+        <item>DUTRO 130 HDL</item>
+        <item>DUTRO 130 MD</item>
+        <item>DUTRO 130 MD PS</item>
+        <item>DUTRO 130 MD+BK BSI</item>
+        <item>DUTRO 130 MD+BK KYU</item>
+        <item>DUTRO 130 MD+BOX</item>
+        <item>DUTRO 130 MD+DUMP</item>
+        <item>DUTRO 130 MDBL PS</item>
+        <item>DUTRO 130 MDL</item>
+        <item>DUTRO 130 MDL + BOX</item>
+        <item>DUTRO 130 MDL PS</item>
+        <item>DUTRO 130HD PS MIXER</item>
+        <item>DUTRO 130HD+BAK BESI</item>
+        <item>DUTRO 130HD+BAK KAYU</item>
+        <item>DUTRO 130HDL+BAKBESI</item>
+        <item>DUTRO 130MDL+BAKBESI</item>
+        <item>DUTRO 130MDL+BX BESI</item>
+        <item>DUTRO BUS 110 SDB</item>
+        <item>DUTRO BUS 110 SDBL</item>
+        <item>DUTRO BUS 130 MDBL</item>
+        <item>DUTRO110 HD+BAK KAYU</item>
+        <item>DUTRO110 HD+FLATDECK</item>
+        <item>DUTRO110 HDPS+BKKAYU</item>
+        <item>DUTRO110 SDL PS</item>
+        <item>DUTRO110 SDL+BOX ALM</item>
+        <item>DUTRO110HDPS+BK BESI</item>
+        <item>DUTRO110PS SD+BKBESI</item>
+        <item>DUTRO130 HD+FLATDECK</item>
+        <item>DUTRO130 MDPS+TANGKI</item>
+        <item>DUTRO130HD6.8PS+B BS</item>
+        <item>DUTRO130HDPS+BK BESI</item>
+        <item>DUTRO130HDPS+BK KAYU</item>
+        <item>DUTRO130HDXPWR +DUMP</item>
+        <item>DUTRO130MDL+BAK KAYU</item>
+        <item>DUTRO130MDL+FLATDECK</item>
+        <item>DUTRO130MDL+KRS BUS</item>
+        <item>DUTRO130MDL+KRSBUSAC</item>
+        <item>DUTRO130MDLPS+B.BESI</item>
+        <item>DUTRO130MDLPS+BKKAYU</item>
+        <item>DUTRO130MDLPS+BOXALM</item>
+        <item>DUTRO 140 HT+AC</item>
+        <item>FB 1 30</item>
+        <item>FG 210 JL+BAK BESI</item>
+        <item>FG 215 JE</item>
+        <item>FG 215 JP</item>
+        <item>FG 235 JJ</item>
+        <item>FG 235 JJ + DUMP</item>
+        <item>FG 235 JJ+TRAILER</item>
+        <item>FG 235 JK</item>
+        <item>FG 235 JK + BAK BESI</item>
+        <item>FG 235 JK + BAK KAYU</item>
+        <item>FG 235 JK + DUMP</item>
+        <item>FG 235 JK + TANGKI</item>
+        <item>FG 235 JL</item>
+        <item>FG 235 JL+BAK BESI</item>
+        <item>FG 235 JL+BAK KAYU</item>
+        <item>FG 235 JP</item>
+        <item>FG 235 JP + BAK BESI</item>
+        <item>FG 235 JP + BAK KAYU</item>
+        <item>FG 235 JP + TANGKI</item>
+        <item>FG 235 JP+BOX BESI</item>
+        <item>FG 235 JP+WING BOX</item>
+        <item>FG 235 JS</item>
+        <item>FG 235 JS+BAK BESI</item>
+        <item>FG 235 JS+BOX BESI</item>
+        <item>FG 235JL+TANGKI</item>
+        <item>FG 245 TH</item>
+        <item>FG 260 J</item>
+        <item>FG235 JL+ DUMP</item>
+        <item>FG235TH</item>
+        <item>FG235TH+TRAILER 40FT</item>
+        <item>FG240JS + BAK BESI</item>
+        <item>FL 235 JN</item>
+        <item>FL 235 JN + BAK BESI</item>
+        <item>FL 235 JN + TANGKI</item>
+        <item>FL 235 JW</item>
+        <item>FL 235 JW WING BOX</item>
+        <item>FL 235 JW+BOX BESI</item>
+        <item>FL 235JW+BOX FREEZER</item>
+        <item>FL 260 JT</item>
+        <item>FL 260 JT + TANGKI</item>
+        <item>FL 260 JW</item>
+        <item>FL 260 JW + TANGKI</item>
+        <item>FL 260 JW+BAK BESI</item>
+        <item>FL235JW + BAK BESI</item>
+        <item>FL260JT+TANGKI HIBLW</item>
+        <item>FM 260 JD</item>
+        <item>FM 260 JD + AC</item>
+        <item>FM 260 JD + DUMP</item>
+        <item>FM 260 JD + TANGKI</item>
+        <item>FM 260 JD MIXER</item>
+        <item>FM 260 JM</item>
+        <item>FM 260 JM+MIXER</item>
+        <item>FM 260 JW</item>
+        <item>FM 260 JW + BAK BESI</item>
+        <item>FM 260 JW+BAK LAYANG</item>
+        <item>FM 260 ΤΗ</item>
+        <item>FM 265 ΤΗ</item>
+        <item>FM 285 TH</item>
+        <item>FM 285 TH CR</item>
+        <item>FM 320 Р</item>
+        <item>FM 320 P+TRAILER</item>
+        <item>FM 320 PD</item>
+        <item>FM 350 TH</item>
+        <item>HINO FC 190 J</item>
+        <item>R 260</item>
+        <item>R 260 NON AC</item>
+        <item>R 260+KRS+AC</item>
+        <item>RK1 JSKA-BAB</item>
+        <item>RK260 + KAROSERI+AC</item>
+        <item>RN285</item>
+        <item>SG 260 J</item>
+        <item>SG 260 J + TANGKI</item>
+        <item>SG 260 ΤΗ</item>
+        <item>SG 260J +TRAILER 40FT</item>
+        <item>SG260J+SEMI TRAILLER</item>
+        <item>WU 302 R+KRS BUS 4X4</item>
     </string-array>
 
 </resources>

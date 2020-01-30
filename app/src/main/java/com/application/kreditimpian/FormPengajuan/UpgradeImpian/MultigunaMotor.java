@@ -1,12 +1,8 @@
 package com.application.kreditimpian.FormPengajuan.UpgradeImpian;
 
 
-import android.Manifest;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -18,29 +14,27 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.MediaController;
-import android.widget.Toast;
 
 import com.application.kreditimpian.R;
 import com.chivorn.smartmaterialspinner.SmartMaterialSpinner;
+import com.google.android.material.textfield.TextInputEditText;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -52,18 +46,25 @@ import static android.app.Activity.RESULT_OK;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MultigunaMotor extends Fragment implements View.OnClickListener {
+public class MultigunaMotor extends Fragment implements View.OnClickListener, MitraAdapter.OnClickCheckBox {
     private Context context;
+    private MitraAdapter mitraAdapter;
 
     private ImageView imageupload;
     private RecyclerView rvMitra;
     private SmartMaterialSpinner spinnerMerkMotor,
-            spinTipeMotor;
+            spinTipeMotor,
+            spinThnMotor;
+    private TextInputEditText
+            edtJumlahPinjaman,
+            edtHargaKendaraan,
+            edtLokasi;
+    private Button btnAjukansekarang;
     //untuk upload gambar
-    Bitmap bitmap, decoded_1, decoded_2, decoded_3;
-    int bitmap_size = 80; // range 1 - 100=
-    int PICK_IMAGE_REQUEST_1 = 1;
-    int REQUEST_IMAGE_CAPTURE_1 = 11;
+    private Bitmap decoded;
+    private static final int bitmap_size = 80; // range 1 - 100=
+    private static final int PICK_IMAGE_REQUEST_1 = 1;
+    private static final int REQUEST_IMAGE_CAPTURE_1 = 11;
 
     public MultigunaMotor() {
         // Required empty public constructor
@@ -82,6 +83,11 @@ public class MultigunaMotor extends Fragment implements View.OnClickListener {
         rvMitra = view.findViewById(R.id.rvMitra);
         spinnerMerkMotor = view.findViewById(R.id.spinMerkMotor);
         spinTipeMotor = view.findViewById(R.id.spinTipeMotor);
+        spinThnMotor = view.findViewById(R.id.spinThnMotor);
+        edtJumlahPinjaman = view.findViewById(R.id.txtjumlahpinjaman);
+        edtHargaKendaraan = view.findViewById(R.id.txthargakendaraan);
+        edtLokasi = view.findViewById(R.id.txtlokasi);
+        btnAjukansekarang = view.findViewById(R.id.btnAjukansekarang);
     }
 
     @Override
@@ -89,16 +95,35 @@ public class MultigunaMotor extends Fragment implements View.OnClickListener {
         super.onActivityCreated(savedInstanceState);
         context = getContext();
         imageupload.setOnClickListener(this);
+        btnAjukansekarang.setOnClickListener(this);
         rvMitra.setLayoutManager(new LinearLayoutManager(context));
+        mitraAdapter = new MitraAdapter(context, this);
+
+        edtJumlahPinjaman.addTextChangedListener(new NumberTextWatcher(edtJumlahPinjaman));
+        edtHargaKendaraan.addTextChangedListener(new NumberTextWatcher(edtHargaKendaraan));
+
         loadMitra();
         loadMerkKendaraan();
+        loadTahunMotor();
     }
 
     @Override
     public void onClick(View v) {
         if (v == imageupload) {
             tampilDialogGalery();
+        } else if (v == btnAjukansekarang) {
+            kirimDataPengajuan();
         }
+    }
+
+    /**
+     * Method ovveride dari Mitra adapter ketika checkbok di centang
+     *
+     * @param name mengambil text dari checkbox
+     */
+    @Override
+    public void CheckedBoxMitra(String name) {
+        Log.v("jajal", name);
     }
 
     //untuk memilih gambar dari galeri
@@ -114,9 +139,9 @@ public class MultigunaMotor extends Fragment implements View.OnClickListener {
         //compress image
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         bmp.compress(Bitmap.CompressFormat.JPEG, bitmap_size, bytes);
-        decoded_1 = BitmapFactory.decodeStream(new ByteArrayInputStream(bytes.toByteArray()));
+        decoded = BitmapFactory.decodeStream(new ByteArrayInputStream(bytes.toByteArray()));
         //menampilkan gambar yang dipilih dari camera/gallery ke ImageView
-        imageupload.setImageBitmap(decoded_1);
+        imageupload.setImageBitmap(decoded);
     }
 
     @Override
@@ -128,7 +153,7 @@ public class MultigunaMotor extends Fragment implements View.OnClickListener {
             Uri filePath = data.getData();
             try {
                 //mengambil fambar dari Gallery
-                bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), filePath);
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), filePath);
                 // 512 adalah resolusi tertinggi setelah image di resize, bisa di ganti.
                 setToImageView1(getResizedBitmap(bitmap, 512));
             } catch (IOException e) {
@@ -144,7 +169,7 @@ public class MultigunaMotor extends Fragment implements View.OnClickListener {
     }
 
     // fungsi resize image
-    public Bitmap getResizedBitmap(Bitmap image, int maxSize) {
+    private Bitmap getResizedBitmap(Bitmap image, int maxSize) {
         int width = image.getWidth();
         int height = image.getHeight();
 
@@ -178,7 +203,7 @@ public class MultigunaMotor extends Fragment implements View.OnClickListener {
 
     private void loadMitra() {
         List<String> mitraList = Arrays.asList(getResources().getStringArray(R.array.mitra));
-        MitraAdapter mitraAdapter = new MitraAdapter(context, mitraList);
+        mitraAdapter.setMitraList(mitraList);
         rvMitra.setAdapter(mitraAdapter);
     }
 
@@ -195,6 +220,8 @@ public class MultigunaMotor extends Fragment implements View.OnClickListener {
                 String[] arrayTipeHonda = getResources().getStringArray(R.array.motorTipeHonda);
                 String[] arrayTipeKawazaki = getResources().getStringArray(R.array.motorTipeKawazaki);
                 String[] arrayTipePiaggio = getResources().getStringArray(R.array.motorTipePiaggio);
+                String[] arrayTipeSuzuki = getResources().getStringArray(R.array.motorTipeYamaha);
+                String[] arrayTipeYamaha = getResources().getStringArray(R.array.motorTipeSuzuki);
 
                 if (spinnerMerkMotor.getSelectedItem().toString().equals("HONDA")) {
                     Collections.addAll(tipeKendaraanList, arrayTipeHonda);
@@ -205,13 +232,43 @@ public class MultigunaMotor extends Fragment implements View.OnClickListener {
                 } else if (spinnerMerkMotor.getSelectedItem().toString().equals("PIAGGIO")) {
                     Collections.addAll(tipeKendaraanList, arrayTipePiaggio);
                     spinTipeMotor.setItem(tipeKendaraanList);
+                } else if (spinnerMerkMotor.getSelectedItem().toString().equals("SUZUKI")) {
+                    Collections.addAll(tipeKendaraanList, arrayTipeSuzuki);
+                    spinTipeMotor.setItem(tipeKendaraanList);
+                } else if (spinnerMerkMotor.getSelectedItem().toString().equals("YAMAHA")) {
+                    Collections.addAll(tipeKendaraanList, arrayTipeYamaha);
+                    spinTipeMotor.setItem(tipeKendaraanList);
                 }
+
+                mitraAdapter.setMerkKendaraan(spinnerMerkMotor.getSelectedItem().toString());
+                mitraAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
     }
+
+    @SuppressWarnings("unchecked")
+    private void loadTahunMotor() {
+        Date date = Calendar.getInstance().getTime();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy", Locale.getDefault());
+        int tahunMotor = Integer.valueOf(dateFormat.format(date));
+        String[] arrayTahun = new String[7];
+        arrayTahun[0] = String.valueOf(tahunMotor);
+        for (int i = 1; i <= 6; i++) {
+            tahunMotor = tahunMotor - 1;
+            arrayTahun[i] = String.valueOf(tahunMotor);
+        }
+        List<String> listTahun = new ArrayList<>();
+        Collections.addAll(listTahun, arrayTahun);
+        spinThnMotor.setItem(listTahun);
+    }
+
+    private void kirimDataPengajuan() {
+        Log.v("jajal", String.valueOf(edtJumlahPinjaman.getText()).replace(".", "") + " a");
+        Log.v("jajal", String.valueOf(edtHargaKendaraan.getText()).replace(".", "") + " a");
+    }
+
 }

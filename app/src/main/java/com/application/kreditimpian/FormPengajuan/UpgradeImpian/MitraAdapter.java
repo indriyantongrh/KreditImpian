@@ -9,16 +9,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.application.kreditimpian.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MitraAdapter extends RecyclerView.Adapter<MitraViewHolder> {
     private final Context context;
+    private OnClickCheckBox onClickCheckBox;
+
+    private String merkKendaraan = "";
     private List<String> mitraList;
 
-    public MitraAdapter(Context context, List<String> mitraList) {
+    public MitraAdapter(Context context, OnClickCheckBox onClickCheckBox) {
         this.context = context;
-        this.mitraList = mitraList;
+        this.onClickCheckBox = onClickCheckBox;
     }
 
     @NonNull
@@ -30,10 +32,39 @@ public class MitraAdapter extends RecyclerView.Adapter<MitraViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MitraViewHolder holder, int position) {
         holder.checkBoxMitra.setText(mitraList.get(position));
+        holder.checkBoxMitra.setOnClickListener(v -> {
+            if (holder.checkBoxMitra.isChecked()) {
+                onClickCheckBox.CheckedBoxMitra(mitraList.get(position));
+            }
+        });
+        if (!merkKendaraan.isEmpty()) {
+            if (merkKendaraan.equals("YAMAHA")) {
+                if (mitraList.get(position).equals("Baff")) {
+                    holder.checkBoxMitra.setChecked(false);
+                    holder.checkBoxMitra.setEnabled(false);
+                    holder.checkBoxMitra.setAlpha(0.5f);
+                }
+            } else{
+                holder.checkBoxMitra.setEnabled(false);
+                holder.checkBoxMitra.setAlpha(1f);
+            }
+        }
     }
 
     @Override
     public int getItemCount() {
         return mitraList.size();
+    }
+
+    public void setMitraList(List<String> mitraList) {
+        this.mitraList = mitraList;
+    }
+
+    public void setMerkKendaraan(String merkKendaraan) {
+        this.merkKendaraan = merkKendaraan;
+    }
+
+    public interface OnClickCheckBox{
+        void CheckedBoxMitra(String name);
     }
 }
