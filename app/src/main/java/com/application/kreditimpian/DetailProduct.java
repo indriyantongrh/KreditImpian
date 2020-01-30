@@ -6,8 +6,6 @@ import androidx.viewpager.widget.ViewPager;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.text.Html;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
@@ -15,23 +13,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.application.kreditimpian.Akun.DetailAlamat;
-import com.application.kreditimpian.Akun.TambahAlamatPengiriman;
 import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
 import com.application.kreditimpian.FormPengajuan.UpgradeImpian.ViewPagerAdapter;
-import com.application.kreditimpian.Marketplace.FragSemuaKategori.Constans;
+import com.application.kreditimpian.Constan.Constans;
 import com.application.kreditimpian.Model.ModelProduct.ImagesItem;
 //import com.application.kreditimpian.Model.ModelProduct.ResultItem;
 import com.application.kreditimpian.Model.ModelProductNew.ResultItem;
 import com.application.kreditimpian.Model.ModelTransaction.ResponseTransaction;
+import com.application.kreditimpian.TransactionProcess.Cart;
 import com.bumptech.glide.Glide;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -246,6 +242,8 @@ public class DetailProduct extends AppCompatActivity {
                 pDialog.dismiss();
                 if (response.body() !=null) {
                     Toast.makeText(DetailProduct.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(DetailProduct.this, Cart.class);
+                    startActivity(intent);
                     finish();
                 } else {
                     Toast.makeText(DetailProduct.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();

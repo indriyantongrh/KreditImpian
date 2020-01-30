@@ -1,4 +1,4 @@
-package com.application.kreditimpian.Akun;
+package com.application.kreditimpian.Constan;
 
 /**
  * Created by indriyanto Nugroho on 28 Jan 2020.

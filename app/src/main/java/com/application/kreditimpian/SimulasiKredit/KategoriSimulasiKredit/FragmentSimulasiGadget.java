@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.application.kreditimpian.R;
 import com.xw.repo.BubbleSeekBar;
@@ -61,8 +62,11 @@ public class FragmentSimulasiGadget extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
+
+
                 //((TextView) parentView.getChildAt(0)).setTextColor(Color.WHITE);
-                if (spinnertenor.getSelectedItem().equals("6 bulan")) {
+                if (spinnertenor.getSelectedItem().equals("6 bulan") ) {
+                    ///Toast.makeText(getActivity(), "Pilih Unag muka terlebih dahulu", Toast.LENGTH_LONG).show();
                     txttenor.setText("6 bulan");
 ///                    rupiah  = Double.parseDouble(txtvalue.getText().toString());
 ///                    TagihanBulanan();

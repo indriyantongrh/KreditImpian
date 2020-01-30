@@ -10,6 +10,7 @@ import com.application.kreditimpian.Model.ModelLogin.ResponseLogin;
 import com.application.kreditimpian.Model.ModelMember.ResponseMember;
 import com.application.kreditimpian.Model.ModelMemberInsert.ResponseMemberInsert;
 import com.application.kreditimpian.Model.ModelMerchant.ResponseMerchant;
+import com.application.kreditimpian.Model.ModelOnShoppingCart.ResponseOnShoppingCart;
 import com.application.kreditimpian.Model.ModelProduct.ResponseProduct;
 import com.application.kreditimpian.Model.ModelProductBaru.ResponseProductBaru;
 import com.application.kreditimpian.Model.ModelProductNew.ProductResponse;
@@ -61,7 +62,6 @@ public interface BaseApiService {
 
 //    @GET("master/geodirectories?TYPE=CITY")
 //    Call<ResponseGeodirectories> getGeoCity();
-
     @GET("ApiMobile/getdistrict")
     Call<ResponseGeodirectory> getDistrict();
 
@@ -88,9 +88,12 @@ public interface BaseApiService {
     @GET("ApiMobile/insertprofile")
     Call<ResponseMemberInsert> InsertMember(@QueryMap HashMap<String, String> params);
 
+    /*API Transaction*/
     @GET("ApiMobile/insrtonshoppingcart")
     Call<ResponseTransaction> InsertShoppingCart(@QueryMap HashMap<String, String> params);
 
+    @GET("ApiMobile/getonshoppingcart")
+    Call<ResponseOnShoppingCart> getOnShoppingCart(@Query("id_member") String id_member);
     //getMember
     ///@FormUrlEncoded
     @GET("members")

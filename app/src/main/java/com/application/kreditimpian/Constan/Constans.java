@@ -1,4 +1,4 @@
-package com.application.kreditimpian.Marketplace.FragSemuaKategori;
+package com.application.kreditimpian.Constan;
 
 /**
  * Created by indriyanto Nugroho on 17 Des 2019.

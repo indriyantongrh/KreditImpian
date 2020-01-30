@@ -16,22 +16,18 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.application.kreditimpian.Adapter.AdapterAddresses;
-import com.application.kreditimpian.Adapter.AdapterProductNew;
 import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
-import com.application.kreditimpian.DetailProduct;
-import com.application.kreditimpian.Marketplace.FragSemuaKategori.Constans;
+import com.application.kreditimpian.Constan.ConstansAddress;
 import com.application.kreditimpian.Marketplace.FragSemuaKategori.RecyclerItemClickListener;
 import com.application.kreditimpian.Model.ModelListAlamat.DataItem;
 import com.application.kreditimpian.Model.ModelListAlamat.ResponseListAlamat;
-import com.application.kreditimpian.Model.ModelProductNew.ResultItem;
 import com.application.kreditimpian.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

@@ -39,7 +39,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Akun.DetailAlamat"></activity>
+        <activity android:name=".TransactionProcess.TransactionCheckout"></activity>
+        <activity android:name=".TransactionProcess.TransactionSelectTenor" />
+        <activity android:name=".TransactionProcess.TransactionSelectMitra" />
+        <activity android:name=".Akun.DetailAlamat" />
         <activity android:name=".Akun.AlamatPengiriman" />
         <activity android:name=".DetailHistoryPesanan" />
         <activity android:name=".FormPengajuan.UpgradeImpian.UpgradeImpian" /> <!-- <activity android:name=".CartCheckout.Cart" /> -->

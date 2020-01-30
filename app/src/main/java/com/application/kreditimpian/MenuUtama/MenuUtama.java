@@ -159,31 +159,31 @@ public class MenuUtama extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menutopbar, menu);
-        return true;
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        int id = item.getItemId();
-
-        if (id == R.id.notifikasi){
-            Toast.makeText(this, "ini Notifikasi", Toast.LENGTH_SHORT).show();
-
-        }
-        if (id == R.id.cartshop){
-            gotocartshop();
-        }
-        return super.onOptionsItemSelected(item);
-
-
-
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menutopbar, menu);
+//        return true;
+//    }
+//
+//
+////    @Override
+////    public boolean onOptionsItemSelected(MenuItem item) {
+////
+////        int id = item.getItemId();
+////
+////        if (id == R.id.notifikasi){
+////            Toast.makeText(this, "ini Notifikasi", Toast.LENGTH_SHORT).show();
+////
+////        }
+////        if (id == R.id.cartshop){
+////            gotocartshop();
+////        }
+////        return super.onOptionsItemSelected(item);
+////
+////
+////
+////    }
 
     private void gotocartshop() {
         Intent intent_cart = new Intent(this, Cart.class);

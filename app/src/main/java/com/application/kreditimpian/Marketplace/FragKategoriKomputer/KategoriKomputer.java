@@ -3,7 +3,6 @@ package com.application.kreditimpian.Marketplace.FragKategoriKomputer;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -18,13 +17,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.application.kreditimpian.Adapter.AdapterProduct;
 import com.application.kreditimpian.Adapter.AdapterProductBaru;
-import com.application.kreditimpian.Adapter.AdapterProductNew;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
 import com.application.kreditimpian.DetailProduct;
-import com.application.kreditimpian.Marketplace.FragSemuaKategori.Constans;
+import com.application.kreditimpian.Constan.Constans;
 import com.application.kreditimpian.Marketplace.FragSemuaKategori.RecyclerItemClickListener;
 //import com.application.kreditimpian.Model.ModelProduct.ResponseProduct;
 //import com.application.kreditimpian.Model.ModelProduct.ResultItem;

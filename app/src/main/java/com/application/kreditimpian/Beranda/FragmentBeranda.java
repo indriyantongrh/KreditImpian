@@ -534,43 +534,43 @@ private void initViewMitra() {
     }
 
 
-//    @Override
-//    public void onCreate(@Nullable Bundle savedInstanceState) {
-//        setHasOptionsMenu(true);
-//        super.onCreate(savedInstanceState);
-//    }
-//
-//    @Override
-//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-//        inflater.inflate(R.menu.menutopbar, menu);
-//
-//        super.onCreateOptionsMenu(menu, inflater);
-//    }
-//
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//
-//        int id = item.getItemId();
-//
-//        if (id == R.id.notifikasi){
-//            Toast.makeText(getActivity(), "ini Notifikasi", Toast.LENGTH_SHORT).show();
-//
-//        }
-//        if (id == R.id.cartshop){
-//            gotocartshop();
-//        }
-//        return super.onOptionsItemSelected(item);
-//
-//
-//
-//    }
-//
-//    private void gotocartshop() {
-//        Intent intent_cart = new Intent(getActivity(), Cart.class);
-//        intent_cart.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//        startActivity(intent_cart);
-//    }
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menutopbar, menu);
+
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if (id == R.id.notifikasi){
+            Toast.makeText(getActivity(), "ini Notifikasi", Toast.LENGTH_SHORT).show();
+
+        }
+        if (id == R.id.cartshop){
+            gotocartshop();
+        }
+        return super.onOptionsItemSelected(item);
+
+
+
+    }
+
+    private void gotocartshop() {
+        Intent intent_cart = new Intent(getActivity(), Cart.class);
+        intent_cart.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent_cart);
+    }
 
 
 }
