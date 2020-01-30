@@ -69,12 +69,12 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.HolderCart> {
             holder.txt_price_sale.setText(formatRupiah.format(Price_Sale));
             holder.txt_image.setText(dataItem.getFilename());
 
-//
-//            Glide.with(mContext)
-//                    .load(dataItem.getFilename())
-//                    .placeholder(R.drawable.no_image)
-//                    .error(R.drawable.no_image)
-//                    .into(holder.image);
+
+            Glide.with(mContext)
+                    .load(dataItem.getFilename())
+                    .placeholder(R.drawable.no_image)
+                    .error(R.drawable.no_image)
+                    .into(holder.image);
 
     }
 
