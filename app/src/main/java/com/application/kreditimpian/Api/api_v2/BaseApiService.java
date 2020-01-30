@@ -4,6 +4,7 @@ package com.application.kreditimpian.Api.api_v2;
 
 import com.application.kreditimpian.Model.ModelAddress.ResponseAddress;
 import com.application.kreditimpian.Model.ModelGeodirectories.ResponseGeodirectories;
+import com.application.kreditimpian.Model.ModelGeodirectory.ResponseGeodirectory;
 import com.application.kreditimpian.Model.ModelListAlamat.ResponseListAlamat;
 import com.application.kreditimpian.Model.ModelLogin.ResponseLogin;
 import com.application.kreditimpian.Model.ModelMember.ResponseMember;
@@ -14,6 +15,7 @@ import com.application.kreditimpian.Model.ModelProductBaru.ResponseProductBaru;
 import com.application.kreditimpian.Model.ModelProductNew.ProductResponse;
 
 
+import com.application.kreditimpian.Model.ModelTransaction.ResponseTransaction;
 import com.application.kreditimpian.Model.ModelUserDetail.ResponseMembers;
 import com.application.kreditimpian.Model.ModelValidationSMS.ResponseSmsOTP;
 import com.application.kreditimpian.ResponseMessage.ResponseLoginSucces;
@@ -60,6 +62,12 @@ public interface BaseApiService {
     @GET("master/geodirectories?TYPE=CITY")
     Call<ResponseGeodirectories> getGeoCity();
 
+    @GET("ApiMobile/getdistrict")
+    Call<ResponseGeodirectory> getDistrict();
+
+    @GET("ApiMobile/getcity")
+    Call<ResponseGeodirectory> getCity();
+
     @GET("ApiMobile/isrtmbradrs")
     Call<ResponseAddress> InsertAddress(@QueryMap HashMap<String, String> params);
 
@@ -79,6 +87,9 @@ public interface BaseApiService {
 
     @GET("ApiMobile/insertprofile")
     Call<ResponseMemberInsert> InsertMember(@QueryMap HashMap<String, String> params);
+
+    @GET("ApiMobile/insrtonshoppingcart")
+    Call<ResponseTransaction> InsertShoppingCart(@QueryMap HashMap<String, String> params);
 
     //getMember
     ///@FormUrlEncoded
