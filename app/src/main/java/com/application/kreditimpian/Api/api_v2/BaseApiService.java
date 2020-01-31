@@ -23,6 +23,7 @@ import com.application.kreditimpian.ResponseMessage.ResponseLoginSucces;
 
 import java.util.HashMap;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -223,5 +224,20 @@ public interface BaseApiService {
     Call<ResponseMember> getMember(@Path("id") String id,
                                     @Header("Authorization") String result);
 
+    @GET("getcompaniesmeta")
+    Call<ResponseBody> getMitraUpgradeImpian();
+
+    @FormUrlEncoded
+    @POST("inserttransmultimotor")
+    Call<ResponseBody> pengajuanMotor(
+            @Field("id_member") String id_member,
+            @Field("jml_pinjaman") String jml_pinjaman,
+            @Field("hrg_kendaraan") String hrg_kendaraan,
+            @Field("merk_kendaraan") String merk_kendaraan,
+            @Field("tipe_kendaraan") String tipe_kendaraan,
+            @Field("lokasi") String lokasi,
+            @Field("mitra_kredit") String mitra_kredit,
+            @Field("img_bpkb") String img_bpkb
+    );
 
 }

@@ -103,6 +103,10 @@
     <string name="lokasi">Lokasi</string>
     <string name="ajukan_sekarang">Ajukan Sekarang</string>
     <string name="asuransi">Asuransi</string>
+    <string name="jmlhpinjkosong">Jumlah pinjaman tidak boleh kosong</string>
+    <string name="hrgkendkosong">Harga kendaraan tidak boleh kosong</string>
+    <string name="lokasikosong">Silahkan isi kota anda tinggal</string>
+    <string name="asuransikosong">Masukkan asuransi yang diinginkan</string>
 
     <string-array name="mitra">
         <item>Adira</item>
@@ -690,7 +694,7 @@
     </string-array>
     <string-array name="listMerkMobil">
         <item>AUDI</item>
-        <item>BIMANTARA </item>
+        <item>BIMANTARA</item>
         <item>BMW</item>
         <item>CADILLAC</item>
         <item>CHEROKEE</item>
@@ -702,7 +706,7 @@
         <item>DATSUN</item>
         <item>DONGFENG</item>
         <item>FIAT</item>
-        <item>FORD </item>
+        <item>FORD</item>
         <item>GEELY</item>
         <item>HINO</item>
         <item>HONDA</item>
@@ -737,7 +741,7 @@
         <item>WRANGLER</item>
         <item>WULING</item>
     </string-array>
-    <string-array name="listTipeAudi">
+    <string-array name="mobilTipeAudi">
         <item>A 62.8 A/T</item>
         <item>A3 1.8 TURBO A/T</item>
         <item>A4 1.8 AT</item>
@@ -745,10 +749,10 @@
         <item>AUDI Q7 AT</item>
         <item>Q5 2.0 T AT</item>
     </string-array>
-    <string-array name="listTipeBimantara">
+    <string-array name="mobilTipeBimantara">
         <item>ACCENT</item>
     </string-array>
-    <string-array name="listTipeBmw">
+    <string-array name="mobilTipeBmw">
         <item>116I AT</item>
         <item>318 I A/T</item>
         <item>318 IA E46/M43</item>
@@ -763,18 +767,18 @@
         <item>520 I</item>
         <item>523 I AT</item>
     </string-array>
-    <string-array name="listTipeCadillac">
+    <string-array name="mobilTipeCadillac">
         <item>ESCALADE</item>
     </string-array>
-    <string-array name="listTipeCherokee">
+    <string-array name="mobilTipeCherokee">
         <item>CHEROKEE 3.7L A/T</item>
         <item>JEEP</item>
     </string-array>
-    <string-array name="listTipeChery">
+    <string-array name="mobilTipeChery">
         <item>CHERY QQ 1.1 S MT</item>
         <item>CHERY QQ GX</item>
     </string-array>
-    <string-array name="listTipeChevrolet">
+    <string-array name="mobilTipeChevrolet">
         <item>AVEO</item>
         <item>AVEO 1.4 LT MT</item>
         <item>AVEO 1.5 A/T</item>
@@ -840,10 +844,13 @@
         <item>NEW COLORADOEC 25 MT</item>
         <item>NEW COLORADOLTDC25 MT</item>
     </string-array>
-    <string-array name="listTipeChrysler">
+    <string-array name="mobilTipeChrysler">
         <item>NEON 2.0L A/T</item>
     </string-array>
-    <string-array name="listTipeDaihatsu">
+    <string-array name="mobilTipeCj7">
+        <item>WRANGLER</item>
+    </string-array>
+    <string-array name="mobilTipeDaihatsu">
         <item>ALYA A/T</item>
         <item>ALYA M/T</item>
         <item>AYLA 1.0 X AT DELUXE</item>
@@ -1254,7 +1261,7 @@
         <item>ESPASSA 1.6</item>
         <item>GRANDMAX PU 1.5 MT BOX</item>
     </string-array>
-    <string-array name="listTipeDatsun">
+    <string-array name="mobilTipeDatsun">
         <item>CROSS 1.2</item>
         <item>CROSS 1.2 CVT</item>
         <item>DATSUN GO + PANCA</item>
@@ -1275,18 +1282,18 @@
         <item>NEW DATSUN GO 1.2 D</item>
         <item>NEWDATSUN GOPLUS 1.2 T</item>
     </string-array>
-    <string-array name="listTipeDodge">
+    <string-array name="mobilTipeDodge">
         <item>JOURNEY 2.4 A/T</item>
     </string-array>
-    <string-array name="listTipeDongfeng">
+    <string-array name="mobilTipeDongfeng">
         <item>JGLORY 580 1.5LUX CVT</item>
         <item>SUPER CAB 1.3 AC DSL</item>
         <item>SUPER CAB 1.5STD GSL</item>
     </string-array>
-    <string-array name="listTipeFiat">
+    <string-array name="mobilTipeFiat">
         <item>ABARTH 500 1.4 MT</item>
     </string-array>
-    <string-array name="listTipeFord">
+    <string-array name="mobilTipeFord">
         <item>ANEW ECOSPRT TREN AT</item>
         <item>ANEW ECOSPRT TTNM AT</item>
         <item>ANEW ECOSPT TREN MT</item>
@@ -1343,14 +1350,14 @@
         <item>RAS CB 2.2L 4X4 MT</item>
         <item>RDC2.2L4X4XLSPLUSMT</item>
     </string-array>
-    <string-array name="listTipeGeely">
+    <string-array name="mobilTipeGeely">
         <item>ALC 1.3 GS M/T</item>
         <item>LC 1.3 GT M/T</item>
         <item>LC CROSS 1.3 GL M/T</item>
         <item>MK2 1.5 GT M/T</item>
         <item>PANDA GL 1.3 M/T</item>
     </string-array>
-    <string-array name="listTipeHonda">
+    <string-array name="mobilTipeHonda">
         <item>ACCORD CM 5 M/T</item>
         <item>ACCORD S 86 VTIL AT</item>
         <item>ACCORD S86 MT</item>
@@ -1507,10 +1514,10 @@
         <item>STREAM</item>
         <item>STREAM A/T</item>
     </string-array>
-    <string-array name="listTipeHummer">
+    <string-array name="mobilTipeHummer">
         <item>H3 AT</item>
     </string-array>
-    <string-array name="listTipeHyundai">
+    <string-array name="mobilTipeHyundai">
         <item>ACCENT</item>
         <item>ATOZ</item>
         <item>ATOZ</item>
@@ -1583,7 +1590,7 @@
         <item>HD MGTY1 36LH+BAK BSI</item>
         <item>HD MIGHTY 1 36 B</item>
     </string-array>
-    <string-array name="listTipeIsuzu">
+    <string-array name="mobilTipeIsuzu">
         <item>D-MAX DOUBLE CABIN</item>
         <item>D-MAX RODEO LS</item>
         <item>D-MAX SINGLE CABIN</item>
@@ -1863,7 +1870,7 @@
         <item>TRUCK BOX</item>
         <item>FVM 34 U 6X2 BOX</item>
     </string-array>
-    <string-array name="listTipeKia">
+    <string-array name="mobilTipeKia">
         <item>ALL NEW PICANTO AT</item>
         <item>ALL NEW PICANTO MT</item>
         <item>ALL NEW SPORTAGE A/T</item>
@@ -1928,20 +1935,20 @@
         <item>TRAVELLO STD</item>
         <item>VISTO</item>
     </string-array>
-    <string-array name="listTipeLandrover">
+    <string-array name="mobilTipeLandrover">
         <item>DISCOVERY 3 2.9 AT</item>
         <item>R ROVER SALLPAM 4400</item>
         <item>R.ROV S2.7TDV6STD</item>
         <item>R.ROVER EVOQUE 2.2L</item>
         <item>RANGE ROVER2.0EVOQUE</item>
     </string-array>
-    <string-array name="listTipeLexus">
+    <string-array name="mobilTipeLexus">
         <item>CT 200 1.8 H AT</item>
         <item>LX 570 AT</item>
         <item>NX 200T 2.0 AT</item>
         <item>RX 270 STD A/T</item>
     </string-array>
-    <string-array name="listTipeMazda">
+    <string-array name="mobilTipeMazda">
         <item>52,0 L A/T</item>
         <item>BIANTE 2.0 AT</item>
         <item>CX - 7</item>
@@ -1996,7 +2003,7 @@
         <item>DOUBLE CABIN BT-50</item>
         <item>SINGLE CAB 4X4 BT-50</item>
     </string-array>
-    <string-array name="listTipeMercedes">
+    <string-array name="mobilTipeMercedes">
         <item>AXOR 4843 K 8X4 AMT</item>
         <item>B170 AT</item>
         <item>BENZ 180</item>
@@ -2034,10 +2041,10 @@
         <item>SLK 200 KOMP A/T</item>
         <item>SLS 6.2 AMG AT</item>
     </string-array>
-    <string-array name="listTipeMini">
+    <string-array name="mobilTipeMini">
         <item>COOPER 5 DOOR 1.5 AT</item>
     </string-array>
-    <string-array name="listTipeMiitsubishi">
+    <string-array name="mobilTipeMiitsubishi">
         <item>COLT L 300</item>
         <item>COLT T 120 SS</item>
         <item>COLT T 120 SS 1500CC</item>
@@ -2369,10 +2376,10 @@
         <item>XPANDER1.5ULT AT SPC</item>
         <item>XPANDERL.SULTAERO+AT</item>
     </string-array>
-    <string-array name="listTipeMorris">
+    <string-array name="mobilTipeMorris">
         <item>MINI COOPER 1.6</item>
     </string-array>
-    <string-array name="listTipeNissan">
+    <string-array name="mobilTipeNissan">
         <item>ALL N-TEANA 2.5V6 AT</item>
         <item>ALMERA 1.2 MT</item>
         <item>CWA 260 M+DUMP</item>
@@ -2486,13 +2493,13 @@
         <item>XTRAIL STT 2.5 A/T</item>
         <item>XTRAIL XT 2.5 A/T</item>
     </string-array>
-    <string-array name="listTipeOpel">
+    <string-array name="mobilTipeOpel">
         <item>BLAZER DOHC</item>
         <item>BLAZER ER DOHC 01</item>
         <item>BLAZER MONTERA</item>
         <item>BLAZER MONTERA SOHC</item>
     </string-array>
-    <string-array name="listTipePeugeot">
+    <string-array name="mobilTipePeugeot">
         <item>B206 A/T</item>
         <item>206 M/T</item>
         <item>207 CC 1.6 L A/T</item>
@@ -2504,10 +2511,10 @@
         <item>408 2.0 AT</item>
         <item>PARTNER 1.4</item>
     </string-array>
-    <string-array name="listTipePorsche">
+    <string-array name="mobilTipePorsche">
         <item>CAYENNE</item>
     </string-array>
-    <string-array name="listTipeProton">
+    <string-array name="mobilTipeProton">
         <item>EXORA 1.6 A/T HGL</item>
         <item>EXORA 1.6 A/T MDL</item>
         <item>EXORA 1.6 L A/T FL</item>
@@ -2549,19 +2556,19 @@
         <item>STAR SUPREME MT</item>
         <item>SUPRIMA S 1.6 AT</item>
     </string-array>
-    <string-array name="listTipeRangerover">
+    <string-array name="mobilTipeRangerover">
         <item>RANGE ROVER 4.4V A/T</item>
     </string-array>
-    <string-array name="listTipeRenault">
+    <string-array name="mobilTipeRenault">
         <item>DUSTER RXL 1.5 4X2MT</item>
         <item>KWID 1.0 SCE</item>
     </string-array>
-    <string-array name="listTipeSubaru">
+    <string-array name="mobilTipeSubaru">
         <item>FORESTER 2.0 X AT</item>
         <item>LEGACY 2.01 AWD CVT</item>
         <item>XV 2.01 AWD CVT</item>
     </string-array>
-    <string-array name="listTipeSuzuki">
+    <string-array name="mobilTipeSuzuki">
         <item>A1J310F GX (4X2) M/T</item>
         <item>AERIO</item>
         <item>AERIO A/T</item>
@@ -2803,7 +2810,7 @@
         <item>WAGON R GS</item>
         <item>WAGON R 1.3 GL AT</item>
     </string-array>
-    <string-array name="listTipeTata">
+    <string-array name="mobilTipeTata">
         <item>SUPER ACE 1.4DLS BLV</item>
         <item>VISTA GZX 1.4 MT</item>
         <item>ACE EX 2</item>
@@ -2813,12 +2820,12 @@
         <item>XENON 3.0 HD</item>
         <item>XENON RX</item>
     </string-array>
-    <string-array name="listTipeTimor">
+    <string-array name="mobilTipeTimor">
         <item>515 I DOHC</item>
         <item>S 515</item>
         <item>515 I DOHC</item>
     </string-array>
-    <string-array name="listTipeToyota">
+    <string-array name="mobilTipeToyota">
         <item>1 ST 1.3 AT</item>
         <item>86 MT</item>
         <item>AGYA 1.0 E MT</item>
@@ -3225,10 +3232,10 @@
         <item>YARISTRD S SPRTIVOMT</item>
         <item>130HTPSGEAR+BAKKAYU</item>
     </string-array>
-    <string-array name="listTipeVolvo">
+    <string-array name="mobilTipeVolvo">
         <item>S 40 2.0 A/T</item>
     </string-array>
-    <string-array name="listTipeVw">
+    <string-array name="mobilTipeVw">
         <item>GOLF 1.2 TSI MT</item>
         <item>GOLF 1.4 TSI</item>
         <item>GOLF 2.0 GTI</item>
@@ -3242,7 +3249,7 @@
         <item>TOUREG</item>
         <item>TRANSPORTER TDILONG</item>
     </string-array>
-    <string-array name="listTipeWrangler">
+    <string-array name="mobilTipeWrangler">
         <item>SPORT UNLIMITED</item>
         <item>WRANGLER 3.6 AT</item>
         <item>WRANGLER 3.8 AT</item>
@@ -3250,7 +3257,7 @@
         <item>WRL SHRA DSL 2D 2.8</item>
         <item>WRL SHRA DSL 4D 2.8</item>
     </string-array>
-    <string-array name="listTipeWuling">
+    <string-array name="mobilTipeWuling">
         <item>CONFERO 1.5</item>
         <item>CONFERO 1.5 DB</item>
         <item>CONFERO S 1.5 C</item>
@@ -3267,7 +3274,7 @@
         <item>CORTEZ 1.8 L LUX+</item>
         <item>CORTEZ 1.8 L LUX+AMT</item>
     </string-array>
-    <string-array name="listTipeMercedesbenz">
+    <string-array name="mobilTipeMercedesbenz">
         <item>OH 1518 / 60</item>
         <item>OH 1521 / 60</item>
         <item>OH 1525</item>
@@ -3276,10 +3283,10 @@
         <item>OH 1526+KRS+AC</item>
         <item>OH 1626</item>
     </string-array>
-    <string-array name="listTipeScania">
+    <string-array name="mobilTipeScania">
         <item>P380CB-6X4</item>
     </string-array>
-    <string-array name="listTipeUdtrucks">
+    <string-array name="mobilTipeUdtrucks">
         <item>CDA 260 S</item>
         <item>CDA 260 X</item>
         <item>CDE 280 WB 5.6</item>
@@ -3303,7 +3310,7 @@
         <item>QUESTER GWE 280 6X4</item>
         <item>QUESTER GWE 370 T</item>
     </string-array>
-    <string-array name="listTipeHino">
+    <string-array name="mobilTipeHino">
         <item>110 HD + BOX</item>
         <item>110 HD+DUMP</item>
         <item>110 SD + BAK BESI</item>

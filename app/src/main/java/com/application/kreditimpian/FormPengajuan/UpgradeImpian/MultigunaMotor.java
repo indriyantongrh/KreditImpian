@@ -11,10 +11,12 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +24,13 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.application.kreditimpian.Api.SharedPrefManager;
+import com.application.kreditimpian.FormPengajuan.UpgradeImpian.viewmodel.UpgradeImpianViewModel;
+import com.application.kreditimpian.FormPengajuan.UpgradeImpian.viewmodel.ViewModelFactory;
+import com.application.kreditimpian.Model.ModelMitra;
+import com.application.kreditimpian.Model.ModelUpgradeImpian;
 import com.application.kreditimpian.R;
 import com.chivorn.smartmaterialspinner.SmartMaterialSpinner;
 import com.google.android.material.textfield.TextInputEditText;
@@ -46,9 +54,10 @@ import static android.app.Activity.RESULT_OK;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MultigunaMotor extends Fragment implements View.OnClickListener, MitraAdapter.OnClickCheckBox {
+public class MultigunaMotor extends Fragment implements View.OnClickListener {
     private Context context;
     private MitraAdapter mitraAdapter;
+    private UpgradeImpianViewModel upgradeImpianViewModel;
 
     private ImageView imageupload;
     private RecyclerView rvMitra;
@@ -60,7 +69,9 @@ public class MultigunaMotor extends Fragment implements View.OnClickListener, Mi
             edtHargaKendaraan,
             edtLokasi;
     private Button btnAjukansekarang;
+
     //untuk upload gambar
+    private String idMember;
     private Bitmap decoded;
     private static final int bitmap_size = 80; // range 1 - 100=
     private static final int PICK_IMAGE_REQUEST_1 = 1;
@@ -94,10 +105,15 @@ public class MultigunaMotor extends Fragment implements View.OnClickListener, Mi
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         context = getContext();
+        upgradeImpianViewModel = ViewModelProviders.of(this, new ViewModelFactory()).get(UpgradeImpianViewModel.class);
+
+        SharedPrefManager sharedPrefManager = new SharedPrefManager(context);
+        idMember = sharedPrefManager.getSpIdMember();
+
         imageupload.setOnClickListener(this);
         btnAjukansekarang.setOnClickListener(this);
         rvMitra.setLayoutManager(new LinearLayoutManager(context));
-        mitraAdapter = new MitraAdapter(context, this);
+        mitraAdapter = new MitraAdapter(context);
 
         edtJumlahPinjaman.addTextChangedListener(new NumberTextWatcher(edtJumlahPinjaman));
         edtHargaKendaraan.addTextChangedListener(new NumberTextWatcher(edtHargaKendaraan));
@@ -114,16 +130,6 @@ public class MultigunaMotor extends Fragment implements View.OnClickListener, Mi
         } else if (v == btnAjukansekarang) {
             kirimDataPengajuan();
         }
-    }
-
-    /**
-     * Method ovveride dari Mitra adapter ketika checkbok di centang
-     *
-     * @param name mengambil text dari checkbox
-     */
-    @Override
-    public void CheckedBoxMitra(String name) {
-        Log.v("jajal", name);
     }
 
     //untuk memilih gambar dari galeri
@@ -201,10 +207,24 @@ public class MultigunaMotor extends Fragment implements View.OnClickListener, Mi
         alert.show();
     }
 
+
+    private String getStringImage(Bitmap bmp) {
+        if (bmp != null) {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bmp.compress(Bitmap.CompressFormat.JPEG, bitmap_size, baos);
+            byte[] imageBytes = baos.toByteArray();
+//        String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+            return Base64.encodeToString(imageBytes, Base64.DEFAULT);
+        }
+        return "";
+    }
+
     private void loadMitra() {
-        List<String> mitraList = Arrays.asList(getResources().getStringArray(R.array.mitra));
-        mitraAdapter.setMitraList(mitraList);
-        rvMitra.setAdapter(mitraAdapter);
+        upgradeImpianViewModel.getMitraUpgradeImpian().observe(this, modelMitras -> {
+            mitraAdapter.setMitraList(modelMitras);
+            rvMitra.setAdapter(mitraAdapter);
+        });
+
     }
 
     @SuppressWarnings("unchecked")
@@ -217,29 +237,34 @@ public class MultigunaMotor extends Fragment implements View.OnClickListener, Mi
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 ArrayList<String> tipeKendaraanList = new ArrayList<>();
-                String[] arrayTipeHonda = getResources().getStringArray(R.array.motorTipeHonda);
-                String[] arrayTipeKawazaki = getResources().getStringArray(R.array.motorTipeKawazaki);
-                String[] arrayTipePiaggio = getResources().getStringArray(R.array.motorTipePiaggio);
-                String[] arrayTipeSuzuki = getResources().getStringArray(R.array.motorTipeYamaha);
-                String[] arrayTipeYamaha = getResources().getStringArray(R.array.motorTipeSuzuki);
+                String[] arrayTipeMotor = null;
 
-                if (spinnerMerkMotor.getSelectedItem().toString().equals("HONDA")) {
-                    Collections.addAll(tipeKendaraanList, arrayTipeHonda);
-                    spinTipeMotor.setItem(tipeKendaraanList);
-                } else if (spinnerMerkMotor.getSelectedItem().toString().equals("KAWAZAKI")) {
-                    Collections.addAll(tipeKendaraanList, arrayTipeKawazaki);
-                    spinTipeMotor.setItem(tipeKendaraanList);
-                } else if (spinnerMerkMotor.getSelectedItem().toString().equals("PIAGGIO")) {
-                    Collections.addAll(tipeKendaraanList, arrayTipePiaggio);
-                    spinTipeMotor.setItem(tipeKendaraanList);
-                } else if (spinnerMerkMotor.getSelectedItem().toString().equals("SUZUKI")) {
-                    Collections.addAll(tipeKendaraanList, arrayTipeSuzuki);
-                    spinTipeMotor.setItem(tipeKendaraanList);
-                } else if (spinnerMerkMotor.getSelectedItem().toString().equals("YAMAHA")) {
-                    Collections.addAll(tipeKendaraanList, arrayTipeYamaha);
-                    spinTipeMotor.setItem(tipeKendaraanList);
+                switch (spinnerMerkMotor.getSelectedItem().toString()) {
+                    case "HONDA":
+                        arrayTipeMotor = getResources().getStringArray(R.array.motorTipeHonda);
+                        Collections.addAll(tipeKendaraanList, arrayTipeMotor);
+                        break;
+                    case "KAWAZAKI":
+                        arrayTipeMotor = getResources().getStringArray(R.array.motorTipeKawazaki);
+                        Collections.addAll(tipeKendaraanList, arrayTipeMotor);
+                        break;
+                    case "PIAGGIO":
+                        arrayTipeMotor = getResources().getStringArray(R.array.motorTipePiaggio);
+                        Collections.addAll(tipeKendaraanList, arrayTipeMotor);
+                        break;
+                    case "SUZUKI":
+                        arrayTipeMotor = getResources().getStringArray(R.array.motorTipeYamaha);
+                        Collections.addAll(tipeKendaraanList, arrayTipeMotor);
+                        break;
+                    case "YAMAHA":
+                        arrayTipeMotor = getResources().getStringArray(R.array.motorTipeSuzuki);
+                        break;
                 }
 
+                if (arrayTipeMotor != null) {
+                    Collections.addAll(tipeKendaraanList, arrayTipeMotor);
+                    spinTipeMotor.setItem(tipeKendaraanList);
+                }
                 mitraAdapter.setMerkKendaraan(spinnerMerkMotor.getSelectedItem().toString());
                 mitraAdapter.notifyDataSetChanged();
             }
@@ -267,8 +292,61 @@ public class MultigunaMotor extends Fragment implements View.OnClickListener, Mi
     }
 
     private void kirimDataPengajuan() {
-        Log.v("jajal", String.valueOf(edtJumlahPinjaman.getText()).replace(".", "") + " a");
-        Log.v("jajal", String.valueOf(edtHargaKendaraan.getText()).replace(".", "") + " a");
+        boolean check = false;
+        String jmlhPinj = String.valueOf(edtJumlahPinjaman.getText()).replace(".", "");
+        String hrgKend = String.valueOf(edtHargaKendaraan.getText()).replace(".", "");
+        String lokasi = String.valueOf(edtLokasi.getText());
+        StringBuilder mitraStringBuilder = new StringBuilder();
+        ArrayList<ModelMitra> modelMitraArrayList = mitraAdapter.getMitraList();
+        ModelMitra modelMitra = new ModelMitra();
+        for (int i = 0; i < modelMitraArrayList.size(); i++) {
+            modelMitra = modelMitraArrayList.get(i);
+            if (modelMitra.isChecked()) {
+                mitraStringBuilder.append(modelMitra.getId()).append("|");
+            }
+        }
+        for (int i = 0; i < modelMitraArrayList.size(); i++) {
+            if (modelMitra.isChecked()) {
+                check = true;
+                break;
+            }
+        }
+        Log.v("jajal", mitraStringBuilder.toString());
+        if (jmlhPinj.isEmpty()) {
+            edtJumlahPinjaman.setError(getResources().getString(R.string.jmlhpinjkosong));
+            edtJumlahPinjaman.requestFocus();
+        } else if (hrgKend.isEmpty()) {
+            edtHargaKendaraan.setError(getResources().getString(R.string.hrgkendkosong));
+            edtHargaKendaraan.requestFocus();
+        } else if (spinnerMerkMotor.getSelectedItemPosition() < 0) {
+            Toast.makeText(context, "Belum memilih Merk Sepeda Motor", Toast.LENGTH_LONG).show();
+        } else if (spinTipeMotor.getSelectedItemPosition() < 0) {
+            Toast.makeText(context, "Belum memilih Tipe Sepeda Motor", Toast.LENGTH_LONG).show();
+        } else if (spinThnMotor.getSelectedItemPosition() < 0) {
+            Toast.makeText(context, "Belum memilih Tahun Sepeda Motor", Toast.LENGTH_LONG).show();
+        } else if (lokasi.isEmpty()) {
+            edtLokasi.setError(getResources().getString(R.string.lokasikosong));
+            edtLokasi.requestFocus();
+        } else if (!check) {
+            Toast.makeText(context, "Silahkan pilih leasing\nmin 1\nmax 3", Toast.LENGTH_LONG).show();
+        } else if (getStringImage(decoded).isEmpty()) {
+            Toast.makeText(context, "Silahkan Foto BPKB", Toast.LENGTH_LONG).show();
+        } else {
+            ModelUpgradeImpian modelUpgradeImpian = new ModelUpgradeImpian();
+            modelUpgradeImpian.setIdmember(idMember);
+            modelUpgradeImpian.setJmlhpinjaman(jmlhPinj);
+            modelUpgradeImpian.setHrgkendaraan(hrgKend);
+            modelUpgradeImpian.setMerkkendaraan(spinnerMerkMotor.getSelectedItem().toString());
+            modelUpgradeImpian.setTipekendaraan(spinTipeMotor.getSelectedItem().toString());
+            modelUpgradeImpian.setLokasi(lokasi);
+            modelUpgradeImpian.setMitra(mitraStringBuilder.toString());
+            modelUpgradeImpian.setImage(getStringImage(decoded));
+
+            upgradeImpianViewModel.setModelUpgradeImpian(modelUpgradeImpian);
+            upgradeImpianViewModel.pengajuanMotor().observe(this, hashMap -> {
+
+            });
+        }
     }
 
 }

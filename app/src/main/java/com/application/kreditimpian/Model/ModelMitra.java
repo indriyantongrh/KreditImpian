@@ -27,6 +27,16 @@ public class ModelMitra {
     @Expose
     private Contacts contacts;
 
+    private boolean isChecked;
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
+    }
+
     public String getId() {
         return id;
     }
