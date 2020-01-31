@@ -99,6 +99,7 @@ public class UpgradeImpianRepository {
                         responses = response.body().string();
                         jsonObject = new JSONObject(responses);
 
+                        Log.v("jajal", jsonObject+" a");
                     } catch (IOException | JSONException e) {
                         e.printStackTrace();
                     }

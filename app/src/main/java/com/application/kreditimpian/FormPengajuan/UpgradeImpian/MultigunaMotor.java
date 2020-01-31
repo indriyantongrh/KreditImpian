@@ -221,10 +221,9 @@ public class MultigunaMotor extends Fragment implements View.OnClickListener {
 
     private void loadMitra() {
         upgradeImpianViewModel.getMitraUpgradeImpian().observe(this, modelMitras -> {
-            mitraAdapter.setMitraList(modelMitras);
+            mitraAdapter.setMitraList(modelMitras,"motor");
             rvMitra.setAdapter(mitraAdapter);
         });
-
     }
 
     @SuppressWarnings("unchecked")

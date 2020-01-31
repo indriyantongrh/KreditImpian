@@ -12,6 +12,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.provider.MediaStore;
 import android.util.Base64;
@@ -23,6 +26,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.application.kreditimpian.FormPengajuan.UpgradeImpian.viewmodel.UpgradeImpianViewModel;
+import com.application.kreditimpian.FormPengajuan.UpgradeImpian.viewmodel.ViewModelFactory;
+import com.application.kreditimpian.Model.ModelMitra;
 import com.application.kreditimpian.R;
 import com.chivorn.smartmaterialspinner.SmartMaterialSpinner;
 import com.google.android.material.textfield.TextInputEditText;
@@ -46,6 +52,8 @@ import static android.app.Activity.RESULT_OK;
  */
 public class MultigunaMobil extends Fragment implements View.OnClickListener {
     private Context context;
+    private MitraAdapter mitraAdapter;
+    private UpgradeImpianViewModel upgradeImpianViewModel;
 
     private ImageView imageupload;
     private SmartMaterialSpinner spinMerkMobil,
@@ -57,6 +65,8 @@ public class MultigunaMobil extends Fragment implements View.OnClickListener {
             edtHargaKendaraan,
             edtLokasi,
             edtAsuransi;
+    private RecyclerView rvMitra;
+
     //untuk upload gambar
     private Bitmap decoded;
     private static final int bitmap_size = 80; // range 1 - 100=
@@ -85,18 +95,24 @@ public class MultigunaMobil extends Fragment implements View.OnClickListener {
         edtLokasi = view.findViewById(R.id.txtlokasi);
         edtAsuransi = view.findViewById(R.id.txtAsuransi);
         btnAjukansekarang = view.findViewById(R.id.btnAjukansekarang);
+        rvMitra = view.findViewById(R.id.rvMitra);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         context = getContext();
+        upgradeImpianViewModel = ViewModelProviders.of(this, new ViewModelFactory()).get(UpgradeImpianViewModel.class);
+
         imageupload.setOnClickListener(this);
+        rvMitra.setLayoutManager(new LinearLayoutManager(context));
+        mitraAdapter = new MitraAdapter(context);
         btnAjukansekarang.setOnClickListener(this);
 
         edtJumlahPinjaman.addTextChangedListener(new NumberTextWatcher(edtJumlahPinjaman));
         edtHargaKendaraan.addTextChangedListener(new NumberTextWatcher(edtHargaKendaraan));
 
+        loadMitra();
         loadKendaraan();
         loadTahunMotor();
     }
@@ -181,11 +197,21 @@ public class MultigunaMobil extends Fragment implements View.OnClickListener {
     }
 
     private String getStringImage(Bitmap bmp) {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bmp.compress(Bitmap.CompressFormat.JPEG, bitmap_size, baos);
-        byte[] imageBytes = baos.toByteArray();
+        if (bmp != null) {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bmp.compress(Bitmap.CompressFormat.JPEG, bitmap_size, baos);
+            byte[] imageBytes = baos.toByteArray();
 //        String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
-        return Base64.encodeToString(imageBytes, Base64.DEFAULT);
+            return Base64.encodeToString(imageBytes, Base64.DEFAULT);
+        }
+        return "";
+    }
+
+    private void loadMitra() {
+        upgradeImpianViewModel.getMitraUpgradeImpian().observe(this, modelMitras -> {
+            mitraAdapter.setMitraList(modelMitras, "mobil");
+            rvMitra.setAdapter(mitraAdapter);
+        });
     }
 
     @SuppressWarnings("unchecked")
@@ -361,28 +387,47 @@ public class MultigunaMobil extends Fragment implements View.OnClickListener {
     }
 
     private void kirimDataPengajuan() {
+        boolean check = false;
         String jmlhPinj = String.valueOf(edtJumlahPinjaman.getText()).replace(".", "");
         String hrgKend = String.valueOf(edtHargaKendaraan.getText()).replace(".", "");
         String lokasi = String.valueOf(edtLokasi.getText());
         String asuransi = String.valueOf(edtAsuransi.getText());
+        StringBuilder mitraStringBuilder = new StringBuilder();
+        ArrayList<ModelMitra> modelMitraArrayList = mitraAdapter.getMitraList();
+        ModelMitra modelMitra = new ModelMitra();
+        for (int i = 0; i < modelMitraArrayList.size(); i++) {
+            modelMitra = modelMitraArrayList.get(i);
+            if (modelMitra.isChecked()) {
+                mitraStringBuilder.append(modelMitra.getId()).append("|");
+            }
+        }
+        for (int i = 0; i < modelMitraArrayList.size(); i++) {
+            if (modelMitra.isChecked()) {
+                check = true;
+                break;
+            }
+        }
+
         if (jmlhPinj.isEmpty()) {
             edtJumlahPinjaman.setError(getResources().getString(R.string.jmlhpinjkosong));
             edtJumlahPinjaman.requestFocus();
         } else if (hrgKend.isEmpty()) {
             edtHargaKendaraan.setError(getResources().getString(R.string.hrgkendkosong));
             edtHargaKendaraan.requestFocus();
-        } else if (lokasi.isEmpty()) {
-            edtLokasi.setError(getResources().getString(R.string.lokasikosong));
-            edtLokasi.requestFocus();
-        } else if (asuransi.isEmpty()) {
-            edtLokasi.setError(getResources().getString(R.string.asuransikosong));
-            edtLokasi.requestFocus();
         } else if (spinMerkMobil.getSelectedItemPosition() < 0) {
             Toast.makeText(context, "Belum memilih Merk Sepeda Motor", Toast.LENGTH_LONG).show();
         } else if (spinTipeMobil.getSelectedItemPosition() < 0) {
             Toast.makeText(context, "Belum memilih Tipe Sepeda Motor", Toast.LENGTH_LONG).show();
         } else if (spinThnMobil.getSelectedItemPosition() < 0) {
             Toast.makeText(context, "Belum memilih Tahun mobil", Toast.LENGTH_LONG).show();
+        } else if (lokasi.isEmpty()) {
+            edtLokasi.setError(getResources().getString(R.string.lokasikosong));
+            edtLokasi.requestFocus();
+        } else if (asuransi.isEmpty()) {
+            edtLokasi.setError(getResources().getString(R.string.asuransikosong));
+            edtLokasi.requestFocus();
+        } else if (!check) {
+            Toast.makeText(context, "Silahkan pilih leasing\nminimal 1\nmaximal 3", Toast.LENGTH_LONG).show();
         } else if (getStringImage(decoded).isEmpty()) {
             Toast.makeText(context, "Silahkan Foto BPKB", Toast.LENGTH_LONG).show();
         } else {

@@ -3,6 +3,7 @@ package com.application.kreditimpian.FormPengajuan.UpgradeImpian;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -17,7 +18,8 @@ public class MitraAdapter extends RecyclerView.Adapter<MitraViewHolder> {
     private final Context context;
 
     private int count = 0;
-    private String merkKendaraan = "";
+    private String merkKendaraan = "",
+            motormobil;
     private ArrayList<ModelMitra> mitraList;
 
     public MitraAdapter(Context context) {
@@ -36,34 +38,43 @@ public class MitraAdapter extends RecyclerView.Adapter<MitraViewHolder> {
         ModelMitra modelMitra = mitraList.get(position);
         holder.checkBoxMitra.setText(modelMitra.getName());
         holder.checkBoxMitra.setOnClickListener(v -> {
-            Log.v("jajal", position+" a");
             setCheckbox(position);
+            notifyDataSetChanged();
         });
 
-        if (count == 3){
-            if (!modelMitra.isChecked()){
+
+        if (count == 3) {
+            if (!modelMitra.isChecked()) {
                 holder.checkBoxMitra.setEnabled(modelMitra.isChecked());
                 holder.checkBoxMitra.setAlpha(0.5f);
             } else {
                 holder.checkBoxMitra.setEnabled(true);
             }
-        } else if (count < 3){
+        } else if (count < 3) {
             holder.checkBoxMitra.setEnabled(true);
         }
 
-        if (!merkKendaraan.isEmpty()) {
-            if (!merkKendaraan.equals("YAMAHA")) {
-                if (modelMitra.getName().equals("baf")) {
-                    holder.checkBoxMitra.setChecked(false);
-                    holder.checkBoxMitra.setEnabled(false);
-                    holder.checkBoxMitra.setAlpha(0.5f);
+        if (motormobil.equals("mobil")) {
+            if (modelMitra.getName().equals("baf")) {
+                holder.checkBoxMitra.setVisibility(View.GONE);
+            } else{
+                holder.checkBoxMitra.setChecked(true);
+                setCheckbox(position);
+            }
+        } else {
+            if (!merkKendaraan.isEmpty()) {
+                if (!merkKendaraan.equals("YAMAHA")) {
+                    if (modelMitra.getName().equals("baf")) {
+                        holder.checkBoxMitra.setChecked(false);
+                        holder.checkBoxMitra.setEnabled(false);
+                        holder.checkBoxMitra.setAlpha(0.5f);
+                    }
+                } else {
+                    holder.checkBoxMitra.setEnabled(true);
+                    holder.checkBoxMitra.setAlpha(1f);
                 }
-            } else {
-                holder.checkBoxMitra.setEnabled(true);
-                holder.checkBoxMitra.setAlpha(1f);
             }
         }
-
     }
 
     @Override
@@ -71,8 +82,9 @@ public class MitraAdapter extends RecyclerView.Adapter<MitraViewHolder> {
         return mitraList.size();
     }
 
-    public void setMitraList(ArrayList<ModelMitra> mitraList) {
+    public void setMitraList(ArrayList<ModelMitra> mitraList, String motormobil) {
         this.mitraList = mitraList;
+        this.motormobil = motormobil;
     }
 
     public void setMerkKendaraan(String merkKendaraan) {
@@ -86,7 +98,6 @@ public class MitraAdapter extends RecyclerView.Adapter<MitraViewHolder> {
     private void setCheckbox(int position) {
         ModelMitra modelMitra = mitraList.get(position);
         modelMitra.setChecked(!modelMitra.isChecked());
-        notifyDataSetChanged();
         Log.v("jajal", modelMitra.getName());
         if (modelMitra.isChecked()) {
             count++;
