@@ -51,9 +51,9 @@ public class UpgradeImpianRepository {
                         responses = response.body().string();
                         jsonObject = new JSONObject(responses);
                         ArrayList<ModelMitra> modelMitras = new ArrayList<>();
-                        if (jsonObject.getString("response_code").equals("200")){
+                        if (jsonObject.getString("response_code").equals("200")) {
                             jsonArray = new JSONArray(jsonObject.getString("data"));
-                            Log.v("jajal", jsonArray.length()+"");
+                            Log.v("jajal", jsonArray.length() + "");
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 jsonObject = jsonArray.getJSONObject(i);
                                 ModelMitra modelMitra = new ModelMitra();
@@ -67,19 +67,20 @@ public class UpgradeImpianRepository {
                     } catch (IOException | JSONException e) {
                         e.printStackTrace();
                     }
-                } else{
-                    Log.v("jajal", response.body()+" a");
+                } else {
+                    Log.v("jajal", response.body() + " a");
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Log.v("jajal", t.getMessage()+" a");
+                Log.v("jajal", t.getMessage() + " a");
             }
         });
         return arrayListMutableLiveData;
     }
-    public LiveData<HashMap> pengajuanMotor(ModelUpgradeImpian modelUpgradeImpian){
+
+    public LiveData<HashMap> pengajuanMotor(ModelUpgradeImpian modelUpgradeImpian) {
         MutableLiveData<HashMap> hashMapMutableLiveData = new MutableLiveData<>();
         responseBodyCall = getApiMobile2().pengajuanMotor(
                 modelUpgradeImpian.getIdmember(),
@@ -87,6 +88,7 @@ public class UpgradeImpianRepository {
                 modelUpgradeImpian.getHrgkendaraan(),
                 modelUpgradeImpian.getMerkkendaraan(),
                 modelUpgradeImpian.getTipekendaraan(),
+                modelUpgradeImpian.getTahun(),
                 modelUpgradeImpian.getLokasi(),
                 modelUpgradeImpian.getMitra(),
                 modelUpgradeImpian.getImage()
@@ -99,18 +101,56 @@ public class UpgradeImpianRepository {
                         responses = response.body().string();
                         jsonObject = new JSONObject(responses);
 
-                        Log.v("jajal", jsonObject+" a");
+                        Log.v("jajal", jsonObject + " a");
                     } catch (IOException | JSONException e) {
                         e.printStackTrace();
                     }
-                } else{
-                    Log.v("jajal", response.body()+" a");
+                } else {
+                    Log.v("jajal", response.body() + " a");
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Log.v("jajal", t.getMessage()+" a");
+                Log.v("jajal", t.getMessage() + " a");
+            }
+        });
+        return hashMapMutableLiveData;
+    }
+
+    public LiveData<HashMap> pengajuanMobil(ModelUpgradeImpian modelUpgradeImpian) {
+        MutableLiveData<HashMap> hashMapMutableLiveData = new MutableLiveData<>();
+        responseBodyCall = getApiMobile2().pengajuanMobil(
+                modelUpgradeImpian.getIdmember(),
+                modelUpgradeImpian.getJmlhpinjaman(),
+                modelUpgradeImpian.getHrgkendaraan(),
+                modelUpgradeImpian.getMerkkendaraan(),
+                modelUpgradeImpian.getTipekendaraan(),
+                modelUpgradeImpian.getTahun(),
+                modelUpgradeImpian.getLokasi(),
+                modelUpgradeImpian.getMitra(),
+                modelUpgradeImpian.getImage()
+        );
+        responseBodyCall.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.body() != null) {
+                    try {
+                        responses = response.body().string();
+                        jsonObject = new JSONObject(responses);
+
+                        Log.v("jajal", jsonObject + " a");
+                    } catch (IOException | JSONException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    Log.v("jajal", response.body() + " a");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.v("jajal", t.getMessage() + " a");
             }
         });
         return hashMapMutableLiveData;

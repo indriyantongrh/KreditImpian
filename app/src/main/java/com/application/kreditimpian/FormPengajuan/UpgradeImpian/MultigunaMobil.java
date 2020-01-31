@@ -26,9 +26,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.FormPengajuan.UpgradeImpian.viewmodel.UpgradeImpianViewModel;
 import com.application.kreditimpian.FormPengajuan.UpgradeImpian.viewmodel.ViewModelFactory;
 import com.application.kreditimpian.Model.ModelMitra;
+import com.application.kreditimpian.Model.ModelUpgradeImpian;
 import com.application.kreditimpian.R;
 import com.chivorn.smartmaterialspinner.SmartMaterialSpinner;
 import com.google.android.material.textfield.TextInputEditText;
@@ -72,6 +74,7 @@ public class MultigunaMobil extends Fragment implements View.OnClickListener {
     private static final int bitmap_size = 80; // range 1 - 100=
     private static final int PICK_IMAGE_REQUEST_1 = 1;
     private static final int REQUEST_IMAGE_CAPTURE_1 = 11;
+    private String idMember;
 
     public MultigunaMobil() {
         // Required empty public constructor
@@ -103,6 +106,9 @@ public class MultigunaMobil extends Fragment implements View.OnClickListener {
         super.onActivityCreated(savedInstanceState);
         context = getContext();
         upgradeImpianViewModel = ViewModelProviders.of(this, new ViewModelFactory()).get(UpgradeImpianViewModel.class);
+
+        SharedPrefManager sharedPrefManager = new SharedPrefManager(context);
+        idMember = sharedPrefManager.getSpIdMember();
 
         imageupload.setOnClickListener(this);
         rvMitra.setLayoutManager(new LinearLayoutManager(context));
@@ -138,24 +144,6 @@ public class MultigunaMobil extends Fragment implements View.OnClickListener {
         }
     }
 
-    //untuk memilih gambar dari galeri
-    private void showFileChooser1() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST_1);
-    }
-
-    //untuk set ke imageview
-    private void setToImageView1(Bitmap bmp) {
-        //compress image
-        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        bmp.compress(Bitmap.CompressFormat.JPEG, bitmap_size, bytes);
-        decoded = BitmapFactory.decodeStream(new ByteArrayInputStream(bytes.toByteArray()));
-        //menampilkan gambar yang dipilih dari camera/gallery ke ImageView
-        imageupload.setImageBitmap(decoded);
-    }
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -178,6 +166,24 @@ public class MultigunaMobil extends Fragment implements View.OnClickListener {
             //imageView.setImageBitmap(imageBitmap);
             setToImageView1(getResizedBitmap(imageBitmap, 512));
         }
+    }
+
+    //untuk memilih gambar dari galeri
+    private void showFileChooser1() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST_1);
+    }
+
+    //untuk set ke imageview
+    private void setToImageView1(Bitmap bmp) {
+        //compress image
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.JPEG, bitmap_size, bytes);
+        decoded = BitmapFactory.decodeStream(new ByteArrayInputStream(bytes.toByteArray()));
+        //menampilkan gambar yang dipilih dari camera/gallery ke ImageView
+        imageupload.setImageBitmap(decoded);
     }
 
     // fungsi resize image
@@ -431,7 +437,16 @@ public class MultigunaMobil extends Fragment implements View.OnClickListener {
         } else if (getStringImage(decoded).isEmpty()) {
             Toast.makeText(context, "Silahkan Foto BPKB", Toast.LENGTH_LONG).show();
         } else {
-
+            ModelUpgradeImpian modelUpgradeImpian = new ModelUpgradeImpian();
+            modelUpgradeImpian.setIdmember(idMember);
+            modelUpgradeImpian.setJmlhpinjaman(jmlhPinj);
+            modelUpgradeImpian.setHrgkendaraan(hrgKend);
+            modelUpgradeImpian.setMerkkendaraan(spinMerkMobil.getSelectedItem().toString());
+            modelUpgradeImpian.setTipekendaraan(spinTipeMobil.getSelectedItem().toString());
+            modelUpgradeImpian.setTipekendaraan(spinThnMobil.getSelectedItem().toString());
+            modelUpgradeImpian.setLokasi(lokasi);
+            modelUpgradeImpian.setMitra(mitraStringBuilder.toString());
+            modelUpgradeImpian.setImage(getStringImage(decoded));
         }
     }
 }

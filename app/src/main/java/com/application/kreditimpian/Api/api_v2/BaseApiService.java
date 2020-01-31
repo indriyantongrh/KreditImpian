@@ -235,6 +235,21 @@ public interface BaseApiService {
             @Field("hrg_kendaraan") String hrg_kendaraan,
             @Field("merk_kendaraan") String merk_kendaraan,
             @Field("tipe_kendaraan") String tipe_kendaraan,
+            @Field("tahun_kendaraan") String tahun_kendaraan,
+            @Field("lokasi") String lokasi,
+            @Field("mitra_kredit") String mitra_kredit,
+            @Field("img_bpkb") String img_bpkb
+    );
+
+    @FormUrlEncoded
+    @POST("")
+    Call<ResponseBody> pengajuanMobil(
+            @Field("id_member") String id_member,
+            @Field("jml_pinjaman") String jml_pinjaman,
+            @Field("hrg_kendaraan") String hrg_kendaraan,
+            @Field("merk_kendaraan") String merk_kendaraan,
+            @Field("tipe_kendaraan") String tipe_kendaraan,
+            @Field("tahun_kendaraan") String tahun_kendaraan,
             @Field("lokasi") String lokasi,
             @Field("mitra_kredit") String mitra_kredit,
             @Field("img_bpkb") String img_bpkb

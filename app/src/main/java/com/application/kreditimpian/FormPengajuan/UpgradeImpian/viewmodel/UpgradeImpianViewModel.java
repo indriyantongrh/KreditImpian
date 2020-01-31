@@ -28,7 +28,13 @@ public class UpgradeImpianViewModel extends ViewModel {
     public LiveData<ArrayList<ModelMitra>> getMitraUpgradeImpian() {
         return upgradeImpianRepository.getMitraUpgrade();
     }
+
     public LiveData<HashMap> pengajuanMotor() {
         return upgradeImpianRepository.pengajuanMotor(modelUpgradeImpian);
     }
+
+    public LiveData<HashMap> pengajuanMobil() {
+        return upgradeImpianRepository.pengajuanMobil(modelUpgradeImpian);
+    }
+
 }

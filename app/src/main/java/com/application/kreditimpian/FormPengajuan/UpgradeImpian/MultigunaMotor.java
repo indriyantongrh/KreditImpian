@@ -337,6 +337,7 @@ public class MultigunaMotor extends Fragment implements View.OnClickListener {
             modelUpgradeImpian.setHrgkendaraan(hrgKend);
             modelUpgradeImpian.setMerkkendaraan(spinnerMerkMotor.getSelectedItem().toString());
             modelUpgradeImpian.setTipekendaraan(spinTipeMotor.getSelectedItem().toString());
+            modelUpgradeImpian.setTipekendaraan(spinThnMotor.getSelectedItem().toString());
             modelUpgradeImpian.setLokasi(lokasi);
             modelUpgradeImpian.setMitra(mitraStringBuilder.toString());
             modelUpgradeImpian.setImage(getStringImage(decoded));
