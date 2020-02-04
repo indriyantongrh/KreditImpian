@@ -1,6 +1,8 @@
 package com.application.kreditimpian.FormPengajuan.UpgradeImpian;
 
 
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -11,6 +13,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,7 +33,7 @@ import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.FormPengajuan.UpgradeImpian.viewmodel.UpgradeImpianViewModel;
 import com.application.kreditimpian.FormPengajuan.UpgradeImpian.viewmodel.ViewModelFactory;
 import com.application.kreditimpian.Model.ModelMitra;
-import com.application.kreditimpian.Model.ModelUpgradeImpian;
+import com.application.kreditimpian.Model.ModelUpgradeImpian.ModelUpgradeImpian;
 import com.application.kreditimpian.R;
 import com.chivorn.smartmaterialspinner.SmartMaterialSpinner;
 import com.google.android.material.textfield.TextInputEditText;
@@ -41,7 +44,6 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
@@ -58,6 +60,7 @@ public class MultigunaMotor extends Fragment implements View.OnClickListener {
     private Context context;
     private MitraAdapter mitraAdapter;
     private UpgradeImpianViewModel upgradeImpianViewModel;
+    private ProgressDialog pDialog;
 
     private ImageView imageupload;
     private RecyclerView rvMitra;
@@ -105,7 +108,7 @@ public class MultigunaMotor extends Fragment implements View.OnClickListener {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         context = getContext();
-        upgradeImpianViewModel = ViewModelProviders.of(this, new ViewModelFactory()).get(UpgradeImpianViewModel.class);
+        upgradeImpianViewModel = new ViewModelProvider(getViewModelStore(), new ViewModelFactory()).get(UpgradeImpianViewModel.class);
 
         SharedPrefManager sharedPrefManager = new SharedPrefManager(context);
         idMember = sharedPrefManager.getSpIdMember();
@@ -220,8 +223,8 @@ public class MultigunaMotor extends Fragment implements View.OnClickListener {
     }
 
     private void loadMitra() {
-        upgradeImpianViewModel.getMitraUpgradeImpian().observe(this, modelMitras -> {
-            mitraAdapter.setMitraList(modelMitras,"motor");
+        upgradeImpianViewModel.getMitraUpgradeImpian().observe(getViewLifecycleOwner(), modelMitras -> {
+            mitraAdapter.setMitraList(modelMitras, "motor");
             rvMitra.setAdapter(mitraAdapter);
         });
     }
@@ -310,7 +313,6 @@ public class MultigunaMotor extends Fragment implements View.OnClickListener {
                 break;
             }
         }
-        Log.v("jajal", mitraStringBuilder.toString());
         if (jmlhPinj.isEmpty()) {
             edtJumlahPinjaman.setError(getResources().getString(R.string.jmlhpinjkosong));
             edtJumlahPinjaman.requestFocus();
@@ -330,21 +332,35 @@ public class MultigunaMotor extends Fragment implements View.OnClickListener {
             Toast.makeText(context, "Silahkan pilih leasing\nmin 1\nmax 3", Toast.LENGTH_LONG).show();
         } else if (getStringImage(decoded).isEmpty()) {
             Toast.makeText(context, "Silahkan Foto BPKB", Toast.LENGTH_LONG).show();
+        } else if (Integer.valueOf(jmlhPinj) > Integer.valueOf(hrgKend)) {
+            Toast.makeText(context, "Jumlah pinjaman tidak boleh lebih besar dari harga kendaraan", Toast.LENGTH_LONG).show();
         } else {
+
+            pDialog = new ProgressDialog(context);
+            pDialog.setCancelable(false);
+            pDialog.setMessage("Loading...");
+            pDialog.show();
+
             ModelUpgradeImpian modelUpgradeImpian = new ModelUpgradeImpian();
             modelUpgradeImpian.setIdmember(idMember);
             modelUpgradeImpian.setJmlhpinjaman(jmlhPinj);
             modelUpgradeImpian.setHrgkendaraan(hrgKend);
             modelUpgradeImpian.setMerkkendaraan(spinnerMerkMotor.getSelectedItem().toString());
             modelUpgradeImpian.setTipekendaraan(spinTipeMotor.getSelectedItem().toString());
-            modelUpgradeImpian.setTipekendaraan(spinThnMotor.getSelectedItem().toString());
+            modelUpgradeImpian.setTahun(spinThnMotor.getSelectedItem().toString());
             modelUpgradeImpian.setLokasi(lokasi);
             modelUpgradeImpian.setMitra(mitraStringBuilder.toString());
             modelUpgradeImpian.setImage(getStringImage(decoded));
 
             upgradeImpianViewModel.setModelUpgradeImpian(modelUpgradeImpian);
-            upgradeImpianViewModel.pengajuanMotor().observe(this, hashMap -> {
-
+            upgradeImpianViewModel.pengajuanMotor().observe(this, modelUpgradeImpians -> {
+                pDialog.dismiss();
+                ModelUpgradeImpian modelUpgradeImpian1 = modelUpgradeImpians.get(0);
+                Intent intent = new Intent(context, PilihLeasingActivity.class);
+                intent.putExtra("data", modelUpgradeImpian1);
+                intent.putExtra("code", "motor");
+                context.startActivity(intent);
+                ((Activity) context).finish();
             });
         }
     }

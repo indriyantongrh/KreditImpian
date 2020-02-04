@@ -1,17 +1,13 @@
 package com.application.kreditimpian.FormPengajuan.UpgradeImpian.viewmodel;
 
-import android.util.Log;
-
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.application.kreditimpian.FormPengajuan.UpgradeImpian.repository.UpgradeImpianRepository;
 import com.application.kreditimpian.Model.ModelMitra;
-import com.application.kreditimpian.Model.ModelUpgradeImpian;
+import com.application.kreditimpian.Model.ModelUpgradeImpian.ModelUpgradeImpian;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class UpgradeImpianViewModel extends ViewModel {
     private UpgradeImpianRepository upgradeImpianRepository;
@@ -29,12 +25,16 @@ public class UpgradeImpianViewModel extends ViewModel {
         return upgradeImpianRepository.getMitraUpgrade();
     }
 
-    public LiveData<HashMap> pengajuanMotor() {
+    public LiveData<ArrayList<ModelUpgradeImpian>> pengajuanMotor() {
         return upgradeImpianRepository.pengajuanMotor(modelUpgradeImpian);
     }
 
-    public LiveData<HashMap> pengajuanMobil() {
+    public LiveData<ArrayList<ModelUpgradeImpian>> pengajuanMobil() {
         return upgradeImpianRepository.pengajuanMobil(modelUpgradeImpian);
+    }
+
+    public LiveData<ArrayList<ModelUpgradeImpian>> pilihLeasing() {
+        return upgradeImpianRepository.pilihLeasingg(modelUpgradeImpian);
     }
 
 }

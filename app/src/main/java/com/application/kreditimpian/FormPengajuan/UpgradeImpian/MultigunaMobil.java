@@ -1,8 +1,9 @@
 package com.application.kreditimpian.FormPengajuan.UpgradeImpian;
 
 
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -12,6 +13,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,7 +32,7 @@ import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.FormPengajuan.UpgradeImpian.viewmodel.UpgradeImpianViewModel;
 import com.application.kreditimpian.FormPengajuan.UpgradeImpian.viewmodel.ViewModelFactory;
 import com.application.kreditimpian.Model.ModelMitra;
-import com.application.kreditimpian.Model.ModelUpgradeImpian;
+import com.application.kreditimpian.Model.ModelUpgradeImpian.ModelUpgradeImpian;
 import com.application.kreditimpian.R;
 import com.chivorn.smartmaterialspinner.SmartMaterialSpinner;
 import com.google.android.material.textfield.TextInputEditText;
@@ -56,6 +58,7 @@ public class MultigunaMobil extends Fragment implements View.OnClickListener {
     private Context context;
     private MitraAdapter mitraAdapter;
     private UpgradeImpianViewModel upgradeImpianViewModel;
+    private ProgressDialog pDialog;
 
     private ImageView imageupload;
     private SmartMaterialSpinner spinMerkMobil,
@@ -105,7 +108,7 @@ public class MultigunaMobil extends Fragment implements View.OnClickListener {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         context = getContext();
-        upgradeImpianViewModel = ViewModelProviders.of(this, new ViewModelFactory()).get(UpgradeImpianViewModel.class);
+        upgradeImpianViewModel = new ViewModelProvider(getViewModelStore(), new ViewModelFactory()).get(UpgradeImpianViewModel.class);
 
         SharedPrefManager sharedPrefManager = new SharedPrefManager(context);
         idMember = sharedPrefManager.getSpIdMember();
@@ -214,7 +217,7 @@ public class MultigunaMobil extends Fragment implements View.OnClickListener {
     }
 
     private void loadMitra() {
-        upgradeImpianViewModel.getMitraUpgradeImpian().observe(this, modelMitras -> {
+        upgradeImpianViewModel.getMitraUpgradeImpian().observe(getViewLifecycleOwner(), modelMitras -> {
             mitraAdapter.setMitraList(modelMitras, "mobil");
             rvMitra.setAdapter(mitraAdapter);
         });
@@ -436,17 +439,36 @@ public class MultigunaMobil extends Fragment implements View.OnClickListener {
             Toast.makeText(context, "Silahkan pilih leasing\nminimal 1\nmaximal 3", Toast.LENGTH_LONG).show();
         } else if (getStringImage(decoded).isEmpty()) {
             Toast.makeText(context, "Silahkan Foto BPKB", Toast.LENGTH_LONG).show();
+        } else if (Integer.valueOf(jmlhPinj) > Integer.valueOf(hrgKend)) {
+            Toast.makeText(context, "Jumlah pinjaman tidak boleh lebih besar dari harga kendaraan", Toast.LENGTH_LONG).show();
         } else {
+            pDialog = new ProgressDialog(context);
+            pDialog.setCancelable(false);
+            pDialog.setMessage("Loading...");
+            pDialog.show();
+
             ModelUpgradeImpian modelUpgradeImpian = new ModelUpgradeImpian();
             modelUpgradeImpian.setIdmember(idMember);
             modelUpgradeImpian.setJmlhpinjaman(jmlhPinj);
             modelUpgradeImpian.setHrgkendaraan(hrgKend);
             modelUpgradeImpian.setMerkkendaraan(spinMerkMobil.getSelectedItem().toString());
             modelUpgradeImpian.setTipekendaraan(spinTipeMobil.getSelectedItem().toString());
-            modelUpgradeImpian.setTipekendaraan(spinThnMobil.getSelectedItem().toString());
+            modelUpgradeImpian.setTahun(spinThnMobil.getSelectedItem().toString());
+            modelUpgradeImpian.setAsuransi(asuransi);
             modelUpgradeImpian.setLokasi(lokasi);
             modelUpgradeImpian.setMitra(mitraStringBuilder.toString());
             modelUpgradeImpian.setImage(getStringImage(decoded));
+
+            upgradeImpianViewModel.setModelUpgradeImpian(modelUpgradeImpian);
+            upgradeImpianViewModel.pengajuanMobil().observe(this, modelUpgradeImpians -> {
+                pDialog.dismiss();
+                ModelUpgradeImpian modelUpgradeImpian1 = modelUpgradeImpians.get(0);
+                Intent intent = new Intent(context, PilihLeasingActivity.class);
+                intent.putExtra("data", modelUpgradeImpian1);
+                intent.putExtra("code", "mobil");
+                context.startActivity(intent);
+                ((Activity) context).finish();
+            });
         }
     }
 }

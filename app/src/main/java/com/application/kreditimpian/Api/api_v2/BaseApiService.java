@@ -1,9 +1,7 @@
 package com.application.kreditimpian.Api.api_v2;
 
 
-
 import com.application.kreditimpian.Model.ModelAddress.ResponseAddress;
-import com.application.kreditimpian.Model.ModelGeodirectories.ResponseGeodirectories;
 import com.application.kreditimpian.Model.ModelGeodirectory.ResponseGeodirectory;
 import com.application.kreditimpian.Model.ModelListAlamat.ResponseListAlamat;
 import com.application.kreditimpian.Model.ModelLogin.ResponseLogin;
@@ -11,9 +9,7 @@ import com.application.kreditimpian.Model.ModelMember.ResponseMember;
 import com.application.kreditimpian.Model.ModelMemberInsert.ResponseMemberInsert;
 import com.application.kreditimpian.Model.ModelMerchant.ResponseMerchant;
 import com.application.kreditimpian.Model.ModelOnShoppingCart.ResponseOnShoppingCart;
-import com.application.kreditimpian.Model.ModelProduct.ResponseProduct;
 import com.application.kreditimpian.Model.ModelProductBaru.ResponseProductBaru;
-import com.application.kreditimpian.Model.ModelProductNew.ProductResponse;
 
 
 import com.application.kreditimpian.Model.ModelTransaction.ResponseTransaction;
@@ -61,7 +57,7 @@ public interface BaseApiService {
 //    @GET("master/geodirectories?TYPE=DISTRICT")
 //    Call<ResponseGeodirectories> getGeoDistrict();
 
-//    @GET("master/geodirectories?TYPE=CITY")
+    //    @GET("master/geodirectories?TYPE=CITY")
 //    Call<ResponseGeodirectories> getGeoCity();
     @GET("ApiMobile/getdistrict")
     Call<ResponseGeodirectory> getDistrict();
@@ -84,7 +80,7 @@ public interface BaseApiService {
                                          @QueryMap HashMap<String, String> params);
 
     @GET("ApiMobile/gantipassword")
-    Call<ResponseAddress> ResetPassword(@Query("id_sysuser") String id_sysuser,@QueryMap HashMap<String, String> params);
+    Call<ResponseAddress> ResetPassword(@Query("id_sysuser") String id_sysuser, @QueryMap HashMap<String, String> params);
 
     @GET("ApiMobile/insertprofile")
     Call<ResponseMemberInsert> InsertMember(@QueryMap HashMap<String, String> params);
@@ -95,6 +91,7 @@ public interface BaseApiService {
 
     @GET("ApiMobile/getonshoppingcart")
     Call<ResponseOnShoppingCart> getOnShoppingCart(@Query("id_member") String id_member);
+
     //getMember
     ///@FormUrlEncoded
     @GET("members")
@@ -222,7 +219,7 @@ public interface BaseApiService {
 
     @GET("members?id={id}")
     Call<ResponseMember> getMember(@Path("id") String id,
-                                    @Header("Authorization") String result);
+                                   @Header("Authorization") String result);
 
     @GET("getcompaniesmeta")
     Call<ResponseBody> getMitraUpgradeImpian();
@@ -242,7 +239,7 @@ public interface BaseApiService {
     );
 
     @FormUrlEncoded
-    @POST("")
+    @POST("inserttransmultimobil")
     Call<ResponseBody> pengajuanMobil(
             @Field("id_member") String id_member,
             @Field("jml_pinjaman") String jml_pinjaman,
@@ -250,9 +247,18 @@ public interface BaseApiService {
             @Field("merk_kendaraan") String merk_kendaraan,
             @Field("tipe_kendaraan") String tipe_kendaraan,
             @Field("tahun_kendaraan") String tahun_kendaraan,
+            @Field("asuransi") String asuransi,
             @Field("lokasi") String lokasi,
             @Field("mitra_kredit") String mitra_kredit,
             @Field("img_bpkb") String img_bpkb
+    );
+
+    @GET("insertlogtransmulti")
+    Call<ResponseBody> pilihLeasingPinjaman(
+            @Query("id_member") String id_member,
+            @Query("id_transaksi") String id_transaksi,
+            @Query("tenor") String tenor,
+            @Query("id_kreditor") String id_kreditor
     );
 
 }

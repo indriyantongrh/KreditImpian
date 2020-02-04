@@ -107,6 +107,15 @@
     <string name="hrgkendkosong">Harga kendaraan tidak boleh kosong</string>
     <string name="lokasikosong">Silahkan isi kota anda tinggal</string>
     <string name="asuransikosong">Masukkan asuransi yang diinginkan</string>
+    <string name="pilih">Pilih</string>
+    <string name="jmlhpinjvalue">Jumlah Pinjaman : %1$s</string>
+    <string name="hrgkendvalue">Harga Kendaraan: %1$s</string>
+    <string name="kendaraan">Kendaraan : %1$s</string>
+    <string name="merkkendvalue">Merk Kendaraan: %1$s</string>
+    <string name="tipekendvalue">Tipe Kendaraan: %1$s</string>
+    <string name="thnkendvalue">Tahun Kendaraan: %1$s</string>
+    <string name="asuransivalue">Asuransi: %1$s</string>
+    <string name="resultpilihleasing">%1$s Status menunggu persetujuan admin</string>
 
     <string-array name="mitra">
         <item>Adira</item>
@@ -2254,14 +2263,14 @@
         <item>GRDISGT INCSI24SOHC</item>
         <item>I 120 SS PU STD 1.5</item>
         <item>KUDA</item>
-         <item>KUDA DIAMOND 1.6</item>
-         <item>KUDA DIAMOND 2000</item>
-         <item>KUDA GLS DIESEL</item>
-         <item>KUDA GRANDIA</item>
-         <item>KUDA GRANDIA 1.6</item>
-         <item>KUDA GRANDIA 2.0</item>
-         <item>KUDA VA 1 W PL</item>
-         <item>KUDA VB5W</item>
+        <item>KUDA DIAMOND 1.6</item>
+        <item>KUDA DIAMOND 2000</item>
+        <item>KUDA GLS DIESEL</item>
+        <item>KUDA GRANDIA</item>
+        <item>KUDA GRANDIA 1.6</item>
+        <item>KUDA GRANDIA 2.0</item>
+        <item>KUDA VA 1 W PL</item>
+        <item>KUDA VB5W</item>
         <item>L200 STRADA DBL CAB</item>
         <item>L200 STRADA DC</item>
         <item>L200 2.5L DOUBLECAB</item>
