@@ -26,7 +26,8 @@ public class PilihLeasingAdapter extends RecyclerView.Adapter<PilihLeasingViewHo
     private ModelUpgradeImpian modelUpgradeImpian;
     private OnClickPilihLeasing onClickPilihLeasing;
 
-    private String tenor ="", code;
+    private String tenor ="", code,
+    cicilan;
     private List<ModelMitraPinjaman> modelUpgradeImpians;
 
     public static final Locale localeID = new Locale("in", "ID");
@@ -76,6 +77,7 @@ public class PilihLeasingAdapter extends RecyclerView.Adapter<PilihLeasingViewHo
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 tenor = modelMitra.getModelPinjamanList().get(position).getBulanTenor();
+                cicilan = modelMitra.getModelPinjamanList().get(position).getHrgCicilan();
             }
 
             @Override
@@ -87,7 +89,7 @@ public class PilihLeasingAdapter extends RecyclerView.Adapter<PilihLeasingViewHo
             if (tenor.isEmpty()){
                 Toast.makeText(context,"Pilih jangka waktu cicilan", Toast.LENGTH_LONG).show();
             } else {
-                onClickPilihLeasing.onClickPilihLeasing(idTransaksi, tenor, idKreditor);
+                onClickPilihLeasing.onClickPilihLeasing(idTransaksi, tenor, idKreditor, cicilan);
             }
         });
     }
@@ -98,6 +100,6 @@ public class PilihLeasingAdapter extends RecyclerView.Adapter<PilihLeasingViewHo
     }
 
     public interface OnClickPilihLeasing{
-        void onClickPilihLeasing(String idTransaksi, String Tenor, String idKreditor);
+        void onClickPilihLeasing(String idTransaksi, String Tenor, String idKreditor, String cicilan);
     }
 }
