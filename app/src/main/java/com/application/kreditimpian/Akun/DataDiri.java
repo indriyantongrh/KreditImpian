@@ -31,60 +31,43 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.application.kreditimpian.Api.JSONResponse;
-import com.application.kreditimpian.Api.RequestInterface;
+
 import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
-import com.application.kreditimpian.Api.api_v2.RetrofitClient;
+
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
-import com.application.kreditimpian.BuildConfig;
-import com.application.kreditimpian.LoginRegister.LoginUser;
-import com.application.kreditimpian.LoginRegister.Register;
-import com.application.kreditimpian.MenuUtama.MenuUtama;
-import com.application.kreditimpian.Model.ModelGeodirectories.ResponseGeodirectories;
+
 import com.application.kreditimpian.Model.ModelGeodirectory.DataItem;
 import com.application.kreditimpian.Model.ModelGeodirectory.ResponseGeodirectory;
-import com.application.kreditimpian.Model.ModelLogin.ResponseLogin;
+
 import com.application.kreditimpian.Model.ModelMember.ResponseMember;
 
 import com.application.kreditimpian.Model.ModelMemberInsert.ResponseMemberInsert;
-import com.application.kreditimpian.Model.ModelUser.UserResponse;
+
 import com.application.kreditimpian.Model.ModelUserDetail.ResponseMembers;
 import com.application.kreditimpian.Model.ModelUserDetail.ResultItem;
 import com.application.kreditimpian.R;
-import com.application.kreditimpian.ResponseMessage.ResponseRegister;
-import com.bumptech.glide.Glide;
-import com.fasterxml.jackson.databind.ser.Serializers;
-import com.google.android.gms.common.internal.Objects;
-import com.google.gson.Gson;
 
-import org.jetbrains.annotations.NotNull;
-import org.json.JSONObject;
+import com.bumptech.glide.Glide;
+
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.Calendar;
-import java.util.Collections;
+
 import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
-import okhttp3.Interceptor;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.Field;
+
 
 import static android.text.TextUtils.isEmpty;
-import static com.application.kreditimpian.Api.SharedPrefManager.SP_TOKEN;
-import static com.application.kreditimpian.Api.api_v2.UtilsApi.BASE_URL_API;
+
 
 public class DataDiri extends AppCompatActivity implements View.OnClickListener {
     private static final int PERMISSION_REQUEST_CODE = 200;
@@ -118,6 +101,8 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
     ResultItem reqresultItem;
     List<ResultItem> resultItemList = new ArrayList<>();
 
+
+
     com.application.kreditimpian.Model.ModelGeodirectories.ResultItem reqResultCity;
 
     @Override
@@ -128,6 +113,8 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         setActionBarTitle("Data Diri");
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);// set drawable icon
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
 
         mApiService = UtilsApi.getAPIService();
         sharedPrefManager = new SharedPrefManager(DataDiri.this);
@@ -233,7 +220,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                     public void onClick(DialogInterface dialog, int which) {
                         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                         if (takePictureIntent.resolveActivity(DataDiri.this.getPackageManager()) != null) {
-                            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE_3);
+                            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE_1);
                         }
                     }
                 });
@@ -241,7 +228,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        showFileChooser3();
+                        showFileChooser1();
                     }
                 });
 
@@ -263,7 +250,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                     public void onClick(DialogInterface dialog, int which) {
                         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                         if (takePictureIntent.resolveActivity(DataDiri.this.getPackageManager()) != null) {
-                            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE_1);
+                            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE_2);
                         }
                     }
                 });
@@ -271,7 +258,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        showFileChooser1();
+                        showFileChooser2();
                     }
                 });
 
@@ -294,7 +281,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                     public void onClick(DialogInterface dialog, int which) {
                         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                         if (takePictureIntent.resolveActivity(DataDiri.this.getPackageManager()) != null) {
-                            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE_2);
+                            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE_3);
                         }
                     }
                 });
@@ -302,7 +289,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        showFileChooser2();
+                        showFileChooser3();
                     }
                 });
 
@@ -331,7 +318,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             requestPermission();
         }
 
-
+        /*Btn simpan */
         btnsimpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -404,6 +391,8 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         finish();
     }
 
+
+    /*Method Selected date*/
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -480,43 +469,44 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
     }
 
-
+    /*Insert data member*/
     private void InsertMember(){
 
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
-        pDialog.setMessage("Menyimpan data member");
+        pDialog.setMessage("Loading..");
         pDialog.show();
 
         HashMap<String, String> params = new HashMap<>();
         params.put("id_member",sharedPrefManager.getSpIdMember() );
-       /// params.put("avatar", getStringImage(decoded_3));
-//        params.put("inst_photo", getStringImage(decoded_1));
-//        params.put("inst_citizen", getStringImage(decoded_3));
-//        params.put("inst_taxpayer", getStringImage(decoded_2));
-        params.put("inst_fullname", txtnamalengkap.getText().toString());
-        params.put("inst_phone", txtnomorhandphone.getText().toString());
-        params.put("inst_birthplace", txttempatlahir.getText().toString());
-        params.put("inst_birthday", txttanggallahir.getText().toString());
-        params.put("inst_gender", spinnerjeniskelamin.getSelectedItem().toString());
-        params.put("inst_marital", spinnerstatus.getSelectedItem().toString());
-        params.put("inst_religion", spinneragama.getSelectedItem().toString());
-        params.put("inst_family_dependent", txtjumlahtanggungan.getText().toString());
-        params.put("inst_installment", spinnerstatusrumah.getSelectedItem().toString());
-        params.put("inst_job", txtpekerjaan.getText().toString());
-        params.put("inst_income", txtpendapatan.getText().toString());
-        params.put("inst_number_citizen", txtnikktp.getText().toString());
-        params.put("inst_number_taxpayer", txtnomornpwp.getText().toString());
-        params.put("inst_parent_name", txtibukandung.getText().toString());
+        params.put("photo", getStringImage(decoded_1));
+        params.put("citizen", getStringImage(decoded_2));
+        params.put("taxpayer", getStringImage(decoded_3));
+        params.put("fullname", txtnamalengkap.getText().toString());
+        params.put("phone", txtnomorhandphone.getText().toString());
+        params.put("birthplace", txttempatlahir.getText().toString());
+        params.put("birthday", txttanggallahir.getText().toString());
+        params.put("gender", spinnerjeniskelamin.getSelectedItem().toString());
+        params.put("marital", spinnerstatus.getSelectedItem().toString());
+        params.put("religion", spinneragama.getSelectedItem().toString());
+        params.put("family_dependent", txtjumlahtanggungan.getText().toString());
+        params.put("installment", spinnerstatusrumah.getSelectedItem().toString());
+        params.put("job", txtpekerjaan.getText().toString());
+        params.put("income", txtpendapatan.getText().toString());
+        params.put("number_citizen", txtnikktp.getText().toString());
+        params.put("number_taxpayer", txtnomornpwp.getText().toString());
+        params.put("parent_name", txtibukandung.getText().toString());
         params.put("email", txtalamatemail.getText().toString());
-        params.put("inst_contact_office", txtnomortlp.getText().toString());
-        params.put("inst_facebook", txtfacebook.getText().toString());
-        params.put("inst_instagram", txtinstagram.getText().toString());
-        params.put("inst_twitter", txttwitter.getText().toString());
-        params.put("inst_nonsibling_name", txtnamasaudara.getText().toString());
-        params.put("inst_nonsibling_mobile", txtnomorhandphonesaudara.getText().toString());
-        params.put("inst_postal_code", txtkodepos_saudara.getText().toString());
-        params.put("inst_nonsibling_address", txtalamat_saudara.getText().toString());
+        params.put("contact_office", txtnomortlp.getText().toString());
+        params.put("facebook", txtfacebook.getText().toString());
+        params.put("instagram", txtinstagram.getText().toString());
+        params.put("twitter", txttwitter.getText().toString());
+        params.put("nonsibling_name", txtnamasaudara.getText().toString());
+        params.put("nonsibling_mobile", txtnomorhandphonesaudara.getText().toString());
+        params.put("nonsibling_id_geodirectory", spinnerkota_saudaraa.getSelectedItem().toString());
+        params.put("nonsibling_id_district", spinnerkecamatn_saudara.getSelectedItem().toString());
+        params.put("postal_code", txtkodepos_saudara.getText().toString());
+        params.put("nonsibling_address", txtalamat_saudara.getText().toString());
 
 
         mApiService.InsertMember(params).enqueue(new Callback<ResponseMemberInsert>() {
@@ -529,7 +519,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
 
                 } else {
-                    Toast.makeText(DataDiri.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DataDiri.this, "Gagal update member", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -543,9 +533,10 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
     }
 
-
+    /*Menampilkan data memebr sesuai ID*/
     private void getmemberDetail(){
-       /// loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
+      ///// loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
+
 
         mApiService.getMemberDetail().enqueue(new Callback<ResponseMembers>() {
             @Override
@@ -560,6 +551,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
+
                                     txtnamalengkap.setText(reqresultItem.getMetadata().getFullname());
                                     txttempatlahir.setText(reqresultItem.getMetadata().getBirthplace());
                                     txttanggallahir.setText(reqresultItem.getMetadata().getBirthday());
@@ -578,6 +570,14 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                                     txtalamat_saudara.setText(reqresultItem.getMetadata().getNonsiblingAddress());
                                     txtkodepos_saudara.setText(reqresultItem.getMetadata().getPostalCode());
 
+                                    /*set URL*/
+                                    Uri.Builder builder = new Uri.Builder();
+                                    builder.scheme("https")
+                                            .authority("development.kreditimpian.com")
+                                            .appendPath("images")
+                                            .appendPath("members");
+                                    String myUrl = builder.build().toString();
+
                                     Glide.with(DataDiri.this)
                                             .load(reqresultItem.getImage())
                                             .placeholder(R.drawable.icon_user)
@@ -585,17 +585,19 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                                             .into(imageself);
 
                                     Glide.with(DataDiri.this)
-                                            .load("https://development.kreditimpian.id/images/members/"+reqresultItem.getMetadata().getTaxpayer())
-                                            .placeholder(R.drawable.upload)
-                                            .error(R.drawable.upload)
-                                            .into(imagenpwp);
-
-
-                                    Glide.with(DataDiri.this)
-                                            .load("https://development.kreditimpian.id/images/members/"+reqresultItem.getMetadata().getCitizen())
+                                            .load(myUrl+reqresultItem.getMetadata().getCitizen())
                                             .placeholder(R.drawable.upload)
                                             .error(R.drawable.upload)
                                             .into(imagektp);
+
+                                    Glide.with(DataDiri.this)
+                                            .load(myUrl+reqresultItem.getMetadata().getTaxpayer())
+                                            .placeholder(R.drawable.upload)
+                                            .error(R.drawable.upload)
+                                            .into(imagenpwp);
+//
+//
+
 
 //                                    List<String> userType = new ArrayList<String>();
 //                                    userType.add(reqresultItem.getMetadata().getGender());
@@ -635,7 +637,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
     }
 
-
+    /*Menampilkan data  City*/
     private void getGeoCity(){
 
         cityvalues = new HashMap<>();
@@ -681,19 +683,10 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                         }
                     });
 
-//                    spinnerkota_pengiriman.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                        @Override
-//                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                            int city_id = Integer.parseInt(listSpinner.get(position));
-//                            Log.i("your_city_id", String.valueOf(city_id));
-////                            int item = spinnerkota_pengiriman.getSelectedItemPosition();
-////
-////                            id = spinnerkota_pengiriman.getSelectedItem().toString()
-//                        }
-//                    });
+
                 } else {
                     loading.dismiss();
-                    /// Toast.makeText(TambahAlamatPengiriman.this, "Gagal mengambil data dosen", Toast.LENGTH_SHORT).show();
+                  Toast.makeText(DataDiri.this, "Gagal mengambil data ", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -706,6 +699,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
     }
 
+    /*Menampilkan data  District*/
     private void getGeoDistrict(){
 
         districtvalue = new HashMap<>();
@@ -865,7 +859,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         bmp.compress(Bitmap.CompressFormat.JPEG, bitmap_size, bytes);
         decoded_1 = BitmapFactory.decodeStream(new ByteArrayInputStream(bytes.toByteArray()));
         //menampilkan gambar yang dipilih dari camera/gallery ke ImageView
-        imagektp.setImageBitmap(decoded_1);
+        imageself.setImageBitmap(decoded_1);
     }
 
     //untuk set ke imageview
@@ -875,7 +869,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         bmp.compress(Bitmap.CompressFormat.JPEG, bitmap_size, bytes);
         decoded_2 = BitmapFactory.decodeStream(new ByteArrayInputStream(bytes.toByteArray()));
         //menampilkan gambar yang dipilih dari camera/gallery ke ImageView
-        imagenpwp.setImageBitmap(decoded_2);
+        imagektp.setImageBitmap(decoded_2);
     }
 
     //untuk set ke imageview
@@ -885,7 +879,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         bmp.compress(Bitmap.CompressFormat.JPEG, bitmap_size, bytes);
         decoded_3 = BitmapFactory.decodeStream(new ByteArrayInputStream(bytes.toByteArray()));
         //menampilkan gambar yang dipilih dari camera/gallery ke ImageView
-        imageself.setImageBitmap(decoded_3);
+        imagenpwp.setImageBitmap(decoded_3);
     }
 
     @Override
@@ -971,11 +965,14 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         return true;
     }
     //untuk upload image, compress .JPEG ke bitmap
-    public String getStringImage(Bitmap bmp) {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bmp.compress(Bitmap.CompressFormat.JPEG, bitmap_size, baos);
-        byte[] imageBytes = baos.toByteArray();
-        String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
-        return encodedImage;
+    private String getStringImage(Bitmap bmp) {
+        if (bmp != null) {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bmp.compress(Bitmap.CompressFormat.JPEG, bitmap_size, baos);
+            byte[] imageBytes = baos.toByteArray();
+//        String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+            return Base64.encodeToString(imageBytes, Base64.DEFAULT);
+        }
+        return "";
     }
 }

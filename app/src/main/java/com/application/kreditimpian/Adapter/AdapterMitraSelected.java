@@ -1,6 +1,7 @@
 package com.application.kreditimpian.Adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.application.kreditimpian.Model.ModelMitra;
 import com.application.kreditimpian.Model.ModelMitraSelected.DataItem;
 import com.application.kreditimpian.Model.ModelMitraSelected.ResponseMitraSelected;
 import com.application.kreditimpian.R;
@@ -60,14 +62,23 @@ public class AdapterMitraSelected extends RecyclerView.Adapter<AdapterMitraSelec
     @Override
     public void onBindViewHolder(@NonNull AdapterMitraSelected.HolderMitrSelected holder, int position) {
         final DataItem dataItem = dataItemList.get(position);
+        holder.checkBoxMitra.setText(dataItem.getIdCompany());
         holder.checkBoxMitra.setText(dataItem.getName());
-        holder.checkBoxMitra.setChecked(selectedPosition == position);
-        if(selectedPosition == position){
-                    holder.checkBoxMitra.setChecked(true);
-                }
-                else{
-                    holder.checkBoxMitra.setChecked(false);
-                }
+        Log.v("Bismillah", dataItem.isCheck()+" a");
+        holder.checkBoxMitra.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setCheckbox(position);
+                notifyDataSetChanged();
+            }
+        });
+//        holder.checkBoxMitra.setChecked(selectedPosition == position);
+//        if(selectedPosition == position){
+//                    holder.checkBoxMitra.setChecked(true);
+//                }
+//                else{
+//                    holder.checkBoxMitra.setChecked(false);
+//                }
 
 //                holder.checkBoxMitra.setOnClickListener(new View.OnClickListener() {
 //                    String id_company = dataItem.getIdCompany();
@@ -178,7 +189,18 @@ public class AdapterMitraSelected extends RecyclerView.Adapter<AdapterMitraSelec
         }
     }
 
-//    private void setCheckbox(int position) {
+
+    private void setCheckbox(int position) {
+        DataItem dataItem = dataItemList.get(position);
+        dataItem.setCheck(!dataItem.isCheck());
+    }
+
+    public List<DataItem> getDataItemList() {
+        Log.v("jajal1" ,  dataItemList.size()+" bismillah");
+        return dataItemList;
+    }
+
+    //    private void setCheckbox(int position) {
 //        final DataItem dataItem = dataItemList.get(position);
 //        modelMitra.setChecked(!modelMitra.isChecked());
 //

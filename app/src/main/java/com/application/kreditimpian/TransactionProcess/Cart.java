@@ -54,7 +54,7 @@ public class Cart extends AppCompatActivity {
 
     AdapterCart adapterCart;
     List<DataItem> dataItemList = new ArrayList<>();
-    /////Context mContext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -131,7 +131,9 @@ public class Cart extends AppCompatActivity {
                     initDataIntent(OnShippingCart);
                 }else {
                     progressBar.dismiss();
+                    Toast.makeText(Cart.this, "Koneksi internet terputus", Toast.LENGTH_SHORT).show();
                     empty.setVisibility(View.VISIBLE);
+
                 }
 
             }

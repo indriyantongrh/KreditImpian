@@ -23,12 +23,14 @@ import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
 import com.application.kreditimpian.Constan.ConstanTransaction;
+import com.application.kreditimpian.Model.ModelMitra;
 import com.application.kreditimpian.Model.ModelMitraSelected.DataItem;
 import com.application.kreditimpian.Model.ModelMitraSelected.ResponseMitraSelected;
 import com.application.kreditimpian.R;
 import com.bumptech.glide.Glide;
 
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -74,7 +76,9 @@ public class TransactionSelectMitra extends AppCompatActivity {
     DataItem reqDataItem;
     SharedPrefManager sharedPrefManager;
     BaseApiService mApiService;
-    List<DataItem> dataItemList;
+    private final   List<DataItem> dataItemList = new ArrayList<>();
+
+
     AdapterMitraSelected adapterMitraSelected;
     Context mContext;
     @Override
@@ -86,8 +90,11 @@ public class TransactionSelectMitra extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);// set drawable icon
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ButterKnife.bind(this);
+        mContext = TransactionSelectMitra.this;
         sharedPrefManager = new SharedPrefManager(TransactionSelectMitra.this);
         mApiService = UtilsApi.getAPIService();
+
+
         /*get Selected Mitra*/
 
 
@@ -142,6 +149,7 @@ public class TransactionSelectMitra extends AppCompatActivity {
         btnSelanjutnya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                NextTenor();
 //                Intent intent = new Intent(TransactionSelectMitra.this, TransactionSelectTenor.class);
 //                startActivity(intent);
 
@@ -151,8 +159,42 @@ public class TransactionSelectMitra extends AppCompatActivity {
     }
 
     private void NextTenor(){
+        boolean check = false;
+        StringBuilder mitraStringBuilder = new StringBuilder();
+        List<DataItem> dataItemList = adapterMitraSelected.getDataItemList();
+        DataItem dataItem = new DataItem();
+        ///ModelMitra modelMitra = new ModelMitra();
+        for (int i = 0; i < dataItemList.size(); i++) {
+            dataItem = dataItemList.get(i);
+            if (dataItem.isCheck()) {
+                mitraStringBuilder.append(dataItem.getIdCompany()).append("|");
+            }
+        }
+        Log.v("jajal2" ,  dataItemList.size()+" bismillah");
+        for (int i = 0; i < dataItemList.size(); i++) {
+            if (dataItem.isCheck()) {
+                check = true;
+                break;
+            }
+        }
 
 
+//        StringBuilder mitraStringBuilder = new StringBuilder();
+//        List<DataItem> dataItems = adapterMitraSelected.getDataItemList();
+//        DataItem dataItem = new DataItem();
+//        for (int i = 0; i < dataItems.size(); i++) {
+//            dataItem = dataItems.get(i);
+//            if (dataItem.isCheck()) {
+//                mitraStringBuilder.append(dataItem.getIdCompany()).append("|");
+//            }
+//        }
+//        Log.v("jajal" ,  dataItems+"a");
+//        for (int i = 0; i < dataItems.size(); i++) {
+//            if (dataItem.isCheck()) {
+//                check = true;
+//                break;
+//            }
+//        }
 
     }
 
