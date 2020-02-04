@@ -7,7 +7,6 @@ import com.google.gson.annotations.SerializedName;
 
 public class ResponseSelectedTenor{
 
-
 	@SerializedName("response_code")
 	private int responseCode;
 

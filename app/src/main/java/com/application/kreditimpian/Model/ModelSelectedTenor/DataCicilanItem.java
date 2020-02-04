@@ -6,7 +6,6 @@ import com.google.gson.annotations.SerializedName;
 
 public class DataCicilanItem{
 
-
 	@SerializedName("cicilan")
 	private String cicilan;
 

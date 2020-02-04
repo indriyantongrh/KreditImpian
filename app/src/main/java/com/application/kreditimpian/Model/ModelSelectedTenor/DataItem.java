@@ -7,7 +7,6 @@ import com.google.gson.annotations.SerializedName;
 
 public class DataItem{
 
-
 	@SerializedName("data_cicilan")
 	private List<DataCicilanItem> dataCicilan;
 
