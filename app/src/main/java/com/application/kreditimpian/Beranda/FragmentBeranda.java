@@ -1,6 +1,7 @@
 package com.application.kreditimpian.Beranda;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -100,7 +101,7 @@ public class FragmentBeranda extends Fragment {
     CardView btn_lainya, btn_handphone, btn_laptop,btn_otomotif, btn_forniture, btn_fashion, btn_olahraga, btn_property;
     ImageButton btn_fotoimpian,btnupload, btncari, btnupgrade;
     private BottomSheetBehavior bottomSheetBehavior;
-
+    private Activity mActivity;
     RecyclerView rv_mitra;
 
     ImageView imagefoto;
@@ -567,10 +568,23 @@ private void initViewMitra() {
     }
 
     private void gotocartshop() {
-        Intent intent_cart = new Intent(getActivity(), Cart.class);
+        Intent intent_cart = new Intent(getContext(), Cart.class);
         intent_cart.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent_cart);
     }
 
+//
+//    @Override
+//    public void onAttach(Context context) {
+//        super.onAttach(context);
+//
+//        mActivity = getActivity();
+//    }
+//
+//    @Override
+//    public void onDetach() {
+//        super.onDetach();
+//        mActivity = null;
+//    }
 
 }

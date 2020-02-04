@@ -128,6 +128,7 @@ public class TambahAlamatPengiriman extends AppCompatActivity {
         HashMap<String, String> params = new HashMap<>();
         params.put("id_member",sharedPrefManager.getSpIdMember() );
         /// params.put("avatar", getStringImage(decoded_3));
+       /// params.put("avatar", getStringImage(decoded_3));
         params.put("address_name", txtnamaalamat.getText().toString());
         params.put("phone", txtnomorhandphone.getText().toString());
         params.put("receiver", txtnamapenerima.getText().toString());
@@ -310,9 +311,9 @@ public class TambahAlamatPengiriman extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    public void onBackPressed() {
-        finish();
-    }
+//    @Override
+//    public void onBackPressed() {
+//        finish();
+//    }
 
 }

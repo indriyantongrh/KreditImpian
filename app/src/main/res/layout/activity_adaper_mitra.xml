@@ -29,7 +29,7 @@
                 android:id="@+id/txt_nama_mitra"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/image"
+                android:layout_below="@id/imagemitra"
                 android:text="Nama Mitra"
                 android:gravity="center"
                 android:textColor="#414141"

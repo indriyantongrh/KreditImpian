@@ -118,6 +118,12 @@
                         android:visibility="gone" />
 
                     <TextView
+                        android:id="@+id/txt_id_transaction"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:visibility="gone" />
+
+                    <TextView
                         android:id="@+id/txt_reference_id"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
@@ -159,15 +165,44 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:background="@drawable/borderhitam"
-                        android:layout_height="150dp">
-                    </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/borderhitam"
+            android:orientation="vertical">
 
-                    <TextView
+<!--            <CheckBox-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Adira" />-->
+
+<!--            <CheckBox-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="BCA Finance" />-->
+
+<!--            <CheckBox-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="BAF" />-->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvMitra"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="@dimen/padding_10"
+                android:layout_marginBottom="@dimen/padding_10"
+                android:layout_marginStart="@dimen/padding_10"
+                android:layout_marginEnd="@dimen/padding_10"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
+
+        <TextView
                         android:text="Pilih Jasa Pengiriman"
                         android:layout_marginLeft="10dp"
                         android:textSize="16dp"
@@ -187,6 +222,7 @@
                         android:layout_width="match_parent"
                         android:fontFamily="@font/jipatharegular"
                         android:textSize="26dp"
+                        android:entries="@array/logistic"
                         android:layout_height="match_parent"></Spinner>
                 </LinearLayout>
 

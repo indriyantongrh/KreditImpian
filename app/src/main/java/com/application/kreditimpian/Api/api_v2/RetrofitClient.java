@@ -88,10 +88,10 @@ public class RetrofitClient {
 
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        OkHttpClient client = new OkHttpClient.Builder()
-                                    .addInterceptor(interceptor)
-                                    //.addInterceptor(new TokenAuthenticator(ontext))
-                                    .build();
+//        OkHttpClient client = new OkHttpClient.Builder()
+//                                    .addInterceptor(interceptor)
+//                                    //.addInterceptor(new TokenAuthenticator(ontext))
+//                                    .build();
 
         if (retrofit == null){
             retrofit = new Retrofit.Builder()

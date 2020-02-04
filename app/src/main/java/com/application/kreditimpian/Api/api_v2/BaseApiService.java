@@ -8,10 +8,14 @@ import com.application.kreditimpian.Model.ModelLogin.ResponseLogin;
 import com.application.kreditimpian.Model.ModelMember.ResponseMember;
 import com.application.kreditimpian.Model.ModelMemberInsert.ResponseMemberInsert;
 import com.application.kreditimpian.Model.ModelMerchant.ResponseMerchant;
+import com.application.kreditimpian.Model.ModelMitraSelected.ResponseMitraSelected;
+import com.application.kreditimpian.Model.ModelMitraSelected.ResponseMitraSelected;
 import com.application.kreditimpian.Model.ModelOnShoppingCart.ResponseOnShoppingCart;
 import com.application.kreditimpian.Model.ModelProductBaru.ResponseProductBaru;
 
 
+import com.application.kreditimpian.Model.ModelSelectedTenor.ResponseSelectedTenor;
+import com.application.kreditimpian.Model.ModelSelectedTenor.ResponseSelectedTenor;
 import com.application.kreditimpian.Model.ModelTransaction.ResponseTransaction;
 import com.application.kreditimpian.Model.ModelUserDetail.ResponseMembers;
 import com.application.kreditimpian.Model.ModelValidationSMS.ResponseSmsOTP;
@@ -82,7 +86,8 @@ public interface BaseApiService {
     @GET("ApiMobile/gantipassword")
     Call<ResponseAddress> ResetPassword(@Query("id_sysuser") String id_sysuser, @QueryMap HashMap<String, String> params);
 
-    @GET("ApiMobile/insertprofile")
+   /// @FormUrlEncoded
+    @POST("ApiMobile/insertprofile")
     Call<ResponseMemberInsert> InsertMember(@QueryMap HashMap<String, String> params);
 
     /*API Transaction*/
@@ -91,6 +96,17 @@ public interface BaseApiService {
 
     @GET("ApiMobile/getonshoppingcart")
     Call<ResponseOnShoppingCart> getOnShoppingCart(@Query("id_member") String id_member);
+
+    @GET("ApiMobile/deleteonspcrt")
+    Call<ResponseOnShoppingCart> deleteCart(@Query("number") String number);
+
+    @GET("ApiMobile/tenor")
+    Call<ResponseMitraSelected> getMitraSelected(@Query("id_product_category") String id_product_category);
+
+    @GET("ApiMobile/getpaymentdata")
+    Call<ResponseSelectedTenor> getTenorSelected(@Query("id_product") String id_product,
+                                                 @Query("id_product_category") String id_product_category,
+                                                 @Query("id_company") String id_company);
 
     //getMember
     ///@FormUrlEncoded

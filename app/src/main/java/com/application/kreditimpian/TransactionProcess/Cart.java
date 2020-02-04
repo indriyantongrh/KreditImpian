@@ -3,6 +3,7 @@ package com.application.kreditimpian.TransactionProcess;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -27,6 +28,7 @@ import com.application.kreditimpian.Marketplace.FragSemuaKategori.RecyclerItemCl
 import com.application.kreditimpian.Model.ModelOnShoppingCart.DataItem;
 import com.application.kreditimpian.Model.ModelOnShoppingCart.ResponseOnShoppingCart;
 import com.application.kreditimpian.Model.ModelProductBaru.ResultItem;
+import com.application.kreditimpian.Model.ModelSelectedTenor.DataCicilanItem;
 import com.application.kreditimpian.R;
 
 import java.util.ArrayList;
@@ -40,6 +42,10 @@ public class Cart extends AppCompatActivity {
     SwipeRefreshLayout swipeRefresh;
     ProgressDialog progressBar;
     RecyclerView ListCart;
+    String number;
+
+    private RecyclerView.Adapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
 
     BaseApiService mApiService;
     Context mContext;
@@ -48,7 +54,7 @@ public class Cart extends AppCompatActivity {
 
     AdapterCart adapterCart;
     List<DataItem> dataItemList = new ArrayList<>();
-
+    /////Context mContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +63,7 @@ public class Cart extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);// set drawable icon
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         empty = findViewById(R.id.empty);
+        mContext = Cart.this;
         sharedPrefManager = new SharedPrefManager(this);
         swipeRefresh = findViewById(R.id.swipeRefresh);
         swipeRefresh.setColorScheme(android.R.color.holo_orange_dark,
@@ -81,7 +88,32 @@ public class Cart extends AppCompatActivity {
 
         getOnShoppingCart();
 
+        //Swipe to Delete
+        ItemTouchHelper swipeToDismissTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(
+                0, ItemTouchHelper.LEFT ) {
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction)
+            {
+                int pos = viewHolder.getAdapterPosition();
+                adapter.notifyItemRemoved(pos);
+
+               // deleteCart();
+
+
+            }
+
+        });
+
+        swipeToDismissTouchHelper.attachToRecyclerView(ListCart);
+
     }
+
+
 
     private void getOnShoppingCart(){
         progressBar = ProgressDialog.show(Cart.this, null, "Harap Tunggu...", true, false);
@@ -119,20 +151,22 @@ public class Cart extends AppCompatActivity {
                 new RecyclerItemClickListener(mContext, new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
 
-                        String id = detaiList.get(position).getId();
+                        String id_product = detaiList.get(position).getId_product();
                         String id_product_category = detaiList.get(position).getIdProductCategory();
                         String nameProduct = detaiList.get(position).getName();
                         String reference_id = detaiList.get(position).getReferenceId();
+                        String id_transaction = detaiList.get(position).getId_transaction();
                         String nomor_invoice = detaiList.get(position).getNumber();
                         String price_capital = detaiList.get(position).getPriceCapital();
                         String price_sale = detaiList.get(position).getPriceSale();
                         String imageProduct = detaiList.get(position).getFilename();
 
                         Intent detailproduct = new Intent(Cart.this, TransactionSelectMitra.class);
-                        detailproduct.putExtra(ConstanTransaction.KEY_ID_TRANSACTION, id);
+                        detailproduct.putExtra(ConstanTransaction.KEY_ID_PRODUCT, id_product);
                         detailproduct.putExtra(ConstanTransaction.KEY_ID_PRODUCT_CATEGORY_TRANSACTION, id_product_category);
                         detailproduct.putExtra(ConstanTransaction.KEY_NAME_PRODUCT_TRANSACTION, nameProduct);
                         detailproduct.putExtra(ConstanTransaction.KEY_REFERENCE_ID, reference_id);
+                        detailproduct.putExtra(ConstanTransaction.KEY_ID_TRANSACTION, id_transaction);
                         detailproduct.putExtra(ConstanTransaction.KEY_NUMBER, nomor_invoice);
                         detailproduct.putExtra(ConstanTransaction.KEY_PRICE_CAPITAL_TRANSACTION, price_capital);
                         detailproduct.putExtra(ConstanTransaction.KEY_PRICE_SALE_TRANSACTION, price_sale);
@@ -143,6 +177,28 @@ public class Cart extends AppCompatActivity {
                 }));
     }
 
+
+    private void deleteCart(){
+
+        mApiService.deleteCart(number).enqueue(new Callback<ResponseOnShoppingCart>() {
+            @Override
+            public void onResponse(Call<ResponseOnShoppingCart> call, Response<ResponseOnShoppingCart> response) {
+                if(response.body().getResponseCode()==200){
+                    Toast.makeText(Cart.this, "terhapus", Toast.LENGTH_LONG);
+                }else {
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseOnShoppingCart> call, Throwable t) {
+                progressBar.dismiss();
+                Toast.makeText(Cart.this, "Gagal Refresh", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
 
 
     private void setActionBarTitle(String title) {
@@ -156,4 +212,6 @@ public class Cart extends AppCompatActivity {
         onBackPressed();
         return true;
     }
+
+
 }

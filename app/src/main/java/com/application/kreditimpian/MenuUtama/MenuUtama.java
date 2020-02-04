@@ -167,30 +167,30 @@ public class MenuUtama extends AppCompatActivity {
 //    }
 //
 //
-////    @Override
-////    public boolean onOptionsItemSelected(MenuItem item) {
-////
-////        int id = item.getItemId();
-////
-////        if (id == R.id.notifikasi){
-////            Toast.makeText(this, "ini Notifikasi", Toast.LENGTH_SHORT).show();
-////
-////        }
-////        if (id == R.id.cartshop){
-////            gotocartshop();
-////        }
-////        return super.onOptionsItemSelected(item);
-////
-////
-////
-////    }
-
-    private void gotocartshop() {
-        Intent intent_cart = new Intent(this, Cart.class);
-        intent_cart.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent_cart);
-    }
-
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//
+//        int id = item.getItemId();
+//
+//        if (id == R.id.notifikasi){
+//            Toast.makeText(this, "ini Notifikasi", Toast.LENGTH_SHORT).show();
+//
+//        }
+//        if (id == R.id.cartshop){
+//            gotocartshop();
+//        }
+//        return super.onOptionsItemSelected(item);
+//
+//
+//
+//    }
+//
+//    private void gotocartshop() {
+//        Intent intent_cart = new Intent(this, Cart.class);
+//        intent_cart.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//        startActivity(intent_cart);
+//    }
+//
 
 
 }

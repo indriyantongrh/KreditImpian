@@ -1,29 +1,53 @@
 package com.application.kreditimpian.TransactionProcess;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.application.kreditimpian.Adapter.AdapterMitraSelected;
+import com.application.kreditimpian.Akun.AlamatPengiriman;
+import com.application.kreditimpian.Api.SharedPrefManager;
+import com.application.kreditimpian.Api.api_v2.BaseApiService;
+import com.application.kreditimpian.Api.api_v2.UtilsApi;
 import com.application.kreditimpian.Constan.ConstanTransaction;
-import com.application.kreditimpian.Constan.Constans;
-import com.application.kreditimpian.DetailProduct;
+import com.application.kreditimpian.Model.ModelMitraSelected.DataItem;
+import com.application.kreditimpian.Model.ModelMitraSelected.ResponseMitraSelected;
 import com.application.kreditimpian.R;
 import com.bumptech.glide.Glide;
 
 import java.text.NumberFormat;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class TransactionSelectMitra extends AppCompatActivity {
-
+    ProgressDialog pDialog;
+    ProgressDialog progressBar;
+    @BindView(R.id.rvMitra)
+    RecyclerView rvMitra;
     @BindView(R.id.txt_name_product)
     TextView txt_name_product;
+    @BindView(R.id.txt_id_transaction)
+    TextView txt_id_transaction;
     @BindView(R.id.txt_price_capital)
     TextView txt_price_capital;
     @BindView(R.id.txt_price_sale)
@@ -42,7 +66,17 @@ public class TransactionSelectMitra extends AppCompatActivity {
     TextView txt_status;
     @BindView(R.id.image)
     ImageView image;
+    @BindView(R.id.btnSelanjutnya)
+    Button btnSelanjutnya;
 
+   // String id_product_category;
+
+    DataItem reqDataItem;
+    SharedPrefManager sharedPrefManager;
+    BaseApiService mApiService;
+    List<DataItem> dataItemList;
+    AdapterMitraSelected adapterMitraSelected;
+    Context mContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,16 +86,23 @@ public class TransactionSelectMitra extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);// set drawable icon
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ButterKnife.bind(this);
+        sharedPrefManager = new SharedPrefManager(TransactionSelectMitra.this);
+        mApiService = UtilsApi.getAPIService();
+        /*get Selected Mitra*/
+
 
 
         Intent intent = getIntent();
-        String id = intent.getStringExtra(ConstanTransaction.KEY_ID_TRANSACTION);
+        String id_product = intent.getStringExtra(ConstanTransaction.KEY_ID_PRODUCT);
         String id_product_category = intent.getStringExtra(ConstanTransaction.KEY_ID_PRODUCT_CATEGORY_TRANSACTION);
         String nameProduct = intent.getStringExtra(ConstanTransaction.KEY_NAME_PRODUCT_TRANSACTION);
         String reference_id = intent.getStringExtra(ConstanTransaction.KEY_REFERENCE_ID);
+        String id_transaction = intent.getStringExtra(ConstanTransaction.KEY_ID_TRANSACTION);
         String nomor_invoice = intent.getStringExtra(ConstanTransaction.KEY_NUMBER);
         String imageProduct = intent.getStringExtra(ConstanTransaction.KEY_FILENAME_TRANSACTION);
         String status = intent.getStringExtra(ConstanTransaction.KEY_STATUS);
+       Log.d("ini id kategorimu ", ConstanTransaction.KEY_ID_PRODUCT_CATEGORY_TRANSACTION);
+
         ///convert String to Rupiah Curerncy
         Locale localeID = new Locale("in", "ID");
         NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
@@ -74,11 +115,13 @@ public class TransactionSelectMitra extends AppCompatActivity {
             txt_price_capital.setVisibility(View.VISIBLE);
         }
 
-        txt_id.setText(id);
+        txt_id.setText(id_product);
         txt_id_product_category.setText(id_product_category);
+        Toast.makeText(TransactionSelectMitra.this, "Kategori product anda " +id_product_category , Toast.LENGTH_LONG).show();
         txt_reference_id.setText(reference_id);
         txt_number.setText(nomor_invoice);
         txt_status.setText(status);
+        txt_id_transaction.setText(id_transaction);
         txt_name_product.setText(nameProduct);
         txt_price_capital.setText(formatRupiah.format(price_capital));
         txt_price_sale.setText(formatRupiah.format(price_sale));
@@ -89,6 +132,65 @@ public class TransactionSelectMitra extends AppCompatActivity {
                 .error(R.drawable.no_image)
                 .into(image);
 
+        adapterMitraSelected = new AdapterMitraSelected(TransactionSelectMitra.this, dataItemList);
+        GridLayoutManager mLayoutManager = new GridLayoutManager(TransactionSelectMitra.this, 2, GridLayoutManager.VERTICAL, false);
+        rvMitra.setLayoutManager(mLayoutManager);
+        rvMitra.setItemAnimator(new DefaultItemAnimator());
+        selectedMitra();
+
+
+        btnSelanjutnya.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent intent = new Intent(TransactionSelectMitra.this, TransactionSelectTenor.class);
+//                startActivity(intent);
+
+            }
+        });
+
+    }
+
+    private void NextTenor(){
+
+
+
+    }
+
+
+    private void selectedMitra(){
+       //// progressBar = ProgressDialog.show(TransactionSelectMitra.this, null, "Harap Tunggu...", true, false);
+//        HashMap<String, String> params = new HashMap<>();
+//        params.put("id_product_category", txt_id_product_category.getText().toString());
+
+       String id_product_category = txt_id_product_category.getText().toString();
+
+        mApiService.getMitraSelected(id_product_category).enqueue(new Callback<ResponseMitraSelected>() {
+            @Override
+            public void onResponse(Call<ResponseMitraSelected> call, Response<ResponseMitraSelected> response) {
+                ///pDialog.dismiss();
+
+                if (response.body().getResponseCode() == 200) {
+                    final List<DataItem> MitraList = response.body().getData();
+
+                    rvMitra.setAdapter(new AdapterMitraSelected(mContext, MitraList));
+                    adapterMitraSelected.notifyDataSetChanged();
+
+
+                    ///    Log.d("Data result", MitraList.toString());
+                    ///Log.v("jajal", MitraList.toString());
+                    ////Toast.makeText(TransactionSelectMitra.this, response.body().getData().toString(), Toast.LENGTH_LONG).show();
+
+                } else {
+                    Toast.makeText(TransactionSelectMitra.this, "Gagal Load data mitra", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseMitraSelected> call, Throwable t) {
+
+            }
+        });
 
     }
 

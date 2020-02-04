@@ -27,14 +27,33 @@ public class DataItem{
 	@SerializedName("id_product_category")
 	private String idProductCategory;
 
-	@SerializedName("id")
-	private String id;
+	public String getId_product() {
+		return id_product;
+	}
+
+	public void setId_product(String id_product) {
+		this.id_product = id_product;
+	}
+
+	@SerializedName("id_product")
+	private String id_product;
 
 	@SerializedName("price_capital")
 	private String priceCapital;
 
 	@SerializedName("status")
 	private String status;
+
+	public String getId_transaction() {
+		return id_transaction;
+	}
+
+	public void setId_transaction(String id_transaction) {
+		this.id_transaction = id_transaction;
+	}
+
+	@SerializedName("id_transaction")
+	private  String id_transaction;
 
 	public void setNumber(String number){
 		this.number = number;
@@ -92,13 +111,7 @@ public class DataItem{
 		return idProductCategory;
 	}
 
-	public void setId(String id){
-		this.id = id;
-	}
 
-	public String getId(){
-		return id;
-	}
 
 	public void setPriceCapital(String priceCapital){
 		this.priceCapital = priceCapital;

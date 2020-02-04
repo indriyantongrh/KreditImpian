@@ -32,6 +32,22 @@
         <item>Perempuan</item>
     </string-array>
 
+    <string-array name="logistic">
+        <item>Pilih Logistic</item>
+        <item>JNE</item>
+        <item>POS</item>
+        <item>JNT</item>
+        <item>TIKI</item>
+    </string-array>
+
+    <string-array name="tenorList">
+        <item>Pilih Tenor</item>
+        <item>3 x Rp.3.000.000</item>
+        <item>6 x Rp. 6.000.000</item>
+        <item>9 x Rp. 9.000.000</item>
+        <item>12 x Rp. 12.000.000</item>
+    </string-array>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string-array name="status">
         <item>Pilih Status</item>

@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.application.kreditimpian.Akun.DataDiri;
@@ -30,51 +31,58 @@ import static com.application.kreditimpian.Api.network.interceptor.MyApp.getCont
  */
 public class AdapterCart extends RecyclerView.Adapter<AdapterCart.HolderCart> {
 
+    String ImageProduct;
     List<DataItem> dataItemList;
     Context mContext;
 
-    public  AdapterCart(Context context , List<DataItem> dataList){
-        this.mContext= context;
+    public AdapterCart(Context context, List<DataItem> dataList) {
+        this.mContext = context;
         dataItemList = dataList;
     }
 
     @NonNull
     @Override
     public HolderCart onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_cart, parent,false);
-        return  new HolderCart(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_cart, parent, false);
+        return new HolderCart(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull HolderCart holder, int position) {
-            final DataItem dataItem = dataItemList.get(position);
+        final DataItem dataItem = dataItemList.get(position);
 
-            holder.txt_id.setText(dataItem.getId());
-            holder.txt_id_product_category.setText(dataItem.getIdProductCategory());
-            holder.txt_name_product.setText(dataItem.getName());
-            holder.txt_reference_id.setText(dataItem.getReferenceId());
-            holder.txt_status.setText(dataItem.getStatus());
-            holder.txt_number.setText(dataItem.getNumber());
-            Locale localeID = new Locale("in", "ID");
-            NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
-            int Price_Capital = (Integer.parseInt(dataItem.getPriceCapital()));
-            int Price_Sale = (Integer.parseInt(dataItem.getPriceSale()));
+        holder.txt_id.setText(dataItem.getId_product());
+        holder.txt_id_product_category.setText(dataItem.getIdProductCategory());
+        holder.txt_name_product.setText(dataItem.getName());
+        holder.txt_reference_id.setText(dataItem.getReferenceId());
+        holder.txt_status.setText(dataItem.getStatus());
+        holder.txt_number.setText(dataItem.getNumber());
+        Locale localeID = new Locale("in", "ID");
+        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+        int Price_Capital = (Integer.parseInt(dataItem.getPriceCapital()));
+        int Price_Sale = (Integer.parseInt(dataItem.getPriceSale()));
 
-            if (Price_Capital == Price_Sale) {
-                holder.txt_price_capital.setVisibility(View.GONE);
-            }else  {
-                holder.txt_price_capital.setVisibility(View.VISIBLE);
-            }
-            holder.txt_price_capital.setText(formatRupiah.format(Price_Capital));
-            holder.txt_price_sale.setText(formatRupiah.format(Price_Sale));
-            holder.txt_image.setText(dataItem.getFilename());
+        if (Price_Capital == Price_Sale) {
+            holder.txt_price_capital.setVisibility(View.GONE);
+        } else {
+            holder.txt_price_capital.setVisibility(View.VISIBLE);
+        }
+        holder.txt_price_capital.setText(formatRupiah.format(Price_Capital));
+        holder.txt_price_sale.setText(formatRupiah.format(Price_Sale));
+        holder.txt_image.setText(dataItem.getFilename());
+        //// String ImageProduct =  (dataItem.getFilename());
+//
+//            if (dataItem.getFilename().equals("default")) {
+//                holder.image.setImageResource(R.drawable.no_image);
+//            } else {
+//                Glide.with(getContext()).load(dataItem.getFilename()).into(holder.image);
+//            }
 
-
-            Glide.with(mContext)
-                    .load(dataItem.getFilename())
-                    .placeholder(R.drawable.no_image)
-                    .error(R.drawable.no_image)
-                    .into(holder.image);
+        Glide.with(mContext)
+                .load(dataItem.getFilename())
+                .placeholder(R.drawable.no_image)
+                .error(R.drawable.no_image)
+                .into(holder.image);
 
     }
 
@@ -107,10 +115,12 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.HolderCart> {
         ImageView image;
 
 
-
         public HolderCart(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
     }
+
+
+
 }
