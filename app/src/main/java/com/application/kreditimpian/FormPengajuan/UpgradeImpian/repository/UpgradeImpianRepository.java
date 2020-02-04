@@ -247,7 +247,8 @@ public class UpgradeImpianRepository {
                 modelUpgradeImpian.getIdmember(),
                 modelUpgradeImpian.getIdTransaksi(),
                 modelUpgradeImpian.getTahun(),
-                modelUpgradeImpian.getMitra()
+                modelUpgradeImpian.getMitra(),
+                modelUpgradeImpian.getJmlhpinjaman()
         );
         responseBodyCall.enqueue(new Callback<ResponseBody>() {
             @Override

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
@@ -43,15 +44,23 @@ public class PilihLeasingActivity extends AppCompatActivity implements PilihLeas
     }
 
     @Override
-    public void onClickPilihLeasing(String idTransaksi, String Tenor, String idKreditor) {
+    public void onClickPilihLeasing(String idTransaksi, String Tenor, String idKreditor, String cicilan) {
+
+        ProgressDialog pDialog = new ProgressDialog(PilihLeasingActivity.this);
+        pDialog.setCancelable(false);
+        pDialog.setMessage("Loading...");
+        pDialog.show();
+
         ModelUpgradeImpian modelUpgradeImpian = new ModelUpgradeImpian();
         modelUpgradeImpian.setIdmember(idMember);
         modelUpgradeImpian.setIdTransaksi(idTransaksi);
         modelUpgradeImpian.setMitra(idKreditor);
         modelUpgradeImpian.setTahun(Tenor);
+        modelUpgradeImpian.setJmlhpinjaman(cicilan);
         UpgradeImpianViewModel upgradeImpianViewModel = new ViewModelProvider(getViewModelStore(), new ViewModelFactory()).get(UpgradeImpianViewModel.class);
         upgradeImpianViewModel.setModelUpgradeImpian(modelUpgradeImpian);
         upgradeImpianViewModel.pilihLeasing().observe(this, modelUpgradeImpians -> {
+            pDialog.dismiss();
             ModelUpgradeImpian modelUpgradeImpian1 = modelUpgradeImpians.get(0);
             if (modelUpgradeImpian1 != null) {
                 if (modelUpgradeImpian1.getCode().equals("200")) {

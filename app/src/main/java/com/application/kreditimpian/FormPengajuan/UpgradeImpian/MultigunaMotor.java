@@ -255,11 +255,11 @@ public class MultigunaMotor extends Fragment implements View.OnClickListener {
                         Collections.addAll(tipeKendaraanList, arrayTipeMotor);
                         break;
                     case "SUZUKI":
-                        arrayTipeMotor = getResources().getStringArray(R.array.motorTipeYamaha);
+                        arrayTipeMotor = getResources().getStringArray(R.array.motorTipeSuzuki);
                         Collections.addAll(tipeKendaraanList, arrayTipeMotor);
                         break;
                     case "YAMAHA":
-                        arrayTipeMotor = getResources().getStringArray(R.array.motorTipeSuzuki);
+                        arrayTipeMotor = getResources().getStringArray(R.array.motorTipeYamaha);
                         break;
                 }
 

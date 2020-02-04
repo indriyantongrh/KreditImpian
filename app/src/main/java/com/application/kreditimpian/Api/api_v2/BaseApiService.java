@@ -258,7 +258,8 @@ public interface BaseApiService {
             @Query("id_member") String id_member,
             @Query("id_transaksi") String id_transaksi,
             @Query("tenor") String tenor,
-            @Query("id_kreditor") String id_kreditor
+            @Query("id_kreditor") String id_kreditor,
+            @Query("cicilan") String cicilan
     );
 
 }
