@@ -22,6 +22,7 @@ import com.application.kreditimpian.Model.ModelMitraSelected.DataItem;
 import com.application.kreditimpian.Model.ModelMitraSelected.ResponseMitraSelected;
 import com.application.kreditimpian.R;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -38,12 +39,16 @@ public class AdapterMitraSelected extends RecyclerView.Adapter<AdapterMitraSelec
     private HashMap<Integer, Boolean> isChecked = new HashMap<>();
     private List<DataItem> dataItemList;
     Context mContext;
-     private int selectedPosition = -1;// no selection by default = -1;// no selection by default
+    private int selectedPosition = -1;// no selection by default = -1;// no selection by default
 
 
-    public  AdapterMitraSelected(Context context , List<DataItem> dataList){
-        this.mContext= context;
-        dataItemList = dataList;
+    public AdapterMitraSelected(Context context) {
+        this.mContext = context;
+        dataItemList = new ArrayList<>();
+    }
+
+    public void setDataItemList(List<DataItem> dataItemList) {
+        this.dataItemList = dataItemList;
     }
 
     @Override
@@ -54,8 +59,8 @@ public class AdapterMitraSelected extends RecyclerView.Adapter<AdapterMitraSelec
     @NonNull
     @Override
     public AdapterMitraSelected.HolderMitrSelected onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_mitra, parent,false);
-        return  new HolderMitrSelected(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_mitra, parent, false);
+        return new HolderMitrSelected(view);
 
     }
 
@@ -64,7 +69,7 @@ public class AdapterMitraSelected extends RecyclerView.Adapter<AdapterMitraSelec
         final DataItem dataItem = dataItemList.get(position);
         holder.checkBoxMitra.setText(dataItem.getIdCompany());
         holder.checkBoxMitra.setText(dataItem.getName());
-        Log.v("Bismillah", dataItem.isCheck()+" a");
+        Log.v("Bismillah", dataItem.isCheck() + " a");
         holder.checkBoxMitra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,7 +97,7 @@ public class AdapterMitraSelected extends RecyclerView.Adapter<AdapterMitraSelec
 //
 //                    }
 //                });
-      ////  holder.checkBoxMitra.setText(dataItem.getName());
+        ////  holder.checkBoxMitra.setText(dataItem.getName());
 //        if (isChecked.containsKey(position)){
 //            holder.checkBoxMitra.setChecked(isChecked.get(position));
 //        } else {
@@ -101,7 +106,7 @@ public class AdapterMitraSelected extends RecyclerView.Adapter<AdapterMitraSelec
 
         ///holder.checkBoxMitra.setText(dataItem.getIdProductCategory());
         //holder.checkBoxMitra.setText(dataItem.getIdCompany());
-       /// holder.checkBoxMitra.setText(dataItem.getName());
+        /// holder.checkBoxMitra.setText(dataItem.getName());
 //        holder.checkBoxMitra.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 //            @Override
 //            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -196,7 +201,6 @@ public class AdapterMitraSelected extends RecyclerView.Adapter<AdapterMitraSelec
     }
 
     public List<DataItem> getDataItemList() {
-        Log.v("jajal1" ,  dataItemList.size()+" bismillah");
         return dataItemList;
     }
 
