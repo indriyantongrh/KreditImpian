@@ -63,6 +63,7 @@ import com.application.kreditimpian.Model.ModelMerchant.ResultItem;
 import com.application.kreditimpian.Model.ModelMitra;
 
 import com.application.kreditimpian.Model.ModelProductNew.ProductResponse;
+import com.application.kreditimpian.Notifikasi.NotifikasiActivity;
 import com.application.kreditimpian.R;
 import com.application.kreditimpian.TransactionProcess.Cart;
 import com.application.kreditimpian._sliders.FragmentSlider;
@@ -555,8 +556,8 @@ private void initViewMitra() {
         int id = item.getItemId();
 
         if (id == R.id.notifikasi){
-            Toast.makeText(getActivity(), "ini Notifikasi", Toast.LENGTH_SHORT).show();
-
+            startActivity(new Intent(getContext(), NotifikasiActivity.class));
+            ((Activity)getContext()).finish();
         }
         if (id == R.id.cartshop){
             gotocartshop();

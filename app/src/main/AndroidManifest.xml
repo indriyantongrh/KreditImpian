@@ -39,7 +39,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".FormPengajuan.UpgradeImpian.PilihLeasingActivity"></activity>
+        <activity android:name=".Notifikasi.NotifikasiActivity"></activity>
+        <activity android:name=".FormPengajuan.UpgradeImpian.PilihLeasingActivity" />
         <activity android:name=".TransactionProcess.TransactionCheckout" />
         <activity android:name=".TransactionProcess.TransactionSelectTenor" />
         <activity android:name=".TransactionProcess.TransactionSelectMitra" />
