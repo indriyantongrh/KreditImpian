@@ -1,6 +1,7 @@
 package com.application.kreditimpian.FormPengajuan.UpgradeImpian;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.application.kreditimpian.Model.ModelMitra;
+import com.application.kreditimpian.Model.ModelUpgradeImpian.ModelMitraMultiguna;
 import com.application.kreditimpian.R;
 
 import java.util.ArrayList;
@@ -19,10 +21,13 @@ public class MitraAdapter extends RecyclerView.Adapter<MitraViewHolder> {
     private int count = 0;
     private String merkKendaraan = "",
             motormobil;
-    private ArrayList<ModelMitra> mitraList;
+    private ArrayList<ModelMitraMultiguna> mitraList;
+    private boolean onBind = false;
 
-    public MitraAdapter(Context context) {
+    public MitraAdapter(Context context, ArrayList<ModelMitraMultiguna> mitraList, String motormobil) {
         this.context = context;
+        this.mitraList = mitraList;
+        this.motormobil = motormobil;
     }
 
     @NonNull
@@ -33,43 +38,49 @@ public class MitraAdapter extends RecyclerView.Adapter<MitraViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MitraViewHolder holder, int position) {
-        ModelMitra modelMitra = mitraList.get(position);
-        holder.checkBoxMitra.setText(modelMitra.getName());
+        onBind = true;
+        ModelMitraMultiguna modelMitra = mitraList.get(position);
+        holder.checkBoxMitra.setText(modelMitra.getNama());
+        holder.checkBoxMitra.setId(position);
         holder.checkBoxMitra.setOnClickListener(v -> {
-            setCheckbox(position);
+            mitraList.get(position);
+            modelMitra.setChecked(!modelMitra.isChecked());
+
+            // bila mitra lebih dari 3. digunakan untuk memilih mitra maksimal 3
+            if (modelMitra.isChecked()) {
+                count++;
+            } else {
+                count--;
+            }
             notifyDataSetChanged();
         });
 
         // bila mitra lebih dari 3. digunakan untuk memilih mitra maksimal 3
-        /*if (count == 3) {
+        if (count == 3) {
             if (!modelMitra.isChecked()) {
                 holder.checkBoxMitra.setEnabled(modelMitra.isChecked());
                 holder.checkBoxMitra.setAlpha(0.5f);
+                holder.checkBoxMitra.setEnabled(false);
             } else {
+                holder.checkBoxMitra.setAlpha(1f);
                 holder.checkBoxMitra.setEnabled(true);
             }
         } else if (count < 3) {
+            holder.checkBoxMitra.setAlpha(1f);
             holder.checkBoxMitra.setEnabled(true);
-        }*/
+        }
 
         if (motormobil.equals("mobil")) {
-            if (modelMitra.getName().equals("baf")) {
+            if (modelMitra.getNama().equals("baf")) {
                 holder.checkBoxMitra.setVisibility(View.GONE);
-            } else { // bila mitra sudah lebih dari 3 else ini dihapus ga papa biar ga ke centang semua
-                holder.checkBoxMitra.setChecked(true);
-                setCheckbox(position);
             }
         } else {
-            if (!merkKendaraan.isEmpty()) {
-                if (!merkKendaraan.equals("YAMAHA")) {
-                    if (modelMitra.getName().equalsIgnoreCase("baf")) {
-                        holder.checkBoxMitra.setChecked(false);
-                        holder.checkBoxMitra.setEnabled(false);
-                        holder.checkBoxMitra.setAlpha(0.5f);
-                    }
-                } else {
-                    holder.checkBoxMitra.setEnabled(true);
+            if (modelMitra.getNama().equalsIgnoreCase("baf")) {
+                holder.checkBoxMitra.setEnabled(modelMitra.isDisable());
+                if (modelMitra.isDisable()){
                     holder.checkBoxMitra.setAlpha(1f);
+                } else{
+                    holder.checkBoxMitra.setAlpha(0.5f);
                 }
             }
         }
@@ -80,28 +91,8 @@ public class MitraAdapter extends RecyclerView.Adapter<MitraViewHolder> {
         return mitraList.size();
     }
 
-    public void setMitraList(ArrayList<ModelMitra> mitraList, String motormobil) {
-        this.mitraList = mitraList;
-        this.motormobil = motormobil;
-    }
-
-    public void setMerkKendaraan(String merkKendaraan) {
-        this.merkKendaraan = merkKendaraan;
-    }
-
-    public ArrayList<ModelMitra> getMitraList() {
+    public ArrayList<ModelMitraMultiguna> getMitraList() {
         return mitraList;
     }
 
-    private void setCheckbox(int position) {
-        ModelMitra modelMitra = mitraList.get(position);
-        modelMitra.setChecked(!modelMitra.isChecked());
-
-        // bila mitra lebih dari 3. digunakan untuk memilih mitra maksimal 3
-        /*if (modelMitra.isChecked()) {
-            count++;
-        } else {
-            count--;
-        }*/
-    }
 }

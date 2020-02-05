@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel;
 import com.application.kreditimpian.FormPengajuan.UpgradeImpian.repository.UpgradeImpianRepository;
 import com.application.kreditimpian.Model.ModelMitra;
 import com.application.kreditimpian.Model.ModelProductNew.Category;
+import com.application.kreditimpian.Model.ModelUpgradeImpian.ModelMitraMultiguna;
 import com.application.kreditimpian.Model.ModelUpgradeImpian.ModelUpgradeImpian;
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class UpgradeImpianViewModel extends ViewModel {
         this.modelUpgradeImpian = modelUpgradeImpian;
     }
 
-    public LiveData<ArrayList<ModelMitra>> getMitraUpgradeImpian() {
+    public LiveData<ArrayList<ModelMitraMultiguna>> getMitraUpgradeImpian() {
         return upgradeImpianRepository.getMitraUpgrade();
     }
 

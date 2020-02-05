@@ -32,6 +32,7 @@ import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.FormPengajuan.UpgradeImpian.viewmodel.UpgradeImpianViewModel;
 import com.application.kreditimpian.FormPengajuan.UpgradeImpian.viewmodel.ViewModelFactory;
 import com.application.kreditimpian.Model.ModelMitra;
+import com.application.kreditimpian.Model.ModelUpgradeImpian.ModelMitraMultiguna;
 import com.application.kreditimpian.Model.ModelUpgradeImpian.ModelUpgradeImpian;
 import com.application.kreditimpian.R;
 import com.chivorn.smartmaterialspinner.SmartMaterialSpinner;
@@ -115,7 +116,6 @@ public class MultigunaMobil extends Fragment implements View.OnClickListener {
 
         imageupload.setOnClickListener(this);
         rvMitra.setLayoutManager(new LinearLayoutManager(context));
-        mitraAdapter = new MitraAdapter(context);
         btnAjukansekarang.setOnClickListener(this);
 
         edtJumlahPinjaman.addTextChangedListener(new NumberTextWatcher(edtJumlahPinjaman));
@@ -218,7 +218,8 @@ public class MultigunaMobil extends Fragment implements View.OnClickListener {
 
     private void loadMitra() {
         upgradeImpianViewModel.getMitraUpgradeImpian().observe(getViewLifecycleOwner(), modelMitras -> {
-            mitraAdapter.setMitraList(modelMitras, "mobil");
+            mitraAdapter = new MitraAdapter(context,modelMitras, "mobil");
+            mitraAdapter.notifyDataSetChanged();
             rvMitra.setAdapter(mitraAdapter);
         });
     }
@@ -402,8 +403,8 @@ public class MultigunaMobil extends Fragment implements View.OnClickListener {
         String lokasi = String.valueOf(edtLokasi.getText());
         String asuransi = String.valueOf(edtAsuransi.getText());
         StringBuilder mitraStringBuilder = new StringBuilder();
-        ArrayList<ModelMitra> modelMitraArrayList = mitraAdapter.getMitraList();
-        ModelMitra modelMitra = new ModelMitra();
+        ArrayList<ModelMitraMultiguna> modelMitraArrayList = mitraAdapter.getMitraList();
+        ModelMitraMultiguna modelMitra = new ModelMitraMultiguna();
         for (int i = 0; i < modelMitraArrayList.size(); i++) {
             modelMitra = modelMitraArrayList.get(i);
             if (modelMitra.isChecked()) {

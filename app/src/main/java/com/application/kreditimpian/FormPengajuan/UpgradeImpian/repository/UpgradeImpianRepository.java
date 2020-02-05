@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Model.ModelMitra;
 import com.application.kreditimpian.Model.ModelProductNew.Category;
+import com.application.kreditimpian.Model.ModelUpgradeImpian.ModelMitraMultiguna;
 import com.application.kreditimpian.Model.ModelUpgradeImpian.ModelMitraPinjaman;
 import com.application.kreditimpian.Model.ModelUpgradeImpian.ModelPinjaman;
 import com.application.kreditimpian.Model.ModelUpgradeImpian.ModelUpgradeImpian;
@@ -50,8 +51,8 @@ public class UpgradeImpianRepository {
         return retrofit.create(BaseApiService.class);
     }
 
-    public LiveData<ArrayList<ModelMitra>> getMitraUpgrade() {
-        MutableLiveData<ArrayList<ModelMitra>> arrayListMutableLiveData = new MutableLiveData<>();
+    public LiveData<ArrayList<ModelMitraMultiguna>> getMitraUpgrade() {
+        MutableLiveData<ArrayList<ModelMitraMultiguna>> arrayListMutableLiveData = new MutableLiveData<>();
         responseBodyCall = getApiMobile2().getMitraUpgradeImpian();
         responseBodyCall.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -60,15 +61,16 @@ public class UpgradeImpianRepository {
                     try {
                         responses = response.body().string();
                         jsonObject = new JSONObject(responses);
-                        ArrayList<ModelMitra> modelMitras = new ArrayList<>();
+                        ArrayList<ModelMitraMultiguna> modelMitras = new ArrayList<>();
                         if (jsonObject.getString("response_code").equals("200")) {
                             jsonArray = new JSONArray(jsonObject.getString("data"));
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 jsonObject = jsonArray.getJSONObject(i);
-                                ModelMitra modelMitra = new ModelMitra();
+                                ModelMitraMultiguna modelMitra = new ModelMitraMultiguna();
                                 modelMitra.setId(jsonObject.getString("id_company"));
-                                modelMitra.setName(jsonObject.getString("company_name"));
+                                modelMitra.setNama(jsonObject.getString("company_name"));
                                 modelMitra.setChecked(false);
+                                modelMitra.setDisable(true);
                                 modelMitras.add(modelMitra);
                             }
                             arrayListMutableLiveData.setValue(modelMitras);

@@ -33,6 +33,7 @@ import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.FormPengajuan.UpgradeImpian.viewmodel.UpgradeImpianViewModel;
 import com.application.kreditimpian.FormPengajuan.UpgradeImpian.viewmodel.ViewModelFactory;
 import com.application.kreditimpian.Model.ModelMitra;
+import com.application.kreditimpian.Model.ModelUpgradeImpian.ModelMitraMultiguna;
 import com.application.kreditimpian.Model.ModelUpgradeImpian.ModelUpgradeImpian;
 import com.application.kreditimpian.R;
 import com.chivorn.smartmaterialspinner.SmartMaterialSpinner;
@@ -79,6 +80,7 @@ public class MultigunaMotor extends Fragment implements View.OnClickListener {
     private static final int bitmap_size = 80; // range 1 - 100=
     private static final int PICK_IMAGE_REQUEST_1 = 1;
     private static final int REQUEST_IMAGE_CAPTURE_1 = 11;
+    private ArrayList<ModelMitraMultiguna> modelMitraMultigunaArrayList;
 
     public MultigunaMotor() {
         // Required empty public constructor
@@ -116,7 +118,6 @@ public class MultigunaMotor extends Fragment implements View.OnClickListener {
         imageupload.setOnClickListener(this);
         btnAjukansekarang.setOnClickListener(this);
         rvMitra.setLayoutManager(new LinearLayoutManager(context));
-        mitraAdapter = new MitraAdapter(context);
 
         edtJumlahPinjaman.addTextChangedListener(new NumberTextWatcher(edtJumlahPinjaman));
         edtHargaKendaraan.addTextChangedListener(new NumberTextWatcher(edtHargaKendaraan));
@@ -224,7 +225,9 @@ public class MultigunaMotor extends Fragment implements View.OnClickListener {
 
     private void loadMitra() {
         upgradeImpianViewModel.getMitraUpgradeImpian().observe(getViewLifecycleOwner(), modelMitras -> {
-            mitraAdapter.setMitraList(modelMitras, "motor");
+            modelMitraMultigunaArrayList = modelMitras;
+            mitraAdapter = new MitraAdapter(context, modelMitras, "motor");
+            mitraAdapter.notifyDataSetChanged();
             rvMitra.setAdapter(mitraAdapter);
         });
     }
@@ -240,41 +243,73 @@ public class MultigunaMotor extends Fragment implements View.OnClickListener {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 ArrayList<String> tipeKendaraanList = new ArrayList<>();
                 String[] arrayTipeMotor = null;
+                String merkKendaraan ="";
 
                 switch (spinnerMerkMotor.getSelectedItem().toString()) {
                     case "HONDA":
                         arrayTipeMotor = getResources().getStringArray(R.array.motorTipeHonda);
                         Collections.addAll(tipeKendaraanList, arrayTipeMotor);
+                        merkKendaraan = "HONDA";
                         break;
                     case "KAWAZAKI":
                         arrayTipeMotor = getResources().getStringArray(R.array.motorTipeKawazaki);
                         Collections.addAll(tipeKendaraanList, arrayTipeMotor);
+                        merkKendaraan = "KAWAZAKI";
                         break;
                     case "PIAGGIO":
                         arrayTipeMotor = getResources().getStringArray(R.array.motorTipePiaggio);
                         Collections.addAll(tipeKendaraanList, arrayTipeMotor);
+                        merkKendaraan = "PIAGGIO";
                         break;
                     case "SUZUKI":
                         arrayTipeMotor = getResources().getStringArray(R.array.motorTipeSuzuki);
                         Collections.addAll(tipeKendaraanList, arrayTipeMotor);
+                        merkKendaraan = "SUZUKI";
                         break;
                     case "YAMAHA":
                         arrayTipeMotor = getResources().getStringArray(R.array.motorTipeYamaha);
+                        Collections.addAll(tipeKendaraanList, arrayTipeMotor);
+                        merkKendaraan = "YAMAHA";
                         break;
                 }
 
                 if (arrayTipeMotor != null) {
-                    Collections.addAll(tipeKendaraanList, arrayTipeMotor);
+                    bafDisable(merkKendaraan);
                     spinTipeMotor.setItem(tipeKendaraanList);
                 }
-                mitraAdapter.setMerkKendaraan(spinnerMerkMotor.getSelectedItem().toString());
-                mitraAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+    }
+
+    private void bafDisable(String merkKendaraan) {
+        ArrayList<ModelMitraMultiguna> modelMitras = new ArrayList<>();
+        for (int i = 0; i < modelMitraMultigunaArrayList.size(); i++) {
+            ModelMitraMultiguna modelMitraMultiguna = modelMitraMultigunaArrayList.get(i);
+            modelMitraMultiguna.setNama(modelMitraMultiguna.getNama());
+            modelMitraMultiguna.setId(modelMitraMultiguna.getId());
+            modelMitraMultiguna.setChecked(modelMitraMultiguna.isChecked());
+            if (merkKendaraan.equals("YAMAHA")) {
+                if (modelMitraMultiguna.getNama().equals("baf")) {
+                    modelMitraMultiguna.setDisable(true);
+                } else {
+                    modelMitraMultiguna.setDisable(false);
+                }
+            } else {
+                if (modelMitraMultiguna.getNama().equals("baf")) {
+                    modelMitraMultiguna.setDisable(false);
+                } else {
+                    modelMitraMultiguna.setDisable(true);
+                }
+            }
+            modelMitras.add(modelMitraMultiguna);
+        }
+        mitraAdapter = new MitraAdapter(context, modelMitras, "motor");
+        mitraAdapter.notifyDataSetChanged();
+        rvMitra.setAdapter(mitraAdapter);
     }
 
     @SuppressWarnings("unchecked")
@@ -298,17 +333,19 @@ public class MultigunaMotor extends Fragment implements View.OnClickListener {
         String jmlhPinj = String.valueOf(edtJumlahPinjaman.getText()).replace(".", "");
         String hrgKend = String.valueOf(edtHargaKendaraan.getText()).replace(".", "");
         String lokasi = String.valueOf(edtLokasi.getText());
+
         StringBuilder mitraStringBuilder = new StringBuilder();
-        ArrayList<ModelMitra> modelMitraArrayList = mitraAdapter.getMitraList();
-        ModelMitra modelMitra = new ModelMitra();
+        ArrayList<ModelMitraMultiguna> modelMitraArrayList = mitraAdapter.getMitraList();
+
         for (int i = 0; i < modelMitraArrayList.size(); i++) {
-            modelMitra = modelMitraArrayList.get(i);
-            if (modelMitra.isChecked()) {
-                mitraStringBuilder.append(modelMitra.getId()).append("|");
+            if (modelMitraArrayList.get(i).isChecked()) {
+                mitraStringBuilder.append(modelMitraArrayList.get(i).getId()).append("|");
             }
         }
         for (int i = 0; i < modelMitraArrayList.size(); i++) {
-            if (modelMitra.isChecked()) {
+            Log.v("jajal", modelMitraArrayList.get(i).getNama());
+            Log.v("jajal", modelMitraArrayList.get(i).isChecked() + "");
+            if (modelMitraArrayList.get(i).isChecked()) {
                 check = true;
                 break;
             }
