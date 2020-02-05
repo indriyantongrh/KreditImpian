@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Model.ModelMitra;
+import com.application.kreditimpian.Model.ModelProductNew.Category;
 import com.application.kreditimpian.Model.ModelUpgradeImpian.ModelMitraPinjaman;
 import com.application.kreditimpian.Model.ModelUpgradeImpian.ModelPinjaman;
 import com.application.kreditimpian.Model.ModelUpgradeImpian.ModelUpgradeImpian;
@@ -263,6 +264,80 @@ public class UpgradeImpianRepository {
                         modelUpgradeImpian1.setResult(jsonObject.getString("message"));
                         modelUpgradeImpians.add(modelUpgradeImpian1);
                         mutableLiveData.setValue(modelUpgradeImpians);
+                    } catch (IOException | JSONException e) {
+                        Log.v("jajal", e.getMessage());
+                        e.printStackTrace();
+                    }
+                } else {
+                    Log.v("jajal", response.body() + " a");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.v("jajal", t.getMessage() + " a");
+            }
+        });
+        return mutableLiveData;
+    }
+
+    public LiveData<ArrayList<Category>> getKategoriFotoImpian() {
+        MutableLiveData<ArrayList<Category>> mutableLiveData = new MutableLiveData<>();
+        responseBodyCall = getApiMobile2().getKategoriFotoImpian();
+        responseBodyCall.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.body() != null) {
+                    try {
+                        responses = response.body().string();
+                        jsonObject = new JSONObject(responses);
+                        ArrayList<Category> categories = new ArrayList<>();
+                        if (jsonObject.getString("response_code").equals("200")){
+                            jsonArray = new JSONArray(jsonObject.getString("data"));
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                jsonObject = jsonArray.getJSONObject(i);
+                                Category category = new Category();
+                                category.setId(jsonObject.getString("id_category"));
+                                category.setName(jsonObject.getString("name"));
+                                categories.add(category);
+                            }
+                        }
+                        mutableLiveData.setValue(categories);
+                    } catch (IOException | JSONException e) {
+                        Log.v("jajal", e.getMessage());
+                        e.printStackTrace();
+                    }
+                } else {
+                    Log.v("jajal", response.body() + " a");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.v("jajal", t.getMessage() + " a");
+            }
+        });
+        return mutableLiveData;
+    }
+
+    public LiveData<String> uploadFotoImpian(Category category) {
+        MutableLiveData<String> mutableLiveData = new MutableLiveData<>();
+        responseBodyCall = getApiMobile2().fotoImpian(
+                category.getIdParent(),
+                category.getName(),
+                category.getId(),
+                category.getSlug(),
+                String.valueOf(category.getDescription()),
+                category.getImage()
+        );
+        responseBodyCall.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.body() != null) {
+                    try {
+                        responses = response.body().string();
+                        jsonObject = new JSONObject(responses);
+                        mutableLiveData.setValue(jsonObject.getString("response_code"));
                     } catch (IOException | JSONException e) {
                         Log.v("jajal", e.getMessage());
                         e.printStackTrace();

@@ -4,81 +4,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginStart="@dimen/dots_margin_bottom"
+    android:layout_marginEnd="@dimen/dots_margin_bottom"
     tools:context=".FormPengajuan.SuccessMengajukan">
 
-    <LinearLayout
+    <ImageView
+        android:id="@+id/layout1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_vertical"
-        android:orientation="vertical"
-        tools:ignore="MissingConstraints">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/placeholderImage"
+        android:contentDescription="@string/image"
+        android:src="@drawable/succes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/image12"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="40dp"
-            android:paddingBottom="20dp"
-            android:src="@drawable/succes" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Yeay, pengajuan Anda sudah kami terima. Tunggu proses dari kami ya."
-            android:textColor="#000"
-            android:fontFamily="@font/jipatharegular"
-            android:textSize="30dp"
-            android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingTop="0dp"
-            android:text="Proses memerlukan waktu 1x24 jam"
-            android:textColor="#000"
-            android:fontFamily="@font/jipatharegular"
-            android:textSize="30dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
+    <TextView
+        android:id="@+id/layout2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center|bottom"
-        android:orientation="vertical"
-        android:paddingBottom="20dp"
-        tools:ignore="MissingConstraints">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dots_margin_bottom"
+        android:fontFamily="@font/jipatharegular"
+        android:gravity="center"
+        android:text="@string/ket1sukses"
+        android:textColor="#000"
+        android:textSize="@dimen/tulisan30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout1" />
 
-        <!--Button-->
-        <Button
-            android:id="@+id/btnmulai"
-            style="?android:textAppearanceSmall"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:background="@drawable/btnorange"
-            android:text="MULAI"
-            android:textColor="#fff"
-            android:textSize="18sp"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="0dp"
-            android:visibility="gone"
-            tools:layout_editor_absoluteY="634dp"></Button>
+    <TextView
+        android:id="@+id/layout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/jipatharegular"
+        android:gravity="center"
+        android:paddingTop="0dp"
+        android:text="@string/ket2sukses"
+        android:textColor="#000"
+        android:textSize="@dimen/tulisan30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout2" />
 
-    </LinearLayout>
-
-
-
+    <!--Button-->
+    <Button
+        android:id="@+id/btnSelesai"
+        style="?android:textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/btnorange"
+        android:text="@string/selesai"
+        android:textColor="#fff"
+        android:textSize="@dimen/tulisan18sp"
+        app:layout_constraintTop_toBottomOf="@+id/layout3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

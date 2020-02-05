@@ -132,6 +132,14 @@
     <string name="thnkendvalue">Tahun Kendaraan: %1$s</string>
     <string name="asuransivalue">Asuransi: %1$s</string>
     <string name="resultpilihleasing">%1$s Status menunggu persetujuan admin</string>
+    <string name="nama_produk">Nama Produk</string>
+    <string name="sumber_pesanan_optional">Sumber Pesanan (Optional)</string>
+    <string name="deskripsi_pesanan">Deskripsi Pesanan</string>
+    <string name="ket1sukses">Yeay, pengajuan Anda sudah kami terima. Tunggu proses dari kami ya.</string>
+    <string name="ket2sukses">Proses memerlukan waktu 1x24 jam</string>
+    <string name="selesai">Selesai</string>
+    <string name="namaprodukkosong">Nama Produk tidak boleh kosong</string>
+    <string name="deskripsikosong">Deskripsi tidak boleh kosong</string>
 
     <string-array name="mitra">
         <item>Adira</item>

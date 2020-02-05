@@ -278,4 +278,17 @@ public interface BaseApiService {
             @Query("cicilan") String cicilan
     );
 
+    @GET("getallproductcategories")
+    Call<ResponseBody> getKategoriFotoImpian();
+
+    @FormUrlEncoded
+    @POST("instransfotoimpian")
+    Call<ResponseBody> fotoImpian(
+            @Field("id_member") String id_member,
+            @Field("product_name") String product_name,
+            @Field("id_category") String id_category,
+            @Field("sumber_pesanan") String sumber_pesanan,
+            @Field("description") String description,
+            @Field("product_img") String product_img
+    );
 }

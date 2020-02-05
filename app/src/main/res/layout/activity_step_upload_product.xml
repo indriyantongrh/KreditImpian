@@ -5,11 +5,191 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
+    android:theme="@style/AppTheme.NoActionBar"
     tools:context=".FormPengajuan.StepUploadProduct">
 
+    <include
+        android:id="@+id/includeToolbar"
+        layout="@layout/toolbar_static"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen0dp"
+        android:layout_marginStart="@dimen/text_margin"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="@dimen/text_margin"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/includeToolbar">
 
-    <FrameLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen0dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imageupload"
+                    android:layout_width="100dp"
+                    android:layout_height="170dp"
+                    android:contentDescription="@string/image"
+                    android:src="@drawable/upload"
+                    app:layout_constraintEnd_toStartOf="@+id/layout2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout2"
+                    android:layout_width="@dimen/dimen0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageupload"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/layout3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/borderhitam"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtnamaproduk"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/appbar_padding_top"
+                            android:layout_marginEnd="@dimen/appbar_padding_top"
+                            android:layout_marginBottom="@dimen/appbar_padding_top"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/jipatharegular"
+                            android:hint="@string/nama_produk"
+                            android:inputType="text"
+                            android:textSize="@dimen/tulisan26sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/appbar_padding_top"
+                        android:background="@drawable/borderorange"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/layout3">
+
+                        <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                            android:id="@+id/spinKategori"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/padding_10"
+                            android:layout_marginEnd="@dimen/padding_10"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:smsp_floatingLabelText=""
+                            app:smsp_hint="Kategori"
+                            app:smsp_hintColor="@color/colorOrange"
+                            app:smsp_itemColor="@color/colorOrange"
+                            app:smsp_itemListColor="@color/colorOrange"
+                            app:smsp_itemListHintBackgroundColor="@color/colorOrange"
+                            app:smsp_itemListHintColor="@android:color/white"
+                            app:smsp_multilineError="false"
+                            app:smsp_selectedItemListColor="#FF5252"
+                            app:smsp_underlineColor="@color/colorOrange" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/layout5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/appbar_padding_top"
+                        android:background="@drawable/borderhitam"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/layout4">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtsumberpesanan"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/appbar_padding_top"
+                            android:layout_marginEnd="@dimen/appbar_padding_top"
+                            android:layout_marginBottom="@dimen/appbar_padding_top"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/jipatharegular"
+                            android:hint="@string/sumber_pesanan_optional"
+                            android:inputType="text"
+                            android:textSize="@dimen/tulisan26sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_margin"
+                android:background="@drawable/borderhitam"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout1">
+
+                <EditText
+                    android:id="@+id/txtdeskripsi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/text_margin"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/jipatharegular"
+                    android:gravity="top"
+                    android:hint="@string/deskripsi_pesanan"
+                    android:inputType="textMultiLine"
+                    android:lines="9"
+                    android:textSize="@dimen/tulisan26sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Button
+                android:id="@+id/btnAjukansekarang"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/btnorange"
+                android:fontFamily="@font/jipatharegular"
+                android:text="@string/ajukan_sekarang"
+                android:textColor="#fff"
+                android:textSize="@dimen/tulisan26sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout6" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <!--<FrameLayout
         android:id="@+id/frame_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -80,7 +260,7 @@
 
 
 
-                <!--Border-->
+                &lt;!&ndash;Border&ndash;&gt;
                 <LinearLayout
                     android:background="#fff"
                     android:layout_width="match_parent"
@@ -140,7 +320,7 @@
                         </LinearLayout>
 
 
-                        <!--Border-->
+                        &lt;!&ndash;Border&ndash;&gt;
                         <LinearLayout
                             android:background="#fff"
                             android:layout_width="match_parent"
@@ -169,7 +349,7 @@
 
                         </LinearLayout>
 
-                        <!--Border-->
+                        &lt;!&ndash;Border&ndash;&gt;
                         <LinearLayout
                             android:background="#fff"
                             android:layout_width="match_parent"
@@ -199,7 +379,7 @@
 
                     </LinearLayout>
                 </LinearLayout>
-                <!--Border-->
+                &lt;!&ndash;Border&ndash;&gt;
                 <LinearLayout
                     android:background="#fff"
                     android:layout_width="match_parent"
@@ -228,7 +408,7 @@
                 </LinearLayout>
 
 
-                <!--Border-->
+                &lt;!&ndash;Border&ndash;&gt;
                 <LinearLayout
                     android:background="#fff"
                     android:layout_width="match_parent"
@@ -236,7 +416,7 @@
 
 
 
-                <!--Border-->
+                &lt;!&ndash;Border&ndash;&gt;
                 <LinearLayout
                     android:background="#fff"
                     android:layout_width="match_parent"
@@ -263,7 +443,7 @@
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
-    </LinearLayout>
+    </LinearLayout>-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

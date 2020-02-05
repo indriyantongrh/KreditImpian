@@ -8,10 +8,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.application.kreditimpian.Api.SharedPrefManager;
+import com.application.kreditimpian.FormPengajuan.SuccessMengajukan;
 import com.application.kreditimpian.FormPengajuan.UpgradeImpian.viewmodel.UpgradeImpianViewModel;
 import com.application.kreditimpian.FormPengajuan.UpgradeImpian.viewmodel.ViewModelFactory;
 import com.application.kreditimpian.Model.ModelMitra;
@@ -64,11 +66,8 @@ public class PilihLeasingActivity extends AppCompatActivity implements PilihLeas
             ModelUpgradeImpian modelUpgradeImpian1 = modelUpgradeImpians.get(0);
             if (modelUpgradeImpian1 != null) {
                 if (modelUpgradeImpian1.getCode().equals("200")) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(PilihLeasingActivity.this);
-                    builder.setMessage(getResources().getString(R.string.resultpilihleasing,modelUpgradeImpian1.getResult()));
-                    builder.setNeutralButton("Ok", (dialog, which) -> finish());
-                    AlertDialog alert = builder.create();
-                    alert.show();
+                    startActivity(new Intent(PilihLeasingActivity.this, SuccessMengajukan.class));
+                    finish();
                 }
             }
         });
