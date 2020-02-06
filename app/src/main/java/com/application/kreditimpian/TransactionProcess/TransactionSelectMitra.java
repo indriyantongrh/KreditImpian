@@ -5,29 +5,38 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.application.kreditimpian.Adapter.AdapterMitraSelected;
-import com.application.kreditimpian.Akun.AlamatPengiriman;
 import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
 import com.application.kreditimpian.Constan.ConstanTransaction;
-import com.application.kreditimpian.Model.ModelMitra;
+import com.application.kreditimpian.Model.ModelCicilan.CompaniesDataItem;
+import com.application.kreditimpian.Model.ModelCicilan.DataCicilanItem;
+import com.application.kreditimpian.Model.ModelCicilan.ProductMeta;
+import com.application.kreditimpian.Model.ModelCicilan.ResponseCicilan;
 import com.application.kreditimpian.Model.ModelMitraSelected.DataItem;
 import com.application.kreditimpian.Model.ModelMitraSelected.ResponseMitraSelected;
 import com.application.kreditimpian.R;
 import com.bumptech.glide.Glide;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -37,11 +46,13 @@ import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class TransactionSelectMitra extends AppCompatActivity {
+    private Context context;
     ProgressDialog pDialog;
     ProgressDialog progressBar;
     @BindView(R.id.rvMitra)
@@ -70,6 +81,12 @@ public class TransactionSelectMitra extends AppCompatActivity {
     ImageView image;
     @BindView(R.id.btnSelanjutnya)
     Button btnSelanjutnya;
+    @BindView(R.id.spinnercourier)
+    Spinner spinnercourier;
+    @BindView(R.id.txt_note)
+    EditText txt_note;
+    @BindView(R.id.tv_estimasipengiriman)
+    TextView tv_estimasipengiriman;
 
     // String id_product_category;
 
@@ -78,9 +95,19 @@ public class TransactionSelectMitra extends AppCompatActivity {
     BaseApiService mApiService;
     private List<DataItem> dataItemList = new ArrayList<>();
 
-
+    private String responses;
+    private JSONObject jsonObject, jsonObject1, jsonObject3,jsonObject2;
     AdapterMitraSelected adapterMitraSelected;
     Context mContext;
+
+    private JSONArray jsonArray, jsonArray1;
+
+    private ProductMeta productMeta;
+    private CompaniesDataItem companiesDataItem;
+    private DataCicilanItem dataCicilanItem;
+    private ArrayList<ResponseCicilan> responseCicilans;
+    private ArrayList<CompaniesDataItem> companiesDataItemArrayList;
+    private ArrayList<DataCicilanItem> dataCicilanItemArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,9 +166,21 @@ public class TransactionSelectMitra extends AppCompatActivity {
                 .error(R.drawable.no_image)
                 .into(image);
 
+        List<String> courier = new ArrayList<String>();
+        courier.add(0, "Pilih Kurir");
+        courier.add("JNE");
+        courier.add("POS");
+        courier.add("JNT");
+        courier.add("TIKI");
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(TransactionSelectMitra.this, android.R.layout.simple_spinner_item, courier);
+        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        spinnercourier.setAdapter(adapter);
+
+
         adapterMitraSelected = new AdapterMitraSelected(TransactionSelectMitra.this);
         rvMitra.setAdapter(adapterMitraSelected);
-        GridLayoutManager mLayoutManager = new GridLayoutManager(TransactionSelectMitra.this, 2, GridLayoutManager.VERTICAL, false);
+        GridLayoutManager mLayoutManager = new GridLayoutManager(TransactionSelectMitra.this, 1, GridLayoutManager.VERTICAL, false);
         rvMitra.setLayoutManager(mLayoutManager);
         rvMitra.setItemAnimator(new DefaultItemAnimator());
         selectedMitra();
@@ -150,7 +189,11 @@ public class TransactionSelectMitra extends AppCompatActivity {
         btnSelanjutnya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NextTenor();
+
+
+             NextTenor();
+//                Intent intent = new Intent(TransactionSelectMitra.this  , TransactionSelectTenor.class );
+//                startActivity(intent);
 //                Intent intent = new Intent(TransactionSelectMitra.this, TransactionSelectTenor.class);
 //                startActivity(intent);
 
@@ -160,6 +203,14 @@ public class TransactionSelectMitra extends AppCompatActivity {
     }
 
     private void NextTenor() {
+        String id_member = sharedPrefManager.getSpIdMember();
+        String id_product_category = txt_id_product_category.getText().toString();
+        String id_product = txt_id.getText().toString();
+        String number = txt_number.getText().toString();
+        String courier = spinnercourier.getSelectedItem().toString();
+        String note = txt_note.getText().toString();
+        String estimasipengiman = tv_estimasipengiriman.getText().toString();
+
         boolean check = false;
         StringBuilder mitraStringBuilder = new StringBuilder();
         List<DataItem> dataItemList = adapterMitraSelected.getDataItemList();
@@ -171,7 +222,8 @@ public class TransactionSelectMitra extends AppCompatActivity {
                 mitraStringBuilder.append(dataItem.getIdCompany()).append("|");
             }
         }
-        Log.v("jajal2", mitraStringBuilder+ " bismillah");
+       /// Toast.makeText(TransactionSelectMitra.this, ""+mitraStringBuilder+id_member+id_product_category+id_product+number+courier+note+estimasipengiman, Toast.LENGTH_LONG ).show();
+        ///Log.v("jajal2", number+ " bismillah");
         for (int i = 0; i < dataItemList.size(); i++) {
             if (dataItem.isCheck()) {
                 check = true;
@@ -179,23 +231,98 @@ public class TransactionSelectMitra extends AppCompatActivity {
             }
         }
 
+        String list_id_company = mitraStringBuilder.toString();
 
-//        StringBuilder mitraStringBuilder = new StringBuilder();
-//        List<DataItem> dataItems = adapterMitraSelected.getDataItemList();
-//        DataItem dataItem = new DataItem();
-//        for (int i = 0; i < dataItems.size(); i++) {
-//            dataItem = dataItems.get(i);
-//            if (dataItem.isCheck()) {
-//                mitraStringBuilder.append(dataItem.getIdCompany()).append("|");
-//            }
-//        }
-//        Log.v("jajal" ,  dataItems+"a");
-//        for (int i = 0; i < dataItems.size(); i++) {
-//            if (dataItem.isCheck()) {
-//                check = true;
-//                break;
-//            }
-//        }
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("id_member",sharedPrefManager.getSpIdMember() );
+        params.put("id_product_category", txt_id_product_category.getText().toString());
+        params.put("id_product",  txt_id.getText().toString());
+        params.put("number", txt_number.getText().toString());
+        params.put("list_id_company", mitraStringBuilder.toString());
+
+        Call<ResponseBody> getCicilan = mApiService.getCicilanProduct(params);
+
+        getCicilan.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    if(response.body()!=null)
+                        try {
+                            responses = response.body().string();
+                            jsonObject = new JSONObject(responses);
+                            responseCicilans = new ArrayList<>();
+                            if(jsonObject.getString("response_code").equals("200")){
+                                jsonObject = new JSONObject(jsonObject.getString("data"));
+                                productMeta = new ProductMeta();
+                                jsonObject3 = new JSONObject(jsonObject.getString("product_meta"));
+                                productMeta.setIdProduct(jsonObject3.getString("id_product"));
+                                productMeta.setNumber(jsonObject3.getString("number"));
+                                productMeta.setReferenceId(jsonObject3.getString("reference_id"));
+                                productMeta.setIdTransaction(jsonObject3.getString("id_transaction"));
+                                productMeta.setName(jsonObject3.getString("name"));
+                                productMeta.setFilename(jsonObject3.getString("filename"));
+                                productMeta.setIdProductCategory(jsonObject3.getString("id_product_category"));
+                                productMeta.setPriceCapital(jsonObject3.getString("price_capital"));
+                                productMeta.setPriceSale(jsonObject3.getString("price_sale"));
+
+                                    companiesDataItemArrayList = new ArrayList<>();
+                                    jsonArray = new JSONArray(jsonObject.getString("companies_data"));
+                                    for (int i = 0; i < jsonArray.length(); i++){
+                                        jsonObject = jsonArray.getJSONObject(i);
+                                        companiesDataItem = new CompaniesDataItem();
+                                        companiesDataItem.setIdCompany(jsonObject.getString("id_company"));
+                                        companiesDataItem.setName(jsonObject.getString("name"));
+                                        companiesDataItem.setDownPayment(jsonObject.getString("downPayment"));
+
+                                        dataCicilanItemArrayList = new ArrayList<>();
+                                        jsonArray1 = new JSONArray(jsonObject.getString("data_cicilan"));
+                                        for (int j = 0; j < jsonArray1.length(); j++) {
+                                            jsonObject1 = jsonArray1.getJSONObject(j);
+                                            dataCicilanItem = new DataCicilanItem();
+                                            dataCicilanItem.setBulan(jsonObject1.getString("bulan"));
+                                            dataCicilanItem.setCicilan(jsonObject1.getString("cicilan"));
+                                            dataCicilanItemArrayList.add(dataCicilanItem);
+                                        }
+                                        companiesDataItem.setDataCicilan(dataCicilanItemArrayList);
+                                        companiesDataItemArrayList.add(companiesDataItem);
+                                    }
+
+
+                               // Log.v("jajal product", jsonObject1+ "");
+                               /// Log.v("jajal mitra", jsonObject1+ "");
+
+                                Intent intent = new Intent(TransactionSelectMitra.this, TransactionSelectTenor.class);
+                                intent.putExtra("datalist", companiesDataItemArrayList);
+                                intent.putExtra("productMeta", productMeta);
+                                startActivity(intent);
+                                finish();
+                            }
+
+
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+
+
+                        //Log.v("jajal", ""+response.body().string()+ "bismillah");
+                        Toast.makeText(TransactionSelectMitra.this," response message "+response.body().string(),Toast.LENGTH_LONG).show();
+                    if(response.errorBody()!=null)
+                        Toast.makeText(TransactionSelectMitra.this," response message Error "+response.errorBody().string(),Toast.LENGTH_LONG).show();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
+           }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(TransactionSelectMitra.this, "Invalid response from server 2", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
 
     }
 

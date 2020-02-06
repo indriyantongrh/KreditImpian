@@ -32,7 +32,7 @@ import retrofit2.Response;
 
 import static android.text.TextUtils.isEmpty;
 
-public class TambahAlamatPengiriman extends AppCompatActivity {
+public class TambahAlamatPengiriman extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     ProgressDialog pDialog;
     ImageButton btnback;
     SharedPrefManager sharedPrefManager;
@@ -45,6 +45,8 @@ public class TambahAlamatPengiriman extends AppCompatActivity {
     String id, nameCity, id_member,id_geodirectory,address_name,phone,receiver,address,postal_code,district;
     private HashMap<String, String> cityvalues;
     private HashMap<String, String> districtvalue;
+    private String cityvaluess;
+    private List<DataItem> getCity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,6 +135,7 @@ public class TambahAlamatPengiriman extends AppCompatActivity {
         params.put("phone", txtnomorhandphone.getText().toString());
         params.put("receiver", txtnamapenerima.getText().toString());
         params.put("id_geodirectory", spinnerkota_pengiriman.getSelectedItem().toString());
+//        params.put("id_geodirectory", spinnerkota_pengiriman.getSelectedItem().toString());
         params.put("district", spinnerkecamatan_pengiriman.getSelectedItem().toString());
         params.put("postal_code", txtkodepospengiriman.getText().toString());
         params.put("address", txtalamatpengririman.getText().toString());
@@ -181,43 +184,8 @@ public class TambahAlamatPengiriman extends AppCompatActivity {
                 if(response.body() !=null){
                    //// String citySelected = spinnerkota_pengiriman.getItemAtPosition(p).toString();
                     List<DataItem> getCity = response.body().getData();
-                    List<String> listSpinner = new ArrayList<String>();
-                    String[] idcity = new String[getCity.size() +1];
-                    String[] city = new String[getCity.size() +1];
-                    city[0] = "-- Pilih Kota --";
-                    for (int i = 0; i < getCity.size(); i++){
-                        ///listSpinner.add(getCity.get(i).getIdParent());
-                            city[i + 1] = getCity.get(i).getName();
-                            idcity[i + 1] = getCity.get(i).getId();
-                            cityvalues.put(city[i + 1], idcity[i + 1] );
-//                         id = getCity.get(i).getId();
-//                         nameCity = getCity.get(i).getName();
-                            ///listSpinner.add(nameCity);
-
-                    }
-                    // Set hasil result json ke dalam adapter spinner
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(TambahAlamatPengiriman.this,
-                            android.R.layout.simple_spinner_item, city);
-                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    spinnerkota_pengiriman.setAdapter(adapter);
-                    spinnerkota_pengiriman.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                            if(position>0){
-                                String cityvalues = getCity.get(position - 1 ).getId();
-                                ///Toast.makeText(TambahAlamatPengiriman.this, " ini id City "+cityvalues, Toast.LENGTH_LONG).show();
-
-                            }
-                        }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> parent) {
-
-                        }
-                    });
-
-//                    spinnerkota_pengiriman.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    getCity(getCity);
+                //                    spinnerkota_pengiriman.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //                        @Override
 //                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 //                            int city_id = Integer.parseInt(listSpinner.get(position));
@@ -238,7 +206,30 @@ public class TambahAlamatPengiriman extends AppCompatActivity {
 
             }
         });
+    }
 
+    private void getCity(List<DataItem> getCity){
+        this.getCity = getCity;
+        List<String> listSpinner = new ArrayList<String>();
+        String[] idcity = new String[getCity.size() +1];
+        String[] city = new String[getCity.size() +1];
+        city[0] = "-- Pilih Kota --";
+        for (int i = 0; i < getCity.size(); i++){
+            ///listSpinner.add(getCity.get(i).getIdParent());
+            city[i + 1] = getCity.get(i).getName();
+            idcity[i + 1] = getCity.get(i).getId();
+            cityvalues.put(city[i + 1], idcity[i + 1] );
+//                         id = getCity.get(i).getId();
+//                         nameCity = getCity.get(i).getName();
+            ///listSpinner.add(nameCity);
+
+        }
+        // Set hasil result json ke dalam adapter spinner
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(TambahAlamatPengiriman.this,
+                android.R.layout.simple_spinner_item, city);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerkota_pengiriman.setAdapter(adapter);
+        spinnerkota_pengiriman.setOnItemSelectedListener(this);
 
     }
 
@@ -309,6 +300,22 @@ public class TambahAlamatPengiriman extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        if (view == spinnerkota_pengiriman){
+            if(position>0){
+                String cityvalues = getCity.get(position - 1 ).getId();
+                this.cityvaluess = cityvalues;
+                ///Toast.makeText(TambahAlamatPengiriman.this, " ini id City "+cityvalues, Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 
 //    @Override

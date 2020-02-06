@@ -141,6 +141,9 @@ public class UpgradeImpianRepository {
                                     modelPinjaman.setBulanTenor(jsonObject1.getString("bulan"));
                                     modelPinjaman.setHrgCicilan(jsonObject1.getString("cicilan"));
                                     modelPinjamanArrayList.add(modelPinjaman);
+
+
+                                    Log.v("jajal data", jsonObject+ "ab");
                                 }
                                 modelMitra.setModelPinjamanList(modelPinjamanArrayList);
                                 modelMitraArrayList.add(modelMitra);
@@ -154,6 +157,7 @@ public class UpgradeImpianRepository {
                         e.printStackTrace();
                     }
                 } else {
+
                     Log.v("jajal", response.body() + " a");
                 }
             }

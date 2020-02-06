@@ -149,6 +149,8 @@ public class FragmentBeranda extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_fragment_beranda, container, false);
 
+
+
         if (ContextCompat.checkSelfPermission(getActivity(),
                 Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED){
 

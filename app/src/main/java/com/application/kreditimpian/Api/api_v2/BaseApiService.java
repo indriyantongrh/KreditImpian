@@ -2,6 +2,7 @@ package com.application.kreditimpian.Api.api_v2;
 
 
 import com.application.kreditimpian.Model.ModelAddress.ResponseAddress;
+import com.application.kreditimpian.Model.ModelCicilan.ResponseCicilan;
 import com.application.kreditimpian.Model.ModelGeodirectory.ResponseGeodirectory;
 import com.application.kreditimpian.Model.ModelListAlamat.ResponseListAlamat;
 import com.application.kreditimpian.Model.ModelLogin.ResponseLogin;
@@ -9,12 +10,10 @@ import com.application.kreditimpian.Model.ModelMember.ResponseMember;
 import com.application.kreditimpian.Model.ModelMemberInsert.ResponseMemberInsert;
 import com.application.kreditimpian.Model.ModelMerchant.ResponseMerchant;
 import com.application.kreditimpian.Model.ModelMitraSelected.ResponseMitraSelected;
-import com.application.kreditimpian.Model.ModelMitraSelected.ResponseMitraSelected;
 import com.application.kreditimpian.Model.ModelOnShoppingCart.ResponseOnShoppingCart;
 import com.application.kreditimpian.Model.ModelProductBaru.ResponseProductBaru;
 
 
-import com.application.kreditimpian.Model.ModelSelectedTenor.ResponseSelectedTenor;
 import com.application.kreditimpian.Model.ModelSelectedTenor.ResponseSelectedTenor;
 import com.application.kreditimpian.Model.ModelTransaction.ResponseTransaction;
 import com.application.kreditimpian.Model.ModelUserDetail.ResponseMembers;
@@ -26,6 +25,7 @@ import java.util.HashMap;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
+import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
@@ -86,9 +86,9 @@ public interface BaseApiService {
     @GET("ApiMobile/gantipassword")
     Call<ResponseAddress> ResetPassword(@Query("id_sysuser") String id_sysuser, @QueryMap HashMap<String, String> params);
 
-   /// @FormUrlEncoded
+     @FormUrlEncoded
     @POST("ApiMobile/insertprofile")
-    Call<ResponseMemberInsert> InsertMember(@QueryMap HashMap<String, String> params);
+    Call<ResponseMemberInsert> InsertMember(@FieldMap HashMap<String, String> params);
 
     /*API Transaction*/
     @GET("ApiMobile/insrtonshoppingcart")
@@ -107,6 +107,10 @@ public interface BaseApiService {
     Call<ResponseSelectedTenor> getTenorSelected(@Query("id_product") String id_product,
                                                  @Query("id_product_category") String id_product_category,
                                                  @Query("id_company") String id_company);
+
+    @FormUrlEncoded
+    @POST("ApiMobile/getTenorByCompany")
+    Call<ResponseBody> getCicilanProduct(@FieldMap HashMap<String, String> params);
 
     //getMember
     ///@FormUrlEncoded
