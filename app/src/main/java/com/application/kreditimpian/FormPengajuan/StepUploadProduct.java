@@ -39,8 +39,8 @@ public class StepUploadProduct extends AppCompatActivity implements View.OnClick
 
     private SmartMaterialSpinner smartMaterialSpinner;
     private TextInputEditText txtnamaproduk,
-            txtsumberpesanan;
-    private EditText txtdeskripsi;
+            txtsumberpesanan,
+            txtdeskripsi;
     private Button btnAjukansekarang;
     private ImageView image,
             imgBack;

@@ -1,5 +1,6 @@
 package com.application.kreditimpian.FormPengajuan.UpgradeImpian.repository;
 
+import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -394,6 +395,7 @@ public class UpgradeImpianRepository {
                     try {
                         responses = response.body().string();
                         jsonObject = new JSONObject(responses);
+                        Log.v("jajal", jsonObject+"");
                         ArrayList<ModelNotifikasi> modelNotifikasiArrayList = new ArrayList<>();
                         if (jsonObject.getString("response_code").equals("200")) {
 //                            Object json = new JSONTokener(jsonObject.getString("data")).nextValue();

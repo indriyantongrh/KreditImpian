@@ -32,8 +32,8 @@ public class StepIsiCariProduct extends AppCompatActivity implements AdapterView
     private ImageView imgBack;
     private SmartMaterialSpinner smartMaterialSpinner;
     private TextInputEditText txtnamaproduk,
-            txtsumberpesanan;
-    private EditText txtdeskripsi;
+            txtsumberpesanan,
+            txtdeskripsi;
     private Button btnAjukansekarang;
 
     private String idMember,

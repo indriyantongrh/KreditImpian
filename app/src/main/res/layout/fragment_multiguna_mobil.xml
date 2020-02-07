@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".FormPengajuan.UpgradeImpian.MultigunaMobil">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp">
@@ -16,7 +17,7 @@
             android:layout_marginStart="@dimen/text_margin"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="@dimen/text_margin"
-            android:background="@drawable/borderorange"
+            app:hintEnabled="false"
             android:theme="@style/TextLabel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -26,8 +27,6 @@
                 android:id="@+id/txtjumlahpinjaman"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/padding_10"
-                android:layout_marginEnd="@dimen/padding_10"
                 android:fontFamily="@font/jipatharegular"
                 android:hint="@string/jumlah_pinjaman"
                 android:inputType="number"
@@ -42,7 +41,7 @@
             android:layout_marginStart="@dimen/text_margin"
             android:layout_marginTop="@dimen/text_margin"
             android:layout_marginEnd="@dimen/text_margin"
-            android:background="@drawable/borderorange"
+            app:hintEnabled="false"
             android:theme="@style/TextLabel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -52,8 +51,6 @@
                 android:id="@+id/txthargakendaraan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/padding_10"
-                android:layout_marginEnd="@dimen/padding_10"
                 android:fontFamily="@font/jipatharegular"
                 android:hint="@string/harga_kendaraan"
                 android:inputType="number"
@@ -66,9 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/text_margin"
-            android:layout_marginTop="@dimen/text_margin"
             android:layout_marginEnd="@dimen/text_margin"
-            android:background="@drawable/borderorange"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout2">
@@ -77,8 +72,8 @@
                 android:id="@+id/spinMerkMobil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/padding_10"
-                android:layout_marginEnd="@dimen/padding_10"
+                android:layout_marginStart="@dimen/dimen3dp"
+                android:layout_marginEnd="@dimen/dimen3dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -88,11 +83,11 @@
                 app:smsp_hintColor="@color/colorOrange"
                 app:smsp_itemColor="@color/colorOrange"
                 app:smsp_itemListColor="@color/colorOrange"
+                app:smsp_itemListHintBackgroundColor="@color/colorOrange"
+                app:smsp_itemListHintColor="@android:color/white"
                 app:smsp_multilineError="false"
                 app:smsp_selectedItemListColor="#FF5252"
-                app:smsp_underlineColor="@color/colorOrange"
-                app:smsp_itemListHintBackgroundColor="@color/colorOrange"
-                app:smsp_itemListHintColor="@android:color/white"/>
+                app:smsp_underlineColor="@color/colorOrange" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -100,9 +95,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/text_margin"
-            android:layout_marginTop="@dimen/text_margin"
             android:layout_marginEnd="@dimen/text_margin"
-            android:background="@drawable/borderorange"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout3">
@@ -111,8 +104,8 @@
                 android:id="@+id/spinTipeMobil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/padding_10"
-                android:layout_marginEnd="@dimen/padding_10"
+                android:layout_marginStart="@dimen/dimen3dp"
+                android:layout_marginEnd="@dimen/dimen3dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -122,11 +115,11 @@
                 app:smsp_hintColor="@color/colorOrange"
                 app:smsp_itemColor="@color/colorOrange"
                 app:smsp_itemListColor="@color/colorOrange"
+                app:smsp_itemListHintBackgroundColor="@color/colorOrange"
+                app:smsp_itemListHintColor="@android:color/white"
                 app:smsp_multilineError="false"
                 app:smsp_selectedItemListColor="#FF5252"
-                app:smsp_underlineColor="@color/colorOrange"
-                app:smsp_itemListHintBackgroundColor="@color/colorOrange"
-                app:smsp_itemListHintColor="@android:color/white" />
+                app:smsp_underlineColor="@color/colorOrange" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -134,9 +127,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/text_margin"
-            android:layout_marginTop="@dimen/text_margin"
             android:layout_marginEnd="@dimen/text_margin"
-            android:background="@drawable/borderorange"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout4">
@@ -145,8 +136,8 @@
                 android:id="@+id/spinThnMobil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/padding_10"
-                android:layout_marginEnd="@dimen/padding_10"
+                android:layout_marginStart="@dimen/dimen3dp"
+                android:layout_marginEnd="@dimen/dimen3dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -156,11 +147,11 @@
                 app:smsp_hintColor="@color/colorOrange"
                 app:smsp_itemColor="@color/colorOrange"
                 app:smsp_itemListColor="@color/colorOrange"
+                app:smsp_itemListHintBackgroundColor="@color/colorOrange"
+                app:smsp_itemListHintColor="@android:color/white"
                 app:smsp_multilineError="false"
                 app:smsp_selectedItemListColor="#FF5252"
-                app:smsp_underlineColor="@color/colorOrange"
-                app:smsp_itemListHintBackgroundColor="@color/colorOrange"
-                app:smsp_itemListHintColor="@android:color/white"  />
+                app:smsp_underlineColor="@color/colorOrange" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -168,9 +159,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/text_margin"
-            android:layout_marginTop="@dimen/text_margin"
             android:layout_marginEnd="@dimen/text_margin"
-            android:background="@drawable/borderorange"
+            app:hintEnabled="false"
             android:theme="@style/TextLabel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -180,8 +170,6 @@
                 android:id="@+id/txtlokasi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/padding_10"
-                android:layout_marginEnd="@dimen/padding_10"
                 android:fontFamily="@font/jipatharegular"
                 android:hint="@string/lokasi"
                 android:inputType="text"
@@ -196,7 +184,7 @@
             android:layout_marginStart="@dimen/text_margin"
             android:layout_marginTop="@dimen/text_margin"
             android:layout_marginEnd="@dimen/text_margin"
-            android:background="@drawable/borderorange"
+            app:hintEnabled="false"
             android:theme="@style/TextLabel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -206,8 +194,6 @@
                 android:id="@+id/txtAsuransi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/padding_10"
-                android:layout_marginEnd="@dimen/padding_10"
                 android:fontFamily="@font/jipatharegular"
                 android:hint="@string/asuransi"
                 android:inputType="text"
@@ -231,15 +217,16 @@
                 android:id="@+id/rvMitra"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:layout_marginTop="@dimen/padding_10"
-                android:layout_marginBottom="@dimen/padding_10"
                 android:layout_marginStart="@dimen/padding_10"
+                android:layout_marginTop="@dimen/padding_10"
                 android:layout_marginEnd="@dimen/padding_10"
+                android:layout_marginBottom="@dimen/padding_10"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout9"
             android:layout_width="match_parent"
@@ -252,6 +239,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout8">
 
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/placeholderTextHeight"
+                android:layout_marginEnd="@dimen/placeholderTextHeight"
+                android:layout_marginTop="@dimen/placeholderTextHeight"
+                android:text="@string/ket1multiguna"
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
             <ImageView
                 android:id="@+id/imageupload"
                 android:layout_width="match_parent"
@@ -261,7 +262,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/tv1" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button
@@ -285,252 +286,252 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout9" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-<!--    <androidx.core.widget.NestedScrollView-->
-<!--        android:layout_width="fill_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        tools:ignore="MissingConstraints">-->
+    <!--    <androidx.core.widget.NestedScrollView-->
+    <!--        android:layout_width="fill_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        tools:ignore="MissingConstraints">-->
 
-<!--    <LinearLayout-->
-<!--        android:id="@+id/linera2"-->
-<!--        android:layout_width="fill_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:orientation="vertical"-->
-<!--        android:background="#fff"-->
-<!--        android:padding="20dp">-->
+    <!--    <LinearLayout-->
+    <!--        android:id="@+id/linera2"-->
+    <!--        android:layout_width="fill_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:orientation="vertical"-->
+    <!--        android:background="#fff"-->
+    <!--        android:padding="20dp">-->
 
-<!--    &lt;!&ndash;Border&ndash;&gt;-->
-<!--    <LinearLayout-->
-<!--        android:background="#fff"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="15dp"></LinearLayout>-->
+    <!--    &lt;!&ndash;Border&ndash;&gt;-->
+    <!--    <LinearLayout-->
+    <!--        android:background="#fff"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="15dp"></LinearLayout>-->
 
-<!--    <LinearLayout-->
+    <!--    <LinearLayout-->
 
-<!--        android:orientation="vertical"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:background="@drawable/borderorange"-->
-<!--        android:layout_height="37dp">-->
+    <!--        android:orientation="vertical"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:background="@drawable/borderorange"-->
+    <!--        android:layout_height="37dp">-->
 
-<!--        <EditText-->
-<!--            android:id="@+id/txtjumlahpinjaman"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_marginLeft="10dp"-->
-<!--            android:layout_marginRight="10dp"-->
-<!--            android:background="@android:color/transparent"-->
-<!--            android:hint="Jumlah Pinjaman"-->
-<!--            android:fontFamily="@font/jipatharegular"-->
-<!--            android:inputType="text"-->
-<!--            android:textSize="26dp" />-->
+    <!--        <EditText-->
+    <!--            android:id="@+id/txtjumlahpinjaman"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:layout_marginLeft="10dp"-->
+    <!--            android:layout_marginRight="10dp"-->
+    <!--            android:background="@android:color/transparent"-->
+    <!--            android:hint="Jumlah Pinjaman"-->
+    <!--            android:fontFamily="@font/jipatharegular"-->
+    <!--            android:inputType="text"-->
+    <!--            android:textSize="26dp" />-->
 
-<!--    </LinearLayout>-->
-
-
-<!--        &lt;!&ndash;Border&ndash;&gt;-->
-<!--        <LinearLayout-->
-<!--            android:background="#fff"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="15dp"></LinearLayout>-->
-
-<!--        <LinearLayout-->
-
-<!--            android:orientation="vertical"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:background="@drawable/borderorange"-->
-<!--            android:layout_height="37dp">-->
-
-<!--            <EditText-->
-<!--                android:id="@+id/txthargakendaraan"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:layout_marginLeft="10dp"-->
-<!--                android:layout_marginRight="10dp"-->
-<!--                android:background="@android:color/transparent"-->
-<!--                android:hint="Harga Kendaraan"-->
-<!--                android:fontFamily="@font/jipatharegular"-->
-<!--                android:inputType="text"-->
-<!--                android:textSize="26dp" />-->
-
-<!--        </LinearLayout>-->
-
-<!--        &lt;!&ndash;Border&ndash;&gt;-->
-<!--        <LinearLayout-->
-<!--            android:background="#fff"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="15dp"></LinearLayout>-->
-
-<!--        <LinearLayout-->
-
-<!--            android:orientation="vertical"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:background="@drawable/borderorange"-->
-<!--            android:layout_height="37dp">-->
-
-<!--            <EditText-->
-<!--                android:id="@+id/txtmerkkendaraan"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:layout_marginLeft="10dp"-->
-<!--                android:layout_marginRight="10dp"-->
-<!--                android:background="@android:color/transparent"-->
-<!--                android:hint="Merk Kendaraan"-->
-<!--                android:fontFamily="@font/jipatharegular"-->
-<!--                android:inputType="text"-->
-<!--                android:textSize="26dp" />-->
-
-<!--        </LinearLayout>-->
+    <!--    </LinearLayout>-->
 
 
-<!--        &lt;!&ndash;Border&ndash;&gt;-->
-<!--        <LinearLayout-->
-<!--            android:background="#fff"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="15dp"></LinearLayout>-->
+    <!--        &lt;!&ndash;Border&ndash;&gt;-->
+    <!--        <LinearLayout-->
+    <!--            android:background="#fff"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="15dp"></LinearLayout>-->
 
-<!--        <LinearLayout-->
+    <!--        <LinearLayout-->
 
-<!--            android:orientation="vertical"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:background="@drawable/borderorange"-->
-<!--            android:layout_height="37dp">-->
+    <!--            android:orientation="vertical"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:background="@drawable/borderorange"-->
+    <!--            android:layout_height="37dp">-->
 
-<!--            <EditText-->
-<!--                android:id="@+id/txttipekendaraan"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:layout_marginLeft="10dp"-->
-<!--                android:layout_marginRight="10dp"-->
-<!--                android:background="@android:color/transparent"-->
-<!--                android:hint="Tipe Kendaraan"-->
-<!--                android:fontFamily="@font/jipatharegular"-->
-<!--                android:inputType="text"-->
-<!--                android:textSize="26dp" />-->
+    <!--            <EditText-->
+    <!--                android:id="@+id/txthargakendaraan"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="match_parent"-->
+    <!--                android:layout_marginLeft="10dp"-->
+    <!--                android:layout_marginRight="10dp"-->
+    <!--                android:background="@android:color/transparent"-->
+    <!--                android:hint="Harga Kendaraan"-->
+    <!--                android:fontFamily="@font/jipatharegular"-->
+    <!--                android:inputType="text"-->
+    <!--                android:textSize="26dp" />-->
 
-<!--        </LinearLayout>-->
+    <!--        </LinearLayout>-->
 
-<!--        &lt;!&ndash;Border&ndash;&gt;-->
-<!--        <LinearLayout-->
-<!--            android:background="#fff"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="15dp"></LinearLayout>-->
+    <!--        &lt;!&ndash;Border&ndash;&gt;-->
+    <!--        <LinearLayout-->
+    <!--            android:background="#fff"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="15dp"></LinearLayout>-->
 
-<!--        <LinearLayout-->
-<!--            android:orientation="horizontal"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:background="@drawable/borderorange"-->
-<!--            android:layout_height="37dp">-->
+    <!--        <LinearLayout-->
 
-<!--            <Spinner-->
-<!--                android:id="@+id/spinnertahun_kendaraan"-->
-<!--                android:entries="@array/tahunkendaraan"-->
-<!--                android:layout_width="match_parent"-->
+    <!--            android:orientation="vertical"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:background="@drawable/borderorange"-->
+    <!--            android:layout_height="37dp">-->
 
-<!--                android:layout_height="match_parent"></Spinner>-->
-<!--        </LinearLayout>-->
+    <!--            <EditText-->
+    <!--                android:id="@+id/txtmerkkendaraan"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="match_parent"-->
+    <!--                android:layout_marginLeft="10dp"-->
+    <!--                android:layout_marginRight="10dp"-->
+    <!--                android:background="@android:color/transparent"-->
+    <!--                android:hint="Merk Kendaraan"-->
+    <!--                android:fontFamily="@font/jipatharegular"-->
+    <!--                android:inputType="text"-->
+    <!--                android:textSize="26dp" />-->
 
-<!--        &lt;!&ndash;Border&ndash;&gt;-->
-<!--        <LinearLayout-->
-<!--            android:background="#fff"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="15dp"></LinearLayout>-->
-
-<!--        <LinearLayout-->
-
-<!--            android:orientation="vertical"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:background="@drawable/borderorange"-->
-<!--            android:layout_height="37dp">-->
-
-<!--            <EditText-->
-<!--                android:id="@+id/txtasuransi"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:layout_marginLeft="10dp"-->
-<!--                android:layout_marginRight="10dp"-->
-<!--                android:background="@android:color/transparent"-->
-<!--                android:hint="Asuransi"-->
-<!--                android:fontFamily="@font/jipatharegular"-->
-<!--                android:inputType="text"-->
-<!--                android:textSize="26dp" />-->
-
-<!--        </LinearLayout>-->
-
-<!--        &lt;!&ndash;Border&ndash;&gt;-->
-<!--        <LinearLayout-->
-<!--            android:background="#fff"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="15dp"></LinearLayout>-->
-
-<!--        <LinearLayout-->
-
-<!--            android:orientation="vertical"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:background="@drawable/borderorange"-->
-<!--            android:layout_height="37dp">-->
-
-<!--            <EditText-->
-<!--                android:id="@+id/txtlokasi"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:layout_marginLeft="10dp"-->
-<!--                android:layout_marginRight="10dp"-->
-<!--                android:background="@android:color/transparent"-->
-<!--                android:hint="Lokasi"-->
-<!--                android:fontFamily="@font/jipatharegular"-->
-<!--                android:inputType="text"-->
-<!--                android:textSize="26dp" />-->
-
-<!--        </LinearLayout>-->
-
-<!--        &lt;!&ndash;Border&ndash;&gt;-->
-<!--        <LinearLayout-->
-<!--            android:background="#fff"-->
-<!--            android:layout_marginTop="5dp"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="25dp">-->
-
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:fontFamily="@font/sairaregular"-->
-<!--            android:text="Upload BPKB"/>-->
-<!--        </LinearLayout>-->
-
-<!--        <LinearLayout-->
-<!--            android:orientation="vertical"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:background="@drawable/borderorange"-->
-<!--            android:layout_height="150dp">-->
-<!--            <ImageView-->
-<!--                android:id="@+id/imageupload"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:src="@drawable/upload"-->
-<!--                android:layout_height="match_parent" />-->
+    <!--        </LinearLayout>-->
 
 
-<!--        </LinearLayout>-->
+    <!--        &lt;!&ndash;Border&ndash;&gt;-->
+    <!--        <LinearLayout-->
+    <!--            android:background="#fff"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="15dp"></LinearLayout>-->
 
-<!--        <RelativeLayout-->
-<!--            android:id="@+id/relativekra"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"/>-->
+    <!--        <LinearLayout-->
 
-<!--        <Button-->
-<!--            android:id="@+id/btnAjukansekarang"-->
-<!--            style="?android:textAppearanceSmall"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="40dp"-->
-<!--            android:layout_marginLeft="20dp"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            android:layout_marginRight="20dp"-->
-<!--            android:background="@drawable/btnorange"-->
-<!--            android:fontFamily="@font/jipatharegular"-->
-<!--            android:text="Ajukan Sekarang"-->
-<!--            android:textColor="#fff"-->
-<!--            android:textSize="25dp"-->
-<!--            android:textStyle="bold"></Button>-->
+    <!--            android:orientation="vertical"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:background="@drawable/borderorange"-->
+    <!--            android:layout_height="37dp">-->
 
-<!--    </LinearLayout>-->
-<!--    </androidx.core.widget.NestedScrollView>-->
+    <!--            <EditText-->
+    <!--                android:id="@+id/txttipekendaraan"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="match_parent"-->
+    <!--                android:layout_marginLeft="10dp"-->
+    <!--                android:layout_marginRight="10dp"-->
+    <!--                android:background="@android:color/transparent"-->
+    <!--                android:hint="Tipe Kendaraan"-->
+    <!--                android:fontFamily="@font/jipatharegular"-->
+    <!--                android:inputType="text"-->
+    <!--                android:textSize="26dp" />-->
+
+    <!--        </LinearLayout>-->
+
+    <!--        &lt;!&ndash;Border&ndash;&gt;-->
+    <!--        <LinearLayout-->
+    <!--            android:background="#fff"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="15dp"></LinearLayout>-->
+
+    <!--        <LinearLayout-->
+    <!--            android:orientation="horizontal"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:background="@drawable/borderorange"-->
+    <!--            android:layout_height="37dp">-->
+
+    <!--            <Spinner-->
+    <!--                android:id="@+id/spinnertahun_kendaraan"-->
+    <!--                android:entries="@array/tahunkendaraan"-->
+    <!--                android:layout_width="match_parent"-->
+
+    <!--                android:layout_height="match_parent"></Spinner>-->
+    <!--        </LinearLayout>-->
+
+    <!--        &lt;!&ndash;Border&ndash;&gt;-->
+    <!--        <LinearLayout-->
+    <!--            android:background="#fff"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="15dp"></LinearLayout>-->
+
+    <!--        <LinearLayout-->
+
+    <!--            android:orientation="vertical"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:background="@drawable/borderorange"-->
+    <!--            android:layout_height="37dp">-->
+
+    <!--            <EditText-->
+    <!--                android:id="@+id/txtasuransi"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="match_parent"-->
+    <!--                android:layout_marginLeft="10dp"-->
+    <!--                android:layout_marginRight="10dp"-->
+    <!--                android:background="@android:color/transparent"-->
+    <!--                android:hint="Asuransi"-->
+    <!--                android:fontFamily="@font/jipatharegular"-->
+    <!--                android:inputType="text"-->
+    <!--                android:textSize="26dp" />-->
+
+    <!--        </LinearLayout>-->
+
+    <!--        &lt;!&ndash;Border&ndash;&gt;-->
+    <!--        <LinearLayout-->
+    <!--            android:background="#fff"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="15dp"></LinearLayout>-->
+
+    <!--        <LinearLayout-->
+
+    <!--            android:orientation="vertical"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:background="@drawable/borderorange"-->
+    <!--            android:layout_height="37dp">-->
+
+    <!--            <EditText-->
+    <!--                android:id="@+id/txtlokasi"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="match_parent"-->
+    <!--                android:layout_marginLeft="10dp"-->
+    <!--                android:layout_marginRight="10dp"-->
+    <!--                android:background="@android:color/transparent"-->
+    <!--                android:hint="Lokasi"-->
+    <!--                android:fontFamily="@font/jipatharegular"-->
+    <!--                android:inputType="text"-->
+    <!--                android:textSize="26dp" />-->
+
+    <!--        </LinearLayout>-->
+
+    <!--        &lt;!&ndash;Border&ndash;&gt;-->
+    <!--        <LinearLayout-->
+    <!--            android:background="#fff"-->
+    <!--            android:layout_marginTop="5dp"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="25dp">-->
+
+    <!--        <TextView-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:fontFamily="@font/sairaregular"-->
+    <!--            android:text="Upload BPKB"/>-->
+    <!--        </LinearLayout>-->
+
+    <!--        <LinearLayout-->
+    <!--            android:orientation="vertical"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:background="@drawable/borderorange"-->
+    <!--            android:layout_height="150dp">-->
+    <!--            <ImageView-->
+    <!--                android:id="@+id/imageupload"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:src="@drawable/upload"-->
+    <!--                android:layout_height="match_parent" />-->
+
+
+    <!--        </LinearLayout>-->
+
+    <!--        <RelativeLayout-->
+    <!--            android:id="@+id/relativekra"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"/>-->
+
+    <!--        <Button-->
+    <!--            android:id="@+id/btnAjukansekarang"-->
+    <!--            style="?android:textAppearanceSmall"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="40dp"-->
+    <!--            android:layout_marginLeft="20dp"-->
+    <!--            android:layout_marginTop="16dp"-->
+    <!--            android:layout_marginRight="20dp"-->
+    <!--            android:background="@drawable/btnorange"-->
+    <!--            android:fontFamily="@font/jipatharegular"-->
+    <!--            android:text="Ajukan Sekarang"-->
+    <!--            android:textColor="#fff"-->
+    <!--            android:textSize="25dp"-->
+    <!--            android:textStyle="bold"></Button>-->
+
+    <!--    </LinearLayout>-->
+    <!--    </androidx.core.widget.NestedScrollView>-->
 
 </ScrollView>

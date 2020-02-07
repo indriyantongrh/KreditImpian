@@ -18,8 +18,8 @@
             android:layout_marginStart="@dimen/text_margin"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="@dimen/text_margin"
-            android:background="@drawable/borderorange"
             android:theme="@style/TextLabel"
+            app:hintEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -28,8 +28,6 @@
                 android:id="@+id/txtjumlahpinjaman"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/padding_10"
-                android:layout_marginEnd="@dimen/padding_10"
                 android:fontFamily="@font/jipatharegular"
                 android:hint="@string/jumlah_pinjaman"
                 android:inputType="number"
@@ -44,8 +42,8 @@
             android:layout_marginStart="@dimen/text_margin"
             android:layout_marginTop="@dimen/text_margin"
             android:layout_marginEnd="@dimen/text_margin"
-            android:background="@drawable/borderorange"
             android:theme="@style/TextLabel"
+            app:hintEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout1">
@@ -54,8 +52,6 @@
                 android:id="@+id/txthargakendaraan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/padding_10"
-                android:layout_marginEnd="@dimen/padding_10"
                 android:fontFamily="@font/jipatharegular"
                 android:hint="@string/harga_kendaraan"
                 android:inputType="number"
@@ -68,9 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/text_margin"
-            android:layout_marginTop="@dimen/text_margin"
             android:layout_marginEnd="@dimen/text_margin"
-            android:background="@drawable/borderorange"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout2">
@@ -79,8 +73,8 @@
                 android:id="@+id/spinMerkMotor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/padding_10"
-                android:layout_marginEnd="@dimen/padding_10"
+                android:layout_marginStart="@dimen/dimen3dp"
+                android:layout_marginEnd="@dimen/dimen3dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -90,11 +84,11 @@
                 app:smsp_hintColor="@color/colorOrange"
                 app:smsp_itemColor="@color/colorOrange"
                 app:smsp_itemListColor="@color/colorOrange"
+                app:smsp_itemListHintBackgroundColor="@color/colorOrange"
+                app:smsp_itemListHintColor="@android:color/white"
                 app:smsp_multilineError="false"
                 app:smsp_selectedItemListColor="#FF5252"
-                app:smsp_underlineColor="@color/colorOrange"
-                app:smsp_itemListHintBackgroundColor="@color/colorOrange"
-                app:smsp_itemListHintColor="@android:color/white"/>
+                app:smsp_underlineColor="@color/colorOrange" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -102,9 +96,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/text_margin"
-            android:layout_marginTop="@dimen/text_margin"
             android:layout_marginEnd="@dimen/text_margin"
-            android:background="@drawable/borderorange"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout3">
@@ -113,8 +105,8 @@
                 android:id="@+id/spinTipeMotor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/padding_10"
-                android:layout_marginEnd="@dimen/padding_10"
+                android:layout_marginStart="@dimen/dimen3dp"
+                android:layout_marginEnd="@dimen/dimen3dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -124,11 +116,11 @@
                 app:smsp_hintColor="@color/colorOrange"
                 app:smsp_itemColor="@color/colorOrange"
                 app:smsp_itemListColor="@color/colorOrange"
+                app:smsp_itemListHintBackgroundColor="@color/colorOrange"
+                app:smsp_itemListHintColor="@android:color/white"
                 app:smsp_multilineError="false"
                 app:smsp_selectedItemListColor="#FF5252"
-                app:smsp_underlineColor="@color/colorOrange"
-                app:smsp_itemListHintBackgroundColor="@color/colorOrange"
-                app:smsp_itemListHintColor="@android:color/white" />
+                app:smsp_underlineColor="@color/colorOrange" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -136,9 +128,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/text_margin"
-            android:layout_marginTop="@dimen/text_margin"
             android:layout_marginEnd="@dimen/text_margin"
-            android:background="@drawable/borderorange"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout4">
@@ -147,8 +137,8 @@
                 android:id="@+id/spinThnMotor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/padding_10"
-                android:layout_marginEnd="@dimen/padding_10"
+                android:layout_marginStart="@dimen/dimen3dp"
+                android:layout_marginEnd="@dimen/dimen3dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -158,11 +148,11 @@
                 app:smsp_hintColor="@color/colorOrange"
                 app:smsp_itemColor="@color/colorOrange"
                 app:smsp_itemListColor="@color/colorOrange"
+                app:smsp_itemListHintBackgroundColor="@color/colorOrange"
+                app:smsp_itemListHintColor="@android:color/white"
                 app:smsp_multilineError="false"
                 app:smsp_selectedItemListColor="#FF5252"
-                app:smsp_underlineColor="@color/colorOrange"
-                app:smsp_itemListHintBackgroundColor="@color/colorOrange"
-                app:smsp_itemListHintColor="@android:color/white"  />
+                app:smsp_underlineColor="@color/colorOrange" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -170,10 +160,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/text_margin"
-            android:layout_marginTop="@dimen/text_margin"
             android:layout_marginEnd="@dimen/text_margin"
-            android:background="@drawable/borderorange"
             android:theme="@style/TextLabel"
+            app:hintEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout5">
@@ -182,8 +171,6 @@
                 android:id="@+id/txtlokasi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/padding_10"
-                android:layout_marginEnd="@dimen/padding_10"
                 android:fontFamily="@font/jipatharegular"
                 android:hint="@string/lokasi"
                 android:inputType="text"
@@ -207,10 +194,10 @@
                 android:id="@+id/rvMitra"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:layout_marginTop="@dimen/padding_10"
-                android:layout_marginBottom="@dimen/padding_10"
                 android:layout_marginStart="@dimen/padding_10"
+                android:layout_marginTop="@dimen/padding_10"
                 android:layout_marginEnd="@dimen/padding_10"
+                android:layout_marginBottom="@dimen/padding_10"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -229,6 +216,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout7">
 
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/placeholderTextHeight"
+                android:layout_marginEnd="@dimen/placeholderTextHeight"
+                android:layout_marginTop="@dimen/placeholderTextHeight"
+                android:text="@string/ket1multiguna"
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <ImageView
                 android:id="@+id/imageupload"
                 android:layout_width="match_parent"
@@ -238,7 +239,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/tv1" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button

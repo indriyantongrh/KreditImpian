@@ -62,7 +62,8 @@
                         android:id="@+id/layout3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/borderhitam"
+                        app:hintEnabled="false"
+                        android:theme="@style/TextLabel"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
@@ -71,10 +72,6 @@
                             android:id="@+id/txtnamaproduk"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginStart="@dimen/appbar_padding_top"
-                            android:layout_marginEnd="@dimen/appbar_padding_top"
-                            android:layout_marginBottom="@dimen/appbar_padding_top"
-                            android:background="@android:color/transparent"
                             android:fontFamily="@font/jipatharegular"
                             android:hint="@string/nama_produk"
                             android:inputType="text"
@@ -86,7 +83,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/appbar_padding_top"
-                        android:background="@drawable/borderorange"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/layout3">
@@ -95,8 +91,8 @@
                             android:id="@+id/spinKategori"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/padding_10"
-                            android:layout_marginEnd="@dimen/padding_10"
+                            android:layout_marginStart="@dimen/dimen3dp"
+                            android:layout_marginEnd="@dimen/dimen3dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -118,7 +114,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/appbar_padding_top"
-                        android:background="@drawable/borderhitam"
+                        app:hintEnabled="false"
+                        android:theme="@style/TextLabel"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/layout4">
@@ -127,10 +124,6 @@
                             android:id="@+id/txtsumberpesanan"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginStart="@dimen/appbar_padding_top"
-                            android:layout_marginEnd="@dimen/appbar_padding_top"
-                            android:layout_marginBottom="@dimen/appbar_padding_top"
-                            android:background="@android:color/transparent"
                             android:fontFamily="@font/jipatharegular"
                             android:hint="@string/sumber_pesanan_optional"
                             android:inputType="text"
@@ -139,18 +132,19 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/layout6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/text_margin"
-                android:background="@drawable/borderhitam"
-                android:orientation="horizontal"
+                android:background="@drawable/borderorange"
+                app:hintEnabled="false"
+                android:theme="@style/TextLabel"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/layout1">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtdeskripsi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -166,7 +160,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/btnAjukansekarang"

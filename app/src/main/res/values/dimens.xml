@@ -18,6 +18,7 @@
     <dimen name="slide_desc">16dp</dimen>
     <dimen name="desc_padding">40dp</dimen>
     <dimen name="dimen0dp">0dp</dimen>
+    <dimen name="dimen3dp">3dp</dimen>
     <dimen name="dimen4dp">4dp</dimen>
     <dimen name="tulisan10sp">10sp</dimen>
     <dimen name="tulisan13sp">13sp</dimen>

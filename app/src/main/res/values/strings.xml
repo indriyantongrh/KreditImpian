@@ -149,6 +149,7 @@
     <string name="biayakirim">Biaya kirim :</string>
     <string name="nomorinvoice">Nomor Invoice :</string>
     <string name="totalpembayaran">Total Pembayaran :</string>
+    <string name="ket1multiguna">Silahkan klik gambar dibawah ini untuk unggah foto BPKP</string>
 
     <string-array name="mitra">
         <item>Adira</item>
