@@ -12,6 +12,8 @@ public class ResponsePengajuanCatalog{
 	@SerializedName("data")
 	private Object data;
 
+
+
 	@SerializedName("message")
 	private String message;
 
