@@ -59,7 +59,7 @@ public class PilihLeasingActivity extends AppCompatActivity implements PilihLeas
         modelUpgradeImpian.setMitra(idKreditor);
         modelUpgradeImpian.setTahun(Tenor);
         modelUpgradeImpian.setJmlhpinjaman(cicilan);
-        UpgradeImpianViewModel upgradeImpianViewModel = new ViewModelProvider(getViewModelStore(), new ViewModelFactory()).get(UpgradeImpianViewModel.class);
+        UpgradeImpianViewModel upgradeImpianViewModel = new ViewModelProvider(getViewModelStore(), new ViewModelFactory(PilihLeasingActivity.this)).get(UpgradeImpianViewModel.class);
         upgradeImpianViewModel.setModelUpgradeImpian(modelUpgradeImpian);
         upgradeImpianViewModel.pilihLeasing().observe(this, modelUpgradeImpians -> {
             pDialog.dismiss();

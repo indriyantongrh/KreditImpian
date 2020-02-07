@@ -1,12 +1,14 @@
 package com.application.kreditimpian.FormPengajuan.UpgradeImpian.repository;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Model.ModelMitra;
+import com.application.kreditimpian.Model.ModelNotifikasi;
 import com.application.kreditimpian.Model.ModelProductNew.Category;
 import com.application.kreditimpian.Model.ModelUpgradeImpian.ModelMitraMultiguna;
 import com.application.kreditimpian.Model.ModelUpgradeImpian.ModelMitraPinjaman;
@@ -16,6 +18,7 @@ import com.application.kreditimpian.Model.ModelUpgradeImpian.ModelUpgradeImpian;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -30,6 +33,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import static com.application.kreditimpian.Api.api_v2.UtilsApi.BASE_URL_API;
 
 public class UpgradeImpianRepository {
+    private Context context;
     private Call<ResponseBody> responseBodyCall;
     private ModelUpgradeImpian modelUpgradeImpian1;
     private ModelPinjaman modelPinjaman;
@@ -42,6 +46,10 @@ public class UpgradeImpianRepository {
     private ArrayList<ModelMitraPinjaman> modelMitraArrayList;
     private ArrayList<ModelPinjaman> modelPinjamanArrayList;
     private MutableLiveData<ArrayList<ModelUpgradeImpian>> mutableLiveData;
+
+    public UpgradeImpianRepository(Context context) {
+        this.context = context;
+    }
 
     private BaseApiService getApiMobile2() {
         Retrofit retrofit = new Retrofit.Builder()
@@ -76,15 +84,18 @@ public class UpgradeImpianRepository {
                             arrayListMutableLiveData.setValue(modelMitras);
                         }
                     } catch (IOException | JSONException e) {
+                        Toast.makeText(context, "Error JSON: " + e.getMessage(), Toast.LENGTH_LONG).show();
                         e.printStackTrace();
                     }
                 } else {
+                    Toast.makeText(context, "Error Response Body: " + response, Toast.LENGTH_LONG).show();
                     Log.v("jajal", response.body() + " a");
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(context, "Error retrofit: " + t.getMessage(), Toast.LENGTH_LONG).show();
                 Log.v("jajal", t.getMessage() + " a");
             }
         });
@@ -141,9 +152,6 @@ public class UpgradeImpianRepository {
                                     modelPinjaman.setBulanTenor(jsonObject1.getString("bulan"));
                                     modelPinjaman.setHrgCicilan(jsonObject1.getString("cicilan"));
                                     modelPinjamanArrayList.add(modelPinjaman);
-
-
-                                    Log.v("jajal data", jsonObject+ "ab");
                                 }
                                 modelMitra.setModelPinjamanList(modelPinjamanArrayList);
                                 modelMitraArrayList.add(modelMitra);
@@ -154,16 +162,18 @@ public class UpgradeImpianRepository {
                         }
                         mutableLiveData.setValue(modelUpgradeImpians);
                     } catch (IOException | JSONException e) {
+                        Toast.makeText(context, "Error JSON: " + e.getMessage(), Toast.LENGTH_LONG).show();
                         e.printStackTrace();
                     }
                 } else {
-
+                    Toast.makeText(context, "Error Response Body: " + response, Toast.LENGTH_LONG).show();
                     Log.v("jajal", response.body() + " a");
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(context, "Error retrofit: " + t.getMessage(), Toast.LENGTH_LONG).show();
                 Log.v("jajal", t.getMessage() + " a");
             }
         });
@@ -232,16 +242,19 @@ public class UpgradeImpianRepository {
                         }
                         mutableLiveData.setValue(modelUpgradeImpians);
                     } catch (IOException | JSONException e) {
+                        Toast.makeText(context, "Error JSON: " + e.getMessage(), Toast.LENGTH_LONG).show();
                         Log.v("jajal", e.getMessage());
                         e.printStackTrace();
                     }
                 } else {
+                    Toast.makeText(context, "Error Response Body: " + response, Toast.LENGTH_LONG).show();
                     Log.v("jajal", response.body() + " a");
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(context, "Error retrofit: " + t.getMessage(), Toast.LENGTH_LONG).show();
                 Log.v("jajal", t.getMessage() + " a");
             }
         });
@@ -271,10 +284,12 @@ public class UpgradeImpianRepository {
                         modelUpgradeImpians.add(modelUpgradeImpian1);
                         mutableLiveData.setValue(modelUpgradeImpians);
                     } catch (IOException | JSONException e) {
+                        Toast.makeText(context, "Error JSON: " + e.getMessage(), Toast.LENGTH_LONG).show();
                         Log.v("jajal", e.getMessage());
                         e.printStackTrace();
                     }
                 } else {
+                    Toast.makeText(context, "Error Response Body: " + response, Toast.LENGTH_LONG).show();
                     Log.v("jajal", response.body() + " a");
                 }
             }
@@ -298,7 +313,7 @@ public class UpgradeImpianRepository {
                         responses = response.body().string();
                         jsonObject = new JSONObject(responses);
                         ArrayList<Category> categories = new ArrayList<>();
-                        if (jsonObject.getString("response_code").equals("200")){
+                        if (jsonObject.getString("response_code").equals("200")) {
                             jsonArray = new JSONArray(jsonObject.getString("data"));
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 jsonObject = jsonArray.getJSONObject(i);
@@ -310,16 +325,19 @@ public class UpgradeImpianRepository {
                         }
                         mutableLiveData.setValue(categories);
                     } catch (IOException | JSONException e) {
+                        Toast.makeText(context, "Error JSON: " + e.getMessage(), Toast.LENGTH_LONG).show();
                         Log.v("jajal", e.getMessage());
                         e.printStackTrace();
                     }
                 } else {
+                    Toast.makeText(context, "Error Response Body: " + response, Toast.LENGTH_LONG).show();
                     Log.v("jajal", response.body() + " a");
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(context, "Error retrofit: " + t.getMessage(), Toast.LENGTH_LONG).show();
                 Log.v("jajal", t.getMessage() + " a");
             }
         });
@@ -345,16 +363,104 @@ public class UpgradeImpianRepository {
                         jsonObject = new JSONObject(responses);
                         mutableLiveData.setValue(jsonObject.getString("response_code"));
                     } catch (IOException | JSONException e) {
+                        Toast.makeText(context, "Error JSON: " + e.getMessage(), Toast.LENGTH_LONG).show();
                         Log.v("jajal", e.getMessage());
                         e.printStackTrace();
                     }
                 } else {
+                    Toast.makeText(context, "Error Response Body: " + response, Toast.LENGTH_LONG).show();
                     Log.v("jajal", response.body() + " a");
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(context, "Error retrofit: " + t.getMessage(), Toast.LENGTH_LONG).show();
+                Log.v("jajal", t.getMessage() + " a");
+            }
+        });
+        return mutableLiveData;
+    }
+
+    public LiveData<ArrayList<ModelNotifikasi>> getNotifikasi(ModelNotifikasi modelNotifikasi) {
+        MutableLiveData<ArrayList<ModelNotifikasi>> mutableLiveData = new MutableLiveData<>();
+        responseBodyCall = getApiMobile2().getnotifikasi(
+                modelNotifikasi.getIdMember()
+        );
+        responseBodyCall.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.body() != null) {
+                    try {
+                        responses = response.body().string();
+                        jsonObject = new JSONObject(responses);
+                        ArrayList<ModelNotifikasi> modelNotifikasiArrayList = new ArrayList<>();
+                        if (jsonObject.getString("response_code").equals("200")) {
+//                            Object json = new JSONTokener(jsonObject.getString("data")).nextValue();
+                            if (!jsonObject.getString("data").equals("null")) {
+                                jsonArray = new JSONArray(jsonObject.getString("data"));
+                                for (int i = 0; i < jsonArray.length(); i++) {
+                                    jsonObject = jsonArray.getJSONObject(i);
+                                    ModelNotifikasi modelNotifikasi1 = new ModelNotifikasi();
+                                    modelNotifikasi1.setIdNotifikasi(jsonObject.getString("id"));
+                                    modelNotifikasi1.setMessage(jsonObject.getString("message"));
+                                    modelNotifikasi1.setStatus(jsonObject.getString("status"));
+                                    modelNotifikasi1.setTgl(jsonObject.getString("date"));
+                                    modelNotifikasiArrayList.add(modelNotifikasi1);
+                                }
+                                mutableLiveData.setValue(modelNotifikasiArrayList);
+                            }
+                        }
+                    } catch (IOException | JSONException e) {
+                        Toast.makeText(context, "Error JSON: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                        Log.v("jajal", e.getMessage());
+                        e.printStackTrace();
+                    }
+                } else {
+                    Toast.makeText(context, "Error Response Body: " + response, Toast.LENGTH_LONG).show();
+                    Log.v("jajal", response.body() + " a");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(context, "Error retrofit: " + t.getMessage(), Toast.LENGTH_LONG).show();
+                Log.v("jajal", t.getMessage() + " a");
+            }
+        });
+        return mutableLiveData;
+    }
+
+    public LiveData<String> updateNotifikasi(ModelNotifikasi modelNotifikasi) {
+        MutableLiveData<String> mutableLiveData = new MutableLiveData<>();
+        responseBodyCall = getApiMobile2().updateSeen(
+                modelNotifikasi.getIdNotifikasi()
+        );
+        responseBodyCall.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.body() != null) {
+                    try {
+                        responses = response.body().string();
+                        jsonObject = new JSONObject(responses);
+
+                        mutableLiveData.setValue(jsonObject.getString("response_code"));
+
+
+                    } catch (IOException | JSONException e) {
+                        Toast.makeText(context, "Error JSON: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                        Log.v("jajal", e.getMessage());
+                        e.printStackTrace();
+                    }
+                } else {
+                    Toast.makeText(context, "Error Response Body: " + response, Toast.LENGTH_LONG).show();
+                    Log.v("jajal", response.body() + " a");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(context, "Error retrofit: " + t.getMessage(), Toast.LENGTH_LONG).show();
                 Log.v("jajal", t.getMessage() + " a");
             }
         });

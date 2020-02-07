@@ -58,7 +58,7 @@ public class StepUploadProduct extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_step_upload_product);
         Objects.requireNonNull(getSupportActionBar()).hide();
         context = StepUploadProduct.this;
-        upgradeImpianViewModel = new ViewModelProvider(getViewModelStore(), new ViewModelFactory()).get(UpgradeImpianViewModel.class);
+        upgradeImpianViewModel = new ViewModelProvider(getViewModelStore(), new ViewModelFactory(context)).get(UpgradeImpianViewModel.class);
 
         SharedPrefManager sharedPrefManager = new SharedPrefManager(context);
         idMember = sharedPrefManager.getSpIdMember();

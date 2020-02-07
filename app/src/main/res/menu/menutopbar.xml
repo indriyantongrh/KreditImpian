@@ -2,7 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-        android:id="@+id/menu_group">
     <item android:id="@+id/cartshop"
         android:title="Keranjang"
         app:showAsAction="always"
@@ -11,6 +10,6 @@
     <item android:id="@+id/notifikasi"
         android:title="Notifikasi"
         app:showAsAction="always"
-        android:icon="@drawable/notifikasiwhite"/>
+        android:icon="@drawable/ic_notifikasi"/>
 
 </menu>

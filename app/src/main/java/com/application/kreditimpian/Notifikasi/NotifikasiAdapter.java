@@ -1,41 +1,119 @@
 package com.application.kreditimpian.Notifikasi;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.application.kreditimpian.Model.ModelNotifikasi;
+import com.application.kreditimpian.Notifikasi.ViewHolder.LoadingViewHolder;
+import com.application.kreditimpian.Notifikasi.ViewHolder.NotifikasiViewHolder;
 import com.application.kreditimpian.R;
 
 import java.util.ArrayList;
 
-public class NotifikasiAdapter extends RecyclerView.Adapter<NotifikasiViewHolder> {
+public class NotifikasiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context context;
     private ArrayList<ModelNotifikasi> listNotif;
+    private OnSeenClick onSeenClick;
 
-    public NotifikasiAdapter(Context context, ArrayList<ModelNotifikasi> listNotif) {
+    private boolean loading = true;
+    private final int VIEW_TYPE_ITEM = 0,
+            VIEW_TYPE_LOADING = 1;
+
+    public NotifikasiAdapter(Context context, OnSeenClick onSeenClick) {
         this.context = context;
-        this.listNotif = listNotif;
+        listNotif = new ArrayList<>();
+        this.onSeenClick = onSeenClick;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if (isPositionFooter(position)) {
+            return VIEW_TYPE_LOADING;
+        }
+        return VIEW_TYPE_ITEM;
     }
 
     @NonNull
     @Override
-    public NotifikasiViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new NotifikasiViewHolder(LayoutInflater.from(context).inflate(R.layout.list_notifikasi,parent, false));
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        if (viewType == VIEW_TYPE_ITEM) {
+            return new NotifikasiViewHolder(LayoutInflater.from(context).inflate(R.layout.list_notifikasi, parent, false));
+        } else if (viewType == VIEW_TYPE_LOADING) {
+            return new LoadingViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.footer_loading, parent, false));
+        }
+        return null;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NotifikasiViewHolder holder, int position) {
-        ModelNotifikasi modelNotifikasi = listNotif.get(position);
-        holder.txtMessageNotif.setText(modelNotifikasi.getMessage());
-        holder.txtTglNotif.setText(modelNotifikasi.getTgl());
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        if (holder instanceof NotifikasiViewHolder) {
+            final NotifikasiViewHolder notifikasiViewHolder = (NotifikasiViewHolder) holder;
+            ModelNotifikasi modelNotifikasi = listNotif.get(position);
+            notifikasiViewHolder.txtMessageNotif.setText(modelNotifikasi.getMessage());
+            notifikasiViewHolder.txtTglNotif.setText(modelNotifikasi.getTgl());
+            if (modelNotifikasi.getStatus().equals("UNSEEN")) {
+                notifikasiViewHolder.layoutKlik.setBackgroundColor(ContextCompat.getColor(context, R.color.colorOrangetransparent));
+            } else{
+                notifikasiViewHolder.layoutKlik.setBackgroundColor(ContextCompat.getColor(context, R.color.white));
+            }
+            holder.itemView.setOnClickListener(v -> onSeenClick.onSeenClick(modelNotifikasi.getIdNotifikasi(), notifikasiViewHolder));
+        }else if (holder instanceof LoadingViewHolder) {
+            LoadingViewHolder loadingViewHolder = (LoadingViewHolder) holder;
+            loadingViewHolder.progressBar.setIndeterminate(true);
+            loadingViewHolder.progressBar.setVisibility(loading ? View.VISIBLE : View.GONE);
+        }
     }
 
     @Override
     public int getItemCount() {
-        return listNotif.size();
+        return listNotif.size() == 0 ? 0 : listNotif.size() + 1;
+    }
+
+    public void setLoading(boolean loading) {
+        this.loading = loading;
+    }
+
+    private boolean isPositionFooter(int position) {
+        return position == listNotif.size();
+    }
+
+    private void add(ModelNotifikasi item) {
+        listNotif.add(item);
+        notifyItemInserted(listNotif.size());
+    }
+
+    public void addAll(ArrayList<ModelNotifikasi> data) {
+        for (ModelNotifikasi modelNotifikasi : data) {
+            add(modelNotifikasi);
+        }
+    }
+
+    public void remove(ModelNotifikasi item) {
+        int position = listNotif.indexOf(item);
+        if (position > -1) {
+            listNotif.remove(position);
+            notifyDataSetChanged();
+        }
+    }
+
+    public void clear() {
+        while (getItemCount() > 0) {
+            remove(getItem(0));
+        }
+    }
+
+    public ModelNotifikasi getItem(int position) {
+        return listNotif.get(position);
+    }
+
+    public interface OnSeenClick {
+        void onSeenClick(String idNotifikasi, NotifikasiViewHolder holder);
     }
 }
