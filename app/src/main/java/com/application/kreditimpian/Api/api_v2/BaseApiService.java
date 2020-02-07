@@ -305,4 +305,16 @@ public interface BaseApiService {
             @Field("description") String description,
             @Field("product_img") String product_img
     );
+
+    @FormUrlEncoded
+    @POST("getNotification")
+    Call<ResponseBody> getnotifikasi(
+            @Field("id_member") String id_member
+    );
+
+    @FormUrlEncoded
+    @POST("updateSeennotification")
+    Call<ResponseBody> updateSeen(
+            @Field("id_notification") String id_notification
+    );
 }

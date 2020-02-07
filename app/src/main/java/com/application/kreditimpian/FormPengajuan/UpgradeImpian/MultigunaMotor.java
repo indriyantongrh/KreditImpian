@@ -110,7 +110,7 @@ public class MultigunaMotor extends Fragment implements View.OnClickListener {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         context = getContext();
-        upgradeImpianViewModel = new ViewModelProvider(getViewModelStore(), new ViewModelFactory()).get(UpgradeImpianViewModel.class);
+        upgradeImpianViewModel = new ViewModelProvider(getViewModelStore(), new ViewModelFactory(context)).get(UpgradeImpianViewModel.class);
 
         SharedPrefManager sharedPrefManager = new SharedPrefManager(context);
         idMember = sharedPrefManager.getSpIdMember();

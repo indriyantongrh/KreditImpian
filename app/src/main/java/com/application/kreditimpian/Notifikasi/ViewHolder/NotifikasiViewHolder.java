@@ -1,4 +1,4 @@
-package com.application.kreditimpian.Notifikasi;
+package com.application.kreditimpian.Notifikasi.ViewHolder;
 
 import android.view.View;
 import android.widget.TextView;

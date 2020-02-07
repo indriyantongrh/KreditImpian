@@ -65,7 +65,7 @@ public class StepFotoProduct extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_stepisi_product);
         Objects.requireNonNull(getSupportActionBar()).hide();
         context = StepFotoProduct.this;
-        upgradeImpianViewModel = new ViewModelProvider(getViewModelStore(), new ViewModelFactory()).get(UpgradeImpianViewModel.class);
+        upgradeImpianViewModel = new ViewModelProvider(getViewModelStore(), new ViewModelFactory(context)).get(UpgradeImpianViewModel.class);
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             requestPermission();
         }

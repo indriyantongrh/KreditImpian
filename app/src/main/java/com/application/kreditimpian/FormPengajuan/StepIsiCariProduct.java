@@ -46,7 +46,7 @@ public class StepIsiCariProduct extends AppCompatActivity implements AdapterView
         setContentView(R.layout.activity_step_isi_product_cari);
         Objects.requireNonNull(getSupportActionBar()).hide();
         context = StepIsiCariProduct.this;
-        upgradeImpianViewModel = new ViewModelProvider(getViewModelStore(), new ViewModelFactory()).get(UpgradeImpianViewModel.class);
+        upgradeImpianViewModel = new ViewModelProvider(getViewModelStore(), new ViewModelFactory(context)).get(UpgradeImpianViewModel.class);
 
         SharedPrefManager sharedPrefManager = new SharedPrefManager(context);
         idMember = sharedPrefManager.getSpIdMember();
