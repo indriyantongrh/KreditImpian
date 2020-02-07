@@ -4,6 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/placeholderTextHeight"
+    android:layout_marginRight="15dp"
+    android:layout_marginLeft="15dp"
     android:layout_marginBottom="@dimen/placeholderTextHeight"
     android:elevation="@dimen/text_margin"
     app:cardCornerRadius="@dimen/dimen0dp">
@@ -79,6 +81,18 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvPriceSale" />
 
+
+                <TextView
+                    android:id="@+id/tvIdCreditor"
+                    android:layout_width="@dimen/dimen0dp"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_marginTop="@dimen/dimen4dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/tulisan13sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvPriceSale" />
                 <TextView
                     android:id="@+id/textDownpayment"
                     android:layout_width="@dimen/dimen0dp"

@@ -6,4 +6,533 @@
     android:layout_height="match_parent"
     tools:context=".TransactionProcess.TransactionCheckout">
 
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        tools:ignore="MissingConstraints">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="15dp"
+        android:paddingBottom="90dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/tvNomorInvoice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/colorOrange"
+            android:textSize="20dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textStyle="bold"
+            android:layout_below="@+id/linearstatus"
+            android:layout_marginStart="8dp"
+            android:layout_toRightOf="@+id/LinearImage"
+            tools:ignore="NotSibling" />
+
+
+        <!--Product-->
+            <androidx.cardview.widget.CardView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/btnclick"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardCornerRadius="5dp"
+                android:background="@drawable/borderorange"
+                android:backgroundTint="#fff"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                tools:ignore="MissingConstraints">
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/borderorange"
+                    android:paddingBottom="10dp"
+                    android:orientation="vertical"
+                    >
+
+
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:id="@+id/LinearImage"
+                        android:layout_width="150dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_below="@+id/linearstatus"
+                        android:layout_height="130dp">
+
+                        <ImageView
+                            android:id="@+id/image"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/no_image"
+                            android:scaleType="centerCrop" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/txt_name_product"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nama Product"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="#636363"
+                        android:textSize="16dp"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:layout_below="@+id/linearstatus"
+                        android:layout_marginStart="8dp"
+                        android:layout_toRightOf="@+id/LinearImage"
+                        tools:ignore="NotSibling" />
+
+                    <TextView
+                        android:id="@+id/txt_price_capital"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Harga Asli"
+                        android:textSize="12dp"
+                        android:visibility="visible"
+                        android:background="@drawable/strikethrough"
+                        android:layout_below="@id/txt_name_product"
+                        android:layout_marginStart="8dp"
+                        android:textColor="#9C9C9C"
+                        android:layout_toRightOf="@+id/LinearImage"
+                        android:fontFamily="@font/cosimabold"/>
+
+                    <TextView
+                        android:id="@+id/txt_price_sale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Harga Diskon"
+                        android:textStyle="bold"
+                        android:layout_below="@+id/txt_price_capital"
+                        android:layout_marginStart="8dp"
+                        android:layout_toRightOf="@+id/LinearImage"
+                        />
+
+
+
+                    <TextView
+                        android:id="@+id/txt_id"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/txt_id_transaction"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/txt_origin"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/txt_weight"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/text_image"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/txt_destination"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/txt_reference_id"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/txt_id_product_category"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/txt_number"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/txt_image"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:visibility="gone" />
+
+
+                    <TextView
+                        android:id="@+id/txt_status"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:visibility="gone" />
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <!--Detail rasaction-->
+        <androidx.cardview.widget.CardView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardCornerRadius="5dp"
+            android:background="@drawable/borderorange"
+            android:backgroundTint="#fff"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            tools:ignore="MissingConstraints">
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/borderorange"
+                android:paddingBottom="10dp"
+                android:orientation="vertical"
+                >
+
+
+                <TextView
+                    android:id="@+id/textDetailTrasaction"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Detail Transaction"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/colorOrange"
+                    android:textSize="14dp"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:textStyle="bold"
+                    android:layout_below="@+id/linearstatus"
+                    android:layout_marginStart="8dp"
+                    android:layout_toRightOf="@+id/LinearImage"
+                    tools:ignore="NotSibling" />
+
+                <TextView
+                    android:id="@+id/tvMitraKredit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mitra Kredit"
+                    android:textColor="@color/colorBlack"
+                    android:layout_below="@+id/textDetailTrasaction"
+                    android:layout_marginStart="8dp"
+                    />
+
+                <TextView
+                    android:id="@+id/tvCicilan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cicilan"
+                    android:textSize="12dp"
+                    android:layout_below="@id/tvMitraKredit"
+                    android:layout_marginStart="8dp"
+                    android:textColor="@color/colorBlack" />
+
+
+                <TextView
+                    android:id="@+id/tvDownpayment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Downpayment"
+                    android:textSize="12dp"
+                    android:layout_below="@id/tvCicilan"
+                    android:layout_marginStart="8dp"
+                    android:textColor="@color/colorBlack" />
+
+                <TextView
+                    android:id="@+id/tvJasaPengiriman"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jasa Pengiriman"
+                    android:textSize="12dp"
+                    android:layout_below="@id/tvDownpayment"
+                    android:layout_marginStart="8dp"
+                    android:textColor="@color/colorBlack" />
+
+                <TextView
+                    android:id="@+id/tvBiayaKirim"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Biaya Kirim"
+                    android:textSize="12dp"
+                    android:layout_below="@id/tvJasaPengiriman"
+                    android:layout_marginStart="8dp"
+                    android:textColor="@color/colorBlack" />
+
+                <View
+                    android:layout_below="@+id/tvBiayaKirim"
+                    android:layout_width="match_parent"
+                    android:id="@+id/linepotong"
+                    android:layout_height="2dp"
+                    android:paddingTop="5dp"
+                    android:layout_marginLeft="@dimen/padding_10"
+                    android:layout_marginRight="@dimen/padding_10"
+                    android:background="@android:color/black"/>
+
+                <TextView
+                    android:id="@+id/tvTotalPembayaran"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Pembayaran"
+                    android:textSize="12dp"
+                    android:layout_below="@id/linepotong"
+                    android:layout_marginStart="8dp"
+                    android:textColor="@color/colorBlack" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!--MethodepEMbayaran-->
+        <androidx.cardview.widget.CardView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardCornerRadius="5dp"
+            android:background="@drawable/borderorange"
+            android:backgroundTint="#fff"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            tools:ignore="MissingConstraints">
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/borderorange"
+                android:paddingBottom="10dp"
+                android:orientation="vertical"
+                >
+
+
+                <TextView
+                    android:id="@+id/textNote"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Catatan Pembeli"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/colorOrange"
+                    android:textSize="14dp"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:textStyle="bold"
+                    android:layout_below="@+id/linearstatus"
+                    android:layout_marginStart="8dp"
+                    android:layout_toRightOf="@+id/LinearImage"
+                    tools:ignore="NotSibling" />
+
+                <TextView
+                    android:id="@+id/tvNote"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cataan"
+                    android:textColor="@color/colorBlack"
+                    android:layout_below="@+id/textNote"
+                    android:layout_marginStart="8dp"
+                    />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+
+
+        <!--MethodepEMbayaran-->
+        <androidx.cardview.widget.CardView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardCornerRadius="5dp"
+            android:background="@drawable/borderorange"
+            android:backgroundTint="#fff"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            tools:ignore="MissingConstraints">
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/borderorange"
+                android:paddingBottom="10dp"
+                android:orientation="vertical"
+                >
+
+
+                <TextView
+                    android:id="@+id/textMethodePembayaran"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Methode Pembayaran"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/colorOrange"
+                    android:textSize="14dp"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:textStyle="bold"
+                    android:layout_below="@+id/linearstatus"
+                    android:layout_marginStart="8dp"
+                    android:layout_toRightOf="@+id/LinearImage"
+                    tools:ignore="NotSibling" />
+
+                <RadioGroup
+                    android:id="@+id/radiogroup"
+                    android:layout_width="wrap_content"
+                    android:paddingTop="6dp"
+                    android:layout_below="@+id/textMethodePembayaran"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:id="@+id/radiomethodpayment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textSize="13dp"
+                        android:text="Transfer ke Bank" />
+
+
+                </RadioGroup>
+
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <Button
+            android:id="@+id/btnAjukansekarang"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="@dimen/dots_margin_bottom"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="@dimen/dots_margin_bottom"
+            android:background="@drawable/btnorange"
+            android:fontFamily="@font/jipatharegular"
+            android:minHeight="40dp"
+            android:text="@string/ajukan_sekarang"
+            android:textColor="#fff"
+            android:textSize="@dimen/tulisan26sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout8" />
+
+
+        <TextView
+            android:id="@+id/tvIdTransaction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Methode Pembayaran"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/colorOrange"
+            android:textSize="14dp"
+            android:visibility="gone"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textStyle="bold"
+            android:layout_below="@+id/linearstatus"
+            android:layout_marginStart="8dp"
+            android:layout_toRightOf="@+id/LinearImage"
+            tools:ignore="NotSibling" />
+
+        <TextView
+            android:id="@+id/tvTenor2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Methode Pembayaran"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/colorOrange"
+            android:textSize="14dp"
+            android:visibility="gone"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textStyle="bold"
+            android:layout_below="@+id/linearstatus"
+            android:layout_marginStart="8dp"
+            android:layout_toRightOf="@+id/LinearImage"
+            tools:ignore="NotSibling" />
+
+        <TextView
+            android:id="@+id/tvInstalment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Methode Pembayaran"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/colorOrange"
+            android:textSize="14dp"
+            android:visibility="gone"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textStyle="bold"
+            android:layout_below="@+id/linearstatus"
+            android:layout_marginStart="8dp"
+            android:layout_toRightOf="@+id/LinearImage"
+            tools:ignore="NotSibling" />
+
+
+
+
+        <TextView
+            android:id="@+id/tvIdCreditor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Methode Pembayaran"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/colorOrange"
+            android:textSize="14dp"
+            android:visibility="gone"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textStyle="bold"
+            android:layout_below="@+id/linearstatus"
+            android:layout_marginStart="8dp"
+            android:layout_toRightOf="@+id/LinearImage"
+            tools:ignore="NotSibling" />
+
+
+    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -162,6 +162,9 @@ public class Cart extends AppCompatActivity {
                         String price_capital = detaiList.get(position).getPriceCapital();
                         String price_sale = detaiList.get(position).getPriceSale();
                         String imageProduct = detaiList.get(position).getFilename();
+                        String weight = detaiList.get(position).getWeight();
+                        String origin = detaiList.get(position).getOrigin();
+                        String destination = detaiList.get(position).getDestination();
 
                         Intent detailproduct = new Intent(Cart.this, TransactionSelectMitra.class);
                         detailproduct.putExtra(ConstanTransaction.KEY_ID_PRODUCT, id_product);
@@ -173,6 +176,10 @@ public class Cart extends AppCompatActivity {
                         detailproduct.putExtra(ConstanTransaction.KEY_PRICE_CAPITAL_TRANSACTION, price_capital);
                         detailproduct.putExtra(ConstanTransaction.KEY_PRICE_SALE_TRANSACTION, price_sale);
                         detailproduct.putExtra(ConstanTransaction.KEY_FILENAME_TRANSACTION, imageProduct);
+                        detailproduct.putExtra(ConstanTransaction.KEY_WEIGHT_TRANSACTION, weight);
+                        detailproduct.putExtra(ConstanTransaction.KEY_ORIGIN_TRANSACTION, origin);
+                        detailproduct.putExtra(ConstanTransaction.KEY_DESTINATION_TRANSACTION, destination);
+
 
                         startActivity(detailproduct);
                     }

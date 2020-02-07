@@ -17,6 +17,10 @@ public class CompaniesDataItem implements Parcelable {
 		this.downPayment = downPayment;
 	}
 
+	public String getDownPayment() {
+		return downPayment;
+	}
+
 	@SerializedName("downPayment")
 	private String downPayment;
 

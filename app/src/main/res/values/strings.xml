@@ -141,6 +141,15 @@
     <string name="namaprodukkosong">Nama Produk tidak boleh kosong</string>
     <string name="deskripsikosong">Deskripsi tidak boleh kosong</string>
 
+    <!--VIa Catalog-->
+    <string name="cicilan">Cicilan :</string>
+    <string name="downpayment">Downpayment :</string>
+    <string name="mitra">Mitra :</string>
+    <string name="jasapengriman">Jasa Pengiriman :</string>
+    <string name="biayakirim">Biaya kirim :</string>
+    <string name="nomorinvoice">Nomor Invoice :</string>
+    <string name="totalpembayaran">Total Pembayaran :</string>
+
     <string-array name="mitra">
         <item>Adira</item>
         <item>Baff</item>

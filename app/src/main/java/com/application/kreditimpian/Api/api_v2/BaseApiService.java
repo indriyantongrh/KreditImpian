@@ -11,6 +11,8 @@ import com.application.kreditimpian.Model.ModelMemberInsert.ResponseMemberInsert
 import com.application.kreditimpian.Model.ModelMerchant.ResponseMerchant;
 import com.application.kreditimpian.Model.ModelMitraSelected.ResponseMitraSelected;
 import com.application.kreditimpian.Model.ModelOnShoppingCart.ResponseOnShoppingCart;
+import com.application.kreditimpian.Model.ModelOngkoskirim.ResponseOnkosKirim;
+import com.application.kreditimpian.Model.ModelPengajuanCatalog.ResponsePengajuanCatalog;
 import com.application.kreditimpian.Model.ModelProductBaru.ResponseProductBaru;
 
 
@@ -103,6 +105,10 @@ public interface BaseApiService {
     @GET("ApiMobile/tenor")
     Call<ResponseMitraSelected> getMitraSelected(@Query("id_product_category") String id_product_category);
 
+    /*API GET ONGKOS KIRIM*/
+    @GET("ApiMobile/apiheadRajaongkir")
+    Call<ResponseOnkosKirim> getOngkir(@QueryMap HashMap<String, String> params);
+
     @GET("ApiMobile/getpaymentdata")
     Call<ResponseSelectedTenor> getTenorSelected(@Query("id_product") String id_product,
                                                  @Query("id_product_category") String id_product_category,
@@ -111,6 +117,10 @@ public interface BaseApiService {
     @FormUrlEncoded
     @POST("ApiMobile/getTenorByCompany")
     Call<ResponseBody> getCicilanProduct(@FieldMap HashMap<String, String> params);
+
+    @FormUrlEncoded
+    @POST("ApiMobile/insertMetaDataProductTransaction")
+    Call<ResponsePengajuanCatalog> postPengajuan(@FieldMap HashMap<String, String> params);
 
     //getMember
     ///@FormUrlEncoded

@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.application.kreditimpian.Adapter.AdapterSelectedTenor;
 import com.application.kreditimpian.Api.SharedPrefManager;
@@ -50,8 +51,7 @@ public class TransactionSelectTenor extends AppCompatActivity {
     ProgressDialog progressBar;
     @BindView(R.id.ListSelectedTenor)
     RecyclerView ListSelectedTenor;
-    @BindView(R.id.btncek)
-    Button btncek;
+
 
     //    List<DataItem> dataItemList;
 //    AdapterTenorSelected adapterTenorSelected;
@@ -78,6 +78,10 @@ public class TransactionSelectTenor extends AppCompatActivity {
         ListSelectedTenor.setLayoutManager(new LinearLayoutManager(this));
 
         if(getIntent().hasExtra("productMeta")) {
+
+            ////String note = getIntent().getStringExtra("note");
+           //// Toast.makeText(TransactionSelectTenor.this, ""+note, Toast.LENGTH_LONG).show();
+
             ArrayList<CompaniesDataItem>  CompaniesDataItem= getIntent().getParcelableArrayListExtra("datalist");
             ProductMeta productMeta = getIntent().getParcelableExtra("productMeta");
 //              final List<String> myList = new ArrayList<String>(Arrays.asList(mJsonObject.split(",")));
@@ -98,12 +102,6 @@ public class TransactionSelectTenor extends AppCompatActivity {
         }
 
 
-            btncek.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //  LoadTenor();
-                }
-            });
 
 
         }

@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,6 +33,8 @@ import com.application.kreditimpian.Model.ModelCicilan.ProductMeta;
 import com.application.kreditimpian.Model.ModelCicilan.ResponseCicilan;
 import com.application.kreditimpian.Model.ModelMitraSelected.DataItem;
 import com.application.kreditimpian.Model.ModelMitraSelected.ResponseMitraSelected;
+import com.application.kreditimpian.Model.ModelOngkoskirim.Data;
+import com.application.kreditimpian.Model.ModelOngkoskirim.ResponseOnkosKirim;
 import com.application.kreditimpian.R;
 import com.bumptech.glide.Glide;
 
@@ -44,6 +47,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
+import butterknife.BindInt;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import okhttp3.ResponseBody;
@@ -88,13 +92,23 @@ public class TransactionSelectMitra extends AppCompatActivity {
     @BindView(R.id.tv_estimasipengiriman)
     TextView tv_estimasipengiriman;
 
+    @BindView(R.id.txt_weight)
+    TextView txt_weight;
+
+    @BindView(R.id.txt_origin)
+    TextView txt_origin;
+
+    @BindView(R.id.txt_destination)
+    TextView txt_destination;
+    @BindView(R.id.text_image)
+     TextView text_image;
     // String id_product_category;
 
     DataItem reqDataItem;
     SharedPrefManager sharedPrefManager;
     BaseApiService mApiService;
     private List<DataItem> dataItemList = new ArrayList<>();
-
+    private HashMap<String, String> logisticvalue;
     private String responses;
     private JSONObject jsonObject, jsonObject1, jsonObject3,jsonObject2;
     AdapterMitraSelected adapterMitraSelected;
@@ -135,6 +149,10 @@ public class TransactionSelectMitra extends AppCompatActivity {
         String nomor_invoice = intent.getStringExtra(ConstanTransaction.KEY_NUMBER);
         String imageProduct = intent.getStringExtra(ConstanTransaction.KEY_FILENAME_TRANSACTION);
         String status = intent.getStringExtra(ConstanTransaction.KEY_STATUS);
+        String weight = intent.getStringExtra(ConstanTransaction.KEY_WEIGHT_TRANSACTION);
+        String origin = intent.getStringExtra(ConstanTransaction.KEY_ORIGIN_TRANSACTION);
+        String destination = intent.getStringExtra(ConstanTransaction.KEY_DESTINATION_TRANSACTION);
+
         Log.d("ini id kategorimu ", ConstanTransaction.KEY_ID_PRODUCT_CATEGORY_TRANSACTION);
 
         ///convert String to Rupiah Curerncy
@@ -159,6 +177,10 @@ public class TransactionSelectMitra extends AppCompatActivity {
         txt_name_product.setText(nameProduct);
         txt_price_capital.setText(formatRupiah.format(price_capital));
         txt_price_sale.setText(formatRupiah.format(price_sale));
+        txt_weight.setText(weight);
+        txt_origin.setText(origin);
+        txt_destination.setText(destination);
+        text_image.setText(imageProduct);
 
         Glide.with(TransactionSelectMitra.this)
                 .load(imageProduct)
@@ -170,12 +192,31 @@ public class TransactionSelectMitra extends AppCompatActivity {
         courier.add(0, "Pilih Kurir");
         courier.add("JNE");
         courier.add("POS");
-        courier.add("JNT");
         courier.add("TIKI");
+
+        getOngkir();
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(TransactionSelectMitra.this, android.R.layout.simple_spinner_item, courier);
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinnercourier.setAdapter(adapter);
+
+        spinnercourier.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(position == 1){
+                    tv_estimasipengiriman.setText("310000");
+                }else if(position == 2){
+                    tv_estimasipengiriman.setText("320000");
+                }else if (position == 3){
+                    tv_estimasipengiriman.setText("300000");
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 
         adapterMitraSelected = new AdapterMitraSelected(TransactionSelectMitra.this);
@@ -210,6 +251,12 @@ public class TransactionSelectMitra extends AppCompatActivity {
         String courier = spinnercourier.getSelectedItem().toString();
         String note = txt_note.getText().toString();
         String estimasipengiman = tv_estimasipengiriman.getText().toString();
+        String price_capital = txt_price_capital.getText().toString();
+        String price_sale = txt_price_sale.getText().toString();
+        String name_product = txt_name_product.getText().toString();
+        String image_product = text_image.getText().toString();
+        String id_transaction = txt_id_transaction.getText().toString();
+
 
         boolean check = false;
         StringBuilder mitraStringBuilder = new StringBuilder();
@@ -295,6 +342,18 @@ public class TransactionSelectMitra extends AppCompatActivity {
                                 Intent intent = new Intent(TransactionSelectMitra.this, TransactionSelectTenor.class);
                                 intent.putExtra("datalist", companiesDataItemArrayList);
                                 intent.putExtra("productMeta", productMeta);
+                                intent.putExtra("id_member",id_member);
+                                intent.putExtra("id_product_category",id_product_category);
+                                intent.putExtra("id_product",id_product);
+                                intent.putExtra("number", number);
+                                intent.putExtra("courier", courier);
+                                intent.putExtra("note", note);
+                                intent.putExtra("estimasipengiman", estimasipengiman);
+                                intent.putExtra("image_product", image_product);
+                                intent.putExtra("price_capital", price_capital);
+                                intent.putExtra("price_sale", price_sale);
+                                intent.putExtra("name_product", name_product);
+                                intent.putExtra("id_transaction", id_transaction);
                                 startActivity(intent);
                                 finish();
                             }
@@ -323,6 +382,37 @@ public class TransactionSelectMitra extends AppCompatActivity {
 
 
 
+
+    }
+
+    private void getOngkir(){
+        logisticvalue = new HashMap<>();
+        HashMap<String, String> params = new HashMap<>();
+        params.put("origin", txt_origin.getText().toString() );
+        params.put("destination", txt_destination.getText().toString() );
+        params.put("weight", txt_weight.getText().toString() );
+
+        mApiService.getOngkir(params).enqueue(new Callback<ResponseOnkosKirim>() {
+            @Override
+            public void onResponse(Call<ResponseOnkosKirim> call, Response<ResponseOnkosKirim> response) {
+                if(response.body().getResponseCode()==200){
+                    Log.v("jajal", response.body().getData().getJne().getCost()+"ongkir");
+
+//                    List<ResponseOnkosKirim> getLogistic = (List<ResponseOnkosKirim>) response.body().getData();
+//                    String[] name = new String[getLogistic.size()];
+//
+                    ///Toast.makeText(TransactionSelectMitra.this, response.body().getData().toString(), Toast.LENGTH_LONG).show();
+                }else {
+                    Toast.makeText(TransactionSelectMitra.this, "Gagal ambil ongkir" , Toast.LENGTH_LONG).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseOnkosKirim> call, Throwable t) {
+                Toast.makeText(TransactionSelectMitra.this, "Perikasa Internet Anda" , Toast.LENGTH_LONG).show();
+            }
+        });
 
     }
 

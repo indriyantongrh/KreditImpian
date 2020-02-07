@@ -15,5 +15,8 @@ public class ConstanTransaction {
     public static final String KEY_ID_PRODUCT_CATEGORY_TRANSACTION = "id_product_category";
     public static final String KEY_PRICE_CAPITAL_TRANSACTION = "price_capital";
     public static final String KEY_PRICE_SALE_TRANSACTION = "price_sale";
+    public static final String KEY_WEIGHT_TRANSACTION = "weight";
+    public static final String KEY_ORIGIN_TRANSACTION = "origin";
+    public static final String KEY_DESTINATION_TRANSACTION = "destination";
     public static final String KEY_DISCOUNT_TRANSACTION = "discount";
 }

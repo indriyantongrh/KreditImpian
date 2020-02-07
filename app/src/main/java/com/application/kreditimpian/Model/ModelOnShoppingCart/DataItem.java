@@ -44,6 +44,39 @@ public class DataItem{
 	@SerializedName("status")
 	private String status;
 
+	@SerializedName("weight")
+	private String weight;
+
+	@SerializedName("origin")
+	private String origin;
+
+	public String getWeight() {
+		return weight;
+	}
+
+	public void setWeight(String weight) {
+		this.weight = weight;
+	}
+
+	public String getOrigin() {
+		return origin;
+	}
+
+	public void setOrigin(String origin) {
+		this.origin = origin;
+	}
+
+	public String getDestination() {
+		return destination;
+	}
+
+	public void setDestination(String destination) {
+		this.destination = destination;
+	}
+
+	@SerializedName("destination")
+	private String destination;
+
 	public String getId_transaction() {
 		return id_transaction;
 	}
