@@ -124,7 +124,7 @@ public class MenuUtama extends AppCompatActivity {
 
 
 
-    @Override
+/*    @Override
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(MenuUtama.this);
 
@@ -157,7 +157,7 @@ public class MenuUtama extends AppCompatActivity {
         alert.show();
         //// Toast.makeText(this,"Keluar aplikasi!", Toast.LENGTH_LONG).show();
 
-    }
+    }*/
 
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {

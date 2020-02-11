@@ -2,8 +2,10 @@ package com.application.kreditimpian.Beranda;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -244,7 +246,7 @@ public class FragmentBeranda extends Fragment {
 
 
             FragmentTransaction fr = getFragmentManager().beginTransaction();
-            fr.replace(R.id.frame_container, new KategoriHandphone());
+            fr.replace(R.id.frame_container, new KategoriHandphone(),null).addToBackStack(null);
             ///fr.addToBackStack(null);
             fr.commit();
         });
@@ -252,7 +254,7 @@ public class FragmentBeranda extends Fragment {
         btn_laptop.setOnClickListener(view -> {
             ///Toast.makeText(getActivity(), "Ini kategori Laptop", Toast.LENGTH_SHORT).show();
             FragmentTransaction fr = getFragmentManager().beginTransaction();
-            fr.replace(R.id.frame_container, new KategoriKomputer());
+            fr.replace(R.id.frame_container, new KategoriKomputer(),null).addToBackStack(null);
             fr.addToBackStack(null);
             fr.commit();
         });
@@ -260,7 +262,7 @@ public class FragmentBeranda extends Fragment {
         btn_otomotif.setOnClickListener(view -> {
             //Toast.makeText(getActivity(), "Ini kategori Otomotif", Toast.LENGTH_SHORT).show();
             FragmentTransaction fr = getFragmentManager().beginTransaction();
-            fr.replace(R.id.frame_container, new KategoriOtomotif());
+            fr.replace(R.id.frame_container, new KategoriOtomotif(),null).addToBackStack(null);
             fr.addToBackStack(null);
             fr.commit();
 
@@ -269,7 +271,7 @@ public class FragmentBeranda extends Fragment {
 
         btn_forniture.setOnClickListener(view -> {
             FragmentTransaction fr = getFragmentManager().beginTransaction();
-            fr.replace(R.id.frame_container, new KategoriForniture());
+            fr.replace(R.id.frame_container, new KategoriForniture(),null).addToBackStack(null);
             fr.addToBackStack(null);
             fr.commit();
         });
@@ -278,7 +280,7 @@ public class FragmentBeranda extends Fragment {
 
             //Toast.makeText(getActivity(), "Ini kategori Olahraga", Toast.LENGTH_SHORT).show();
             FragmentTransaction fr = getFragmentManager().beginTransaction();
-            fr.replace(R.id.frame_container, new KategoriHobi());
+            fr.replace(R.id.frame_container, new KategoriHobi(),null).addToBackStack(null);
             fr.addToBackStack(null);
             fr.commit();
 
@@ -287,7 +289,7 @@ public class FragmentBeranda extends Fragment {
         btn_property.setOnClickListener(view -> {
             ///Toast.makeText(getActivity(), "Ini kategori Property", Toast.LENGTH_SHORT).show();
             FragmentTransaction fr = getFragmentManager().beginTransaction();
-            fr.replace(R.id.frame_container, new KategoriProperty());
+            fr.replace(R.id.frame_container, new KategoriProperty(),null).addToBackStack(null);
             fr.addToBackStack(null);
             fr.commit();
         });
@@ -295,7 +297,7 @@ public class FragmentBeranda extends Fragment {
         btn_fashion.setOnClickListener(view -> {
             /// Toast.makeText(getActivity(), "Ini kategori Fashion", Toast.LENGTH_SHORT).show();
             FragmentTransaction fr = getFragmentManager().beginTransaction();
-            fr.replace(R.id.frame_container, new KategoriFashion());
+            fr.replace(R.id.frame_container, new KategoriFashion(),null).addToBackStack(null);
             fr.addToBackStack(null);
             fr.commit();
 
@@ -330,20 +332,24 @@ public class FragmentBeranda extends Fragment {
 
     }
 
+    @SuppressWarnings("unchecked")
     private void getNotifikasi() {
         ModelNotifikasi modelNotifikasi = new ModelNotifikasi();
         modelNotifikasi.setIdMember(idMember);
 
         UpgradeImpianViewModel upgradeImpianViewModel = new ViewModelProvider(getViewModelStore(), new ViewModelFactory(getContext())).get(UpgradeImpianViewModel.class);
         upgradeImpianViewModel.setModelNotifikasi(modelNotifikasi);
-        upgradeImpianViewModel.getNotifikasi().observe(getViewLifecycleOwner(), modelNotifikasis -> {
-            for (int i = 0; i < modelNotifikasis.size(); i++) {
-                if (modelNotifikasis.get(i).getStatus().equals("UNSEEN")){
-                    totalnotif++;
+        upgradeImpianViewModel.getNotifikasi().observe(getViewLifecycleOwner(), hashMap -> {
+            if (hashMap.get("code").toString().equals("200")) {
+                ArrayList<ModelNotifikasi> modelNotifikasis = (ArrayList<ModelNotifikasi>) hashMap.get("list");
+                for (int i = 0; i < modelNotifikasis.size(); i++) {
+                    if (modelNotifikasis.get(i).getStatus().equals("UNSEEN")) {
+                        totalnotif++;
+                    }
                 }
-            }
-            if (totalnotif > 0){
-                menu.getItem(1).setIcon(ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.ic_notifikasi_unseen));
+                if (totalnotif > 0) {
+                    menu.getItem(1).setIcon(ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.ic_notifikasi_unseen));
+                }
             }
         });
     }
@@ -555,6 +561,41 @@ public class FragmentBeranda extends Fragment {
         intent_cart.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent_cart);
     }
+
+//    @Override
+//    public void onBackPressed() {
+//        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//
+//        /// builder.setTitle("Keluar ");
+//        builder.setMessage("Apakah kamu yakin ingin keluar dari aplikasi ?");
+//
+//        builder.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+//            public void onClick(DialogInterface dialog, int which) {
+//
+//
+//
+//                moveTaskToBack(true);
+//                finish();
+//                //// new DetailAplikasiSaya.HapusData().execute();
+//                dialog.dismiss();
+//            }
+//
+//        });
+//        builder.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+//
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//
+//                // Do nothing
+//                dialog.dismiss();
+//            }
+//        });
+//
+//        AlertDialog alert = builder.create();
+//        alert.show();
+//        //// Toast.makeText(this,"Keluar aplikasi!", Toast.LENGTH_LONG).show();
+//
+//    }
 
 //
 //    @Override

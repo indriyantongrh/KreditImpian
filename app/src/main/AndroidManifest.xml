@@ -39,14 +39,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Notifikasi.NotifikasiActivity"></activity>
+        <activity android:name=".Notifikasi.NotifikasiActivity" />
         <activity android:name=".FormPengajuan.UpgradeImpian.PilihLeasingActivity" />
         <activity android:name=".TransactionProcess.TransactionCheckout" />
         <activity android:name=".TransactionProcess.TransactionSelectTenor" />
         <activity android:name=".TransactionProcess.TransactionSelectMitra" />
         <activity android:name=".Akun.DetailAlamat" />
         <activity android:name=".Akun.AlamatPengiriman" />
-        <activity android:name=".DetailHistoryPesanan" />
+        <activity android:name=".HistoryPesanan.DetailHistoryPesanan" />
         <activity android:name=".FormPengajuan.UpgradeImpian.UpgradeImpian" /> <!-- <activity android:name=".CartCheckout.Cart" /> -->
         <activity android:name=".DetailProduct" />
         <activity android:name=".TransactionProcess.Cart" />

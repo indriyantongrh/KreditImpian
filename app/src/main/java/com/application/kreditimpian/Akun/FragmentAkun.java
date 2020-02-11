@@ -120,7 +120,7 @@ public class FragmentAkun extends Fragment {
         String id_user = sharedPrefManager.getSpIdUser();
         String id_member = sharedPrefManager.getSpIdMember();
 
-        Toast.makeText(getActivity(), "Id member anda "+id_member, Toast.LENGTH_LONG).show();
+     ////   Toast.makeText(getActivity(), "Id member anda "+id_member, Toast.LENGTH_LONG).show();
 
         ///Toast.makeText(getActivity(),token, Toast.LENGTH_SHORT).show();
         txt_nama_akun.setText(username);
@@ -195,12 +195,13 @@ public class FragmentAkun extends Fragment {
         });
         textchat = view.findViewById(R.id.textchat);
         btnchat = view.findViewById(R.id.btnchat);
-        btnchat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                StringtoJson();
-            }
-        });
+            btnchat.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                Toast.makeText(getActivity(), "Fitur segera hadir", Toast.LENGTH_LONG).show();
+//                    StringtoJson();
+                }
+            });
 
 
         btnalamatpengiriman = view.findViewById(R.id.btnalamatpengiriman);
@@ -219,9 +220,10 @@ public class FragmentAkun extends Fragment {
         btnhistorypesanan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(getActivity(), "Fitur segera hadir", Toast.LENGTH_LONG).show();
 
-                Intent intent = new Intent(getActivity(), HistoryPesanan.class);
-                getActivity().startActivity(intent);
+               /* Intent intent = new Intent(getActivity(), HistoryPesanan.class);
+                getActivity().startActivity(intent);*/
             }
 
         });
@@ -230,9 +232,10 @@ public class FragmentAkun extends Fragment {
         btnfavorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(getActivity(), "Fitur segera hadir", Toast.LENGTH_LONG).show();
 
-                Intent intent = new Intent(getActivity(), Favorite.class);
-                getActivity().startActivity(intent);
+//                Intent intent = new Intent(getActivity(), Favorite.class);
+//                getActivity().startActivity(intent);
             }
 
         });
@@ -241,9 +244,9 @@ public class FragmentAkun extends Fragment {
         btnkonfirmasi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent intent = new Intent(getActivity(), KonfirmasiPembayaran.class);
-                getActivity().startActivity(intent);
+                Toast.makeText(getActivity(), "Fitur segera hadir", Toast.LENGTH_LONG).show();
+                /*Intent intent = new Intent(getActivity(), KonfirmasiPembayaran.class);
+                getActivity().startActivity(intent);*/
             }
 
         });

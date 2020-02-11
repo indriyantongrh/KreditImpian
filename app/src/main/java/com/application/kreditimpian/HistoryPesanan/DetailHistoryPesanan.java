@@ -1,8 +1,10 @@
-package com.application.kreditimpian;
+package com.application.kreditimpian.HistoryPesanan;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.application.kreditimpian.R;
 
 public class DetailHistoryPesanan extends AppCompatActivity {
 

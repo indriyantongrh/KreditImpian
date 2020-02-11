@@ -29,6 +29,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -76,6 +77,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
     ImageView imagektp,imagenpwp, imageself;
     Spinner spinnerjeniskelamin,spinnerstatus,spinneragama,spinnerstatusrumah,spinnerkredit,spinnerkota_saudaraa,spinnerkecamatn_saudara;
     Button btnsimpan;
+    TextView id_kota, id_kecamatan;
     EditText txtnamalengkap,txttempatlahir,txttanggallahir,txtnikktp,txtnomornpwp,txtpekerjaan,txtpendapatan,
             txtjumlahtanggungan,txtalamatemail,txtibukandung,txtnomorhandphone,txtnomortlp,txtfacebook,txttwitter,txtinstagram,
             txtnamasaudara,txtnomorhandphonesaudara,txtkodepos_saudara, txtalamat_saudara;
@@ -123,7 +125,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         String msisdn = sharedPrefManager.getSpMsisdn();
         String id_member = sharedPrefManager.getSpIdMember();
         getmemberDetail();
-        Toast.makeText(DataDiri.this, "Id member anda "+id_member, Toast.LENGTH_LONG).show();
+       /// Toast.makeText(DataDiri.this, "Id member anda "+id_member, Toast.LENGTH_LONG).show();
 
 
 
@@ -150,6 +152,8 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         txtfacebook = findViewById(R.id.txtfacebook);
         txttwitter = findViewById(R.id.txttwitter);
         txtinstagram = findViewById(R.id.txtinstagram);
+        id_kota = findViewById(R.id.id_kota);
+        id_kecamatan = findViewById(R.id.id_kecamatan);
         btnsimpan = findViewById(R.id.btnsimpan);
 
         ///formdatasaudara tidaq serumah
@@ -355,8 +359,6 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                     txttanggallahir.setError("Tidak boleh kosong");
                 else if(isEmpty(number_citizen))
                     txtnikktp.setError("Tidak boleh kosong");
-                else if(isEmpty(number_taxpayer))
-                    txtnomornpwp.setError("Tidak boleh kosong");
                 else if(isEmpty(job))
                     txtpekerjaan.setError("Tidak boleh kosong");
                 else if(isEmpty(income))
@@ -377,6 +379,11 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                     txtkodepos_saudara.setError("Tidak boleh kosong");
                 else if(isEmpty(alamatsaudara))
                     txtalamat_saudara.setError("Tidak boleh kosong");
+                else if(getStringImage(decoded_1).isEmpty()){
+                    Toast.makeText(DataDiri.this, "Silahkan masukan foto wajah ", Toast.LENGTH_LONG).show();
+                }   else if(getStringImage(decoded_2).isEmpty()){
+                    Toast.makeText(DataDiri.this, "Silahkan masukan KTP anda", Toast.LENGTH_LONG).show();
+                }
                 else
                 InsertMember();
 
@@ -455,6 +462,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
                 if (response.isSuccessful()){
                     Toast.makeText(DataDiri.this, "Data berhasil di simpan...", Toast.LENGTH_SHORT).show();
+                    finish();
                 }else {
                     Toast.makeText(DataDiri.this, "Gagal Upload", Toast.LENGTH_SHORT).show();
                 }
@@ -503,8 +511,8 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         params.put("twitter", txttwitter.getText().toString());
         params.put("nonsibling_name", txtnamasaudara.getText().toString());
         params.put("nonsibling_mobile", txtnomorhandphonesaudara.getText().toString());
-        params.put("nonsibling_id_geodirectory", spinnerkota_saudaraa.getSelectedItem().toString());
-        params.put("nonsibling_id_district", spinnerkecamatn_saudara.getSelectedItem().toString());
+        params.put("nonsibling_id_geodirectory", id_kota.getText().toString());
+        params.put("nonsibling_id_district", id_kecamatan.getText().toString());
         params.put("postal_code", txtkodepos_saudara.getText().toString());
         params.put("nonsibling_address", txtalamat_saudara.getText().toString());
 
@@ -672,6 +680,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
                             if(position>0){
                                 String cityvalues = getCity.get(position - 1 ).getId();
+                                id_kota.setText(cityvalues);
                                 ///Toast.makeText(TambahAlamatPengiriman.this, " ini id City "+cityvalues, Toast.LENGTH_LONG).show();
 
                             }
@@ -731,7 +740,8 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                             if(position>0){
                                 String districtvalue = getDistrictArray.get(position - 1 ).getId();
-                                Toast.makeText(DataDiri.this, " ini id Kecamatan  "+districtvalue, Toast.LENGTH_LONG).show();
+                                id_kecamatan.setText(districtvalue);
+                                //Toast.makeText(DataDiri.this, " ini id Kecamatan  "+districtvalue, Toast.LENGTH_LONG).show();
 
                             }
                         }

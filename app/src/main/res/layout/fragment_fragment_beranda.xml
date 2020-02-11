@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:shimmer="http://schemas.android.com/apk/res-auto"
-    android:paddingBottom="55dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Beranda.FragmentBeranda">
 

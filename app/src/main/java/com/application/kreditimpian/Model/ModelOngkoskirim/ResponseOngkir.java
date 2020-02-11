@@ -1,16 +1,17 @@
 package com.application.kreditimpian.Model.ModelOngkoskirim;
 
+import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
 
 
-public class ResponseOnkosKirim{
+public class ResponseOngkir{
 
 	@SerializedName("response_code")
 	private int responseCode;
 
 	@SerializedName("data")
-	private Data data;
+	private List<DataItem> data;
 
 	@SerializedName("message")
 	private String message;
@@ -23,11 +24,11 @@ public class ResponseOnkosKirim{
 		return responseCode;
 	}
 
-	public void setData(Data data){
+	public void setData(List<DataItem> data){
 		this.data = data;
 	}
 
-	public Data getData(){
+	public List<DataItem> getData(){
 		return data;
 	}
 

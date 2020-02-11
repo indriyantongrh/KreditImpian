@@ -93,11 +93,15 @@ public class SmsOTPRegister extends AppCompatActivity {
                 pDialog.dismiss();
 
                 try {
-                    if(response.body()!=null)
+                    if(response.body().getResponseCode()==200) {
                         Toast.makeText(SmsOTPRegister.this, response.body().getMessage(), Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(SmsOTPRegister.this, LoginUser.class);
-                    startActivity(intent);
-                    finish();
+                        Intent intent = new Intent(SmsOTPRegister.this, LoginUser.class);
+                        startActivity(intent);
+                        finish();
+                    }else {
+                        pDialog.dismiss();
+                        Toast.makeText(SmsOTPRegister.this, response.body().getMessage(), Toast.LENGTH_LONG).show();
+                    }
                 }catch (Exception e ){
                     e.printStackTrace();
                 }

@@ -36,8 +36,8 @@
                 android:id="@+id/image"
                 android:layout_width="match_parent"
                 android:layout_height="125dp"
-                android:src="@drawable/no_image"
-                android:scaleType="centerCrop" />
+                android:scaleType="centerCrop"
+                android:src="@drawable/no_image" />
 
         </LinearLayout>
 
@@ -120,7 +120,17 @@
             android:layout_height="0dp"
             android:visibility="gone" />
 
-    </RelativeLayout>
 
+
+    </RelativeLayout>
+    <ImageView
+        android:id="@+id/btnDelete"
+        android:src="@drawable/trash"
+        android:layout_gravity="right|bottom"
+        android:layout_width="30dp"
+        android:paddingBottom="5dp"
+        android:visibility="gone"
+        android:layout_marginRight="50dp"
+        android:layout_height="30dp"/>
 
 </androidx.cardview.widget.CardView>

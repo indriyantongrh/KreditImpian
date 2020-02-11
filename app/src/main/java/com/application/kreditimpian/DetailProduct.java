@@ -232,7 +232,6 @@ public class DetailProduct extends AppCompatActivity {
 
         HashMap<String, String> params = new HashMap<>();
         params.put("id_member",sharedPrefManager.getSpIdMember() );
-        /// params.put("avatar", getStringImage(decoded_3));
         params.put("reference_id", id);
 
         mApiService.InsertShoppingCart(params).enqueue(new Callback<ResponseTransaction>() {
@@ -241,7 +240,7 @@ public class DetailProduct extends AppCompatActivity {
 
                 pDialog.dismiss();
                 if (response.body() !=null) {
-                    Toast.makeText(DetailProduct.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    ////Toast.makeText(DetailProduct.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(DetailProduct.this, Cart.class);
                     startActivity(intent);
                     finish();

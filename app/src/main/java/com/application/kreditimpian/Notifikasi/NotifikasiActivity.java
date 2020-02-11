@@ -33,6 +33,7 @@ public class NotifikasiActivity extends AppCompatActivity implements View.OnClic
     private NotifikasiAdapter notifikasiAdapter;
     private ModelNotifikasi modelNotifikasi;
     private UpgradeImpianViewModel upgradeImpianViewModel;
+    ImageView empty;
 
     private ImageView imgBack;
     private RecyclerView rvNotifikasi;
@@ -82,6 +83,7 @@ public class NotifikasiActivity extends AppCompatActivity implements View.OnClic
         rvNotifikasi = findViewById(R.id.rvNotifikasi);
         progress_bar = findViewById(R.id.progress_bar);
         SwipeRefreshLayout swipeRefresh = findViewById(R.id.swipeRefresh);
+        empty = findViewById(R.id.empty);
 
         linearLayoutManager = new LinearLayoutManager(context);
         rvNotifikasi.setLayoutManager(linearLayoutManager);
@@ -148,40 +150,44 @@ public class NotifikasiActivity extends AppCompatActivity implements View.OnClic
         }
     }
 
+    @SuppressWarnings("unchecked")
     private void loadPaging() {
         isLoading = false;
         modelNotifikasi = new ModelNotifikasi();
         modelNotifikasi.setIdMember(idMember);
 
         upgradeImpianViewModel.setModelNotifikasi(modelNotifikasi);
-        upgradeImpianViewModel.getNotifikasi().observe(this, modelNotifikasis -> {
-            if (modelNotifikasis != null) {
-                int index = notifikasiAdapter.getItemCount() - 1;
-                int end;
-                if (index + PAGE_SIZE <= modelNotifikasis.size()) {
-                    end = index + PAGE_SIZE;
-                } else {
-                    end = modelNotifikasis.size();
-                }
-                if (end <= modelNotifikasis.size()) {
-                    ArrayList<ModelNotifikasi> modelNotifikasiArrayList = new ArrayList<>();
-                    for (int i = index; i < end; i++) {
-                        ModelNotifikasi modelNotifikasi = new ModelNotifikasi();
-                        modelNotifikasi.setIdNotifikasi(modelNotifikasis.get(i).getIdNotifikasi());
-                        modelNotifikasi.setMessage(modelNotifikasis.get(i).getMessage());
-                        modelNotifikasi.setStatus(modelNotifikasis.get(i).getStatus());
-                        modelNotifikasi.setTgl(modelNotifikasis.get(i).getTgl());
-                        modelNotifikasiArrayList.add(modelNotifikasi);
+        upgradeImpianViewModel.getNotifikasi().observe(this, hashMap -> {
+            if (hashMap.get("code").toString().equals("200")) {
+                ArrayList<ModelNotifikasi> modelNotifikasis = (ArrayList<ModelNotifikasi>) hashMap.get("list");
+                if (modelNotifikasis != null) {
+                    int index = notifikasiAdapter.getItemCount() - 1;
+                    int end;
+                    if (index + PAGE_SIZE <= modelNotifikasis.size()) {
+                        end = index + PAGE_SIZE;
+                    } else {
+                        end = modelNotifikasis.size();
                     }
-                    notifikasiAdapter.addAll(modelNotifikasiArrayList);
-                    if (end >= modelNotifikasis.size()) {
+                    if (end <= modelNotifikasis.size()) {
+                        ArrayList<ModelNotifikasi> modelNotifikasiArrayList = new ArrayList<>();
+                        for (int i = index; i < end; i++) {
+                            ModelNotifikasi modelNotifikasi = new ModelNotifikasi();
+                            modelNotifikasi.setIdNotifikasi(modelNotifikasis.get(i).getIdNotifikasi());
+                            modelNotifikasi.setMessage(modelNotifikasis.get(i).getMessage());
+                            modelNotifikasi.setStatus(modelNotifikasis.get(i).getStatus());
+                            modelNotifikasi.setTgl(modelNotifikasis.get(i).getTgl());
+                            modelNotifikasiArrayList.add(modelNotifikasi);
+                        }
+                        notifikasiAdapter.addAll(modelNotifikasiArrayList);
+                        if (end >= modelNotifikasis.size()) {
+                            notifikasiAdapter.setLoading(false);
+                        }
+                    } else {
                         notifikasiAdapter.setLoading(false);
                     }
                 } else {
                     notifikasiAdapter.setLoading(false);
                 }
-            } else {
-                notifikasiAdapter.setLoading(false);
             }
         });
     }
@@ -193,31 +199,39 @@ public class NotifikasiActivity extends AppCompatActivity implements View.OnClic
         modelNotifikasi = new ModelNotifikasi();
         modelNotifikasi.setIdMember(idMember);
 
+
         upgradeImpianViewModel.setModelNotifikasi(modelNotifikasi);
-        upgradeImpianViewModel.getNotifikasi().observe(this, modelNotifikasis -> {
-            if (modelNotifikasis != null) {
-                int batas;
-                if (modelNotifikasis.size() >= PAGE_SIZE) {
-                    batas = PAGE_SIZE;
+        upgradeImpianViewModel.getNotifikasi().observe(this, hashMap -> {
+            if (hashMap.get("code").toString().equals("200")) {
+                ArrayList<ModelNotifikasi> modelNotifikasis = (ArrayList<ModelNotifikasi>) hashMap.get("list");
+                if (modelNotifikasis != null) {
+
+                    int batas;
+                    if (modelNotifikasis.size() >= PAGE_SIZE) {
+                        batas = PAGE_SIZE;
+                    } else {
+                        batas = modelNotifikasis.size();
+                    }
+                    ArrayList<ModelNotifikasi> modelNotifikasiArrayList = new ArrayList<>();
+                    for (int i = 0; i < batas; i++) {
+                        modelNotifikasi = new ModelNotifikasi();
+                        modelNotifikasi.setIdNotifikasi(modelNotifikasis.get(i).getIdNotifikasi());
+                        modelNotifikasi.setMessage(modelNotifikasis.get(i).getMessage());
+                        modelNotifikasi.setStatus(modelNotifikasis.get(i).getStatus());
+                        modelNotifikasi.setTgl(modelNotifikasis.get(i).getTgl());
+                        modelNotifikasiArrayList.add(modelNotifikasi);
+                    }
+                    notifikasiAdapter.addAll(modelNotifikasiArrayList);
+                    if (batas == modelNotifikasis.size()) {
+                        notifikasiAdapter.setLoading(false);
+                    }
                 } else {
-                    batas = modelNotifikasis.size();
-                }
-                ArrayList<ModelNotifikasi> modelNotifikasiArrayList = new ArrayList<>();
-                for (int i = 0; i < batas; i++) {
-                    modelNotifikasi = new ModelNotifikasi();
-                    modelNotifikasi.setIdNotifikasi(modelNotifikasis.get(i).getIdNotifikasi());
-                    modelNotifikasi.setMessage(modelNotifikasis.get(i).getMessage());
-                    modelNotifikasi.setStatus(modelNotifikasis.get(i).getStatus());
-                    modelNotifikasi.setTgl(modelNotifikasis.get(i).getTgl());
-                    modelNotifikasiArrayList.add(modelNotifikasi);
-                }
-                notifikasiAdapter.addAll(modelNotifikasiArrayList);
-                if (batas == modelNotifikasis.size()) {
                     notifikasiAdapter.setLoading(false);
                 }
-            } else {
-                notifikasiAdapter.setLoading(false);
+            }else{
+                empty.setVisibility(View.VISIBLE);
             }
+
             progress_bar.setVisibility(View.GONE);
         });
     }

@@ -47,7 +47,7 @@ public class GantiPassword extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         id_sysuser = sharedPrefManager.getSpIdUser();
-        Toast.makeText(GantiPassword.this, "Iki nggon mu "+id_sysuser, Toast.LENGTH_LONG).show();
+        ////Toast.makeText(GantiPassword.this, "Iki nggon mu "+id_sysuser, Toast.LENGTH_LONG).show();
 
         txtpasswordbaru = findViewById(R.id.txtpasswordbaru);
         txtkonfirmasipasswordbaru = findViewById(R.id.txtkonfirmasipasswordbaru);

@@ -11,6 +11,7 @@ import com.application.kreditimpian.Model.ModelUpgradeImpian.ModelMitraMultiguna
 import com.application.kreditimpian.Model.ModelUpgradeImpian.ModelUpgradeImpian;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class UpgradeImpianViewModel extends ViewModel {
     private UpgradeImpianRepository upgradeImpianRepository;
@@ -58,7 +59,7 @@ public class UpgradeImpianViewModel extends ViewModel {
         return upgradeImpianRepository.uploadFotoImpian(category);
     }
 
-    public LiveData<ArrayList<ModelNotifikasi>> getNotifikasi() {
+    public LiveData<HashMap> getNotifikasi() {
         return upgradeImpianRepository.getNotifikasi(modelNotifikasi);
     }
 

@@ -34,7 +34,7 @@
             <!--Cardview Harga barang-->
             <androidx.cardview.widget.CardView
                 android:id="@+id/CardHarga"
-                android:layout_width="130dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 app:cardElevation="6dp"
                 app:cardCornerRadius="8dp"
@@ -43,7 +43,7 @@
                 android:backgroundTint="@color/colorOrange"
                 android:background ="@drawable/cardvieworange">
                 <RelativeLayout
-                    android:layout_width="130dp"
+                    android:layout_width="200dp"
                     android:background="@drawable/borderhitam"
                     android:backgroundTint="@color/colorOrange"
                     android:layout_height="50dp">
@@ -208,7 +208,7 @@
                         <androidx.cardview.widget.CardView
                             android:id="@+id/carddp"
                             android:layout_below="@+id/textdp"
-                            android:layout_width="130dp"
+                            android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             app:cardElevation="6dp"
                             app:cardCornerRadius="8dp"
@@ -217,7 +217,7 @@
                             android:backgroundTint="@color/colorOrange"
                             android:background ="@drawable/cardvieworange">
                             <RelativeLayout
-                                android:layout_width="130dp"
+                                android:layout_width="200dp"
                                 android:background="@drawable/borderhitam"
                                 android:backgroundTint="@color/colorOrange"
                                 android:layout_height="30dp">
@@ -260,12 +260,12 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/textcicilan"
                         android:gravity="center"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
                         <!--Cardview Tagihan-->
                         <androidx.cardview.widget.CardView
                             android:id="@+id/cardbulanan"
-                            android:layout_width="130dp"
+                            android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             app:cardElevation="6dp"
                             app:cardCornerRadius="8dp"
@@ -274,7 +274,7 @@
                             android:backgroundTint="@color/colorOrange"
                             android:background ="@drawable/cardvieworange">
                             <RelativeLayout
-                                android:layout_width="130dp"
+                                android:layout_width="200dp"
                                 android:background="@drawable/borderhitam"
                                 android:backgroundTint="@color/colorOrange"
                                 android:layout_height="50dp">
@@ -318,7 +318,7 @@
                         <!--Cardview Tenor-->
                         <androidx.cardview.widget.CardView
                             android:id="@+id/cardtenor"
-                            android:layout_width="130dp"
+                            android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             app:cardElevation="6dp"
                             app:cardCornerRadius="8dp"
@@ -327,7 +327,7 @@
                             android:backgroundTint="@color/colorOrange"
                             android:background ="@drawable/cardvieworange">
                             <RelativeLayout
-                                android:layout_width="130dp"
+                                android:layout_width="200dp"
                                 android:background="@drawable/borderhitam"
                                 android:backgroundTint="@color/colorOrange"
                                 android:layout_height="50dp">

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +34,7 @@ import retrofit2.Response;
 
 public class TransactionCheckout extends AppCompatActivity {
 
+
     @BindView(R.id.txt_name_product)
     TextView txt_name_product;
     @BindView(R.id.txt_price_capital)
@@ -49,11 +51,9 @@ public class TransactionCheckout extends AppCompatActivity {
     TextView tvJasaPengiriman;
     @BindView(R.id.tvBiayaKirim)
     TextView tvBiayaKirim;
-
     @BindView(R.id.tvTotalPembayaran)
     TextView tvTotalPembayaran;
-    @BindView(R.id.radiomethodpayment)
-    RadioButton radiomethodpayment;
+
     @BindView(R.id.image)
     ImageView image;
     @BindView(R.id.tvNomorInvoice)
@@ -68,8 +68,9 @@ public class TransactionCheckout extends AppCompatActivity {
     TextView tvTenor2;
     @BindView(R.id.tvInstalment)
     TextView tvInstalment;
-
-    Double Doublebiayakirim, DoubleDownpayment, Totalpembayaran;
+    RadioGroup radiogroup;
+    RadioButton radioButton,radiomethodpayment;
+    int Doublebiayakirim, DoubleDownpayment, TotalPembayaran;
     SharedPrefManager sharedPrefManager;
     @BindView(R.id.btnAjukansekarang)
     Button btnAjukansekarang;
@@ -84,9 +85,19 @@ public class TransactionCheckout extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);// set drawable icon
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        radiogroup = (RadioGroup) findViewById(R.id.radiogroup);
+        radiomethodpayment = findViewById(R.id.radiomethodpayment);
+
         ButterKnife.bind(this);
         mApiService = UtilsApi.getAPIService();
         sharedPrefManager = new SharedPrefManager(this);
+
+        radiogroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+            }
+        });
 
         Intent intent = getIntent();
         String id_member = intent.getStringExtra("id_member");
@@ -116,15 +127,19 @@ public class TransactionCheckout extends AppCompatActivity {
         txt_name_product.setText(name_product);
         txt_price_capital.setText(price_capital);
         txt_price_sale.setText(price_sale);
-        tvMitraKredit.setText("Mitra Kredit :" +name_mitra);
-        tvBiayaKirim.setText("Biaya Kirim :" +estimasipengiman);
-        tvCicilan.setText("Cicilan :" +tenor +"Bulan x Rp. "+cicilan);
-        tvJasaPengiriman.setText("Jasa Pengiriman :" +courier);
-        tvNomorInvoice.setText("Nomor Pesanan :" +number);
-        tvDownpayment.setText( "Downpayment :"+downpayment);
+        tvMitraKredit.setText(name_mitra);
+        tvBiayaKirim.setText(estimasipengiman);
+        tvCicilan.setText(tenor +"Bulan x Rp. "+cicilan);
+        tvJasaPengiriman.setText(courier);
+        tvNomorInvoice.setText(number);
+        tvDownpayment.setText(downpayment);
         txt_price_sale.setText(price_sale);
         tvNote.setText(note);
-        tvTotalPembayaran.setText("Total Pembayaran  :"+Totalpembayaran);
+
+        DoubleDownpayment = Integer.parseInt(downpayment);
+        Doublebiayakirim = Integer.parseInt(estimasipengiman);
+        TotalPembayaran = (DoubleDownpayment + Doublebiayakirim );
+        tvTotalPembayaran.setText(String.valueOf(TotalPembayaran));
 
         Glide.with(TransactionCheckout.this)
                 .load(image_product)
@@ -137,19 +152,30 @@ public class TransactionCheckout extends AppCompatActivity {
 
 
 
+
         btnAjukansekarang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Checkbtnkeputusan(v);
                 postTransaction();
                 Intent intent1 = new Intent(TransactionCheckout.this, SuccessMengajukan.class);
                 startActivity(intent1);
                 finish();
 
 
+
             }
         });
 
 
+    }
+
+    public void Checkbtnkeputusan(View v){
+        int radioid =  radiogroup.getCheckedRadioButtonId();
+
+        radioButton = findViewById(radioid);
+
+        Toast.makeText(this,"Check button " + radioButton.getText(), Toast.LENGTH_SHORT).show();
     }
 
     private void postTransaction(){
@@ -162,7 +188,8 @@ public class TransactionCheckout extends AppCompatActivity {
         params.put("note", tvNote.getText().toString());
         params.put("id_creditor", tvIdCreditor.getText().toString());
         params.put("postal_fee", tvBiayaKirim.getText().toString());
-        params.put("instalment", tvInstalment.getText().toString());
+        params.put("installment", tvInstalment.getText().toString());
+        params.put("payment_method", radioButton.getText().toString());
 
         mApiService.postPengajuan(params).enqueue(new Callback<ResponsePengajuanCatalog>() {
             @Override

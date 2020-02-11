@@ -4,15 +4,20 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.application.kreditimpian.Akun.DataDiri;
+import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Model.ModelOnShoppingCart.DataItem;
+import com.application.kreditimpian.Model.ModelOnShoppingCart.ResponseOnShoppingCart;
 import com.application.kreditimpian.R;
 import com.application.kreditimpian.TransactionProcess.Cart;
 import com.bumptech.glide.Glide;
@@ -23,6 +28,9 @@ import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static com.application.kreditimpian.Api.network.interceptor.MyApp.getContext;
 
@@ -30,11 +38,11 @@ import static com.application.kreditimpian.Api.network.interceptor.MyApp.getCont
  * Created by indriyanto Nugroho on 30 Jan 2020.
  */
 public class AdapterCart extends RecyclerView.Adapter<AdapterCart.HolderCart> {
-
+    BaseApiService mApiService;
     String ImageProduct;
     List<DataItem> dataItemList;
     Context mContext;
-
+    String number;
     public AdapterCart(Context context, List<DataItem> dataList) {
         this.mContext = context;
         dataItemList = dataList;
@@ -84,12 +92,22 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.HolderCart> {
                 .error(R.drawable.no_image)
                 .into(holder.image);
 
+        holder.itemView.setTag(dataItem.getNumber());
+
+
     }
 
     @Override
     public int getItemCount() {
         return dataItemList.size();
     }
+
+    public void removeDataItems(int position){
+        dataItemList.remove(position);
+        notifyItemRemoved(position);
+    }
+
+
 
     public class HolderCart extends RecyclerView.ViewHolder {
 
@@ -113,12 +131,28 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.HolderCart> {
         TextView txt_status;
         @BindView(R.id.image)
         ImageView image;
+        @BindView(R.id.btnDelete)
+        ImageView btnDelete;
 
 
         public HolderCart(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+
+            btnDelete = itemView.findViewById(R.id.btnDelete);
+            btnDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(mContext, "Delete list", Toast.LENGTH_LONG).show();
+
+                    removeDataItems(getAdapterPosition());
+                }
+            });
+
+
         }
+
+
     }
 
 

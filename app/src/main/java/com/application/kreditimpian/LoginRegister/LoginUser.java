@@ -275,7 +275,7 @@ public class LoginUser extends AppCompatActivity {
 
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
-        pDialog.setMessage("Mencoba masuk...");
+        pDialog.setMessage("Loading ...");
         pDialog.show();
 
 
@@ -296,7 +296,7 @@ public class LoginUser extends AppCompatActivity {
                     List<DataItem> dataLogin = responseLogin.getData();
                     for(DataItem d : dataLogin){
 
-                        Toast.makeText(LoginUser.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginUser.this, "Berhasil Login \n Lengkapi data Anda.", Toast.LENGTH_SHORT).show();
 
                         sharedPrefManager.saveSPString(SharedPrefManager.SP_ID_USER, d.getIdUser());
                         sharedPrefManager.saveSPString(SharedPrefManager.SP_ID_MEMBER, d.getIdMember());
@@ -310,17 +310,11 @@ public class LoginUser extends AppCompatActivity {
                         startActivity(new Intent(LoginUser.this, MenuUtama.class)
                                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
                         finish();
-
-
                     }
-
-
-
                 } else {
                     Toast.makeText(LoginUser.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
-
             @Override
             public void onFailure(Call<ResponseLogin> call, Throwable t) {
                 pDialog.dismiss();
@@ -500,7 +494,7 @@ public class LoginUser extends AppCompatActivity {
 //                        sharedPrefManager.saveSPString(SharedPrefManager.SP_USERNAME, username);
 //                        sharedPrefManager.saveSPString(SharedPrefManager.SP_MSISDN, msisdn);
 
-                        Toast.makeText(getApplicationContext(), "Berhasil Login", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Berhasil Login\n dan Lengkapi Data Anda.", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(LoginUser.this, MenuUtama.class);
                         sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, true);
                         startActivity(intent);

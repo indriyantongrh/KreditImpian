@@ -23,6 +23,7 @@ import org.json.JSONTokener;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -382,9 +383,8 @@ public class UpgradeImpianRepository {
         });
         return mutableLiveData;
     }
-
-    public LiveData<ArrayList<ModelNotifikasi>> getNotifikasi(ModelNotifikasi modelNotifikasi) {
-        MutableLiveData<ArrayList<ModelNotifikasi>> mutableLiveData = new MutableLiveData<>();
+    public LiveData<HashMap> getNotifikasi(ModelNotifikasi modelNotifikasi) {
+        MutableLiveData<HashMap> mutableLiveData = new MutableLiveData<>();
         responseBodyCall = getApiMobile2().getnotifikasi(
                 modelNotifikasi.getIdMember()
         );
@@ -395,9 +395,11 @@ public class UpgradeImpianRepository {
                     try {
                         responses = response.body().string();
                         jsonObject = new JSONObject(responses);
+                        HashMap<String, Object> hashMap = new HashMap<>();
+                        hashMap.put("code", jsonObject.getString("response_code"));
                         Log.v("jajal", jsonObject+"");
-                        ArrayList<ModelNotifikasi> modelNotifikasiArrayList = new ArrayList<>();
                         if (jsonObject.getString("response_code").equals("200")) {
+                            ArrayList<ModelNotifikasi> modelNotifikasiArrayList = new ArrayList<>();
 //                            Object json = new JSONTokener(jsonObject.getString("data")).nextValue();
                             if (!jsonObject.getString("data").equals("null")) {
                                 jsonArray = new JSONArray(jsonObject.getString("data"));
@@ -410,9 +412,11 @@ public class UpgradeImpianRepository {
                                     modelNotifikasi1.setTgl(jsonObject.getString("date"));
                                     modelNotifikasiArrayList.add(modelNotifikasi1);
                                 }
-                                mutableLiveData.setValue(modelNotifikasiArrayList);
+                                hashMap.put("list", modelNotifikasiArrayList);
                             }
                         }
+                        mutableLiveData.setValue(hashMap);
+
                     } catch (IOException | JSONException e) {
                         Toast.makeText(context, "Error JSON: " + e.getMessage(), Toast.LENGTH_LONG).show();
                         Log.v("jajal", e.getMessage());

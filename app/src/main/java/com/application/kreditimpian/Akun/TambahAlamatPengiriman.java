@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.application.kreditimpian.Api.SharedPrefManager;
@@ -21,6 +22,8 @@ import com.application.kreditimpian.Model.ModelAddress.ResponseAddress;
 import com.application.kreditimpian.Model.ModelGeodirectory.DataItem;
 import com.application.kreditimpian.Model.ModelGeodirectory.ResponseGeodirectory;
 import com.application.kreditimpian.R;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,6 +42,7 @@ public class TambahAlamatPengiriman extends AppCompatActivity implements Adapter
     BaseApiService mApiService;
     ProgressDialog loading;
     Switch SwitchAddress;
+    TextView textid_distric,textid_geodirectory;
     Spinner spinnerkecamatan_pengiriman, spinnerkota_pengiriman;
     EditText txtnamaalamat,txtnamapenerima,txtnomorhandphone,txtkodepospengiriman,txtalamatpengririman;
     Button btnsimpan_pengiriman;
@@ -59,6 +63,9 @@ public class TambahAlamatPengiriman extends AppCompatActivity implements Adapter
         sharedPrefManager = new SharedPrefManager(TambahAlamatPengiriman.this);
         spinnerkecamatan_pengiriman = findViewById(R.id.spinnerkecamatan_pengiriman);
         spinnerkota_pengiriman = findViewById(R.id.spinnerkota_pengiriman);
+        textid_geodirectory = findViewById(R.id.textid_geodirectory);
+        textid_distric = findViewById(R.id.textid_distric);
+
 
 
         SwitchAddress = findViewById(R.id.SwitchAddress);
@@ -134,9 +141,9 @@ public class TambahAlamatPengiriman extends AppCompatActivity implements Adapter
         params.put("address_name", txtnamaalamat.getText().toString());
         params.put("phone", txtnomorhandphone.getText().toString());
         params.put("receiver", txtnamapenerima.getText().toString());
-        params.put("id_geodirectory", spinnerkota_pengiriman.getSelectedItem().toString());
+        params.put("id_geodirectory", textid_geodirectory.getText().toString());
 //        params.put("id_geodirectory", spinnerkota_pengiriman.getSelectedItem().toString());
-        params.put("district", spinnerkecamatan_pengiriman.getSelectedItem().toString());
+        params.put("district", textid_distric.getText().toString());
         params.put("postal_code", txtkodepospengiriman.getText().toString());
         params.put("address", txtalamatpengririman.getText().toString());
         /*Method post Main addresses from switch button*/
@@ -173,9 +180,70 @@ public class TambahAlamatPengiriman extends AppCompatActivity implements Adapter
 
     }
 
-
-
+    /*Menampilkan data  City*/
     private void getGeoCity(){
+
+        cityvalues = new HashMap<>();
+        mApiService.getCity().enqueue(new Callback<ResponseGeodirectory>() {
+            @Override
+            public void onResponse(Call<ResponseGeodirectory> call, Response<ResponseGeodirectory> response) {
+                if(response.body() !=null){
+                    //// String citySelected = spinnerkota_pengiriman.getItemAtPosition(p).toString();
+                    List<com.application.kreditimpian.Model.ModelGeodirectory.DataItem> getCity = response.body().getData();
+                    List<String> listSpinner = new ArrayList<String>();
+                    String[] idcity = new String[getCity.size() +1];
+                    String[] city = new String[getCity.size() +1];
+                    city[0] = "-- Pilih Kota --";
+                    for (int i = 0; i < getCity.size(); i++){
+                        ///listSpinner.add(getCity.get(i).getIdParent());
+                        city[i + 1] = getCity.get(i).getName();
+                        idcity[i + 1] = getCity.get(i).getId();
+                        cityvalues.put(city[i + 1], idcity[i + 1] );
+//                         id = getCity.get(i).getId();
+//                         nameCity = getCity.get(i).getName();
+                        ///listSpinner.add(nameCity);
+
+                    }
+                    // Set hasil result json ke dalam adapter spinner
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(TambahAlamatPengiriman.this,
+                            android.R.layout.simple_spinner_item, city);
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    spinnerkota_pengiriman.setAdapter(adapter);
+                    spinnerkota_pengiriman.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                            if(position>0){
+                                String cityvalues = getCity.get(position - 1 ).getId();
+                                textid_geodirectory.setText(cityvalues);
+                               /// Toast.makeText(TambahAlamatPengiriman.this, " ini id City "+cityvalues, Toast.LENGTH_LONG).show();
+
+                            }
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+
+                        }
+                    });
+
+
+                } else {
+                    loading.dismiss();
+                    Toast.makeText(TambahAlamatPengiriman.this, "Gagal mengambil data ", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseGeodirectory> call, Throwable t) {
+
+            }
+        });
+
+
+    }
+
+/*    private void getGeoCityyy(){
 
         cityvalues = new HashMap<>();
         mApiService.getCity().enqueue(new Callback<ResponseGeodirectory>() {
@@ -206,9 +274,9 @@ public class TambahAlamatPengiriman extends AppCompatActivity implements Adapter
 
             }
         });
-    }
+    }*/
 
-    private void getCity(List<DataItem> getCity){
+/*    private void getCity(List<DataItem> getCity){
         this.getCity = getCity;
         List<String> listSpinner = new ArrayList<String>();
         String[] idcity = new String[getCity.size() +1];
@@ -231,7 +299,7 @@ public class TambahAlamatPengiriman extends AppCompatActivity implements Adapter
         spinnerkota_pengiriman.setAdapter(adapter);
         spinnerkota_pengiriman.setOnItemSelectedListener(this);
 
-    }
+    }*/
 
     private void getGeoDistrict(){
 
@@ -264,7 +332,8 @@ public class TambahAlamatPengiriman extends AppCompatActivity implements Adapter
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                             if(position>0){
                                 String districtvalue = getDistrictArray.get(position - 1 ).getId();
-                                Toast.makeText(TambahAlamatPengiriman.this, " ini id Kecamatan  "+districtvalue, Toast.LENGTH_LONG).show();
+                                textid_distric.setText(districtvalue);
+                               /// Toast.makeText(TambahAlamatPengiriman.this, " ini id Kecamatan  "+districtvalue, Toast.LENGTH_LONG).show();
 
                             }
                         }
@@ -308,7 +377,7 @@ public class TambahAlamatPengiriman extends AppCompatActivity implements Adapter
             if(position>0){
                 String cityvalues = getCity.get(position - 1 ).getId();
                 this.cityvaluess = cityvalues;
-                ///Toast.makeText(TambahAlamatPengiriman.this, " ini id City "+cityvalues, Toast.LENGTH_LONG).show();
+                Toast.makeText(TambahAlamatPengiriman.this, " ini id City "+cityvalues, Toast.LENGTH_LONG).show();
             }
         }
     }

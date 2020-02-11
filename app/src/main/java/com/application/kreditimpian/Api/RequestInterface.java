@@ -1,32 +1,22 @@
 package com.application.kreditimpian.Api;
 
 
-import com.application.kreditimpian.Model.ModelMitra;
+import com.application.kreditimpian.Model.RegisterModel.RegisterResponse;
 import com.application.kreditimpian.ResponseMessage.ResponseLoginSucces;
-import com.application.kreditimpian.ResponseMessage.ResponseRegister;
 
-import java.util.List;
-
-import okhttp3.MultipartBody;
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.GET;
-import retrofit2.http.Headers;
-import retrofit2.http.Multipart;
 import retrofit2.http.POST;
-import retrofit2.http.Part;
-import retrofit2.http.Query;
 
 public interface RequestInterface {
 
     /*API KreditImpian*/
     //Insert User Baru
 
-    @FormUrlEncoded
+      @FormUrlEncoded
     @POST("members/create")
-    Call<ResponseRegister> create_member (@Field("id") String id,
+    Call<RegisterResponse> create_member (
                                           @Field("username") String username,
                                           @Field("email") String email,
                                           @Field("phone") String phone,

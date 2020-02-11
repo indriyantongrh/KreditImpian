@@ -5,12 +5,12 @@ android {
     buildToolsVersion "29.0.1"
     defaultConfig {
         applicationId "com.application.kreditimpian"
-        minSdkVersion 26
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField "String", "BASE_URL", "\"https://development.kreditimpian.id/api/\""
+        buildConfigField "String", "BASE_URL", "\"https://development.kreditimpian.com/api/\""
     }
     buildTypes {
         release {
@@ -127,6 +127,6 @@ dependencies {
 
     implementation 'com.github.chivorns:smartmaterialspinner:1.1.6'
 
-
+    implementation 'com.google.code.gson:gson:2.8.6'
     //implementation 'com.cossacklabs.com:themis:+' // better to check which version is current latest and link to it
 }

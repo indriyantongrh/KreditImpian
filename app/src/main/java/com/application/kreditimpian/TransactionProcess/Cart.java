@@ -82,6 +82,7 @@ public class Cart extends AppCompatActivity {
         mApiService = UtilsApi.getAPIService();
         ListCart = findViewById(R.id.ListCart);
         adapterCart = new AdapterCart(this, dataItemList);
+        dataItemList = new ArrayList<>();
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 1, GridLayoutManager.VERTICAL, false);
         ListCart.setLayoutManager(mLayoutManager);
         ListCart.setItemAnimator(new DefaultItemAnimator());
@@ -120,28 +121,32 @@ public class Cart extends AppCompatActivity {
         mApiService.getOnShoppingCart(sharedPrefManager.getSpIdMember()).enqueue(new Callback<ResponseOnShoppingCart>() {
             @Override
             public void onResponse(Call<ResponseOnShoppingCart> call, Response<ResponseOnShoppingCart> response) {
-                if(response.body().getResponseCode()==200){
-                    swipeRefresh.setRefreshing(false);
-                    progressBar.dismiss();
-                    final List<DataItem> OnShippingCart = response.body().getData();
 
-                    ListCart.setAdapter(new AdapterCart(mContext, OnShippingCart));
-                    adapterCart.notifyDataSetChanged();
-                    empty.setVisibility(View.GONE);
-                    initDataIntent(OnShippingCart);
-                }else {
-                    progressBar.dismiss();
-                    Toast.makeText(Cart.this, "Koneksi internet terputus", Toast.LENGTH_SHORT).show();
-                    empty.setVisibility(View.VISIBLE);
 
-                }
+                    if (response.body().getResponseCode() == 200) {
+                        swipeRefresh.setRefreshing(false);
+                        progressBar.dismiss();
+                        final List<DataItem> OnShippingCart = response.body().getData();
+
+                        ListCart.setAdapter(new AdapterCart(mContext, OnShippingCart));
+                        adapterCart.notifyDataSetChanged();
+                        empty.setVisibility(View.GONE);
+                        initDataIntent(OnShippingCart);
+                    } else {
+                        progressBar.dismiss();
+                        Toast.makeText(Cart.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        ////Toast.makeText(Cart.this, "Koneksi internet terputus", Toast.LENGTH_SHORT).show();
+                        empty.setVisibility(View.VISIBLE);
+
+                    }
+
 
             }
 
             @Override
             public void onFailure(Call<ResponseOnShoppingCart> call, Throwable t) {
                 progressBar.dismiss();
-                Toast.makeText(Cart.this, "Gagal Refresh", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Cart.this, "Koneksi anda terputus", Toast.LENGTH_SHORT).show();
             }
         });
 

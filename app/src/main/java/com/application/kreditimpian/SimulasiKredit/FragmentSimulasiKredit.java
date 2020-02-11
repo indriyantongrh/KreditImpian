@@ -55,7 +55,7 @@ public class FragmentSimulasiKredit extends Fragment {
             public void onClick(View view) {
 
                 FragmentTransaction fr=getFragmentManager().beginTransaction();
-                fr.replace(R.id.frame_containerkredit, new FragmentSimulasiGadget());
+                fr.replace(R.id.frame_containerkredit, new FragmentSimulasiGadget(), null).addToBackStack(null);
                 fr.commit();
 
                 ///Toast.makeText(getContext(),"Sukses",Toast.LENGTH_SHORT).show();
@@ -69,7 +69,7 @@ public class FragmentSimulasiKredit extends Fragment {
             public void onClick(View view) {
 
                 FragmentTransaction fr=getFragmentManager().beginTransaction();
-                fr.replace(R.id.frame_containerkredit, new FragmentSimulasiLaptop());
+                fr.replace(R.id.frame_containerkredit, new FragmentSimulasiLaptop(), null).addToBackStack(null);
                 fr.commit();
 
                 ///Toast.makeText(getContext(),"Sukses",Toast.LENGTH_SHORT).show();
@@ -84,7 +84,7 @@ public class FragmentSimulasiKredit extends Fragment {
             public void onClick(View view) {
 
                 FragmentTransaction fr=getFragmentManager().beginTransaction();
-                fr.replace(R.id.frame_containerkredit, new FragmentSimulasiOtomotif());
+                fr.replace(R.id.frame_containerkredit, new FragmentSimulasiOtomotif(), null).addToBackStack(null);
                 fr.commit();
 
                 ///Toast.makeText(getContext(),"Sukses",Toast.LENGTH_SHORT).show();
@@ -97,7 +97,7 @@ public class FragmentSimulasiKredit extends Fragment {
             public void onClick(View view) {
 
                 FragmentTransaction fr=getFragmentManager().beginTransaction();
-                fr.replace(R.id.frame_containerkredit, new FragmentSimulasiForniture());
+                fr.replace(R.id.frame_containerkredit, new FragmentSimulasiForniture(), null).addToBackStack(null);
                 fr.commit();
 
                 ///Toast.makeText(getContext(),"Sukses",Toast.LENGTH_SHORT).show();
@@ -110,7 +110,7 @@ public class FragmentSimulasiKredit extends Fragment {
             public void onClick(View view) {
 
                 FragmentTransaction fr=getFragmentManager().beginTransaction();
-                fr.replace(R.id.frame_containerkredit, new FragmentSimulasiFashion());
+                fr.replace(R.id.frame_containerkredit, new FragmentSimulasiFashion(), null).addToBackStack(null);
                 fr.commit();
 
                 ///Toast.makeText(getContext(),"Sukses",Toast.LENGTH_SHORT).show();
@@ -123,7 +123,7 @@ public class FragmentSimulasiKredit extends Fragment {
             public void onClick(View view) {
 
                 FragmentTransaction fr=getFragmentManager().beginTransaction();
-                fr.replace(R.id.frame_containerkredit, new FragmentSimulasiHobi());
+                fr.replace(R.id.frame_containerkredit, new FragmentSimulasiHobi(), null).addToBackStack(null);
                 fr.commit();
 
                 ///Toast.makeText(getContext(),"Sukses",Toast.LENGTH_SHORT).show();
@@ -137,7 +137,7 @@ public class FragmentSimulasiKredit extends Fragment {
             public void onClick(View view) {
 
                 FragmentTransaction fr=getFragmentManager().beginTransaction();
-                fr.replace(R.id.frame_containerkredit, new FragmentSimulasiProperty());
+                fr.replace(R.id.frame_containerkredit, new FragmentSimulasiProperty(), null).addToBackStack(null);
                 fr.commit();
 
                 ///Toast.makeText(getContext(),"Sukses",Toast.LENGTH_SHORT).show();
@@ -150,7 +150,7 @@ public class FragmentSimulasiKredit extends Fragment {
             public void onClick(View view) {
 
                 FragmentTransaction fr=getFragmentManager().beginTransaction();
-                fr.replace(R.id.frame_containerkredit, new FragmentSimulasiElektronik());
+                fr.replace(R.id.frame_containerkredit, new FragmentSimulasiElektronik(), null).addToBackStack(null);
                 fr.commit();
 
                 ///Toast.makeText(getContext(),"Sukses",Toast.LENGTH_SHORT).show();
@@ -163,7 +163,7 @@ public class FragmentSimulasiKredit extends Fragment {
             public void onClick(View view) {
 
                 FragmentTransaction fr=getFragmentManager().beginTransaction();
-                fr.replace(R.id.frame_containerkredit, new FragmentSimulasiTravel());
+                fr.replace(R.id.frame_containerkredit, new FragmentSimulasiTravel(), null).addToBackStack(null);
                 fr.commit();
 
                 ///Toast.makeText(getContext(),"Sukses",Toast.LENGTH_SHORT).show();
@@ -176,7 +176,7 @@ public class FragmentSimulasiKredit extends Fragment {
             public void onClick(View view) {
 
                 FragmentTransaction fr=getFragmentManager().beginTransaction();
-                fr.replace(R.id.frame_containerkredit, new FragmentSimulasiHolytour());
+                fr.replace(R.id.frame_containerkredit, new FragmentSimulasiHolytour(), null).addToBackStack(null);
                 fr.commit();
 
                 ///Toast.makeText(getContext(),"Sukses",Toast.LENGTH_SHORT).show();
@@ -189,7 +189,7 @@ public class FragmentSimulasiKredit extends Fragment {
             public void onClick(View view) {
 
                 FragmentTransaction fr=getFragmentManager().beginTransaction();
-                fr.replace(R.id.frame_containerkredit, new FragmentSimulasiUMKM());
+                fr.replace(R.id.frame_containerkredit, new FragmentSimulasiUMKM(), null).addToBackStack(null);
                 fr.commit();
 
                 ///Toast.makeText(getContext(),"Sukses",Toast.LENGTH_SHORT).show();
@@ -202,7 +202,7 @@ public class FragmentSimulasiKredit extends Fragment {
             public void onClick(View view) {
 
                 FragmentTransaction fr=getFragmentManager().beginTransaction();
-                fr.replace(R.id.frame_containerkredit, new FragmentSimulasiCorporate());
+                fr.replace(R.id.frame_containerkredit, new FragmentSimulasiCorporate(), null).addToBackStack(null);
                 fr.commit();
 
                 ///Toast.makeText(getContext(),"Sukses",Toast.LENGTH_SHORT).show();
@@ -215,7 +215,7 @@ public class FragmentSimulasiKredit extends Fragment {
             public void onClick(View view) {
 
                 FragmentTransaction fr=getFragmentManager().beginTransaction();
-                fr.replace(R.id.frame_containerkredit, new FragmentSimulasiPendanaan());
+                fr.replace(R.id.frame_containerkredit, new FragmentSimulasiPendanaan(), null).addToBackStack(null);
                 fr.commit();
 
                 ///Toast.makeText(getContext(),"Sukses",Toast.LENGTH_SHORT).show();
@@ -228,7 +228,7 @@ public class FragmentSimulasiKredit extends Fragment {
             public void onClick(View view) {
 
                 FragmentTransaction fr=getFragmentManager().beginTransaction();
-                fr.replace(R.id.frame_containerkredit, new FragmentSimulasiMultiproduct());
+                fr.replace(R.id.frame_containerkredit, new FragmentSimulasiMultiproduct(), null).addToBackStack(null);
                 fr.commit();
 
                 ///Toast.makeText(getContext(),"Sukses",Toast.LENGTH_SHORT).show();

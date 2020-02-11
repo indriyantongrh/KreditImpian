@@ -2,7 +2,6 @@ package com.application.kreditimpian.Api.api_v2;
 
 
 import com.application.kreditimpian.Model.ModelAddress.ResponseAddress;
-import com.application.kreditimpian.Model.ModelCicilan.ResponseCicilan;
 import com.application.kreditimpian.Model.ModelGeodirectory.ResponseGeodirectory;
 import com.application.kreditimpian.Model.ModelListAlamat.ResponseListAlamat;
 import com.application.kreditimpian.Model.ModelLogin.ResponseLogin;
@@ -11,7 +10,7 @@ import com.application.kreditimpian.Model.ModelMemberInsert.ResponseMemberInsert
 import com.application.kreditimpian.Model.ModelMerchant.ResponseMerchant;
 import com.application.kreditimpian.Model.ModelMitraSelected.ResponseMitraSelected;
 import com.application.kreditimpian.Model.ModelOnShoppingCart.ResponseOnShoppingCart;
-import com.application.kreditimpian.Model.ModelOngkoskirim.ResponseOnkosKirim;
+import com.application.kreditimpian.Model.ModelOngkoskirim.ResponseOngkir;
 import com.application.kreditimpian.Model.ModelPengajuanCatalog.ResponsePengajuanCatalog;
 import com.application.kreditimpian.Model.ModelProductBaru.ResponseProductBaru;
 
@@ -20,7 +19,9 @@ import com.application.kreditimpian.Model.ModelSelectedTenor.ResponseSelectedTen
 import com.application.kreditimpian.Model.ModelTransaction.ResponseTransaction;
 import com.application.kreditimpian.Model.ModelUserDetail.ResponseMembers;
 import com.application.kreditimpian.Model.ModelValidationSMS.ResponseSmsOTP;
+import com.application.kreditimpian.Model.ResponseRegisterBaru.NewResponseRegister;
 import com.application.kreditimpian.ResponseMessage.ResponseLoginSucces;
+import com.application.kreditimpian.ResponseMessage.ResponseRegister;
 
 import java.util.HashMap;
 
@@ -107,7 +108,7 @@ public interface BaseApiService {
 
     /*API GET ONGKOS KIRIM*/
     @GET("ApiMobile/apiheadRajaongkir")
-    Call<ResponseOnkosKirim> getOngkir(@QueryMap HashMap<String, String> params);
+    Call<ResponseOngkir> getOngkir(@QueryMap HashMap<String, String> params);
 
     @GET("ApiMobile/getpaymentdata")
     Call<ResponseSelectedTenor> getTenorSelected(@Query("id_product") String id_product,
@@ -317,4 +318,12 @@ public interface BaseApiService {
     Call<ResponseBody> updateSeen(
             @Field("id_notification") String id_notification
     );
+
+    @FormUrlEncoded
+    @POST("ApiMobile2/register")
+    Call<NewResponseRegister> registerMember (@Field("username") String username,
+                                          @Field("email") String email,
+                                          @Field("phone") String phone,
+                                          @Field("password") String password,
+                                          @Field("password_confirm") String password_confirm);
 }
