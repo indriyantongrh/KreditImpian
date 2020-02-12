@@ -170,9 +170,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
 
 
-        /// spinner tagihan perbulan
-        String [] values =
-                {"Jenis Kelamin","FEMALE","MALE"};
+
 
         List<String> gender = new ArrayList<String>();
         gender.add(0, "Jenis Kelamin");
@@ -188,26 +186,42 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         religion.add("BUDHA");
 
         List<String> Status = new ArrayList<String>();
-        religion.add(0, "Pilih Status");
-        religion.add("LAJANG");
-        religion.add("MENIKAH");
-        religion.add("CERAI");
+        Status.add(0, "Pilih Status");
+        Status.add("LAJANG");
+        Status.add("MENIKAH");
+        Status.add("CERAI");
 
         List<String> Kredit = new ArrayList<String>();
-        religion.add(0, "Apakah Anda memiliki kredit/cicilan yang sedang berjalan?");
-        religion.add("IYA");
-        religion.add("TIDAK");
+        Kredit.add(0, "Apakah Anda memiliki kredit/cicilan yang sedang berjalan?");
+        Kredit.add("YES");
+        Kredit.add("NO");
 
         List<String> TempatTinggal = new ArrayList<String>();
-        religion.add(0, "Status Tempat Tinggal");
-        religion.add("CONTRAC");
-        religion.add("RUMAH SENDIRI");
-        religion.add("KOS");
-        religion.add("IKUT ORANG TUA");
+        TempatTinggal.add(0, "Status Tempat Tinggal");
+        TempatTinggal.add("KONTRAK");
+        TempatTinggal.add("RUMAH SENDIRI");
+        TempatTinggal.add("KOS");
+        TempatTinggal.add("IKUT ORANG TUA");
 
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(DataDiri.this, android.R.layout.simple_spinner_item, gender);
             adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
             spinnerjeniskelamin.setAdapter(adapter);
+
+        ArrayAdapter<String> adapterStatus = new ArrayAdapter<String>(DataDiri.this, android.R.layout.simple_spinner_item, Status);
+        adapterStatus.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        spinnerstatus.setAdapter(adapterStatus);
+
+        ArrayAdapter<String> adapterReligion = new ArrayAdapter<String>(DataDiri.this, android.R.layout.simple_spinner_item, religion);
+        adapterReligion.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        spinneragama.setAdapter(adapterReligion);
+
+        ArrayAdapter<String> adapterRumah = new ArrayAdapter<String>(DataDiri.this, android.R.layout.simple_spinner_item,TempatTinggal );
+        adapterRumah.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        spinnerstatusrumah.setAdapter(adapterRumah);
+
+        ArrayAdapter<String> adapterKredit = new ArrayAdapter<String>(DataDiri.this, android.R.layout.simple_spinner_item, Kredit );
+        adapterKredit.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        spinnerkredit.setAdapter(adapterKredit);
 
         getGeoCity();
         getGeoDistrict();
@@ -498,7 +512,8 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         params.put("marital", spinnerstatus.getSelectedItem().toString());
         params.put("religion", spinneragama.getSelectedItem().toString());
         params.put("family_dependent", txtjumlahtanggungan.getText().toString());
-        params.put("installment", spinnerstatusrumah.getSelectedItem().toString());
+        params.put("installment", spinnerkredit.getSelectedItem().toString());
+        params.put("residence_status", spinnerstatusrumah.getSelectedItem().toString());
         params.put("job", txtpekerjaan.getText().toString());
         params.put("income", txtpendapatan.getText().toString());
         params.put("number_citizen", txtnikktp.getText().toString());
@@ -544,11 +559,16 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
     /*Menampilkan data memebr sesuai ID*/
     private void getmemberDetail(){
       ///// loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
+        pDialog = new ProgressDialog(this);
+        pDialog.setCancelable(false);
+        pDialog.setMessage("Loading ...");
+        pDialog.show();
 
 
         mApiService.getMemberDetail().enqueue(new Callback<ResponseMembers>() {
             @Override
             public void onResponse(Call<ResponseMembers> call, Response<ResponseMembers> response) {
+                pDialog.dismiss();
                 if(response.body() !=null){
                     ResponseMembers responseMembers = response.body();
                     List<ResultItem> details = responseMembers.getResult();
@@ -566,6 +586,59 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                                     txtpekerjaan.setText(reqresultItem.getMetadata().getJob());
                                     txtpendapatan.setText(reqresultItem.getMetadata().getIncome());
                                     txtjumlahtanggungan.setText(reqresultItem.getMetadata().getFamilyDependent());
+                                    String genderData = new String(reqresultItem.getMetadata().getGender());
+                                    if(genderData.equals("MALE")){
+                                        spinnerjeniskelamin.setSelection(2);
+                                    }else if (genderData.equals("FEMALE")){
+                                        spinnerjeniskelamin.setSelection(1);
+                                    }
+
+                                    String Status = new String(reqresultItem.getMetadata().getMarital());
+                                    if(Status.equals("LAJANG")){
+                                        spinnerstatus.setSelection(1);
+                                    }else if (Status.equals("MENIKAH")){
+                                        spinnerstatus.setSelection(2);
+                                    }else if(Status.equals("CERAI")){
+                                        spinnerstatus.setSelection(3);
+
+                                    }
+
+                                    String Agama = new String(reqresultItem.getMetadata().getReligion());
+                                    if(Agama.equals("HINDU")){
+                                        spinneragama.setSelection(1);
+                                    }else if (Agama.equals("ISLAM")){
+                                        spinneragama.setSelection(2);
+                                    }else if(Agama.equals("KRISTEN")){
+                                        spinneragama.setSelection(3);
+
+                                    }else if(Agama.equals("KATOLIK")){
+                                        spinneragama.setSelection(4);
+
+                                    }else if(Agama.equals("BUDHA")){
+                                        spinneragama.setSelection(4);
+
+                                    }
+
+                                    String StatusTempatTinggal = new String(reqresultItem.getMetadata().getResidenceStatus());
+                                    if(StatusTempatTinggal.equals("KONTRAK")){
+                                        spinnerstatusrumah.setSelection(1);
+                                    }else if (StatusTempatTinggal.equals("RUMAH SENDIRI")){
+                                        spinnerstatusrumah.setSelection(2);
+                                    }else if(StatusTempatTinggal.equals("KOS")){
+                                        spinnerstatusrumah.setSelection(3);
+
+                                    }else if(StatusTempatTinggal.equals("IKUT ORANG TUA")){
+                                        spinnerstatusrumah.setSelection(4);
+
+                                    }
+
+                                    String TanggunganKredit = new String(reqresultItem.getMetadata().getInstallment());
+                                    if(TanggunganKredit.equals("YES")){
+                                        spinnerkredit.setSelection(1);
+                                    }else if (TanggunganKredit.equals("NO")){
+                                        spinnerkredit.setSelection(2);
+                                    }
+
                                     txtnikktp.setText(reqresultItem.getMetadata().getNumberCitizen());
                                     txtnomornpwp.setText(reqresultItem.getMetadata().getNumberTaxpayer());
                                     txtibukandung.setText(reqresultItem.getMetadata().getParentName());

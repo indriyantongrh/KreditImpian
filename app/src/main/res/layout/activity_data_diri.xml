@@ -191,6 +191,7 @@
                         android:layout_width="match_parent"
                         android:fontFamily="@font/jipatharegular"
                         android:textSize="26dp"
+
                         android:layout_height="match_parent"></Spinner>
                 </LinearLayout>
 
@@ -208,7 +209,6 @@
 
                     <Spinner
                         android:id="@+id/spinnerstatus"
-                        android:entries="@array/status"
                         android:layout_width="match_parent"
                         android:fontFamily="@font/jipatharegular"
                         android:textSize="26dp"
@@ -229,7 +229,6 @@
 
                     <Spinner
                         android:id="@+id/spinneragama"
-                        android:entries="@array/agama"
                         android:layout_width="match_parent"
                         android:fontFamily="@font/jipatharegular"
                         android:textSize="26dp"
@@ -433,7 +432,6 @@
 
                     <Spinner
                         android:id="@+id/spinnerkredit"
-                        android:entries="@array/kredit"
                         android:layout_width="match_parent"
                         android:fontFamily="@font/jipatharegular"
                         android:textSize="26dp"
@@ -454,7 +452,6 @@
 
                     <Spinner
                         android:id="@+id/spinnerstatusrumah"
-                        android:entries="@array/statusrumah"
                         android:layout_width="match_parent"
                         android:fontFamily="@font/jipatharegular"
                         android:textSize="26dp"

@@ -101,7 +101,7 @@ public class AlamatPengiriman extends AppCompatActivity {
 
                     ListAlamat.setAdapter(new AdapterAddresses(mContext, Addresses));
                     adapterAddresses.notifyDataSetChanged();
-                    empty.setVisibility(View.GONE);
+                    ///empty.setVisibility(View.GONE);
                    initDataIntent(Addresses);
                 }else {
                     progressBar.dismiss();
