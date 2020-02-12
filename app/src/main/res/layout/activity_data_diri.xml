@@ -714,7 +714,7 @@
                         android:layout_height="15dp"></LinearLayout>
 
                     <LinearLayout
-                        android:orientation="horizontal"
+                        android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:background="@drawable/borderhitam"
                         android:layout_height="37dp">
@@ -724,7 +724,25 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:entries="@array/kota"></Spinner>
+
+
                     </LinearLayout>
+
+                <LinearLayout
+                    android:background="#fff"
+                    android:orientation="vertical"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp">
+
+                    <TextView
+                        android:id="@+id/kotaSelected"
+                        android:text="Kota Yang anda Pilih"
+                        android:layout_width="wrap_content"
+                        android:visibility="gone"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
 
                     <!--Border-->
                     <LinearLayout
@@ -744,6 +762,22 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"></Spinner>
                     </LinearLayout>
+
+                <LinearLayout
+                    android:background="#fff"
+                    android:orientation="vertical"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp">
+
+
+                    <TextView
+                        android:id="@+id/kecamatanSelected"
+                        android:text="Kecamatan Yang anda Pilih"
+                        android:layout_width="wrap_content"
+                        android:visibility="gone"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
 
                     <!--Border-->
                     <LinearLayout

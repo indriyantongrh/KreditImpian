@@ -559,16 +559,16 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
     /*Menampilkan data memebr sesuai ID*/
     private void getmemberDetail(){
       ///// loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
-        pDialog = new ProgressDialog(this);
-        pDialog.setCancelable(false);
-        pDialog.setMessage("Loading ...");
-        pDialog.show();
+//        pDialog = new ProgressDialog(this);
+//        pDialog.setCancelable(false);
+//        pDialog.setMessage("Loading ...");
+//        pDialog.show();
 
 
         mApiService.getMemberDetail().enqueue(new Callback<ResponseMembers>() {
             @Override
             public void onResponse(Call<ResponseMembers> call, Response<ResponseMembers> response) {
-                pDialog.dismiss();
+               /// pDialog.dismiss();
                 if(response.body() !=null){
                     ResponseMembers responseMembers = response.body();
                     List<ResultItem> details = responseMembers.getResult();
@@ -586,7 +586,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                                     txtpekerjaan.setText(reqresultItem.getMetadata().getJob());
                                     txtpendapatan.setText(reqresultItem.getMetadata().getIncome());
                                     txtjumlahtanggungan.setText(reqresultItem.getMetadata().getFamilyDependent());
-                                    String genderData = new String(reqresultItem.getMetadata().getGender());
+                                    /*String genderData = new String(reqresultItem.getMetadata().getGender());
                                     if(genderData.equals("MALE")){
                                         spinnerjeniskelamin.setSelection(2);
                                     }else if (genderData.equals("FEMALE")){
@@ -638,7 +638,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                                     }else if (TanggunganKredit.equals("NO")){
                                         spinnerkredit.setSelection(2);
                                     }
-
+*/
                                     txtnikktp.setText(reqresultItem.getMetadata().getNumberCitizen());
                                     txtnomornpwp.setText(reqresultItem.getMetadata().getNumberTaxpayer());
                                     txtibukandung.setText(reqresultItem.getMetadata().getParentName());
@@ -661,20 +661,20 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
                                     Glide.with(DataDiri.this)
                                             .load(reqresultItem.getImage())
-                                            .placeholder(R.drawable.icon_user)
-                                            .error(R.drawable.icon_user)
+                                            ///.placeholder(R.drawable.icon_user)
+                                           // .error(R.drawable.icon_user)
                                             .into(imageself);
 
                                     Glide.with(DataDiri.this)
-                                            .load(myUrl+reqresultItem.getMetadata().getCitizen())
-                                            .placeholder(R.drawable.upload)
-                                            .error(R.drawable.upload)
+                                            .load("https://development.kreditimpian.com/images/members/"+reqresultItem.getMetadata().getCitizen())
+                                            //.placeholder(R.drawable.upload)
+                                            ///.error(R.drawable.upload)
                                             .into(imagektp);
 
                                     Glide.with(DataDiri.this)
-                                            .load(myUrl+reqresultItem.getMetadata().getTaxpayer())
-                                            .placeholder(R.drawable.upload)
-                                            .error(R.drawable.upload)
+                                            .load("https://development.kreditimpian.com/images/members/"+reqresultItem.getMetadata().getTaxpayer())
+                                            //.placeholder(R.drawable.upload)
+                                            ///.error(R.drawable.upload)
                                             .into(imagenpwp);
 //
 //
@@ -697,14 +697,18 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
                                 }
                             });
-                        }
+                        }/*else {
+                            Toast.makeText(DataDiri.this, "Silahkan isi form data diri", Toast.LENGTH_SHORT).show();
+                        }*/
 
                     }
 
 
+
+
                 }else {
                    /// loading.dismiss();
-                    Toast.makeText(mContext, "Gagal mengambil data, silahkan ulangi lagi", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DataDiri.this, "Gagal mengambil data, silahkan ulangi lagi", Toast.LENGTH_SHORT).show();
                 }
             }
 
