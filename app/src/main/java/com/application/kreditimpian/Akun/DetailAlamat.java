@@ -23,6 +23,9 @@ import com.application.kreditimpian.Constan.ConstansAddress;
 import com.application.kreditimpian.Model.ModelAddress.ResponseAddress;
 import com.application.kreditimpian.Model.ModelGeodirectory.DataItem;
 import com.application.kreditimpian.Model.ModelGeodirectory.ResponseGeodirectory;
+import com.application.kreditimpian.Model.ModelKecamatan.ResponseKecamatan;
+import com.application.kreditimpian.Model.ModelKotaKecamatan.ResponseKotaKecamatan;
+import com.application.kreditimpian.Model.ModelProductRevisi.Detail;
 import com.application.kreditimpian.R;
 
 import java.util.ArrayList;
@@ -41,10 +44,12 @@ public class DetailAlamat extends AppCompatActivity {
     BaseApiService mApiService;
     ProgressDialog loading;
     Switch SwitchAddress;
+    TextView text_mainaddress, text_kecamatan, text_kota, text_id;
+    private HashMap<String, String> Kecamatanvalues;
     Spinner spinnerkecamatan_pengiriman, spinnerkota_pengiriman;
     EditText txtnamaalamat,txtnamapenerima,txtnomorhandphone,txtkodepospengiriman,txtalamatpengririman;
     Button btnupdate, btndelete;
-    String id, nameCity, id_member,id_geodirectory,address_name,phone,receiver,address,postal_code,district;
+    String id, nameCity, id_member,id_geodirectory,address_name,phone,receiver,address,postal_code,district,main_address;
     private HashMap<String, String> cityvalues;
     private HashMap<String, String> districtvalue;
 
@@ -66,11 +71,17 @@ public class DetailAlamat extends AppCompatActivity {
         textid_distric = findViewById(R.id.textid_distric);
 
         SwitchAddress = findViewById(R.id.SwitchAddress);
+
+        text_kecamatan = findViewById(R.id.text_kecamatan);
+        text_kota = findViewById(R.id.text_kota);
+        text_id = findViewById(R.id.text_id);
+        SwitchAddress = findViewById(R.id.SwitchAddress);
         txtnamaalamat = findViewById(R.id.txtnamaalamat);
         txtnamapenerima = findViewById(R.id.txtnamapenerima);
         txtnomorhandphone = findViewById(R.id.txtnomorhandphone);
         txtkodepospengiriman = findViewById(R.id.txtkodepospengiriman);
         txtalamatpengririman = findViewById(R.id.txtalamatpengririman);
+        text_mainaddress = findViewById(R.id.text_mainaddress);
         btnupdate = findViewById(R.id.btnupdate);
         btndelete = findViewById(R.id.btndelete);
 
@@ -88,22 +99,34 @@ public class DetailAlamat extends AppCompatActivity {
         postal_code = intent.getStringExtra(ConstansAddress.KEY_POSTAL_CODE);
         id_geodirectory = intent.getStringExtra(ConstansAddress.KEY_ID_GEODIRECTORY);
         district = intent.getStringExtra(ConstansAddress.KEY_DISTRICT);
+        main_address = intent.getStringExtra(ConstansAddress.KEY_MAIN_ADDRESS);
+        if(main_address.equals("YES")){
+            btndelete.setVisibility(View.GONE);
+            SwitchAddress.setChecked(true);
+        }else if (main_address.equals("NO")){
+            btndelete.setVisibility(View.VISIBLE);
+            SwitchAddress.setChecked(false);
+        }
+        /// Toast.makeText(DetailAlamat.this, "id anda" +id , Toast.LENGTH_LONG).show();
 
-        Toast.makeText(DetailAlamat.this, "id anda" +id , Toast.LENGTH_LONG).show();
-
+        text_id.setText(id);
         txtnamapenerima.setText(receiver);
         txtnamaalamat.setText(address_name);
         txtnomorhandphone.setText(phone);
         txtalamatpengririman.setText(address);
         txtkodepospengiriman.setText(postal_code);
+        text_mainaddress.setText(main_address);;
+
 
         getGeoCity();
-        getGeoDistrict();
+        getKotaKecamatan();
+     ///   getGeoDistrict();
 
         btndelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DeleteAddreses();
+
             }
         });
 
@@ -111,6 +134,38 @@ public class DetailAlamat extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 UpdateAddreses();
+
+            }
+        });
+
+    }
+
+
+    private void getKotaKecamatan(){
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("id_addresses", text_id.getText().toString());
+
+        mApiService.getKotaKecamatan(params).enqueue(new Callback<ResponseKotaKecamatan>() {
+            @Override
+            public void onResponse(Call<ResponseKotaKecamatan> call, Response<ResponseKotaKecamatan> response) {
+                if (response.body().getResponseCode() == 200) {
+                    ResponseKotaKecamatan responseKotaKecamatan = response.body();
+                    List<com.application.kreditimpian.Model.ModelKotaKecamatan.DataItem> detail = responseKotaKecamatan.getData();
+
+                    text_kota.setText("Kota yang anda pilih : "+detail.get(0).getNamaKota());
+                    text_kecamatan.setText("Kecamatan yang anda pilih : "+detail.get(0).getNamaKecamatan());
+
+
+
+                } else {
+                    Toast.makeText(DetailAlamat.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseKotaKecamatan> call, Throwable t) {
+
             }
         });
 
@@ -152,7 +207,8 @@ public class DetailAlamat extends AppCompatActivity {
                             if(position>0){
                                 String cityvalues = getCity.get(position - 1 ).getId();
                                 textid_geodirectory.setText(cityvalues);
-                                Toast.makeText(DetailAlamat.this, " ini id City "+cityvalues, Toast.LENGTH_LONG).show();
+                                getKecamatan();
+                               /// Toast.makeText(DetailAlamat.this, " ini id City "+cityvalues, Toast.LENGTH_LONG).show();
 
                             }
                         }
@@ -179,6 +235,70 @@ public class DetailAlamat extends AppCompatActivity {
 
     }
 
+    /*Menampilkan data  Kecamatan*/
+    private void getKecamatan(){
+
+        Kecamatanvalues = new HashMap<>();
+        HashMap<String, String> params = new HashMap<>();
+        params.put("id_kota", textid_geodirectory.getText().toString());
+        mApiService.getKecamatan(params).enqueue(new Callback<ResponseKecamatan>() {
+            @Override
+            public void onResponse(Call<ResponseKecamatan> call, Response<ResponseKecamatan> response) {
+                if(response.body() !=null){
+                    //// String citySelected = spinnerkota_pengiriman.getItemAtPosition(p).toString();
+                    List<com.application.kreditimpian.Model.ModelKecamatan.DataItem> getKecamatan = response.body().getData();
+                    List<String> listSpinner = new ArrayList<String>();
+                    String[] idKecamatan = new String[getKecamatan.size() +1];
+                    String[] Kecamatan = new String[getKecamatan.size() +1];
+                    Kecamatan[0] = "-- Pilih Kecamatan --";
+                    for (int i = 0; i < getKecamatan.size(); i++){
+                        ///listSpinner.add(getCity.get(i).getIdParent());
+                        Kecamatan[i + 1] = getKecamatan.get(i).getName();
+                        idKecamatan[i + 1] = getKecamatan.get(i).getId();
+                        Kecamatanvalues.put(Kecamatan[i + 1], idKecamatan[i + 1] );
+//                         id = getCity.get(i).getId();
+//                         nameCity = getCity.get(i).getName();
+                        ///listSpinner.add(nameCity);
+
+                    }
+                    // Set hasil result json ke dalam adapter spinner
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(DetailAlamat.this,
+                            android.R.layout.simple_spinner_item, Kecamatan);
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    spinnerkecamatan_pengiriman.setAdapter(adapter);
+                    spinnerkecamatan_pengiriman.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                            if(position>0){
+                                String Kecamatanvalues = getKecamatan.get(position - 1 ).getId();
+                                textid_distric.setText(Kecamatanvalues);
+                                ///Toast.makeText(TambahAlamatPengiriman.this, " ini id City "+cityvalues, Toast.LENGTH_LONG).show();
+
+                            }
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+
+                        }
+                    });
+
+
+                } else {
+                    loading.dismiss();
+                    Toast.makeText(DetailAlamat.this, "Gagal mengambil data ", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseKecamatan> call, Throwable t) {
+
+            }
+        });
+
+
+    }
 
 
     private void getGeoDistrict(){
@@ -267,6 +387,8 @@ public class DetailAlamat extends AppCompatActivity {
             public void onResponse(Call<ResponseAddress> call, Response<ResponseAddress> response) {
                 if(response.body().getResponseCode() == 200){
                     Toast.makeText(DetailAlamat.this, response.body().getMessage() , Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(DetailAlamat.this, AlamatPengiriman.class);
+                    startActivity(intent);
                     finish();
                 }else {
                     Toast.makeText(DetailAlamat.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
@@ -293,6 +415,8 @@ public class DetailAlamat extends AppCompatActivity {
             public void onResponse(Call<ResponseAddress> call, Response<ResponseAddress> response) {
                 if(response.body().getResponseCode() == 200){
                     Toast.makeText(DetailAlamat.this, response.body().getMessage() , Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(DetailAlamat.this, AlamatPengiriman.class);
+                    startActivity(intent);
                     finish();
                 }else {
                     Toast.makeText(DetailAlamat.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();

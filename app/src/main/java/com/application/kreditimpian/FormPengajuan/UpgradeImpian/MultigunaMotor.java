@@ -119,8 +119,8 @@ public class MultigunaMotor extends Fragment implements View.OnClickListener {
         btnAjukansekarang.setOnClickListener(this);
         rvMitra.setLayoutManager(new LinearLayoutManager(context));
 
-        edtJumlahPinjaman.addTextChangedListener(new NumberTextWatcher(edtJumlahPinjaman));
-        edtHargaKendaraan.addTextChangedListener(new NumberTextWatcher(edtHargaKendaraan));
+//        edtJumlahPinjaman.addTextChangedListener(new NumberTextWatcher(edtJumlahPinjaman));
+//        edtHargaKendaraan.addTextChangedListener(new NumberTextWatcher(edtHargaKendaraan));
 
         loadMitra();
         loadMerkKendaraan();

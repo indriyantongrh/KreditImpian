@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -109,6 +110,7 @@ public class KategoriHandphone extends Fragment {
                         swipeRefresh.setRefreshing(false);
                         progressBar.dismiss();;
                         final List<ResultItem> Allproduct = response.body().getResult();
+                        Log.v("jajal" , Allproduct+ "list");
 
                         listProductGadget.setAdapter(new AdapterProductBaru(mContext, Allproduct));
                         adapterProductBaru.notifyDataSetChanged();

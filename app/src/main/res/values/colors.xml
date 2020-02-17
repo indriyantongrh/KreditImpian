@@ -10,6 +10,7 @@
     <color name="transparent">#80FFFFFF</color>
     <color name="colorAbuabu">#969494</color>
     <color name="background">#dddddd</color>
+    <color name="colorwhite">#ffff</color>
 
     <!-- Screens background color-->
     <color name="bg_screen1">#f64c73</color>

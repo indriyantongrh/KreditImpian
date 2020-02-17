@@ -180,7 +180,7 @@ public class AdapterSelectedTenor extends RecyclerView.Adapter<AdapterSelectedTe
                     intent.putExtra("id_creditor", tvIdCreditor.getText().toString());
                     mContext.startActivity(intent);
 
-                    Toast.makeText(mContext, "Downpayment "+tvDownpayment.getText().toString(), Toast.LENGTH_LONG).show();
+                  ///  Toast.makeText(mContext, "Downpayment "+tvDownpayment.getText().toString(), Toast.LENGTH_LONG).show();
 
                 }
             });

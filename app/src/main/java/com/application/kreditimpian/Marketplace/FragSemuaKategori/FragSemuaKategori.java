@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,10 +24,7 @@ import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
 import com.application.kreditimpian.Constan.Constans;
 import com.application.kreditimpian.DetailProduct;
-//import com.application.kreditimpian.Model.ModelProduct.ResponseProduct;
-//import com.application.kreditimpian.Model.ModelProduct.ResultItem;
-//import com.application.kreditimpian.Model.ModelProductNew.ProductResponse;
-//import com.application.kreditimpian.Model.ModelProductNew.ResultItem;
+
 import com.application.kreditimpian.Model.ModelProductBaru.ResponseProductBaru;
 import com.application.kreditimpian.Model.ModelProductBaru.ResultItem;
 import com.application.kreditimpian.R;
@@ -56,8 +54,7 @@ public class FragSemuaKategori extends Fragment {
     Context mContext;
 
 
-//    List<ResultItem> resultItemList = new ArrayList<>();
-//    AdapterProduct adapterProduct;
+
 
     List<ResultItem> resultItemList = new ArrayList<>();
     AdapterProductBaru adapterProductBaru;
@@ -105,7 +102,7 @@ public class FragSemuaKategori extends Fragment {
 
 
     private void getResultList(){
-        progressBar = ProgressDialog.show(getActivity(), null, "Mencari Barang...", true, false);
+        progressBar = ProgressDialog.show(getActivity(), null, "Loading...", true, false);
 
 
         mApiService.getResult().enqueue(new Callback<ResponseProductBaru>() {
@@ -114,9 +111,13 @@ public class FragSemuaKategori extends Fragment {
 
                     ///progressBar.dismiss();
                     if (response.body().getStatus()==200) {
+
+
                         swipeRefresh.setRefreshing(false);
                         progressBar.dismiss();
                         final List<ResultItem> Allproduct = response.body().getResult();
+                        Log.v("jajal" , Allproduct+ "list");
+
                         listAllProduct.setAdapter(new AdapterProductBaru(mContext, Allproduct));
                         adapterProductBaru.notifyDataSetChanged();
                         empty.setVisibility(View.GONE);
@@ -130,6 +131,7 @@ public class FragSemuaKategori extends Fragment {
 
             @Override
             public void onFailure(Call<ResponseProductBaru> call, Throwable t) {
+                Log.v("jajal" , t.getMessage()+ "list");
                 progressBar.dismiss();
                 Toast.makeText(mContext, "Koneksi Internet Bermasalah", Toast.LENGTH_SHORT).show();
             }

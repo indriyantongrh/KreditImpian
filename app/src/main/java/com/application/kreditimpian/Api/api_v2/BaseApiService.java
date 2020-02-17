@@ -2,7 +2,10 @@ package com.application.kreditimpian.Api.api_v2;
 
 
 import com.application.kreditimpian.Model.ModelAddress.ResponseAddress;
+import com.application.kreditimpian.Model.ModelDetailMember.ResponseDetailMember;
 import com.application.kreditimpian.Model.ModelGeodirectory.ResponseGeodirectory;
+import com.application.kreditimpian.Model.ModelKecamatan.ResponseKecamatan;
+import com.application.kreditimpian.Model.ModelKotaKecamatan.ResponseKotaKecamatan;
 import com.application.kreditimpian.Model.ModelListAlamat.ResponseListAlamat;
 import com.application.kreditimpian.Model.ModelLogin.ResponseLogin;
 import com.application.kreditimpian.Model.ModelMember.ResponseMember;
@@ -15,8 +18,10 @@ import com.application.kreditimpian.Model.ModelPengajuanCatalog.ResponsePengajua
 import com.application.kreditimpian.Model.ModelProductBaru.ResponseProductBaru;
 
 
+import com.application.kreditimpian.Model.ModelProductRevisi.ResponseProductRevisi;
 import com.application.kreditimpian.Model.ModelSelectedTenor.ResponseSelectedTenor;
 import com.application.kreditimpian.Model.ModelTransaction.ResponseTransaction;
+import com.application.kreditimpian.Model.ModelUploadImage.ResponseUploadImage;
 import com.application.kreditimpian.Model.ModelUserDetail.ResponseMembers;
 import com.application.kreditimpian.Model.ModelValidationSMS.ResponseSmsOTP;
 import com.application.kreditimpian.Model.ResponseRegisterBaru.NewResponseRegister;
@@ -72,8 +77,16 @@ public interface BaseApiService {
     @GET("ApiMobile/getcity")
     Call<ResponseGeodirectory> getCity();
 
+    @GET("ApiMobile/getkecamatan")
+    Call<ResponseKecamatan> getKecamatan(@QueryMap HashMap<String, String> params);
+
+
+
     @GET("ApiMobile/isrtmbradrs")
     Call<ResponseAddress> InsertAddress(@QueryMap HashMap<String, String> params);
+
+    @GET("ApiMobile/getgeodirectorymemberaddress")
+    Call<ResponseKotaKecamatan> getKotaKecamatan(@QueryMap HashMap<String, String> params);
 
     @GET("ApiMobile/membersaddresses")
     Call<ResponseListAlamat> getAllAddesses(@Query("id_member") String id_member);
@@ -92,6 +105,22 @@ public interface BaseApiService {
      @FormUrlEncoded
     @POST("ApiMobile/insertprofile")
     Call<ResponseMemberInsert> InsertMember(@FieldMap HashMap<String, String> params);
+
+    @FormUrlEncoded
+    @POST("ApiMobile/uploadavatar")
+    Call<ResponseUploadImage> UploadFoto(@FieldMap HashMap<String, String> params);
+
+    @FormUrlEncoded
+    @POST("ApiMobile/uploadcitizen")
+    Call<ResponseUploadImage> UploadKtp(@FieldMap HashMap<String, String> params);
+
+    @FormUrlEncoded
+    @POST("ApiMobile/uploadtaxpayer")
+    Call<ResponseUploadImage> UploadNpwp(@FieldMap HashMap<String, String> params);
+
+    /*API Transaction*/
+    @GET("ApiMobile/getdataprofile")
+    Call<ResponseDetailMember> getDetailMember(@QueryMap HashMap<String, String> params);
 
     /*API Transaction*/
     @GET("ApiMobile/insrtonshoppingcart")
@@ -137,36 +166,40 @@ public interface BaseApiService {
     @GET("products?status=PUBLISH")
     Call<ResponseProductBaru> getResult();
 
+/*    //getAllProduct
+    @GET("products?status=PUBLISH")
+    Call<ResponseProductRevisi> getResult();*/
+
     //getAllProductFashion
-    @GET("products?id_product_category=2&status=PUBLISH")
+    @GET("products?id_product_category=19&status=PUBLISH")
     Call<ResponseProductBaru> getResultFashion();
 
     //getAllProductForniture
-    @GET("products?id_product_category=3&status=PUBLISH")
+    @GET("products?id_product_category=20&status=PUBLISH")
     Call<ResponseProductBaru> getResultForniture();
 
     //getAllProductOtomotif
-    @GET("products?id_product_category=4&status=PUBLISH")
+    @GET("products?id_product_category=27&status=PUBLISH")
     Call<ResponseProductBaru> getResultOtomotif();
 
     //getAllProductMultiproduct
-    @GET("products?id_product_category=5&status=PUBLISH")
+    @GET("products?id_product_category=25&status=PUBLISH")
     Call<ResponseProductBaru> getResultMultiproduct();
 
     //getAllProductKomputer
-    @GET("products?id_product_category=11&status=PUBLISH")
+    @GET("products?id_product_category=35&status=PUBLISH")
     Call<ResponseProductBaru> getResultKomputer();
 
     //getAllProductGadget
-    @GET("products?id_product_category=12&status=PUBLISH")
+    @GET("products?id_product_category=36&status=PUBLISH")
     Call<ResponseProductBaru> getResultGadget();
 
     //getAllProductElektronik
-    @GET("products?id_product_category=15&status=PUBLISH")
+    @GET("products?id_product_category=33&status=PUBLISH")
     Call<ResponseProductBaru> getResultElektronik();
 
     //getAllProductHobi
-    @GET("products?id_product_category=16&status=PUBLISH")
+    @GET("products?id_product_category=22&status=PUBLISH")
     Call<ResponseProductBaru> getResultHobi();
 
     //getAllProductCoorporate
@@ -174,7 +207,7 @@ public interface BaseApiService {
     Call<ResponseProductBaru> getResultCoorporate();
 
     //getAllProductHobi
-    @GET("products?id_product_category=18&status=PUBLISH")
+    @GET("products?id_product_category=29&status=PUBLISH")
     Call<ResponseProductBaru> getResultProperty();
 
 //    //getUserMember

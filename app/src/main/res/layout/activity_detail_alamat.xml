@@ -159,7 +159,7 @@
                     android:layout_height="15dp"></LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:background="@drawable/borderhitam"
                     android:layout_height="37dp">
@@ -170,6 +170,31 @@
                         android:layout_height="match_parent"
                         android:fontFamily="@font/jipatharegular"
                         android:entries="@array/kota"></Spinner>
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/text_kota"
+                    android:paddingTop="@dimen/padding_10"
+                    android:text="Nama kota"
+                    android:textColor="@color/colorOrange"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+
+                <LinearLayout
+
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/nama_kota"
+                        android:textSize="12dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
                 </LinearLayout>
 
                 <!--Border-->
@@ -190,6 +215,36 @@
                         android:layout_width="match_parent"
                         android:fontFamily="@font/jipatharegular"
                         android:layout_height="match_parent"></Spinner>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/text_id"
+                    android:paddingTop="@dimen/padding_10"
+                    android:text="Nama kota"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/text_kecamatan"
+                    android:paddingTop="@dimen/padding_10"
+                    android:text="Nama kota"
+                    android:textColor="@color/colorOrange"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <LinearLayout
+
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/nama_kecamatan"
+                        android:textSize="12dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
                 </LinearLayout>
 
                 <!--Border-->
@@ -279,6 +334,12 @@
                     android:layout_width="wrap_content"
                     android:text="id geodirectory"
                     android:visibility="gone"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/text_mainaddress"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
                 <TextView

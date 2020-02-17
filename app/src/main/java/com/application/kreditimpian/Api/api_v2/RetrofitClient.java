@@ -9,6 +9,7 @@ import com.application.kreditimpian.Api.network.interceptor.TokenAuthenticator;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -69,7 +70,9 @@ public class RetrofitClient {
 
     public static Retrofit getClient(String baseUrl){
 
-        OkHttpClient.Builder okhttpBuilder = new OkHttpClient.Builder();
+        OkHttpClient.Builder okhttpBuilder = new OkHttpClient.Builder()
+                .readTimeout(120, TimeUnit.SECONDS)
+                .connectTimeout(120, TimeUnit.SECONDS);
         okhttpBuilder.addInterceptor(new Interceptor() {
             @NotNull
             @Override

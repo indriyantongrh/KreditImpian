@@ -152,7 +152,7 @@ public class TransactionSelectMitra extends AppCompatActivity {
         String origin = intent.getStringExtra(ConstanTransaction.KEY_ORIGIN_TRANSACTION);
         String destination = intent.getStringExtra(ConstanTransaction.KEY_DESTINATION_TRANSACTION);
 
-        Log.d("ini id kategorimu ", ConstanTransaction.KEY_ID_PRODUCT_CATEGORY_TRANSACTION);
+       /// Log.d("ini id kategorimu ", ConstanTransaction.KEY_ID_PRODUCT_CATEGORY_TRANSACTION);
 
         ///convert String to Rupiah Curerncy
         Locale localeID = new Locale("in", "ID");
@@ -168,7 +168,7 @@ public class TransactionSelectMitra extends AppCompatActivity {
 
         txt_id.setText(id_product);
         txt_id_product_category.setText(id_product_category);
-        Toast.makeText(TransactionSelectMitra.this, "Kategori product anda " + id_product_category, Toast.LENGTH_LONG).show();
+        ////Toast.makeText(TransactionSelectMitra.this, "Kategori product anda " + id_product_category, Toast.LENGTH_LONG).show();
         txt_reference_id.setText(reference_id);
         txt_number.setText(nomor_invoice);
         txt_status.setText(status);
@@ -180,6 +180,19 @@ public class TransactionSelectMitra extends AppCompatActivity {
         txt_origin.setText(origin);
         txt_destination.setText(destination);
         text_image.setText(imageProduct);
+        Log.v("jajal", id_product+"idproduct");
+        Log.v("jajal", id_product_category+"idproductcategory");
+        Log.v("jajal", reference_id+"idproductreferenceid");
+        Log.v("jajal", nomor_invoice+"idnumber");
+        Log.v("jajal", status+"idstatus");
+        Log.v("jajal", id_transaction+"idTransaction");
+        Log.v("jajal", nameProduct+"nameproduk");
+        Log.v("jajal", price_capital+"pricecapital");
+        Log.v("jajal", price_sale+"pricesale");
+        Log.v("jajal", weight+"weight");
+        Log.v("jajal", origin+"origin");
+        Log.v("jajal", destination+"");
+        Log.v("jajal", imageProduct+"image");
 
         Glide.with(TransactionSelectMitra.this)
                 .load(imageProduct)
@@ -365,7 +378,7 @@ public class TransactionSelectMitra extends AppCompatActivity {
 
 
                         //Log.v("jajal", ""+response.body().string()+ "bismillah");
-                        Toast.makeText(TransactionSelectMitra.this," response message "+response.body().string(),Toast.LENGTH_LONG).show();
+                        //Toast.makeText(TransactionSelectMitra.this," response message "+response.body().string(),Toast.LENGTH_LONG).show();
                     if(response.errorBody()!=null)
                         Toast.makeText(TransactionSelectMitra.this," response message Error "+response.errorBody().string(),Toast.LENGTH_LONG).show();
                 }catch (Exception e){
@@ -467,7 +480,7 @@ public class TransactionSelectMitra extends AppCompatActivity {
                     ////Toast.makeText(TransactionSelectMitra.this, response.body().getData().toString(), Toast.LENGTH_LONG).show();
 
                 } else {
-                    Toast.makeText(TransactionSelectMitra.this, "Gagal Load data mitra", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TransactionSelectMitra.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -491,4 +504,12 @@ public class TransactionSelectMitra extends AppCompatActivity {
         onBackPressed();
         return true;
     }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
 }

@@ -77,6 +77,13 @@
                     android:fontFamily="@font/jipatharegular"
                     android:text="Data pribadi"/>
 
+                <TextView
+                    android:layout_gravity="center"
+                    android:paddingBottom="@dimen/padding_10"
+                    android:text="Masukan foto wajah"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/imageself"
                     android:layout_width="140dp"
@@ -95,10 +102,22 @@
                     app:civ_border_width="3dp"
                     app:civ_fill_color="#efeeee" />
 
+                <Button
+                    android:id="@+id/btnuploadfoto"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="10dp"
+                    android:background="@color/colorOrange"
+                    android:text="Simpan foto"
+                    android:textColor="@color/colorwhite"
+                    android:visibility="gone"/>
+
+
+
                 <TextView
-                    android:layout_gravity="center"
-                    android:paddingBottom="@dimen/padding_10"
-                    android:text="NB : Masukan foto wajah"
+                    android:id="@+id/txt_image_diri"
+                    android:visibility="gone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
@@ -262,7 +281,26 @@
                         android:layout_height="match_parent" />
 
 
+
+                    <TextView
+                        android:id="@+id/txt_image_ktp"
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+
                 </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnuploadktp"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="10dp"
+                    android:background="@color/colorOrange"
+                    android:text="Simpan ktp"
+                    android:textColor="@color/colorwhite"
+                    android:visibility="gone"/>
 
                 <!--Border-->
                 <LinearLayout
@@ -315,7 +353,24 @@
                         android:layout_height="match_parent" />
 
 
+                    <TextView
+                        android:id="@+id/txt_image_npwp"
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
                 </LinearLayout>
+                <Button
+                    android:id="@+id/btnuploadnpwp"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="10dp"
+                    android:background="@color/colorOrange"
+                    android:text="Simpan npwp"
+                    android:textColor="@color/colorwhite"
+                    android:visibility="gone"/>
+
 
                 <!--Border-->
                 <LinearLayout

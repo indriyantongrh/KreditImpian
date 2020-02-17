@@ -3,6 +3,7 @@ package com.application.kreditimpian.TransactionProcess;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -34,7 +35,7 @@ import retrofit2.Response;
 
 public class TransactionCheckout extends AppCompatActivity {
 
-
+    ProgressDialog pDialog;
     @BindView(R.id.txt_name_product)
     TextView txt_name_product;
     @BindView(R.id.txt_price_capital)
@@ -129,9 +130,9 @@ public class TransactionCheckout extends AppCompatActivity {
         txt_price_sale.setText(price_sale);
         tvMitraKredit.setText(name_mitra);
         tvBiayaKirim.setText(estimasipengiman);
-        tvCicilan.setText(tenor +"Bulan x Rp. "+cicilan);
+        tvCicilan.setText(tenor +" Bulan x Rp. "+cicilan);
         tvJasaPengiriman.setText(courier);
-        tvNomorInvoice.setText(number);
+        tvNomorInvoice.setText("Nomor Invoice : " +number);
         tvDownpayment.setText(downpayment);
         txt_price_sale.setText(price_sale);
         tvNote.setText(note);
@@ -146,7 +147,7 @@ public class TransactionCheckout extends AppCompatActivity {
                 .placeholder(R.drawable.no_image)
                 .error(R.drawable.no_image)
                 .into(image);
-        Toast.makeText(TransactionCheckout.this, "cek id member "+id_member, Toast.LENGTH_LONG).show();
+        ///Toast.makeText(TransactionCheckout.this, "cek id member "+id_member, Toast.LENGTH_LONG).show();
 
 
 
@@ -175,10 +176,15 @@ public class TransactionCheckout extends AppCompatActivity {
 
         radioButton = findViewById(radioid);
 
-        Toast.makeText(this,"Check button " + radioButton.getText(), Toast.LENGTH_SHORT).show();
+        ///Toast.makeText(this,"Check button " + radioButton.getText(), Toast.LENGTH_SHORT).show();
     }
 
     private void postTransaction(){
+
+        pDialog = new ProgressDialog(this);
+        pDialog.setCancelable(false);
+        pDialog.setMessage("Tunggu...");
+        pDialog.show();
 
         HashMap<String, String> params = new HashMap<>();
         params.put("id_member",sharedPrefManager.getSpIdMember() );
@@ -194,8 +200,9 @@ public class TransactionCheckout extends AppCompatActivity {
         mApiService.postPengajuan(params).enqueue(new Callback<ResponsePengajuanCatalog>() {
             @Override
             public void onResponse(Call<ResponsePengajuanCatalog> call, Response<ResponsePengajuanCatalog> response) {
+               pDialog.dismiss();
                 if(response.body().getResponseCode()==200){
-                    Toast.makeText(TransactionCheckout.this, response.body().getMessage() , Toast.LENGTH_LONG).show();
+                    //Toast.makeText(TransactionCheckout.this, response.body().getMessage() , Toast.LENGTH_LONG).show();
                 }else {
                     Toast.makeText(TransactionCheckout.this, "Gagal" , Toast.LENGTH_LONG).show();
                 }
