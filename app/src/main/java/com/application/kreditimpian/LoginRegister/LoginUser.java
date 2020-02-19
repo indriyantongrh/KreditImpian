@@ -28,6 +28,7 @@ import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
 import com.application.kreditimpian.BuildConfig;
 import com.application.kreditimpian.DecodeUtils.JWTUtils;
+import com.application.kreditimpian.ForgotPassword.ForgotPassword;
 import com.application.kreditimpian.MainActivity;
 import com.application.kreditimpian.MenuUtama.MenuUtama;
 import com.application.kreditimpian.Model.ModelLogin.DataItem;
@@ -128,7 +129,7 @@ public class LoginUser extends AppCompatActivity {
     ProgressDialog loading;
 
     Button btnLogin;
-    TextView btnregister;
+    TextView btnregister, tvLupapassword;
     EditText txtusername, txtpassword;
 
     SignInButton signin;
@@ -161,6 +162,16 @@ public class LoginUser extends AppCompatActivity {
         }
 
         ///sessionManager = new SessionManager(this);
+        tvLupapassword = findViewById(R.id.tvLupapassword);
+        tvLupapassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(LoginUser.this, ForgotPassword.class);
+                startActivity(intent);
+
+            }
+        });
 
         btnregister = findViewById(R.id.btnregister);
         btnregister.setOnClickListener(new View.OnClickListener() {

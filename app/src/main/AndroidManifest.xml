@@ -39,6 +39,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".ForgotPassword.ForgotPassword"></activity>
         <activity android:name=".Notifikasi.NotifikasiActivity" />
         <activity android:name=".FormPengajuan.UpgradeImpian.PilihLeasingActivity" />
         <activity android:name=".TransactionProcess.TransactionCheckout" />

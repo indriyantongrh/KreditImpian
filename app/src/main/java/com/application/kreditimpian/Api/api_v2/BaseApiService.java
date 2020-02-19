@@ -3,6 +3,7 @@ package com.application.kreditimpian.Api.api_v2;
 
 import com.application.kreditimpian.Model.ModelAddress.ResponseAddress;
 import com.application.kreditimpian.Model.ModelDetailMember.ResponseDetailMember;
+import com.application.kreditimpian.Model.ModelFOrgotPassword.ResponseForgotPassword;
 import com.application.kreditimpian.Model.ModelGeodirectory.ResponseGeodirectory;
 import com.application.kreditimpian.Model.ModelKecamatan.ResponseKecamatan;
 import com.application.kreditimpian.Model.ModelKotaKecamatan.ResponseKotaKecamatan;
@@ -81,6 +82,9 @@ public interface BaseApiService {
     Call<ResponseKecamatan> getKecamatan(@QueryMap HashMap<String, String> params);
 
 
+    @FormUrlEncoded
+    @POST("forgot-password")
+    Call<ResponseForgotPassword> ForgotPassword(@Field("username") String username);
 
     @GET("ApiMobile/isrtmbradrs")
     Call<ResponseAddress> InsertAddress(@QueryMap HashMap<String, String> params);
