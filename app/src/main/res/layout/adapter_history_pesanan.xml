@@ -155,23 +155,7 @@
             android:layout_height="0dp"
             android:visibility="gone" />
 
-        <TextView
-            android:id="@+id/txt_image2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:visibility="gone" />
 
-        <TextView
-            android:id="@+id/txt_image3"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:visibility="gone" />
-
-        <TextView
-            android:id="@+id/txt_image4"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:visibility="gone" />
 
 
         <TextView
@@ -384,26 +368,26 @@
             android:visibility="gone" />
 
         <TextView
-            android:id="@+id/txt_1"
+            android:id="@+id/txt_id_transaction"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:visibility="gone" />
 
         <TextView
-            android:id="@+id/txt_2"
+            android:id="@+id/txt_timestamp"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:visibility="gone" />
 
         <TextView
-            android:id="@+id/txt_3"
+            android:id="@+id/txt_expires"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:visibility="gone" />
 
 
         <TextView
-            android:id="@+id/txt_4"
+            android:id="@+id/txt_id_product"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:visibility="gone" />

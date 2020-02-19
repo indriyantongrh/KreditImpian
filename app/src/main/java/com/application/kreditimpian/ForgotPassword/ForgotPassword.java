@@ -33,7 +33,7 @@ import retrofit2.Response;
 public class ForgotPassword extends AppCompatActivity {
 
     EditText txtemail, Edusername;
-    Button btnSend;
+    Button btnSend, btnOK;
     ProgressDialog pDialog;
     BaseApiService mApiservices;
 
@@ -80,12 +80,14 @@ public class ForgotPassword extends AppCompatActivity {
                     if(response.body().getStatus()==200) {
                         ///Toast.makeText(ForgotPassword.this, response.body().getResult().toString(), Toast.LENGTH_LONG).show();
 
-                       AlertDialog.Builder ImageDialog = new AlertDialog.Builder(ForgotPassword.this);
-                        ImageDialog.setTitle("Cek email dari kami!");
-                        ImageView showImage = new ImageView(ForgotPassword.this);
-                        ImageDialog.setView(showImage);
 
-                        ImageDialog.setNegativeButton("OK", new DialogInterface.OnClickListener()
+                       AlertDialog.Builder ImageDialog = new AlertDialog.Builder(ForgotPassword.this);
+                        LayoutInflater inflater = getLayoutInflater();
+                        View dialogLayout = inflater.inflate(R.layout.image_layout, null);
+                        ///ImageDialog.setPositiveButton("OK", null);
+                        ImageDialog.setView(dialogLayout);
+                        ImageDialog.setTitle("Email terkirim! Cek inbox anda ");
+                        ImageDialog.setNegativeButton("Kembali", new DialogInterface.OnClickListener()
                         {
                             public void onClick(DialogInterface arg0, int arg1)
                             {
@@ -101,7 +103,7 @@ public class ForgotPassword extends AppCompatActivity {
                         finish();*/
                     }else {
                         pDialog.dismiss();
-                        Toast.makeText(ForgotPassword.this,  response.body().getResult().toString(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(ForgotPassword.this,  "Email tidak ditemukan", Toast.LENGTH_LONG).show();
                     }
 
                 /*if (response.body().getStatus()==200){

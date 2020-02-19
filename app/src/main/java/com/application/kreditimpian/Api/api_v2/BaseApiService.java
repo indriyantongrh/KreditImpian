@@ -5,6 +5,7 @@ import com.application.kreditimpian.Model.ModelAddress.ResponseAddress;
 import com.application.kreditimpian.Model.ModelDetailMember.ResponseDetailMember;
 import com.application.kreditimpian.Model.ModelFOrgotPassword.ResponseForgotPassword;
 import com.application.kreditimpian.Model.ModelGeodirectory.ResponseGeodirectory;
+import com.application.kreditimpian.Model.ModelHistoryTransaction.ResponseHistoryTransaction;
 import com.application.kreditimpian.Model.ModelKecamatan.ResponseKecamatan;
 import com.application.kreditimpian.Model.ModelKotaKecamatan.ResponseKotaKecamatan;
 import com.application.kreditimpian.Model.ModelListAlamat.ResponseListAlamat;
@@ -155,6 +156,10 @@ public interface BaseApiService {
     @FormUrlEncoded
     @POST("ApiMobile/insertMetaDataProductTransaction")
     Call<ResponsePengajuanCatalog> postPengajuan(@FieldMap HashMap<String, String> params);
+
+    @FormUrlEncoded
+    @POST("ApiMobile/getHistoryTransaction")
+    Call<ResponseHistoryTransaction> getHistoryTransaction(@FieldMap HashMap<String, String> params);
 
     //getMember
     ///@FormUrlEncoded

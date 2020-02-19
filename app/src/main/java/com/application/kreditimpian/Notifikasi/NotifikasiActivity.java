@@ -72,6 +72,9 @@ public class NotifikasiActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notifikasi);
         Objects.requireNonNull(getSupportActionBar()).hide();
+        /*setActionBarTitle("Keranjang");
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);// set drawable icon
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
         context = NotifikasiActivity.this;
         upgradeImpianViewModel = new ViewModelProvider(getViewModelStore(), new ViewModelFactory(context)).get(UpgradeImpianViewModel.class);
 
@@ -248,5 +251,17 @@ public class NotifikasiActivity extends AppCompatActivity implements View.OnClic
                 holder.layoutKlik.setBackgroundColor(ContextCompat.getColor(context, R.color.white));
             }
         });
+    }
+
+    private void setActionBarTitle(String title) {
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(title);
+        }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

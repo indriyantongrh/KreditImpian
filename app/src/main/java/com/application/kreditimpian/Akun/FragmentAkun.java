@@ -220,10 +220,10 @@ public class FragmentAkun extends Fragment {
         btnhistorypesanan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Fitur segera hadir", Toast.LENGTH_LONG).show();
+               //// Toast.makeText(getActivity(), "Fitur segera hadir", Toast.LENGTH_LONG).show();
 
-               /* Intent intent = new Intent(getActivity(), HistoryPesanan.class);
-                getActivity().startActivity(intent);*/
+                Intent intent = new Intent(getActivity(), HistoryPesanan.class);
+                getActivity().startActivity(intent);
             }
 
         });

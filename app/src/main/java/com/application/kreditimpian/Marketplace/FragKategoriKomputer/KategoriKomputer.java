@@ -51,13 +51,13 @@ public class KategoriKomputer extends Fragment {
     ProgressDialog progressBar;
     @BindView(R.id.empty)
     ImageView empty;
-
+    BaseApiService mApiService;
     Context mContext;
 //    List<ResultItem> resultItemList = new ArrayList<>();
 //    AdapterProduct adapterProduct;
     List<ResultItem> resultItemList = new ArrayList<>();
     AdapterProductBaru adapterProductBaru;
-    BaseApiService mApiService;
+
 
 
     @Override
