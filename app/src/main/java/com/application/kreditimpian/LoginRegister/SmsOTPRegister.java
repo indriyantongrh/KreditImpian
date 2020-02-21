@@ -2,9 +2,12 @@ package com.application.kreditimpian.LoginRegister;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +17,7 @@ import android.widget.Toast;
 import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
+import com.application.kreditimpian.ForgotPassword.ForgotPassword;
 import com.application.kreditimpian.MenuUtama.MenuUtama;
 import com.application.kreditimpian.Model.ModelValidationSMS.ResponseOTP;
 import com.application.kreditimpian.Model.ModelValidationSMS.ResponseSmsOTP;
@@ -94,10 +98,28 @@ public class SmsOTPRegister extends AppCompatActivity {
 
                 try {
                     if(response.body().getResponseCode()==200) {
-                        Toast.makeText(SmsOTPRegister.this, response.body().getMessage(), Toast.LENGTH_LONG).show();
+                        AlertDialog.Builder ImageDialog = new AlertDialog.Builder(SmsOTPRegister.this);
+                        LayoutInflater inflater = getLayoutInflater();
+                        View dialogLayout = inflater.inflate(R.layout.image_layout_successfully, null);
+                        ///ImageDialog.setPositiveButton("OK", null);
+                        ImageDialog.setView(dialogLayout);
+                        ImageDialog.setTitle("Akun anda sudah aktif, silahkan login");
+                        ImageDialog.setNegativeButton("Kembali", new DialogInterface.OnClickListener()
+                        {
+                            public void onClick(DialogInterface arg0, int arg1)
+                            {
+                                Intent intent = new Intent(SmsOTPRegister.this, LoginUser.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        });
+                        ImageDialog.show();
+
+
+                        /*Toast.makeText(SmsOTPRegister.this, response.body().getMessage(), Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(SmsOTPRegister.this, LoginUser.class);
                         startActivity(intent);
-                        finish();
+                        finish();*/
                     }else {
                         pDialog.dismiss();
                         Toast.makeText(SmsOTPRegister.this, response.body().getMessage(), Toast.LENGTH_LONG).show();

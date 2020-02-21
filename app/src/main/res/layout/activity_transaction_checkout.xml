@@ -557,7 +557,7 @@
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
                         android:textSize="13dp"
-                        android:text="Transfer ke Bank" />
+                        android:text="TRANSFER" />
 
 
                 </RadioGroup>

@@ -307,7 +307,7 @@ public class LoginUser extends AppCompatActivity {
                     List<DataItem> dataLogin = responseLogin.getData();
                     for(DataItem d : dataLogin){
 
-                        Toast.makeText(LoginUser.this, "Berhasil Login \n Lengkapi data Anda.", Toast.LENGTH_SHORT).show();
+                        ///Toast.makeText(LoginUser.this, "Berhasil Login \n Lengkapi data Anda.", Toast.LENGTH_SHORT).show();
 
                         sharedPrefManager.saveSPString(SharedPrefManager.SP_ID_USER, d.getIdUser());
                         sharedPrefManager.saveSPString(SharedPrefManager.SP_ID_MEMBER, d.getIdMember());

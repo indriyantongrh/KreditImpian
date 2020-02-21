@@ -125,8 +125,6 @@ public class TransactionSelectMitra extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transaction_select_mitra);
 
-
-
         setActionBarTitle("Pilih mitra yang kamu mau");
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);// set drawable icon
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -151,6 +149,8 @@ public class TransactionSelectMitra extends AppCompatActivity {
         String weight = intent.getStringExtra(ConstanTransaction.KEY_WEIGHT_TRANSACTION);
         String origin = intent.getStringExtra(ConstanTransaction.KEY_ORIGIN_TRANSACTION);
         String destination = intent.getStringExtra(ConstanTransaction.KEY_DESTINATION_TRANSACTION);
+
+        ////Toast.makeText(TransactionSelectMitra.this, ""+nomor_invoice, Toast.LENGTH_LONG).show();
 
        /// Log.d("ini id kategorimu ", ConstanTransaction.KEY_ID_PRODUCT_CATEGORY_TRANSACTION);
 

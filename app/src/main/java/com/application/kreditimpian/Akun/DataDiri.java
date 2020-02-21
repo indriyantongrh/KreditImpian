@@ -43,6 +43,7 @@ import com.application.kreditimpian.Model.ModelGeodirectory.DataItem;
 import com.application.kreditimpian.Model.ModelGeodirectory.ResponseGeodirectory;
 
 import com.application.kreditimpian.Model.ModelKecamatan.ResponseKecamatan;
+import com.application.kreditimpian.Model.ModelKotaKecamatan.ResponseKotaKecamatan;
 import com.application.kreditimpian.Model.ModelMember.ResponseMember;
 
 import com.application.kreditimpian.Model.ModelMemberInsert.ResponseMemberInsert;
@@ -79,12 +80,13 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
     ImageButton btnback;
     Button btnuploadfoto,btnuploadktp,btnuploadnpwp;
     ImageView imagektp, imagenpwp, imageself;
-    Spinner spinnerjeniskelamin, spinnerstatus, spinneragama, spinnerstatusrumah, spinnerkredit, spinnerkota_saudaraa, spinnerkecamatn_saudara;
+    Spinner spinnerjeniskelamin, spinnerstatus, spinneragama, spinnerstatusrumah,
+            spinnerkredit, spinnerkota_saudaraa, spinnerkecamatn_saudara;
     Button btnsimpan;
-    TextView id_kota, id_kecamatan;
+    TextView id_kota, id_kecamatan, kecamatanSelected,kotaSelected;
     EditText txtnamalengkap, txttempatlahir, txttanggallahir, txtnikktp, txtnomornpwp, txtpekerjaan, txtpendapatan,
-            txtjumlahtanggungan, txtalamatemail, txtibukandung, txtnomorhandphone, txtnomortlp, txtfacebook, txttwitter, txtinstagram,
-            txtnamasaudara, txtnomorhandphonesaudara, txtkodepos_saudara, txtalamat_saudara;
+            txtjumlahtanggungan, txtalamatemail, txtibukandung, txtnomorhandphone, txtnomortlp, txtfacebook,
+            txttwitter, txtinstagram, txtnamasaudara, txtnomorhandphonesaudara, txtkodepos_saudara, txtalamat_saudara;
     private HashMap<String, String> cityvalues;
     private HashMap<String, String> Kecamatanvalues;
     private HashMap<String, String> districtvalue;
@@ -167,6 +169,8 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         txtnomorhandphonesaudara = findViewById(R.id.txtnomorhandphonesaudara);
         spinnerkota_saudaraa = findViewById(R.id.spinnerkota_saudaraa);
         spinnerkecamatn_saudara = findViewById(R.id.spinnerkecamatn_saudara);
+        kotaSelected = findViewById(R.id.kotaSelected);
+        kecamatanSelected = findViewById(R.id.kecamatanSelected);
         txtkodepos_saudara = findViewById(R.id.txtkodepos_saudara);
         txtalamat_saudara = findViewById(R.id.txtalamat_saudara);
         btnuploadfoto = findViewById(R.id.btnuploadfoto);
@@ -1124,6 +1128,38 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
 
     }
+
+
+/*    private void getKotaKecamatan(){
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("id_addresses", text_id.getText().toString());
+
+        mApiService.getKotaKecamatan(params).enqueue(new Callback<ResponseKotaKecamatan>() {
+            @Override
+            public void onResponse(Call<ResponseKotaKecamatan> call, Response<ResponseKotaKecamatan> response) {
+                if (response.body().getResponseCode() == 200) {
+                    ResponseKotaKecamatan responseKotaKecamatan = response.body();
+                    List<com.application.kreditimpian.Model.ModelKotaKecamatan.DataItem> detail = responseKotaKecamatan.getData();
+
+                    text_kota.setText("Kota yang anda pilih : "+detail.get(0).getNamaKota());
+                    text_kecamatan.setText("Kecamatan yang anda pilih : "+detail.get(0).getNamaKecamatan());
+
+
+
+                } else {
+                    Toast.makeText(DataDiri.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseKotaKecamatan> call, Throwable t) {
+
+            }
+        });
+
+    }*/
+
 
     /*set Permision*/
     private void requestPermission() {

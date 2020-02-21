@@ -2,6 +2,7 @@ package com.application.kreditimpian.Api.api_v2;
 
 
 import com.application.kreditimpian.Model.ModelAddress.ResponseAddress;
+import com.application.kreditimpian.Model.ModelDeleteShopingCart.ResponseDeleteShopingCart;
 import com.application.kreditimpian.Model.ModelDetailMember.ResponseDetailMember;
 import com.application.kreditimpian.Model.ModelFOrgotPassword.ResponseForgotPassword;
 import com.application.kreditimpian.Model.ModelGeodirectory.ResponseGeodirectory;
@@ -135,7 +136,7 @@ public interface BaseApiService {
     Call<ResponseOnShoppingCart> getOnShoppingCart(@Query("id_member") String id_member);
 
     @GET("ApiMobile/deleteonspcrt")
-    Call<ResponseOnShoppingCart> deleteCart(@Query("number") String number);
+    Call<ResponseDeleteShopingCart> deleteCart(@Query("number") String number);
 
     @GET("ApiMobile/tenor")
     Call<ResponseMitraSelected> getMitraSelected(@Query("id_product_category") String id_product_category);

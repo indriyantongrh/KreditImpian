@@ -42,15 +42,44 @@
                 android:layout_marginLeft="9dp"
                 android:layout_toRightOf="@+id/LinearImage"
                 android:gravity="center"
+                android:textStyle="bold"
                 android:text="Status Pesanan"
                 android:textColor="@color/colorBlack" />
 
         </LinearLayout>
 
+
+        <LinearLayout
+            android:id="@+id/linearnomorinvoice"
+            android:paddingTop="7dp"
+            android:layout_below="@+id/linearstatus"
+            android:paddingBottom="7dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/txt_nomor_invoice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="9dp"
+                android:text="Nomor Invoice"
+                android:textColor="@color/colorOrange" />
+
+        </LinearLayout>
+        <!--Border-->
+        <LinearLayout
+            android:layout_below="@+id/linearnomorinvoice"
+            android:background="#FF6802"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"></LinearLayout>
+
         <LinearLayout
             android:id="@+id/LinearImage"
             android:layout_width="150dp"
-            android:layout_below="@+id/linearstatus"
+            android:paddingTop="5dp"
+            android:layout_below="@+id/linearnomorinvoice"
             android:layout_height="wrap_content">
 
         <ImageView
@@ -67,12 +96,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nama Product"
+            android:paddingTop="3dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#636363"
             android:textSize="14dp"
             android:ellipsize="end"
             android:maxLines="2"
-            android:layout_below="@+id/linearstatus"
+            android:layout_below="@+id/linearnomorinvoice"
             android:layout_marginStart="8dp"
             android:layout_toRightOf="@+id/LinearImage"
             tools:ignore="NotSibling" />
@@ -102,6 +132,37 @@
             android:layout_toRightOf="@+id/LinearImage"
            />
 
+
+        <LinearLayout
+            android:id="@+id/linearMitra"
+            android:paddingTop="7dp"
+            android:layout_toRightOf="@+id/LinearImage"
+            android:paddingBottom="7dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:layout_below="@+id/txt_price_sale"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/text_nama_mitra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="9dp"
+                android:text="Mitra Kredit"
+                android:textColor="@color/colorBlack" />
+
+            <TextView
+                android:id="@+id/txt_nama_mitra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="9dp"
+                android:text="name mitra"
+                android:textColor="@color/colorOrange" />
+
+        </LinearLayout>
 
 
         <TextView

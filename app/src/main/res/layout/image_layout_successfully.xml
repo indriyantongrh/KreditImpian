@@ -4,12 +4,11 @@
     android:layout_height="wrap_content"
     android:gravity="center"
     android:orientation="vertical">
+
     <ImageView
-        android:padding="25dp"
+        android:padding="19dp"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:src="@drawable/sendemail"/>
-
-
+        android:src="@drawable/successfully"/>
 
 </LinearLayout>

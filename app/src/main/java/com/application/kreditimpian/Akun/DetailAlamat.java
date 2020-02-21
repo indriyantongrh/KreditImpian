@@ -140,7 +140,7 @@ public class DetailAlamat extends AppCompatActivity {
 
     }
 
-
+    /*Fungsi untk mengambil data kota dan kecamatan*/
     private void getKotaKecamatan(){
 
         HashMap<String, String> params = new HashMap<>();

@@ -121,7 +121,8 @@ public class HistoryPesanan extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponseHistoryTransaction> call, Throwable t) {
-
+                progressBar.dismiss();
+                Toast.makeText(mContext,    "Koneksi anda bermasalah", Toast.LENGTH_SHORT).show();
             }
         });
 

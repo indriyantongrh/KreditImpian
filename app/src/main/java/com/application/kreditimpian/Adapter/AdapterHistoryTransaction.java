@@ -50,7 +50,7 @@ public class AdapterHistoryTransaction extends RecyclerView.Adapter<AdapterHisto
         holder.txt_status_pesanan.setText(dataItem.getStatus());
         //holder.txt_timestamp.setText((Integer) dataItem.getTimestamp());
        /// holder.txt_expires.setText((Integer) dataItem.getExpires());
-        holder.txt_number.setText(dataItem.getNumber());
+        holder.txt_nomor_invoice.setText("Order ID #"+dataItem.getNumber());
         holder.txt_id_product_category.setText(dataItem.getIdProductCategory());
         holder.txt_id_product.setText(dataItem.getIdProduct());
         holder.txt_name_product.setText(dataItem.getName());
@@ -70,6 +70,7 @@ public class AdapterHistoryTransaction extends RecyclerView.Adapter<AdapterHisto
         holder.txt_price_capital.setText(formatRupiah.format(Price_Capital));
         holder.txt_price_sale.setText(formatRupiah.format(Price_Sale));
         holder.txt_condition.setText(dataItem.getCondition());
+        holder.txt_nama_mitra.setText(dataItem.getName_company());
         holder.txt_image.setText(dataItem.getFilename());
 
         Glide.with(mContext)
@@ -168,6 +169,10 @@ public class AdapterHistoryTransaction extends RecyclerView.Adapter<AdapterHisto
         TextView txt_expires;
         @BindView(R.id.txt_id_product)
         TextView txt_id_product;
+        @BindView(R.id.txt_nomor_invoice)
+        TextView txt_nomor_invoice;
+        @BindView(R.id.txt_nama_mitra)
+        TextView txt_nama_mitra;
 
 
 

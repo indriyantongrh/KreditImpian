@@ -768,7 +768,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="15dp"></LinearLayout>
 
-                    <LinearLayout
+                <TextView
+                    android:id="@+id/tvKota"
+                    android:textSize="12dp"
+                    android:textColor="@color/colorOrange"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+
+                <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:background="@drawable/borderhitam"
@@ -782,6 +790,7 @@
 
 
                     </LinearLayout>
+
 
                 <LinearLayout
                     android:background="#fff"

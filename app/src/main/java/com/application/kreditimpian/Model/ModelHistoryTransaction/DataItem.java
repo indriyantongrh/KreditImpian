@@ -6,6 +6,20 @@ import com.google.gson.annotations.SerializedName;
 
 public class DataItem{
 
+	@SerializedName("id_merchant")
+	private String id_merchant;
+
+	@SerializedName("name_merchant")
+	private String name_merchant;
+
+	@SerializedName("id_company")
+	private String id_company;
+
+
+
+	@SerializedName("name_company")
+	private String name_company;
+
 	@SerializedName("expires")
 	private Object expires;
 
@@ -268,5 +282,37 @@ public class DataItem{
 
 	public String getTargetGender(){
 		return targetGender;
+	}
+
+	public String getId_merchant() {
+		return id_merchant;
+	}
+
+	public void setId_merchant(String id_merchant) {
+		this.id_merchant = id_merchant;
+	}
+
+	public String getName_merchant() {
+		return name_merchant;
+	}
+
+	public void setName_merchant(String name_merchant) {
+		this.name_merchant = name_merchant;
+	}
+
+	public String getId_company() {
+		return id_company;
+	}
+
+	public void setId_company(String id_company) {
+		this.id_company = id_company;
+	}
+
+	public String getName_company() {
+		return name_company;
+	}
+
+	public void setName_company(String name_company) {
+		this.name_company = name_company;
 	}
 }

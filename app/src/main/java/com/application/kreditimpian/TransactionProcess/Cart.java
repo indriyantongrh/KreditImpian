@@ -89,8 +89,8 @@ public class Cart extends AppCompatActivity {
 
         getOnShoppingCart();
 
-        //Swipe to Delete
-        ItemTouchHelper swipeToDismissTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(
+        /*Swipe to Delete in chart */
+      /*  ItemTouchHelper swipeToDismissTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(
                 0, ItemTouchHelper.LEFT ) {
             @Override
             public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
@@ -110,7 +110,7 @@ public class Cart extends AppCompatActivity {
 
         });
 
-        swipeToDismissTouchHelper.attachToRecyclerView(ListCart);
+        swipeToDismissTouchHelper.attachToRecyclerView(ListCart);*/
 
     }
 
@@ -122,7 +122,6 @@ public class Cart extends AppCompatActivity {
             @Override
             public void onResponse(Call<ResponseOnShoppingCart> call, Response<ResponseOnShoppingCart> response) {
 
-
                     if (response.body().getResponseCode() == 200) {
                         swipeRefresh.setRefreshing(false);
                         progressBar.dismiss();
@@ -131,7 +130,7 @@ public class Cart extends AppCompatActivity {
                         ListCart.setAdapter(new AdapterCart(mContext, OnShippingCart));
                         adapterCart.notifyDataSetChanged();
                         empty.setVisibility(View.GONE);
-                        initDataIntent(OnShippingCart);
+                        ///initDataIntent(OnShippingCart);
                     } else {
                         progressBar.dismiss();
                         Toast.makeText(Cart.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
@@ -192,7 +191,7 @@ public class Cart extends AppCompatActivity {
     }
 
 
-    private void deleteCart(){
+    /*private void deleteCart(){
 
         mApiService.deleteCart(number).enqueue(new Callback<ResponseOnShoppingCart>() {
             @Override
@@ -212,7 +211,7 @@ public class Cart extends AppCompatActivity {
             }
         });
 
-    }
+    }*/
 
 
     private void setActionBarTitle(String title) {

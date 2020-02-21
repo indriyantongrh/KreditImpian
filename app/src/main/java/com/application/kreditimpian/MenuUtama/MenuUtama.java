@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -38,12 +39,23 @@ public class MenuUtama extends AppCompatActivity {
     SharedPreferences sharedpreferences;
     String id,email,username;
     SessionManager sessionManager;
-
+    ConnectivityManager conMgr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_utama);
+        conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        {
+            if (conMgr.getActiveNetworkInfo() != null
+                    && conMgr.getActiveNetworkInfo().isAvailable()
+                    && conMgr.getActiveNetworkInfo().isConnected()) {
+            } else {
+                Toast.makeText(getApplicationContext(), "Tidak ada akses Internet",
+                        Toast.LENGTH_LONG).show();
+            }
+        }
+
 //        sharedpreferences = getApplication().getSharedPreferences(LoginUser.my_shared_preferences, Context.MODE_PRIVATE);
 //        id = sharedpreferences.getString("id", "0");
 //        Toast.makeText(getApplication(), "ini id ke-"+ id, Toast.LENGTH_SHORT).show();

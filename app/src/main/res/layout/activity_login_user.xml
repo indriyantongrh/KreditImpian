@@ -226,8 +226,20 @@
 
         </LinearLayout>
 
+    <LinearLayout
 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <TextView
+            android:text="Kreditimpian v.1.1.0"
+            android:gravity="center|bottom"
+            android:textSize="10dp"
+            android:foregroundGravity="bottom"
+            android:textColor="@color/colorBlack"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
+    </LinearLayout>
 
 </LinearLayout>

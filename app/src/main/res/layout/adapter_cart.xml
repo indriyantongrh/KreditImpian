@@ -129,8 +129,7 @@
         android:layout_gravity="right|bottom"
         android:layout_width="30dp"
         android:paddingBottom="5dp"
-        android:visibility="gone"
-        android:layout_marginRight="50dp"
+        android:layout_marginRight="5dp"
         android:layout_height="30dp"/>
 
 </androidx.cardview.widget.CardView>

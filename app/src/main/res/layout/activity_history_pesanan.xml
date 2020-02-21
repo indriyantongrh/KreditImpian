@@ -45,7 +45,7 @@
         android:layout_height="250dp"
         android:layout_marginTop="30dp"
         android:visibility="gone"
-        android:src="@drawable/transaksiempty"
+        android:src="@drawable/emptyhistorytransaction"
         tools:ignore="MissingConstraints" />
 
 

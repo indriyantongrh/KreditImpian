@@ -239,7 +239,8 @@
             app:cardCornerRadius="6dp"
             android:layout_margin="5dp"
             android:layout_below="@+id/btnhistorypesanan"
-            android:background = "@drawable/cardvieworange">
+            android:background = "@drawable/cardvieworange"
+            android:visibility="gone">
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:background="@drawable/borderhitam"
@@ -313,7 +314,8 @@
                 app:cardCornerRadius="6dp"
                 android:layout_margin="5dp"
                 android:layout_below="@+id/btnnotifikasi"
-                android:background = "@drawable/cardvieworange">
+                android:background = "@drawable/cardvieworange"
+                android:visibility="gone">
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:background="@drawable/borderhitam"
@@ -349,7 +351,8 @@
             app:cardCornerRadius="6dp"
             android:layout_margin="5dp"
             android:layout_below="@+id/btnfavorite"
-            android:background = "@drawable/cardvieworange">
+            android:background = "@drawable/cardvieworange"
+            android:visibility="gone">
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:background="@drawable/borderhitam"
