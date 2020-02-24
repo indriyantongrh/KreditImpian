@@ -69,6 +69,8 @@ public class AdapterAddresses extends RecyclerView.Adapter<AdapterAddresses.Hold
         holder.txt_main_address.setText(dataItem.getMainAddress());
         holder.txt_kodepost.setText("Kode pos : "+dataItem.getPostalCode());
         holder.txt_alamat_utama.setText(dataItem.getMainAddress());
+        holder.id_geodirectory.setText(dataItem.getIdGeodirectory());
+        holder.district.setText(dataItem.getDistrict());
 
          String AlamatUtama = dataItem.getMainAddress();
         if(AlamatUtama.equals("YES")){
@@ -141,6 +143,13 @@ public class AdapterAddresses extends RecyclerView.Adapter<AdapterAddresses.Hold
 
 
             HashMap<String, String> params = new HashMap<>();
+            params.put("address_name", txt_nama_alamat.getText().toString());
+            params.put("phone", txt_nomor_handphone.getText().toString());
+            params.put("receiver", txt_name_penerima.getText().toString());
+            params.put("id_geodirectory", id_geodirectory.getText().toString());
+            params.put("district", district.getText().toString());
+            params.put("postal_code", txt_kodepost.getText().toString());
+            params.put("address", txt_alamat.getText().toString());
             String AddressMain;
             if (SwitchAddress.isChecked())
                 AddressMain = SwitchAddress.getTextOn().toString();
@@ -148,7 +157,7 @@ public class AdapterAddresses extends RecyclerView.Adapter<AdapterAddresses.Hold
                 AddressMain = SwitchAddress.getTextOff().toString();
             params.put("main_address", AddressMain.trim());
 
-            mApiService.updateAddreses(txt_id.getText().toString(), params).enqueue(new Callback<ResponseAddress>() {
+            mApiService.updateAddreses(txt_id.getText().toString(),params).enqueue(new Callback<ResponseAddress>() {
                 @Override
                 public void onResponse(Call<ResponseAddress> call, Response<ResponseAddress> response) {
                     if(response.body().getResponseCode() == 200){
