@@ -1,28 +1,45 @@
 package com.application.kreditimpian.Adapter;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.application.kreditimpian.Akun.AlamatPengiriman;
+import com.application.kreditimpian.Akun.DetailAlamat;
+import com.application.kreditimpian.Api.api_v2.BaseApiService;
+import com.application.kreditimpian.Api.api_v2.UtilsApi;
+import com.application.kreditimpian.Model.ModelAddress.ResponseAddress;
 import com.application.kreditimpian.Model.ModelListAlamat.DataItem;
 import com.application.kreditimpian.R;
 
+import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by indriyanto Nugroho on 28 Jan 2020.
  */
 public class AdapterAddresses extends RecyclerView.Adapter<AdapterAddresses.HolderAdresses> {
+
+    BaseApiService mApiService;
 
     List<DataItem> dataItemList;
     Context mContext;
@@ -45,13 +62,20 @@ public class AdapterAddresses extends RecyclerView.Adapter<AdapterAddresses.Hold
 
         holder.txt_id.setText(dataItem.getId());
         holder.txt_member.setText(dataItem.getIdMember());
-        holder.txt_nama_alamat.setText(dataItem.getAddressName());
-        holder.txt_name_penerima.setText(dataItem.getReceiver());
-        holder.txt_nomor_handphone.setText(dataItem.getPhone());
-        holder.txt_alamat.setText(dataItem.getAddress());
+        holder.txt_nama_alamat.setText("Label : "+dataItem.getAddressName());
+        holder.txt_name_penerima.setText("Penerima : "+dataItem.getReceiver());
+        holder.txt_nomor_handphone.setText("Nomor Telepon : "+dataItem.getPhone());
+        holder.txt_alamat.setText("Alamat : "+dataItem.getAddress());
         holder.txt_main_address.setText(dataItem.getMainAddress());
-        holder.txt_kodepost.setText(dataItem.getPostalCode());
+        holder.txt_kodepost.setText("Kode pos : "+dataItem.getPostalCode());
         holder.txt_alamat_utama.setText(dataItem.getMainAddress());
+
+         String AlamatUtama = dataItem.getMainAddress();
+        if(AlamatUtama.equals("YES")){
+            holder.SwitchAddress.setChecked(true);
+        }else if (AlamatUtama.equals("NO")){
+            holder.SwitchAddress.setChecked(false);
+        }
 
 
     }
@@ -87,12 +111,64 @@ public class AdapterAddresses extends RecyclerView.Adapter<AdapterAddresses.Hold
         TextView txt_alamat_utama;
         @BindView(R.id.text_alamat_utama)
         TextView text_alamat_utama;
+        @BindView(R.id.SwitchAddress)
+        Switch SwitchAddress;
 
 
 
         public HolderAdresses(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+
+            mApiService = UtilsApi.getAPIService();
+
+
+            SwitchAddress.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if(isChecked ){
+                        UpdateAddreses();
+                    }else {
+
+                        UpdateAddreses();
+
+                    }
+                }
+            });
+        }
+
+        private void UpdateAddreses(){
+
+
+            HashMap<String, String> params = new HashMap<>();
+            String AddressMain;
+            if (SwitchAddress.isChecked())
+                AddressMain = SwitchAddress.getTextOn().toString();
+            else
+                AddressMain = SwitchAddress.getTextOff().toString();
+            params.put("main_address", AddressMain.trim());
+
+            mApiService.updateAddreses(txt_id.getText().toString(), params).enqueue(new Callback<ResponseAddress>() {
+                @Override
+                public void onResponse(Call<ResponseAddress> call, Response<ResponseAddress> response) {
+                    if(response.body().getResponseCode() == 200){
+                       // Toast.makeText(mContext, response.body().getMessage() , Toast.LENGTH_LONG).show();
+                        Log.v("Jajal ", "Sukses Switch On");
+
+
+                    }else {
+                        Log.v("Jajal ", "Sukses Switch Of");
+
+                        ///Toast.makeText(mContext, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ResponseAddress> call, Throwable t) {
+
+                }
+            });
+
         }
 
     }
