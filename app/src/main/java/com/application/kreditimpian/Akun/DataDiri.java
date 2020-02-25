@@ -5,6 +5,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -235,20 +236,31 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         adapterKredit.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinnerkredit.setAdapter(adapterKredit);
 
+        /*untuk upload gambar wajah*/
         btnuploadfoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UploadFoto();
+                if(imgphoto.equals("")){
+                    Toast.makeText(DataDiri.this, "Silahkan masukan foto wajah ", Toast.LENGTH_LONG).show();
+                } else {
+                    UploadFoto();
+                }
             }
         });
 
+        /*untuk upload gambar KTP*/
         btnuploadktp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UploadKtp();
+                if (imgktp.equals("")) {
+                    Toast.makeText(DataDiri.this, "Silahkan masukan KTP anda", Toast.LENGTH_LONG).show();
+                }else {
+                    UploadKtp();
+                }
             }
         });
 
+        /*untuk upload gambar NPWP*/
         btnuploadnpwp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -581,8 +593,20 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             public void onResponse(Call<ResponseMemberInsert> call, Response<ResponseMemberInsert> response) {
                 pDialog.dismiss();
                 if (response.body() != null) {
+                    //Toast.makeText(DataDiri.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    AlertDialog alertDialog = new AlertDialog.Builder(DataDiri.this).create();
 
-                    Toast.makeText(DataDiri.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    alertDialog.setTitle("Sukses");
+                    alertDialog.setMessage("Data diri berhasil disimpan.");
+                    alertDialog.setIcon(R.drawable.successfully);
+                    alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+
+                        }
+                    });
+
+                    alertDialog.show();
 
 
                 } else {
@@ -616,12 +640,10 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             public void onResponse(Call<ResponseUploadImage> call, Response<ResponseUploadImage> response) {
                 pDialog.dismiss();
                 if (response.body() != null) {
-
                     Toast.makeText(DataDiri.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
 
-
                 } else {
-                    Toast.makeText(DataDiri.this, "Gagal update member", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DataDiri.this, "Gagal mengunggah foto", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -650,12 +672,10 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             public void onResponse(Call<ResponseUploadImage> call, Response<ResponseUploadImage> response) {
                 pDialog.dismiss();
                 if (response.body() != null) {
-
                     Toast.makeText(DataDiri.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
 
-
                 } else {
-                    Toast.makeText(DataDiri.this, "Gagal update member", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DataDiri.this, "Gagal mengunggah foto KTP", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -689,7 +709,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
 
                 } else {
-                    Toast.makeText(DataDiri.this, "Gagal update member", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DataDiri.this, "Gagal mengunggah foto NPWP                                                                          ", Toast.LENGTH_SHORT).show();
                 }
             }
 

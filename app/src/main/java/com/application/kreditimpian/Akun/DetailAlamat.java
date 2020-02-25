@@ -2,8 +2,12 @@ package com.application.kreditimpian.Akun;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -52,7 +56,7 @@ public class DetailAlamat extends AppCompatActivity {
     String id, nameCity, id_member,id_geodirectory,address_name,phone,receiver,address,postal_code,district,main_address;
     private HashMap<String, String> cityvalues;
     private HashMap<String, String> districtvalue;
-
+    ConnectivityManager conMgr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +66,34 @@ public class DetailAlamat extends AppCompatActivity {
         setActionBarTitle("Detail Alamat");
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);// set drawable icon
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        {
+            if (conMgr.getActiveNetworkInfo() != null
+                    && conMgr.getActiveNetworkInfo().isAvailable()
+                    && conMgr.getActiveNetworkInfo().isConnected()) {
+            } else {
+                ///Toast.makeText(getApplicationContext(), "Tidak ada akses Internet", Toast.LENGTH_LONG).show();
+                try {
+                    AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+
+                    alertDialog.setTitle("Info");
+                    alertDialog.setMessage("Internet tidak tersedia, Periksa konektivitas internet Anda dan coba lagi");
+                    alertDialog.setIcon(R.drawable.no_connection);
+                    alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+
+                        }
+                    });
+
+                    alertDialog.show();
+                } catch (Exception e) {
+                    /// Log.d(Constants. , "Show Dialog: " + e.getMessage());
+                }
+
+            }
+        }
 
         mApiService = UtilsApi.getAPIService();
         sharedPrefManager = new SharedPrefManager(DetailAlamat.this);
@@ -386,10 +418,24 @@ public class DetailAlamat extends AppCompatActivity {
             @Override
             public void onResponse(Call<ResponseAddress> call, Response<ResponseAddress> response) {
                 if(response.body().getResponseCode() == 200){
-                    Toast.makeText(DetailAlamat.this, response.body().getMessage() , Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(DetailAlamat.this, AlamatPengiriman.class);
-                    startActivity(intent);
-                    finish();
+                    AlertDialog alertDialog = new AlertDialog.Builder(DetailAlamat.this).create();
+
+                    alertDialog.setTitle("Sukses");
+                    alertDialog.setMessage("Alamat berhasil di perbaharui.");
+                    alertDialog.setIcon(R.drawable.successfully);
+                    alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+
+                        }
+                    });
+
+                    alertDialog.show();
+                   // finish();
+                    ///Toast.makeText(DetailAlamat.this, response.body().getMessage() , Toast.LENGTH_LONG).show();
+                    /*Intent intent = new Intent(DetailAlamat.this, AlamatPengiriman.class);
+                    startActivity(intent);*/
+
                 }else {
                     Toast.makeText(DetailAlamat.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -414,10 +460,25 @@ public class DetailAlamat extends AppCompatActivity {
             @Override
             public void onResponse(Call<ResponseAddress> call, Response<ResponseAddress> response) {
                 if(response.body().getResponseCode() == 200){
-                    Toast.makeText(DetailAlamat.this, response.body().getMessage() , Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(DetailAlamat.this, AlamatPengiriman.class);
+                    AlertDialog alertDialog = new AlertDialog.Builder(DetailAlamat.this).create();
+
+                    alertDialog.setTitle("Sukses");
+                    alertDialog.setMessage("Alamat berhasil dihapus.");
+                    alertDialog.setIcon(R.drawable.successfully);
+                    alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+
+                        }
+                    });
+
+                    alertDialog.show();
+                   /* Toast.makeText(DetailAlamat.this, response.body().getMessage() , Toast.LENGTH_LONG).show();
+                    *//*Intent intent = new Intent(DetailAlamat.this, AlamatPengiriman.class);
                     startActivity(intent);
+                    DetailAlamat.super.onBackPressed();*//*
                     finish();
+                    onBackPressed();*/
                 }else {
                     Toast.makeText(DetailAlamat.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -446,7 +507,10 @@ public class DetailAlamat extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        finish();
+        /*Intent intent = new Intent(DetailAlamat.this, AlamatPengiriman.class);
+        startActivity(intent);
+        finish();*/
+        super.onBackPressed();
     }
 
 

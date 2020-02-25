@@ -3,8 +3,12 @@ package com.application.kreditimpian.TransactionProcess;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -75,6 +79,7 @@ public class TransactionCheckout extends AppCompatActivity {
     SharedPrefManager sharedPrefManager;
     @BindView(R.id.btnAjukansekarang)
     Button btnAjukansekarang;
+    ConnectivityManager conMgr;
 
     BaseApiService mApiService;
 
@@ -85,6 +90,35 @@ public class TransactionCheckout extends AppCompatActivity {
         setActionBarTitle("Checkout");
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);// set drawable icon
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        {
+            if (conMgr.getActiveNetworkInfo() != null
+                    && conMgr.getActiveNetworkInfo().isAvailable()
+                    && conMgr.getActiveNetworkInfo().isConnected()) {
+            } else {
+                ///Toast.makeText(getApplicationContext(), "Tidak ada akses Internet",Toast.LENGTH_LONG).show();
+                try {
+                    AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+
+                    alertDialog.setTitle("Info");
+                    alertDialog.setMessage("Internet tidak tersedia, Periksa konektivitas internet Anda dan coba lagi");
+                    alertDialog.setIcon(R.drawable.no_connection);
+                    alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+
+                        }
+                    });
+
+                    alertDialog.show();
+                } catch (Exception e) {
+                    /// Log.d(Constants. , "Show Dialog: " + e.getMessage());
+                }
+
+            }
+        }
+
 
         radiogroup = (RadioGroup) findViewById(R.id.radiogroup);
         radiomethodpayment = findViewById(R.id.radiomethodpayment);

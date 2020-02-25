@@ -62,16 +62,17 @@ public class AdapterAddresses extends RecyclerView.Adapter<AdapterAddresses.Hold
 
         holder.txt_id.setText(dataItem.getId());
         holder.txt_member.setText(dataItem.getIdMember());
-        holder.txt_nama_alamat.setText("Label : "+dataItem.getAddressName());
-        holder.txt_name_penerima.setText("Penerima : "+dataItem.getReceiver());
-        holder.txt_nomor_handphone.setText("Nomor Telepon : "+dataItem.getPhone());
-        holder.txt_alamat.setText("Alamat : "+dataItem.getAddress());
+        holder.txt_nama_alamat.setText(dataItem.getAddressName());
+        holder.txt_name_penerima.setText(dataItem.getReceiver());
+        holder.txt_nomor_handphone.setText(dataItem.getPhone());
+        holder.txt_alamat.setText(dataItem.getAddress());
         holder.txt_main_address.setText(dataItem.getMainAddress());
-        holder.txt_kodepost.setText("Kode pos : "+dataItem.getPostalCode());
+        holder.txt_kodepost.setText(dataItem.getPostalCode());
         holder.txt_alamat_utama.setText(dataItem.getMainAddress());
         holder.id_geodirectory.setText(dataItem.getIdGeodirectory());
         holder.district.setText(dataItem.getDistrict());
 
+        /*Jika alamat utama value nya YES maka Switch Checked*/
          String AlamatUtama = dataItem.getMainAddress();
         if(AlamatUtama.equals("YES")){
             holder.SwitchAddress.setChecked(true);
@@ -124,14 +125,13 @@ public class AdapterAddresses extends RecyclerView.Adapter<AdapterAddresses.Hold
 
             mApiService = UtilsApi.getAPIService();
 
-
+            /*unutk Switch Alamat utama*/
             SwitchAddress.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if(isChecked ){
                         UpdateAddreses();
                     }else {
-
                         UpdateAddreses();
 
                     }
@@ -140,8 +140,6 @@ public class AdapterAddresses extends RecyclerView.Adapter<AdapterAddresses.Hold
         }
 
         private void UpdateAddreses(){
-
-
             HashMap<String, String> params = new HashMap<>();
             params.put("address_name", txt_nama_alamat.getText().toString());
             params.put("phone", txt_nomor_handphone.getText().toString());

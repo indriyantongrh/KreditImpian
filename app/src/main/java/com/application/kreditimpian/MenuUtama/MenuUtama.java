@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -30,6 +31,8 @@ import com.application.kreditimpian.R;
 import com.application.kreditimpian.SimulasiKredit.FragmentSimulasiKredit;
 import com.application.kreditimpian.TransactionProcess.Cart;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import butterknife.internal.Constants;
 
 public class MenuUtama extends AppCompatActivity {
 
@@ -51,8 +54,25 @@ public class MenuUtama extends AppCompatActivity {
                     && conMgr.getActiveNetworkInfo().isAvailable()
                     && conMgr.getActiveNetworkInfo().isConnected()) {
             } else {
-                Toast.makeText(getApplicationContext(), "Tidak ada akses Internet",
-                        Toast.LENGTH_LONG).show();
+               /// Toast.makeText(getApplicationContext(), "Tidak ada akses Internet", Toast.LENGTH_LONG).show();
+                try {
+                    AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+
+                    alertDialog.setTitle("Info");
+                    alertDialog.setMessage("Internet tidak tersedia, Periksa konektivitas internet Anda dan coba lagi");
+                    alertDialog.setIcon(R.drawable.no_connection);
+                    alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+
+                        }
+                    });
+
+                    alertDialog.show();
+                } catch (Exception e) {
+                   /// Log.d(Constants. , "Show Dialog: " + e.getMessage());
+                }
+
             }
         }
 
