@@ -81,11 +81,10 @@
                     android:layout_width="match_parent"
                     android:background="@drawable/borderhitam"
                     android:layout_height="37dp">
-
                     <EditText
                         android:id="@+id/txtnamaalamat"
                         android:layout_width="match_parent"
-                        android:layout_height="53dp"
+                        android:layout_height="match_parent"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@android:color/transparent"
@@ -93,6 +92,7 @@
                         android:hint="Alamat Rumah, Kantor, Apartemen, Dropship"
                         android:inputType="text"
                         android:textSize="26dp" />
+
 
                 </LinearLayout>
 

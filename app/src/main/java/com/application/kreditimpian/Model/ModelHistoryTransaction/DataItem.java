@@ -92,6 +92,105 @@ public class DataItem{
 	@SerializedName("target_gender")
 	private String targetGender;
 
+	@SerializedName("note")
+	private String note;
+
+	@SerializedName("tenor")
+	private String tenor;
+
+	@SerializedName("down_payment")
+	private String down_payment;
+
+	@SerializedName("id_creditor")
+	private String id_creditor;
+
+	@SerializedName("postal_fee")
+	private String postal_fee;
+
+	@SerializedName("shipping")
+	private String shipping;
+
+	@SerializedName("payment_method")
+	private String payment_method;
+
+	@SerializedName("installment")
+	private String installment;
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
+	}
+
+	public String getTenor() {
+		return tenor;
+	}
+
+	public void setTenor(String tenor) {
+		this.tenor = tenor;
+	}
+
+	public String getDown_payment() {
+		return down_payment;
+	}
+
+	public void setDown_payment(String down_payment) {
+		this.down_payment = down_payment;
+	}
+
+	public String getId_creditor() {
+		return id_creditor;
+	}
+
+	public void setId_creditor(String id_creditor) {
+		this.id_creditor = id_creditor;
+	}
+
+	public String getPostal_fee() {
+		return postal_fee;
+	}
+
+	public void setPostal_fee(String postal_fee) {
+		this.postal_fee = postal_fee;
+	}
+
+	public String getShipping() {
+		return shipping;
+	}
+
+	public void setShipping(String shipping) {
+		this.shipping = shipping;
+	}
+
+	public String getPayment_method() {
+		return payment_method;
+	}
+
+	public void setPayment_method(String payment_method) {
+		this.payment_method = payment_method;
+	}
+
+	public String getInstallment() {
+		return installment;
+	}
+
+	public void setInstallment(String installment) {
+		this.installment = installment;
+	}
+
+	public String getTotal_pembayaran() {
+		return total_pembayaran;
+	}
+
+	public void setTotal_pembayaran(String total_pembayaran) {
+		this.total_pembayaran = total_pembayaran;
+	}
+
+	@SerializedName("total_pembayaran")
+	private String total_pembayaran;
+
 	public void setExpires(Object expires){
 		this.expires = expires;
 	}

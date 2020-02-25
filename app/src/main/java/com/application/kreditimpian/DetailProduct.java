@@ -205,12 +205,14 @@ public class DetailProduct extends AppCompatActivity {
         txt_weight_value.setText(weight_value+weight);
         txt_name_merchant.setText(nameMerchant);
         txt_location_merchant.setText(city);
-///        txt_image_merchant.setText(imageMerchant);
-//        Glide.with(DetailProduct.this)
-//                .load(imageMerchant)
-//                .placeholder(R.drawable.store)
-//                .error(R.drawable.store)
-//                .into(imagemerchant);
+/*
+        txt_image_merchant.setText(imageMerchant);
+        Glide.with(DetailProduct.this)
+                .load(imageMerchant)
+                .placeholder(R.drawable.store)
+                .error(R.drawable.store)
+                .into(imagemerchant);
+*/
 
         btnBelisekarang.setOnClickListener(new View.OnClickListener() {
             @Override

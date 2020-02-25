@@ -228,6 +228,7 @@ public class TransactionCheckout extends AppCompatActivity {
         params.put("note", tvNote.getText().toString());
         params.put("id_creditor", tvIdCreditor.getText().toString());
         params.put("postal_fee", tvBiayaKirim.getText().toString());
+        params.put("courier" , tvJasaPengiriman.getText().toString());
         params.put("installment", tvInstalment.getText().toString());
         params.put("payment_method", radioButton.getText().toString());
 

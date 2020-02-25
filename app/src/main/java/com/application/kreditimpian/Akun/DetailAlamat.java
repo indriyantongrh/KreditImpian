@@ -461,7 +461,6 @@ public class DetailAlamat extends AppCompatActivity {
             public void onResponse(Call<ResponseAddress> call, Response<ResponseAddress> response) {
                 if(response.body().getResponseCode() == 200){
                     AlertDialog alertDialog = new AlertDialog.Builder(DetailAlamat.this).create();
-
                     alertDialog.setTitle("Sukses");
                     alertDialog.setMessage("Alamat berhasil dihapus.");
                     alertDialog.setIcon(R.drawable.successfully);

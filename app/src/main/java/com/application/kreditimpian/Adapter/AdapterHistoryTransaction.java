@@ -10,7 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.application.kreditimpian.Model.ModelHistoryTransaction.DataItem;
+///import com.application.kreditimpian.Model.ModelHistoryTransaction.DataItem;
+import com.application.kreditimpian.Model.ModelHistoryPesanan.DataItem;
 import com.application.kreditimpian.R;
 import com.bumptech.glide.Glide;
 
@@ -70,7 +71,7 @@ public class AdapterHistoryTransaction extends RecyclerView.Adapter<AdapterHisto
         holder.txt_price_capital.setText(formatRupiah.format(Price_Capital));
         holder.txt_price_sale.setText(formatRupiah.format(Price_Sale));
         holder.txt_condition.setText(dataItem.getCondition());
-        holder.txt_nama_mitra.setText(dataItem.getName_company());
+        holder.txt_nama_mitra.setText(dataItem.getNameCompany());
         holder.txt_image.setText(dataItem.getFilename());
 
         Glide.with(mContext)
@@ -79,8 +80,19 @@ public class AdapterHistoryTransaction extends RecyclerView.Adapter<AdapterHisto
                 .error(R.drawable.no_image)
                 .into(holder.image);
 
-
-
+        holder.txt_tenor.setText(dataItem.getTenor());
+        holder.txt_down_payment.setText(dataItem.getDownPayment());
+        holder.txt_note.setText(dataItem.getNote());
+        holder.txt_ongkos_kirim.setText(dataItem.getPostalFee());
+        holder.txt_installment.setText(dataItem.getInstallment());
+        holder.txt_total_pembayaran.setText(dataItem.getTotalPembayaran());
+        holder.txt_address.setText(dataItem.getShipping().getSend().getAddress());
+        holder.txt_address_label.setText(dataItem.getShipping().getSend().getAddressLabel());
+        holder.txt_receive.setText(dataItem.getShipping().getSend().getReceiver());
+        holder.txt_mobile.setText(dataItem.getShipping().getSend().getMobile());
+        holder.txt_city.setText(dataItem.getShipping().getSend().getCity());
+        holder.txt_district.setText(dataItem.getShipping().getSend().getDistrict());
+        holder.txt_courier.setText(dataItem.getCourier());
 
     }
 
@@ -173,6 +185,26 @@ public class AdapterHistoryTransaction extends RecyclerView.Adapter<AdapterHisto
         TextView txt_nomor_invoice;
         @BindView(R.id.txt_nama_mitra)
         TextView txt_nama_mitra;
+        @BindView(R.id.txt_ongkos_kirim)
+        TextView txt_ongkos_kirim;
+        @BindView(R.id.txt_installment)
+        TextView txt_installment;
+        @BindView(R.id.txt_total_pembayaran)
+        TextView txt_total_pembayaran;
+
+        @BindView(R.id.txt_address)
+        TextView txt_address;
+        @BindView(R.id.txt_city)
+        TextView txt_city;
+        @BindView(R.id.txt_mobile)
+        TextView txt_mobile;
+        @BindView(R.id.txt_receive)
+        TextView txt_receive;
+        @BindView(R.id.txt_address_label)
+        TextView txt_address_label;
+        @BindView(R.id.txt_district)
+        TextView txt_district;
+
 
 
 

@@ -416,6 +416,8 @@
             android:layout_height="0dp"
             android:visibility="gone" />
 
+
+
         <TextView
             android:id="@+id/txt_address"
             android:layout_width="0dp"
@@ -454,31 +456,31 @@
             android:visibility="gone" />
 
         <TextView
-            android:id="@+id/txt_5"
+            android:id="@+id/txt_ongkos_kirim"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:visibility="gone" />
 
         <TextView
-            android:id="@+id/txt_6"
+            android:id="@+id/txt_installment"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:visibility="gone" />
 
         <TextView
-            android:id="@+id/txt_7"
+            android:id="@+id/txt_total_pembayaran"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:visibility="gone" />
 
         <TextView
-            android:id="@+id/txt_8"
+            android:id="@+id/txt_receiver"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:visibility="gone" />
 
         <TextView
-            android:id="@+id/txt_9"
+            android:id="@+id/txt_district"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:visibility="gone" />
