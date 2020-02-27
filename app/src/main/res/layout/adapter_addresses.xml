@@ -156,16 +156,31 @@
             android:layout_marginStart="10dp"
             android:layout_height="wrap_content">
             <TextView
+                android:id="@+id/textMainAdress"
                 android:text="Jadikan alamat Utama "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tvAlamatUtama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Alamat Utama"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/colorOrange"
+                android:textSize="13dp"
+                android:visibility="gone"
+                android:layout_gravity="right"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:gravity="right"
+                tools:ignore="NotSibling" />
 
             <Switch
                 android:id="@+id/SwitchAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-
                 android:textOff="NO"
                 android:textOn="YES"
                 android:gravity="right" />

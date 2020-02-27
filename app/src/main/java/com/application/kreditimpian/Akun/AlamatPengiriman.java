@@ -75,6 +75,8 @@ public class AlamatPengiriman extends AppCompatActivity {
         ListAlamat.setLayoutManager(mLayoutManager);
         ListAlamat.setItemAnimator(new DefaultItemAnimator());
 
+        adapterAddresses.notifyDataSetChanged();
+
 
         LoadAdresess();
         btnTambahAlamat = findViewById(R.id.btnTambahAlamat);
@@ -101,6 +103,7 @@ public class AlamatPengiriman extends AppCompatActivity {
 
                     ListAlamat.setAdapter(new AdapterAddresses(mContext, Addresses));
                     adapterAddresses.notifyDataSetChanged();
+                    adapterAddresses.addAllItems(Addresses);
                     ///empty.setVisibility(View.GONE);
                    initDataIntent(Addresses);
                 }else {

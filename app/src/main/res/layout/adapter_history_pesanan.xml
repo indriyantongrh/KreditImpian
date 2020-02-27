@@ -130,7 +130,7 @@
             android:layout_below="@+id/txt_price_capital"
             android:layout_marginStart="8dp"
             android:layout_toRightOf="@+id/LinearImage"
-           />
+            />
 
 
         <LinearLayout

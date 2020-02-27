@@ -55,13 +55,13 @@ public class DetailProduct extends AppCompatActivity {
     TextView txt_price_sale;
     @BindView(R.id.txt_description)
     WebView txt_description;
-//    @BindView(R.id.txt_sku)
+    //    @BindView(R.id.txt_sku)
 //    TextView txt_sku;
     @BindView(R.id.txt_stock)
     TextView txt_stock;
     @BindView(R.id.txt_condition)
     TextView txt_condition;
-//    @BindView(R.id.txt_deliverable)
+    //    @BindView(R.id.txt_deliverable)
 //    TextView txt_deliverable;
 //    @BindView(R.id.txt_downloadable)
 //    TextView txt_downloadable;
@@ -73,24 +73,24 @@ public class DetailProduct extends AppCompatActivity {
 //    TextView txt_visibility;
     @BindView(R.id.imageView)
     ImageView imageView;
-//    @BindView(R.id.txt_image)
+    //    @BindView(R.id.txt_image)
 //    TextView txt_image;
     @BindView(R.id.txt_weight_value)
     TextView txt_weight_value;
-//    @BindView(R.id.txt_weight)
+    //    @BindView(R.id.txt_weight)
 //    TextView txt_weight;
     @BindView(R.id.txt_name_merchant)
     TextView txt_name_merchant;
     @BindView(R.id.txt_location_merchant)
     TextView txt_location_merchant;
-//    @BindView(R.id.imagemerchant)
+    //    @BindView(R.id.imagemerchant)
 //    ImageView imagemerchant;
 //    @BindView(R.id.txt_image_merchant)
 //    TextView txt_image_merchant;
     @BindView(R.id.btnBelisekarang)
     Button btnBelisekarang;
 
-    String id, id_product_category,id_currency,nameProduct,price_capital, price_sale,description , condition,stock, imageProduct, weight_value,
+    String id, id_product_category, id_currency, nameProduct, price_capital, price_sale, description, condition, stock, imageProduct, weight_value,
             weight, nameMerchant, city, imageMerchant;
     ///Integer image;
 
@@ -101,7 +101,7 @@ public class DetailProduct extends AppCompatActivity {
     List<ImagesItem> imageItemList;
 
     DecimalFormat kursindonesia;
-    Double rupiah,rupiahspinner;
+    Double rupiah, rupiahspinner;
     DecimalFormatSymbols formatRp;
     Double pricerCapital;
 
@@ -159,7 +159,7 @@ public class DetailProduct extends AppCompatActivity {
         int price_capital = (Integer.parseInt(intent.getStringExtra(Constans.KEY_PRICE_CAPITAL)));
         int price_sale = (Integer.parseInt(intent.getStringExtra(Constans.KEY_PRICE_SALE)));
 
-        if (price_capital == price_sale ) {
+        if (price_capital == price_sale) {
             txt_price_capital.setVisibility(View.GONE);
         } else {
             txt_price_capital.setVisibility(View.VISIBLE);
@@ -175,7 +175,6 @@ public class DetailProduct extends AppCompatActivity {
         weight = intent.getStringExtra(Constans.KEY_WEIGHT);
         nameMerchant = intent.getStringExtra(Constans.KEY_NAME_MERCHNAT);
         city = intent.getStringExtra(Constans.KEY_CITY_MERCHANT);
-
 
 
         txt_id.setText(id);
@@ -194,7 +193,7 @@ public class DetailProduct extends AppCompatActivity {
         txt_description.loadDataWithBaseURL(null, description, "text/html", "utf-8", null);
         txt_condition.setText(condition);
         txt_stock.setText(stock);
-        ///image.setImageResource(imageproduct);
+
 
         Glide.with(DetailProduct.this)
                 .load(imageProduct)
@@ -202,7 +201,7 @@ public class DetailProduct extends AppCompatActivity {
                 .error(R.drawable.no_image)
                 .into(imageView);
 
-        txt_weight_value.setText(weight_value+weight);
+        txt_weight_value.setText(weight_value + weight);
         txt_name_merchant.setText(nameMerchant);
         txt_location_merchant.setText(city);
 /*
@@ -224,7 +223,7 @@ public class DetailProduct extends AppCompatActivity {
 
     }
 
-    private void InsertShoppingCart(){
+    private void InsertShoppingCart() {
 
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
@@ -233,7 +232,7 @@ public class DetailProduct extends AppCompatActivity {
 
 
         HashMap<String, String> params = new HashMap<>();
-        params.put("id_member",sharedPrefManager.getSpIdMember() );
+        params.put("id_member", sharedPrefManager.getSpIdMember());
         params.put("reference_id", id);
 
         mApiService.InsertShoppingCart(params).enqueue(new Callback<ResponseTransaction>() {
@@ -241,7 +240,7 @@ public class DetailProduct extends AppCompatActivity {
             public void onResponse(Call<ResponseTransaction> call, Response<ResponseTransaction> response) {
 
                 pDialog.dismiss();
-                if (response.body() !=null) {
+                if (response.body() != null) {
                     ////Toast.makeText(DetailProduct.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(DetailProduct.this, Cart.class);
                     startActivity(intent);
@@ -251,6 +250,7 @@ public class DetailProduct extends AppCompatActivity {
                 }
 
             }
+
             @Override
             public void onFailure(Call<ResponseTransaction> call, Throwable t) {
                 Toast.makeText(DetailProduct.this, "Keneksi terputus", Toast.LENGTH_LONG);
@@ -258,9 +258,6 @@ public class DetailProduct extends AppCompatActivity {
         });
 
     }
-
-
-
 
 
     private void setActionBarTitle(String title) {

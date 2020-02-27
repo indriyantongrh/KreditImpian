@@ -240,11 +240,9 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         btnuploadfoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(imgphoto.equals("")){
-                    Toast.makeText(DataDiri.this, "Silahkan masukan foto wajah ", Toast.LENGTH_LONG).show();
-                } else {
+
                     UploadFoto();
-                }
+
             }
         });
 
@@ -252,11 +250,9 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         btnuploadktp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (imgktp.equals("")) {
-                    Toast.makeText(DataDiri.this, "Silahkan masukan KTP anda", Toast.LENGTH_LONG).show();
-                }else {
+
                     UploadKtp();
-                }
+
             }
         });
 
@@ -1007,6 +1003,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                             .into(imagenpwp);
 
                 } else {
+                    pDialog.dismiss();
                     Toast.makeText(DataDiri.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
@@ -1014,6 +1011,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
             @Override
             public void onFailure(Call<ResponseDetailMember> call, Throwable t) {
+                pDialog.dismiss();
                 Toast.makeText(DataDiri.this, "Keneksi terputus", Toast.LENGTH_LONG);
             }
         });

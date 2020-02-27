@@ -106,6 +106,10 @@ public interface BaseApiService {
     Call<ResponseAddress> updateAddreses(@Query("id") String id,
                                          @QueryMap HashMap<String, String> params);
 
+    @GET("ApiMobile/mainadrsyes")
+    Call<ResponseAddress> updateMainAddress(@Query("id") String id,
+                                         @QueryMap HashMap<String, String> params);
+
     @GET("ApiMobile/gantipassword")
     Call<ResponseAddress> ResetPassword(@Query("id_sysuser") String id_sysuser, @QueryMap HashMap<String, String> params);
 
@@ -217,7 +221,7 @@ public interface BaseApiService {
     @GET("products?id_product_category=17&status=PUBLISH")
     Call<ResponseProductBaru> getResultCoorporate();
 
-    //getAllProductHobi
+    //getAllProductProperty
     @GET("products?id_product_category=29&status=PUBLISH")
     Call<ResponseProductBaru> getResultProperty();
 

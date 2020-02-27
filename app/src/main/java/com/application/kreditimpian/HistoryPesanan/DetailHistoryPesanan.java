@@ -4,12 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.application.kreditimpian.Constan.ConstanHistoryPesanan;
 import com.application.kreditimpian.R;
+import com.bumptech.glide.Glide;
+
+import java.text.NumberFormat;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -69,8 +74,22 @@ public class DetailHistoryPesanan extends AppCompatActivity {
         String description = intent.getStringExtra(ConstanHistoryPesanan.KEY_DESCRIPTION);
         String sku = intent.getStringExtra(ConstanHistoryPesanan.KEY_SKU);
         String stock = intent.getStringExtra(ConstanHistoryPesanan.KEY_STOCK);
-        String price_capital = intent.getStringExtra(ConstanHistoryPesanan.KEY_PRICE_CAPITAL);
-        String price_sale = intent.getStringExtra(ConstanHistoryPesanan.KEY_PRICE_SALE);
+       /* String price_capital = intent.getStringExtra(ConstanHistoryPesanan.KEY_PRICE_CAPITAL);
+        String price_sale = intent.getStringExtra(ConstanHistoryPesanan.KEY_PRICE_SALE);*/
+
+
+        ///convert String to Rupiah Curerncy
+        Locale localeID = new Locale("in", "ID");
+        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+        int price_capital = (Integer.parseInt(intent.getStringExtra(ConstanHistoryPesanan.KEY_PRICE_CAPITAL)));
+        int price_sale = (Integer.parseInt(intent.getStringExtra(ConstanHistoryPesanan.KEY_PRICE_SALE)));
+
+        if (price_capital == price_sale) {
+            txt_price_capital.setVisibility(View.GONE);
+        } else {
+            txt_price_capital.setVisibility(View.VISIBLE);
+        }
+
         String discount = intent.getStringExtra(ConstanHistoryPesanan.KEY_DISCOUNT);
         String condition = intent.getStringExtra(ConstanHistoryPesanan.KEY_CONDITION);
         String deliverable = intent.getStringExtra(ConstanHistoryPesanan.KEY_DELIVERABLE);
@@ -84,10 +103,12 @@ public class DetailHistoryPesanan extends AppCompatActivity {
         String id_company = intent.getStringExtra(ConstanHistoryPesanan.KEY_ID_COMPANY);
         String name_company = intent.getStringExtra(ConstanHistoryPesanan.KEY_NAME_COMPANY);
         String tenor = intent.getStringExtra(ConstanHistoryPesanan.KEY_TENOR);
-        String down_payment = intent.getStringExtra(ConstanHistoryPesanan.KEY_DOWN_PAYMENT);
+        //String down_payment = intent.getStringExtra(ConstanHistoryPesanan.KEY_DOWN_PAYMENT);
+        int down_payment = (Integer.parseInt(intent.getStringExtra(ConstanHistoryPesanan.KEY_DOWN_PAYMENT)));
         String note = intent.getStringExtra(ConstanHistoryPesanan.KEY_NOTE);
         String id_creditor = intent.getStringExtra(ConstanHistoryPesanan.KEY_ID_CREDITOR);
-        String postal_fee = intent.getStringExtra(ConstanHistoryPesanan.KEY_POSTAL_FEE);
+        //String postal_fee = intent.getStringExtra(ConstanHistoryPesanan.KEY_POSTAL_FEE);
+        int postal_fee = (Integer.parseInt(intent.getStringExtra(ConstanHistoryPesanan.KEY_POSTAL_FEE)));
         String address_label = intent.getStringExtra(ConstanHistoryPesanan.KEY_ADDRESS_LABEL);
         String receiver = intent.getStringExtra(ConstanHistoryPesanan.KEY_RECEIVER);
         String mobile = intent.getStringExtra(ConstanHistoryPesanan.KEY_MOBILE);
@@ -95,11 +116,36 @@ public class DetailHistoryPesanan extends AppCompatActivity {
         String district = intent.getStringExtra(ConstanHistoryPesanan.KEY_DISTRICT);
         String address = intent.getStringExtra(ConstanHistoryPesanan.KEY_ADDRESS);
         String payment_method = intent.getStringExtra(ConstanHistoryPesanan.KEY_PAYMENT_METHOD);
-        String installment = intent.getStringExtra(ConstanHistoryPesanan.KEY_INSTALLMENT);
-        String total_pembayaran = intent.getStringExtra(ConstanHistoryPesanan.KEY_TOTAL_PEMBAYARAN);
+        //String installment = intent.getStringExtra(ConstanHistoryPesanan.KEY_INSTALLMENT);
+        int installment = (Integer.parseInt(intent.getStringExtra(ConstanHistoryPesanan.KEY_INSTALLMENT)));
+        int total_pembayaran = (Integer.parseInt(intent.getStringExtra(ConstanHistoryPesanan.KEY_TOTAL_PEMBAYARAN)));
+       // String total_pembayaran = intent.getStringExtra(ConstanHistoryPesanan.KEY_TOTAL_PEMBAYARAN);
         String courier = intent.getStringExtra(ConstanHistoryPesanan.KEY_COURIER);
 
-        Toast.makeText(DetailHistoryPesanan.this, ""+mobile, Toast.LENGTH_LONG).show();
+        ///Toast.makeText(DetailHistoryPesanan.this, ""+mobile, Toast.LENGTH_LONG).show();
+        txt_status_pesanan.setText(status);
+        txt_nama_mitra.setText(name_company);
+        txt_name_product.setText(name);
+        txt_nomor_invoice.setText("Order ID #"+number);
+        /*txt_price_capital.setText(price_capital);
+        txt_price_sale.setText(price_sale);*/
+        tvDownpayment.setText(formatRupiah.format(down_payment));
+        tvInstallment.setText(formatRupiah.format(installment)+" /bulan");
+        tvOngkoskirim.setText(formatRupiah.format(postal_fee));
+        tvKurir.setText(courier);
+        tvPaymentMethod.setText(payment_method);
+        tvTenor.setText(tenor+" Bulan");
+        tvTotalPembayaran.setText(formatRupiah.format(total_pembayaran));
+        txt_price_capital.setText(formatRupiah.format(price_capital));
+        txt_price_sale.setText(formatRupiah.format(price_sale));
+
+        Glide.with(DetailHistoryPesanan.this)
+                .load(filename)
+                .placeholder(R.drawable.no_image)
+                .error(R.drawable.no_image)
+                .into(image);
+
+
 
     }
 

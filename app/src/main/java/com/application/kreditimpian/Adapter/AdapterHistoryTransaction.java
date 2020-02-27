@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 ///import com.application.kreditimpian.Model.ModelHistoryTransaction.DataItem;
@@ -103,6 +104,8 @@ public class AdapterHistoryTransaction extends RecyclerView.Adapter<AdapterHisto
 
     public class HolderHistoryTransaction extends RecyclerView.ViewHolder {
 
+        @BindView(R.id.btnclick)
+        CardView btnclick;
         @BindView(R.id.txt_status_pesanan)
         TextView txt_status_pesanan;
         @BindView(R.id.image)
@@ -191,7 +194,6 @@ public class AdapterHistoryTransaction extends RecyclerView.Adapter<AdapterHisto
         TextView txt_installment;
         @BindView(R.id.txt_total_pembayaran)
         TextView txt_total_pembayaran;
-
         @BindView(R.id.txt_address)
         TextView txt_address;
         @BindView(R.id.txt_city)
@@ -211,6 +213,8 @@ public class AdapterHistoryTransaction extends RecyclerView.Adapter<AdapterHisto
         public HolderHistoryTransaction(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+
+
         }
     }
 }

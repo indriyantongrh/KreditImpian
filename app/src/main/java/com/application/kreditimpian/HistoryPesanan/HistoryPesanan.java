@@ -95,7 +95,7 @@ public class HistoryPesanan extends AppCompatActivity {
 
     private void getHistoryTransaction(){
 
-        progressBar = ProgressDialog.show(HistoryPesanan.this, null, "Harap Tunggu...", true, false);
+        progressBar = ProgressDialog.show(HistoryPesanan.this, null, "Loading...", true, false);
 
         HashMap<String, String> params = new HashMap<>();
         params.put("id_member", sharedPrefManager.getSpIdMember());
@@ -121,66 +121,66 @@ public class HistoryPesanan extends AppCompatActivity {
 
                 } else {
                     progressBar.dismiss();
-                    Toast.makeText(mContext,    "Gagal Refresh", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "Gagal Refresh", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseHistoryPesanan> call, Throwable t) {
                 progressBar.dismiss();
-                Toast.makeText(mContext,    "Koneksi anda bermasalah", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext,"Koneksi anda bermasalah", Toast.LENGTH_SHORT).show();
             }
         });
 
     }
 
-    private void initDataIntent(List<DataItem> historyTransaction) {
-        listHistoryPesanan.addOnItemTouchListener(new RecyclerItemClickListener(mContext, new RecyclerItemClickListener.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
+    private void initDataIntent(final List<DataItem> detaiList){
+        listHistoryPesanan.addOnItemTouchListener(
+                new RecyclerItemClickListener(mContext, new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
 
-                String id =historyTransaction.get(position).getId();
-                String id_transactions = historyTransaction.get(position).getIdTransactions();
-                String status = historyTransaction.get(position).getStatus();
-                String timestamp = historyTransaction.get(position).getTimestamp();
-                String expires = historyTransaction.get(position).getExpires();
-                String number = historyTransaction.get(position).getNumber();
-                String id_product = historyTransaction.get(position).getIdProduct();
-                String id_product_category = historyTransaction.get(position).getIdProductCategory();
-                String id_currency = historyTransaction.get(position).getIdCurrency();
-                String name = historyTransaction.get(position).getName();
-                String description = historyTransaction.get(position).getDescription();
-                String sku = historyTransaction.get(position).getSku();
-                String stock = historyTransaction.get(position).getStock();
-                String price_capital = historyTransaction.get(position).getPriceCapital();
-                String price_sale = historyTransaction.get(position).getPriceSale();
-                String discount = historyTransaction.get(position).getDiscount();
-                String condition = historyTransaction.get(position).getCondition();
-                String deliverable = historyTransaction.get(position).getDeliverable();
-                String downloadable = historyTransaction.get(position).getDownloadable();
-                String target_gender = historyTransaction.get(position).getTargetGender();
-                String target_age = historyTransaction.get(position).getTargetAge();
-                String visibility = historyTransaction.get(position).getVisibility();
-                String filename = historyTransaction.get(position).getFilename();
-                String id_merchant = historyTransaction.get(position).getIdMerchant();
-                String name_merchant = historyTransaction.get(position).getNameMerchant();
-                String id_company = historyTransaction.get(position).getIdCompany();
-                String name_company = historyTransaction.get(position).getNameCompany();
-                String tenor = historyTransaction.get(position).getTenor();
-                String down_payment = historyTransaction.get(position).getDownPayment();
-                String note = historyTransaction.get(position).getNote();
-                String id_creditor = historyTransaction.get(position).getIdCreditor();
-                String postal_fee = historyTransaction.get(position).getPostalFee();
-                String address_label = historyTransaction.get(position).getShipping().getSend().getAddressLabel();
-                String receiver = historyTransaction.get(position).getShipping().getSend().getReceiver();
-                String mobile = historyTransaction.get(position).getShipping().getSend().getMobile();
-                String city = historyTransaction.get(position).getShipping().getSend().getCity();
-                String district = historyTransaction.get(position).getShipping().getSend().getDistrict();
-                String address = historyTransaction.get(position).getShipping().getSend().getAddress();
-                String payment_method = historyTransaction.get(position).getPaymentMethod();
-                String installment = historyTransaction.get(position).getInstallment();
-                String total_pembayaran = historyTransaction.get(position).getTotalPembayaran();
-                String courier = historyTransaction.get(position).getCourier();
+                String id =detaiList.get(position).getId();
+                String id_transactions = detaiList.get(position).getIdTransactions();
+                String status = detaiList.get(position).getStatus();
+                String timestamp = detaiList.get(position).getTimestamp();
+                String expires = detaiList.get(position).getExpires();
+                String number = detaiList.get(position).getNumber();
+                String id_product = detaiList.get(position).getIdProduct();
+                String id_product_category = detaiList.get(position).getIdProductCategory();
+                String id_currency = detaiList.get(position).getIdCurrency();
+                String name = detaiList.get(position).getName();
+                String description = detaiList.get(position).getDescription();
+                String sku = detaiList.get(position).getSku();
+                String stock = detaiList.get(position).getStock();
+                String price_capital = detaiList.get(position).getPriceCapital();
+                String price_sale = detaiList.get(position).getPriceSale();
+                String discount = detaiList.get(position).getDiscount();
+                String condition = detaiList.get(position).getCondition();
+                String deliverable = detaiList.get(position).getDeliverable();
+                String downloadable = detaiList.get(position).getDownloadable();
+                String target_gender = detaiList.get(position).getTargetGender();
+                String target_age = detaiList.get(position).getTargetAge();
+                String visibility = detaiList.get(position).getVisibility();
+                String filename = detaiList.get(position).getFilename();
+                String id_merchant = detaiList.get(position).getIdMerchant();
+                String name_merchant = detaiList.get(position).getNameMerchant();
+                String id_company = detaiList.get(position).getIdCompany();
+                String name_company = detaiList.get(position).getNameCompany();
+                String tenor = detaiList.get(position).getTenor();
+                String down_payment = detaiList.get(position).getDownPayment();
+                String note = detaiList.get(position).getNote();
+                String id_creditor = detaiList.get(position).getIdCreditor();
+                String postal_fee = detaiList.get(position).getPostalFee();
+                String address_label = detaiList.get(position).getShipping().getSend().getAddressLabel();
+                String receiver = detaiList.get(position).getShipping().getSend().getReceiver();
+                String mobile = detaiList.get(position).getShipping().getSend().getMobile();
+                String city = detaiList.get(position).getShipping().getSend().getCity();
+                String district = detaiList.get(position).getShipping().getSend().getDistrict();
+                String address = detaiList.get(position).getShipping().getSend().getAddress();
+                String payment_method = detaiList.get(position).getPaymentMethod();
+                String installment = detaiList.get(position).getInstallment();
+                String total_pembayaran = detaiList.get(position).getTotalPembayaran();
+                String courier = detaiList.get(position).getCourier();
 
                 Intent detailHistoryPesanan = new Intent(mContext, DetailHistoryPesanan.class);
                 detailHistoryPesanan.putExtra(ConstanHistoryPesanan.KEY_ID, id);
@@ -225,7 +225,7 @@ public class HistoryPesanan extends AppCompatActivity {
                 detailHistoryPesanan.putExtra(ConstanHistoryPesanan.KEY_INSTALLMENT, installment);
                 detailHistoryPesanan.putExtra(ConstanHistoryPesanan.KEY_TOTAL_PEMBAYARAN, total_pembayaran);
                 detailHistoryPesanan.putExtra(ConstanHistoryPesanan.KEY_COURIER, courier);
-
+                startActivity(detailHistoryPesanan);
             }
         }));
 
