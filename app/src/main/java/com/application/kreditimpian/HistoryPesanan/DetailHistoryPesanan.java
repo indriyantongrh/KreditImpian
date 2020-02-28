@@ -1,6 +1,7 @@
 package com.application.kreditimpian.HistoryPesanan;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import kotlin.BuilderInference;
 
 public class DetailHistoryPesanan extends AppCompatActivity {
 
@@ -49,6 +51,8 @@ public class DetailHistoryPesanan extends AppCompatActivity {
     TextView tvTotalPembayaran;
     @BindView(R.id.tvPaymentMethod)
     TextView tvPaymentMethod;
+    @BindView(R.id.informationTransfer)
+    CardView informationTransfer;
 
 
     @Override
@@ -144,6 +148,10 @@ public class DetailHistoryPesanan extends AppCompatActivity {
                 .placeholder(R.drawable.no_image)
                 .error(R.drawable.no_image)
                 .into(image);
+
+        if (txt_status_pesanan.equals("CONFIRMED_CREDITOR")){
+            informationTransfer.setVisibility(View.VISIBLE);
+        }
 
 
 

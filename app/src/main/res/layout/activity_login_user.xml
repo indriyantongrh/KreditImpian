@@ -216,11 +216,21 @@
                 >
 
                 <TextView
-                    android:id="@+id/btnregister"
-                    android:text="Apakah anda belum memiliki akun ? Register"
-                    android:fontFamily="@font/jipatharegular"
-                    android:textSize="26dp"
+                    android:id="@+id/textRegister"
+                    android:text="Apakah anda belum memiliki akun ?"
+                    android:fontFamily="@font/sairaregular"
+                    android:textSize="15dp"
                     android:textColor="#000"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/btnregister"
+                    android:text=" Register"
+                    android:fontFamily="@font/sairaregular"
+                    android:textSize="16dp"
+                    android:textColor="#000"
+                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -233,7 +243,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:text="Kreditimpian v.1.1.0"
+            android:text="KreditimpianBeta v.1.2.0"
             android:gravity="center|bottom"
             android:textSize="10dp"
             android:foregroundGravity="bottom"

@@ -158,21 +158,7 @@
                     android:layout_height="15dp"
                     android:background="#fff"></LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="37dp"
-                    android:background="@drawable/borderhitam"
-                    android:orientation="vertical">
 
-                    <Spinner
-                        android:id="@+id/spinnerkota_pengiriman"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:entries="@array/kota"
-                        android:fontFamily="@font/jipatharegular"></Spinner>
-
-
-                </LinearLayout>
 
                 <TextView
                     android:id="@+id/text_kota"
@@ -180,10 +166,43 @@
                     android:layout_height="wrap_content"
                     android:paddingTop="@dimen/padding_10"
                     android:text="Nama kota"
+                    android:textSize="16dp"
                     android:textColor="@color/colorOrange" />
 
-
                 <LinearLayout
+                    android:id="@+id/LinearKota"
+                    android:layout_width="match_parent"
+                    android:layout_height="37dp"
+                    android:visibility="gone"
+                    android:background="@drawable/borderhitam"
+                    android:orientation="horizontal">
+
+                    <Spinner
+                        android:id="@+id/spinnerkota_pengiriman"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:entries="@array/kota"
+
+                        android:fontFamily="@font/jipatharegular"></Spinner>
+
+
+
+                </LinearLayout>
+                <Button
+                    android:id="@+id/btnUbah"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/btnorange"
+                    android:text="Ubah Kota"
+                    android:textColor="@color/colorwhite"
+                  />
+
+
+
+
+<!--                <LinearLayout
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -195,7 +214,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="12dp" />
 
-                </LinearLayout>
+                </LinearLayout>-->
 
                 <!--Border-->
                 <LinearLayout
@@ -203,9 +222,30 @@
                     android:layout_height="15dp"
                     android:background="#fff"></LinearLayout>
 
+
+                <TextView
+                    android:id="@+id/text_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/padding_10"
+                    android:text="Nama kota"
+                    android:visibility="gone" />
+
+
+
+                <TextView
+                    android:id="@+id/text_kecamatan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/padding_10"
+                    android:text="Nama Kecamatan"
+                    android:textColor="@color/colorOrange" />
+
                 <LinearLayout
+                    android:id="@+id/LinearKecamatan"
                     android:layout_width="match_parent"
                     android:layout_height="37dp"
+                    android:visibility="gone"
                     android:background="@drawable/borderhitam"
                     android:orientation="horizontal">
 
@@ -217,21 +257,19 @@
                         android:fontFamily="@font/jipatharegular"></Spinner>
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/text_id"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/padding_10"
-                    android:text="Nama kota"
-                    android:visibility="gone" />
 
-                <TextView
-                    android:id="@+id/text_kecamatan"
+                <Button
+                    android:id="@+id/btnUbahKecamatan"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/padding_10"
-                    android:text="Nama kota"
-                    android:textColor="@color/colorOrange" />
+                    android:layout_height="30dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/btnorange"
+                    android:text="Ubah Kecamatan"
+                    android:textColor="@color/colorwhite"
+                    />
 
                 <LinearLayout
 

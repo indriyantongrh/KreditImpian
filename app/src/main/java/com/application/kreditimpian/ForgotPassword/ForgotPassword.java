@@ -14,9 +14,11 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.application.kreditimpian.Akun.DataDiri;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
 import com.application.kreditimpian.LoginRegister.LoginUser;
@@ -36,6 +38,7 @@ public class ForgotPassword extends AppCompatActivity {
     Button btnSend, btnOK;
     ProgressDialog pDialog;
     BaseApiService mApiservices;
+    TextView textalert;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,7 @@ public class ForgotPassword extends AppCompatActivity {
         txtemail = findViewById(R.id.txtemail);
         Edusername = findViewById(R.id.Edusername);
         btnSend = findViewById(R.id.btnSend);
+        textalert = findViewById(R.id.textalert);
 
 
         btnSend.setOnClickListener(new View.OnClickListener() {
@@ -80,8 +84,23 @@ public class ForgotPassword extends AppCompatActivity {
                     if(response.body().getStatus()==200) {
                         ///Toast.makeText(ForgotPassword.this, response.body().getResult().toString(), Toast.LENGTH_LONG).show();
 
+                        textalert.setVisibility(View.GONE);
+                        AlertDialog alertDialog = new AlertDialog.Builder(ForgotPassword.this).create();
 
-                       AlertDialog.Builder ImageDialog = new AlertDialog.Builder(ForgotPassword.this);
+                        alertDialog.setTitle("Email berhasil terkriim");
+                        alertDialog.setMessage("Cek pada Inbox anda dan klik link yang ada pada isi email tersebut");
+                        alertDialog.setIcon(R.drawable.successfully);
+                        alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                finish();
+
+                            }
+                        });
+
+                        alertDialog.show();
+
+
+                       /*AlertDialog.Builder ImageDialog = new AlertDialog.Builder(ForgotPassword.this);
                         LayoutInflater inflater = getLayoutInflater();
                         View dialogLayout = inflater.inflate(R.layout.image_layout, null);
                         ///ImageDialog.setPositiveButton("OK", null);
@@ -96,14 +115,15 @@ public class ForgotPassword extends AppCompatActivity {
                                 finish();
                             }
                         });
-                        ImageDialog.show();
+                        ImageDialog.show();*/
 
-                        /*Intent intent = new Intent(ForgotPassword.this, LoginUser.class);
-                        startActivity(intent);
-                        finish();*/
+
                     }else {
                         pDialog.dismiss();
-                        Toast.makeText(ForgotPassword.this,  "Email tidak ditemukan", Toast.LENGTH_LONG).show();
+                        textalert.setVisibility(View.VISIBLE);
+                        ////Toast.makeText(ForgotPassword .this,"Email tidak ditemukan",Toast.LENGTH_LONG).show();
+
+
                     }
 
                 /*if (response.body().getStatus()==200){

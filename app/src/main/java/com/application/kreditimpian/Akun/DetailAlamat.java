@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -52,11 +53,12 @@ public class DetailAlamat extends AppCompatActivity {
     private HashMap<String, String> Kecamatanvalues;
     Spinner spinnerkecamatan_pengiriman, spinnerkota_pengiriman;
     EditText txtnamaalamat,txtnamapenerima,txtnomorhandphone,txtkodepospengiriman,txtalamatpengririman;
-    Button btnupdate, btndelete;
+    Button btnupdate, btndelete, btnUbah, btnUbahKecamatan;
     String id, nameCity, id_member,id_geodirectory,address_name,phone,receiver,address,postal_code,district,main_address;
     private HashMap<String, String> cityvalues;
     private HashMap<String, String> districtvalue;
     ConnectivityManager conMgr;
+    LinearLayout LinearKota, LinearKecamatan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +118,10 @@ public class DetailAlamat extends AppCompatActivity {
         text_mainaddress = findViewById(R.id.text_mainaddress);
         btnupdate = findViewById(R.id.btnupdate);
         btndelete = findViewById(R.id.btndelete);
+        btnUbah = findViewById(R.id.btnUbah);
+        LinearKota = findViewById(R.id.LinearKota);
+        btnUbahKecamatan = findViewById(R.id.btnUbahKecamatan);
+        LinearKecamatan = findViewById(R.id.LinearKecamatan);
 
 
 
@@ -154,6 +160,26 @@ public class DetailAlamat extends AppCompatActivity {
         getKotaKecamatan();
      ///   getGeoDistrict();
 
+
+
+        btnUbah.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LinearKota.setVisibility(View.VISIBLE);
+                btnUbah.setVisibility(View.GONE);
+                text_kota.setVisibility(View.GONE);
+            }
+        });
+
+        btnUbahKecamatan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LinearKecamatan.setVisibility(View.VISIBLE);
+                btnUbahKecamatan.setVisibility(View.GONE);
+                text_kecamatan.setVisibility(View.GONE);
+            }
+        });
+
         btndelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -185,10 +211,22 @@ public class DetailAlamat extends AppCompatActivity {
                     ResponseKotaKecamatan responseKotaKecamatan = response.body();
                     List<com.application.kreditimpian.Model.ModelKotaKecamatan.DataItem> detail = responseKotaKecamatan.getData();
 
-                    text_kota.setText("Kota yang anda pilih : "+detail.get(0).getNamaKota());
-                    text_kecamatan.setText("Kecamatan yang anda pilih : "+detail.get(0).getNamaKecamatan());
+                    text_kota.setText("Kota Pengirim : "+detail.get(0).getNamaKota());
+                    text_kecamatan.setText("Kecamatan pengirim: "+detail.get(0).getNamaKecamatan());
 
+                    if(text_kota.equals("Kota yang anda pilih : "+detail.get(0).getNamaKota())){
+                        btnUbah.setVisibility(View.VISIBLE);
+                    }else if (text_kota.equals("Kota yang anda pilih : "+null)){
+                        LinearKota.setVisibility(View.VISIBLE);
+                        btnUbah.setVisibility(View.GONE);
+                    }
 
+                    if(text_kecamatan.equals("Kota yang anda pilih : "+detail.get(0).getNamaKota())){
+                        btnUbahKecamatan.setVisibility(View.VISIBLE);
+                    }else if (text_kecamatan.equals("Kota yang anda pilih : "+null)){
+                        LinearKecamatan.setVisibility(View.VISIBLE);
+                        btnUbahKecamatan.setVisibility(View.GONE);
+                    }
 
                 } else {
                     Toast.makeText(DetailAlamat.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();

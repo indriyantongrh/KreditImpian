@@ -256,6 +256,7 @@
 
                 <LinearLayout
                     android:orientation="horizontal"
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                 <TextView
@@ -321,6 +322,7 @@
                     android:layout_marginTop="16dp"
                     android:text="Hapus Alamat"
                     android:textStyle="bold"
+                    android:visibility="gone"
                     android:textColor="@color/colorOrange"
                     android:textSize="25sp"
                     android:fontFamily="@font/jipatharegular"

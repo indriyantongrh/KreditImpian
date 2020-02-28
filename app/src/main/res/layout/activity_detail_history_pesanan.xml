@@ -6,14 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".HistoryPesanan.DetailHistoryPesanan">
 
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        tools:ignore="MissingConstraints">
+
 
     <RelativeLayout
+        android:id="@+id/RelativeTransaction"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#fff"
         android:paddingBottom="10dp"
         android:orientation="vertical"
-        android:layout_gravity="center"
         tools:ignore="MissingConstraints">
 
         <LinearLayout
@@ -504,7 +509,7 @@
                 android:text="Total Pembayaran"
                 android:layout_marginRight="5dp"
                 android:textSize="15dp"
-                android:textColor="@color/colorBlack"
+                android:textColor="@color/colorOrange"
                 android:layout_below="@+id/textDetailTrasaction"
                 android:layout_marginStart="8dp"
                 />
@@ -554,9 +559,68 @@
         </LinearLayout>
 
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/informationTransfer"
+                android:layout_below="@+id/linerPaymentMethod"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/borderhitam"
+                android:layout_marginBottom="20dp"
+                android:visibility="gone"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_gravity="center"
+                    android:background="@drawable/borderhitam"
+                    android:gravity="center"
+                    android:layout_height="190dp">
+
+                    <TextView
+                        android:textColor="@color/colorBlack"
+                        android:text="Nomor Rekening"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:textColor="@color/colorBlack"
+                        android:textStyle="bold"
+                        android:textSize="18dp"
+                        android:text="0854965869758757"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:textColor="@color/colorBlack"
+                        android:text="PT.Hilari Hitec Dinamis"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:textColor="@color/colorBlack"
+                        android:layout_marginTop="30dp"
+                        android:gravity="center"
+                        android:text="Harap transfer sesuai dengan nominal yang tercantum \n pada total pembayaan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+
+
+
+            </androidx.cardview.widget.CardView>
+
 
 
 
     </RelativeLayout>
+
+
+
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
