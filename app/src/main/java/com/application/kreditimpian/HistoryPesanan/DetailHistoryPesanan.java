@@ -1,5 +1,6 @@
 package com.application.kreditimpian.HistoryPesanan;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -53,6 +54,8 @@ public class DetailHistoryPesanan extends AppCompatActivity {
     TextView tvPaymentMethod;
     @BindView(R.id.informationTransfer)
     CardView informationTransfer;
+    @BindView(R.id.tvAlamatPengiriman)
+    TextView tvAlamatPengiriman;
 
 
     @Override
@@ -78,6 +81,10 @@ public class DetailHistoryPesanan extends AppCompatActivity {
         String description = intent.getStringExtra(ConstanHistoryPesanan.KEY_DESCRIPTION);
         String sku = intent.getStringExtra(ConstanHistoryPesanan.KEY_SKU);
         String stock = intent.getStringExtra(ConstanHistoryPesanan.KEY_STOCK);
+        String name_city = intent.getStringExtra(ConstanHistoryPesanan.KEY_NAME_CITY);
+        String name_district = intent.getStringExtra(ConstanHistoryPesanan.KEY_NAME_DISTRICT);
+        String postal_code = intent.getStringExtra(ConstanHistoryPesanan.KEY_POSTAL_CODE);
+
        /* String price_capital = intent.getStringExtra(ConstanHistoryPesanan.KEY_PRICE_CAPITAL);
         String price_sale = intent.getStringExtra(ConstanHistoryPesanan.KEY_PRICE_SALE);*/
 
@@ -153,7 +160,7 @@ public class DetailHistoryPesanan extends AppCompatActivity {
             informationTransfer.setVisibility(View.VISIBLE);
         }
 
-
+        tvAlamatPengiriman.setText("Laber : "+address_label+"\n"+"Nama penerima : " +receiver+ "\n" + "Alamat :" +address+ "\n" +name_district+" , "+name_city+"\n"+"Koder pos : "+postal_code+"\n"+mobile);
 
     }
 
@@ -166,7 +173,15 @@ public class DetailHistoryPesanan extends AppCompatActivity {
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
+
         return true;
     }
 
+    @Override
+    public void onBackPressed() {
+        ///finish();
+        super.onBackPressed();
+        finish();
+
+    }
 }

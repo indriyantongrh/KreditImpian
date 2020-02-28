@@ -156,6 +156,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="9dp"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"
                 android:text="Detail Barang"
                 android:textColor="@color/colorBlack" />
 
@@ -229,6 +232,8 @@
             android:id="@+id/boder3"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:orientation="horizontal"></LinearLayout>
@@ -247,7 +252,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:textSize="16dp"
-            android:paddingTop="9dp"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"
             android:layout_below="@+id/LinearImage"
             android:layout_marginLeft="9dp"
             android:text="Detail Transaksi"
@@ -558,10 +564,68 @@
                 />
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_below="@+id/linerPaymentMethod"
+            android:background="#FF6802"
+            android:id="@+id/border4"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:orientation="horizontal"></LinearLayout>
 
-            <androidx.cardview.widget.CardView
+        <LinearLayout
+            android:layout_marginRight="5dp"
+            android:id="@+id/linearALamat"
+            android:layout_below="@+id/border4"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/text_Alamat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="9dp"
+                android:text="Alamat Pengiriman"
+                android:textColor="@color/colorBlack" />
+
+            <TextView
+                android:id="@+id/tvAlamatPengiriman"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:gravity="left"
+                android:text="Alamat"
+                android:textColor="@color/colorBlack"
+                android:textSize="15dp" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_below="@+id/linearALamat"
+            android:background="#FF6802"
+            android:id="@+id/border5"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:orientation="horizontal"></LinearLayout>
+
+
+        <androidx.cardview.widget.CardView
                 android:id="@+id/informationTransfer"
-                android:layout_below="@+id/linerPaymentMethod"
+                android:layout_below="@+id/border5"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/borderhitam"
                 android:layout_marginBottom="20dp"

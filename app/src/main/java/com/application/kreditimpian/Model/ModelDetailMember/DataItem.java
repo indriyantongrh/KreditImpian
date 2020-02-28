@@ -90,6 +90,29 @@ public class DataItem{
 	@SerializedName("family_dependent")
 	private String familyDependent;
 
+	@SerializedName("name_city_profile")
+	private String name_city_profile;
+
+	public String getName_city_profile() {
+		return name_city_profile;
+	}
+
+	public void setName_city_profile(String name_city_profile) {
+		this.name_city_profile = name_city_profile;
+	}
+
+	public String getName_district_profile() {
+		return name_district_profile;
+	}
+
+	public void setName_district_profile(String name_district_profile) {
+		this.name_district_profile = name_district_profile;
+	}
+
+	@SerializedName("name_district_profile")
+	private String name_district_profile;
+
+
 	public void setBirthday(String birthday){
 		this.birthday = birthday;
 	}

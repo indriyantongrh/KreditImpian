@@ -29,6 +29,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -79,18 +80,19 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
     private static final int PERMISSION_REQUEST_CODE = 200;
     private int mYear, mMonth, mDay;
     ImageButton btnback;
-    Button btnuploadfoto,btnuploadktp,btnuploadnpwp;
+    Button btnuploadfoto,btnuploadktp,btnuploadnpwp, btnUbahKecamatan, btnUbah;
     ImageView imagektp, imagenpwp, imageself;
     Spinner spinnerjeniskelamin, spinnerstatus, spinneragama, spinnerstatusrumah,
             spinnerkredit, spinnerkota_saudaraa, spinnerkecamatn_saudara;
     Button btnsimpan;
-    TextView id_kota, id_kecamatan, kecamatanSelected,kotaSelected;
+    TextView id_kota, id_kecamatan, text_kota,text_kecamatan;
     EditText txtnamalengkap, txttempatlahir, txttanggallahir, txtnikktp, txtnomornpwp, txtpekerjaan, txtpendapatan,
             txtjumlahtanggungan, txtalamatemail, txtibukandung, txtnomorhandphone, txtnomortlp, txtfacebook,
             txttwitter, txtinstagram, txtnamasaudara, txtnomorhandphonesaudara, txtkodepos_saudara, txtalamat_saudara;
     private HashMap<String, String> cityvalues;
     private HashMap<String, String> Kecamatanvalues;
     private HashMap<String, String> districtvalue;
+    LinearLayout LinearKota,LinearKecamatan;
 
     ProgressDialog loading;
     SharedPrefManager sharedPrefManager;
@@ -163,6 +165,10 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         id_kota = findViewById(R.id.id_kota);
         id_kecamatan = findViewById(R.id.id_kecamatan);
         btnsimpan = findViewById(R.id.btnsimpan);
+        btnUbahKecamatan = findViewById(R.id.btnUbahKecamatan);
+        btnUbah = findViewById(R.id.btnUbah);
+        LinearKota = findViewById(R.id.LinearKota);
+        LinearKecamatan = findViewById(R.id.LinearKecamatan);
 
         ///formdatasaudara tidaq serumah
 
@@ -170,8 +176,8 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         txtnomorhandphonesaudara = findViewById(R.id.txtnomorhandphonesaudara);
         spinnerkota_saudaraa = findViewById(R.id.spinnerkota_saudaraa);
         spinnerkecamatn_saudara = findViewById(R.id.spinnerkecamatn_saudara);
-        kotaSelected = findViewById(R.id.kotaSelected);
-        kecamatanSelected = findViewById(R.id.kecamatanSelected);
+        text_kota = findViewById(R.id.text_kota);
+        text_kecamatan = findViewById(R.id.text_kecamatan);
         txtkodepos_saudara = findViewById(R.id.txtkodepos_saudara);
         txtalamat_saudara = findViewById(R.id.txtalamat_saudara);
         btnuploadfoto = findViewById(R.id.btnuploadfoto);
@@ -365,6 +371,24 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                 btnuploadnpwp.setVisibility(View.VISIBLE);
 
 
+            }
+        });
+
+        btnUbah.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                text_kota.setVisibility(View.GONE);
+                btnUbah.setVisibility(View.GONE);
+                LinearKota.setVisibility(View.VISIBLE);
+            }
+        });
+
+        btnUbahKecamatan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                text_kecamatan.setVisibility(View.GONE);
+                btnUbahKecamatan.setVisibility(View.GONE);
+                LinearKecamatan.setVisibility(View.VISIBLE);
             }
         });
 
@@ -987,6 +1011,32 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                     txtnomorhandphonesaudara.setText(detail.get(0).getNonsiblingMobile());
                     txtalamat_saudara.setText(detail.get(0).getNonsiblingAddress());
                     txtkodepos_saudara.setText(detail.get(0).getPostalCode());
+                    id_kota.setText(detail.get(0).getNonsiblingIdGeodirectory());
+                    id_kecamatan.setText(detail.get(0).getNonsiblingIdDistrict());
+                    text_kota.setText("Kota Saudara anda : "+detail.get(0).getName_city_profile());
+                    text_kecamatan.setText("Kecamatan Saudara anda : "+detail.get(0).getName_district_profile());
+
+                    if(id_kota.getText().toString().equals(id_kota.getText().toString())){
+                        text_kota.setVisibility(View.VISIBLE);
+                        btnUbah.setVisibility(View.VISIBLE);
+                        LinearKota.setVisibility(View.GONE);
+
+                    }else if(id_kota.getText().toString().equals("null")){
+                        text_kota.setVisibility(View.GONE);
+                        btnUbah.setVisibility(View.GONE);
+                        LinearKota.setVisibility(View.VISIBLE);
+                    }
+
+                    if(id_kecamatan.getText().toString().equals(id_kecamatan.getText().toString())){
+                        text_kecamatan.setVisibility(View.VISIBLE);
+                        btnUbahKecamatan.setVisibility(View.VISIBLE);
+                        LinearKecamatan.setVisibility(View.GONE);
+
+                    }else if(id_kecamatan.getText().toString().equals("null")){
+                        text_kecamatan.setVisibility(View.GONE);
+                        btnUbahKecamatan.setVisibility(View.GONE);
+                        LinearKecamatan.setVisibility(View.VISIBLE);
+                    }
 
                     Glide.with(DataDiri.this)
                             .load(detail.get(0).getPhoto())

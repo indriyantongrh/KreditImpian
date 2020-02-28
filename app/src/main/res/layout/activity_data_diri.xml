@@ -776,37 +776,45 @@
                     android:layout_height="wrap_content"/>
 
 
-                <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:background="@drawable/borderhitam"
-                        android:layout_height="37dp">
-
-                        <Spinner
-                            android:id="@+id/spinnerkota_saudaraa"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:entries="@array/kota"></Spinner>
 
 
-                    </LinearLayout>
 
+                <TextView
+                    android:id="@+id/text_kota"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/padding_10"
+                    android:text="Nama kota"
+                    android:textSize="16dp"
+
+                    android:textColor="@color/colorOrange" />
 
                 <LinearLayout
-                    android:background="#fff"
+                    android:id="@+id/LinearKota"
                     android:orientation="vertical"
-                    android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
-                    android:layout_height="25dp">
+                    android:background="@drawable/borderhitam"
+                    android:layout_height="37dp">
 
-                    <TextView
-                        android:id="@+id/kotaSelected"
-                        android:text="Kota Yang anda Pilih"
-                        android:layout_width="wrap_content"
-                        android:visibility="gone"
-                        android:layout_height="wrap_content"/>
+                    <Spinner
+                        android:id="@+id/spinnerkota_saudaraa"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:entries="@array/kota"></Spinner>
+
 
                 </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnUbah"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/btnorange"
+                    android:text="Ubah Kota"
+                    android:textColor="@color/colorwhite"
+                    />
 
                     <!--Border-->
                     <LinearLayout
@@ -814,7 +822,17 @@
                         android:layout_width="match_parent"
                         android:layout_height="15dp"></LinearLayout>
 
+                <TextView
+                    android:id="@+id/text_kecamatan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/padding_10"
+                    android:text="Nama Kecamatan"
+
+                    android:textColor="@color/colorOrange" />
+
                     <LinearLayout
+                        android:id="@+id/LinearKecamatan"
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:background="@drawable/borderhitam"
@@ -826,6 +844,19 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"></Spinner>
                     </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnUbahKecamatan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/btnorange"
+                    android:text="Ubah Kecamatan"
+                    android:textColor="@color/colorwhite"
+                    />
 
                 <LinearLayout
                     android:background="#fff"

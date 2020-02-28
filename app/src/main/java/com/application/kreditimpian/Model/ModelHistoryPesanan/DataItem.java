@@ -117,6 +117,28 @@ public class DataItem{
 	@SerializedName("target_gender")
 	private String targetGender;
 
+	@SerializedName("name_city")
+	private String name_city;
+
+	public String getName_city() {
+		return name_city;
+	}
+
+	public void setName_city(String name_city) {
+		this.name_city = name_city;
+	}
+
+	public String getName_district() {
+		return name_district;
+	}
+
+	public void setName_district(String name_district) {
+		this.name_district = name_district;
+	}
+
+	@SerializedName("name_district")
+	private String name_district;
+
 	public String getCourier() {
 		return courier;
 	}

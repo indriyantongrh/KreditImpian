@@ -181,6 +181,9 @@ public class HistoryPesanan extends AppCompatActivity {
                 String installment = detaiList.get(position).getInstallment();
                 String total_pembayaran = detaiList.get(position).getTotalPembayaran();
                 String courier = detaiList.get(position).getCourier();
+                String name_city = detaiList.get(position).getName_city();
+                String name_district = detaiList.get(position).getName_district();
+                String postal_code = detaiList.get(position).getShipping().getSend().getPostal_code();
 
                 Intent detailHistoryPesanan = new Intent(mContext, DetailHistoryPesanan.class);
                 detailHistoryPesanan.putExtra(ConstanHistoryPesanan.KEY_ID, id);
@@ -225,6 +228,10 @@ public class HistoryPesanan extends AppCompatActivity {
                 detailHistoryPesanan.putExtra(ConstanHistoryPesanan.KEY_INSTALLMENT, installment);
                 detailHistoryPesanan.putExtra(ConstanHistoryPesanan.KEY_TOTAL_PEMBAYARAN, total_pembayaran);
                 detailHistoryPesanan.putExtra(ConstanHistoryPesanan.KEY_COURIER, courier);
+                detailHistoryPesanan.putExtra(ConstanHistoryPesanan.KEY_NAME_CITY, name_city);
+                detailHistoryPesanan.putExtra(ConstanHistoryPesanan.KEY_NAME_DISTRICT, name_district);
+                detailHistoryPesanan.putExtra(ConstanHistoryPesanan.KEY_POSTAL_CODE, postal_code);
+
                 startActivity(detailHistoryPesanan);
             }
         }));

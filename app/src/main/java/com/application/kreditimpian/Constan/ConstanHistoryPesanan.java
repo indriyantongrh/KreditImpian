@@ -47,6 +47,9 @@ public class ConstanHistoryPesanan {
     public static final String KEY_INSTALLMENT = "installment";
     public static final String KEY_TOTAL_PEMBAYARAN = "total_pembayaran";
     public static final String KEY_COURIER = "courier";
+    public static final String KEY_NAME_CITY = "name_city";
+    public static final String KEY_NAME_DISTRICT = "name_district";
+    public static final String KEY_POSTAL_CODE = "postal_code";
 
 
 }

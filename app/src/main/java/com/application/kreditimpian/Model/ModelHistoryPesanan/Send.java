@@ -24,6 +24,18 @@ public class Send{
 	@SerializedName("address_label")
 	private String addressLabel;
 
+
+	public String getPostal_code() {
+		return postal_code;
+	}
+
+	public void setPostal_code(String postal_code) {
+		this.postal_code = postal_code;
+	}
+
+	@SerializedName("postal_code")
+	private String postal_code;
+
 	public void setAddress(String address){
 		this.address = address;
 	}
