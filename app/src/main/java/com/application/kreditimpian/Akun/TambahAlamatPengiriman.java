@@ -20,9 +20,14 @@ import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
 import com.application.kreditimpian.Model.ModelAddress.ResponseAddress;
+import com.application.kreditimpian.Model.ModelCityRajaOngkir.ResponseCityRajaOngkir;
+import com.application.kreditimpian.Model.ModelCityRajaOngkir.ResultsItem;
+import com.application.kreditimpian.Model.ModelGeodirectories.ResponseGeodirectories;
+import com.application.kreditimpian.Model.ModelGeodirectories.ResultItem;
 import com.application.kreditimpian.Model.ModelGeodirectory.DataItem;
 import com.application.kreditimpian.Model.ModelGeodirectory.ResponseGeodirectory;
 import com.application.kreditimpian.Model.ModelKecamatan.ResponseKecamatan;
+import com.application.kreditimpian.Model.ModelSubDistrictRajaOngkir.ResponseSubDistrictRajaOngkir;
 import com.application.kreditimpian.R;
 
 import org.w3c.dom.Text;
@@ -81,7 +86,8 @@ public class TambahAlamatPengiriman extends AppCompatActivity implements Adapter
 
 
      ///   getGeoDistrict();
-        getGeoCity();
+       /* getGeoCity(); */ /*Komen API di buat mas NIght unutk get City*/
+        getCityRajaOngkir();
 
 //
 //        /*Get Detail Addreses*/
@@ -192,7 +198,7 @@ public class TambahAlamatPengiriman extends AppCompatActivity implements Adapter
 
     }
 
-    /*Menampilkan data  City*/
+    /*Menampilkan data  City (Tidak Kepakai)*/
     private void getGeoCity(){
 
         cityvalues = new HashMap<>();
@@ -256,7 +262,7 @@ public class TambahAlamatPengiriman extends AppCompatActivity implements Adapter
 
     }
 
-    /*Menampilkan data  Kecamatan*/
+    /*Menampilkan data  Kecamatan(Tidak KEpakai)*/
     private void getKecamatan(){
 
         Kecamatanvalues = new HashMap<>();
@@ -318,6 +324,149 @@ public class TambahAlamatPengiriman extends AppCompatActivity implements Adapter
             }
         });
 
+
+    }
+
+
+    /*Menampilkan City using API Cirecle Creative */
+    private void getCityRajaOngkir(){
+
+        cityvalues = new HashMap<>();
+        mApiService.getCityGeodirectories().enqueue(new Callback<ResponseCityRajaOngkir>() {
+            @Override
+            public void onResponse(Call<ResponseCityRajaOngkir> call, Response<ResponseCityRajaOngkir> response) {
+
+                if(response.body() !=null){
+                    //// String citySelected = spinnerkota_pengiriman.getItemAtPosition(p).toString();
+                    List<ResultsItem> getCity = response.body().getRajaongkir().getResults();
+                    List<String> listSpinner = new ArrayList<String>();
+                    String[] idcity = new String[getCity.size() +1];
+                    String[] city = new String[getCity.size() +1];
+                    String[] type = new String[getCity.size() +1];
+                    city[0] = "-- Pilih Kota --";
+                    for (int i = 0; i < getCity.size(); i++){
+                        ///listSpinner.add(getCity.get(i).getIdParent());
+                        city[i + 1] = (getCity.get(i).getType()+" ")+(getCity.get(i).getCityName());
+                        type[i + 1] = getCity.get(i).getType();
+                        idcity[i + 1] = getCity.get(i).getCityId();
+                        cityvalues.put(city[i + 1], idcity[i + 1] );
+//                         id = getCity.get(i).getId();
+//                         nameCity = getCity.get(i).getName();
+                        ///listSpinner.add(nameCity);
+
+                    }
+                    // Set hasil result json ke dalam adapter spinner
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(TambahAlamatPengiriman.this,
+                            android.R.layout.simple_spinner_item, city);
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    spinnerkota_pengiriman.setAdapter(adapter);
+                    spinnerkota_pengiriman.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                            if(position>0){
+                                String cityvalues = getCity.get(position - 1 ).getCityId();
+                                //Toast.makeText(TambahAlamatPengiriman.this, "id kota anda "+cityvalues , Toast.LENGTH_LONG).show();
+                                textid_geodirectory.setText(cityvalues);
+                                getSubDistrict();
+                                ///getKecamatan();
+
+                            }
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+
+                        }
+                    });
+
+
+                } else {
+                    loading.dismiss();
+                    Toast.makeText(TambahAlamatPengiriman.this, "Gagal mengambil data ", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseCityRajaOngkir> call, Throwable t) {
+
+            }
+        });
+
+
+    }
+
+
+    /*MEnampilkan City using API Cirecle Creative*/
+    private void getSubDistrict(){
+
+        pDialog = new ProgressDialog(this);
+        pDialog.setCancelable(false);
+        pDialog.setMessage("Loading....");
+        pDialog.show();
+
+        Kecamatanvalues = new HashMap<>();
+        HashMap<String, String> params = new HashMap<>();
+        //String SUBDISTRICT = "SUBDISTRICT";
+       /// params.put("TYPE", SUBDISTRICT);
+        params.put("id_city", textid_geodirectory.getText().toString());
+        mApiService.getSubDistrictGeodirectories(params).enqueue(new Callback<ResponseSubDistrictRajaOngkir>() {
+            @Override
+            public void onResponse(Call<ResponseSubDistrictRajaOngkir> call, Response<ResponseSubDistrictRajaOngkir> response) {
+                pDialog.dismiss();
+                if(response.body() !=null){
+                    //// String citySelected = spinnerkota_pengiriman.getItemAtPosition(p).toString();
+                    List<com.application.kreditimpian.Model.ModelSubDistrictRajaOngkir.ResultsItem> getKecamatan = response.body().getRajaongkir().getResults();
+                    List<String> listSpinner = new ArrayList<String>();
+                    String[] idKecamatan = new String[getKecamatan.size() +1];
+                    String[] Kecamatan = new String[getKecamatan.size() +1];
+                    Kecamatan[0] = "-- Pilih Kecamatan --";
+                    for (int i = 0; i < getKecamatan.size(); i++){
+                        ///listSpinner.add(getCity.get(i).getIdParent());
+                        Kecamatan[i + 1] = getKecamatan.get(i).getSubdistrictName();
+                        idKecamatan[i + 1] = getKecamatan.get(i).getSubdistrictId();
+                        Kecamatanvalues.put(Kecamatan[i + 1], idKecamatan[i + 1] );
+//                         id = getCity.get(i).getId();
+//                         nameCity = getCity.get(i).getName();
+                        ///listSpinner.add(nameCity);
+
+                    }
+                    // Set hasil result json ke dalam adapter spinner
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(TambahAlamatPengiriman.this,
+                            android.R.layout.simple_spinner_item, Kecamatan);
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    spinnerkecamatan_pengiriman.setAdapter(adapter);
+                    spinnerkecamatan_pengiriman.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                            if(position>0){
+                                String Kecamatanvalues = getKecamatan.get(position - 1 ).getSubdistrictId();
+                                textid_distric.setText(Kecamatanvalues);
+                                ///Toast.makeText(TambahAlamatPengiriman.this, " id KEcamtan anda "+Kecamatanvalues, Toast.LENGTH_LONG).show();
+
+                            }
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+
+                        }
+                    });
+
+
+                } else {
+                    pDialog.dismiss();
+                    Toast.makeText(TambahAlamatPengiriman.this, "Gagal mengambil data ", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseSubDistrictRajaOngkir> call, Throwable t) {
+
+            }
+        });
 
     }
 

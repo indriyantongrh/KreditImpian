@@ -2,9 +2,12 @@ package com.application.kreditimpian.Api.api_v2;
 
 
 import com.application.kreditimpian.Model.ModelAddress.ResponseAddress;
+import com.application.kreditimpian.Model.ModelCityRajaOngkir.ResponseCityRajaOngkir;
+import com.application.kreditimpian.Model.ModelCitySubDistrict.ResponseCitySubDistrict;
 import com.application.kreditimpian.Model.ModelDeleteShopingCart.ResponseDeleteShopingCart;
 import com.application.kreditimpian.Model.ModelDetailMember.ResponseDetailMember;
 import com.application.kreditimpian.Model.ModelFOrgotPassword.ResponseForgotPassword;
+import com.application.kreditimpian.Model.ModelGeodirectories.ResponseGeodirectories;
 import com.application.kreditimpian.Model.ModelGeodirectory.ResponseGeodirectory;
 import com.application.kreditimpian.Model.ModelHistoryPesanan.ResponseHistoryPesanan;
 import com.application.kreditimpian.Model.ModelHistoryTransaction.ResponseHistoryTransaction;
@@ -24,6 +27,7 @@ import com.application.kreditimpian.Model.ModelProductBaru.ResponseProductBaru;
 
 import com.application.kreditimpian.Model.ModelProductRevisi.ResponseProductRevisi;
 import com.application.kreditimpian.Model.ModelSelectedTenor.ResponseSelectedTenor;
+import com.application.kreditimpian.Model.ModelSubDistrictRajaOngkir.ResponseSubDistrictRajaOngkir;
 import com.application.kreditimpian.Model.ModelTransaction.ResponseTransaction;
 import com.application.kreditimpian.Model.ModelUploadImage.ResponseUploadImage;
 import com.application.kreditimpian.Model.ModelUserDetail.ResponseMembers;
@@ -93,7 +97,7 @@ public interface BaseApiService {
     Call<ResponseAddress> InsertAddress(@QueryMap HashMap<String, String> params);
 
     @GET("ApiMobile/getgeodirectorymemberaddress")
-    Call<ResponseKotaKecamatan> getKotaKecamatan(@QueryMap HashMap<String, String> params);
+    Call<ResponseCitySubDistrict> getKotaKecamatan(@QueryMap HashMap<String, String> params);
 
     @GET("ApiMobile/membersaddresses")
     Call<ResponseListAlamat> getAllAddesses(@Query("id_member") String id_member);
@@ -224,6 +228,15 @@ public interface BaseApiService {
     //getAllProductProperty
     @GET("products?id_product_category=29&status=PUBLISH")
     Call<ResponseProductBaru> getResultProperty();
+
+
+    //getCityBackupAPICircleCreative
+    @GET("ApiMobile/getidcity")
+    Call<ResponseCityRajaOngkir> getCityGeodirectories();
+
+    //getCityBackupAPICircleCreative
+    @GET("ApiMobile/getlistsubdistrict")
+    Call<ResponseSubDistrictRajaOngkir> getSubDistrictGeodirectories(@QueryMap HashMap<String, String> params);
 
 //    //getUserMember
 //    @Headers({ "Content-Type: application/x-www-form-urlencoded", "Authorization: Bearer"+ SharedPrefManager.SP_TOKEN})
