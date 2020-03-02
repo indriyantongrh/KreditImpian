@@ -40,6 +40,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.application.kreditimpian.Adapter.AdapterMerchant;
@@ -133,6 +134,9 @@ public class FragmentBeranda extends Fragment {
 
     @BindView(R.id.rv_merchant)
     RecyclerView rv_merchant;
+    @BindView(R.id.pbLoading)
+    ProgressBar pbLoading;
+
     BaseApiService mApiService;
     Context mContext;
     List<ResultItem> resultItemList = new ArrayList<>();
@@ -372,6 +376,7 @@ public class FragmentBeranda extends Fragment {
         mApiService.getMerchnat().enqueue(new Callback<ResponseMerchant>() {
             @Override
             public void onResponse(Call<ResponseMerchant> call, Response<ResponseMerchant> response) {
+                pbLoading.setVisibility(View.GONE);
                 if (response.isSuccessful()) {
                     ///progressBar.dismiss();
                     if (response.body().getStatus() == 200) {
@@ -390,6 +395,7 @@ public class FragmentBeranda extends Fragment {
 
                 } else {
                     //progressBar.dismiss();
+                    pbLoading.setVisibility(View.GONE);
                     Toast.makeText(mContext, "Gagal Refresh", Toast.LENGTH_SHORT).show();
                 }
             }

@@ -702,6 +702,8 @@
                     android:id="@+id/linearmerchant"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:paddingBottom="20dp"
                     android:layout_below="@+id/layout_artikel"
                     android:orientation="vertical">
 
@@ -729,6 +731,7 @@
                             android:layout_marginTop="20dp"
                             android:layout_marginEnd="10dp"
                             android:text="Lihat Lainnya >"
+                            android:visibility="gone"
                             android:textColor="@color/colorOrange"
                             android:fontFamily="@font/jipatharegular"
                             android:textStyle="bold" />
@@ -743,6 +746,14 @@
                         android:layout_marginTop="5dp"
                         app:cardBackgroundColor="#efefef"
                         android:scrollbars="horizontal" />
+
+                    <ProgressBar
+                        android:id="@+id/pbLoading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:foregroundGravity="center"
+                        android:layout_centerInParent="true"/>
 
                 </LinearLayout>
 

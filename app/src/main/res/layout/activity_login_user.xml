@@ -243,7 +243,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:text="KreditimpianBeta v.1.2.0"
+            android:text="KreditimpianBeta v.1.3.0"
             android:gravity="center|bottom"
             android:textSize="10dp"
             android:foregroundGravity="bottom"

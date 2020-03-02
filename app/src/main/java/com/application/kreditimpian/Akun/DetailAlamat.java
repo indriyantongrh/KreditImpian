@@ -29,12 +29,10 @@ import com.application.kreditimpian.Model.ModelAddress.ResponseAddress;
 import com.application.kreditimpian.Model.ModelCityRajaOngkir.ResponseCityRajaOngkir;
 import com.application.kreditimpian.Model.ModelCityRajaOngkir.ResultsItem;
 import com.application.kreditimpian.Model.ModelCitySubDistrict.ResponseCitySubDistrict;
-import com.application.kreditimpian.Model.ModelCitySubDistrict.Results;
 import com.application.kreditimpian.Model.ModelGeodirectory.DataItem;
 import com.application.kreditimpian.Model.ModelGeodirectory.ResponseGeodirectory;
 import com.application.kreditimpian.Model.ModelKecamatan.ResponseKecamatan;
-import com.application.kreditimpian.Model.ModelKotaKecamatan.ResponseKotaKecamatan;
-import com.application.kreditimpian.Model.ModelProductRevisi.Detail;
+import com.application.kreditimpian.Model.ModelSubDistrict.ResponseSubdistrict;
 import com.application.kreditimpian.Model.ModelSubDistrictRajaOngkir.ResponseSubDistrictRajaOngkir;
 import com.application.kreditimpian.R;
 
@@ -163,6 +161,7 @@ public class DetailAlamat extends AppCompatActivity {
 
         getCityRajaOngkir();
         getKotaKecamatan();
+        getSubdistrict();
      ///   getGeoDistrict();
 
 
@@ -675,6 +674,49 @@ public class DetailAlamat extends AppCompatActivity {
             }
         });
 
+    }
+
+
+    private void getSubdistrict(){
+        HashMap<String, String> params = new HashMap<>();
+        params.put("id_addresses", text_id.getText().toString());
+
+        mApiService.getSubdistrcit(params).enqueue(new Callback<ResponseSubdistrict>() {
+            @Override
+            public void onResponse(Call<ResponseSubdistrict> call, Response<ResponseSubdistrict> response) {
+                if (response.body().getRajaongkir().getStatus().getCode() == 200) {
+                    ResponseSubdistrict responseSubdistrict = response.body();
+                    /// List<Results> detail = responseKotaKecamatan.getRajaongkir().getResults();
+
+                    text_kecamatan.setText("Kecamatan Pengirim : "+responseSubdistrict.getRajaongkir().getResults().getSubdistrictName());
+                    //text_kecamatan.setText("Kecamatan pengirim: "+detail.get(0).getNamaKecamatan());
+
+                    if(text_kecamatan.equals("Kecamatan yang anda pilih : "+responseSubdistrict.getRajaongkir().getResults().getSubdistrictName())){
+                        btnUbahKecamatan.setVisibility(View.VISIBLE);
+                    }else if (text_kecamatan.equals("Kecamatan yang anda pilih : "+null)){
+                        LinearKecamatan.setVisibility(View.VISIBLE);
+                        btnUbahKecamatan.setVisibility(View.GONE);
+                    }
+
+                  /*  if(text_kecamatan.equals("Kota yang anda pilih : "+detail.get(0).getCityName())){
+                        btnUbahKecamatan.setVisibility(View.VISIBLE);
+                    }else if (text_kecamatan.equals("Kota yang anda pilih : "+null)){
+                        LinearKecamatan.setVisibility(View.VISIBLE);
+                        btnUbahKecamatan.setVisibility(View.GONE);
+                    }*/
+
+                } else {
+                    Toast.makeText(DetailAlamat.this, response.body().getRajaongkir().getStatus().getDescription(), Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseSubdistrict> call, Throwable t) {
+
+            }
+        });
     }
 
 

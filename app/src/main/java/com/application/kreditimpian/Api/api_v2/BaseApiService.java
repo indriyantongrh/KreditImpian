@@ -7,12 +7,9 @@ import com.application.kreditimpian.Model.ModelCitySubDistrict.ResponseCitySubDi
 import com.application.kreditimpian.Model.ModelDeleteShopingCart.ResponseDeleteShopingCart;
 import com.application.kreditimpian.Model.ModelDetailMember.ResponseDetailMember;
 import com.application.kreditimpian.Model.ModelFOrgotPassword.ResponseForgotPassword;
-import com.application.kreditimpian.Model.ModelGeodirectories.ResponseGeodirectories;
 import com.application.kreditimpian.Model.ModelGeodirectory.ResponseGeodirectory;
 import com.application.kreditimpian.Model.ModelHistoryPesanan.ResponseHistoryPesanan;
-import com.application.kreditimpian.Model.ModelHistoryTransaction.ResponseHistoryTransaction;
 import com.application.kreditimpian.Model.ModelKecamatan.ResponseKecamatan;
-import com.application.kreditimpian.Model.ModelKotaKecamatan.ResponseKotaKecamatan;
 import com.application.kreditimpian.Model.ModelListAlamat.ResponseListAlamat;
 import com.application.kreditimpian.Model.ModelLogin.ResponseLogin;
 import com.application.kreditimpian.Model.ModelMember.ResponseMember;
@@ -25,8 +22,8 @@ import com.application.kreditimpian.Model.ModelPengajuanCatalog.ResponsePengajua
 import com.application.kreditimpian.Model.ModelProductBaru.ResponseProductBaru;
 
 
-import com.application.kreditimpian.Model.ModelProductRevisi.ResponseProductRevisi;
 import com.application.kreditimpian.Model.ModelSelectedTenor.ResponseSelectedTenor;
+import com.application.kreditimpian.Model.ModelSubDistrict.ResponseSubdistrict;
 import com.application.kreditimpian.Model.ModelSubDistrictRajaOngkir.ResponseSubDistrictRajaOngkir;
 import com.application.kreditimpian.Model.ModelTransaction.ResponseTransaction;
 import com.application.kreditimpian.Model.ModelUploadImage.ResponseUploadImage;
@@ -34,7 +31,6 @@ import com.application.kreditimpian.Model.ModelUserDetail.ResponseMembers;
 import com.application.kreditimpian.Model.ModelValidationSMS.ResponseSmsOTP;
 import com.application.kreditimpian.Model.ResponseRegisterBaru.NewResponseRegister;
 import com.application.kreditimpian.ResponseMessage.ResponseLoginSucces;
-import com.application.kreditimpian.ResponseMessage.ResponseRegister;
 
 import java.util.HashMap;
 
@@ -237,6 +233,10 @@ public interface BaseApiService {
     //getCityBackupAPICircleCreative
     @GET("ApiMobile/getlistsubdistrict")
     Call<ResponseSubDistrictRajaOngkir> getSubDistrictGeodirectories(@QueryMap HashMap<String, String> params);
+
+    //getCityBackupAPICircleCreative
+    @GET("ApiMobile/getiddistrict")
+    Call<ResponseSubdistrict> getSubdistrcit(@QueryMap HashMap<String, String> params);
 
 //    //getUserMember
 //    @Headers({ "Content-Type: application/x-www-form-urlencoded", "Authorization: Bearer"+ SharedPrefManager.SP_TOKEN})
