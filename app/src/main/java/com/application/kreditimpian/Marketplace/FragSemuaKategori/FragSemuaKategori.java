@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.application.kreditimpian.Adapter.AdapterProductBaru;
@@ -48,6 +49,8 @@ public class FragSemuaKategori extends Fragment {
     ProgressDialog progressBar;
     @BindView(R.id.empty)
     ImageView empty;
+    @BindView(R.id.pbLoading)
+    ProgressBar pbLoading;
 
 
 
@@ -102,19 +105,21 @@ public class FragSemuaKategori extends Fragment {
 
 
     private void getResultList(){
-        progressBar = ProgressDialog.show(getActivity(), null, "Loading...", true, false);
+      ////  progressBar = ProgressDialog.show(getActivity(), null, "Loading...", true, false);
 
 
         mApiService.getResult().enqueue(new Callback<ResponseProductBaru>() {
             @Override
             public void onResponse(Call<ResponseProductBaru> call, Response<ResponseProductBaru> response) {
-
+                ////pbLoading.setVisibility(View.GONE);
                     ///progressBar.dismiss();
                     if (response.body().getStatus()==200) {
 
 
                         swipeRefresh.setRefreshing(false);
-                        progressBar.dismiss();
+                        //progressBar.dismiss();
+                        pbLoading.setVisibility(View.GONE);
+
                         final List<ResultItem> Allproduct = response.body().getResult();
                         Log.v("jajal" , Allproduct+ "list");
 
@@ -123,7 +128,8 @@ public class FragSemuaKategori extends Fragment {
                         empty.setVisibility(View.GONE);
                         initDataIntent(Allproduct);
                     }else {
-                        progressBar.dismiss();
+                        //progressBar.dismiss();
+                        pbLoading.setVisibility(View.GONE);
                         empty.setVisibility(View.VISIBLE);
                     }
 
@@ -132,7 +138,8 @@ public class FragSemuaKategori extends Fragment {
             @Override
             public void onFailure(Call<ResponseProductBaru> call, Throwable t) {
                 Log.v("jajal" , t.getMessage()+ "list");
-                progressBar.dismiss();
+                ///progressBar.dismiss();
+                pbLoading.setVisibility(View.GONE);
                 Toast.makeText(mContext, "Koneksi Internet Bermasalah", Toast.LENGTH_SHORT).show();
             }
         });

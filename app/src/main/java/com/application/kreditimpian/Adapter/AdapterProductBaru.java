@@ -1,6 +1,7 @@
 package com.application.kreditimpian.Adapter;
 
 import android.content.Context;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.application.kreditimpian.Model.ModelProductBaru.ResponseProductBaru;
 import com.application.kreditimpian.Model.ModelProductBaru.ResultItem;
 import com.application.kreditimpian.R;
 import com.bumptech.glide.Glide;
@@ -161,4 +163,13 @@ public class AdapterProductBaru extends RecyclerView.Adapter<AdapterProductBaru.
             ButterKnife.bind(this, itemView);
         }
     }
+
+/*    public void addListBarang(List<ResultItem> listBarang){
+
+        for(ResultItem dataBarang  : listBarang)
+        {
+            resultItemList.add(dataBarang);
+        }
+
+    }*/
 }

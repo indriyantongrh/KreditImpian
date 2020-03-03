@@ -526,10 +526,10 @@ public class FragmentBeranda extends Fragment {
     private void setupSlider() {
         sliderView.setDurationScroll(800);
         List<Fragment> fragments = new ArrayList<>();
-        fragments.add(FragmentSlider.newInstance("https://kreditimpian.com/storage/images/posts/media/banner-tambahan3.jpg"));
-        fragments.add(FragmentSlider.newInstance("https://kreditimpian.com/storage/images/posts/media/banner.gif"));
-        fragments.add(FragmentSlider.newInstance("https://kreditimpian.com/storage/images/posts/media/toga.gif"));
-        fragments.add(FragmentSlider.newInstance("https://kreditimpian.com/storage/images/posts/media/banner2.png"));
+        fragments.add(FragmentSlider.newInstance("https://development.kreditimpian.com/images/banners/banner-women-calculator.png"));
+        fragments.add(FragmentSlider.newInstance("https://development.kreditimpian.com/images/banners/upgrade-impian-anda3.png"));
+        fragments.add(FragmentSlider.newInstance("https://kreditimpian.id/images/banners/hitung-1.png"));
+        fragments.add(FragmentSlider.newInstance("https://kreditimpian.id/images/banners/bca-2-2.png"));
 
 
         mAdapter = new SliderPagerAdapter(getFragmentManager(), fragments);
