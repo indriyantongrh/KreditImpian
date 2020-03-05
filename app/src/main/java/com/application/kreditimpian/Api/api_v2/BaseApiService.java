@@ -129,9 +129,13 @@ public interface BaseApiService {
     @POST("ApiMobile/uploadtaxpayer")
     Call<ResponseUploadImage> UploadNpwp(@FieldMap HashMap<String, String> params);
 
-    /*API Transaction*/
+    /*API Detail  Member*/
     @GET("ApiMobile/getdataprofile")
     Call<ResponseDetailMember> getDetailMember(@QueryMap HashMap<String, String> params);
+
+    /*API Kecamatan di Profile*/
+    @GET("ApiMobile/getiddistrictprofile")
+    Call<ResponseSubdistrict> getSubdistrictProfile(@QueryMap HashMap<String, String> params);
 
     /*API Transaction*/
     @GET("ApiMobile/insrtonshoppingcart")
@@ -177,7 +181,11 @@ public interface BaseApiService {
     @GET("companies?id_company_category=1")
     Call<ResponseMerchant> getMerchnat();
 
-    //getAllProduct
+    /*Get all Product with limit and page*/// Check Uncheck
+    /*@GET("products?status=PUBLISH")
+    Call<ResponseProductBaru> getResult(@Query("limit") int limit, @Query("page") int page);*/
+
+    /*Get all Product no limit and page*/
     @GET("products?status=PUBLISH")
     Call<ResponseProductBaru> getResult();
 
@@ -238,27 +246,27 @@ public interface BaseApiService {
     @GET("ApiMobile/getiddistrict")
     Call<ResponseSubdistrict> getSubdistrcit(@QueryMap HashMap<String, String> params);
 
-//    //getUserMember
-//    @Headers({ "Content-Type: application/x-www-form-urlencoded", "Authorization: Bearer"+ SharedPrefManager.SP_TOKEN})
-//    @POST("members")
-//    Call<ResponseMember> postDataDiri(@Field("id") String id,
-//                                      @Field("fullname") String fullname,
-//                                      @Field("birthplace") String birthplace,
-//                                      @Field("job") String job,
-//                                      @Field("income") String income,
-//                                      @Field("family_dependent") String family_dependent,
-//                                      @Field("installment") String installment,
-//                                      @Field("residence_status") String residence_status,
-//                                      @Field("parent_name") String parent_name,
-//                                      @Field("contact_office") String contact_office,
-//                                      @Field("facebook") String facebook,
-//                                      @Field("twitter") String twitter,
-//                                      @Field("instagram") String instagram,
-//                                      @Field("gender") String gender,
-//                                      @Field("marital") String marital,
-//                                      @Field("religion") String religion,
-//                                      @Field("number_citizen") String number_citizen,
-//                                      @Field("number_taxpayer") String number_taxpayer);
+    /*getUserMember*///get member with JWT token
+    /*@Headers({ "Content-Type: application/x-www-form-urlencoded", "Authorization: Bearer"+ SharedPrefManager.SP_TOKEN})
+    @POST("members")
+    Call<ResponseMember> postDataDiri(@Field("id") String id,
+                                      @Field("fullname") String fullname,
+                                      @Field("birthplace") String birthplace,
+                                      @Field("job") String job,
+                                      @Field("income") String income,
+                                      @Field("family_dependent") String family_dependent,
+                                      @Field("installment") String installment,
+                                      @Field("residence_status") String residence_status,
+                                      @Field("parent_name") String parent_name,
+                                      @Field("contact_office") String contact_office,
+                                      @Field("facebook") String facebook,
+                                      @Field("twitter") String twitter,
+                                      @Field("instagram") String instagram,
+                                      @Field("gender") String gender,
+                                      @Field("marital") String marital,
+                                      @Field("religion") String religion,
+                                      @Field("number_citizen") String number_citizen,
+                                      @Field("number_taxpayer") String number_taxpayer);*/
 
     //getUserMember
     ///@Headers({ "Content-Type: application/x-www-form-urlencoded", "Authorization: Bearer"+ SP_TOKEN})

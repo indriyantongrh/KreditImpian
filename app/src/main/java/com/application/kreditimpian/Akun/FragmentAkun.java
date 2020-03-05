@@ -115,7 +115,7 @@ public class FragmentAkun extends Fragment {
        /// String id = sharedPrefManager.getSPID();
         String email = sharedPrefManager.getSPEmail();
         String token = sharedPrefManager.getSPToken();
-        String username = sharedPrefManager.getSpUserUsername();
+        String usernameMember = sharedPrefManager.getSpUserUsername();
         String idprof = sharedPrefManager.getSpIdprofile();
         String id_user = sharedPrefManager.getSpIdUser();
         String id_member = sharedPrefManager.getSpIdMember();
@@ -123,7 +123,7 @@ public class FragmentAkun extends Fragment {
      ////   Toast.makeText(getActivity(), "Id member anda "+id_member, Toast.LENGTH_LONG).show();
 
         ///Toast.makeText(getActivity(),token, Toast.LENGTH_SHORT).show();
-        txt_nama_akun.setText(username);
+        txt_nama_akun.setText(usernameMember);
 
 //        //String JWTToken = sharedPrefManager.getSPToken();
 //        byte[] encodeJTW = android.util.Base64.decode(token, android.util.Base64.DEFAULT);

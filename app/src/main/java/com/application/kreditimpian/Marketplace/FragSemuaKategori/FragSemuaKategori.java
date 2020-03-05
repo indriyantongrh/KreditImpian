@@ -5,12 +5,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,13 +41,15 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.nfc.tech.MifareUltralight.PAGE_SIZE;
+
 
 public class FragSemuaKategori extends Fragment {
 
     @BindView(R.id.listAllProduct)
     RecyclerView listAllProduct;
-    @BindView(R.id.swipeRefresh)
-    SwipeRefreshLayout swipeRefresh;
+    /*@BindView(R.id.swipeRefresh)
+    SwipeRefreshLayout swipeRefresh;*/
     ProgressDialog progressBar;
     @BindView(R.id.empty)
     ImageView empty;
@@ -65,13 +69,24 @@ public class FragSemuaKategori extends Fragment {
 
     SharedPrefManager sharedPrefManager;
 
+    private GridLayoutManager mLayoutManager;
+
+    private int limit = 10;
+    private int page = 1 ;
+
+    //Variable Pagingnation
+    private boolean isLoading = true;
+    private boolean isLastpage = false;
+    private int pastVisibleItems, visibleItemCount, totallItemCount, previous_total = 0;
+    private int view_threshold = 10;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_frag_semua_kategori, container, false);
 
-        swipeRefresh = rootView.findViewById(R.id.swipeRefresh);
+        /*swipeRefresh = rootView.findViewById(R.id.swipeRefresh);
         swipeRefresh.setColorScheme(android.R.color.holo_orange_dark,
                 android.R.color.holo_orange_light,
                 android.R.color.holo_orange_dark,
@@ -81,9 +96,10 @@ public class FragSemuaKategori extends Fragment {
             @Override
             public void onRefresh() {
                 getResultList();
+                performPagaination();
                 swipeRefresh.setRefreshing(false);
             }
-        });
+        });*/
         sharedPrefManager = new SharedPrefManager(getActivity());
 
         ButterKnife.bind(this, rootView);
@@ -92,12 +108,47 @@ public class FragSemuaKategori extends Fragment {
 
         adapterProductBaru = new AdapterProductBaru(getActivity(), resultItemList);
         //RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
-        GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2, GridLayoutManager.VERTICAL, false);
+         mLayoutManager = new GridLayoutManager(getActivity(), 2, GridLayoutManager.VERTICAL, false);
         listAllProduct.setLayoutManager(mLayoutManager);
         listAllProduct.setItemAnimator(new DefaultItemAnimator());
 
 
         getResultList();
+
+        /*listAllProduct.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+                visibleItemCount = mLayoutManager.getChildCount();
+                totallItemCount = mLayoutManager.getItemCount();
+                pastVisibleItems = mLayoutManager.findFirstVisibleItemPosition();
+
+
+                if(dy>0)
+                {
+                    if(isLoading)
+                    {
+                        if(totallItemCount > previous_total)
+                        {
+                            isLoading = false;
+                            previous_total = totallItemCount;
+                        }
+                    }
+
+                    if(!isLoading&&(totallItemCount-visibleItemCount)<=(pastVisibleItems+view_threshold))
+                    {
+                        page++;
+                        performPagaination();
+                        isLoading = true;
+                    }
+
+                }
+
+
+
+            }
+        });*/// get page in product category
         return rootView;
 
 
@@ -107,7 +158,7 @@ public class FragSemuaKategori extends Fragment {
     private void getResultList(){
       ////  progressBar = ProgressDialog.show(getActivity(), null, "Loading...", true, false);
 
-
+        /*mApiService.getResult(limit,page).enqueue(new Callback<ResponseProductBaru>() {*/ /*get data use limit*/
         mApiService.getResult().enqueue(new Callback<ResponseProductBaru>() {
             @Override
             public void onResponse(Call<ResponseProductBaru> call, Response<ResponseProductBaru> response) {
@@ -116,7 +167,7 @@ public class FragSemuaKategori extends Fragment {
                     if (response.body().getStatus()==200) {
 
 
-                        swipeRefresh.setRefreshing(false);
+                         ///swipeRefresh.setRefreshing(false);
                         //progressBar.dismiss();
                         pbLoading.setVisibility(View.GONE);
 
@@ -143,6 +194,8 @@ public class FragSemuaKategori extends Fragment {
                 Toast.makeText(mContext, "Koneksi Internet Bermasalah", Toast.LENGTH_SHORT).show();
             }
         });
+
+
     }
 
 
@@ -186,5 +239,38 @@ public class FragSemuaKategori extends Fragment {
                     }
                 }));
     }
+
+
+    /*private void performPagaination(){
+
+        pbLoading.setVisibility(View.VISIBLE);
+
+        mApiService.getResult(limit, page).enqueue(new Callback<ResponseProductBaru>() {
+            @Override
+            public void onResponse(Call<ResponseProductBaru> call, Response<ResponseProductBaru> response) {
+
+                if(response.body().getStatus()==200){
+
+                    List<ResultItem> dataList = response.body().getResult();
+                    adapterProductBaru.addListBarang(dataList);
+                    adapterProductBaru.notifyDataSetChanged();
+                    Toast.makeText(getContext(), "Page "+page+" is Loaded", Toast.LENGTH_LONG).show();
+
+                }else{
+                    Toast.makeText(getContext(), "Toas Paging", Toast.LENGTH_LONG).show();
+                }
+                pbLoading.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onFailure(Call<ResponseProductBaru> call, Throwable t) {
+                Log.v("jajal" , t.getMessage()+ "list");
+                ///progressBar.dismiss();
+                pbLoading.setVisibility(View.GONE);
+                Toast.makeText(mContext, "Koneksi Internet Bermasalah", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }*/// methode get page in product
 
 }

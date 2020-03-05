@@ -52,6 +52,7 @@ import com.application.kreditimpian.Model.ModelMember.ResponseMember;
 
 import com.application.kreditimpian.Model.ModelMemberInsert.ResponseMemberInsert;
 
+import com.application.kreditimpian.Model.ModelSubDistrict.ResponseSubdistrict;
 import com.application.kreditimpian.Model.ModelSubDistrictRajaOngkir.ResponseSubDistrictRajaOngkir;
 import com.application.kreditimpian.Model.ModelUploadImage.ResponseUploadImage;
 import com.application.kreditimpian.Model.ModelUserDetail.ResponseMembers;
@@ -202,16 +203,17 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         List<String> religion = new ArrayList<String>();
         religion.add(0, "Pilih Agama");
         religion.add("HINDU");
-        religion.add("ISLAM");
-        religion.add("KRISTEN");
-        religion.add("KATOLIK");
-        religion.add("BUDHA");
+        religion.add("MOSLEM");
+        religion.add("CHRISTIAN");
+        religion.add("CATHOLIC");
+        religion.add("BUDDHA");
+
 
         List<String> Status = new ArrayList<String>();
         Status.add(0, "Pilih Status");
-        Status.add("LAJANG");
-        Status.add("MENIKAH");
-        Status.add("CERAI");
+        Status.add("SINGLE");
+        Status.add("MARRIED");
+        Status.add("DIVORCED");
 
         List<String> Kredit = new ArrayList<String>();
         Kredit.add(0, "Apakah Anda memiliki kredit/cicilan yang sedang berjalan?");
@@ -220,10 +222,10 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
         List<String> TempatTinggal = new ArrayList<String>();
         TempatTinggal.add(0, "Status Tempat Tinggal");
-        TempatTinggal.add("KONTRAK");
-        TempatTinggal.add("RUMAH SENDIRI");
-        TempatTinggal.add("KOS");
-        TempatTinggal.add("IKUT ORANG TUA");
+        TempatTinggal.add("CONTRACT");
+        TempatTinggal.add("PERMANENT");
+        TempatTinggal.add("BOARDING");
+        TempatTinggal.add("FOLLOW_PARENTS");
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(DataDiri.this, android.R.layout.simple_spinner_item, gender);
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
@@ -273,7 +275,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             }
         });
 
-        getGeoCity();
+        getCityRajaOngkir();
         /// getGeoDistrict();
 
         imageself.setOnClickListener(new View.OnClickListener() {
@@ -505,7 +507,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
-                                txttanggallahir.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+                                txttanggallahir.setText(year + "-" + "0"+(monthOfYear + 1) + "-" + dayOfMonth);
 
                             }
                         }, mYear, mMonth, mDay);
@@ -954,11 +956,11 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                     }
 
                     String Status = new String(detail.get(0).getMarital());
-                    if (Status.equals("LAJANG")) {
+                    if (Status.equals("SINGLE")) {
                         spinnerstatus.setSelection(1);
-                    } else if (Status.equals("MENIKAH")) {
+                    } else if (Status.equals("MARRIED")) {
                         spinnerstatus.setSelection(2);
-                    } else if (Status.equals("CERAI")) {
+                    } else if (Status.equals("DIVORCED")) {
                         spinnerstatus.setSelection(3);
                     } /*else if (Status.equals(null)) {
                         spinnerstatus.setSelection(0);
@@ -968,29 +970,29 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                     String Agama = new String(detail.get(0).getReligion());
                     if (Agama.equals("HINDU")) {
                         spinneragama.setSelection(1);
-                    } else if (Agama.equals("ISLAM")) {
+                    } else if (Agama.equals("MOSLEM")) {
                         spinneragama.setSelection(2);
-                    } else if (Agama.equals("KRISTEN")) {
+                    } else if (Agama.equals("CHRISTIAN")) {
                         spinneragama.setSelection(3);
 
-                    } else if (Agama.equals("KATOLIK")) {
+                    } else if (Agama.equals("CATHOLIC")) {
                         spinneragama.setSelection(4);
 
-                    } else if (Agama.equals("BUDHA")) {
+                    } else if (Agama.equals("BUDDHA")) {
                         spinneragama.setSelection(4);
                     } /*else if (Agama.equals(null)) {
                         spinneragama.setSelection(0);
                     }*/
 
                     String StatusTempatTinggal = new String(detail.get(0).getResidenceStatus());
-                    if (StatusTempatTinggal.equals("KONTRAK")) {
+                    if (StatusTempatTinggal.equals("CONTRACT")) {
                         spinnerstatusrumah.setSelection(1);
-                    } else if (StatusTempatTinggal.equals("RUMAH SENDIRI")) {
+                    } else if (StatusTempatTinggal.equals("PERMANENT")) {
                         spinnerstatusrumah.setSelection(2);
-                    } else if (StatusTempatTinggal.equals("KOS")) {
+                    } else if (StatusTempatTinggal.equals("BOARDING")) {
                         spinnerstatusrumah.setSelection(3);
 
-                    } else if (StatusTempatTinggal.equals("IKUT ORANG TUA")) {
+                    } else if (StatusTempatTinggal.equals("FOLLOW_PARENTS")) {
                         spinnerstatusrumah.setSelection(4);
                     } /*else if (StatusTempatTinggal.equals(null)) {
                         spinnerstatusrumah.setSelection(0);
@@ -1030,6 +1032,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                         LinearKota.setVisibility(View.VISIBLE);
                     }
 
+                    getSubdistrictProfile();
                     if(id_kecamatan.getText().toString().equals(id_kecamatan.getText().toString())){
                         text_kecamatan.setVisibility(View.VISIBLE);
                         btnUbahKecamatan.setVisibility(View.VISIBLE);
@@ -1070,6 +1073,37 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         });
 
     }
+
+    private void getSubdistrictProfile(){
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("id_district", id_kecamatan.getText().toString());
+
+        mApiService.getSubdistrictProfile(params).enqueue(new Callback<ResponseSubdistrict>() {
+            @Override
+            public void onResponse(Call<ResponseSubdistrict> call, Response<ResponseSubdistrict> response) {
+
+                if(response.body().getRajaongkir().getStatus().getCode() == 200){
+                    ResponseSubdistrict responseKotaKecamatan = response.body();
+
+                    text_kecamatan.setText("Kecamatan Saudara anda : "+responseKotaKecamatan.getRajaongkir().getResults().getSubdistrictName());
+
+                }else{
+                    text_kecamatan.setVisibility(View.GONE);
+                    btnUbahKecamatan.setVisibility(View.GONE);
+                    LinearKecamatan.setVisibility(View.VISIBLE);
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseSubdistrict> call, Throwable t) {
+
+            }
+        });
+    }
+
+
 
 
     /*Menampilkan City using API Cirecle Creative */
@@ -1186,7 +1220,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                             if(position>0){
                                 String Kecamatanvalues = getKecamatan.get(position - 1 ).getSubdistrictId();
                                 id_kecamatan.setText(Kecamatanvalues);
-                                ///Toast.makeText(TambahAlamatPengiriman.this, " id KEcamtan anda "+Kecamatanvalues, Toast.LENGTH_LONG).show();
+                                ///Toast.makeText(DataDiri.this, " id KEcamtan anda "+Kecamatanvalues, Toast.LENGTH_LONG).show();
 
                             }
                         }

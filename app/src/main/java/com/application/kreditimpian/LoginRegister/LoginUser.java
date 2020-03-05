@@ -337,7 +337,7 @@ public class LoginUser extends AppCompatActivity {
 
 
 
-    public void UserLogin(){
+    /*public void UserLogin(){
 
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
@@ -449,11 +449,11 @@ public class LoginUser extends AppCompatActivity {
 
 
 
-    }
+    }*/
 
 
 
-    public void LoginUser() {
+    /*public void LoginUser() {
         //membuat progress dialog
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
@@ -532,7 +532,7 @@ public class LoginUser extends AppCompatActivity {
 
 
 
-    }
+    }*/
 
 
 

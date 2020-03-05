@@ -164,12 +164,18 @@ public class AdapterProductBaru extends RecyclerView.Adapter<AdapterProductBaru.
         }
     }
 
-/*    public void addListBarang(List<ResultItem> listBarang){
+    public void addListBarang(List<ResultItem> listBarang){
 
-        for(ResultItem dataBarang  : listBarang)
+        /*for(ResultItem dataBarang  : listBarang)
         {
             resultItemList.add(dataBarang);
         }
+        notifyDataSetChanged();*/
 
-    }*/
+        final int positionStart = listBarang.size() + 1;
+        resultItemList.addAll(listBarang);
+        notifyItemRangeInserted(positionStart, resultItemList.size());
+        notifyDataSetChanged();
+
+    }
 }
