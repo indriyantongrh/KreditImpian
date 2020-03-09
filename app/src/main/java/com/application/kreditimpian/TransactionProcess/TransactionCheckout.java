@@ -193,11 +193,6 @@ public class TransactionCheckout extends AppCompatActivity {
             public void onClick(View v) {
                 Checkbtnkeputusan(v);
                 postTransaction();
-                Intent intent1 = new Intent(TransactionCheckout.this, SuccessMengajukan.class);
-                startActivity(intent1);
-                finish();
-
-
 
             }
         });
@@ -238,14 +233,19 @@ public class TransactionCheckout extends AppCompatActivity {
                pDialog.dismiss();
                 if(response.body().getResponseCode()==200){
                     //Toast.makeText(TransactionCheckout.this, response.body().getMessage() , Toast.LENGTH_LONG).show();
+                    Intent intent1 = new Intent(TransactionCheckout.this, SuccessMengajukan.class);
+                    startActivity(intent1);
+                    finish();
                 }else {
-                    Toast.makeText(TransactionCheckout.this, "Gagal" , Toast.LENGTH_LONG).show();
+                    Toast.makeText(TransactionCheckout.this, "Gagal Checkout, harap cek koneksi anda." , Toast.LENGTH_LONG).show();
+
                 }
             }
 
             @Override
             public void onFailure(Call<ResponsePengajuanCatalog> call, Throwable t) {
                 Toast.makeText(TransactionCheckout.this, "Internet anda bermasalah" , Toast.LENGTH_LONG).show();
+
             }
         });
     }

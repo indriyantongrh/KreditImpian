@@ -89,7 +89,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
     Spinner spinnerjeniskelamin, spinnerstatus, spinneragama, spinnerstatusrumah,
             spinnerkredit, spinnerkota_saudaraa, spinnerkecamatn_saudara;
     Button btnsimpan;
-    TextView id_kota, id_kecamatan, text_kota,text_kecamatan;
+    TextView id_kota, id_kecamatan, text_kota,text_kecamatan, textjeniskelamin, textstatus, textagama, textkredit, textstatusrumah;
     EditText txtnamalengkap, txttempatlahir, txttanggallahir, txtnikktp, txtnomornpwp, txtpekerjaan, txtpendapatan,
             txtjumlahtanggungan, txtalamatemail, txtibukandung, txtnomorhandphone, txtnomortlp, txtfacebook,
             txttwitter, txtinstagram, txtnamasaudara, txtnomorhandphonesaudara, txtkodepos_saudara, txtalamat_saudara;
@@ -173,6 +173,12 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         btnUbah = findViewById(R.id.btnUbah);
         LinearKota = findViewById(R.id.LinearKota);
         LinearKecamatan = findViewById(R.id.LinearKecamatan);
+        textjeniskelamin = findViewById(R.id.textjeniskemalin);
+        textstatus = findViewById(R.id.textstatus);
+        textagama = findViewById(R.id.textagama);
+        textkredit = findViewById(R.id.textkredit);
+        textstatusrumah = findViewById(R.id.textstatusrumah);
+
 
         ///formdatasaudara tidaq serumah
 
@@ -197,55 +203,172 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
         List<String> gender = new ArrayList<String>();
         gender.add(0, "Jenis Kelamin");
-        gender.add("FEMALE");
-        gender.add("MALE");
+        gender.add("Perempuan");
+        gender.add("Laki-laki");
+
 
         List<String> religion = new ArrayList<String>();
         religion.add(0, "Pilih Agama");
-        religion.add("HINDU");
-        religion.add("MOSLEM");
-        religion.add("CHRISTIAN");
-        religion.add("CATHOLIC");
-        religion.add("BUDDHA");
+        religion.add("Hindu");
+        religion.add("Islam");
+        religion.add("Kristen");
+        religion.add("Katolik");
+        religion.add("Budha");
 
 
         List<String> Status = new ArrayList<String>();
         Status.add(0, "Pilih Status");
-        Status.add("SINGLE");
-        Status.add("MARRIED");
-        Status.add("DIVORCED");
+        Status.add("Sendiri");
+        Status.add("Menikah");
+        Status.add("Cerai");
 
         List<String> Kredit = new ArrayList<String>();
         Kredit.add(0, "Apakah Anda memiliki kredit/cicilan yang sedang berjalan?");
-        Kredit.add("YES");
-        Kredit.add("NO");
+        Kredit.add("Iya");
+        Kredit.add("Tidak");
 
         List<String> TempatTinggal = new ArrayList<String>();
         TempatTinggal.add(0, "Status Tempat Tinggal");
-        TempatTinggal.add("CONTRACT");
-        TempatTinggal.add("PERMANENT");
-        TempatTinggal.add("BOARDING");
-        TempatTinggal.add("FOLLOW_PARENTS");
+        TempatTinggal.add("Kontrak");
+        TempatTinggal.add("Rumah Sendiri");
+        TempatTinggal.add("Kos");
+        TempatTinggal.add("Ikut Orang Tua");
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(DataDiri.this, android.R.layout.simple_spinner_item, gender);
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinnerjeniskelamin.setAdapter(adapter);
+        spinnerjeniskelamin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                String jenisKelamin = adapter.getItem(position);
+                if(jenisKelamin.equals("Perempuan")){
+                    textjeniskelamin.setText("FEMALE");
+
+                }else if(jenisKelamin.equals("Laki-laki")){
+                    textjeniskelamin.setText("MALE");
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         ArrayAdapter<String> adapterStatus = new ArrayAdapter<String>(DataDiri.this, android.R.layout.simple_spinner_item, Status);
         adapterStatus.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinnerstatus.setAdapter(adapterStatus);
+        spinnerstatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                String status = adapterStatus.getItem(position);
+                if(status.equals("Sendiri")){
+                    textstatus.setText("SINGLE");
+
+                }else if(status.equals("Menikah")){
+                    textstatus.setText("MARRIED");
+
+                }else if(status.equals("Cerai")){
+                    textstatus.setText("DIVORCED");
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         ArrayAdapter<String> adapterReligion = new ArrayAdapter<String>(DataDiri.this, android.R.layout.simple_spinner_item, religion);
         adapterReligion.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinneragama.setAdapter(adapterReligion);
+        spinneragama.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                String agama = adapterReligion.getItem(position);
+                if(agama.equals("Hindu")){
+                    textagama.setText("HINDU");
+
+                }else if(agama.equals("Islam")){
+                    textagama.setText("MOSLEM");
+
+                }else if(agama.equals("Kristen")){
+                    textagama.setText("CHRISTIAN");
+
+                }else if(agama.equals("Katolik")){
+                    textagama.setText("CATHOLIC");
+
+                }else if(agama.equals("Budha")){
+                    textagama.setText("BUDDHA");
+                }
+
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         ArrayAdapter<String> adapterRumah = new ArrayAdapter<String>(DataDiri.this, android.R.layout.simple_spinner_item, TempatTinggal);
         adapterRumah.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinnerstatusrumah.setAdapter(adapterRumah);
+        spinnerstatusrumah.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                String statusrumah = adapterRumah.getItem(position);
+                if(statusrumah.equals("Kontrak")){
+                    textstatusrumah.setText("CONTRACT");
+
+                }else if(statusrumah.equals("Rumah Sendiri")){
+                    textstatusrumah.setText("PERMANENT");
+
+                }else if(statusrumah.equals("Kos")){
+                    textstatusrumah.setText("BOARDING");
+
+                }else if(statusrumah.equals("Ikut Orang Tua")){
+                    textstatusrumah.setText("FOLLOW_PARENTS");
+
+                }
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
 
         ArrayAdapter<String> adapterKredit = new ArrayAdapter<String>(DataDiri.this, android.R.layout.simple_spinner_item, Kredit);
         adapterKredit.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinnerkredit.setAdapter(adapterKredit);
+        spinnerkredit.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String kredit = adapterKredit.getItem(position);
+                if(kredit.equals("Iya")){
+                    textkredit.setText("YES");
+
+                }else if(kredit.equals("Tidak")){
+                    textkredit.setText("NO");
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         /*untuk upload gambar wajah*/
         btnuploadfoto.setOnClickListener(new View.OnClickListener() {
@@ -589,12 +712,13 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         params.put("phone", txtnomorhandphone.getText().toString());
         params.put("birthplace", txttempatlahir.getText().toString());
         params.put("birthday", txttanggallahir.getText().toString());
-        params.put("gender", spinnerjeniskelamin.getSelectedItem().toString());
-        params.put("marital", spinnerstatus.getSelectedItem().toString());
-        params.put("religion", spinneragama.getSelectedItem().toString());
+       /// params.put("gender", spinnerjeniskelamin.getSelectedItem().toString());
+        params.put("gender", textjeniskelamin.getText().toString());
+        params.put("marital", textstatus.getText().toString());
+        params.put("religion", textagama.getText().toString());
         params.put("family_dependent", txtjumlahtanggungan.getText().toString());
-        params.put("installment", spinnerkredit.getSelectedItem().toString());
-        params.put("residence_status", spinnerstatusrumah.getSelectedItem().toString());
+        params.put("installment", textkredit.getText().toString());
+        params.put("residence_status", textstatusrumah.getText().toString());
         params.put("job", txtpekerjaan.getText().toString());
         params.put("income", txtpendapatan.getText().toString());
         params.put("number_citizen", txtnikktp.getText().toString());
@@ -666,6 +790,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                 pDialog.dismiss();
                 if (response.body() != null) {
                     Toast.makeText(DataDiri.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    btnuploadfoto.setVisibility(View.GONE);
 
                 } else {
                     Toast.makeText(DataDiri.this, "Gagal mengunggah foto", Toast.LENGTH_SHORT).show();
@@ -698,7 +823,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                 pDialog.dismiss();
                 if (response.body() != null) {
                     Toast.makeText(DataDiri.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-
+                    btnuploadktp.setVisibility(View.GONE);
                 } else {
                     Toast.makeText(DataDiri.this, "Gagal mengunggah foto KTP", Toast.LENGTH_SHORT).show();
                 }
@@ -731,7 +856,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                 if (response.body() != null) {
 
                     Toast.makeText(DataDiri.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-
+                    btnuploadnpwp.setVisibility(View.GONE);
 
                 } else {
                     Toast.makeText(DataDiri.this, "Gagal mengunggah foto NPWP                                                                          ", Toast.LENGTH_SHORT).show();

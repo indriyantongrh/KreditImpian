@@ -534,6 +534,7 @@ public class FragmentBeranda extends Fragment {
 
         mAdapter = new SliderPagerAdapter(getFragmentManager(), fragments);
         sliderView.setAdapter(mAdapter);
+
         mIndicator = new SliderIndicator(getActivity(), mLinearLayout, sliderView, R.drawable.indicator_circle);
         mIndicator.setPageCount(fragments.size());
         mIndicator.show();

@@ -18,6 +18,7 @@ import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
 import com.application.kreditimpian.FormPengajuan.UpgradeImpian.ViewPagerAdapter;
 import com.application.kreditimpian.Constan.Constans;
+import com.application.kreditimpian.Model.ModelInsertShoppingCart.ResponseInsertShopingCart;
 import com.application.kreditimpian.Model.ModelProduct.ImagesItem;
 //import com.application.kreditimpian.Model.ModelProduct.ResultItem;
 import com.application.kreditimpian.Model.ModelProductNew.ResultItem;
@@ -232,27 +233,28 @@ public class DetailProduct extends AppCompatActivity {
 
 
         HashMap<String, String> params = new HashMap<>();
-        params.put("id_member", sharedPrefManager.getSpIdMember());
         params.put("reference_id", id);
+        params.put("record_create_user", sharedPrefManager.getSpIdMember());
+        params.put("record_update_user", sharedPrefManager.getSpIdMember());
 
-        mApiService.InsertShoppingCart(params).enqueue(new Callback<ResponseTransaction>() {
+        mApiService.InsertShoppingCart(params).enqueue(new Callback<ResponseInsertShopingCart>() {
             @Override
-            public void onResponse(Call<ResponseTransaction> call, Response<ResponseTransaction> response) {
+            public void onResponse(Call<ResponseInsertShopingCart> call, Response<ResponseInsertShopingCart> response) {
 
                 pDialog.dismiss();
-                if (response.body() != null) {
+                if (response.body().getStatus()==200) {
                     ////Toast.makeText(DetailProduct.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(DetailProduct.this, Cart.class);
                     startActivity(intent);
                     finish();
                 } else {
-                    Toast.makeText(DetailProduct.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DetailProduct.this, "Yaahhh .... gagal memasukan keranjang", Toast.LENGTH_SHORT).show();
                 }
 
             }
 
             @Override
-            public void onFailure(Call<ResponseTransaction> call, Throwable t) {
+            public void onFailure(Call<ResponseInsertShopingCart> call, Throwable t) {
                 Toast.makeText(DetailProduct.this, "Keneksi terputus", Toast.LENGTH_LONG);
             }
         });

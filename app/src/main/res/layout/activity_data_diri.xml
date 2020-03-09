@@ -104,11 +104,13 @@
 
                 <Button
                     android:id="@+id/btnuploadfoto"
-                    android:layout_width="100dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="30dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="10dp"
-                    android:background="@color/colorOrange"
+                    android:background="@drawable/btnorange"
                     android:text="Simpan foto"
                     android:textColor="@color/colorwhite"
                     android:visibility="gone"/>
@@ -210,8 +212,13 @@
                         android:layout_width="match_parent"
                         android:fontFamily="@font/jipatharegular"
                         android:textSize="26dp"
-
                         android:layout_height="match_parent"></Spinner>
+
+                    <TextView
+                        android:id="@+id/textjeniskemalin"
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
                 </LinearLayout>
 
                 <!--Border-->
@@ -232,6 +239,13 @@
                         android:fontFamily="@font/jipatharegular"
                         android:textSize="26dp"
                         android:layout_height="match_parent"></Spinner>
+
+                    <TextView
+                        android:id="@+id/textstatus"
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
                 </LinearLayout>
 
                 <!--Border-->
@@ -252,6 +266,13 @@
                         android:fontFamily="@font/jipatharegular"
                         android:textSize="26dp"
                         android:layout_height="match_parent"></Spinner>
+
+                    <TextView
+                        android:id="@+id/textagama"
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
                 </LinearLayout>
 
 
@@ -293,13 +314,15 @@
 
                 <Button
                     android:id="@+id/btnuploadktp"
-                    android:layout_width="100dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="30dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="10dp"
-                    android:background="@color/colorOrange"
-                    android:text="Simpan ktp"
+                    android:background="@drawable/btnorange"
                     android:textColor="@color/colorwhite"
+                    android:text="Simpan ktp"
                     android:visibility="gone"/>
 
                 <!--Border-->
@@ -362,11 +385,13 @@
                 </LinearLayout>
                 <Button
                     android:id="@+id/btnuploadnpwp"
-                    android:layout_width="100dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="30dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="10dp"
-                    android:background="@color/colorOrange"
+                    android:background="@drawable/btnorange"
                     android:text="Simpan npwp"
                     android:textColor="@color/colorwhite"
                     android:visibility="gone"/>
@@ -491,6 +516,12 @@
                         android:fontFamily="@font/jipatharegular"
                         android:textSize="26dp"
                         android:layout_height="match_parent"></Spinner>
+                    <TextView
+                        android:id="@+id/textkredit"
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
                 </LinearLayout>
 
                 <!--Border-->
@@ -511,6 +542,12 @@
                         android:fontFamily="@font/jipatharegular"
                         android:textSize="26dp"
                         android:layout_height="match_parent"></Spinner>
+
+                    <TextView
+                        android:id="@+id/textstatusrumah"
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
                 </LinearLayout>
 
                 <!--Border-->

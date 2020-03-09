@@ -9,6 +9,7 @@ import com.application.kreditimpian.Model.ModelDetailMember.ResponseDetailMember
 import com.application.kreditimpian.Model.ModelFOrgotPassword.ResponseForgotPassword;
 import com.application.kreditimpian.Model.ModelGeodirectory.ResponseGeodirectory;
 import com.application.kreditimpian.Model.ModelHistoryPesanan.ResponseHistoryPesanan;
+import com.application.kreditimpian.Model.ModelInsertShoppingCart.ResponseInsertShopingCart;
 import com.application.kreditimpian.Model.ModelKecamatan.ResponseKecamatan;
 import com.application.kreditimpian.Model.ModelListAlamat.ResponseListAlamat;
 import com.application.kreditimpian.Model.ModelLogin.ResponseLogin;
@@ -138,8 +139,10 @@ public interface BaseApiService {
     Call<ResponseSubdistrict> getSubdistrictProfile(@QueryMap HashMap<String, String> params);
 
     /*API Transaction*/
-    @GET("ApiMobile/insrtonshoppingcart")
-    Call<ResponseTransaction> InsertShoppingCart(@QueryMap HashMap<String, String> params);
+    @FormUrlEncoded
+    @POST("ApiMobile/insrtonshoppingcart")
+    Call<ResponseInsertShopingCart> InsertShoppingCart(@FieldMap HashMap<String, String> params);
+
 
     @GET("ApiMobile/getonshoppingcart")
     Call<ResponseOnShoppingCart> getOnShoppingCart(@Query("id_member") String id_member);
