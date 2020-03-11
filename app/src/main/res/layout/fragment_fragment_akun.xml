@@ -350,9 +350,10 @@
             app:cardElevation="5dp"
             app:cardCornerRadius="6dp"
             android:layout_margin="5dp"
+            android:visibility="gone"
             android:layout_below="@+id/btnfavorite"
             android:background = "@drawable/cardvieworange"
-            android:visibility="gone">
+            >
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:background="@drawable/borderhitam"

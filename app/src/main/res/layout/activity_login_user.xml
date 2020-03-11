@@ -238,12 +238,11 @@
         </LinearLayout>
 
     <LinearLayout
-
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <TextView
-            android:text="Kreditimpian v.1.0"
+            android:text="KreditimpianBeta v.1.4.9"
             android:gravity="center|bottom"
             android:textSize="10dp"
             android:foregroundGravity="bottom"

@@ -48,29 +48,21 @@ public class FragSemuaKategori extends Fragment {
 
     @BindView(R.id.listAllProduct)
     RecyclerView listAllProduct;
-    /*@BindView(R.id.swipeRefresh)
-    SwipeRefreshLayout swipeRefresh;*/
+    @BindView(R.id.swipeRefresh)
+    SwipeRefreshLayout swipeRefresh;
     ProgressDialog progressBar;
     @BindView(R.id.empty)
     ImageView empty;
     @BindView(R.id.pbLoading)
     ProgressBar pbLoading;
 
-
-
     Context mContext;
-
-
-
 
     List<ResultItem> resultItemList = new ArrayList<>();
     AdapterProductBaru adapterProductBaru;
     BaseApiService mApiService;
-
     SharedPrefManager sharedPrefManager;
-
     private GridLayoutManager mLayoutManager;
-
     private int limit = 10;
     private int page = 1 ;
 
@@ -86,7 +78,7 @@ public class FragSemuaKategori extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_frag_semua_kategori, container, false);
 
-        /*swipeRefresh = rootView.findViewById(R.id.swipeRefresh);
+        swipeRefresh = rootView.findViewById(R.id.swipeRefresh);
         swipeRefresh.setColorScheme(android.R.color.holo_orange_dark,
                 android.R.color.holo_orange_light,
                 android.R.color.holo_orange_dark,
@@ -96,10 +88,10 @@ public class FragSemuaKategori extends Fragment {
             @Override
             public void onRefresh() {
                 getResultList();
-                performPagaination();
+               /// performPagaination();
                 swipeRefresh.setRefreshing(false);
             }
-        });*/
+        });
         sharedPrefManager = new SharedPrefManager(getActivity());
 
         ButterKnife.bind(this, rootView);
@@ -130,8 +122,10 @@ public class FragSemuaKategori extends Fragment {
                     if(isLoading)
                     {
                         if(totallItemCount > previous_total)
+                         ///if((visibleItemCount + pastVisibleItems) >= totallItemCount)
                         {
                             isLoading = false;
+                            ///performPagaination();
                             previous_total = totallItemCount;
                         }
                     }
@@ -148,7 +142,7 @@ public class FragSemuaKategori extends Fragment {
 
 
             }
-        });*/// get page in product category
+        });*/   // get page in product category
         return rootView;
 
 
@@ -157,19 +151,21 @@ public class FragSemuaKategori extends Fragment {
 
     private void getResultList(){
       ////  progressBar = ProgressDialog.show(getActivity(), null, "Loading...", true, false);
-
+        swipeRefresh.setRefreshing(true);
         /*mApiService.getResult(limit,page).enqueue(new Callback<ResponseProductBaru>() {*/ /*get data use limit*/
+
         mApiService.getResult().enqueue(new Callback<ResponseProductBaru>() {
             @Override
             public void onResponse(Call<ResponseProductBaru> call, Response<ResponseProductBaru> response) {
                 ////pbLoading.setVisibility(View.GONE);
                     ///progressBar.dismiss();
-                    if (response.body().getStatus()==200) {
+                swipeRefresh.setRefreshing(false);
+                if (response.body().getStatus()==200) {
 
 
                          ///swipeRefresh.setRefreshing(false);
                         //progressBar.dismiss();
-                        pbLoading.setVisibility(View.GONE);
+                        ///pbLoading.setVisibility(View.GONE);
 
                         final List<ResultItem> Allproduct = response.body().getResult();
                         Log.v("jajal" , Allproduct+ "list");
@@ -180,7 +176,8 @@ public class FragSemuaKategori extends Fragment {
                         initDataIntent(Allproduct);
                     }else {
                         //progressBar.dismiss();
-                        pbLoading.setVisibility(View.GONE);
+                    swipeRefresh.setRefreshing(false);
+                        ///pbLoading.setVisibility(View.GONE);
                         empty.setVisibility(View.VISIBLE);
                     }
 
@@ -190,7 +187,8 @@ public class FragSemuaKategori extends Fragment {
             public void onFailure(Call<ResponseProductBaru> call, Throwable t) {
                 Log.v("jajal" , t.getMessage()+ "list");
                 ///progressBar.dismiss();
-                pbLoading.setVisibility(View.GONE);
+                //pbLoading.setVisibility(View.GONE);
+                swipeRefresh.setRefreshing(false);
                 Toast.makeText(mContext, "Koneksi Internet Bermasalah", Toast.LENGTH_SHORT).show();
             }
         });
@@ -243,7 +241,7 @@ public class FragSemuaKategori extends Fragment {
 
     /*private void performPagaination(){
 
-        pbLoading.setVisibility(View.VISIBLE);
+        swipeRefresh.setRefreshing(true);
 
         mApiService.getResult(limit, page).enqueue(new Callback<ResponseProductBaru>() {
             @Override
@@ -259,7 +257,7 @@ public class FragSemuaKategori extends Fragment {
                 }else{
                     Toast.makeText(getContext(), "Toas Paging", Toast.LENGTH_LONG).show();
                 }
-                pbLoading.setVisibility(View.GONE);
+                swipeRefresh.setRefreshing(false);
             }
 
             @Override
@@ -271,6 +269,6 @@ public class FragSemuaKategori extends Fragment {
             }
         });
 
-    }*/// methode get page in product
+    }*/  // methode get page in product
 
 }

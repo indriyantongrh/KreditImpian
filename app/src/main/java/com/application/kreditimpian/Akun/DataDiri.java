@@ -630,12 +630,21 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
-                                txttanggallahir.setText(year + "-" + "0"+(monthOfYear + 1) + "-" + dayOfMonth);
+                                txttanggallahir.setText( year + "-" + convertDate(monthOfYear + 1) + "-"+ convertDate(dayOfMonth));
 
                             }
                         }, mYear, mMonth, mDay);
                 datePickerDialog.show();
                 break;
+        }
+    }
+
+    /*for add zero if under 10*/
+    public String convertDate(int input) {
+        if (input >= 10) {
+            return String.valueOf(input);
+        } else {
+            return "0" + String.valueOf(input);
         }
     }
 
@@ -1045,6 +1054,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
     }
 
+    /*Get data member by ID*/
     private void getDetailMember() {
 
         pDialog = new ProgressDialog(this);
@@ -1199,6 +1209,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
     }
 
+    /*get data kecamatan*/
     private void getSubdistrictProfile(){
 
         HashMap<String, String> params = new HashMap<>();
@@ -1299,6 +1310,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
 
     }
+
     /*MEnampilkan City using API Cirecle Creative*/
     private void getSubDistrict(){
 

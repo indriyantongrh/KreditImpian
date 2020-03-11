@@ -98,8 +98,8 @@ public class KategoriElektronik extends Fragment {
 
 
     private void getResultList(){
-        progressBar = ProgressDialog.show(getActivity(), null, "Harap Tunggu...", true, false);
-
+        //progressBar = ProgressDialog.show(getActivity(), null, "Harap Tunggu...", true, false);
+        swipeRefresh.setRefreshing(true);
         mApiService.getResultElektronik().enqueue(new Callback<ResponseProductBaru>() {
             @Override
             public void onResponse(Call<ResponseProductBaru> call, Response<ResponseProductBaru> response) {
@@ -107,7 +107,7 @@ public class KategoriElektronik extends Fragment {
                     ///progressBar.dismiss();
                     if (response.body().getStatus()==200) {
                         swipeRefresh.setRefreshing(false);
-                        progressBar.dismiss();
+                        ///progressBar.dismiss();
                         final List<ResultItem> Allproduct = response.body().getResult();
 
                         listProductElektronik.setAdapter(new AdapterProductBaru(mContext, Allproduct));
@@ -115,18 +115,21 @@ public class KategoriElektronik extends Fragment {
                         empty.setVisibility(View.GONE);
                         initDataIntent(Allproduct);
                     }else {
-                        progressBar.dismiss();
+                        swipeRefresh.setRefreshing(false);
+                        ///progressBar.dismiss();
                         empty.setVisibility(View.VISIBLE);
                     }
                 } else {
-                    progressBar.dismiss();
+                    swipeRefresh.setRefreshing(false);
+                    ///progressBar.dismiss();
                     Toast.makeText(mContext, "Gagal Refresh", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseProductBaru> call, Throwable t) {
-                progressBar.dismiss();
+                swipeRefresh.setRefreshing(false);
+                //progressBar.dismiss();
                 Toast.makeText(mContext, "Koneksi Internet Bermasalah", Toast.LENGTH_SHORT).show();
             }
         });

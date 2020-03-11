@@ -156,7 +156,7 @@ public class DetailHistoryPesanan extends AppCompatActivity {
                 .error(R.drawable.no_image)
                 .into(image);
 
-        if (txt_status_pesanan.equals("CONFIRMED_CREDITOR")){
+        if (txt_status_pesanan.getText().toString().equals("CONFIRMED_CREDITOR")){
             informationTransfer.setVisibility(View.VISIBLE);
         }
 
