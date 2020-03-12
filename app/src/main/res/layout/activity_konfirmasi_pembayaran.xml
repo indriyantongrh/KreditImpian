@@ -99,7 +99,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@android:color/transparent"
-                        android:hint="Nama lengkap"
+                        android:hint="Nama Pemilih Bank"
                         android:inputType="text"
                         android:fontFamily="@font/jipatharegular"
                         android:textSize="26dp" />
@@ -110,12 +110,13 @@
                 <!--Border-->
                 <LinearLayout
                     android:background="#fff"
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="15dp"></LinearLayout>
 
 
                 <LinearLayout
-
+                    android:visibility="gone"
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:background="@drawable/borderhitam"
@@ -129,6 +130,7 @@
                         android:layout_marginRight="10dp"
                         android:background="@android:color/transparent"
                         android:hint="Nomor Pesanan"
+
                         android:inputType="text"
                         android:fontFamily="@font/jipatharegular"
                         android:textSize="26dp" />
@@ -178,14 +180,15 @@
                     android:layout_height="37dp">
 
                     <EditText
-                        android:id="@+id/txtnamadibank"
+                        android:id="@+id/txt_transfer_date"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@android:color/transparent"
-                        android:hint="Nama Lengkap Sesuai di Bank"
-                        android:inputType="text"
+                        android:hint="Tanggal Transfer"
+                        android:clickable="true"
+                        android:editable="false"
                         android:fontFamily="@font/jipatharegular"
                         android:textSize="26dp" />
 
@@ -214,7 +217,7 @@
                         android:layout_marginRight="10dp"
                         android:background="@android:color/transparent"
                         android:hint="Nominal"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:fontFamily="@font/jipatharegular"
                         android:textSize="26dp" />
 
@@ -227,31 +230,30 @@
                     android:layout_width="match_parent"
                     android:layout_height="15dp"></LinearLayout>
 
-                <!--Button-->
-                <Button
-                    android:id="@+id/btnbuktitf"
-                    style="?android:textAppearanceSmall"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="16dp"
-                    android:text="Pilih bukti transfer "
-                    android:textStyle="bold"
-                    android:textColor="#fff"
-                    android:textSize="25sp"
-                    android:fontFamily="@font/jipatharegular"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@drawable/btnorange"
-                    ></Button>
+                <TextView
+                    android:text="Upload Bukti Pembayaran"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:background="@drawable/borderorange"
+                android:layout_height="wrap_content">
 
 
                 <ImageView
-                    android:id="@+id/imagebukti"
-                    android:paddingBottom="30dp"
+                    android:id="@+id/imageupload"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="150dp"
+                    android:contentDescription="@string/image"
+                    android:src="@drawable/upload"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    />
 
-
+            </LinearLayout>
 
                 <!--Border-->
                 <LinearLayout

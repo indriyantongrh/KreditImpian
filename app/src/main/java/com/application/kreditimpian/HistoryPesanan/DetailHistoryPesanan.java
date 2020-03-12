@@ -7,11 +7,14 @@ import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.application.kreditimpian.Constan.ConstanHistoryPesanan;
+import com.application.kreditimpian.KonfirmasiPembayaran.KonfirmasiPembayaran;
 import com.application.kreditimpian.R;
 import com.bumptech.glide.Glide;
 
@@ -53,9 +56,11 @@ public class DetailHistoryPesanan extends AppCompatActivity {
     @BindView(R.id.tvPaymentMethod)
     TextView tvPaymentMethod;
     @BindView(R.id.informationTransfer)
-    CardView informationTransfer;
+    LinearLayout informationTransfer;
     @BindView(R.id.tvAlamatPengiriman)
     TextView tvAlamatPengiriman;
+    @BindView(R.id.btnuploaddp)
+    Button btnuploaddp;
 
 
     @Override
@@ -160,7 +165,17 @@ public class DetailHistoryPesanan extends AppCompatActivity {
             informationTransfer.setVisibility(View.VISIBLE);
         }
 
+
         tvAlamatPengiriman.setText("Laber : "+address_label+"\n"+"Nama penerima : " +receiver+ "\n" + "Alamat :" +address+ "\n" +name_district+" , "+name_city+"\n"+"Koder pos : "+postal_code+"\n"+mobile);
+
+        btnuploaddp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent Klik = new Intent(DetailHistoryPesanan.this, KonfirmasiPembayaran.class);
+                startActivity(Klik);
+                finish();
+            }
+        });
 
     }
 

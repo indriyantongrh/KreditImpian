@@ -349,8 +349,8 @@
             android:layout_height="wrap_content"
             app:cardElevation="5dp"
             app:cardCornerRadius="6dp"
-            android:layout_margin="5dp"
             android:visibility="gone"
+            android:layout_margin="5dp"
             android:layout_below="@+id/btnfavorite"
             android:background = "@drawable/cardvieworange"
             >

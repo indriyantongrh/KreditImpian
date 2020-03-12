@@ -24,9 +24,9 @@ import com.application.kreditimpian.Constan.ConstanHistoryPesanan;
 import com.application.kreditimpian.Constan.Constans;
 import com.application.kreditimpian.Marketplace.FragSemuaKategori.RecyclerItemClickListener;
 import com.application.kreditimpian.Model.ModelHistoryPesanan.ResponseHistoryPesanan;
-///import com.application.kreditimpian.Model.ModelHistoryTransaction.DataItem;
-import com.application.kreditimpian.Model.ModelHistoryPesanan.DataItem;
-//import com.application.kreditimpian.Model.ModelHistoryTransaction.ResponseHistoryTransaction;
+
+import com.application.kreditimpian.Model.ModelNewHistoryPesanan.DataItem;
+import com.application.kreditimpian.Model.ModelNewHistoryPesanan.ResponseNewHistoryPesanan;
 import com.application.kreditimpian.R;
 import com.application.kreditimpian.TransactionProcess.Cart;
 
@@ -100,9 +100,9 @@ public class HistoryPesanan extends AppCompatActivity {
         HashMap<String, String> params = new HashMap<>();
         params.put("id_member", sharedPrefManager.getSpIdMember());
 
-        mApiService.getHistoryTransaction(params).enqueue(new Callback<ResponseHistoryPesanan>() {
+        mApiService.getHistoryTransaction(params).enqueue(new Callback<ResponseNewHistoryPesanan>() {
             @Override
-            public void onResponse(Call<ResponseHistoryPesanan> call, Response<ResponseHistoryPesanan> response) {
+            public void onResponse(Call<ResponseNewHistoryPesanan> call, Response<ResponseNewHistoryPesanan> response) {
                 if (response.isSuccessful()){
                     ///progressBar.dismiss();
                     if (response.body().getResponseCode()==200) {
@@ -126,7 +126,7 @@ public class HistoryPesanan extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<ResponseHistoryPesanan> call, Throwable t) {
+            public void onFailure(Call<ResponseNewHistoryPesanan> call, Throwable t) {
                 progressBar.dismiss();
                 Toast.makeText(mContext,"Koneksi anda bermasalah", Toast.LENGTH_SHORT).show();
             }
@@ -140,7 +140,7 @@ public class HistoryPesanan extends AppCompatActivity {
                     @Override public void onItemClick(View view, int position) {
 
                 String id =detaiList.get(position).getId();
-                String id_transactions = detaiList.get(position).getIdTransactions();
+                String id_transactions = detaiList.get(position).getIdTransaction();
                 String status = detaiList.get(position).getStatus();
                 String timestamp = detaiList.get(position).getTimestamp();
                 String expires = detaiList.get(position).getExpires();
@@ -164,7 +164,7 @@ public class HistoryPesanan extends AppCompatActivity {
                 String filename = detaiList.get(position).getFilename();
                 String id_merchant = detaiList.get(position).getIdMerchant();
                 String name_merchant = detaiList.get(position).getNameMerchant();
-                String id_company = detaiList.get(position).getIdCompany();
+                String id_company = detaiList.get(position).getIdCreditor();
                 String name_company = detaiList.get(position).getNameCompany();
                 String tenor = detaiList.get(position).getTenor();
                 String down_payment = detaiList.get(position).getDownPayment();
@@ -178,12 +178,12 @@ public class HistoryPesanan extends AppCompatActivity {
                 String district = detaiList.get(position).getShipping().getSend().getDistrict();
                 String address = detaiList.get(position).getShipping().getSend().getAddress();
                 String payment_method = detaiList.get(position).getPaymentMethod();
-                String installment = detaiList.get(position).getInstallment();
+                String installment = detaiList.get(position).getInstallment().getJsonMember0();
                 String total_pembayaran = detaiList.get(position).getTotalPembayaran();
                 String courier = detaiList.get(position).getCourier();
-                String name_city = detaiList.get(position).getName_city();
-                String name_district = detaiList.get(position).getName_district();
-                String postal_code = detaiList.get(position).getShipping().getSend().getPostal_code();
+                String name_city = detaiList.get(position).getNameCity();
+                String name_district = detaiList.get(position).getNameDistrict();
+                String postal_code = detaiList.get(position).getShipping().getSend().getReceiver();
 
                 Intent detailHistoryPesanan = new Intent(mContext, DetailHistoryPesanan.class);
                 detailHistoryPesanan.putExtra(ConstanHistoryPesanan.KEY_ID, id);
