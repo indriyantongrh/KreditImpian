@@ -61,11 +61,10 @@ public class FragmentSimulasiGadget extends Fragment {
         spinnertenor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-
-
                 //((TextView) parentView.getChildAt(0)).setTextColor(Color.WHITE);
-                if (spinnertenor.getSelectedItem().equals("6 bulan") ) {
+            if(spinneruangmuka.getSelectedItem().equals("Uang muka")){
+                Toast.makeText(getActivity(), "Uang muka diisi terlebih dahulu", Toast.LENGTH_LONG).show();
+            } else if (spinnertenor.getSelectedItem().equals("6 bulan") ) {
                     ///Toast.makeText(getActivity(), "Pilih Unag muka terlebih dahulu", Toast.LENGTH_LONG).show();
                     txttenor.setText("6 bulan");
 ///                    rupiah  = Double.parseDouble(txtvalue.getText().toString());

@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -99,6 +102,8 @@ public class TransactionSelectMitra extends AppCompatActivity {
     TextView txt_destination;
     @BindView(R.id.text_image)
      TextView text_image;
+    @BindView(R.id.swipeRefresh)
+    SwipeRefreshLayout swipeRefresh;
     // String id_product_category;
 
     DataItem reqDataItem;
@@ -124,6 +129,8 @@ public class TransactionSelectMitra extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transaction_select_mitra);
+
+
 
         setActionBarTitle("Pilih mitra yang kamu mau");
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);// set drawable icon
@@ -236,6 +243,18 @@ public class TransactionSelectMitra extends AppCompatActivity {
         GridLayoutManager mLayoutManager = new GridLayoutManager(TransactionSelectMitra.this, 1, GridLayoutManager.VERTICAL, false);
         rvMitra.setLayoutManager(mLayoutManager);
         rvMitra.setItemAnimator(new DefaultItemAnimator());
+        swipeRefresh.setColorScheme(android.R.color.holo_orange_dark,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_orange_dark,
+                android.R.color.holo_orange_light);
+
+        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                selectedMitra();
+                swipeRefresh.setRefreshing(false);
+            }
+        });
         selectedMitra();
 
 
@@ -243,9 +262,36 @@ public class TransactionSelectMitra extends AppCompatActivity {
         btnSelanjutnya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                List<DataItem> dataItemList = adapterMitraSelected.getDataItemList();
+                DataItem dataItem = new DataItem();
+
+                if(spinnercourier.getSelectedItem().equals("-- Pilih Pengiriman --")){
+                    //Toast.makeText(TransactionSelectMitra.this, "Pilih jasa pengiriman barang anda", Toast.LENGTH_LONG).show();
+                    AlertDialog alertDialog = new AlertDialog.Builder(TransactionSelectMitra.this).create();
+
+                    alertDialog.setTitle("Info");
+                    alertDialog.setMessage("Anda belum mengisi jasa pengiriman.");
+                    alertDialog.setIcon(R.drawable.alert);
+                    alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            alertDialog.dismiss();
+
+                        }
+                    });
+
+                    alertDialog.show();
+                }else {
+                    NextTenor();
+                }
+
+                /*if(dataItem.isCheck()){
+                    NextTenor();
+                }else {
+                    Toast.makeText(TransactionSelectMitra.this, "Anda belum memilih Tenor", Toast.LENGTH_LONG).show();
+
+                }*/
 
 
-             NextTenor();
 //                Intent intent = new Intent(TransactionSelectMitra.this  , TransactionSelectTenor.class );
 //                startActivity(intent);
 //                Intent intent = new Intent(TransactionSelectMitra.this, TransactionSelectTenor.class);
@@ -461,7 +507,7 @@ public class TransactionSelectMitra extends AppCompatActivity {
         //// progressBar = ProgressDialog.show(TransactionSelectMitra.this, null, "Harap Tunggu...", true, false);
 //        HashMap<String, String> params = new HashMap<>();
 //        params.put("id_product_category", txt_id_product_category.getText().toString());
-
+        swipeRefresh.setRefreshing(true);
         String id_product_category = txt_id_product_category.getText().toString();
 
         mApiService.getMitraSelected(id_product_category).enqueue(new Callback<ResponseMitraSelected>() {
@@ -470,6 +516,7 @@ public class TransactionSelectMitra extends AppCompatActivity {
                 ///pDialog.dismiss();
 
                 if (response.body().getResponseCode() == 200) {
+                    swipeRefresh.setRefreshing(false);
                     final List<DataItem> dataItemList = response.body().getData();
                     adapterMitraSelected.setDataItemList(dataItemList);
                     adapterMitraSelected.notifyDataSetChanged();
@@ -480,6 +527,7 @@ public class TransactionSelectMitra extends AppCompatActivity {
                     ////Toast.makeText(TransactionSelectMitra.this, response.body().getData().toString(), Toast.LENGTH_LONG).show();
 
                 } else {
+                    swipeRefresh.setRefreshing(false);
                     Toast.makeText(TransactionSelectMitra.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
@@ -487,6 +535,7 @@ public class TransactionSelectMitra extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponseMitraSelected> call, Throwable t) {
+                swipeRefresh.setRefreshing(false);
 
             }
         });

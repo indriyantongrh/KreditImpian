@@ -11,6 +11,7 @@ import android.widget.CompoundButton;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +22,7 @@ import com.application.kreditimpian.Model.ModelMitra;
 import com.application.kreditimpian.Model.ModelMitraSelected.DataItem;
 import com.application.kreditimpian.Model.ModelMitraSelected.ResponseMitraSelected;
 import com.application.kreditimpian.R;
+import com.google.android.material.chip.ChipGroup;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,6 +30,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnCheckedChanged;
 
 import static com.application.kreditimpian.Api.network.interceptor.MyApp.getContext;
 
@@ -40,7 +43,7 @@ public class AdapterMitraSelected extends RecyclerView.Adapter<AdapterMitraSelec
     private List<DataItem> dataItemList;
     Context mContext;
     private int selectedPosition = -1;// no selection by default = -1;// no selection by default
-
+    private int count = 0;
 
     public AdapterMitraSelected(Context context) {
         this.mContext = context;
@@ -74,9 +77,28 @@ public class AdapterMitraSelected extends RecyclerView.Adapter<AdapterMitraSelec
             @Override
             public void onClick(View v) {
                 setCheckbox(position);
+                /* Maksimal memeilih 3 */
+                if (holder.checkBoxMitra.isChecked()) {
+                    count++;
+                } else {
+                    count--;
+                }
+                if(count > 3 ){
+                    holder.checkBoxMitra.setChecked(false);
+                }
+                /*if(holder.checkBoxMitra.isChecked()==true){
+
+                    Toast.makeText(mContext, "Anda memilih mitra" , Toast.LENGTH_LONG).show();
+                }else {
+                    Toast.makeText(mContext, "Anda belum memilih mitra" , Toast.LENGTH_LONG).show();
+                }*/
+
                 notifyDataSetChanged();
             }
         });
+
+        /*Untuk jika belum dipilih keluar alert*/
+
 //        holder.checkBoxMitra.setChecked(selectedPosition == position);
 //        if(selectedPosition == position){
 //                    holder.checkBoxMitra.setChecked(true);
@@ -168,6 +190,7 @@ public class AdapterMitraSelected extends RecyclerView.Adapter<AdapterMitraSelec
         public HolderMitrSelected(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+
 //            checkBoxMitra = itemView.findViewById(R.id.checkboxMitra);
 //
 //            checkBoxMitra.setOnClickListener(new View.OnClickListener() {

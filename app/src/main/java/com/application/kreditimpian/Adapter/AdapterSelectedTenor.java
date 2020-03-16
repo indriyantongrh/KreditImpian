@@ -1,7 +1,9 @@
 package com.application.kreditimpian.Adapter;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,6 +26,7 @@ import com.application.kreditimpian.Model.ModelCicilan.DataCicilanItem;
 import com.application.kreditimpian.Model.ModelCicilan.ProductMeta;
 import com.application.kreditimpian.R;
 import com.application.kreditimpian.TransactionProcess.TransactionCheckout;
+import com.application.kreditimpian.TransactionProcess.TransactionSelectMitra;
 import com.application.kreditimpian.TransactionProcess.TransactionSelectTenor;
 import com.bumptech.glide.Glide;
 import com.chivorn.smartmaterialspinner.SmartMaterialSpinner;
@@ -160,25 +163,45 @@ public class AdapterSelectedTenor extends RecyclerView.Adapter<AdapterSelectedTe
                 @Override
                 public void onClick(View v) {
 
-                    Intent intent = new Intent(mContext, TransactionCheckout.class);
-                    intent.putExtra("id_member", id_member );
-                    intent.putExtra("id_product", id_product);
-                    intent.putExtra("number", number);
-                    intent.putExtra("id_product_category", id_product_category);
-                    intent.putExtra("image_product", image_product);
-                    intent.putExtra("price_capital", price_capital);
-                    intent.putExtra("price_sale", price_sale);
-                    intent.putExtra("name_product", name_product);
-                    intent.putExtra("estimasipengiman", estimasipengiman);
-                    intent.putExtra("courier", courier);
-                    intent.putExtra("note", note);
-                    intent.putExtra("id_transaction", id_transaction);
-                    intent.putExtra("tenor", tenor );
-                    intent.putExtra("cicilan", cicilan);
-                    intent.putExtra("downpayment", tvDownpayment.getText().toString());
-                    intent.putExtra("name_mitra", tvMitraKredit.getText().toString());
-                    intent.putExtra("id_creditor", tvIdCreditor.getText().toString());
-                    mContext.startActivity(intent);
+                    int SpinnerText = spinCicilan.getSelectedItemPosition();
+                    ////Toast.makeText(mContext, ""+SpinnerText , Toast.LENGTH_LONG).show();
+                    if(SpinnerText!=-1){
+                        Intent intent = new Intent(mContext, TransactionCheckout.class);
+                        intent.putExtra("id_member", id_member );
+                        intent.putExtra("id_product", id_product);
+                        intent.putExtra("number", number);
+                        intent.putExtra("id_product_category", id_product_category);
+                        intent.putExtra("image_product", image_product);
+                        intent.putExtra("price_capital", price_capital);
+                        intent.putExtra("price_sale", price_sale);
+                        intent.putExtra("name_product", name_product);
+                        intent.putExtra("estimasipengiman", estimasipengiman);
+                        intent.putExtra("courier", courier);
+                        intent.putExtra("note", note);
+                        intent.putExtra("id_transaction", id_transaction);
+                        intent.putExtra("tenor", tenor );
+                        intent.putExtra("cicilan", cicilan);
+                        intent.putExtra("downpayment", tvDownpayment.getText().toString());
+                        intent.putExtra("name_mitra", tvMitraKredit.getText().toString());
+                        intent.putExtra("id_creditor", tvIdCreditor.getText().toString());
+                        mContext.startActivity(intent);
+                    }else{
+
+                        ///Toast.makeText(mContext, "Anda belum memilih tenor" , Toast.LENGTH_LONG).show();
+                        AlertDialog alertDialog = new AlertDialog.Builder(mContext).create();
+
+                        alertDialog.setTitle("Info");
+                        alertDialog.setMessage("Anda belum memilih tenor");
+                        alertDialog.setIcon(R.drawable.alert);
+                        alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                alertDialog.dismiss();
+
+                            }
+                        });
+
+                        alertDialog.show();
+                    }
 
                   ///  Toast.makeText(mContext, "Downpayment "+tvDownpayment.getText().toString(), Toast.LENGTH_LONG).show();
 

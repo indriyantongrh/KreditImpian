@@ -2,6 +2,7 @@ package com.application.kreditimpian.KonfirmasiPembayaran;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,30 +13,45 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.application.kreditimpian.Akun.DataDiri;
+import com.application.kreditimpian.Api.api_v2.BaseApiService;
+import com.application.kreditimpian.Api.api_v2.UtilsApi;
+import com.application.kreditimpian.HistoryPesanan.DetailHistoryPesanan;
+import com.application.kreditimpian.Model.ModelMemberInsert.ResponseMemberInsert;
 import com.application.kreditimpian.R;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.HashMap;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class KonfirmasiPembayaran extends AppCompatActivity {
 
     ImageButton btnback;
-    TextView txt_transfer_date, txtnamalengkap,txtnamabank,txtnominal;
+    TextView id_transaction;
+    EditText txt_transfer_date, txtnamalengkap,txtnamabank,txtnominal;
     private int mYear, mMonth, mDay;
     ImageView imageupload;
-
-    Bitmap bitmap, decoded_1, decoded_2, decoded_3;
+    private String KEY_ID_TRANSACTION = "id_transaction";
+    Bitmap bitmap, decoded_1;
     int bitmap_size = 80; // range 1 - 100=
     int PICK_IMAGE_REQUEST_1 = 1;
     int REQUEST_IMAGE_CAPTURE_1 = 13;
+    BaseApiService mApiService;
+    Button btnkonfirmasi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +61,28 @@ public class KonfirmasiPembayaran extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);// set drawable icon
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        mApiService = UtilsApi.getAPIService();
         txtnamalengkap = findViewById(R.id.txtnamalengkap);
         txtnamabank = findViewById(R.id.txtnamabank);
         txtnominal = findViewById(R.id.txtnominal);
         imageupload = findViewById(R.id.imageupload);
         txt_transfer_date = findViewById(R.id.txt_transfer_date);
+        id_transaction = findViewById(R.id.id_transaction);
+        btnkonfirmasi = findViewById(R.id.btnkonfirmasi);
         txt_transfer_date.setOnClickListener(this::onClick);
+
+        Bundle extras = getIntent().getExtras();
+        String id_transactions = extras.getString(KEY_ID_TRANSACTION);
+        id_transaction.setText(id_transactions);
+        Toast.makeText(KonfirmasiPembayaran.this, "id transaction "+id_transactions, Toast.LENGTH_LONG).show();
+
+        btnkonfirmasi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                postBuktiTransfer();
+            }
+        });
+
 
         imageupload.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -162,6 +194,47 @@ public class KonfirmasiPembayaran extends AppCompatActivity {
             setToImageView1(getResizedBitmap(imageBitmap, 512));
         }
     }
+
+    private void postBuktiTransfer(){
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("id_transaction", id_transaction.getText().toString() );
+        params.put("confirm", getStringImage(decoded_1));
+        params.put("bank_account_owner_name", txtnamalengkap.getText().toString() );
+        params.put("bank_name", txtnamabank.getText().toString() );
+        params.put("transfer_date", txt_transfer_date.getText().toString() );
+        params.put("transfer_amount", txtnominal.getText().toString() );
+
+        mApiService.postBuktiTransfer(params).enqueue(new Callback<ResponseMemberInsert>() {
+            @Override
+            public void onResponse(Call<ResponseMemberInsert> call, Response<ResponseMemberInsert> response) {
+                if(response.body().getResponseCode()==200){
+                    //Toast.makeText(KonfirmasiPembayaran.this, "Tunggu Konfirmasi dari admin", Toast.LENGTH_LONG).show();
+                    AlertDialog alertDialog = new AlertDialog.Builder(KonfirmasiPembayaran.this).create();
+
+                    alertDialog.setTitle("Sukses");
+                    alertDialog.setMessage("Pembayaran Down Payment berhasil, Tunggu Konfirmasi dari admin.");
+                    alertDialog.setIcon(R.drawable.successfully);
+                    alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+
+                        }
+                    });
+
+                    alertDialog.show();
+                }else {
+                    Toast.makeText(KonfirmasiPembayaran.this, "Upload gagal", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseMemberInsert> call, Throwable t) {
+
+            }
+        });
+    }
+
 
     // fungsi resize image
     public Bitmap getResizedBitmap(Bitmap image, int maxSize) {

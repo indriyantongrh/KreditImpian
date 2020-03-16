@@ -5,7 +5,7 @@
     android:id="@+id/simulasihandphone"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="165dp"
+    android:paddingTop="100dp"
     tools:context=".SimulasiKredit.KategoriSimulasiKredit.FragmentSimulasiGadget">
 
     <androidx.core.widget.NestedScrollView

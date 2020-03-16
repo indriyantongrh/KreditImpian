@@ -13,17 +13,24 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.application.kreditimpian.Api.api_v2.BaseApiService;
+import com.application.kreditimpian.Api.api_v2.UtilsApi;
 import com.application.kreditimpian.Constan.ConstanHistoryPesanan;
 import com.application.kreditimpian.KonfirmasiPembayaran.KonfirmasiPembayaran;
+import com.application.kreditimpian.Model.ModelMemberInsert.ResponseMemberInsert;
 import com.application.kreditimpian.R;
 import com.bumptech.glide.Glide;
 
 import java.text.NumberFormat;
+import java.util.HashMap;
 import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import kotlin.BuilderInference;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DetailHistoryPesanan extends AppCompatActivity {
 
@@ -61,7 +68,8 @@ public class DetailHistoryPesanan extends AppCompatActivity {
     TextView tvAlamatPengiriman;
     @BindView(R.id.btnuploaddp)
     Button btnuploaddp;
-
+    private String KEY_ID_TRANSACTION = "id_transaction";
+    BaseApiService mApiService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +78,8 @@ public class DetailHistoryPesanan extends AppCompatActivity {
         setActionBarTitle("Detail Transaksi");
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);// set drawable icon
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        mApiService = UtilsApi.getAPIService();
 
         ButterKnife.bind(this);
         Intent intent = getIntent();
@@ -172,12 +182,16 @@ public class DetailHistoryPesanan extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent Klik = new Intent(DetailHistoryPesanan.this, KonfirmasiPembayaran.class);
+                Klik.putExtra(KEY_ID_TRANSACTION, id_transactions);
                 startActivity(Klik);
                 finish();
             }
         });
 
     }
+
+
+
 
     private void setActionBarTitle(String title) {
         if (getSupportActionBar() != null) {

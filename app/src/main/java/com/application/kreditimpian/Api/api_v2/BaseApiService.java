@@ -175,6 +175,11 @@ public interface BaseApiService {
     @POST("ApiMobile/getHistoryTransaction")
     Call<ResponseNewHistoryPesanan> getHistoryTransaction(@FieldMap HashMap<String, String> params);
 
+    /*KOnfirmasi dp*/
+    @FormUrlEncoded
+    @POST("ApiMobile/konfirmasidp")
+    Call<ResponseMemberInsert> postBuktiTransfer(@FieldMap HashMap<String, String> params);
+
     //getMember
     ///@FormUrlEncoded
     @GET("members")

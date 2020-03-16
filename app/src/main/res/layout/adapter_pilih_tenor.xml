@@ -155,7 +155,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:smsp_floatingLabelText=""
-                app:smsp_hint="Cicilan"
+                app:smsp_hint="Pilih Cicilan"
                 app:smsp_hintColor="@color/colorOrange"
                 app:smsp_itemColor="@color/colorOrange"
                 app:smsp_itemListColor="@color/colorOrange"

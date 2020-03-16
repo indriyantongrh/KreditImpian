@@ -191,8 +191,31 @@ public class TransactionCheckout extends AppCompatActivity {
         btnAjukansekarang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Checkbtnkeputusan(v);
-                postTransaction();
+                ///Checkbtnkeputusan(v);
+
+                if(radiogroup.getCheckedRadioButtonId()==-1){
+                    ///Toast.makeText(TransactionCheckout.this, "Anda belum memilih methode pemabayaran", Toast.LENGTH_LONG).show();
+                    AlertDialog alertDialog = new AlertDialog.Builder(TransactionCheckout.this).create();
+
+                    alertDialog.setTitle("Info");
+                    alertDialog.setMessage("Anda belum memilih methode pembayaran");
+                    alertDialog.setIcon(R.drawable.alert);
+                    alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            alertDialog.dismiss();
+
+                        }
+                    });
+
+                    alertDialog.show();
+                }else{
+                    int radioid =  radiogroup.getCheckedRadioButtonId();
+                    radioButton = findViewById(radioid);
+                    ////Toast.makeText(TransactionCheckout.this,"Check button " + radioButton.getText(), Toast.LENGTH_SHORT).show();
+                    postTransaction();
+                }
+
+                ///postTransaction();
 
             }
         });
@@ -201,11 +224,18 @@ public class TransactionCheckout extends AppCompatActivity {
     }
 
     public void Checkbtnkeputusan(View v){
-        int radioid =  radiogroup.getCheckedRadioButtonId();
 
-        radioButton = findViewById(radioid);
+        if(radiogroup.getCheckedRadioButtonId()==-1){
+            Toast.makeText(TransactionCheckout.this, "Anda belum memilih methode pemabayaran", Toast.LENGTH_LONG).show();
+        }else{
+            int radioid =  radiogroup.getCheckedRadioButtonId();
 
-        ///Toast.makeText(this,"Check button " + radioButton.getText(), Toast.LENGTH_SHORT).show();
+            radioButton = findViewById(radioid);
+            ///Toast.makeText(this,"Check button " + radioButton.getText(), Toast.LENGTH_SHORT).show();
+        }
+
+
+
     }
 
     private void postTransaction(){
