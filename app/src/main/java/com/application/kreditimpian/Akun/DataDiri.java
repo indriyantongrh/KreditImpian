@@ -594,6 +594,21 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                     txtkodepos_saudara.setError("Tidak boleh kosong");
                 else if (isEmpty(alamatsaudara))
                     txtalamat_saudara.setError("Tidak boleh kosong");
+                else if (spinnerjeniskelamin.getSelectedItem().equals("Jenis Kelamin")){
+                    Toast.makeText(DataDiri.this, "Anda belum mengisi jenis kelamin", Toast.LENGTH_LONG).show();
+                }else if(spinneragama.getSelectedItem().equals("Pilih Agama")){
+                    Toast.makeText(DataDiri.this, "Anda belum mengisi Agama", Toast.LENGTH_LONG).show();
+                }else if(spinnerstatus.getSelectedItem().equals("Pilih Status")){
+                    Toast.makeText(DataDiri.this, "Anda belum mengisi Status", Toast.LENGTH_LONG).show();
+                }else if(spinnerstatusrumah.getSelectedItem().equals("Status Tempat Tinggal")){
+                    Toast.makeText(DataDiri.this, "Anda belum mengisi Status Tempat Tinggal", Toast.LENGTH_LONG).show();
+                }else if(spinnerkredit.getSelectedItem().equals("Apakah Anda memiliki kredit/cicilan yang sedang berjalan?")){
+                    Toast.makeText(DataDiri.this, "Anda belum mengisi pernyataan kredit", Toast.LENGTH_LONG).show();
+                }else if(spinnerkota_saudaraa.getSelectedItem().equals("-- Pilih Kota --")){
+                    Toast.makeText(DataDiri.this, "Anda belum mengisi Kota saudara anda", Toast.LENGTH_LONG).show();
+                }else if(spinnerkecamatn_saudara.getSelectedItem().equals("-- Pilih Kecamatan --")){
+                    Toast.makeText(DataDiri.this, "Anda belum mengisi Kecamatan saudara anda", Toast.LENGTH_LONG).show();
+                }
                 /*else if (imgphoto.equals("")) {
                     Toast.makeText(DataDiri.this, "Silahkan masukan foto wajah ", Toast.LENGTH_LONG).show();
                 } else if (imgktp.equals("")) {
