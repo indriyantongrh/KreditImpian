@@ -18,23 +18,38 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.application.kreditimpian.Akun.DataDiri;
 import com.application.kreditimpian.Akun.FragmentAkun;
 import com.application.kreditimpian.Api.SessionManager;
 import com.application.kreditimpian.Api.SharedPrefManager;
+import com.application.kreditimpian.Api.api_v2.BaseApiService;
+import com.application.kreditimpian.Api.api_v2.UtilsApi;
 import com.application.kreditimpian.Beranda.FragmentBeranda;
 import com.application.kreditimpian.LoginRegister.LoginUser;
 import com.application.kreditimpian.Marketplace.FragmentMarketplace;
+import com.application.kreditimpian.Model.ModelDetailMember.DataItem;
+import com.application.kreditimpian.Model.ModelDetailMember.ResponseDetailMember;
 import com.application.kreditimpian.R;
 import com.application.kreditimpian.SimulasiKredit.FragmentSimulasiKredit;
 import com.application.kreditimpian.TransactionProcess.Cart;
+import com.application.kreditimpian.TransactionProcess.TransactionSelectMitra;
+import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.HashMap;
+import java.util.List;
+
 import butterknife.internal.Constants;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MenuUtama extends AppCompatActivity {
+    BaseApiService mApiService;
 
     private TextView mTextMessage;
     ActionBar toolbar;
@@ -48,6 +63,9 @@ public class MenuUtama extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_utama);
+        mApiService = UtilsApi.getAPIService();
+        sharedPrefManager = new SharedPrefManager(MenuUtama.this);
+        LoadDataDiri();
         conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         {
             if (conMgr.getActiveNetworkInfo() != null
@@ -99,6 +117,62 @@ public class MenuUtama extends AppCompatActivity {
 
     }
 
+    /*Untuk Load data diri jika belm lengkap diminta unutk mengisi*/
+    public void LoadDataDiri(){
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("id_member", sharedPrefManager.getSpIdMember());
+
+        mApiService.getDetailMember(params).enqueue(new Callback<ResponseDetailMember>() {
+            @Override
+            public void onResponse(Call<ResponseDetailMember> call, Response<ResponseDetailMember> response) {
+
+                if (response.body().getResponseCode() == 200) {
+                    ResponseDetailMember responseDetailMember = response.body();
+                    List<DataItem> detail = responseDetailMember.getData();
+
+                    AlertDialog alertDialog = new AlertDialog.Builder(MenuUtama.this).create();
+
+                    alertDialog.setTitle("Info");
+                    alertDialog.setMessage("Data diri anda sudah lengkap, silahkan wujudkan impian anda!");
+                    alertDialog.setIcon(R.drawable.successfully);
+                    alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            alertDialog.dismiss();
+
+                        }
+                    });
+
+                    alertDialog.show();
+
+
+                } else {
+                    AlertDialog alertDialog = new AlertDialog.Builder(MenuUtama.this).create();
+
+                    alertDialog.setTitle("Info");
+                    alertDialog.setMessage("Lengkapi data diri anda sebelum bertransaksi. Dan ayo wujudkan impian anda!");
+                    alertDialog.setIcon(R.drawable.alert);
+                    alertDialog.setButton("Lengkapi Sekarang", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            //alertDialog.dismiss();
+                            Intent OpenDatadiri = new Intent(MenuUtama.this, DataDiri.class);
+                            startActivity(OpenDatadiri);
+                            finish();
+                        }
+                    });
+
+                    alertDialog.show();
+                    Toast.makeText(MenuUtama.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseDetailMember> call, Throwable t) {
+                Toast.makeText(MenuUtama.this, "Keneksi terputus", Toast.LENGTH_LONG);
+            }
+        });
+    }
 
 
 

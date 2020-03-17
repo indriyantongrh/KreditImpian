@@ -237,6 +237,7 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.HolderCart> {
                     ///Toast.makeText(mContext, "Klikked", Toast.LENGTH_LONG).show();
                 }
             });
+            notifyDataSetChanged();
 
 
 
@@ -254,7 +255,8 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.HolderCart> {
                 public void onResponse(Call<ResponseDeleteShopingCart> call, Response<ResponseDeleteShopingCart> response) {
                     if(response.body().getResponseCode()==200){
                         Toast.makeText(mContext, "Barang dihapus", Toast.LENGTH_LONG).show();
-                        notifyDataSetChanged();
+                         dataItemList.notifyAll();
+                         notifyDataSetChanged();
                     }else {
                         Toast.makeText(mContext, "Gagal hapus", Toast.LENGTH_LONG).show();
                     }
@@ -267,6 +269,7 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.HolderCart> {
                     Toast.makeText(mContext, "Gagal Refresh", Toast.LENGTH_SHORT).show();
                 }
             });
+            notifyDataSetChanged();
 
         }
 
