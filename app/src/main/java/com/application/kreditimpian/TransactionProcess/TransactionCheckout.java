@@ -203,7 +203,6 @@ public class TransactionCheckout extends AppCompatActivity {
                     alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             alertDialog.dismiss();
-
                         }
                     });
 

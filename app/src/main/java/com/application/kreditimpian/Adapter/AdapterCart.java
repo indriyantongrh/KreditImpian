@@ -209,7 +209,6 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.HolderCart> {
                             deleteCart();
                             notifyDataSetChanged();
                             dialog.dismiss();
-
                         }
 
                     });

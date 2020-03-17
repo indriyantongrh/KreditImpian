@@ -132,7 +132,6 @@ public class MenuUtama extends AppCompatActivity {
                     List<DataItem> detail = responseDetailMember.getData();
 
                     AlertDialog alertDialog = new AlertDialog.Builder(MenuUtama.this).create();
-
                     alertDialog.setTitle("Info");
                     alertDialog.setMessage("Data diri anda sudah lengkap, silahkan wujudkan impian anda!");
                     alertDialog.setIcon(R.drawable.successfully);
@@ -142,13 +141,12 @@ public class MenuUtama extends AppCompatActivity {
 
                         }
                     });
-
                     alertDialog.show();
 
 
                 } else {
-                    AlertDialog alertDialog = new AlertDialog.Builder(MenuUtama.this).create();
 
+                    AlertDialog alertDialog = new AlertDialog.Builder(MenuUtama.this).create();
                     alertDialog.setTitle("Info");
                     alertDialog.setMessage("Lengkapi data diri anda sebelum bertransaksi. Dan ayo wujudkan impian anda!");
                     alertDialog.setIcon(R.drawable.alert);

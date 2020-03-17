@@ -268,7 +268,6 @@ public class TransactionSelectMitra extends AppCompatActivity {
                 if(spinnercourier.getSelectedItem().equals("-- Pilih Pengiriman --")){
                     //Toast.makeText(TransactionSelectMitra.this, "Pilih jasa pengiriman barang anda", Toast.LENGTH_LONG).show();
                     AlertDialog alertDialog = new AlertDialog.Builder(TransactionSelectMitra.this).create();
-
                     alertDialog.setTitle("Info");
                     alertDialog.setMessage("Anda belum mengisi jasa pengiriman.");
                     alertDialog.setIcon(R.drawable.alert);

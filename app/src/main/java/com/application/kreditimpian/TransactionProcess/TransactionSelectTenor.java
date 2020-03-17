@@ -101,9 +101,6 @@ public class TransactionSelectTenor extends AppCompatActivity {
             ///finish();
         }
 
-
-
-
         }
 
 //    private void LoadTenor(){

@@ -86,6 +86,7 @@ public class Cart extends AppCompatActivity {
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 1, GridLayoutManager.VERTICAL, false);
         ListCart.setLayoutManager(mLayoutManager);
         ListCart.setItemAnimator(new DefaultItemAnimator());
+        adapterCart.notifyDataSetChanged();
 
         getOnShoppingCart();
 

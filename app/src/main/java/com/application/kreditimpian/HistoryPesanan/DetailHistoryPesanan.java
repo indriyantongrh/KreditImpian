@@ -103,7 +103,6 @@ public class DetailHistoryPesanan extends AppCompatActivity {
        /* String price_capital = intent.getStringExtra(ConstanHistoryPesanan.KEY_PRICE_CAPITAL);
         String price_sale = intent.getStringExtra(ConstanHistoryPesanan.KEY_PRICE_SALE);*/
 
-
         ///convert String to Rupiah Curerncy
         Locale localeID = new Locale("in", "ID");
         NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
