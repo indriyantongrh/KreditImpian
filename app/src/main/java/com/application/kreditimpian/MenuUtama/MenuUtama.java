@@ -23,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.application.kreditimpian.Akun.DataDiri;
+import com.application.kreditimpian.Akun.DataDiriPopup;
 import com.application.kreditimpian.Akun.FragmentAkun;
 import com.application.kreditimpian.Api.SessionManager;
 import com.application.kreditimpian.Api.SharedPrefManager;
@@ -153,7 +154,7 @@ public class MenuUtama extends AppCompatActivity {
                     alertDialog.setButton("Lengkapi Sekarang", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             //alertDialog.dismiss();
-                            Intent OpenDatadiri = new Intent(MenuUtama.this, DataDiri.class);
+                            Intent OpenDatadiri = new Intent(MenuUtama.this, DataDiriPopup.class);
                             startActivity(OpenDatadiri);
                             finish();
                         }

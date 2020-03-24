@@ -11,16 +11,13 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.util.Base64;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -34,41 +31,30 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
-
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
-
+import com.application.kreditimpian.MenuUtama.MenuUtama;
 import com.application.kreditimpian.Model.ModelCityRajaOngkir.ResponseCityRajaOngkir;
 import com.application.kreditimpian.Model.ModelCityRajaOngkir.ResultsItem;
 import com.application.kreditimpian.Model.ModelDetailMember.ResponseDetailMember;
-import com.application.kreditimpian.Model.ModelGeodirectory.DataItem;
 import com.application.kreditimpian.Model.ModelGeodirectory.ResponseGeodirectory;
-
 import com.application.kreditimpian.Model.ModelKecamatan.ResponseKecamatan;
-import com.application.kreditimpian.Model.ModelKotaKecamatan.ResponseKotaKecamatan;
 import com.application.kreditimpian.Model.ModelMember.ResponseMember;
-
 import com.application.kreditimpian.Model.ModelMemberInsert.ResponseMemberInsert;
-
 import com.application.kreditimpian.Model.ModelSubDistrict.ResponseSubdistrict;
 import com.application.kreditimpian.Model.ModelSubDistrictRajaOngkir.ResponseSubDistrictRajaOngkir;
 import com.application.kreditimpian.Model.ModelUploadImage.ResponseUploadImage;
 import com.application.kreditimpian.Model.ModelUserDetail.ResponseMembers;
 import com.application.kreditimpian.Model.ModelUserDetail.ResultItem;
 import com.application.kreditimpian.R;
-
 import com.bumptech.glide.Glide;
-
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-
 import java.util.Calendar;
-
 import java.util.HashMap;
 import java.util.List;
 
@@ -76,11 +62,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-
 import static android.text.TextUtils.isEmpty;
 
+public class DataDiriPopup extends AppCompatActivity implements View.OnClickListener {
 
-public class DataDiri extends AppCompatActivity implements View.OnClickListener {
     private static final int PERMISSION_REQUEST_CODE = 200;
     private int mYear, mMonth, mDay;
     ImageButton btnback;
@@ -103,8 +88,8 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
     Context mContext;
     BaseApiService mApiService;
     String fullname, idprofile,
-    imgphoto ="",
-    imgktp = "";
+            imgphoto ="",
+            imgktp = "";
     ProgressDialog pDialog;
     //untuk upload gambar
     Bitmap bitmap, decoded_1, decoded_2, decoded_3;
@@ -125,15 +110,9 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_data_diri);
-
-        setActionBarTitle("Data Diri");
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);// set drawable icon
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
+        setContentView(R.layout.activity_data_diri_popup);
         mApiService = UtilsApi.getAPIService();
-        sharedPrefManager = new SharedPrefManager(DataDiri.this);
+        sharedPrefManager = new SharedPrefManager(DataDiriPopup.this);
         String token = sharedPrefManager.getSPToken();
         String email = sharedPrefManager.getSPEmail();
         String msisdn = sharedPrefManager.getSpMsisdn();
@@ -234,7 +213,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         TempatTinggal.add("Kos");
         TempatTinggal.add("Ikut Orang Tua");
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(DataDiri.this, android.R.layout.simple_spinner_item, gender);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(DataDiriPopup.this, android.R.layout.simple_spinner_item, gender);
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinnerjeniskelamin.setAdapter(adapter);
         spinnerjeniskelamin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -257,7 +236,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             }
         });
 
-        ArrayAdapter<String> adapterStatus = new ArrayAdapter<String>(DataDiri.this, android.R.layout.simple_spinner_item, Status);
+        ArrayAdapter<String> adapterStatus = new ArrayAdapter<String>(DataDiriPopup.this, android.R.layout.simple_spinner_item, Status);
         adapterStatus.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinnerstatus.setAdapter(adapterStatus);
         spinnerstatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -282,7 +261,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             }
         });
 
-        ArrayAdapter<String> adapterReligion = new ArrayAdapter<String>(DataDiri.this, android.R.layout.simple_spinner_item, religion);
+        ArrayAdapter<String> adapterReligion = new ArrayAdapter<String>(DataDiriPopup.this, android.R.layout.simple_spinner_item, religion);
         adapterReligion.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinneragama.setAdapter(adapterReligion);
         spinneragama.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -316,7 +295,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             }
         });
 
-        ArrayAdapter<String> adapterRumah = new ArrayAdapter<String>(DataDiri.this, android.R.layout.simple_spinner_item, TempatTinggal);
+        ArrayAdapter<String> adapterRumah = new ArrayAdapter<String>(DataDiriPopup.this, android.R.layout.simple_spinner_item, TempatTinggal);
         adapterRumah.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinnerstatusrumah.setAdapter(adapterRumah);
         spinnerstatusrumah.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -348,7 +327,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         });
 
 
-        ArrayAdapter<String> adapterKredit = new ArrayAdapter<String>(DataDiri.this, android.R.layout.simple_spinner_item, Kredit);
+        ArrayAdapter<String> adapterKredit = new ArrayAdapter<String>(DataDiriPopup.this, android.R.layout.simple_spinner_item, Kredit);
         adapterKredit.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinnerkredit.setAdapter(adapterKredit);
         spinnerkredit.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -375,7 +354,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             @Override
             public void onClick(View v) {
 
-                    UploadFoto();
+                UploadFoto();
 
             }
         });
@@ -385,7 +364,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             @Override
             public void onClick(View v) {
 
-                    UploadKtp();
+                UploadKtp();
 
             }
         });
@@ -407,14 +386,14 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
 
                 //pakai alert dialog
-                android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(DataDiri.this);
+                android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(DataDiriPopup.this);
                 builder.setTitle("Pilih");
                 builder.setMessage("Silahkan memilih kamera atau galeri");
                 builder.setPositiveButton("Kamera", new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface dialog, int which) {
                         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                        if (takePictureIntent.resolveActivity(DataDiri.this.getPackageManager()) != null) {
+                        if (takePictureIntent.resolveActivity(DataDiriPopup.this.getPackageManager()) != null) {
                             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE_1);
                         }
                     }
@@ -441,14 +420,14 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             @Override
             public void onClick(View v) {
                 //pakai alert dialog
-                android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(DataDiri.this);
+                android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(DataDiriPopup.this);
                 builder.setTitle("Pilih");
                 builder.setMessage("Silahkan memilih kamera atau galeri");
                 builder.setPositiveButton("Kamera", new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface dialog, int which) {
                         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                        if (takePictureIntent.resolveActivity(DataDiri.this.getPackageManager()) != null) {
+                        if (takePictureIntent.resolveActivity(DataDiriPopup.this.getPackageManager()) != null) {
                             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE_2);
                         }
                     }
@@ -474,14 +453,14 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             public void onClick(View v) {
 
                 //pakai alert dialog
-                android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(DataDiri.this);
+                android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(DataDiriPopup.this);
                 builder.setTitle("Pilih");
                 builder.setMessage("Silahkan memilih kamera atau galeri");
                 builder.setPositiveButton("Kamera", new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface dialog, int which) {
                         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                        if (takePictureIntent.resolveActivity(DataDiri.this.getPackageManager()) != null) {
+                        if (takePictureIntent.resolveActivity(DataDiriPopup.this.getPackageManager()) != null) {
                             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE_3);
                         }
                     }
@@ -530,7 +509,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             }
         });
 
-        if (ContextCompat.checkSelfPermission(DataDiri.this,
+        if (ContextCompat.checkSelfPermission(DataDiriPopup.this,
                 Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
 
         } else {
@@ -598,27 +577,27 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                 else if (isEmpty(alamatsaudara))
                     txtalamat_saudara.setError("Tidak boleh kosong");
                 else if (spinnerjeniskelamin.getSelectedItem().equals("Jenis Kelamin")){
-                    Toast.makeText(DataDiri.this, "Anda belum mengisi jenis kelamin", Toast.LENGTH_LONG).show();
+                    Toast.makeText(DataDiriPopup.this, "Anda belum mengisi jenis kelamin", Toast.LENGTH_LONG).show();
                 }else if(spinneragama.getSelectedItem().equals("Pilih Agama")){
-                    Toast.makeText(DataDiri.this, "Anda belum mengisi Agama", Toast.LENGTH_LONG).show();
+                    Toast.makeText(DataDiriPopup.this, "Anda belum mengisi Agama", Toast.LENGTH_LONG).show();
                 }else if(spinnerstatus.getSelectedItem().equals("Pilih Status")){
-                    Toast.makeText(DataDiri.this, "Anda belum mengisi Status", Toast.LENGTH_LONG).show();
+                    Toast.makeText(DataDiriPopup.this, "Anda belum mengisi Status", Toast.LENGTH_LONG).show();
                 }else if(spinnerstatusrumah.getSelectedItem().equals("Status Tempat Tinggal")){
-                    Toast.makeText(DataDiri.this, "Anda belum mengisi Status Tempat Tinggal", Toast.LENGTH_LONG).show();
+                    Toast.makeText(DataDiriPopup.this, "Anda belum mengisi Status Tempat Tinggal", Toast.LENGTH_LONG).show();
                 }else if(spinnerkredit.getSelectedItem().equals("Apakah Anda memiliki kredit/cicilan yang sedang berjalan?")){
-                    Toast.makeText(DataDiri.this, "Anda belum mengisi pernyataan kredit", Toast.LENGTH_LONG).show();
+                    Toast.makeText(DataDiriPopup.this, "Anda belum mengisi pernyataan kredit", Toast.LENGTH_LONG).show();
                 }/*else if(spinnerkota_saudaraa.getSelectedItem().equals("-- Pilih Kota --")){
                     Toast.makeText(DataDiri.this, "Anda belum mengisi Kota saudara anda", Toast.LENGTH_LONG).show();
                 }else if(spinnerkecamatn_saudara.getSelectedItem().equals("-- Pilih Kecamatan --")){
                     Toast.makeText(DataDiri.this, "Anda belum mengisi Kecamatan saudara anda", Toast.LENGTH_LONG).show();
                 }*/ else if(id_kota.getText().toString().equals("null")){
-                        if(spinnerkota_saudaraa.getSelectedItem().equals("-- Pilih Kota --")){
-                        Toast.makeText(DataDiri.this, "Anda belum mengisi Kota saudara anda", Toast.LENGTH_LONG).show();
-                        }
+                    if(spinnerkota_saudaraa.getSelectedItem().equals("-- Pilih Kota --")){
+                        Toast.makeText(DataDiriPopup.this, "Anda belum mengisi Kota saudara anda", Toast.LENGTH_LONG).show();
+                    }
 
-                    } else if(id_kecamatan.getText().toString().equals("null")){
-                        if(spinnerkecamatn_saudara.getSelectedItem().equals("-- Pilih Kecamatan --")){
-                        Toast.makeText(DataDiri.this, "Anda belum mengisi Kecamatan saudara anda", Toast.LENGTH_LONG).show();
+                } else if(id_kecamatan.getText().toString().equals("null")){
+                    if(spinnerkecamatn_saudara.getSelectedItem().equals("-- Pilih Kecamatan --")){
+                        Toast.makeText(DataDiriPopup.this, "Anda belum mengisi Kecamatan saudara anda", Toast.LENGTH_LONG).show();
                     }
                 }
                 /*else if (imgphoto.equals("")) {
@@ -711,10 +690,10 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             public void onResponse(Call<ResponseMember> call, Response<ResponseMember> response) {
 
                 if (response.isSuccessful()) {
-                    Toast.makeText(DataDiri.this, "Data berhasil di simpan...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DataDiriPopup.this, "Data berhasil di simpan...", Toast.LENGTH_SHORT).show();
                     finish();
                 } else {
-                    Toast.makeText(DataDiri.this, "Gagal Upload", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DataDiriPopup.this, "Gagal Upload", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -748,7 +727,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         params.put("phone", txtnomorhandphone.getText().toString());
         params.put("birthplace", txttempatlahir.getText().toString());
         params.put("birthday", txttanggallahir.getText().toString());
-       /// params.put("gender", spinnerjeniskelamin.getSelectedItem().toString());
+        /// params.put("gender", spinnerjeniskelamin.getSelectedItem().toString());
         params.put("gender", textjeniskelamin.getText().toString());
         params.put("marital", textstatus.getText().toString());
         params.put("religion", textagama.getText().toString());
@@ -779,15 +758,16 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                 pDialog.dismiss();
                 if (response.body() != null) {
                     //Toast.makeText(DataDiri.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                    AlertDialog alertDialog = new AlertDialog.Builder(DataDiri.this).create();
+                    AlertDialog alertDialog = new AlertDialog.Builder(DataDiriPopup.this).create();
 
                     alertDialog.setTitle("Sukses");
                     alertDialog.setMessage("Data diri berhasil disimpan.");
                     alertDialog.setIcon(R.drawable.successfully);
                     alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
+                            Intent keMenuUtama = new Intent(DataDiriPopup.this, MenuUtama.class);
+                            startActivity(keMenuUtama);
                             finish();
-
                         }
                     });
 
@@ -795,7 +775,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
 
                 } else {
-                    Toast.makeText(DataDiri.this, "Gagal update member", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DataDiriPopup.this, "Gagal update member", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -825,11 +805,11 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             public void onResponse(Call<ResponseUploadImage> call, Response<ResponseUploadImage> response) {
                 pDialog.dismiss();
                 if (response.body() != null) {
-                    Toast.makeText(DataDiri.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DataDiriPopup.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     btnuploadfoto.setVisibility(View.GONE);
 
                 } else {
-                    Toast.makeText(DataDiri.this, "Gagal mengunggah foto", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DataDiriPopup.this, "Gagal mengunggah foto", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -858,10 +838,10 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             public void onResponse(Call<ResponseUploadImage> call, Response<ResponseUploadImage> response) {
                 pDialog.dismiss();
                 if (response.body() != null) {
-                    Toast.makeText(DataDiri.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DataDiriPopup.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     btnuploadktp.setVisibility(View.GONE);
                 } else {
-                    Toast.makeText(DataDiri.this, "Gagal mengunggah foto KTP", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DataDiriPopup.this, "Gagal mengunggah foto KTP", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -891,11 +871,11 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                 pDialog.dismiss();
                 if (response.body() != null) {
 
-                    Toast.makeText(DataDiri.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DataDiriPopup.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     btnuploadnpwp.setVisibility(View.GONE);
 
                 } else {
-                    Toast.makeText(DataDiri.this, "Gagal mengunggah foto NPWP                                                                          ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DataDiriPopup.this, "Gagal mengunggah foto NPWP                                                                          ", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -1022,19 +1002,19 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                                             .appendPath("members");
                                     String myUrl = builder.build().toString();
 
-                                    Glide.with(DataDiri.this)
+                                    Glide.with(DataDiriPopup.this)
                                             .load(reqresultItem.getImage())
                                             ///.placeholder(R.drawable.icon_user)
                                             // .error(R.drawable.icon_user)
                                             .into(imageself);
 
-                                    Glide.with(DataDiri.this)
+                                    Glide.with(DataDiriPopup.this)
                                             .load("https://development.kreditimpian.com/images/members/" + reqresultItem.getMetadata().getCitizen())
                                             //.placeholder(R.drawable.upload)
                                             ///.error(R.drawable.upload)
                                             .into(imagektp);
 
-                                    Glide.with(DataDiri.this)
+                                    Glide.with(DataDiriPopup.this)
                                             .load("https://development.kreditimpian.com/images/members/" + reqresultItem.getMetadata().getTaxpayer())
                                             //.placeholder(R.drawable.upload)
                                             ///.error(R.drawable.upload)
@@ -1067,13 +1047,13 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
                 } else {
                     /// loading.dismiss();
-                    Toast.makeText(DataDiri.this, "Gagal mengambil data, silahkan ulangi lagi", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DataDiriPopup.this, "Gagal mengambil data, silahkan ulangi lagi", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseMembers> call, Throwable t) {
-                Toast.makeText(DataDiri.this, "Koneksi Anda bermasalah,silahkan ulangi lagi", Toast.LENGTH_LONG).show();
+                Toast.makeText(DataDiriPopup.this, "Koneksi Anda bermasalah,silahkan ulangi lagi", Toast.LENGTH_LONG).show();
                 onBackPressed();
             }
         });
@@ -1206,23 +1186,23 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                         LinearKecamatan.setVisibility(View.VISIBLE);
                     }
 
-                    Glide.with(DataDiri.this)
+                    Glide.with(DataDiriPopup.this)
                             .load(detail.get(0).getPhoto())
                             .into(imageself);
 
-                  // imgphoto = "1";
-                    Glide.with(DataDiri.this)
+                    // imgphoto = "1";
+                    Glide.with(DataDiriPopup.this)
                             .load(detail.get(0).getCitizen())
                             .into(imagektp);
 
-                   /// imgktp = "1";
-                    Glide.with(DataDiri.this)
+                    /// imgktp = "1";
+                    Glide.with(DataDiriPopup.this)
                             .load(detail.get(0).getTaxpayer())
                             .into(imagenpwp);
 
                 } else {
                     pDialog.dismiss();
-                    Toast.makeText(DataDiri.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DataDiriPopup.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -1230,7 +1210,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             @Override
             public void onFailure(Call<ResponseDetailMember> call, Throwable t) {
                 pDialog.dismiss();
-                Toast.makeText(DataDiri.this, "Keneksi terputus", Toast.LENGTH_LONG);
+                Toast.makeText(DataDiriPopup.this, "Keneksi terputus", Toast.LENGTH_LONG);
             }
         });
 
@@ -1297,7 +1277,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
                     }
                     // Set hasil result json ke dalam adapter spinner
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(DataDiri.this,
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(DataDiriPopup.this,
                             android.R.layout.simple_spinner_item, city);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spinnerkota_saudaraa.setAdapter(adapter);
@@ -1324,7 +1304,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
                 } else {
                     loading.dismiss();
-                    Toast.makeText(DataDiri.this, "Gagal mengambil data ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DataDiriPopup.this, "Gagal mengambil data ", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -1373,7 +1353,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
                     }
                     // Set hasil result json ke dalam adapter spinner
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(DataDiri.this,
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(DataDiriPopup.this,
                             android.R.layout.simple_spinner_item, Kecamatan);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spinnerkecamatn_saudara.setAdapter(adapter);
@@ -1398,7 +1378,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
                 } else {
                     pDialog.dismiss();
-                    Toast.makeText(DataDiri.this, "Gagal mengambil data ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DataDiriPopup.this, "Gagal mengambil data ", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -1437,7 +1417,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
                     }
                     // Set hasil result json ke dalam adapter spinner
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(DataDiri.this,
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(DataDiriPopup.this,
                             android.R.layout.simple_spinner_item, city);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spinnerkota_saudaraa.setAdapter(adapter);
@@ -1463,7 +1443,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
                 } else {
                     loading.dismiss();
-                    Toast.makeText(DataDiri.this, "Gagal mengambil data ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DataDiriPopup.this, "Gagal mengambil data ", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -1503,7 +1483,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
                     }
                     // Set hasil result json ke dalam adapter spinner
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(DataDiri.this,
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(DataDiriPopup.this,
                             android.R.layout.simple_spinner_item, Kecamatan);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spinnerkecamatn_saudara.setAdapter(adapter);
@@ -1528,7 +1508,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
                 } else {
                     loading.dismiss();
-                    Toast.makeText(DataDiri.this, "Gagal mengambil data ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DataDiriPopup.this, "Gagal mengambil data ", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -1645,7 +1625,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             Uri filePath = data.getData();
             try {
                 //mengambil fambar dari Gallery
-                bitmap = MediaStore.Images.Media.getBitmap(DataDiri.this.getContentResolver(), filePath);
+                bitmap = MediaStore.Images.Media.getBitmap(DataDiriPopup.this.getContentResolver(), filePath);
                 // 512 adalah resolusi tertinggi setelah image di resize, bisa di ganti.
                 setToImageView1(getResizedBitmap(bitmap, 512));
             } catch (IOException e) {
@@ -1655,7 +1635,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             Uri filePath = data.getData();
             try {
                 //mengambil fambar dari Gallery
-                bitmap = MediaStore.Images.Media.getBitmap(DataDiri.this.getContentResolver(), filePath);
+                bitmap = MediaStore.Images.Media.getBitmap(DataDiriPopup.this.getContentResolver(), filePath);
                 // 512 adalah resolusi tertinggi setelah image di resize, bisa di ganti.
                 setToImageView2(getResizedBitmap(bitmap, 512));
             } catch (IOException e) {
@@ -1665,7 +1645,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             Uri filePath = data.getData();
             try {
                 //mengambil fambar dari Gallery
-                bitmap = MediaStore.Images.Media.getBitmap(DataDiri.this.getContentResolver(), filePath);
+                bitmap = MediaStore.Images.Media.getBitmap(DataDiriPopup.this.getContentResolver(), filePath);
                 // 512 adalah resolusi tertinggi setelah image di resize, bisa di ganti.
                 setToImageView3(getResizedBitmap(bitmap, 512));
             } catch (IOException e) {

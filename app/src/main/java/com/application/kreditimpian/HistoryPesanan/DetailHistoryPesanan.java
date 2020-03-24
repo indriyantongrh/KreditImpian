@@ -175,7 +175,7 @@ public class DetailHistoryPesanan extends AppCompatActivity {
         }
 
 
-        tvAlamatPengiriman.setText("Laber : "+address_label+"\n"+"Nama penerima : " +receiver+ "\n" + "Alamat :" +address+ "\n" +name_district+" , "+name_city+"\n"+"Koder pos : "+postal_code+"\n"+mobile);
+        tvAlamatPengiriman.setText(""+address_label+"\n"+"Nama penerima : " +receiver+ "\n" + "Alamat :" +address+ "\n" +name_district+" , "+name_city+"\n"+"Koder pos : "+postal_code+"\n"+mobile);
 
         btnuploaddp.setOnClickListener(new View.OnClickListener() {
             @Override

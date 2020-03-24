@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -51,6 +52,8 @@ public class TransactionSelectTenor extends AppCompatActivity {
     ProgressDialog progressBar;
     @BindView(R.id.ListSelectedTenor)
     RecyclerView ListSelectedTenor;
+    @BindView(R.id.swipeRefresh)
+    SwipeRefreshLayout swipeRefresh;
 
 
     //    List<DataItem> dataItemList;
@@ -73,6 +76,7 @@ public class TransactionSelectTenor extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);// set drawable icon
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ButterKnife.bind(this);
+
         sharedPrefManager = new SharedPrefManager(TransactionSelectTenor.this);
         mApiService = UtilsApi.getAPIService();
         ListSelectedTenor.setLayoutManager(new LinearLayoutManager(this));

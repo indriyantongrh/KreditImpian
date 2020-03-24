@@ -39,7 +39,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ForgotPassword.ForgotPassword"></activity>
+        <activity android:name=".Notifikasi.DetailNotifikasi"></activity>
+        <activity android:name=".Akun.DataDiriPopup" />
+        <activity android:name=".ForgotPassword.ForgotPassword" />
         <activity android:name=".Notifikasi.NotifikasiActivity" />
         <activity android:name=".FormPengajuan.UpgradeImpian.PilihLeasingActivity" />
         <activity android:name=".TransactionProcess.TransactionCheckout" />
@@ -107,7 +109,6 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
     </application>
 
 </manifest>

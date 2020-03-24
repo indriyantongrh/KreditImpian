@@ -86,6 +86,8 @@ public class AdapterMitraSelected extends RecyclerView.Adapter<AdapterMitraSelec
                 if(count > 3 ){
                     holder.checkBoxMitra.setChecked(false);
                 }
+
+
                 /*if(holder.checkBoxMitra.isChecked()==true){
 
                     Toast.makeText(mContext, "Anda memilih mitra" , Toast.LENGTH_LONG).show();
@@ -96,6 +98,21 @@ public class AdapterMitraSelected extends RecyclerView.Adapter<AdapterMitraSelec
                 notifyDataSetChanged();
             }
         });
+
+        // bila mitra lebih dari 3. digunakan untuk memilih mitra maksimal 3
+        if (count == 3) {
+            if (!holder.checkBoxMitra.isChecked()) {
+                holder.checkBoxMitra.setEnabled(holder.checkBoxMitra.isChecked());
+                holder.checkBoxMitra.setAlpha(0.5f);
+                holder.checkBoxMitra.setEnabled(false);
+            } else {
+                holder.checkBoxMitra.setAlpha(1f);
+                holder.checkBoxMitra.setEnabled(true);
+            }
+        } else if (count < 3) {
+            holder.checkBoxMitra.setAlpha(1f);
+            holder.checkBoxMitra.setEnabled(true);
+        }
 
         /*Untuk jika belum dipilih keluar alert*/
 

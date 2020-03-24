@@ -425,17 +425,17 @@ public class MultigunaMobil extends Fragment implements View.OnClickListener {
             edtHargaKendaraan.setError(getResources().getString(R.string.hrgkendkosong));
             edtHargaKendaraan.requestFocus();
         } else if (spinMerkMobil.getSelectedItemPosition() < 0) {
-            Toast.makeText(context, "Belum memilih Merk Sepeda Motor", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "Belum memilih Merk Mobil", Toast.LENGTH_LONG).show();
         } else if (spinTipeMobil.getSelectedItemPosition() < 0) {
-            Toast.makeText(context, "Belum memilih Tipe Sepeda Motor", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "Belum memilih Tipe Mobil", Toast.LENGTH_LONG).show();
         } else if (spinThnMobil.getSelectedItemPosition() < 0) {
             Toast.makeText(context, "Belum memilih Tahun mobil", Toast.LENGTH_LONG).show();
         } else if (lokasi.isEmpty()) {
             edtLokasi.setError(getResources().getString(R.string.lokasikosong));
             edtLokasi.requestFocus();
         } else if (asuransi.isEmpty()) {
-            edtLokasi.setError(getResources().getString(R.string.asuransikosong));
-            edtLokasi.requestFocus();
+            edtAsuransi.setError(getResources().getString(R.string.asuransikosong));
+            edtAsuransi.requestFocus();
         } else if (!check) {
             Toast.makeText(context, "Silahkan pilih leasing\nminimal 1\nmaximal 3", Toast.LENGTH_LONG).show();
         } else if (getStringImage(decoded).isEmpty()) {

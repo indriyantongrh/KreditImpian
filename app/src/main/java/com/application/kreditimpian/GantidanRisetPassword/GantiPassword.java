@@ -2,7 +2,9 @@ package com.application.kreditimpian.GantidanRisetPassword;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.application.kreditimpian.Akun.DataDiri;
 import com.application.kreditimpian.Akun.DetailAlamat;
 import com.application.kreditimpian.Akun.TambahAlamatPengiriman;
 import com.application.kreditimpian.Api.SharedPrefManager;
@@ -86,10 +89,24 @@ public class GantiPassword extends AppCompatActivity {
         mApiService.ResetPassword(id_sysuser,params).enqueue(new Callback<ResponseAddress>() {
             @Override
             public void onResponse(Call<ResponseAddress> call, Response<ResponseAddress> response) {
+                pDialog.dismiss();
                 if (response.body().getResponseCode()==200) {
-                    Toast.makeText(GantiPassword.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                    finish();
+                    AlertDialog alertDialog = new AlertDialog.Builder(GantiPassword.this).create();
+
+                    alertDialog.setTitle("Sukses");
+                    alertDialog.setMessage("Password berhasil diubah.");
+                    alertDialog.setIcon(R.drawable.successfully);
+                    alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+
+                        }
+                    });
+
+                    alertDialog.show();
+
                 } else {
+                    pDialog.dismiss();
                     Toast.makeText(GantiPassword.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }

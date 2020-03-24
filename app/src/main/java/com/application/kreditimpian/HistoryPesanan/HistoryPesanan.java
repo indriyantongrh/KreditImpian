@@ -183,7 +183,7 @@ public class HistoryPesanan extends AppCompatActivity {
                 String courier = detaiList.get(position).getCourier();
                 String name_city = detaiList.get(position).getNameCity();
                 String name_district = detaiList.get(position).getNameDistrict();
-                String postal_code = detaiList.get(position).getShipping().getSend().getReceiver();
+                String postal_code = detaiList.get(position).getShipping().getSend().getPostalCode();
 
                 Intent detailHistoryPesanan = new Intent(mContext, DetailHistoryPesanan.class);
                 detailHistoryPesanan.putExtra(ConstanHistoryPesanan.KEY_ID, id);

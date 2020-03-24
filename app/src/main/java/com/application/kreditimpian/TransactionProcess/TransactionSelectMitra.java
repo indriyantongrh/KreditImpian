@@ -115,7 +115,7 @@ public class TransactionSelectMitra extends AppCompatActivity {
     private JSONObject jsonObject, jsonObject1, jsonObject3,jsonObject2;
     AdapterMitraSelected adapterMitraSelected;
     Context mContext;
-
+    boolean check = false;
     private JSONArray jsonArray, jsonArray1;
 
     private ProductMeta productMeta;
@@ -207,36 +207,8 @@ public class TransactionSelectMitra extends AppCompatActivity {
                 .error(R.drawable.no_image)
                 .into(image);
 
-//        List<String> courier = new ArrayList<String>();
-//        courier.add(0, "Pilih Kurir");
-//        courier.add("JNE");
-//        courier.add("POS");
-//        courier.add("TIKI");
-
+        /*get ongkir by API*/
         getOngkir();
-
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(TransactionSelectMitra.this, android.R.layout.simple_spinner_item, courier);
-//        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-//        spinnercourier.setAdapter(adapter);
-
-//        spinnercourier.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                if(position == 1){
-//                    tv_estimasipengiriman.setText("310000");
-//                }else if(position == 2){
-//                    tv_estimasipengiriman.setText("320000");
-//                }else if (position == 3){
-//                    tv_estimasipengiriman.setText("300000");
-//                }
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//
-//            }
-//        });
-
 
         adapterMitraSelected = new AdapterMitraSelected(TransactionSelectMitra.this);
         rvMitra.setAdapter(adapterMitraSelected);
@@ -262,10 +234,12 @@ public class TransactionSelectMitra extends AppCompatActivity {
         btnSelanjutnya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                List<DataItem> dataItemList = adapterMitraSelected.getDataItemList();
-                DataItem dataItem = new DataItem();
 
-                if(spinnercourier.getSelectedItem().equals("-- Pilih Pengiriman --")){
+
+                /*if (!check) {
+                    Log.v("Bismillah", check + "cekcb");
+                    Toast.makeText(TransactionSelectMitra.this, "Silahkan pilih mitra\nminimal 1\nmaximal 3", Toast.LENGTH_LONG).show();
+                } else */if(spinnercourier.getSelectedItem().equals("-- Pilih Pengiriman --")) {
                     //Toast.makeText(TransactionSelectMitra.this, "Pilih jasa pengiriman barang anda", Toast.LENGTH_LONG).show();
                     AlertDialog alertDialog = new AlertDialog.Builder(TransactionSelectMitra.this).create();
                     alertDialog.setTitle("Info");
@@ -277,9 +251,8 @@ public class TransactionSelectMitra extends AppCompatActivity {
 
                         }
                     });
-
                     alertDialog.show();
-                }else {
+                } else {
                     NextTenor();
                 }
 
@@ -316,7 +289,7 @@ public class TransactionSelectMitra extends AppCompatActivity {
         String id_transaction = txt_id_transaction.getText().toString();
 
 
-        boolean check = false;
+
         StringBuilder mitraStringBuilder = new StringBuilder();
         List<DataItem> dataItemList = adapterMitraSelected.getDataItemList();
         DataItem dataItem = new DataItem();
@@ -332,6 +305,7 @@ public class TransactionSelectMitra extends AppCompatActivity {
         for (int i = 0; i < dataItemList.size(); i++) {
             if (dataItem.isCheck()) {
                 check = true;
+
                 break;
             }
         }

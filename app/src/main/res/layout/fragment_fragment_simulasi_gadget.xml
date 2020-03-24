@@ -85,7 +85,7 @@
         app:bsb_second_track_color="#BF1E90FF"
         app:bsb_max="14000000"
         app:bsb_min="1000000"
-        app:bsb_progress="1000000"
+        app:bsb_progress="1200000"
         app:bsb_section_count="2"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
