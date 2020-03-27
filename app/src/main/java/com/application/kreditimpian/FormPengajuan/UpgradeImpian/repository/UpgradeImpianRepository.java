@@ -409,7 +409,26 @@ public class UpgradeImpianRepository {
                                     modelNotifikasi1.setIdNotifikasi(jsonObject.getString("id"));
                                     modelNotifikasi1.setMessage(jsonObject.getString("message"));
                                     modelNotifikasi1.setStatus(jsonObject.getString("status"));
+                                    modelNotifikasi1.setMetadata(jsonObject.getString("metadata"));                                    modelNotifikasi1.setStatus(jsonObject.getString("status"));
                                     modelNotifikasi1.setTgl(jsonObject.getString("date"));
+                                    modelNotifikasi1.setNumber(jsonObject.getString("number"));
+                                    modelNotifikasi1.setId_product(jsonObject.getString("id_product"));
+                                    modelNotifikasi1.setId_product_category(jsonObject.getString("id_product_category"));
+                                    modelNotifikasi1.setName(jsonObject.getString("name"));
+                                    modelNotifikasi1.setPrice_capital(jsonObject.getString("price_capital"));
+                                    modelNotifikasi1.setPrice_sale(jsonObject.getString("price_sale"));
+                                    modelNotifikasi1.setFilename(jsonObject.getString("filename"));
+                                    modelNotifikasi1.setName_merchant(jsonObject.getString("name_merchant"));
+                                    modelNotifikasi1.setTenor(jsonObject.getString("tenor"));
+                                    modelNotifikasi1.setDown_payment(jsonObject.getString("down_payment"));
+                                    modelNotifikasi1.setNote(jsonObject.getString("note"));
+                                    modelNotifikasi1.setPostal_fee(jsonObject.getString("postal_fee"));
+                                    modelNotifikasi1.setName_company(jsonObject.getString("name_company"));
+                                    modelNotifikasi1.setName_city(jsonObject.getString("name_city"));
+                                    modelNotifikasi1.setName_district(jsonObject.getString("name_district"));
+                                    modelNotifikasi1.setPayment_method(jsonObject.getString("payment_method"));
+                                    modelNotifikasi1.setTotal_pembayaran(jsonObject.getString("total_pembayaran"));
+                                    modelNotifikasi1.setCourier(jsonObject.getString("courier"));
                                     modelNotifikasiArrayList.add(modelNotifikasi1);
                                 }
                                 hashMap.put("list", modelNotifikasiArrayList);

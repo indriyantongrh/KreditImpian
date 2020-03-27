@@ -18,8 +18,10 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import com.application.kreditimpian.Api.SharedPrefManager;
+import com.application.kreditimpian.Constan.ConstanHistoryPesanan;
 import com.application.kreditimpian.FormPengajuan.UpgradeImpian.viewmodel.UpgradeImpianViewModel;
 import com.application.kreditimpian.FormPengajuan.UpgradeImpian.viewmodel.ViewModelFactory;
+import com.application.kreditimpian.Marketplace.FragSemuaKategori.RecyclerItemClickListener;
 import com.application.kreditimpian.MenuUtama.MenuUtama;
 import com.application.kreditimpian.Model.ModelNotifikasi;
 import com.application.kreditimpian.Notifikasi.ViewHolder.NotifikasiViewHolder;
@@ -34,7 +36,7 @@ public class NotifikasiActivity extends AppCompatActivity implements View.OnClic
     private ModelNotifikasi modelNotifikasi;
     private UpgradeImpianViewModel upgradeImpianViewModel;
     ImageView empty;
-
+    Context mContext;
     private ImageView imgBack;
     private RecyclerView rvNotifikasi;
     private LinearLayoutManager linearLayoutManager;
@@ -178,8 +180,28 @@ public class NotifikasiActivity extends AppCompatActivity implements View.OnClic
                             modelNotifikasi.setIdNotifikasi(modelNotifikasis.get(i).getIdNotifikasi());
                             modelNotifikasi.setMessage(modelNotifikasis.get(i).getMessage());
                             modelNotifikasi.setStatus(modelNotifikasis.get(i).getStatus());
+                            modelNotifikasi.setMetadata(modelNotifikasis.get(i).getMetadata());
                             modelNotifikasi.setTgl(modelNotifikasis.get(i).getTgl());
+                            modelNotifikasi.setNumber(modelNotifikasis.get(i).getNumber());
+                            modelNotifikasi.setId_product(modelNotifikasis.get(i).getId_product());
+                            modelNotifikasi.setId_product_category(modelNotifikasis.get(i).getId_product_category());
+                            modelNotifikasi.setName(modelNotifikasis.get(i).getName());
+                            modelNotifikasi.setPrice_capital(modelNotifikasis.get(i).getPrice_capital());
+                            modelNotifikasi.setPrice_sale(modelNotifikasis.get(i).getPrice_sale());
+                            modelNotifikasi.setFilename(modelNotifikasis.get(i).getFilename());
+                            modelNotifikasi.setName_merchant(modelNotifikasis.get(i).getName_merchant());
+                            modelNotifikasi.setTenor(modelNotifikasis.get(i).getTenor());
+                            modelNotifikasi.setDown_payment(modelNotifikasis.get(i).getDown_payment());
+                            modelNotifikasi.setNote(modelNotifikasis.get(i).getNote());
+                            modelNotifikasi.setName_company(modelNotifikasis.get(i).getName_company());
+                            modelNotifikasi.setPostal_fee(modelNotifikasis.get(i).getPostal_fee());
+                            modelNotifikasi.setName_city(modelNotifikasis.get(i).getName_city());
+                            modelNotifikasi.setName_district(modelNotifikasis.get(i).getName_district());
+                            modelNotifikasi.setPayment_method(modelNotifikasis.get(i).getPayment_method());
+                            modelNotifikasi.setTotal_pembayaran(modelNotifikasis.get(i).getTotal_pembayaran());
+                            modelNotifikasi.setCourier(modelNotifikasis.get(i).getCourier());
                             modelNotifikasiArrayList.add(modelNotifikasi);
+                            initDataIntent(modelNotifikasiArrayList);
                         }
                         notifikasiAdapter.addAll(modelNotifikasiArrayList);
                         if (end >= modelNotifikasis.size()) {
@@ -221,8 +243,28 @@ public class NotifikasiActivity extends AppCompatActivity implements View.OnClic
                         modelNotifikasi.setIdNotifikasi(modelNotifikasis.get(i).getIdNotifikasi());
                         modelNotifikasi.setMessage(modelNotifikasis.get(i).getMessage());
                         modelNotifikasi.setStatus(modelNotifikasis.get(i).getStatus());
+                        modelNotifikasi.setMetadata(modelNotifikasis.get(i).getMetadata());
                         modelNotifikasi.setTgl(modelNotifikasis.get(i).getTgl());
+                        modelNotifikasi.setNumber(modelNotifikasis.get(i).getNumber());
+                        modelNotifikasi.setId_product(modelNotifikasis.get(i).getId_product());
+                        modelNotifikasi.setId_product_category(modelNotifikasis.get(i).getId_product_category());
+                        modelNotifikasi.setName(modelNotifikasis.get(i).getName());
+                        modelNotifikasi.setPrice_capital(modelNotifikasis.get(i).getPrice_capital());
+                        modelNotifikasi.setPrice_sale(modelNotifikasis.get(i).getPrice_sale());
+                        modelNotifikasi.setFilename(modelNotifikasis.get(i).getFilename());
+                        modelNotifikasi.setName_merchant(modelNotifikasis.get(i).getName_merchant());
+                        modelNotifikasi.setTenor(modelNotifikasis.get(i).getTenor());
+                        modelNotifikasi.setDown_payment(modelNotifikasis.get(i).getDown_payment());
+                        modelNotifikasi.setNote(modelNotifikasis.get(i).getNote());
+                        modelNotifikasi.setName_company(modelNotifikasis.get(i).getName_company());
+                        modelNotifikasi.setPostal_fee(modelNotifikasis.get(i).getPostal_fee());
+                        modelNotifikasi.setName_city(modelNotifikasis.get(i).getName_city());
+                        modelNotifikasi.setName_district(modelNotifikasis.get(i).getName_district());
+                        modelNotifikasi.setPayment_method(modelNotifikasis.get(i).getPayment_method());
+                        modelNotifikasi.setTotal_pembayaran(modelNotifikasis.get(i).getTotal_pembayaran());
+                        modelNotifikasi.setCourier(modelNotifikasis.get(i).getCourier());
                         modelNotifikasiArrayList.add(modelNotifikasi);
+                        initDataIntent(modelNotifikasiArrayList);
                     }
                     notifikasiAdapter.addAll(modelNotifikasiArrayList);
                     if (batas == modelNotifikasis.size()) {
@@ -263,5 +305,89 @@ public class NotifikasiActivity extends AppCompatActivity implements View.OnClic
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    private void initDataIntent(final ArrayList<ModelNotifikasi> modelNotifikasiArrayList){
+        rvNotifikasi.addOnItemTouchListener(
+                new RecyclerItemClickListener(mContext, new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+
+                        String status = modelNotifikasiArrayList.get(position).getMetadata();
+                        String number = modelNotifikasiArrayList.get(position).getNumber();
+                        String id_product = modelNotifikasiArrayList.get(position).getId_product();
+                        String id_product_category = modelNotifikasiArrayList.get(position).getId_product_category();
+                        String name = modelNotifikasiArrayList.get(position).getName();
+                        String price_capital = modelNotifikasiArrayList.get(position).getPrice_capital();
+                        String price_sale = modelNotifikasiArrayList.get(position).getPrice_sale();
+                        String filename = modelNotifikasiArrayList.get(position).getFilename();
+                        String name_merchant = modelNotifikasiArrayList.get(position).getName_merchant();
+                        String name_company = modelNotifikasiArrayList.get(position).getName_company();
+                        String tenor = modelNotifikasiArrayList.get(position).getTenor();
+                        String down_payment = modelNotifikasiArrayList.get(position).getDown_payment();
+                        String note = modelNotifikasiArrayList.get(position).getNote();
+                        String postal_fee = modelNotifikasiArrayList.get(position).getPostal_fee();
+                       /* String address_label = modelNotifikasiArrayList.get(position).getShipping().getSend().getAddressLabel();
+                        String receiver = modelNotifikasiArrayList.get(position).getShipping().getSend().getReceiver();
+                        String mobile = modelNotifikasiArrayList.get(position).getShipping().getSend().getMobile();
+                        String city = modelNotifikasiArrayList.get(position).getShipping().getSend().getCity();
+                        String district = modelNotifikasiArrayList.get(position).getShipping().getSend().getDistrict();
+                        String address = modelNotifikasiArrayList.get(position).getShipping().getSend().getAddress();*/
+                        String payment_method = modelNotifikasiArrayList.get(position).getPayment_method();
+                        /// String installment = modelNotifikasiArrayList.get(position).getInstallment().getJsonMember0();
+                        String total_pembayaran = modelNotifikasiArrayList.get(position).getTotal_pembayaran();
+                        String courier = modelNotifikasiArrayList.get(position).getCourier();
+                        String name_city = modelNotifikasiArrayList.get(position).getName_city();
+                        String name_district = modelNotifikasiArrayList.get(position).getName_district();
+                        /// String postal_code = modelNotifikasiArrayList.get(position).getShipping().getSend().getPostalCode();
+
+                        Intent detailNotifikasi = new Intent(NotifikasiActivity.this, DetailNotifikasi.class);
+
+                        detailNotifikasi.putExtra("metadata", status);
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_NUMBER, number);
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_ID_PRODUCT, id_product);
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_ID_PRODUCT_CATEGORY, id_product_category);
+                        /// detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_CURRENCY, id_currency);
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_NAME_PRODUCT, name);
+                        /*detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_DESCRIPTION, description);
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_SKU, sku);
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_STOCK, stock);*/
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_PRICE_CAPITAL, price_capital);
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_PRICE_SALE, price_sale);
+                        /*detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_DISCOUNT, discount);
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_CONDITION, condition);
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_DELIVERABLE, deliverable);
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_DOWNLOADABLE, downloadable);
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_TARGET_GENDER, target_gender);
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_TARGET_AGE, target_age);
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_VISIBILITY, visibility);*/
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_FILENAME, filename);
+                        ///detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_ID_MERCHANT, id_merchant);
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_NAME_MERCHANT, name_merchant);
+                        ///detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_ID_COMPANY, id_company);
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_NAME_COMPANY, name_company);
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_TENOR, tenor);
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_DOWN_PAYMENT, down_payment);
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_NOTE, note);
+                        // detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_ID_CREDITOR, id_creditor);
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_POSTAL_FEE, postal_fee);
+                        /*detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_ADDRESS_LABEL, address_label);
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_RECEIVER, receiver);
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_MOBILE, mobile);
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_CITY, city);
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_DISTRICT, district);
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_ADDRESS, address);*/
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_PAYMENT_METHOD, payment_method);
+                        ////detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_INSTALLMENT, installment);
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_TOTAL_PEMBAYARAN, total_pembayaran);
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_COURIER, courier);
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_NAME_CITY, name_city);
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_NAME_DISTRICT, name_district);
+                        ///detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_POSTAL_CODE, postal_code);
+
+                        startActivity(detailNotifikasi);
+                        finish();
+                    }
+                }));
+
     }
 }

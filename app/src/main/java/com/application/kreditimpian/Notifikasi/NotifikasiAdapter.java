@@ -63,6 +63,31 @@ public class NotifikasiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             } else{
                 notifikasiViewHolder.layoutKlik.setBackgroundColor(ContextCompat.getColor(context, R.color.white));
             }
+            notifikasiViewHolder.status.setText(modelNotifikasi.getMetadata());
+            notifikasiViewHolder.number.setText(modelNotifikasi.getNumber());
+            notifikasiViewHolder.id_product.setText(modelNotifikasi.getId_product());
+            notifikasiViewHolder.id_product_category.setText(modelNotifikasi.getId_product_category());
+            notifikasiViewHolder.name.setText(modelNotifikasi.getName());
+            notifikasiViewHolder.name_merchant.setText(modelNotifikasi.getName_merchant());
+            notifikasiViewHolder.tenor.setText(modelNotifikasi.getTenor());
+            notifikasiViewHolder.text_image.setText(modelNotifikasi.getFilename());
+            notifikasiViewHolder.down_payment.setText(modelNotifikasi.getDown_payment());
+            notifikasiViewHolder.note.setText(modelNotifikasi.getNote());
+            notifikasiViewHolder.name_company.setText(modelNotifikasi.getName_company());
+            notifikasiViewHolder.postal_fee.setText(modelNotifikasi.getPostal_fee());
+            /*notifikasiViewHolder.address_label.setText(modelNotifikasi.());
+            notifikasiViewHolder.receiver.setText(modelNotifikasi.getTgl());
+            notifikasiViewHolder.mobile.setText(modelNotifikasi.getTgl());
+            notifikasiViewHolder.city.setText(modelNotifikasi.getTgl());
+            notifikasiViewHolder.district.setText(modelNotifikasi.getTgl());
+            notifikasiViewHolder.address.setText(modelNotifikasi.getTgl());
+            notifikasiViewHolder.postal_code.setText(modelNotifikasi.getTgl());*/
+            notifikasiViewHolder.name_city.setText(modelNotifikasi.getName_city());
+            notifikasiViewHolder.name_district.setText(modelNotifikasi.getName_district());
+            notifikasiViewHolder.payment_method.setText(modelNotifikasi.getPayment_method());
+            notifikasiViewHolder.total_pembayaran.setText(modelNotifikasi.getTotal_pembayaran());
+            notifikasiViewHolder.courier.setText(modelNotifikasi.getCourier());
+
             holder.itemView.setOnClickListener(v -> onSeenClick.onSeenClick(modelNotifikasi.getIdNotifikasi(), notifikasiViewHolder));
         }else if (holder instanceof LoadingViewHolder) {
             LoadingViewHolder loadingViewHolder = (LoadingViewHolder) holder;
