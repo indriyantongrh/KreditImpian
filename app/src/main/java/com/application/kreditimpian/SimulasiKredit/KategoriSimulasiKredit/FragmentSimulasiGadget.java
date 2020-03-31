@@ -11,17 +11,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.application.kreditimpian.FormPengajuan.UpgradeImpian.NumberTextWatcher;
 import com.application.kreditimpian.R;
 import com.fasterxml.jackson.core.io.DataOutputAsStream;
 import com.xw.repo.BubbleSeekBar;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.util.Set;
+
+import static android.text.TextUtils.isEmpty;
 
 
 public class FragmentSimulasiGadget extends Fragment {
@@ -35,6 +40,8 @@ public class FragmentSimulasiGadget extends Fragment {
     DecimalFormatSymbols formatRp;
     Double hargabarang, tenor, hargaperbulan, bungakredit, uangmuka, uangadmin, umkurangiharga;
     boolean isTouched;
+    EditText edHargaBarang;
+    ////int start = 1000000;
 
 
     @Override
@@ -49,6 +56,8 @@ public class FragmentSimulasiGadget extends Fragment {
         txttagihan = view.findViewById(R.id.txttagihan);
         txtjumlahdp = view.findViewById(R.id.txtjumlahdp);
         BubbleSeekBar bubbleseekBar = view.findViewById(R.id.bubbleseekBar);
+        edHargaBarang = view.findViewById(R.id.edHargaBarang);
+        edHargaBarang.addTextChangedListener(new NumberTextWatcher(edHargaBarang));
 
         txttenor = view.findViewById(R.id.txttenor);
         txttenor.getText().toString();
@@ -197,10 +206,14 @@ public class FragmentSimulasiGadget extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
+                String Hargabarang = edHargaBarang.getText().toString();
+                if (isEmpty(Hargabarang))
+                    edHargaBarang.setError("Masukan harga barang");
+                else
+
                 //((TextView) parentView.getChildAt(0)).setTextColor(Color.WHITE);
-            if (bubbleseekBar.equals("null")){
-                Toast.makeText(getActivity(), "Geser dulu ", Toast.LENGTH_LONG).show();
-            } else if (spinneruangmuka.getSelectedItem().equals("10%")) {
+                 if (spinneruangmuka.getSelectedItem().equals("10%")) {
+                    rupiah = Double.parseDouble(edHargaBarang.getText().toString().replace(".", ""));
                     uangmuka = rupiah * 0.1;  //perhitungan
 
                     uangadmin = uangmuka + 150000;
@@ -220,6 +233,7 @@ public class FragmentSimulasiGadget extends Fragment {
 
 
                 } else if (spinneruangmuka.getSelectedItem().equals("15%")) {
+                     rupiah = Double.parseDouble(edHargaBarang.getText().toString().replace(".", ""));
                     uangmuka = rupiah * 0.15;  //perhitungan
                     uangadmin = uangmuka + 150000;
                     txtjumlahdp.setText(Double.toString(uangadmin));  //output
@@ -237,7 +251,9 @@ public class FragmentSimulasiGadget extends Fragment {
                     txtjumlahdp.setText(String.valueOf(kursindonesia.format(uangadmin)));
 
                 } else if (spinneruangmuka.getSelectedItem().equals("20%")) {
-                    uangmuka = rupiah * 0.2;  //perhitungan
+                     rupiah = Double.parseDouble(edHargaBarang.getText().toString().replace(".", ""));
+
+                     uangmuka = rupiah * 0.2;  //perhitungan
                     uangadmin = uangmuka + 150000;
                     txtjumlahdp.setText(Double.toString(uangadmin));  //output
 
@@ -253,7 +269,8 @@ public class FragmentSimulasiGadget extends Fragment {
 
                     txtjumlahdp.setText(String.valueOf(kursindonesia.format(uangadmin)));
                 } else if (spinneruangmuka.getSelectedItem().equals("25%")) {
-                    uangmuka = rupiah * 0.25;  //perhitungan
+                     rupiah = Double.parseDouble(edHargaBarang.getText().toString().replace(".", ""));
+                     uangmuka = rupiah * 0.25;  //perhitungan
                     uangadmin = uangmuka + 150000;
                     txtjumlahdp.setText(Double.toString(uangadmin));  //output
 
@@ -270,7 +287,8 @@ public class FragmentSimulasiGadget extends Fragment {
                     txtjumlahdp.setText(String.valueOf(kursindonesia.format(uangadmin)));
 
                 } else if (spinneruangmuka.getSelectedItem().equals("30%")) {
-                    uangmuka = rupiah * 0.30;  //perhitungan
+                     rupiah = Double.parseDouble(edHargaBarang.getText().toString().replace(".", ""));
+                     uangmuka = rupiah * 0.30;  //perhitungan
                     uangadmin = uangmuka + 150000;
                     txtjumlahdp.setText(Double.toString(uangadmin));  //output
 
@@ -287,7 +305,8 @@ public class FragmentSimulasiGadget extends Fragment {
                     txtjumlahdp.setText(String.valueOf(kursindonesia.format(uangadmin)));
 
                 } else if (spinneruangmuka.getSelectedItem().equals("35%")) {
-                    uangmuka = rupiah * 0.35;  //perhitungan
+                     rupiah = Double.parseDouble(edHargaBarang.getText().toString().replace(".", ""));
+                     uangmuka = rupiah * 0.35;  //perhitungan
                     uangadmin = uangmuka + 150000;
                     txtjumlahdp.setText(Double.toString(uangadmin));  //output
 
@@ -304,7 +323,9 @@ public class FragmentSimulasiGadget extends Fragment {
                     txtjumlahdp.setText(String.valueOf(kursindonesia.format(uangadmin)));
 
                 } else if (spinneruangmuka.getSelectedItem().equals("40%")) {
-                    uangmuka = rupiah * 0.40;  //perhitungan
+                     rupiah = Double.parseDouble(edHargaBarang.getText().toString().replace(".", ""));
+
+                     uangmuka = rupiah * 0.40;  //perhitungan
                     uangadmin = uangmuka + 150000;
                     txtjumlahdp.setText(Double.toString(uangadmin));  //output
 
@@ -321,7 +342,9 @@ public class FragmentSimulasiGadget extends Fragment {
                     txtjumlahdp.setText(String.valueOf(kursindonesia.format(uangadmin)));
 
                 } else if (spinneruangmuka.getSelectedItem().equals("45%")) {
-                    uangmuka = rupiah * 0.45;  //perhitungan
+                     rupiah = Double.parseDouble(edHargaBarang.getText().toString().replace(".", ""));
+
+                     uangmuka = rupiah * 0.45;  //perhitungan
                     uangadmin = uangmuka + 150000;
                     txtjumlahdp.setText(Double.toString(uangadmin));  //output
 
@@ -351,24 +374,27 @@ public class FragmentSimulasiGadget extends Fragment {
 
 
 
-        bubbleseekBar.setOnProgressChangedListener(new BubbleSeekBar.OnProgressChangedListener() {
+     /*   bubbleseekBar.setOnProgressChangedListener(new BubbleSeekBar.OnProgressChangedListener() {
             @Override
             public void onProgressChanged(int progress, float progressFloat) {
 
                 progress = progress / 5000;
                 progress = progress * 5000;
 
+                int Min_value = 1000000;
 
-                rupiah = Double.parseDouble(String.valueOf((progress)));
+
+                    rupiah = Double.parseDouble(String.valueOf((progress)));
 
 
-                kursindonesia = (DecimalFormat)
-                        DecimalFormat.getCurrencyInstance();
-                formatRp = new DecimalFormatSymbols();
-                formatRp.setCurrencySymbol("Rp.");
-                formatRp.setMonetaryDecimalSeparator(',');
-                formatRp.setGroupingSeparator('.');
-                kursindonesia.setDecimalFormatSymbols(formatRp);
+                    kursindonesia = (DecimalFormat)
+                            DecimalFormat.getCurrencyInstance();
+                    formatRp = new DecimalFormatSymbols();
+                    formatRp.setCurrencySymbol("Rp.");
+                    formatRp.setMonetaryDecimalSeparator(',');
+                    formatRp.setGroupingSeparator('.');
+                    kursindonesia.setDecimalFormatSymbols(formatRp);
+
 
                 txtvalue.setText(String.valueOf(kursindonesia.format(rupiah)));
 
@@ -387,7 +413,7 @@ public class FragmentSimulasiGadget extends Fragment {
 
 
 
-        });
+        });*/
 
 
 

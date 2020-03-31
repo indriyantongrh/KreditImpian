@@ -1,10 +1,13 @@
 package com.application.kreditimpian.Model;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
 
-public class Installment{
+public class Installment implements Parcelable {
 
 	@SerializedName("0")
 	private String jsonMember0;
@@ -82,4 +85,45 @@ public class Installment{
 	public String getJsonMember6(){
 		return jsonMember6;
 	}
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeString(this.jsonMember0);
+		dest.writeString(this.jsonMember1);
+		dest.writeString(this.jsonMember2);
+		dest.writeString(this.jsonMember3);
+		dest.writeString(this.jsonMember4);
+		dest.writeString(this.jsonMember5);
+		dest.writeString(this.jsonMember6);
+	}
+
+	public Installment() {
+	}
+
+	protected Installment(Parcel in) {
+		this.jsonMember0 = in.readString();
+		this.jsonMember1 = in.readString();
+		this.jsonMember2 = in.readString();
+		this.jsonMember3 = in.readString();
+		this.jsonMember4 = in.readString();
+		this.jsonMember5 = in.readString();
+		this.jsonMember6 = in.readString();
+	}
+
+	public static final Parcelable.Creator<Installment> CREATOR = new Parcelable.Creator<Installment>() {
+		@Override
+		public Installment createFromParcel(Parcel source) {
+			return new Installment(source);
+		}
+
+		@Override
+		public Installment[] newArray(int size) {
+			return new Installment[size];
+		}
+	};
 }

@@ -8,6 +8,9 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
+import com.application.kreditimpian.Model.Installment;
+import com.application.kreditimpian.Model.ModelCicilan.CompaniesDataItem;
+import com.application.kreditimpian.Model.ModelCicilan.DataCicilanItem;
 import com.application.kreditimpian.Model.ModelMitra;
 import com.application.kreditimpian.Model.ModelNotifikasi;
 import com.application.kreditimpian.Model.ModelProductNew.Category;
@@ -15,6 +18,8 @@ import com.application.kreditimpian.Model.ModelUpgradeImpian.ModelMitraMultiguna
 import com.application.kreditimpian.Model.ModelUpgradeImpian.ModelMitraPinjaman;
 import com.application.kreditimpian.Model.ModelUpgradeImpian.ModelPinjaman;
 import com.application.kreditimpian.Model.ModelUpgradeImpian.ModelUpgradeImpian;
+import com.application.kreditimpian.Model.Send;
+import com.application.kreditimpian.Model.Shipping;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -47,6 +52,10 @@ public class UpgradeImpianRepository {
     private ArrayList<ModelUpgradeImpian> modelUpgradeImpians;
     private ArrayList<ModelMitraPinjaman> modelMitraArrayList;
     private ArrayList<ModelPinjaman> modelPinjamanArrayList;
+    private ArrayList<Shipping> shippingItemArrayList;
+    private ArrayList<Send> sendItemArrayList;
+    private ArrayList<Installment> installmentItemArrayList;
+
     private MutableLiveData<ArrayList<ModelUpgradeImpian>> mutableLiveData;
 
     public UpgradeImpianRepository(Context context) {
@@ -429,6 +438,29 @@ public class UpgradeImpianRepository {
                                     modelNotifikasi1.setPayment_method(jsonObject.getString("payment_method"));
                                     modelNotifikasi1.setTotal_pembayaran(jsonObject.getString("total_pembayaran"));
                                     modelNotifikasi1.setCourier(jsonObject.getString("courier"));
+
+
+                                    /*Shipping modelShipping = new Shipping();
+
+                                    Send modelSend = new Send();
+                                    modelSend.setAddressLabel(jsonObject.getString("address_label"));
+                                    modelSend.setReceiver(jsonObject.getString("receiver"));
+                                    modelSend.setMobile(jsonObject.getString("mobile"));
+                                    modelSend.setCity(jsonObject.getString("city"));
+                                    modelSend.setDistrict(jsonObject.getString("district"));
+                                    modelSend.setAddress(jsonObject.getString("address"));
+                                    modelSend.setPostalCode(jsonObject.getString("postal_code"));*/
+
+
+                                        /*installmentItemArrayList = new ArrayList<>();
+                                        jsonArray = new JSONArray(jsonObject.getString("installment"));
+                                        for (int i1 = 0; i1 < jsonArray.length(); i1++){
+                                            jsonObject = jsonArray.getJSONObject(i1);
+                                            Installment modelInstallment = new Installment();
+                                            modelInstallment.setJsonMember0(jsonObject.getString("0"));
+                                        }*/
+
+
                                     modelNotifikasiArrayList.add(modelNotifikasi1);
                                 }
                                 hashMap.put("list", modelNotifikasiArrayList);

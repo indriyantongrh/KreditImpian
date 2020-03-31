@@ -123,7 +123,7 @@ public class DetailNotifikasi extends AppCompatActivity {
         /// String total_pembayaran = intent.getStringExtra(ConstanHistoryPesanan.KEY_TOTAL_PEMBAYARAN);
         String courier = intent.getStringExtra(ConstanHistoryPesanan.KEY_COURIER);
 
-        Toast.makeText(DetailNotifikasi.this, "cek value "+price_capital, Toast.LENGTH_LONG).show();
+        ////Toast.makeText(DetailNotifikasi.this, "cek value "+price_capital, Toast.LENGTH_LONG).show();
 
 
         txt_status_pesanan.setText(status);

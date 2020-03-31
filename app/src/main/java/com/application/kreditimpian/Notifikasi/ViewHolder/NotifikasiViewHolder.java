@@ -31,6 +31,7 @@ public class NotifikasiViewHolder extends RecyclerView.ViewHolder {
             postal_code,
             name_city,
             name_district,
+            installment,
             payment_method,
             total_pembayaran,
             courier,text_image,
@@ -67,6 +68,9 @@ public class NotifikasiViewHolder extends RecyclerView.ViewHolder {
         courier = itemView.findViewById(R.id.courier);
         name_merchant = itemView.findViewById(R.id.name_merchant);
         text_image = itemView.findViewById(R.id.text_image);
+        installment = itemView.findViewById(R.id.installment);
+
+
         layoutKlik = itemView.findViewById(R.id.layoutKlik);
     }
 }

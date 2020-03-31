@@ -87,6 +87,7 @@ public class NotifikasiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             notifikasiViewHolder.payment_method.setText(modelNotifikasi.getPayment_method());
             notifikasiViewHolder.total_pembayaran.setText(modelNotifikasi.getTotal_pembayaran());
             notifikasiViewHolder.courier.setText(modelNotifikasi.getCourier());
+            ///notifikasiViewHolder.installment.setText(modelNotifikasi.getInstallment().getJsonMember0());
 
             holder.itemView.setOnClickListener(v -> onSeenClick.onSeenClick(modelNotifikasi.getIdNotifikasi(), notifikasiViewHolder));
         }else if (holder instanceof LoadingViewHolder) {

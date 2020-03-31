@@ -34,6 +34,7 @@
             <!--Cardview Harga barang-->
             <androidx.cardview.widget.CardView
                 android:id="@+id/CardHarga"
+                android:visibility="gone"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 app:cardElevation="6dp"
@@ -73,6 +74,32 @@
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
+            <!--EditText Harga barang-->
+            <RelativeLayout
+                android:layout_width="200dp"
+                android:layout_gravity="center"
+                android:background="@drawable/borderhitam"
+                android:backgroundTint="@color/colorOrange"
+                android:layout_height="55dp">
+
+                <TextView
+                    android:id="@+id/texthargaBarang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="#fff"
+                    android:text="Harga barang"
+                    android:textSize="10dp" />
+
+                <EditText
+                    android:id="@+id/edHargaBarang"
+                    android:inputType="number"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorwhite"
+                    android:layout_width="match_parent"
+                    android:layout_below="@+id/texthargaBarang"
+                    android:layout_height="match_parent"/>
+            </RelativeLayout>
 
             <!--Seeker bar simulasi-->
             <com.xw.repo.BubbleSeekBar
@@ -81,6 +108,7 @@
                 android:layout_height="wrap_content"
                 app:bsb_bubble_color="#CC1E90FF"
                 app:bsb_track_color="#FF6802"
+                android:visibility="gone"
                 app:bsb_bubble_text_color="#FF6802"
                 app:bsb_second_track_color="#BF1E90FF"
                 app:bsb_max="120000000"

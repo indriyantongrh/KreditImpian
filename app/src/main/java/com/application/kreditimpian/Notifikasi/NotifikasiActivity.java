@@ -23,6 +23,7 @@ import com.application.kreditimpian.FormPengajuan.UpgradeImpian.viewmodel.Upgrad
 import com.application.kreditimpian.FormPengajuan.UpgradeImpian.viewmodel.ViewModelFactory;
 import com.application.kreditimpian.Marketplace.FragSemuaKategori.RecyclerItemClickListener;
 import com.application.kreditimpian.MenuUtama.MenuUtama;
+import com.application.kreditimpian.Model.Installment;
 import com.application.kreditimpian.Model.ModelNotifikasi;
 import com.application.kreditimpian.Notifikasi.ViewHolder.NotifikasiViewHolder;
 import com.application.kreditimpian.R;
@@ -200,6 +201,12 @@ public class NotifikasiActivity extends AppCompatActivity implements View.OnClic
                             modelNotifikasi.setPayment_method(modelNotifikasis.get(i).getPayment_method());
                             modelNotifikasi.setTotal_pembayaran(modelNotifikasis.get(i).getTotal_pembayaran());
                             modelNotifikasi.setCourier(modelNotifikasis.get(i).getCourier());
+
+                            /*for (int i1 = index; i1 < end; i1++) {
+                                Installment modelInstallment = new Installment();
+                                modelInstallment.setJsonMember0(modelInstallment.getJsonMember0());
+                            }*/
+
                             modelNotifikasiArrayList.add(modelNotifikasi);
                             initDataIntent(modelNotifikasiArrayList);
                         }
