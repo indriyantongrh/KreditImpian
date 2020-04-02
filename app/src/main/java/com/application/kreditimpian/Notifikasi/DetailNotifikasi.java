@@ -84,9 +84,6 @@ public class DetailNotifikasi extends AppCompatActivity {
         String name_district = intent.getStringExtra(ConstanHistoryPesanan.KEY_NAME_DISTRICT);
         String postal_code = intent.getStringExtra(ConstanHistoryPesanan.KEY_POSTAL_CODE);
 
-       /* String price_capital = intent.getStringExtra(ConstanHistoryPesanan.KEY_PRICE_CAPITAL);
-        String price_sale = intent.getStringExtra(ConstanHistoryPesanan.KEY_PRICE_SALE);*/
-
         ///convert String to Rupiah Curerncy
         Locale localeID = new Locale("in", "ID");
         NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
@@ -104,11 +101,10 @@ public class DetailNotifikasi extends AppCompatActivity {
         String name_merchant = intent.getStringExtra(ConstanHistoryPesanan.KEY_NAME_MERCHANT);
         String name_company = intent.getStringExtra(ConstanHistoryPesanan.KEY_NAME_COMPANY);
         String tenor = intent.getStringExtra(ConstanHistoryPesanan.KEY_TENOR);
-        ///String down_payment = intent.getStringExtra(ConstanHistoryPesanan.KEY_DOWN_PAYMENT);
         int down_payment = (Integer.parseInt(intent.getStringExtra(ConstanHistoryPesanan.KEY_DOWN_PAYMENT)));
         String note = intent.getStringExtra(ConstanHistoryPesanan.KEY_NOTE);
 
-        /// String postal_fee = intent.getStringExtra(ConstanHistoryPesanan.KEY_POSTAL_FEE);
+
         int postal_fee = (Integer.parseInt(intent.getStringExtra(ConstanHistoryPesanan.KEY_POSTAL_FEE)));
         /*String address_label = intent.getStringExtra(ConstanHistoryPesanan.KEY_ADDRESS_LABEL);
         String receiver = intent.getStringExtra(ConstanHistoryPesanan.KEY_RECEIVER);
@@ -117,23 +113,18 @@ public class DetailNotifikasi extends AppCompatActivity {
         String district = intent.getStringExtra(ConstanHistoryPesanan.KEY_DISTRICT);
         String address = intent.getStringExtra(ConstanHistoryPesanan.KEY_ADDRESS);*/
         String payment_method = intent.getStringExtra(ConstanHistoryPesanan.KEY_PAYMENT_METHOD);
-        //String installment = intent.getStringExtra(ConstanHistoryPesanan.KEY_INSTALLMENT);
-        ///int installment = (Integer.parseInt(intent.getStringExtra(ConstanHistoryPesanan.KEY_INSTALLMENT)));
+        int installment = (Integer.parseInt(intent.getStringExtra(ConstanHistoryPesanan.KEY_INSTALLMENT)));
         int total_pembayaran = (Integer.parseInt(intent.getStringExtra(ConstanHistoryPesanan.KEY_TOTAL_PEMBAYARAN)));
-        /// String total_pembayaran = intent.getStringExtra(ConstanHistoryPesanan.KEY_TOTAL_PEMBAYARAN);
         String courier = intent.getStringExtra(ConstanHistoryPesanan.KEY_COURIER);
 
-        ////Toast.makeText(DetailNotifikasi.this, "cek value "+price_capital, Toast.LENGTH_LONG).show();
-
-
+        //set to textView using String
         txt_status_pesanan.setText(status);
         txt_nama_mitra.setText(name_company);
         txt_name_product.setText(name);
         txt_nomor_invoice.setText("Order ID #"+number);
-        /*txt_price_capital.setText(price_capital);
-        txt_price_sale.setText(price_sale);*/
+
         tvDownpayment.setText(formatRupiah.format(down_payment));
-        ///tvInstallment.setText(formatRupiah.format(installment)+" /bulan");
+        tvInstallment.setText(formatRupiah.format(installment)+" /bulan");
         tvOngkoskirim.setText(formatRupiah.format(postal_fee));
         tvKurir.setText(courier);
         tvPaymentMethod.setText(payment_method);
@@ -147,7 +138,9 @@ public class DetailNotifikasi extends AppCompatActivity {
                 .error(R.drawable.no_image)
                 .into(image);
 
+        ///Toast.makeText(DetailNotifikasi.this, "Installment "+installment, Toast.LENGTH_LONG).show();
     }
+
 
     @Override
     public void onBackPressed() {

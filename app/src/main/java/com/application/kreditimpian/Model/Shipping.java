@@ -12,6 +12,7 @@ public class Shipping implements Parcelable {
 	@SerializedName("send")
 	private Send send;
 
+
 	public void setSend(Send send){
 		this.send = send;
 	}

@@ -28,6 +28,8 @@ import com.application.kreditimpian.Model.ModelNotifikasi;
 import com.application.kreditimpian.Notifikasi.ViewHolder.NotifikasiViewHolder;
 import com.application.kreditimpian.R;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -202,10 +204,15 @@ public class NotifikasiActivity extends AppCompatActivity implements View.OnClic
                             modelNotifikasi.setTotal_pembayaran(modelNotifikasis.get(i).getTotal_pembayaran());
                             modelNotifikasi.setCourier(modelNotifikasis.get(i).getCourier());
 
-                            /*for (int i1 = index; i1 < end; i1++) {
-                                Installment modelInstallment = new Installment();
-                                modelInstallment.setJsonMember0(modelInstallment.getJsonMember0());
-                            }*/
+
+
+                            /*Installment modelInstallment = new Installment();
+                            modelInstallment.setJsonMember0(modelInstallment.getJsonMember0());*/
+                            modelNotifikasi.setInstallment(modelNotifikasis.get(i).getInstallment());
+                            // data ne sing nampilke instalment ora daadi siji to??
+                            //sing ning respone ? ho oh
+
+
 
                             modelNotifikasiArrayList.add(modelNotifikasi);
                             initDataIntent(modelNotifikasiArrayList);
@@ -270,6 +277,15 @@ public class NotifikasiActivity extends AppCompatActivity implements View.OnClic
                         modelNotifikasi.setPayment_method(modelNotifikasis.get(i).getPayment_method());
                         modelNotifikasi.setTotal_pembayaran(modelNotifikasis.get(i).getTotal_pembayaran());
                         modelNotifikasi.setCourier(modelNotifikasis.get(i).getCourier());
+
+
+                        modelNotifikasi.setInstallment(modelNotifikasis.get(i).getInstallment());
+
+                        /*Installment modelInstallment = new Installment();
+                        modelInstallment.setJsonMember0(modelInstallment.getJsonMember0());
+                        Log.v("jajalLemparInstallment", modelInstallment.getJsonMember0()+"");*/
+
+
                         modelNotifikasiArrayList.add(modelNotifikasi);
                         initDataIntent(modelNotifikasiArrayList);
                     }
@@ -340,7 +356,7 @@ public class NotifikasiActivity extends AppCompatActivity implements View.OnClic
                         String district = modelNotifikasiArrayList.get(position).getShipping().getSend().getDistrict();
                         String address = modelNotifikasiArrayList.get(position).getShipping().getSend().getAddress();*/
                         String payment_method = modelNotifikasiArrayList.get(position).getPayment_method();
-                        /// String installment = modelNotifikasiArrayList.get(position).getInstallment().getJsonMember0();
+                         String installment = modelNotifikasiArrayList.get(position).getInstallment().getJsonMember0();
                         String total_pembayaran = modelNotifikasiArrayList.get(position).getTotal_pembayaran();
                         String courier = modelNotifikasiArrayList.get(position).getCourier();
                         String name_city = modelNotifikasiArrayList.get(position).getName_city();
@@ -384,7 +400,7 @@ public class NotifikasiActivity extends AppCompatActivity implements View.OnClic
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_DISTRICT, district);
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_ADDRESS, address);*/
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_PAYMENT_METHOD, payment_method);
-                        ////detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_INSTALLMENT, installment);
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_INSTALLMENT, installment);
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_TOTAL_PEMBAYARAN, total_pembayaran);
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_COURIER, courier);
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_NAME_CITY, name_city);

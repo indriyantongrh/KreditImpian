@@ -30,14 +30,19 @@ public class ModelNotifikasi implements Parcelable {
     private String payment_method;
     private String total_pembayaran;
     private String number;
+    @SerializedName("shipping")
+    private Send send;
 
-    public Shipping getShipping() {
-        return shipping;
+    public Send getSend() {
+        return send;
     }
 
-    public void setShipping(Shipping shipping) {
-        this.shipping = shipping;
+    public void setSend(Send send) {
+        this.send = send;
     }
+
+    @SerializedName("installment")
+    private Installment installment;
 
     public Installment getInstallment() {
         return installment;
@@ -47,11 +52,7 @@ public class ModelNotifikasi implements Parcelable {
         this.installment = installment;
     }
 
-    @SerializedName("shipping")
-    private Shipping shipping;
 
-    @SerializedName("installment")
-    private Installment installment;
 
     public String getMetadata() {
         return metadata;
@@ -281,6 +282,8 @@ public class ModelNotifikasi implements Parcelable {
         dest.writeString(this.payment_method);
         dest.writeString(this.total_pembayaran);
         dest.writeString(this.number);
+        dest.writeParcelable(this.send, flags);
+        dest.writeParcelable(this.installment, flags);
         dest.writeString(this.courier);
     }
 
@@ -308,6 +311,8 @@ public class ModelNotifikasi implements Parcelable {
         this.payment_method = in.readString();
         this.total_pembayaran = in.readString();
         this.number = in.readString();
+        this.send = in.readParcelable(Send.class.getClassLoader());
+        this.installment = in.readParcelable(Installment.class.getClassLoader());
         this.courier = in.readString();
     }
 

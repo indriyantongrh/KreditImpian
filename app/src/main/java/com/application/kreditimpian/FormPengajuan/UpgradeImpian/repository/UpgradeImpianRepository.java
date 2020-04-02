@@ -20,6 +20,7 @@ import com.application.kreditimpian.Model.ModelUpgradeImpian.ModelPinjaman;
 import com.application.kreditimpian.Model.ModelUpgradeImpian.ModelUpgradeImpian;
 import com.application.kreditimpian.Model.Send;
 import com.application.kreditimpian.Model.Shipping;
+import com.google.gson.JsonArray;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -406,7 +407,7 @@ public class UpgradeImpianRepository {
                         jsonObject = new JSONObject(responses);
                         HashMap<String, Object> hashMap = new HashMap<>();
                         hashMap.put("code", jsonObject.getString("response_code"));
-                        Log.v("jajal", jsonObject+"");
+                        Log.v("jajalNotifikasi", jsonObject+"");
                         if (jsonObject.getString("response_code").equals("200")) {
                             ArrayList<ModelNotifikasi> modelNotifikasiArrayList = new ArrayList<>();
 //                            Object json = new JSONTokener(jsonObject.getString("data")).nextValue();
@@ -439,26 +440,29 @@ public class UpgradeImpianRepository {
                                     modelNotifikasi1.setTotal_pembayaran(jsonObject.getString("total_pembayaran"));
                                     modelNotifikasi1.setCourier(jsonObject.getString("courier"));
 
-
-                                    /*Shipping modelShipping = new Shipping();
-
-                                    Send modelSend = new Send();
-                                    modelSend.setAddressLabel(jsonObject.getString("address_label"));
-                                    modelSend.setReceiver(jsonObject.getString("receiver"));
-                                    modelSend.setMobile(jsonObject.getString("mobile"));
-                                    modelSend.setCity(jsonObject.getString("city"));
-                                    modelSend.setDistrict(jsonObject.getString("district"));
-                                    modelSend.setAddress(jsonObject.getString("address"));
-                                    modelSend.setPostalCode(jsonObject.getString("postal_code"));*/
+                                    //get Object Instalment
+                                    JSONObject getInstallment = jsonObject.getJSONObject("installment");
+                                    Installment modelInstallment = new Installment();
+                                    modelInstallment.setJsonMember0(getInstallment.getString("0"));
+                                    modelNotifikasi1.setInstallment(modelInstallment); // jajal di run
+                                    //wait
+                                    Log.v("jajalInstallment", getInstallment.getString("0")+"");
 
 
-                                        /*installmentItemArrayList = new ArrayList<>();
-                                        jsonArray = new JSONArray(jsonObject.getString("installment"));
-                                        for (int i1 = 0; i1 < jsonArray.length(); i1++){
-                                            jsonObject = jsonArray.getJSONObject(i1);
-                                            Installment modelInstallment = new Installment();
-                                            modelInstallment.setJsonMember0(jsonObject.getString("0"));
-                                        }*/
+                                    ///getAddreess send
+                                    JSONObject getship = jsonObject.getJSONObject("shipping");
+                                    getship = getship.getJSONObject("send");
+                                    Send send = new Send();
+                                    send.setCity(getship.getString("city"));
+                                    send.setAddressLabel(getship.getString("address_label"));
+                                    send.setReceiver(getship.getString("receiver"));
+                                    send.setMobile(getship.getString("mobile"));
+                                    send.setCity(getship.getString("city"));
+                                    send.setDistrict(getship.getString("district"));
+                                    send.setAddress(getship.getString("address"));
+                                    send.setPostalCode(getship.getString("postal_code"));
+                                    modelNotifikasi1.setSend(send);
+                                    Log.v("jajalSend", getship.getString("city")+"");
 
 
                                     modelNotifikasiArrayList.add(modelNotifikasi1);

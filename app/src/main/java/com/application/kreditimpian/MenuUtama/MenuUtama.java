@@ -149,6 +149,7 @@ public class MenuUtama extends AppCompatActivity {
 
                     AlertDialog alertDialog = new AlertDialog.Builder(MenuUtama.this).create();
                     alertDialog.setTitle("Info");
+                    alertDialog.setCancelable(false);
                     alertDialog.setMessage("Lengkapi data diri anda sebelum bertransaksi. Dan ayo wujudkan impian anda!");
                     alertDialog.setIcon(R.drawable.alert);
                     alertDialog.setButton("Lengkapi Sekarang", new DialogInterface.OnClickListener() {
