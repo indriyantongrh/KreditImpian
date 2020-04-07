@@ -76,7 +76,14 @@ public class FragmentSimulasiGadget extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 //((TextView) parentView.getChildAt(0)).setTextColor(Color.WHITE);
-                if (spinneruangmuka.getSelectedItem().equals("Uang muka")) {
+                String st =spinneruangmuka.getSelectedItem().toString();
+                int pos =spinneruangmuka.getSelectedItemPosition();
+                String hargaBrg = edHargaBarang.getText().toString();
+
+                if(hargaBrg.isEmpty()){
+                    Toast.makeText(getActivity(), "Masukan harga barang", Toast.LENGTH_LONG).show();
+                }
+                else if (spinneruangmuka.getSelectedItem().equals("Uang muka")) {
                     Toast.makeText(getActivity(), "Uang muka diisi terlebih dahulu", Toast.LENGTH_LONG).show();
                 } else if (spinnertenor.getSelectedItem().equals("6 bulan")) {
                     ///Toast.makeText(getActivity(), "Pilih Unag muka terlebih dahulu", Toast.LENGTH_LONG).show();

@@ -1,9 +1,8 @@
-package com.application.kreditimpian.Model;
+package com.application.kreditimpian.Model.ModelNotifikasi;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import com.application.kreditimpian.Model.Shipping;
-import com.application.kreditimpian.Model.Installment;
+
 import com.google.gson.annotations.SerializedName;
 
 public class ModelNotifikasi implements Parcelable {
@@ -30,6 +29,17 @@ public class ModelNotifikasi implements Parcelable {
     private String payment_method;
     private String total_pembayaran;
     private String number;
+    private String postal_code;
+
+    public String getPostal_code() {
+        return postal_code;
+    }
+
+    public void setPostal_code(String postal_code) {
+        this.postal_code = postal_code;
+    }
+
+
     @SerializedName("shipping")
     private Send send;
 
@@ -282,6 +292,7 @@ public class ModelNotifikasi implements Parcelable {
         dest.writeString(this.payment_method);
         dest.writeString(this.total_pembayaran);
         dest.writeString(this.number);
+        dest.writeString(this.postal_code);
         dest.writeParcelable(this.send, flags);
         dest.writeParcelable(this.installment, flags);
         dest.writeString(this.courier);
@@ -311,6 +322,7 @@ public class ModelNotifikasi implements Parcelable {
         this.payment_method = in.readString();
         this.total_pembayaran = in.readString();
         this.number = in.readString();
+        this.postal_code = in.readString();
         this.send = in.readParcelable(Send.class.getClassLoader());
         this.installment = in.readParcelable(Installment.class.getClassLoader());
         this.courier = in.readString();

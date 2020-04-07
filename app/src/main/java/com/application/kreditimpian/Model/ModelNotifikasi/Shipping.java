@@ -1,4 +1,4 @@
-package com.application.kreditimpian.Model;
+package com.application.kreditimpian.Model.ModelNotifikasi;
 
 
 import android.os.Parcel;

@@ -1,7 +1,6 @@
 package com.application.kreditimpian.Notifikasi;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.application.kreditimpian.Model.ModelNotifikasi;
+import com.application.kreditimpian.Model.ModelNotifikasi.ModelNotifikasi;
 import com.application.kreditimpian.Notifikasi.ViewHolder.LoadingViewHolder;
 import com.application.kreditimpian.Notifikasi.ViewHolder.NotifikasiViewHolder;
 import com.application.kreditimpian.R;
@@ -60,6 +59,7 @@ public class NotifikasiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             notifikasiViewHolder.txtTglNotif.setText(modelNotifikasi.getTgl());
             if (modelNotifikasi.getStatus().equals("UNSEEN")) {
                 notifikasiViewHolder.layoutKlik.setBackgroundColor(ContextCompat.getColor(context, R.color.colorOrangetransparent));
+              /// notifikasiViewHolder.layoutKlik.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.notification_unseen));
             } else{
                 notifikasiViewHolder.layoutKlik.setBackgroundColor(ContextCompat.getColor(context, R.color.white));
             }
@@ -90,6 +90,21 @@ public class NotifikasiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
             String jsonMember = modelNotifikasi.getInstallment().getJsonMember0();
             notifikasiViewHolder.installment.setText(jsonMember);
+
+            String labelname = modelNotifikasi.getSend().getAddressLabel();
+            notifikasiViewHolder.address_label.setText(labelname);
+
+            String address = modelNotifikasi.getSend().getAddress();
+            notifikasiViewHolder.address.setText(address);
+
+            String receiver = modelNotifikasi.getSend().getReceiver();
+            notifikasiViewHolder.receiver.setText(receiver);
+
+            String mobile = modelNotifikasi.getSend().getMobile();
+            notifikasiViewHolder.mobile.setText(mobile);
+
+            String postal_code = modelNotifikasi.getPostal_code();
+            notifikasiViewHolder.postal_code.setText(postal_code);
 
             holder.itemView.setOnClickListener(v -> onSeenClick.onSeenClick(modelNotifikasi.getIdNotifikasi(), notifikasiViewHolder));
         }else if (holder instanceof LoadingViewHolder) {

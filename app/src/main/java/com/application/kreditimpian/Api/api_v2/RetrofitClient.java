@@ -71,8 +71,8 @@ public class RetrofitClient {
     public static Retrofit getClient(String baseUrl){
 
         OkHttpClient.Builder okhttpBuilder = new OkHttpClient.Builder()
-                .readTimeout(120, TimeUnit.SECONDS)
-                .connectTimeout(120, TimeUnit.SECONDS);
+                .readTimeout(240, TimeUnit.SECONDS)
+                .connectTimeout(240, TimeUnit.SECONDS);
         okhttpBuilder.addInterceptor(new Interceptor() {
             @NotNull
             @Override

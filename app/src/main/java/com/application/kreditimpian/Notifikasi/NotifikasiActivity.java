@@ -23,12 +23,9 @@ import com.application.kreditimpian.FormPengajuan.UpgradeImpian.viewmodel.Upgrad
 import com.application.kreditimpian.FormPengajuan.UpgradeImpian.viewmodel.ViewModelFactory;
 import com.application.kreditimpian.Marketplace.FragSemuaKategori.RecyclerItemClickListener;
 import com.application.kreditimpian.MenuUtama.MenuUtama;
-import com.application.kreditimpian.Model.Installment;
-import com.application.kreditimpian.Model.ModelNotifikasi;
+import com.application.kreditimpian.Model.ModelNotifikasi.ModelNotifikasi;
 import com.application.kreditimpian.Notifikasi.ViewHolder.NotifikasiViewHolder;
 import com.application.kreditimpian.R;
-
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -203,7 +200,9 @@ public class NotifikasiActivity extends AppCompatActivity implements View.OnClic
                             modelNotifikasi.setPayment_method(modelNotifikasis.get(i).getPayment_method());
                             modelNotifikasi.setTotal_pembayaran(modelNotifikasis.get(i).getTotal_pembayaran());
                             modelNotifikasi.setCourier(modelNotifikasis.get(i).getCourier());
-
+                            modelNotifikasi.setName_city(modelNotifikasis.get(i).getName_city());
+                            modelNotifikasi.setName_district(modelNotifikasis.get(i).getName_district());
+                            modelNotifikasi.setSend(modelNotifikasis.get(i).getSend());
 
 
                             /*Installment modelInstallment = new Installment();
@@ -211,6 +210,7 @@ public class NotifikasiActivity extends AppCompatActivity implements View.OnClic
                             modelNotifikasi.setInstallment(modelNotifikasis.get(i).getInstallment());
                             // data ne sing nampilke instalment ora daadi siji to??
                             //sing ning respone ? ho oh
+                            modelNotifikasi.setSend(modelNotifikasis.get(i).getSend());
 
 
 
@@ -278,12 +278,18 @@ public class NotifikasiActivity extends AppCompatActivity implements View.OnClic
                         modelNotifikasi.setTotal_pembayaran(modelNotifikasis.get(i).getTotal_pembayaran());
                         modelNotifikasi.setCourier(modelNotifikasis.get(i).getCourier());
 
+                        /*alamat*/
+                        modelNotifikasi.setName_city(modelNotifikasis.get(i).getName_city());
+                        modelNotifikasi.setName_district(modelNotifikasis.get(i).getName_district());
+
 
                         modelNotifikasi.setInstallment(modelNotifikasis.get(i).getInstallment());
 
                         /*Installment modelInstallment = new Installment();
                         modelInstallment.setJsonMember0(modelInstallment.getJsonMember0());
                         Log.v("jajalLemparInstallment", modelInstallment.getJsonMember0()+"");*/
+
+                        modelNotifikasi.setSend(modelNotifikasis.get(i).getSend());
 
 
                         modelNotifikasiArrayList.add(modelNotifikasi);
@@ -349,19 +355,19 @@ public class NotifikasiActivity extends AppCompatActivity implements View.OnClic
                         String down_payment = modelNotifikasiArrayList.get(position).getDown_payment();
                         String note = modelNotifikasiArrayList.get(position).getNote();
                         String postal_fee = modelNotifikasiArrayList.get(position).getPostal_fee();
-                       /* String address_label = modelNotifikasiArrayList.get(position).getShipping().getSend().getAddressLabel();
-                        String receiver = modelNotifikasiArrayList.get(position).getShipping().getSend().getReceiver();
-                        String mobile = modelNotifikasiArrayList.get(position).getShipping().getSend().getMobile();
-                        String city = modelNotifikasiArrayList.get(position).getShipping().getSend().getCity();
-                        String district = modelNotifikasiArrayList.get(position).getShipping().getSend().getDistrict();
-                        String address = modelNotifikasiArrayList.get(position).getShipping().getSend().getAddress();*/
+                        String address_label = modelNotifikasiArrayList.get(position).getSend().getAddressLabel();
+                        String receiver = modelNotifikasiArrayList.get(position).getSend().getReceiver();
+                        String mobile = modelNotifikasiArrayList.get(position).getSend().getMobile();
+                        String city = modelNotifikasiArrayList.get(position).getSend().getCity();
+                        String district = modelNotifikasiArrayList.get(position).getSend().getDistrict();
+                        String address = modelNotifikasiArrayList.get(position).getSend().getAddress();
                         String payment_method = modelNotifikasiArrayList.get(position).getPayment_method();
                          String installment = modelNotifikasiArrayList.get(position).getInstallment().getJsonMember0();
                         String total_pembayaran = modelNotifikasiArrayList.get(position).getTotal_pembayaran();
                         String courier = modelNotifikasiArrayList.get(position).getCourier();
                         String name_city = modelNotifikasiArrayList.get(position).getName_city();
                         String name_district = modelNotifikasiArrayList.get(position).getName_district();
-                        /// String postal_code = modelNotifikasiArrayList.get(position).getShipping().getSend().getPostalCode();
+                         String postal_code = modelNotifikasiArrayList.get(position).getSend().getPostalCode();
 
                         Intent detailNotifikasi = new Intent(NotifikasiActivity.this, DetailNotifikasi.class);
 
@@ -376,13 +382,7 @@ public class NotifikasiActivity extends AppCompatActivity implements View.OnClic
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_STOCK, stock);*/
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_PRICE_CAPITAL, price_capital);
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_PRICE_SALE, price_sale);
-                        /*detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_DISCOUNT, discount);
-                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_CONDITION, condition);
-                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_DELIVERABLE, deliverable);
-                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_DOWNLOADABLE, downloadable);
-                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_TARGET_GENDER, target_gender);
-                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_TARGET_AGE, target_age);
-                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_VISIBILITY, visibility);*/
+
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_FILENAME, filename);
                         ///detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_ID_MERCHANT, id_merchant);
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_NAME_MERCHANT, name_merchant);
@@ -393,19 +393,19 @@ public class NotifikasiActivity extends AppCompatActivity implements View.OnClic
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_NOTE, note);
                         // detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_ID_CREDITOR, id_creditor);
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_POSTAL_FEE, postal_fee);
-                        /*detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_ADDRESS_LABEL, address_label);
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_ADDRESS_LABEL, address_label);
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_RECEIVER, receiver);
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_MOBILE, mobile);
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_CITY, city);
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_DISTRICT, district);
-                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_ADDRESS, address);*/
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_ADDRESS, address);
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_PAYMENT_METHOD, payment_method);
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_INSTALLMENT, installment);
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_TOTAL_PEMBAYARAN, total_pembayaran);
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_COURIER, courier);
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_NAME_CITY, name_city);
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_NAME_DISTRICT, name_district);
-                        ///detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_POSTAL_CODE, postal_code);
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_POSTAL_CODE, postal_code);
 
                         startActivity(detailNotifikasi);
                         finish();

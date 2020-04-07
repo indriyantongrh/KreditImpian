@@ -106,12 +106,12 @@ public class DetailNotifikasi extends AppCompatActivity {
 
 
         int postal_fee = (Integer.parseInt(intent.getStringExtra(ConstanHistoryPesanan.KEY_POSTAL_FEE)));
-        /*String address_label = intent.getStringExtra(ConstanHistoryPesanan.KEY_ADDRESS_LABEL);
+        String address_label = intent.getStringExtra(ConstanHistoryPesanan.KEY_ADDRESS_LABEL);
         String receiver = intent.getStringExtra(ConstanHistoryPesanan.KEY_RECEIVER);
         String mobile = intent.getStringExtra(ConstanHistoryPesanan.KEY_MOBILE);
         String city = intent.getStringExtra(ConstanHistoryPesanan.KEY_CITY);
         String district = intent.getStringExtra(ConstanHistoryPesanan.KEY_DISTRICT);
-        String address = intent.getStringExtra(ConstanHistoryPesanan.KEY_ADDRESS);*/
+        String address = intent.getStringExtra(ConstanHistoryPesanan.KEY_ADDRESS);
         String payment_method = intent.getStringExtra(ConstanHistoryPesanan.KEY_PAYMENT_METHOD);
         int installment = (Integer.parseInt(intent.getStringExtra(ConstanHistoryPesanan.KEY_INSTALLMENT)));
         int total_pembayaran = (Integer.parseInt(intent.getStringExtra(ConstanHistoryPesanan.KEY_TOTAL_PEMBAYARAN)));
@@ -138,7 +138,9 @@ public class DetailNotifikasi extends AppCompatActivity {
                 .error(R.drawable.no_image)
                 .into(image);
 
-        ///Toast.makeText(DetailNotifikasi.this, "Installment "+installment, Toast.LENGTH_LONG).show();
+        tvAlamatPengiriman.setText(""+address_label+"\n"+"Nama penerima : " +receiver+ "\n" + "Alamat :" +address+ "\n" +name_district+" , "+name_city+"\n"+"Koder pos : "+postal_code+"\n"+mobile);
+
+        Toast.makeText(DetailNotifikasi.this, "Address Label "+address_label, Toast.LENGTH_LONG).show();
     }
 
 

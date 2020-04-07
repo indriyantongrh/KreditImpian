@@ -2,22 +2,18 @@ package com.application.kreditimpian.Beranda;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
-import android.net.Network;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -30,7 +26,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -66,7 +61,7 @@ import com.application.kreditimpian.Model.ModelMerchant.ResponseMerchant;
 import com.application.kreditimpian.Model.ModelMerchant.ResultItem;
 import com.application.kreditimpian.Model.ModelMitra;
 
-import com.application.kreditimpian.Model.ModelNotifikasi;
+import com.application.kreditimpian.Model.ModelNotifikasi.ModelNotifikasi;
 import com.application.kreditimpian.Notifikasi.NotifikasiActivity;
 import com.application.kreditimpian.R;
 import com.application.kreditimpian.TransactionProcess.Cart;
@@ -75,7 +70,6 @@ import com.application.kreditimpian._sliders.SliderIndicator;
 import com.application.kreditimpian._sliders.SliderPagerAdapter;
 import com.application.kreditimpian._sliders.SliderView;
 import com.facebook.shimmer.ShimmerFrameLayout;
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

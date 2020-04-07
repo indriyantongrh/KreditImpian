@@ -8,24 +8,19 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
-import com.application.kreditimpian.Model.Installment;
-import com.application.kreditimpian.Model.ModelCicilan.CompaniesDataItem;
-import com.application.kreditimpian.Model.ModelCicilan.DataCicilanItem;
-import com.application.kreditimpian.Model.ModelMitra;
-import com.application.kreditimpian.Model.ModelNotifikasi;
+import com.application.kreditimpian.Model.ModelNotifikasi.Installment;
+import com.application.kreditimpian.Model.ModelNotifikasi.ModelNotifikasi;
 import com.application.kreditimpian.Model.ModelProductNew.Category;
 import com.application.kreditimpian.Model.ModelUpgradeImpian.ModelMitraMultiguna;
 import com.application.kreditimpian.Model.ModelUpgradeImpian.ModelMitraPinjaman;
 import com.application.kreditimpian.Model.ModelUpgradeImpian.ModelPinjaman;
 import com.application.kreditimpian.Model.ModelUpgradeImpian.ModelUpgradeImpian;
-import com.application.kreditimpian.Model.Send;
-import com.application.kreditimpian.Model.Shipping;
-import com.google.gson.JsonArray;
+import com.application.kreditimpian.Model.ModelNotifikasi.Send;
+import com.application.kreditimpian.Model.ModelNotifikasi.Shipping;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.JSONTokener;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -439,6 +434,8 @@ public class UpgradeImpianRepository {
                                     modelNotifikasi1.setPayment_method(jsonObject.getString("payment_method"));
                                     modelNotifikasi1.setTotal_pembayaran(jsonObject.getString("total_pembayaran"));
                                     modelNotifikasi1.setCourier(jsonObject.getString("courier"));
+                                    modelNotifikasi1.setName_city(jsonObject.getString("name_city"));
+                                    modelNotifikasi1.setName_district(jsonObject.getString("name_district"));
 
                                     //get Object Instalment
                                     JSONObject getInstallment = jsonObject.getJSONObject("installment");
