@@ -130,24 +130,7 @@ public class DetailProduct extends AppCompatActivity {
         String id_member = sharedPrefManager.getSpIdMember();
         final ResultItem resultItem = new ResultItem();
 
-//        id = getIntent().getStringExtra("id");
-//        id_product_category = getIntent().getStringExtra("id_product_category");
-//        id_currency = getIntent().getStringExtra("id_currency");
-//        nameProduct = getIntent().getStringExtra("name");
-//        price_capital = getIntent().getStringExtra("price_capital");
-//        price_sale = getIntent().getStringExtra("price_sale");
-//        description = getIntent().getStringExtra("description");
-//        condition = getIntent().getStringExtra("condition");
-//        stock = getIntent().getStringExtra("stock");
-//        imageProduct = getIntent().getStringExtra("image");
-//        weight_value = getIntent().getStringExtra("weight_value");
-//        weight = getIntent().getStringExtra("weight");
-//        nameMerchant = getIntent().getStringExtra("name");
-//        city = getIntent().getStringExtra("city");
-//        ///imageMerchant = getIntent().getStringExtra("image");
-//
-//
-//
+
         Intent intent = getIntent();
         id = intent.getStringExtra(Constans.KEY_ID);
         id_currency = intent.getStringExtra(Constans.KEY_ID_CURRENCY);
@@ -185,12 +168,8 @@ public class DetailProduct extends AppCompatActivity {
         txt_price_capital.setText(formatRupiah.format(price_capital));
         txt_price_sale.setText(formatRupiah.format(price_sale));
 
-//        if (txt_price_capital.getVisibility() == View.GONE) {
-//           price_capital == price_sale;
-//        }
 
 
-        ///txt_description.loadDataWithBaseURL(null, String.valueOf(Html.fromHtml(getIntent().getStringExtra("description"))), "text/html", "utf-8", null);
         txt_description.loadDataWithBaseURL(null, description, "text/html", "utf-8", null);
         txt_condition.setText(condition);
         txt_stock.setText(stock);
@@ -205,14 +184,7 @@ public class DetailProduct extends AppCompatActivity {
         txt_weight_value.setText(weight_value + weight);
         txt_name_merchant.setText(nameMerchant);
         txt_location_merchant.setText(city);
-/*
-        txt_image_merchant.setText(imageMerchant);
-        Glide.with(DetailProduct.this)
-                .load(imageMerchant)
-                .placeholder(R.drawable.store)
-                .error(R.drawable.store)
-                .into(imagemerchant);
-*/
+
 
         btnBelisekarang.setOnClickListener(new View.OnClickListener() {
             @Override
