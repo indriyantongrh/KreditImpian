@@ -358,7 +358,7 @@ public class FragmentBeranda extends Fragment {
                     }
                 }
                 if (totalnotif > 0) {
-                    menu.getItem(1).setIcon(ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.ic_notifikasi_unseen));
+                    menu.getItem(1).setIcon(ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.notification_unseen));
                 }
             }
         });

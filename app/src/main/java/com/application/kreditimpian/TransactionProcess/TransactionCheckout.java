@@ -181,7 +181,8 @@ public class TransactionCheckout extends AppCompatActivity {
                 .placeholder(R.drawable.no_image)
                 .error(R.drawable.no_image)
                 .into(image);
-        ///Toast.makeText(TransactionCheckout.this, "cek id member "+id_member, Toast.LENGTH_LONG).show();
+        Toast.makeText(TransactionCheckout.this, "Value Downpayment"+downpayment, Toast.LENGTH_LONG).show();
+        Toast.makeText(TransactionCheckout.this, "Value Installment"+tenor, Toast.LENGTH_LONG).show();
 
 
 
