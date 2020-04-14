@@ -35,6 +35,19 @@ public class Category{
 	@SerializedName("slug")
 	private String slug;
 
+
+	@SerializedName("method")
+	private String method;
+
+
+	public String getMethod() {
+		return method;
+	}
+
+	public void setMethod(String method) {
+		this.method = method;
+	}
+
 	public void setImage(String image){
 		this.image = image;
 	}

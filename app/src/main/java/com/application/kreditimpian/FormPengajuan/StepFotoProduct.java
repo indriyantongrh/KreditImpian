@@ -226,6 +226,7 @@ public class StepFotoProduct extends AppCompatActivity implements View.OnClickLi
             category.setSlug(sumberPesanan);
             category.setDescription(deskripsi);
             category.setImage(getStringImage(decoded));
+            category.setMethod("foto");
 
             upgradeImpianViewModel.setCategory(category);
             upgradeImpianViewModel.uploadFotoImpian().observe(this, s -> {

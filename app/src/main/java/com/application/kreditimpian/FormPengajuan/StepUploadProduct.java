@@ -204,6 +204,7 @@ public class StepUploadProduct extends AppCompatActivity implements View.OnClick
             category.setSlug(sumberPesanan);
             category.setDescription(deskripsi);
             category.setImage(getStringImage(decoded));
+            category.setMethod("upload");
 
             upgradeImpianViewModel.setCategory(category);
             upgradeImpianViewModel.uploadFotoImpian().observe(this, s -> {

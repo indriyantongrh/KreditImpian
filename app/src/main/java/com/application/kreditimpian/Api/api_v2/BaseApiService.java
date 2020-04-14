@@ -382,7 +382,8 @@ public interface BaseApiService {
             @Field("id_category") String id_category,
             @Field("sumber_pesanan") String sumber_pesanan,
             @Field("description") String description,
-            @Field("product_img") String product_img
+            @Field("product_img") String product_img,
+            @Field("method") String method
     );
 
     @FormUrlEncoded

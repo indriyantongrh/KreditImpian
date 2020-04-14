@@ -126,6 +126,7 @@ public class StepIsiCariProduct extends AppCompatActivity implements AdapterView
             category.setSlug(sumberPesanan);
             category.setDescription(deskripsi);
             category.setImage("");
+            category.setMethod("link");
 
             upgradeImpianViewModel.setCategory(category);
             upgradeImpianViewModel.uploadFotoImpian().observe(this, s -> {

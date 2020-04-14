@@ -359,7 +359,8 @@ public class UpgradeImpianRepository {
                 category.getId(),
                 category.getSlug(),
                 String.valueOf(category.getDescription()),
-                category.getImage()
+                category.getImage(),
+                category.getMethod()
         );
         responseBodyCall.enqueue(new Callback<ResponseBody>() {
             @Override
