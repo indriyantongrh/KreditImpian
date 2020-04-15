@@ -11,24 +11,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.application.kreditimpian.Adapter.AdapterHistoryTransaction;
-import com.application.kreditimpian.Akun.DataDiri;
 import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
 import com.application.kreditimpian.Constan.ConstanHistoryPesanan;
-import com.application.kreditimpian.Constan.Constans;
 import com.application.kreditimpian.Marketplace.FragSemuaKategori.RecyclerItemClickListener;
-import com.application.kreditimpian.Model.ModelHistoryPesanan.ResponseHistoryPesanan;
 
 import com.application.kreditimpian.Model.ModelNewHistoryPesanan.DataItem;
 import com.application.kreditimpian.Model.ModelNewHistoryPesanan.ResponseNewHistoryPesanan;
 import com.application.kreditimpian.R;
-import com.application.kreditimpian.TransactionProcess.Cart;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -40,7 +35,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HistoryPesanan extends AppCompatActivity {
+public class RiwayatPesanan extends AppCompatActivity {
 
     SharedPrefManager sharedPrefManager;
 
@@ -61,11 +56,11 @@ public class HistoryPesanan extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_history_pesanan);
+        setContentView(R.layout.activity_riwayat_pesanan);
         setActionBarTitle("History Pesanan");
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);// set drawable icon
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        sharedPrefManager = new SharedPrefManager(HistoryPesanan.this);
+        sharedPrefManager = new SharedPrefManager(RiwayatPesanan.this);
         swipeRefresh =findViewById(R.id.swipeRefresh);
         swipeRefresh.setColorScheme(android.R.color.holo_orange_dark,
                 android.R.color.holo_orange_light,
@@ -82,11 +77,11 @@ public class HistoryPesanan extends AppCompatActivity {
 
 
         ButterKnife.bind(this);
-        mContext = HistoryPesanan.this;
+        mContext = RiwayatPesanan.this;
         mApiService = UtilsApi.getAPIService();
-        adapterHistoryTransaction = new AdapterHistoryTransaction(HistoryPesanan.this, resultItemList);
+        adapterHistoryTransaction = new AdapterHistoryTransaction(RiwayatPesanan.this, resultItemList);
         //RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
-        GridLayoutManager mLayoutManager = new GridLayoutManager(HistoryPesanan.this, 1, GridLayoutManager.VERTICAL, false);
+        GridLayoutManager mLayoutManager = new GridLayoutManager(RiwayatPesanan.this, 1, GridLayoutManager.VERTICAL, false);
         listHistoryPesanan.setLayoutManager(mLayoutManager);
         listHistoryPesanan.setItemAnimator(new DefaultItemAnimator());
 
@@ -95,7 +90,7 @@ public class HistoryPesanan extends AppCompatActivity {
 
     private void getHistoryTransaction(){
 
-        progressBar = ProgressDialog.show(HistoryPesanan.this, null, "Loading...", true, false);
+        progressBar = ProgressDialog.show(RiwayatPesanan.this, null, "Loading...", true, false);
 
         HashMap<String, String> params = new HashMap<>();
         params.put("id_member", sharedPrefManager.getSpIdMember());

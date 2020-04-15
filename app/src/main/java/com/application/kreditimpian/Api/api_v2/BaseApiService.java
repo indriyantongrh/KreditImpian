@@ -8,7 +8,6 @@ import com.application.kreditimpian.Model.ModelDeleteShopingCart.ResponseDeleteS
 import com.application.kreditimpian.Model.ModelDetailMember.ResponseDetailMember;
 import com.application.kreditimpian.Model.ModelFOrgotPassword.ResponseForgotPassword;
 import com.application.kreditimpian.Model.ModelGeodirectory.ResponseGeodirectory;
-import com.application.kreditimpian.Model.ModelHistoryPesanan.ResponseHistoryPesanan;
 import com.application.kreditimpian.Model.ModelInsertShoppingCart.ResponseInsertShopingCart;
 import com.application.kreditimpian.Model.ModelKecamatan.ResponseKecamatan;
 import com.application.kreditimpian.Model.ModelListAlamat.ResponseListAlamat;
@@ -24,10 +23,10 @@ import com.application.kreditimpian.Model.ModelPengajuanCatalog.ResponsePengajua
 import com.application.kreditimpian.Model.ModelProductBaru.ResponseProductBaru;
 
 
+import com.application.kreditimpian.Model.ModelRequestProduct.ResponseRequestProduct;
 import com.application.kreditimpian.Model.ModelSelectedTenor.ResponseSelectedTenor;
 import com.application.kreditimpian.Model.ModelSubDistrict.ResponseSubdistrict;
 import com.application.kreditimpian.Model.ModelSubDistrictRajaOngkir.ResponseSubDistrictRajaOngkir;
-import com.application.kreditimpian.Model.ModelTransaction.ResponseTransaction;
 import com.application.kreditimpian.Model.ModelUploadImage.ResponseUploadImage;
 import com.application.kreditimpian.Model.ModelUserDetail.ResponseMembers;
 import com.application.kreditimpian.Model.ModelValidationSMS.ResponseSmsOTP;
@@ -174,6 +173,11 @@ public interface BaseApiService {
     @FormUrlEncoded
     @POST("ApiMobile/getHistoryTransaction")
     Call<ResponseNewHistoryPesanan> getHistoryTransaction(@FieldMap HashMap<String, String> params);
+
+    @FormUrlEncoded
+    @POST("ApiMobile/getallhistorytransactionreq")
+    Call<ResponseRequestProduct> getProductRequest(@FieldMap HashMap<String, String> params);
+
 
     /*KOnfirmasi dp*/
     @FormUrlEncoded

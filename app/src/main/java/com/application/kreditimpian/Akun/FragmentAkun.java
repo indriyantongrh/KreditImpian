@@ -1,7 +1,6 @@
 package com.application.kreditimpian.Akun;
 
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -21,28 +20,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.application.kreditimpian.Adapter.AdapterProduct;
 import com.application.kreditimpian.Api.JWTParser;
 import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
-import com.application.kreditimpian.Favorite.Favorite;
 import com.application.kreditimpian.GantidanRisetPassword.GantiPassword;
 import com.application.kreditimpian.HistoryPesanan.HistoryPesanan;
+import com.application.kreditimpian.HistoryPesanan.RiwayatPesanan;
 import com.application.kreditimpian.KonfirmasiPembayaran.KonfirmasiPembayaran;
 import com.application.kreditimpian.LoginRegister.LoginUser;
-import com.application.kreditimpian.Model.ModelProduct.ResponseProduct;
-import com.application.kreditimpian.Model.ModelUser.UserResponse;
 
 import com.application.kreditimpian.R;
-import com.application.kreditimpian.ResponseMessage.ResponseLoginSucces;
-import com.application.kreditimpian.StatusPesanan.StatusPesanan;
 import com.auth0.android.jwt.JWT;
-import com.auth0.jwt.exceptions.JWTDecodeException;
-import com.auth0.jwt.interfaces.DecodedJWT;
 import com.bumptech.glide.Glide;
-import com.fasterxml.jackson.databind.ser.Serializers;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -56,22 +45,6 @@ import com.google.gson.Gson;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-
-import static android.content.Context.MODE_PRIVATE;
 
 
 public class FragmentAkun extends Fragment {
@@ -222,6 +195,7 @@ public class FragmentAkun extends Fragment {
             public void onClick(View view) {
                //// Toast.makeText(getActivity(), "Fitur segera hadir", Toast.LENGTH_LONG).show();
 
+                ///Intent intent = new Intent(getActivity(), RiwayatPesanan.class);
                 Intent intent = new Intent(getActivity(), HistoryPesanan.class);
                 getActivity().startActivity(intent);
             }

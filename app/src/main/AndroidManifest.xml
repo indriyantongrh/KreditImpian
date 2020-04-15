@@ -39,8 +39,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Notifikasi.DetailNotifikasi"
-            android:noHistory="true"></activity>
+        <activity android:name=".HistoryPesanan.HistoryPesanan"></activity>
+        <activity
+            android:name=".Notifikasi.DetailNotifikasi"
+            android:noHistory="true" />
         <activity android:name=".Akun.DataDiriPopup" />
         <activity android:name=".ForgotPassword.ForgotPassword" />
         <activity android:name=".Notifikasi.NotifikasiActivity" />
@@ -78,7 +80,7 @@
         <activity android:name=".GantidanRisetPassword.GantiPassword" />
         <activity android:name=".KonfirmasiPembayaran.KonfirmasiPembayaran" />
         <activity android:name=".Favorite.Favorite" />
-        <activity android:name=".HistoryPesanan.HistoryPesanan" />
+        <activity android:name=".HistoryPesanan.RiwayatPesanan" />
         <activity android:name=".StatusPesanan.StatusPesanan" />
         <activity android:name=".Akun.UploadDokumenPendukung" />
         <activity android:name=".Akun.DataSaudara" />
