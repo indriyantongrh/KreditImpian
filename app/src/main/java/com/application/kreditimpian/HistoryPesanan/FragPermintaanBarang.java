@@ -2,6 +2,7 @@ package com.application.kreditimpian.HistoryPesanan;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -20,6 +21,8 @@ import com.application.kreditimpian.Adapter.AdapterRequetsProduct;
 import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
+import com.application.kreditimpian.Constan.ConstanHistoryPesanan;
+import com.application.kreditimpian.Marketplace.FragSemuaKategori.RecyclerItemClickListener;
 import com.application.kreditimpian.Model.ModelRequestProduct.DataItem;
 import com.application.kreditimpian.Model.ModelRequestProduct.ResponseRequestProduct;
 import com.application.kreditimpian.R;
@@ -115,7 +118,7 @@ public class FragPermintaanBarang extends Fragment {
                         listRequestProduct.setAdapter(new AdapterRequetsProduct(mContext, HistoryTransaction));
                         adapterRequetsProduct.notifyDataSetChanged();
                         empty.setVisibility(View.GONE);
-                        ///initDataIntent(HistoryTransaction);
+                        initDataIntent(HistoryTransaction);
                     }else {
                         swipeRefresh.setRefreshing(false);
 
@@ -136,5 +139,48 @@ public class FragPermintaanBarang extends Fragment {
                 Toast.makeText(mContext,"Koneksi anda bermasalah", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void initDataIntent(final List<DataItem> detaiList){
+        listRequestProduct.addOnItemTouchListener(
+                new RecyclerItemClickListener(mContext, new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+
+                        String id_transactions = detaiList.get(position).getIdTransaction();
+                        String status = detaiList.get(position).getStatus();
+                        String timestamp = detaiList.get(position).getTimestamp();
+                        String number = detaiList.get(position).getNumber();
+                        String id_product = detaiList.get(position).getReferenceId();
+                        String id_product_category = detaiList.get(position).getIdProductCategory();
+                        String name = detaiList.get(position).getName();
+                        String description = detaiList.get(position).getDescription();
+                        String price_sale = detaiList.get(position).getPriceSale();
+                        String filename = detaiList.get(position).getContent();
+                        String berat = detaiList.get(position).getWeightValue();
+                        String id_city = detaiList.get(position).getCompanyCity().getIdGeodirectory();
+                        String id_destination = detaiList.get(position).getMember_city();
+
+
+
+                        Intent detailProductRequest = new Intent(mContext, DetailHistoryRequestProduct.class);
+                        detailProductRequest.putExtra(ConstanHistoryPesanan.KEY_ID_TRANSACTION, id_transactions);
+                        detailProductRequest.putExtra(ConstanHistoryPesanan.KEY_STATUS, status);
+                        detailProductRequest.putExtra(ConstanHistoryPesanan.KEY_TIMESTAMP, timestamp);
+                        detailProductRequest.putExtra(ConstanHistoryPesanan.KEY_NUMBER, number);
+                        detailProductRequest.putExtra(ConstanHistoryPesanan.KEY_ID_PRODUCT, id_product);
+                        detailProductRequest.putExtra(ConstanHistoryPesanan.KEY_ID_PRODUCT_CATEGORY, id_product_category);
+                        detailProductRequest.putExtra(ConstanHistoryPesanan.KEY_NAME_PRODUCT, name);
+                        detailProductRequest.putExtra(ConstanHistoryPesanan.KEY_DESCRIPTION, description);
+                        detailProductRequest.putExtra(ConstanHistoryPesanan.KEY_PRICE_SALE, price_sale);
+                        detailProductRequest.putExtra("content", filename);
+                        detailProductRequest.putExtra("weight_value", berat);
+                        detailProductRequest.putExtra("id_geodirectory", id_city);
+                        detailProductRequest.putExtra("member_city", id_destination);
+
+
+                        startActivity(detailProductRequest);
+                    }
+                }));
+
     }
 }

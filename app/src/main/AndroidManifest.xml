@@ -39,7 +39,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".HistoryPesanan.HistoryPesanan"></activity>
+        <activity android:name=".HistoryPesanan.DetailHistoryRequestProduct"></activity>
+        <activity android:name=".HistoryPesanan.HistoryPesanan" />
         <activity
             android:name=".Notifikasi.DetailNotifikasi"
             android:noHistory="true" />

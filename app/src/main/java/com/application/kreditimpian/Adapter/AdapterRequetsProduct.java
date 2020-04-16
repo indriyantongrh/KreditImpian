@@ -61,6 +61,7 @@ public class AdapterRequetsProduct extends RecyclerView.Adapter<AdapterRequetsPr
         holder.txt_price_sale.setText(formatRupiah.format(Price_Capital));
         holder.txt_weight_value.setText(dataItem.getWeightValue());
         holder.txt_id_city.setText(dataItem.getCompanyCity().getIdGeodirectory());
+        holder.txt_id_destination.setText(dataItem.getMember_city());
 
 
 
@@ -189,6 +190,8 @@ public class AdapterRequetsProduct extends RecyclerView.Adapter<AdapterRequetsPr
         TextView txt_address_label;
         @BindView(R.id.txt_district)
         TextView txt_district;
+        @BindView(R.id.txt_id_destination)
+        TextView txt_id_destination;
 
 
         public HolderRequestProduct(@NonNull View itemView) {

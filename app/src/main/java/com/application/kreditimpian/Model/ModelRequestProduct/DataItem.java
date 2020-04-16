@@ -55,6 +55,17 @@ public class DataItem{
 	@SerializedName("timestamp")
 	private String timestamp;
 
+	public String getMember_city() {
+		return member_city;
+	}
+
+	public void setMember_city(String member_city) {
+		this.member_city = member_city;
+	}
+
+	@SerializedName("member_city")
+	private String member_city;
+
 	public void setExpires(String expires){
 		this.expires = expires;
 	}
