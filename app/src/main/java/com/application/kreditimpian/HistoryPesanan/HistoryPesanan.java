@@ -5,9 +5,10 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
-import com.application.kreditimpian.FormPengajuan.UpgradeImpian.MultigunaMobil;
-import com.application.kreditimpian.FormPengajuan.UpgradeImpian.MultigunaMotor;
 import com.application.kreditimpian.FormPengajuan.UpgradeImpian.ViewPagerAdapter;
+import com.application.kreditimpian.HistoryPesanan.TabMultiguna.FragHistoryMultiguna;
+import com.application.kreditimpian.HistoryPesanan.TabProductRequest.FragPermintaanBarang;
+import com.application.kreditimpian.HistoryPesanan.TabRiwayatPesananan.FragRiwayatPesanan;
 import com.application.kreditimpian.R;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.tabs.TabLayout;
@@ -31,8 +32,9 @@ public class HistoryPesanan extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.AddFragment( new FragRiwayatPesanan(), "Riwayat Pesanan");
+        adapter.AddFragment( new FragRiwayatPesanan(), "Katalog");
         adapter.AddFragment(new FragPermintaanBarang(), "Permintaan Produk");
+        adapter.AddFragment(new FragHistoryMultiguna(), "Multiguna");
 
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);

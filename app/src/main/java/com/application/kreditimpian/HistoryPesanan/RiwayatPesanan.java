@@ -19,6 +19,7 @@ import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
 import com.application.kreditimpian.Constan.ConstanHistoryPesanan;
+import com.application.kreditimpian.HistoryPesanan.TabRiwayatPesananan.DetailHistoryPesanan;
 import com.application.kreditimpian.Marketplace.FragSemuaKategori.RecyclerItemClickListener;
 
 import com.application.kreditimpian.Model.ModelNewHistoryPesanan.DataItem;

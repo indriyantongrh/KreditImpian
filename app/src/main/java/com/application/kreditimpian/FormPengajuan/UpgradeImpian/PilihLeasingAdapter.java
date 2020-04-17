@@ -64,7 +64,7 @@ public class PilihLeasingAdapter extends RecyclerView.Adapter<PilihLeasingViewHo
             holder.lblAsuransi.setVisibility(View.GONE);
         }
         Glide.with(context)
-                .load("https://development.kreditimpian.com/images/users/" + modelMitra.getUrl())
+                .load("https://kreditimpian.id/images/users/" + modelMitra.getUrl())
                 .into(holder.imgMitra);
 
         ArrayList<String> stringArrayList = new ArrayList<>();

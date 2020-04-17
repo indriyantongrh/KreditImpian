@@ -39,7 +39,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".HistoryPesanan.DetailHistoryRequestProduct"></activity>
+        <activity android:name=".HistoryPesanan.TabProductRequest.DetailHistoryRequestProduct"></activity>
         <activity android:name=".HistoryPesanan.HistoryPesanan" />
         <activity
             android:name=".Notifikasi.DetailNotifikasi"
@@ -53,7 +53,7 @@
         <activity android:name=".TransactionProcess.TransactionSelectMitra" />
         <activity android:name=".Akun.DetailAlamat" />
         <activity android:name=".Akun.AlamatPengiriman" />
-        <activity android:name=".HistoryPesanan.DetailHistoryPesanan" />
+        <activity android:name=".HistoryPesanan.TabRiwayatPesananan.DetailHistoryPesanan" />
         <activity android:name=".FormPengajuan.UpgradeImpian.UpgradeImpian" /> <!-- <activity android:name=".CartCheckout.Cart" /> -->
         <activity android:name=".DetailProduct" />
         <activity android:name=".TransactionProcess.Cart" />
