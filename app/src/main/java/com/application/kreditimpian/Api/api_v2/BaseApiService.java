@@ -16,6 +16,7 @@ import com.application.kreditimpian.Model.ModelMember.ResponseMember;
 import com.application.kreditimpian.Model.ModelMemberInsert.ResponseMemberInsert;
 import com.application.kreditimpian.Model.ModelMerchant.ResponseMerchant;
 import com.application.kreditimpian.Model.ModelMitraSelected.ResponseMitraSelected;
+import com.application.kreditimpian.Model.ModelMultiguna.ResponseMultiguna;
 import com.application.kreditimpian.Model.ModelNewHistoryPesanan.ResponseNewHistoryPesanan;
 import com.application.kreditimpian.Model.ModelOnShoppingCart.ResponseOnShoppingCart;
 import com.application.kreditimpian.Model.ModelOngkoskirim.ResponseOngkir;
@@ -177,6 +178,10 @@ public interface BaseApiService {
     @FormUrlEncoded
     @POST("ApiMobile/getallhistorytransactionreq")
     Call<ResponseRequestProduct> getProductRequest(@FieldMap HashMap<String, String> params);
+
+    @FormUrlEncoded
+    @POST("ApiMobile/getHistoryMultigunaMotor")
+    Call<ResponseMultiguna> getMultiguna(@FieldMap HashMap<String, String> params);
 
 
     /*KOnfirmasi dp*/
