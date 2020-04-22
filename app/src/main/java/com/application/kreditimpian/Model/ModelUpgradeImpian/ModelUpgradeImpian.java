@@ -9,20 +9,58 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ModelUpgradeImpian implements Parcelable {
-    private String jmlhpinjaman,
-    hrgkendaraan,
-    lokasi,
-    idmember,
-    asuransi,
-    image,
-    merkkendaraan,
-    tipekendaraan,
-    tahun,
-    mitra,
-    idTransaksi,
-    kendaraan,
-    code,
-    result;
+    private String jmlhpinjaman;
+    private String hrgkendaraan;
+    private String lokasi;
+    private String idmember;
+    private String asuransi;
+    private String image;
+    private String merkkendaraan;
+    private String tipekendaraan;
+    private String tahun;
+    private String mitra;
+    private String idTransaksi;
+    private String kendaraan;
+    private String code;
+    private String result;
+    private String id_kreditor;
+    private String id_product_request;
+
+    public String getId_product_request() {
+        return id_product_request;
+    }
+
+    public void setId_product_request(String id_product_request) {
+        this.id_product_request = id_product_request;
+    }
+
+
+    public String getId_kreditor() {
+        return id_kreditor;
+    }
+
+    public void setId_kreditor(String id_kreditor) {
+        this.id_kreditor = id_kreditor;
+    }
+
+    public String getCicilan() {
+        return cicilan;
+    }
+
+    public void setCicilan(String cicilan) {
+        this.cicilan = cicilan;
+    }
+
+    public String getTenor() {
+        return tenor;
+    }
+
+    public void setTenor(String tenor) {
+        this.tenor = tenor;
+    }
+
+    private String cicilan;
+    private String tenor;
 
     public String getCode() {
         return code;
@@ -170,6 +208,10 @@ public class ModelUpgradeImpian implements Parcelable {
         dest.writeString(this.kendaraan);
         dest.writeString(this.code);
         dest.writeString(this.result);
+        dest.writeString(this.id_kreditor);
+        dest.writeString(this.id_product_request);
+        dest.writeString(this.cicilan);
+        dest.writeString(this.tenor);
         dest.writeTypedList(this.modelMitraArrayList);
     }
 
@@ -188,6 +230,10 @@ public class ModelUpgradeImpian implements Parcelable {
         this.kendaraan = in.readString();
         this.code = in.readString();
         this.result = in.readString();
+        this.id_kreditor = in.readString();
+        this.id_product_request = in.readString();
+        this.cicilan = in.readString();
+        this.tenor = in.readString();
         this.modelMitraArrayList = in.createTypedArrayList(ModelMitraPinjaman.CREATOR);
     }
 

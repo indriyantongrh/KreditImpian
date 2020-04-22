@@ -366,13 +366,16 @@ public interface BaseApiService {
             @Field("img_bpkb") String img_bpkb
     );
 
-    @GET("insertlogtransmulti")
+
+    @FormUrlEncoded
+    @POST("insertlogtransmulti")
     Call<ResponseBody> pilihLeasingPinjaman(
-            @Query("id_member") String id_member,
-            @Query("id_transaksi") String id_transaksi,
-            @Query("tenor") String tenor,
-            @Query("id_kreditor") String id_kreditor,
-            @Query("cicilan") String cicilan
+            @Field("id_member") String id_member,
+            @Field("id_transaksi") String id_transaksi,
+            @Field("tenor") String tenor,
+            @Field("id_kreditor") String id_kreditor,
+            @Field("cicilan") String cicilan,
+            @Field("id_product_request") String id_product_request
     );
 
     @GET("getallproductcategories")

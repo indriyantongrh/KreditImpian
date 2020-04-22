@@ -131,6 +131,8 @@ public class UpgradeImpianRepository {
                         jsonObject = new JSONObject(responses);
                         modelUpgradeImpians = new ArrayList<>();
                         if (jsonObject.getString("response_code").equals("200")) {
+                            String product_request = jsonObject.getString("id_product_request");
+
                             jsonObject = new JSONObject(jsonObject.getString("data"));
                             modelUpgradeImpian1 = new ModelUpgradeImpian();
                             modelUpgradeImpian1.setIdTransaksi(jsonObject.getString("id_transaksi"));
@@ -141,6 +143,8 @@ public class UpgradeImpianRepository {
                             modelUpgradeImpian1.setMerkkendaraan(jsonObject3.getString("vehicle_brand"));
                             modelUpgradeImpian1.setTipekendaraan(jsonObject3.getString("vehicle_type"));
                             modelUpgradeImpian1.setTahun(jsonObject3.getString("vehicle_year"));
+                            modelUpgradeImpian1.setId_product_request(product_request);
+                            Log.v("jajal", "data product"+product_request);
 
                             modelMitraArrayList = new ArrayList<>();
                             jsonArray = new JSONArray(jsonObject.getString("data_cicilan"));
@@ -167,6 +171,9 @@ public class UpgradeImpianRepository {
                             modelUpgradeImpian1.setModelMitraArrayList(modelMitraArrayList);
                             modelUpgradeImpians.add(modelUpgradeImpian1);
                         }
+
+                         /*jsonObject = new JSONObject(jsonObject.getString("id_product_request"));
+                        Log.v("id product request", "id product request"+jsonObject);*/
                         mutableLiveData.setValue(modelUpgradeImpians);
                     } catch (IOException | JSONException e) {
                         Toast.makeText(context, "Error JSON: " + e.getMessage(), Toast.LENGTH_LONG).show();
@@ -273,10 +280,15 @@ public class UpgradeImpianRepository {
         responseBodyCall = getApiMobile2().pilihLeasingPinjaman(
                 modelUpgradeImpian.getIdmember(),
                 modelUpgradeImpian.getIdTransaksi(),
-                modelUpgradeImpian.getTahun(),
                 modelUpgradeImpian.getMitra(),
-                modelUpgradeImpian.getJmlhpinjaman()
+                modelUpgradeImpian.getTahun(),
+                modelUpgradeImpian.getJmlhpinjaman(),
+                modelUpgradeImpian.getId_product_request()
         );
+        Log.v("jajal " , "data"+modelUpgradeImpian.getMitra());
+        Log.v("jajal " , "data"+modelUpgradeImpian.getTahun());
+        Log.v("jajal " , "data"+modelUpgradeImpian.getJmlhpinjaman());
+        Log.v("jajal " , "data"+modelUpgradeImpian.getId_product_request());
         responseBodyCall.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {

@@ -191,7 +191,7 @@ public class AdapterSelectedTenor extends RecyclerView.Adapter<AdapterSelectedTe
                         AlertDialog alertDialog = new AlertDialog.Builder(mContext).create();
 
                         alertDialog.setTitle("Info");
-                        alertDialog.setMessage("Anda belum memilih tenor");
+                        alertDialog.setMessage("Pilih jangka waktu cicilan");
                         alertDialog.setIcon(R.drawable.alert);
                         alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {

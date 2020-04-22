@@ -289,7 +289,7 @@ public class TransactionSelectMitra extends AppCompatActivity {
         String id_transaction = txt_id_transaction.getText().toString();
 
 
-
+        /*get Response API and save in Intent*/
         StringBuilder mitraStringBuilder = new StringBuilder();
         List<DataItem> dataItemList = adapterMitraSelected.getDataItemList();
         DataItem dataItem = new DataItem();

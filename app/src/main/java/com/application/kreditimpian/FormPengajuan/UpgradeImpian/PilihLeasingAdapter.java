@@ -52,6 +52,7 @@ public class PilihLeasingAdapter extends RecyclerView.Adapter<PilihLeasingViewHo
         ModelMitraPinjaman modelMitra = modelUpgradeImpians.get(position);
         String idKreditor = modelMitra.getId();
         String idTransaksi = modelUpgradeImpian.getIdTransaksi();
+        String id_product_request = modelUpgradeImpian.getId_product_request();
         holder.lblKendaraan.setText(context.getResources().getString(R.string.kendaraan, modelUpgradeImpian.getKendaraan()));
         holder.lblJmlhPinjaman.setText(context.getResources().getString(R.string.jmlhpinjvalue, String.format(localeID, "%,d", Long.parseLong(String.valueOf(modelUpgradeImpian.getJmlhpinjaman())))));
         holder.lblHrgKendaraan.setText(context.getResources().getString(R.string.hrgkendvalue, String.format(localeID, "%,d", Long.parseLong(String.valueOf(modelUpgradeImpian.getHrgkendaraan())))));
@@ -89,7 +90,7 @@ public class PilihLeasingAdapter extends RecyclerView.Adapter<PilihLeasingViewHo
             if (tenor.isEmpty()){
                 Toast.makeText(context,"Pilih jangka waktu cicilan", Toast.LENGTH_LONG).show();
             } else {
-                onClickPilihLeasing.onClickPilihLeasing(idTransaksi, tenor, idKreditor, cicilan);
+                onClickPilihLeasing.onClickPilihLeasing(idTransaksi, tenor, idKreditor, cicilan, id_product_request);
             }
         });
     }
@@ -100,6 +101,6 @@ public class PilihLeasingAdapter extends RecyclerView.Adapter<PilihLeasingViewHo
     }
 
     public interface OnClickPilihLeasing{
-        void onClickPilihLeasing(String idTransaksi, String Tenor, String idKreditor, String cicilan);
+        void onClickPilihLeasing(String idTransaksi, String tenor, String idKreditor, String cicilan , String id_product_request);
     }
 }

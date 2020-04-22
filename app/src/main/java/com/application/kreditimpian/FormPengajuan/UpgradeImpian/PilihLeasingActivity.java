@@ -11,6 +11,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.FormPengajuan.SuccessMengajukan;
@@ -46,7 +47,7 @@ public class PilihLeasingActivity extends AppCompatActivity implements PilihLeas
     }
 
     @Override
-    public void onClickPilihLeasing(String idTransaksi, String Tenor, String idKreditor, String cicilan) {
+    public void onClickPilihLeasing(String idTransaksi, String tenor, String idKreditor, String cicilan, String id_product_request) {
 
         ProgressDialog pDialog = new ProgressDialog(PilihLeasingActivity.this);
         pDialog.setCancelable(false);
@@ -57,8 +58,9 @@ public class PilihLeasingActivity extends AppCompatActivity implements PilihLeas
         modelUpgradeImpian.setIdmember(idMember);
         modelUpgradeImpian.setIdTransaksi(idTransaksi);
         modelUpgradeImpian.setMitra(idKreditor);
-        modelUpgradeImpian.setTahun(Tenor);
+        modelUpgradeImpian.setTahun(tenor);
         modelUpgradeImpian.setJmlhpinjaman(cicilan);
+        modelUpgradeImpian.setId_product_request(id_product_request);
         UpgradeImpianViewModel upgradeImpianViewModel = new ViewModelProvider(getViewModelStore(), new ViewModelFactory(PilihLeasingActivity.this)).get(UpgradeImpianViewModel.class);
         upgradeImpianViewModel.setModelUpgradeImpian(modelUpgradeImpian);
         upgradeImpianViewModel.pilihLeasing().observe(this, modelUpgradeImpians -> {
@@ -66,6 +68,8 @@ public class PilihLeasingActivity extends AppCompatActivity implements PilihLeas
             ModelUpgradeImpian modelUpgradeImpian1 = modelUpgradeImpians.get(0);
             if (modelUpgradeImpian1 != null) {
                 if (modelUpgradeImpian1.getCode().equals("200")) {
+                    ///Toast.makeText(PilihLeasingActivity.this, "data : "+idKreditor  +tenor  +cicilan   +id_product_request , Toast.LENGTH_LONG).show();
+
                     startActivity(new Intent(PilihLeasingActivity.this, SuccessMengajukan.class));
                     finish();
                 }
