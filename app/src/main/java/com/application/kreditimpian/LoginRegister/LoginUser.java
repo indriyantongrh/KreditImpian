@@ -128,7 +128,7 @@ public class LoginUser extends AppCompatActivity {
 
     ProgressDialog loading;
 
-    Button btnLogin;
+    Button btnLogin, btnDaftar;
     TextView btnregister, tvLupapassword;
     EditText txtusername, txtpassword;
 
@@ -151,6 +151,7 @@ public class LoginUser extends AppCompatActivity {
         setContentView(R.layout.activity_login_user);
         txtusername =findViewById(R.id.txtusername);
         txtpassword =findViewById(R.id.txtpassword);
+        btnDaftar = findViewById(R.id.btnDaftar);
 
         mApiService = UtilsApi.getAPIService();
         sharedPrefManager = new SharedPrefManager(this);
@@ -173,8 +174,8 @@ public class LoginUser extends AppCompatActivity {
             }
         });
 
-        btnregister = findViewById(R.id.btnregister);
-        btnregister.setOnClickListener(new View.OnClickListener() {
+        ///btnregister = findViewById(R.id.btnregister);
+        btnDaftar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Register.class);

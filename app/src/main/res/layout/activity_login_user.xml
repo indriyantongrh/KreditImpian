@@ -160,14 +160,7 @@
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/tvLupapassword"
-                android:text="Lupa password ?"
-                android:gravity="right"
-                android:textColor="@color/colorBlack"
-                android:layout_marginRight="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+
 
             <!--Button-->
             <Button
@@ -180,12 +173,35 @@
                 android:textStyle="bold"
                 android:textColor="#fff"
                 android:fontFamily="@font/jipatharegular"
-                android:textSize="25dp"
+                android:textSize="23dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:background="@drawable/btnorange"
+                android:background="@drawable/btnorangev2"
                 ></Button>
 
+            <TextView
+                android:id="@+id/tvLupapassword"
+                android:text="Lupa password ?"
+                android:gravity="center"
+                android:textColor="@color/colorBlack"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"/>
+
+
+            <Button
+                android:id="@+id/btnDaftar"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="Buat Akun"
+                android:textStyle="bold"
+                android:textColor="@color/colorBlack"
+                android:fontFamily="@font/jipatharegular"
+                android:textSize="23dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/borderorangev2"
+                ></Button>
 
             <!--Register Tex-->
             <LinearLayout
@@ -208,6 +224,7 @@
 
             <!--Register Tex-->
             <LinearLayout
+                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
