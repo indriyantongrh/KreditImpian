@@ -2,6 +2,7 @@ package com.application.kreditimpian.HistoryPesanan.TabMultiguna;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -21,6 +22,9 @@ import com.application.kreditimpian.Adapter.AdapterRequetsProduct;
 import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
+import com.application.kreditimpian.Constan.ConstanHistoryPesanan;
+import com.application.kreditimpian.HistoryPesanan.TabProductRequest.DetailHistoryRequestProduct;
+import com.application.kreditimpian.Marketplace.FragSemuaKategori.RecyclerItemClickListener;
 import com.application.kreditimpian.Model.ModelMultiguna.DataItem;
 import com.application.kreditimpian.Model.ModelMultiguna.ResponseMultiguna;
 import com.application.kreditimpian.Model.ModelRequestProduct.ResponseRequestProduct;
@@ -117,7 +121,7 @@ public class FragHistoryMultiguna extends Fragment {
                         listMultiguna.setAdapter(new AdapterMultiguna(mContext, HistoryTransaction));
                         adapterMultiguna.notifyDataSetChanged();
                         empty.setVisibility(View.GONE);
-                        //initDataIntent(HistoryTransaction);
+                        initDataIntent(HistoryTransaction);
                     }else {
                         swipeRefresh.setRefreshing(false);
 
@@ -138,7 +142,64 @@ public class FragHistoryMultiguna extends Fragment {
                 Toast.makeText(mContext,"Koneksi anda bermasalah", Toast.LENGTH_SHORT).show();
             }
         });
-
-
     }
+
+    private void initDataIntent(final List<DataItem> detaiList){
+        listMultiguna.addOnItemTouchListener(
+                new RecyclerItemClickListener(mContext, new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+
+                        String id_transactions = detaiList.get(position).getIdTransaction();
+                        String status = detaiList.get(position).getStatus();
+                        String number = detaiList.get(position).getNumber();
+                        String tenor = detaiList.get(position).getTenor();
+                        String location = detaiList.get(position).getLocation();
+                        String cicilan = detaiList.get(position).getCicilan();
+                        String vehicle_year = detaiList.get(position).getVehicleYear();
+                        String vehicle_type = detaiList.get(position).getVehicleType();
+                        String vehicle_brand = detaiList.get(position).getVehicleBrand();
+                        String vehicle_price = detaiList.get(position).getVehiclePrice();
+                        String loan = detaiList.get(position).getLoan();
+                        String vehicles = detaiList.get(position).getVehicles();
+                        String images = detaiList.get(position).getImages();
+                        String mitra_kredit = detaiList.get(position).getMitra_kredit();
+                        String name_city = detaiList.get(position).getMain_address().getName_city();
+                        String receiver = detaiList.get(position).getMain_address().getReceiver();
+                        String address_name = detaiList.get(position).getMain_address().getAddressName();
+                        String phone = detaiList.get(position).getMain_address().getPhone();
+                        String name_district = detaiList.get(position).getMain_address().getName_district();
+                        String postal_code = detaiList.get(position).getMain_address().getPostalCode();
+                        String address = detaiList.get(position).getMain_address().getAddress();
+
+
+
+                        Intent detailProductRequest = new Intent(mContext, DetailMultiguna.class);
+                        detailProductRequest.putExtra("id_transaction", id_transactions);
+                        detailProductRequest.putExtra("status", status);
+                        detailProductRequest.putExtra("tenor", tenor);
+                        detailProductRequest.putExtra("number", number);
+                        detailProductRequest.putExtra("location", location);
+                        detailProductRequest.putExtra("cicilan", cicilan);
+                        detailProductRequest.putExtra("vehicle_year", vehicle_year);
+                        detailProductRequest.putExtra("vehicle_type", vehicle_type);
+                        detailProductRequest.putExtra("vehicle_brand", vehicle_brand);
+                        detailProductRequest.putExtra("vehicle_price", vehicle_price);
+                        detailProductRequest.putExtra("loan", loan);
+                        detailProductRequest.putExtra("vehicles", vehicles);
+                        detailProductRequest.putExtra("mitra_kredit", mitra_kredit);
+                        detailProductRequest.putExtra("name_city", name_city);
+                        detailProductRequest.putExtra("receiver", receiver);
+                        detailProductRequest.putExtra("address_name", address_name);
+                        detailProductRequest.putExtra("name_district", name_district);
+                        detailProductRequest.putExtra("postal_code", postal_code);
+                        detailProductRequest.putExtra("phone", phone);
+                        detailProductRequest.putExtra("address", address);
+                        detailProductRequest.putExtra("images", images);
+
+
+                        startActivity(detailProductRequest);
+                    }
+                }));
+    }
+
 }

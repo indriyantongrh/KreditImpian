@@ -64,11 +64,18 @@ public class AdapterMultiguna  extends RecyclerView.Adapter<AdapterMultiguna.Hol
         String textMultiguna = "Multiguna Motor";
         if (typeMultiguna.equals("motorcycle")){
             holder.txt_name_product.setText("Multiguna Motor");
-        }else {
-            holder.txt_name_product.setText("Multiguna Motor");
+        }else if (typeMultiguna.equals("car")){
+            holder.txt_name_product.setText("Multiguna Mobil");
         }
 
-
+        holder.txt_nama_mitra.setText(dataItem.getMitra_kredit());
+        holder.txt_city.setText(dataItem.getMain_address().getName_city());
+        holder.txt_receive.setText(dataItem.getMain_address().getReceiver());
+        holder.txt_address_label.setText(dataItem.getMain_address().getAddressName());
+        holder.txt_district.setText(dataItem.getMain_address().getName_district());
+        holder.txt_address.setText(dataItem.getMain_address().getAddress());
+        holder.txt_mobile.setText(dataItem.getMain_address().getPhone());
+        holder.txt_postal_code.setText(dataItem.getMain_address().getPostalCode());
 
 
         Glide.with(mContext)
@@ -141,8 +148,8 @@ public class AdapterMultiguna  extends RecyclerView.Adapter<AdapterMultiguna.Hol
         TextView txt_note;
         @BindView(R.id.txt_id_creditor)
         TextView txt_id_creditor;
-        @BindView(R.id.txt_postal_fee)
-        TextView txt_postal_fee;
+        @BindView(R.id.txt_postal_code)
+        TextView txt_postal_code;
         @BindView(R.id.txt_id_transaction)
         TextView txt_id_transaction;
         @BindView(R.id.txt_timestamp)

@@ -49,6 +49,36 @@ public class DataItem{
 	@SerializedName("vehicle_price")
 	private String vehiclePrice;
 
+	@SerializedName("number")
+	private String number;
+
+	@SerializedName("status")
+	private String status;
+
+	@SerializedName("mitra_kredit")
+	private String mitra_kredit;
+
+	@SerializedName("main_address")
+	private MainAddress main_address;
+
+
+	public MainAddress getMain_address() {
+		return main_address;
+	}
+
+	public void setMain_address(MainAddress main_address) {
+		this.main_address = main_address;
+	}
+
+
+	public String getMitra_kredit() {
+		return mitra_kredit;
+	}
+
+	public void setMitra_kredit(String mitra_kredit) {
+		this.mitra_kredit = mitra_kredit;
+	}
+
 	public String getNumber() {
 		return number;
 	}
@@ -65,11 +95,7 @@ public class DataItem{
 		this.status = status;
 	}
 
-	@SerializedName("number")
-	private String number;
 
-	@SerializedName("status")
-	private String status;
 
 	public void setLoan(String loan){
 		this.loan = loan;

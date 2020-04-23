@@ -181,6 +181,5 @@ public class FragPermintaanBarang extends Fragment {
                         startActivity(detailProductRequest);
                     }
                 }));
-
     }
 }
