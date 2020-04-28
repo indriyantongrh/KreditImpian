@@ -146,6 +146,8 @@ public class DetailNotifikasi extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+
+
         Intent back = new Intent(DetailNotifikasi.this, NotifikasiActivity.class);
         startActivity(back);
         finish();
