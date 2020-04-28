@@ -73,7 +73,10 @@ public class NotifikasiActivity extends AppCompatActivity implements View.OnClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notifikasi);
-        Objects.requireNonNull(getSupportActionBar()).hide();
+        setActionBarTitle("Notifikasi");
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);// set drawable icon
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+       /// Objects.requireNonNull(getSupportActionBar()).hide();
         /*setActionBarTitle("Keranjang");
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);// set drawable icon
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
@@ -83,8 +86,8 @@ public class NotifikasiActivity extends AppCompatActivity implements View.OnClic
         SharedPrefManager sharedPrefManager = new SharedPrefManager(context);
         idMember = sharedPrefManager.getSpIdMember();
 
-        View includeToolbar = findViewById(R.id.includeToolbar);
-        imgBack = includeToolbar.findViewById(R.id.imgBack);
+       /* View includeToolbar = findViewById(R.id.includeToolbar);
+        imgBack = includeToolbar.findViewById(R.id.imgBack);*/
         rvNotifikasi = findViewById(R.id.rvNotifikasi);
         progress_bar = findViewById(R.id.progress_bar);
         SwipeRefreshLayout swipeRefresh = findViewById(R.id.swipeRefresh);
@@ -97,7 +100,7 @@ public class NotifikasiActivity extends AppCompatActivity implements View.OnClic
         rvNotifikasi.setAdapter(notifikasiAdapter);
         rvNotifikasi.addOnScrollListener(recyclerViewOnScrollListener);
 
-        imgBack.setOnClickListener(this);
+       // imgBack.setOnClickListener(this);
 
         swipeRefresh.setColorSchemeResources(R.color.colorOrange, R.color.colorOrange);
         swipeRefresh.setOnRefreshListener(() -> new Handler().postDelayed(() -> {

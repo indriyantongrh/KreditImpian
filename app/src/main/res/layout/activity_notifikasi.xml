@@ -6,12 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".Notifikasi.NotifikasiActivity">
 
-    <include
+<!--    <include
         android:id="@+id/includeToolbar"
         layout="@layout/toolbar_static"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />-->
 
     <ImageView
         android:id="@+id/empty"

@@ -140,7 +140,7 @@ public class DetailNotifikasi extends AppCompatActivity {
 
         tvAlamatPengiriman.setText(""+address_label+"\n"+"Nama penerima : " +receiver+ "\n" + "Alamat :" +address+ "\n" +name_district+" , "+name_city+"\n"+"Koder pos : "+postal_code+"\n"+mobile);
 
-        Toast.makeText(DetailNotifikasi.this, "Address Label "+address_label, Toast.LENGTH_LONG).show();
+        ////Toast.makeText(DetailNotifikasi.this, "Address Label "+address_label, Toast.LENGTH_LONG).show();
     }
 
 

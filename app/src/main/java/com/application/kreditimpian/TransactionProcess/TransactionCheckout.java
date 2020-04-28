@@ -181,9 +181,9 @@ public class TransactionCheckout extends AppCompatActivity {
                 .placeholder(R.drawable.no_image)
                 .error(R.drawable.no_image)
                 .into(image);
-        Toast.makeText(TransactionCheckout.this, "Value Downpayment"+downpayment, Toast.LENGTH_LONG).show();
+     /*   Toast.makeText(TransactionCheckout.this, "Value Downpayment"+downpayment, Toast.LENGTH_LONG).show();
         Toast.makeText(TransactionCheckout.this, "Value Installment"+tenor, Toast.LENGTH_LONG).show();
-
+*/
 
 
 
@@ -256,6 +256,7 @@ public class TransactionCheckout extends AppCompatActivity {
         params.put("courier" , tvJasaPengiriman.getText().toString());
         params.put("installment", tvInstalment.getText().toString());
         params.put("payment_method", radioButton.getText().toString());
+        params.put("price_sale", txt_price_sale.getText().toString());
 
         mApiService.postPengajuan(params).enqueue(new Callback<ResponsePengajuanCatalog>() {
             @Override
