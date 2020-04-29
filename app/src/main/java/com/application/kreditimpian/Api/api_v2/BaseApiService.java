@@ -28,6 +28,7 @@ import com.application.kreditimpian.Model.ModelRequestProduct.ResponseRequestPro
 import com.application.kreditimpian.Model.ModelSelectedTenor.ResponseSelectedTenor;
 import com.application.kreditimpian.Model.ModelSubDistrict.ResponseSubdistrict;
 import com.application.kreditimpian.Model.ModelSubDistrictRajaOngkir.ResponseSubDistrictRajaOngkir;
+import com.application.kreditimpian.Model.ModelTransactionAPI.ResponseTransactionAPI;
 import com.application.kreditimpian.Model.ModelUploadImage.ResponseUploadImage;
 import com.application.kreditimpian.Model.ModelUserDetail.ResponseMembers;
 import com.application.kreditimpian.Model.ModelValidationSMS.ResponseSmsOTP;
@@ -174,6 +175,12 @@ public interface BaseApiService {
     @FormUrlEncoded
     @POST("ApiMobile/getHistoryTransaction")
     Call<ResponseNewHistoryPesanan> getHistoryTransaction(@FieldMap HashMap<String, String> params);
+
+    @FormUrlEncoded
+    @POST("ApiMobile/insertMetaDataProductTransactionDatabaseBcaApi")
+    Call<ResponseTransactionAPI> postPengajuanCheckout(@FieldMap HashMap<String, String> params);
+
+
 
     @FormUrlEncoded
     @POST("ApiMobile/getallhistorytransactionreq")

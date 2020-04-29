@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
@@ -17,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,13 +48,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Objects;
+
 
 public class FragmentAkun extends Fragment {
 
     ImageView image;
     CardView btndetailakun, btnstatuspesanan,btnchat ,btnhistorypesanan,btnfavorite,btnkonfirmasi, btngantipassword,btnlogout,btnalamatpengiriman ;
     TextView txt_nama_akun,textchat;
-
+    RelativeLayout RelativDataMember,RelativAlamatPengiriman,RelativHistoryPesanan,RelativGantiPassword,RelativLogout;
     GoogleSignInClient mGoogleSignInClient;
     private GoogleApiClient mGoogleApiClient;
 
@@ -79,7 +83,6 @@ public class FragmentAkun extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_fragment_akun, container, false);
-
         txt_nama_akun = view.findViewById(R.id.txt_nama_akun);
         image = view.findViewById(R.id.image);
 
@@ -157,7 +160,8 @@ public class FragmentAkun extends Fragment {
         }
 
         btndetailakun = view.findViewById(R.id.btndetailakun);
-        btndetailakun.setOnClickListener(new View.OnClickListener() {
+        RelativDataMember = view.findViewById(R.id.RelativDataMember);
+        RelativDataMember.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -178,7 +182,8 @@ public class FragmentAkun extends Fragment {
 
 
         btnalamatpengiriman = view.findViewById(R.id.btnalamatpengiriman);
-        btnalamatpengiriman.setOnClickListener(new View.OnClickListener() {
+        RelativAlamatPengiriman = view.findViewById(R.id.RelativAlamatPengiriman);
+        RelativAlamatPengiriman.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -190,7 +195,8 @@ public class FragmentAkun extends Fragment {
 
 
         btnhistorypesanan = view.findViewById(R.id.btnhistorypesanan);
-        btnhistorypesanan.setOnClickListener(new View.OnClickListener() {
+        RelativHistoryPesanan = view.findViewById(R.id.RelativHistoryPesanan);
+        RelativHistoryPesanan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                //// Toast.makeText(getActivity(), "Fitur segera hadir", Toast.LENGTH_LONG).show();
@@ -226,7 +232,8 @@ public class FragmentAkun extends Fragment {
         });
 
         btngantipassword = view.findViewById(R.id.btngantipassword);
-        btngantipassword.setOnClickListener(new View.OnClickListener() {
+        RelativGantiPassword = view.findViewById(R.id.RelativGantiPassword);
+        RelativGantiPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -237,7 +244,8 @@ public class FragmentAkun extends Fragment {
         });
 
         btnlogout = view.findViewById(R.id.btnlogout);
-        btnlogout.setOnClickListener(new View.OnClickListener() {
+        RelativLogout = view.findViewById(R.id.RelativLogout);
+        RelativLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -343,6 +351,17 @@ public class FragmentAkun extends Fragment {
         super.onStart();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        Objects.requireNonNull(((AppCompatActivity) Objects.requireNonNull(getActivity())).getSupportActionBar()).hide();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Objects.requireNonNull(((AppCompatActivity) Objects.requireNonNull(getActivity())).getSupportActionBar()).show();
+    }
 
 //    private void getUsername(){
 //        Call<ResponseLoginSucces> getUser = mApiService.getUsermember("Bearer "+sharedPrefManager.getSPToken());

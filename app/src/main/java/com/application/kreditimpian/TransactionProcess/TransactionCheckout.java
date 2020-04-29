@@ -24,6 +24,7 @@ import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
 import com.application.kreditimpian.FormPengajuan.SuccessMengajukan;
 import com.application.kreditimpian.Model.ModelPengajuanCatalog.ResponsePengajuanCatalog;
+import com.application.kreditimpian.Model.ModelTransactionAPI.ResponseTransactionAPI;
 import com.application.kreditimpian.R;
 import com.bumptech.glide.Glide;
 
@@ -251,16 +252,16 @@ public class TransactionCheckout extends AppCompatActivity {
         params.put("down_payment",  tvDownpayment.getText().toString());
         params.put("tenor", tvTenor2.getText().toString() );
         params.put("note", tvNote.getText().toString());
-        params.put("id_creditor", tvIdCreditor.getText().toString());
+        params.put("id_company", tvIdCreditor.getText().toString());
         params.put("postal_fee", tvBiayaKirim.getText().toString());
         params.put("courier" , tvJasaPengiriman.getText().toString());
         params.put("installment", tvInstalment.getText().toString());
         params.put("payment_method", radioButton.getText().toString());
         params.put("price_sale", txt_price_sale.getText().toString());
 
-        mApiService.postPengajuan(params).enqueue(new Callback<ResponsePengajuanCatalog>() {
+        mApiService.postPengajuanCheckout(params).enqueue(new Callback<ResponseTransactionAPI>() {
             @Override
-            public void onResponse(Call<ResponsePengajuanCatalog> call, Response<ResponsePengajuanCatalog> response) {
+            public void onResponse(Call<ResponseTransactionAPI> call, Response<ResponseTransactionAPI> response) {
                pDialog.dismiss();
                 if(response.body().getResponseCode()==200){
                     //Toast.makeText(TransactionCheckout.this, response.body().getMessage() , Toast.LENGTH_LONG).show();
@@ -274,7 +275,7 @@ public class TransactionCheckout extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<ResponsePengajuanCatalog> call, Throwable t) {
+            public void onFailure(Call<ResponseTransactionAPI> call, Throwable t) {
                 Toast.makeText(TransactionCheckout.this, "Internet anda bermasalah" , Toast.LENGTH_LONG).show();
 
             }
