@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -22,6 +23,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.application.kreditimpian.Adapter.AdapterCart;
 import com.application.kreditimpian.Akun.DataDiri;
 import com.application.kreditimpian.Akun.DataDiriPopup;
 import com.application.kreditimpian.Akun.FragmentAkun;
@@ -34,6 +36,7 @@ import com.application.kreditimpian.LoginRegister.LoginUser;
 import com.application.kreditimpian.Marketplace.FragmentMarketplace;
 import com.application.kreditimpian.Model.ModelDetailMember.DataItem;
 import com.application.kreditimpian.Model.ModelDetailMember.ResponseDetailMember;
+import com.application.kreditimpian.Model.ModelOnShoppingCart.ResponseOnShoppingCart;
 import com.application.kreditimpian.R;
 import com.application.kreditimpian.SimulasiKredit.FragmentSimulasiKredit;
 import com.application.kreditimpian.TransactionProcess.Cart;
@@ -60,6 +63,7 @@ public class MenuUtama extends AppCompatActivity {
     SessionManager sessionManager;
     ConnectivityManager conMgr;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,7 +86,7 @@ public class MenuUtama extends AppCompatActivity {
                     alertDialog.setIcon(R.drawable.no_connection);
                     alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            finish();
+                            alertDialog.dismiss();
 
                         }
                     });
@@ -173,6 +177,9 @@ public class MenuUtama extends AppCompatActivity {
             }
         });
     }
+
+
+
 
 
 

@@ -5,7 +5,10 @@
     <item android:id="@+id/cartshop"
         android:title="Keranjang"
         app:showAsAction="always"
+        app:actionLayout="@layout/custom_action_item_layout"
         android:icon="@drawable/cart_2"/>
+
+
 
     <item android:id="@+id/notifikasi"
         android:title="Notifikasi"

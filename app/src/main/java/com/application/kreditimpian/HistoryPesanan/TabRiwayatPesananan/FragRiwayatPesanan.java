@@ -92,6 +92,8 @@ public class FragRiwayatPesanan extends Fragment {
         listHistoryPesanan.setLayoutManager(mLayoutManager);
         listHistoryPesanan.setItemAnimator(new DefaultItemAnimator());
 
+
+
         getHistoryTransaction();
 
 
@@ -118,6 +120,7 @@ public class FragRiwayatPesanan extends Fragment {
 
                         listHistoryPesanan.setAdapter(new AdapterHistoryTransaction(mContext, HistoryTransaction));
                         adapterHistoryTransaction.notifyDataSetChanged();
+
                         empty.setVisibility(View.GONE);
                         initDataIntent(HistoryTransaction);
                     }else {

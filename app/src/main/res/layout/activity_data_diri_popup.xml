@@ -37,25 +37,24 @@
                 android:layout_height="40dp"
                 android:layout_toLeftOf="@id/btnback"
                 android:background="@android:color/transparent"
-                android:src="@drawable/backwhite"/>
+                android:src="@drawable/backwhite" />
 
             <ImageView
                 android:id="@+id/logotop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:foregroundGravity="center"
                 android:layout_toRightOf="@id/btnback"
+                android:foregroundGravity="center"
+                android:paddingTop="15dp"
                 android:paddingRight="50dp"
                 android:paddingBottom="10dp"
-                android:paddingTop="15dp"
-                android:src="@drawable/logoputihkredit"/>
+                android:src="@drawable/logoputihkredit" />
         </androidx.appcompat.widget.Toolbar>
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             tools:ignore="MissingConstraints">
-
 
 
             <LinearLayout
@@ -68,20 +67,20 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="fill_parent"
-                    android:gravity="center"
-                    android:textSize="35dp"
-                    android:paddingBottom="10dp"
-                    android:textColor="#000"
-                    android:visibility="gone"
                     android:fontFamily="@font/jipatharegular"
-                    android:text="Data pribadi"/>
+                    android:gravity="center"
+                    android:paddingBottom="10dp"
+                    android:text="Data pribadi"
+                    android:textColor="#000"
+                    android:textSize="35dp"
+                    android:visibility="gone" />
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:paddingBottom="@dimen/padding_10"
-                    android:text="Masukan foto wajah"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:text="Masukan foto wajah" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/imageself"
@@ -89,13 +88,13 @@
                     android:layout_height="120dp"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
                     android:clickable="true"
                     android:elevation="5dp"
                     android:focusable="true"
-                    android:layout_gravity="center"
                     android:foregroundGravity="center"
                     android:scaleType="centerCrop"
-                    android:layout_marginBottom="10dp"
                     android:src="@drawable/icon_user"
                     app:civ_border_color="#FFFFFFFF"
                     app:civ_border_width="3dp"
@@ -105,29 +104,28 @@
                     android:id="@+id/btnuploadfoto"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="10dp"
                     android:background="@drawable/btnorange"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:text="Simpan foto"
                     android:textColor="@color/colorwhite"
-                    android:visibility="gone"/>
-
+                    android:visibility="gone" />
 
 
                 <TextView
                     android:id="@+id/txt_image_diri"
-                    android:visibility="gone"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" />
 
 
                 <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
+                    android:layout_height="37dp"
                     android:background="@drawable/borderhitam"
-                    android:layout_height="37dp">
+                    android:orientation="vertical">
 
                     <EditText
                         android:id="@+id/txtnamalengkap"
@@ -136,24 +134,24 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@android:color/transparent"
+                        android:fontFamily="@font/jipatharegular"
                         android:hint="Nama Lengkap"
                         android:inputType="text"
-                        android:fontFamily="@font/jipatharegular"
                         android:textSize="26dp" />
 
                 </LinearLayout>
 
                 <!--Border-->
                 <LinearLayout
-                    android:background="#fff"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"></LinearLayout>
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
+                    android:layout_height="37dp"
                     android:background="@drawable/borderhitam"
-                    android:layout_height="37dp">
+                    android:orientation="horizontal">
 
                     <EditText
                         android:id="@+id/txttempatlahir"
@@ -162,23 +160,23 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@android:color/transparent"
-                        android:hint="Tempat lahir"
                         android:fontFamily="@font/jipatharegular"
+                        android:hint="Tempat lahir"
                         android:inputType="text"
                         android:textSize="26dp" />
                 </LinearLayout>
 
                 <!--Border-->
                 <LinearLayout
-                    android:background="#fff"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"></LinearLayout>
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
+                    android:layout_height="37dp"
                     android:background="@drawable/borderhitam"
-                    android:layout_height="37dp">
+                    android:orientation="horizontal">
 
                     <EditText
                         android:id="@+id/txttanggallahir"
@@ -187,126 +185,126 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@android:color/transparent"
-                        android:hint="Tanggal Lahir"
                         android:clickable="true"
                         android:editable="false"
                         android:fontFamily="@font/jipatharegular"
+                        android:hint="Tanggal Lahir"
                         android:textSize="26dp" />
                 </LinearLayout>
 
                 <!--Border-->
                 <LinearLayout
-                    android:background="#fff"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"></LinearLayout>
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
+                    android:layout_height="37dp"
                     android:background="@drawable/borderhitam"
-                    android:layout_height="37dp">
+                    android:orientation="horizontal">
 
                     <Spinner
                         android:id="@+id/spinnerjeniskelamin"
                         android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:fontFamily="@font/jipatharegular"
-                        android:textSize="26dp"
-                        android:layout_height="match_parent"></Spinner>
+                        android:textSize="26dp"></Spinner>
 
                     <TextView
                         android:id="@+id/textjeniskemalin"
-                        android:visibility="gone"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:visibility="gone" />
                 </LinearLayout>
 
                 <!--Border-->
                 <LinearLayout
-                    android:background="#fff"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"></LinearLayout>
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
+                    android:layout_height="37dp"
                     android:background="@drawable/borderhitam"
-                    android:layout_height="37dp">
+                    android:orientation="horizontal">
 
                     <Spinner
                         android:id="@+id/spinnerstatus"
                         android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:fontFamily="@font/jipatharegular"
-                        android:textSize="26dp"
-                        android:layout_height="match_parent"></Spinner>
+                        android:textSize="26dp"></Spinner>
 
                     <TextView
                         android:id="@+id/textstatus"
-                        android:visibility="gone"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:visibility="gone" />
 
                 </LinearLayout>
 
                 <!--Border-->
                 <LinearLayout
-                    android:background="#fff"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"></LinearLayout>
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
+                    android:layout_height="37dp"
                     android:background="@drawable/borderhitam"
-                    android:layout_height="37dp">
+                    android:orientation="horizontal">
 
                     <Spinner
                         android:id="@+id/spinneragama"
                         android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:fontFamily="@font/jipatharegular"
-                        android:textSize="26dp"
-                        android:layout_height="match_parent"></Spinner>
+                        android:textSize="26dp"></Spinner>
 
                     <TextView
                         android:id="@+id/textagama"
-                        android:visibility="gone"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:visibility="gone" />
 
                 </LinearLayout>
 
 
                 <!--Border-->
                 <LinearLayout
-                    android:background="#fff"
-                    android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
-                    android:layout_height="25dp">
+                    android:layout_height="25dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#fff">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/sairaregular"
-                        android:text="Dikumen KTP"/>
+                        android:text="Dikumen KTP" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
+                    android:layout_height="100dp"
                     android:background="@drawable/borderorange"
-                    android:layout_height="100dp">
+                    android:orientation="vertical">
+
                     <ImageView
                         android:id="@+id/imagektp"
                         android:layout_width="match_parent"
-                        android:src="@drawable/upload"
-                        android:layout_height="match_parent" />
-
+                        android:layout_height="match_parent"
+                        android:src="@drawable/upload" />
 
 
                     <TextView
                         android:id="@+id/txt_image_ktp"
-                        android:visibility="gone"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:visibility="gone" />
 
 
                 </LinearLayout>
@@ -315,26 +313,26 @@
                     android:id="@+id/btnuploadktp"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="10dp"
                     android:background="@drawable/btnorange"
-                    android:textColor="@color/colorwhite"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:text="Simpan ktp"
-                    android:visibility="gone"/>
+                    android:textColor="@color/colorwhite"
+                    android:visibility="gone" />
 
                 <!--Border-->
                 <LinearLayout
-                    android:background="#fff"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"></LinearLayout>
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
+                    android:layout_height="37dp"
                     android:background="@drawable/borderhitam"
-                    android:layout_height="37dp">
+                    android:orientation="horizontal">
 
                     <EditText
                         android:id="@+id/txtnikktp"
@@ -343,71 +341,73 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@android:color/transparent"
-                        android:hint="NIK KTP"
-                        android:maxLength="16"
                         android:fontFamily="@font/jipatharegular"
+                        android:hint="NIK KTP"
                         android:inputType="number"
+                        android:maxLength="16"
                         android:textSize="26dp" />
                 </LinearLayout>
 
                 <!--Border-->
                 <LinearLayout
-                    android:background="#fff"
-                    android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
-                    android:layout_height="25dp">
+                    android:layout_height="25dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#fff">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/sairaregular"
-                        android:text="Dokumen NPWP(Optional)"/>
+                        android:text="Dokumen NPWP(Optional)" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
+                    android:layout_height="100dp"
                     android:background="@drawable/borderorange"
-                    android:layout_height="100dp">
+                    android:orientation="vertical">
+
                     <ImageView
                         android:id="@+id/imagenpwp"
                         android:layout_width="match_parent"
-                        android:src="@drawable/upload"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        android:src="@drawable/upload" />
 
 
                     <TextView
                         android:id="@+id/txt_image_npwp"
-                        android:visibility="gone"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:visibility="gone" />
 
                 </LinearLayout>
+
                 <Button
                     android:id="@+id/btnuploadnpwp"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="10dp"
                     android:background="@drawable/btnorange"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:text="Simpan npwp"
                     android:textColor="@color/colorwhite"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
 
                 <!--Border-->
                 <LinearLayout
-                    android:background="#fff"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"></LinearLayout>
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
+                    android:layout_height="37dp"
                     android:background="@drawable/borderhitam"
-                    android:layout_height="37dp">
+                    android:orientation="horizontal">
 
                     <EditText
                         android:id="@+id/txtnomornpwp"
@@ -416,8 +416,8 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@android:color/transparent"
-                        android:hint="Nomor NPWP (Optional)"
                         android:fontFamily="@font/jipatharegular"
+                        android:hint="Nomor NPWP (Optional)"
                         android:inputType="number"
                         android:maxLength="15"
                         android:textSize="26dp" />
@@ -426,15 +426,15 @@
 
                 <!--Border-->
                 <LinearLayout
-                    android:background="#fff"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"></LinearLayout>
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
+                    android:layout_height="37dp"
                     android:background="@drawable/borderhitam"
-                    android:layout_height="37dp">
+                    android:orientation="horizontal">
 
                     <EditText
                         android:id="@+id/txtpekerjaan"
@@ -443,23 +443,23 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@android:color/transparent"
-                        android:hint="Pekerjaan"
                         android:fontFamily="@font/jipatharegular"
+                        android:hint="Pekerjaan"
                         android:inputType="text"
                         android:textSize="26dp" />
                 </LinearLayout>
 
                 <!--Border-->
                 <LinearLayout
-                    android:background="#fff"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"></LinearLayout>
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
+                    android:layout_height="37dp"
                     android:background="@drawable/borderhitam"
-                    android:layout_height="37dp">
+                    android:orientation="horizontal">
 
                     <EditText
                         android:id="@+id/txtpendapatan"
@@ -468,23 +468,23 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@android:color/transparent"
+                        android:fontFamily="@font/jipatharegular"
                         android:hint="Pendapatan"
                         android:inputType="number"
-                        android:fontFamily="@font/jipatharegular"
                         android:textSize="26dp" />
                 </LinearLayout>
 
                 <!--Border-->
                 <LinearLayout
-                    android:background="#fff"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"></LinearLayout>
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
+                    android:layout_height="37dp"
                     android:background="@drawable/borderhitam"
-                    android:layout_height="37dp">
+                    android:orientation="horizontal">
 
                     <EditText
                         android:id="@+id/txtjumlahtanggungan"
@@ -493,77 +493,78 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@android:color/transparent"
+                        android:fontFamily="@font/jipatharegular"
                         android:hint="Jumlah Tanggungan"
                         android:inputType="number"
-                        android:fontFamily="@font/jipatharegular"
                         android:textSize="26dp" />
                 </LinearLayout>
 
                 <!--Border-->
                 <LinearLayout
-                    android:background="#fff"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"></LinearLayout>
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
+                    android:layout_height="37dp"
                     android:background="@drawable/borderhitam"
-                    android:layout_height="37dp">
+                    android:orientation="horizontal">
 
                     <Spinner
                         android:id="@+id/spinnerkredit"
                         android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:fontFamily="@font/jipatharegular"
-                        android:textSize="26dp"
-                        android:layout_height="match_parent"></Spinner>
+                        android:textSize="26dp"></Spinner>
+
                     <TextView
                         android:id="@+id/textkredit"
-                        android:visibility="gone"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:visibility="gone" />
 
                 </LinearLayout>
 
                 <!--Border-->
                 <LinearLayout
-                    android:background="#fff"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"></LinearLayout>
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
+                    android:layout_height="37dp"
                     android:background="@drawable/borderhitam"
-                    android:layout_height="37dp">
+                    android:orientation="horizontal">
 
                     <Spinner
                         android:id="@+id/spinnerstatusrumah"
                         android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:fontFamily="@font/jipatharegular"
-                        android:textSize="26dp"
-                        android:layout_height="match_parent"></Spinner>
+                        android:textSize="26dp"></Spinner>
 
                     <TextView
                         android:id="@+id/textstatusrumah"
-                        android:visibility="gone"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:visibility="gone" />
                 </LinearLayout>
 
                 <!--Border-->
                 <LinearLayout
-                    android:background="#fff"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"></LinearLayout>
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
 
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:backgroundTint="@color/colorAbuabu"
+                    android:layout_height="37dp"
                     android:background="@drawable/borderhitam"
-                    android:layout_height="37dp">
+                    android:backgroundTint="@color/colorAbuabu"
+                    android:orientation="horizontal">
 
                     <EditText
                         android:id="@+id/txtalamatemail"
@@ -572,25 +573,25 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@android:color/transparent"
-                        android:hint="Alamat Email"
-                        android:inputType="none"
                         android:editable="false"
                         android:fontFamily="@font/jipatharegular"
+                        android:hint="Alamat Email"
+                        android:inputType="none"
                         android:textSize="26dp" />
                 </LinearLayout>
 
                 <!--Border-->
                 <LinearLayout
-                    android:background="#fff"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"></LinearLayout>
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
 
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
+                    android:layout_height="37dp"
                     android:background="@drawable/borderhitam"
-                    android:layout_height="37dp">
+                    android:orientation="horizontal">
 
                     <EditText
                         android:id="@+id/txtibukandung"
@@ -599,24 +600,24 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@android:color/transparent"
+                        android:fontFamily="@font/jipatharegular"
                         android:hint="Nama Ibu Kandung"
                         android:inputType="text"
-                        android:fontFamily="@font/jipatharegular"
                         android:textSize="26dp" />
                 </LinearLayout>
 
                 <!--Border-->
                 <LinearLayout
-                    android:background="#fff"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"></LinearLayout>
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:backgroundTint="@color/colorAbuabu"
+                    android:layout_height="37dp"
                     android:background="@drawable/borderhitam"
-                    android:layout_height="37dp">
+                    android:backgroundTint="@color/colorAbuabu"
+                    android:orientation="horizontal">
 
                     <EditText
                         android:id="@+id/txtnomorhandphone"
@@ -624,25 +625,25 @@
                         android:layout_height="match_parent"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:inputType="none"
-                        android:editable="false"
                         android:background="@color/colorAbuabu"
-                        android:hint="Nomor Handphone"
+                        android:editable="false"
                         android:fontFamily="@font/jipatharegular"
+                        android:hint="Nomor Handphone"
+                        android:inputType="none"
                         android:textSize="26dp" />
                 </LinearLayout>
 
                 <!--Border-->
                 <LinearLayout
-                    android:background="#fff"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"></LinearLayout>
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
+                    android:layout_height="37dp"
                     android:background="@drawable/borderhitam"
-                    android:layout_height="37dp">
+                    android:orientation="horizontal">
 
                     <EditText
                         android:id="@+id/txtnomortlp"
@@ -651,23 +652,23 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@android:color/transparent"
+                        android:fontFamily="@font/jipatharegular"
                         android:hint="Nomor Telepon Kantor"
                         android:inputType="number"
-                        android:fontFamily="@font/jipatharegular"
                         android:textSize="26dp" />
                 </LinearLayout>
 
                 <!--Border-->
                 <LinearLayout
-                    android:background="#fff"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"></LinearLayout>
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
+                    android:layout_height="37dp"
                     android:background="@drawable/borderhitam"
-                    android:layout_height="37dp">
+                    android:orientation="horizontal">
 
                     <EditText
                         android:id="@+id/txtfacebook"
@@ -676,23 +677,23 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@android:color/transparent"
+                        android:fontFamily="@font/jipatharegular"
                         android:hint="Facebook"
                         android:inputType="text"
-                        android:fontFamily="@font/jipatharegular"
                         android:textSize="26dp" />
                 </LinearLayout>
 
                 <!--Border-->
                 <LinearLayout
-                    android:background="#fff"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"></LinearLayout>
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
+                    android:layout_height="37dp"
                     android:background="@drawable/borderhitam"
-                    android:layout_height="37dp">
+                    android:orientation="horizontal">
 
                     <EditText
                         android:id="@+id/txttwitter"
@@ -701,23 +702,23 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@android:color/transparent"
+                        android:fontFamily="@font/jipatharegular"
                         android:hint="Twitter"
                         android:inputType="text"
-                        android:fontFamily="@font/jipatharegular"
                         android:textSize="26dp" />
                 </LinearLayout>
 
                 <!--Border-->
                 <LinearLayout
-                    android:background="#fff"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"></LinearLayout>
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
+                    android:layout_height="37dp"
                     android:background="@drawable/borderhitam"
-                    android:layout_height="37dp">
+                    android:orientation="horizontal">
 
                     <EditText
                         android:id="@+id/txtinstagram"
@@ -726,38 +727,36 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@android:color/transparent"
+                        android:fontFamily="@font/jipatharegular"
                         android:hint="Instagram"
                         android:inputType="text"
-                        android:fontFamily="@font/jipatharegular"
                         android:textSize="26dp" />
                 </LinearLayout>
 
                 <!--Border-->
                 <LinearLayout
-                    android:background="#fff"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"></LinearLayout>
-
-
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
 
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="fill_parent"
-                    android:gravity="left"
-                    android:textSize="30dp"
-                    android:paddingBottom="10dp"
-                    android:textColor="#000"
                     android:fontFamily="@font/jipatharegular"
-                    android:text="Data Saudara tidak se-rumah"/>
+                    android:gravity="left"
+                    android:paddingBottom="10dp"
+                    android:text="Data Saudara tidak se-rumah"
+                    android:textColor="#000"
+                    android:textSize="30dp" />
 
 
                 <LinearLayout
 
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
+                    android:layout_height="37dp"
                     android:background="@drawable/borderhitam"
-                    android:layout_height="37dp">
+                    android:orientation="vertical">
 
                     <EditText
                         android:id="@+id/txtnamasaudara"
@@ -766,25 +765,25 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@android:color/transparent"
+                        android:fontFamily="@font/jipatharegular"
                         android:hint="Nama Lengkap"
                         android:inputType="text"
-                        android:fontFamily="@font/jipatharegular"
                         android:textSize="26dp" />
 
                 </LinearLayout>
 
                 <!--Border-->
                 <LinearLayout
-                    android:background="#fff"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"></LinearLayout>
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
 
                 <LinearLayout
 
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
+                    android:layout_height="37dp"
                     android:background="@drawable/borderhitam"
-                    android:layout_height="37dp">
+                    android:orientation="vertical">
 
                     <EditText
                         android:id="@+id/txtnomorhandphonesaudara"
@@ -793,46 +792,81 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@android:color/transparent"
+                        android:fontFamily="@font/jipatharegular"
                         android:hint="Nomor Handphone"
                         android:inputType="number"
-                        android:fontFamily="@font/jipatharegular"
                         android:textSize="26dp" />
 
                 </LinearLayout>
 
                 <!--Border-->
                 <LinearLayout
-                    android:background="#fff"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"></LinearLayout>
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
 
                 <TextView
                     android:id="@+id/tvKota"
-                    android:textSize="12dp"
-                    android:textColor="@color/colorOrange"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorOrange"
+                    android:textSize="12dp" />
 
 
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layout4">
 
-
+                    <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                        android:id="@+id/spinKota"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen3dp"
+                        android:layout_marginEnd="@dimen/dimen3dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:smsp_floatingLabelText=""
+                        app:smsp_hint="Pilih Kota / Kabupaten"
+                        app:smsp_hintColor="@color/colorOrange"
+                        app:smsp_isSearchable="true"
+                        app:smsp_itemColor="@color/colorOrange"
+                        app:smsp_itemListColor="@color/colorOrange"
+                        app:smsp_itemListHintBackgroundColor="@color/colorOrange"
+                        app:smsp_itemListHintColor="@android:color/white"
+                        app:smsp_multilineError="false"
+                        app:smsp_searchHeaderBackgroundColor="@color/colorOrange"
+                        app:smsp_searchHeaderText="Cari Kota / Kabupaten"
+                        app:smsp_searchHeaderTextColor="@color/colorwhite"
+                        app:smsp_searchHint="Masukan Keyword"
+                        app:smsp_searchHintColor="@color/colorOrange"
+                        app:smsp_selectedItemListColor="#FF5252"
+                        app:smsp_underlineColor="@color/colorOrange" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TextView
                     android:id="@+id/text_kota"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/padding_10"
+                    android:paddingTop="5dp"
                     android:text="Nama kota"
-                    android:textSize="16dp"
+                    android:textColor="@color/colorOrange"
 
-                    android:textColor="@color/colorOrange" />
+                    android:textSize="16dp" />
+
 
                 <LinearLayout
                     android:id="@+id/LinearKota"
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
+                    android:layout_height="37dp"
                     android:background="@drawable/borderhitam"
-                    android:layout_height="37dp">
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
                     <Spinner
                         android:id="@+id/spinnerkota_saudaraa"
@@ -851,79 +885,114 @@
                     android:layout_margin="10dp"
                     android:background="@drawable/btnorange"
                     android:text="Ubah Kota"
-                    android:textColor="@color/colorwhite"
-                    />
+                    android:textColor="@color/colorwhite" />
 
                 <!--Border-->
                 <LinearLayout
-                    android:background="#fff"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"></LinearLayout>
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layout4">
+
+                    <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                        android:id="@+id/spinKecamatan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen3dp"
+                        android:layout_marginEnd="@dimen/dimen3dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:smsp_floatingLabelText=""
+                        app:smsp_hint="Pilih Kecamatan"
+                        app:smsp_hintColor="@color/colorOrange"
+                        app:smsp_isSearchable="true"
+                        app:smsp_itemColor="@color/colorOrange"
+                        app:smsp_itemListColor="@color/colorOrange"
+                        app:smsp_itemListHintBackgroundColor="@color/colorOrange"
+                        app:smsp_itemListHintColor="@android:color/white"
+                        app:smsp_multilineError="false"
+                        app:smsp_searchHeaderBackgroundColor="@color/colorOrange"
+                        app:smsp_searchHeaderText="Cari Kecamatan"
+                        app:smsp_searchHeaderTextColor="@color/colorwhite"
+                        app:smsp_searchHint="Masukan Keyword"
+                        app:smsp_searchHintColor="@color/colorOrange"
+                        app:smsp_selectedItemListColor="#FF5252"
+                        app:smsp_underlineColor="@color/colorOrange" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TextView
                     android:id="@+id/text_kecamatan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/padding_10"
+                    android:paddingTop="5dp"
                     android:text="Nama Kecamatan"
 
                     android:textColor="@color/colorOrange" />
 
                 <LinearLayout
                     android:id="@+id/LinearKecamatan"
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
+                    android:layout_height="37dp"
                     android:background="@drawable/borderhitam"
-                    android:layout_height="37dp">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <Spinner
                         android:id="@+id/spinnerkecamatn_saudara"
-                        android:entries="@array/kecamatan"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"></Spinner>
+                        android:layout_height="match_parent"
+                        android:entries="@array/kecamatan"></Spinner>
                 </LinearLayout>
 
                 <Button
                     android:id="@+id/btnUbahKecamatan"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="10dp"
                     android:background="@drawable/btnorange"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:text="Ubah Kecamatan"
-                    android:textColor="@color/colorwhite"
-                    />
+                    android:textColor="@color/colorwhite" />
 
                 <LinearLayout
-                    android:background="#fff"
-                    android:orientation="vertical"
-                    android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
-                    android:layout_height="25dp">
+                    android:layout_height="25dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#fff"
+                    android:orientation="vertical">
 
 
                     <TextView
                         android:id="@+id/kecamatanSelected"
-                        android:text="Kecamatan Yang anda Pilih"
                         android:layout_width="wrap_content"
-                        android:visibility="gone"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:text="Kecamatan Yang anda Pilih"
+                        android:visibility="gone" />
                 </LinearLayout>
 
                 <!--Border-->
                 <LinearLayout
-                    android:background="#fff"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"></LinearLayout>
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
 
                 <LinearLayout
 
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
+                    android:layout_height="37dp"
                     android:background="@drawable/borderhitam"
-                    android:layout_height="37dp">
+                    android:orientation="vertical">
 
                     <EditText
                         android:id="@+id/txtkodepos_saudara"
@@ -932,24 +1001,24 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@android:color/transparent"
+                        android:fontFamily="@font/jipatharegular"
                         android:hint="Kode Pos"
                         android:inputType="number"
-                        android:fontFamily="@font/jipatharegular"
                         android:textSize="26dp" />
 
                 </LinearLayout>
 
                 <!--Border-->
                 <LinearLayout
-                    android:background="#fff"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"></LinearLayout>
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
+                    android:layout_height="120dp"
                     android:background="@drawable/borderhitam"
-                    android:layout_height="120dp">
+                    android:orientation="horizontal">
 
                     <EditText
                         android:id="@+id/txtalamat_saudara"
@@ -958,11 +1027,11 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@android:color/transparent"
-                        android:hint="Alamat"
-                        android:gravity="top"
-                        android:lines="9"
-                        android:inputType="textMultiLine"
                         android:fontFamily="@font/jipatharegular"
+                        android:gravity="top"
+                        android:hint="Alamat"
+                        android:inputType="textMultiLine"
+                        android:lines="9"
                         android:textSize="26dp" />
 
                 </LinearLayout>
@@ -970,27 +1039,24 @@
 
                 <TextView
                     android:id="@+id/id_kota"
-                    android:text="id_kota"
-                    android:visibility="gone"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:text="id_kota"
+                    android:visibility="gone" />
+
                 <TextView
                     android:id="@+id/id_kecamatan"
-                    android:text="id_kecamatan"
-                    android:visibility="gone"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:text="id_kecamatan"
+                    android:visibility="gone" />
 
 
                 <!--Border-->
                 <LinearLayout
-                    android:background="#fff"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"></LinearLayout>
-
-
-
-
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
 
 
                 <!--Button-->
@@ -999,23 +1065,22 @@
                     style="?android:textAppearanceSmall"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginTop="16dp"
-                    android:text="SIMPAN DATA"
-                    android:textStyle="bold"
-                    android:textColor="#fff"
-                    android:textSize="25sp"
-                    android:fontFamily="@font/jipatharegular"
                     android:layout_marginLeft="20dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/btnorange"
-                    ></Button>
-
+                    android:fontFamily="@font/jipatharegular"
+                    android:text="SIMPAN DATA"
+                    android:textColor="#fff"
+                    android:textSize="25sp"
+                    android:textStyle="bold"></Button>
 
 
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
     </LinearLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

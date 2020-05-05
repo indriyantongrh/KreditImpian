@@ -169,6 +169,47 @@
                     android:textSize="16dp"
                     android:textColor="@color/colorOrange" />
 
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout5"
+                    android:visibility="gone"
+                    android:background="@drawable/borderorangev2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layout4">
+
+                    <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                        android:id="@+id/spinKota"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen3dp"
+                        android:layout_marginEnd="@dimen/dimen3dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:smsp_floatingLabelText=""
+                        app:layout_goneMarginStart="15dp"
+                        app:smsp_hint="Pilih Kota / Kabupaten"
+                        app:smsp_hintColor="@color/colorOrange"
+                        app:smsp_isSearchable="true"
+                        app:smsp_itemColor="@color/colorOrange"
+                        app:smsp_itemListColor="@color/colorOrange"
+                        app:smsp_itemListHintBackgroundColor="@color/colorOrange"
+                        app:smsp_itemListHintColor="@android:color/white"
+                        app:smsp_multilineError="false"
+                        app:smsp_searchHeaderBackgroundColor="@color/colorOrange"
+                        app:smsp_searchHeaderText="Cari Kota / Kabupaten"
+                        app:smsp_searchHeaderTextColor="@color/colorwhite"
+                        app:smsp_searchHint="Masukan Keyword"
+                        app:smsp_searchHintColor="@color/colorOrange"
+                        app:smsp_selectedItemListColor="#FF5252"
+                        app:smsp_underlineColor="@color/colorOrange" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
                 <LinearLayout
                     android:id="@+id/LinearKota"
                     android:layout_width="match_parent"
@@ -240,6 +281,46 @@
                     android:paddingTop="@dimen/padding_10"
                     android:text="Nama Kecamatan"
                     android:textColor="@color/colorOrange" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout6"
+                    android:visibility="gone"
+                    android:background="@drawable/borderorangev2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layout4">
+
+                    <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                        android:id="@+id/spinKecamatan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen3dp"
+                        android:layout_marginEnd="@dimen/dimen3dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:smsp_floatingLabelText=""
+                        app:smsp_hint="Pilih Kecamatan"
+                        app:smsp_hintColor="@color/colorOrange"
+                        app:smsp_isSearchable="true"
+                        app:smsp_itemColor="@color/colorOrange"
+                        app:smsp_itemListColor="@color/colorOrange"
+                        app:smsp_itemListHintBackgroundColor="@color/colorOrange"
+                        app:smsp_itemListHintColor="@android:color/white"
+                        app:smsp_multilineError="false"
+                        app:smsp_searchHeaderBackgroundColor="@color/colorOrange"
+                        app:smsp_searchHeaderText="Cari Kecamatan"
+                        app:smsp_searchHeaderTextColor="@color/colorwhite"
+                        app:smsp_searchHint="Masukan Keyword"
+                        app:smsp_searchHintColor="@color/colorOrange"
+                        app:smsp_selectedItemListColor="#FF5252"
+                        app:smsp_underlineColor="@color/colorOrange" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
                 <LinearLayout
                     android:id="@+id/LinearKecamatan"

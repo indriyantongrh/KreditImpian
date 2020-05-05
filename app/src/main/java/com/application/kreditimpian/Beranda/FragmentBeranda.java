@@ -36,8 +36,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.application.kreditimpian.Adapter.AdapterCart;
 import com.application.kreditimpian.Adapter.AdapterMerchant;
 import com.application.kreditimpian.Adapter.AdapterMitra;
 import com.application.kreditimpian.Api.SharedPrefManager;
@@ -57,11 +59,13 @@ import com.application.kreditimpian.Marketplace.FragKategoriKomputer.KategoriKom
 import com.application.kreditimpian.Marketplace.FragKategoriOtomotif.KategoriOtomotif;
 import com.application.kreditimpian.Marketplace.FragKategoriProperty.KategoriProperty;
 import com.application.kreditimpian.Marketplace.FragKategorihandphone.KategoriHandphone;
+import com.application.kreditimpian.MenuUtama.MenuUtama;
 import com.application.kreditimpian.Model.ModelMerchant.ResponseMerchant;
 import com.application.kreditimpian.Model.ModelMerchant.ResultItem;
 import com.application.kreditimpian.Model.ModelMitra;
 
 import com.application.kreditimpian.Model.ModelNotifikasi.ModelNotifikasi;
+import com.application.kreditimpian.Model.ModelOnShoppingCart.ResponseOnShoppingCart;
 import com.application.kreditimpian.Notifikasi.NotifikasiActivity;
 import com.application.kreditimpian.R;
 import com.application.kreditimpian.TransactionProcess.Cart;
@@ -94,13 +98,14 @@ public class FragmentBeranda extends Fragment {
     CardView btn_lainya, btn_handphone, btn_laptop, btn_otomotif, btn_forniture, btn_fashion, btn_olahraga, btn_property;
     ImageButton btn_fotoimpian, btnupload, btncari, btnupgrade;
     RecyclerView rv_mitra;
-
-    ImageView imagefoto;
+    String datalist ;
+    TextView textCartItemCount;
+    ImageView imagefoto,btnCart;
     Bitmap bitmap, decoded;
     int PICK_IMAGE_REQUEST = 1;
     int bitmap_size = 60; // range 1 - 100
 
-
+    AdapterCart adapterCart;
     ConnectivityManager conMgr;
     AdapterMitra adapterMitra;
     private ArrayList<ModelMitra> mArrayList;
@@ -211,6 +216,8 @@ public class FragmentBeranda extends Fragment {
 /*        Result result = SharedPrefManager.getInstance(getActivity()).getResult();
 
         Toast.makeText(getActivity(), "ini id ke-"+result.getId(), Toast.LENGTH_SHORT).show();*/
+
+
 
 
         btnupload.setOnClickListener(view -> {
@@ -339,6 +346,8 @@ public class FragmentBeranda extends Fragment {
         getResultList();
 
         getNotifikasi();
+
+        getOnShoppingCart();
 
     }
 
@@ -555,6 +564,8 @@ public class FragmentBeranda extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
+
+
         int id = item.getItemId();
 
         if (id == R.id.notifikasi) {
@@ -565,14 +576,79 @@ public class FragmentBeranda extends Fragment {
             gotocartshop();
         }
         return super.onOptionsItemSelected(item);
+    }
 
+    @Override
+    public void onPrepareOptionsMenu(@NonNull Menu menu) {
+        final MenuItem menuItem = menu.findItem(R.id.cartshop);
+        View actionView = menuItem.getActionView();
+        btnCart = actionView.findViewById(R.id.btnCart);
+        textCartItemCount = actionView.findViewById(R.id.cart_badge);
 
+        btnCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotocartshop();
+            }
+        });
+
+        ///menuItem.setOnMenuItemClickListener(this::onOptionsItemSelected);
+
+        super.onPrepareOptionsMenu(menu);
     }
 
     private void gotocartshop() {
         Intent intent_cart = new Intent(getContext(), Cart.class);
         intent_cart.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent_cart);
+    }
+
+
+
+    private void getOnShoppingCart(){
+
+        mApiService.getOnShoppingCart(sharedPrefManager.getSpIdMember()).enqueue(new Callback<ResponseOnShoppingCart>() {
+            @Override
+            public void onResponse(Call<ResponseOnShoppingCart> call, Response<ResponseOnShoppingCart> response) {
+
+                if (response.body().getResponseCode() == 200) {
+
+                    final List<com.application.kreditimpian.Model.ModelOnShoppingCart.DataItem> OnShippingCart = response.body().getData();
+
+                    int itemCount = OnShippingCart.size();
+
+
+                    ///textCartItemCount.setText(String.valueOf(itemCount));
+                    if (textCartItemCount != null) {
+                        if (itemCount == 0) {
+                            if (textCartItemCount.getVisibility() != View.GONE) {
+                                textCartItemCount.setVisibility(View.GONE);
+                            }
+                        } else {
+                            textCartItemCount.setText(String.valueOf(itemCount));
+                            if (textCartItemCount.getVisibility() != View.VISIBLE) {
+                                textCartItemCount.setVisibility(View.VISIBLE);
+                            }
+                        }
+                    }
+
+                    ///Toast.makeText(getActivity(), "Jumlah List "+itemCount, Toast.LENGTH_SHORT).show();
+                } else {
+
+                    ////Toast.makeText(Cart.this, "Koneksi internet terputus", Toast.LENGTH_SHORT).show();
+
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseOnShoppingCart> call, Throwable t) {
+
+
+            }
+        });
+
     }
 
 //    @Override

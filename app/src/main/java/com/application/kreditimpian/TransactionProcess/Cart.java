@@ -38,6 +38,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.application.kreditimpian.Api.network.interceptor.MyApp.getContext;
+
 public class Cart extends AppCompatActivity {
     SwipeRefreshLayout swipeRefresh;
     ProgressDialog progressBar;
@@ -130,6 +132,10 @@ public class Cart extends AppCompatActivity {
 
                         ListCart.setAdapter(new AdapterCart(mContext, OnShippingCart));
                         adapterCart.notifyDataSetChanged();
+                        ListCart.getAdapter().getItemCount();
+                        Toast.makeText(Cart.this, "Jumalh dalam listview "+ListCart.getAdapter().getItemCount(), Toast.LENGTH_LONG).show();
+
+
                         empty.setVisibility(View.GONE);
                         ///initDataIntent(OnShippingCart);
                     } else {

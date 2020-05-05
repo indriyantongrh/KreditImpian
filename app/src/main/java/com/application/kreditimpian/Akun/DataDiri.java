@@ -1,6 +1,7 @@
 package com.application.kreditimpian.Akun;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -60,6 +61,7 @@ import com.application.kreditimpian.Model.ModelUserDetail.ResultItem;
 import com.application.kreditimpian.R;
 
 import com.bumptech.glide.Glide;
+import com.chivorn.smartmaterialspinner.SmartMaterialSpinner;
 
 
 import java.io.ByteArrayInputStream;
@@ -96,8 +98,9 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
     private HashMap<String, String> cityvalues;
     private HashMap<String, String> Kecamatanvalues;
     private HashMap<String, String> districtvalue;
+    ConstraintLayout layout6, layout5;
+    SmartMaterialSpinner spinKota,spinKecamatan;
     LinearLayout LinearKota,LinearKecamatan;
-
     ProgressDialog loading;
     SharedPrefManager sharedPrefManager;
     Context mContext;
@@ -178,6 +181,10 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         textagama = findViewById(R.id.textagama);
         textkredit = findViewById(R.id.textkredit);
         textstatusrumah = findViewById(R.id.textstatusrumah);
+        spinKota = findViewById(R.id.spinKota);
+        spinKecamatan = findViewById(R.id.spinKecamatan);
+        layout6 = findViewById(R.id.layout6);
+        layout5 = findViewById(R.id.layout5);
 
 
         ///formdatasaudara tidaq serumah
@@ -507,7 +514,8 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             public void onClick(View v) {
                 text_kota.setVisibility(View.GONE);
                 btnUbah.setVisibility(View.GONE);
-                LinearKota.setVisibility(View.VISIBLE);
+                ///LinearKota.setVisibility(View.VISIBLE);
+                layout5.setVisibility(View.VISIBLE);
             }
         });
 
@@ -516,7 +524,8 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             public void onClick(View v) {
                 text_kecamatan.setVisibility(View.GONE);
                 btnUbahKecamatan.setVisibility(View.GONE);
-                LinearKecamatan.setVisibility(View.VISIBLE);
+                ///LinearKecamatan.setVisibility(View.VISIBLE);
+                layout6.setVisibility(View.VISIBLE);
             }
         });
 
@@ -1186,24 +1195,31 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                     if(id_kota.getText().toString().equals(id_kota.getText().toString())){
                         text_kota.setVisibility(View.VISIBLE);
                         btnUbah.setVisibility(View.VISIBLE);
-                        LinearKota.setVisibility(View.GONE);
+                        ///LinearKota.setVisibility(View.GONE);
+                        layout5.setVisibility(View.GONE);
 
                     }else if(id_kota.getText().toString().equals("null")){
                         text_kota.setVisibility(View.GONE);
                         btnUbah.setVisibility(View.GONE);
-                        LinearKota.setVisibility(View.VISIBLE);
+                        //LinearKota.setVisibility(View.VISIBLE);
+                        layout5.setVisibility(View.VISIBLE);
+
                     }
 
                     getSubdistrictProfile();
                     if(id_kecamatan.getText().toString().equals(id_kecamatan.getText().toString())){
                         text_kecamatan.setVisibility(View.VISIBLE);
                         btnUbahKecamatan.setVisibility(View.VISIBLE);
-                        LinearKecamatan.setVisibility(View.GONE);
+                        ///LinearKecamatan.setVisibility(View.GONE);
+                        layout6.setVisibility(View.GONE);
+
 
                     }else if(id_kecamatan.getText().toString().equals("null")){
                         text_kecamatan.setVisibility(View.GONE);
                         btnUbahKecamatan.setVisibility(View.GONE);
-                        LinearKecamatan.setVisibility(View.VISIBLE);
+                        //LinearKecamatan.setVisibility(View.VISIBLE);
+                        layout6.setVisibility(View.VISIBLE);
+
                     }
 
                     Glide.with(DataDiri.this)
@@ -1254,7 +1270,8 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                 }else{
                     text_kecamatan.setVisibility(View.GONE);
                     btnUbahKecamatan.setVisibility(View.GONE);
-                    LinearKecamatan.setVisibility(View.VISIBLE);
+                    ////LinearKecamatan.setVisibility(View.VISIBLE);
+                    layout6.setVisibility(View.VISIBLE);
                 }
 
             }
@@ -1300,6 +1317,27 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(DataDiri.this,
                             android.R.layout.simple_spinner_item, city);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    spinKota.setAdapter(adapter);
+                    spinKota.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            if(position>0){
+                                String cityvalues = getCity.get(position - 1 ).getCityId();
+                                ////Toast.makeText(DataDiri.this, "id kota anda "+cityvalues , Toast.LENGTH_LONG).show();
+                                id_kota.setText(cityvalues);
+                                getSubDistrict();
+                                ///getKecamatan();
+
+                            }
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+
+                        }
+                    });
+
+
                     spinnerkota_saudaraa.setAdapter(adapter);
                     spinnerkota_saudaraa.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
@@ -1376,6 +1414,24 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(DataDiri.this,
                             android.R.layout.simple_spinner_item, Kecamatan);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    spinKecamatan.setAdapter(adapter);
+                    spinKecamatan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            if(position>0){
+                                String Kecamatanvalues = getKecamatan.get(position - 1 ).getSubdistrictId();
+                                id_kecamatan.setText(Kecamatanvalues);
+                                ///Toast.makeText(DataDiri.this, " id KEcamtan anda "+Kecamatanvalues, Toast.LENGTH_LONG).show();
+
+                            }
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+
+                        }
+                    });
+
                     spinnerkecamatn_saudara.setAdapter(adapter);
                     spinnerkecamatn_saudara.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override

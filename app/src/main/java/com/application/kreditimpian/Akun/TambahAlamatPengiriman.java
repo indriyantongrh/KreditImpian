@@ -1,6 +1,7 @@
 package com.application.kreditimpian.Akun;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -11,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -29,6 +31,7 @@ import com.application.kreditimpian.Model.ModelGeodirectory.ResponseGeodirectory
 import com.application.kreditimpian.Model.ModelKecamatan.ResponseKecamatan;
 import com.application.kreditimpian.Model.ModelSubDistrictRajaOngkir.ResponseSubDistrictRajaOngkir;
 import com.application.kreditimpian.R;
+import com.chivorn.smartmaterialspinner.SmartMaterialSpinner;
 
 import org.w3c.dom.Text;
 
@@ -53,6 +56,8 @@ public class TambahAlamatPengiriman extends AppCompatActivity implements Adapter
     Spinner spinnerkecamatan_pengiriman, spinnerkota_pengiriman;
     EditText txtnamaalamat,txtnamapenerima,txtnomorhandphone,txtkodepospengiriman,txtalamatpengririman;
     Button btnsimpan_pengiriman;
+    SmartMaterialSpinner spinKota,spinKecamatan;
+    ConstraintLayout layout6, layout5;
     String id, nameCity, id_member,id_geodirectory,address_name,phone,receiver,address,postal_code,district;
     private HashMap<String, String> cityvalues;
     private HashMap<String, String> districtvalue;
@@ -83,6 +88,10 @@ public class TambahAlamatPengiriman extends AppCompatActivity implements Adapter
         txtkodepospengiriman = findViewById(R.id.txtkodepospengiriman);
         txtalamatpengririman = findViewById(R.id.txtalamatpengririman);
         btnsimpan_pengiriman = findViewById(R.id.btnsimpan_pengiriman);
+        spinKota = findViewById(R.id.spinKota);
+        spinKecamatan = findViewById(R.id.spinKecamatan);
+        layout6 = findViewById(R.id.layout6);
+        layout5 = findViewById(R.id.layout5);
 
 
      ///   getGeoDistrict();
@@ -226,6 +235,8 @@ public class TambahAlamatPengiriman extends AppCompatActivity implements Adapter
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(TambahAlamatPengiriman.this,
                             android.R.layout.simple_spinner_item, city);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+
                     spinnerkota_pengiriman.setAdapter(adapter);
                     spinnerkota_pengiriman.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
@@ -292,6 +303,24 @@ public class TambahAlamatPengiriman extends AppCompatActivity implements Adapter
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(TambahAlamatPengiriman.this,
                             android.R.layout.simple_spinner_item, Kecamatan);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    spinKecamatan.setAdapter(adapter);
+                    spinKecamatan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            if(position>0){
+                                String Kecamatanvalues = getKecamatan.get(position - 1 ).getId();
+                                textid_distric.setText(Kecamatanvalues);
+                                ///Toast.makeText(TambahAlamatPengiriman.this, " ini id City "+cityvalues, Toast.LENGTH_LONG).show();
+
+                            }
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+
+                        }
+                    });
+
                     spinnerkecamatan_pengiriman.setAdapter(adapter);
                     spinnerkecamatan_pengiriman.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
@@ -359,6 +388,26 @@ public class TambahAlamatPengiriman extends AppCompatActivity implements Adapter
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(TambahAlamatPengiriman.this,
                             android.R.layout.simple_spinner_item, city);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    spinKota.setAdapter(adapter);
+                    spinKota.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            if(position>0){
+                                String cityvalues = getCity.get(position - 1 ).getCityId();
+                                //Toast.makeText(TambahAlamatPengiriman.this, "id kota anda "+cityvalues , Toast.LENGTH_LONG).show();
+                                textid_geodirectory.setText(cityvalues);
+                                getSubDistrict();
+                                ///getKecamatan();
+
+                            }
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+
+                        }
+                    });
+
                     spinnerkota_pengiriman.setAdapter(adapter);
                     spinnerkota_pengiriman.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
@@ -436,6 +485,23 @@ public class TambahAlamatPengiriman extends AppCompatActivity implements Adapter
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(TambahAlamatPengiriman.this,
                             android.R.layout.simple_spinner_item, Kecamatan);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    spinKecamatan.setAdapter(adapter);
+                    spinKecamatan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            if(position>0){
+                                String Kecamatanvalues = getKecamatan.get(position - 1 ).getSubdistrictId();
+                                textid_distric.setText(Kecamatanvalues);
+                                ///Toast.makeText(TambahAlamatPengiriman.this, " id KEcamtan anda "+Kecamatanvalues, Toast.LENGTH_LONG).show();
+
+                            }
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+
+                        }
+                    });
                     spinnerkecamatan_pengiriman.setAdapter(adapter);
                     spinnerkecamatan_pengiriman.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
