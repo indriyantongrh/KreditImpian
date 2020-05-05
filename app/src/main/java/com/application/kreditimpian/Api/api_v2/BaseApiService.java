@@ -8,6 +8,7 @@ import com.application.kreditimpian.Model.ModelDeleteShopingCart.ResponseDeleteS
 import com.application.kreditimpian.Model.ModelDetailMember.ResponseDetailMember;
 import com.application.kreditimpian.Model.ModelFOrgotPassword.ResponseForgotPassword;
 import com.application.kreditimpian.Model.ModelGeodirectory.ResponseGeodirectory;
+import com.application.kreditimpian.Model.ModelImagePromo.ResponseImagePromo;
 import com.application.kreditimpian.Model.ModelInsertShoppingCart.ResponseInsertShopingCart;
 import com.application.kreditimpian.Model.ModelKecamatan.ResponseKecamatan;
 import com.application.kreditimpian.Model.ModelListAlamat.ResponseListAlamat;
@@ -263,6 +264,10 @@ public interface BaseApiService {
     @GET("ApiMobile/getidcity")
     Call<ResponseCityRajaOngkir> getCityGeodirectories();
 
+
+    @GET("ApiMobile/banners")
+    Call<ResponseImagePromo> getImageSlider();
+
     //getCityBackupAPICircleCreative
     @GET("ApiMobile/getlistsubdistrict")
     Call<ResponseSubDistrictRajaOngkir> getSubDistrictGeodirectories(@QueryMap HashMap<String, String> params);
@@ -271,30 +276,8 @@ public interface BaseApiService {
     @GET("ApiMobile/getiddistrict")
     Call<ResponseSubdistrict> getSubdistrcit(@QueryMap HashMap<String, String> params);
 
-    /*getUserMember*///get member with JWT token
-    /*@Headers({ "Content-Type: application/x-www-form-urlencoded", "Authorization: Bearer"+ SharedPrefManager.SP_TOKEN})
-    @POST("members")
-    Call<ResponseMember> postDataDiri(@Field("id") String id,
-                                      @Field("fullname") String fullname,
-                                      @Field("birthplace") String birthplace,
-                                      @Field("job") String job,
-                                      @Field("income") String income,
-                                      @Field("family_dependent") String family_dependent,
-                                      @Field("installment") String installment,
-                                      @Field("residence_status") String residence_status,
-                                      @Field("parent_name") String parent_name,
-                                      @Field("contact_office") String contact_office,
-                                      @Field("facebook") String facebook,
-                                      @Field("twitter") String twitter,
-                                      @Field("instagram") String instagram,
-                                      @Field("gender") String gender,
-                                      @Field("marital") String marital,
-                                      @Field("religion") String religion,
-                                      @Field("number_citizen") String number_citizen,
-                                      @Field("number_taxpayer") String number_taxpayer);*/
 
-    //getUserMember
-    ///@Headers({ "Content-Type: application/x-www-form-urlencoded", "Authorization: Bearer"+ SP_TOKEN})
+
     @Headers({
             "Accept: application/json"
     })
@@ -322,24 +305,7 @@ public interface BaseApiService {
                                       @Query("number_taxpayer") String number_taxpayer);
 
 
-//    Call<ResponseMember> postDataDiri(@Field("fullname") String fullname,
-//                                      @Field("birthplace") String birthplace,
-//                                      @Field("birthday") String birthday,
-//                                      @Field("job") String job,
-//                                      @Field("income") String income,
-//                                      @Field("family_dependent") String family_dependent,
-//                                      @Field("installment") String installment,
-//                                      @Field("residence_status") String residence_status,
-//                                      @Field("parent_name") String parent_name,
-//                                      @Field("contact_office") String contact_office,
-//                                      @Field("facebook") String facebook,
-//                                      @Field("twitter") String twitter,
-//                                      @Field("instagram") String instagram,
-//                                      @Field("gender") String gender,
-//                                      @Field("marital") String marital,
-//                                      @Field("religion") String religion,
-//                                      @Field("number_citizen") String number_citizen,
-//                                      @Field("number_taxpayer") String number_taxpayer);
+
 
 
     @GET("members?id={id}")

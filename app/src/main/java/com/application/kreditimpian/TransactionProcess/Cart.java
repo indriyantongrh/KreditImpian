@@ -133,7 +133,7 @@ public class Cart extends AppCompatActivity {
                         ListCart.setAdapter(new AdapterCart(mContext, OnShippingCart));
                         adapterCart.notifyDataSetChanged();
                         ListCart.getAdapter().getItemCount();
-                        Toast.makeText(Cart.this, "Jumalh dalam listview "+ListCart.getAdapter().getItemCount(), Toast.LENGTH_LONG).show();
+                        ///Toast.makeText(Cart.this, "Jumalh dalam listview "+ListCart.getAdapter().getItemCount(), Toast.LENGTH_LONG).show();
 
 
                         empty.setVisibility(View.GONE);

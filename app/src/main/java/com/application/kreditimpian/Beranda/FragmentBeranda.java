@@ -59,7 +59,6 @@ import com.application.kreditimpian.Marketplace.FragKategoriKomputer.KategoriKom
 import com.application.kreditimpian.Marketplace.FragKategoriOtomotif.KategoriOtomotif;
 import com.application.kreditimpian.Marketplace.FragKategoriProperty.KategoriProperty;
 import com.application.kreditimpian.Marketplace.FragKategorihandphone.KategoriHandphone;
-import com.application.kreditimpian.MenuUtama.MenuUtama;
 import com.application.kreditimpian.Model.ModelMerchant.ResponseMerchant;
 import com.application.kreditimpian.Model.ModelMerchant.ResultItem;
 import com.application.kreditimpian.Model.ModelMitra;
@@ -113,7 +112,6 @@ public class FragmentBeranda extends Fragment {
     public static final String BASE_URL = BuildConfig.BASE_URL;
 
     Dialog pDialog;
-
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -329,6 +327,7 @@ public class FragmentBeranda extends Fragment {
 
         setupSlider();
 
+
         ButterKnife.bind(this, rootView);
         mContext = getActivity();
         mApiService = UtilsApi.getAPIService();
@@ -412,28 +411,6 @@ public class FragmentBeranda extends Fragment {
     }
 
 
-    /*    private void getListMitra() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://dev.kreditimpian.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        RequestInterface requestInterface = retrofit.create(RequestInterface.class);
-        Call<List<ModelMitra>> call = requestInterface.getMitra();
-
-        call.enqueue(new Callback<List<ModelMitra>>() {
-            @Override
-            public void onResponse(Call<List<ModelMitra>> call, Response<List<ModelMitra>> response) {
-                Toast.makeText(getActivity(), "Succes", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onFailure(Call<List<ModelMitra>> call, Throwable t) {
-                Toast.makeText(getActivity(), "Filed", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-    }*/
 
     //////////////////////////////
     private void initViewMitra() {
@@ -650,6 +627,8 @@ public class FragmentBeranda extends Fragment {
         });
 
     }
+
+
 
 //    @Override
 //    public void onBackPressed() {
