@@ -47,6 +47,7 @@ import com.application.kreditimpian.Model.ModelDetailMember.ResponseDetailMember
 import com.application.kreditimpian.Model.ModelGeodirectory.DataItem;
 import com.application.kreditimpian.Model.ModelGeodirectory.ResponseGeodirectory;
 
+import com.application.kreditimpian.Model.ModelImagePromo.ResponseImagePromo;
 import com.application.kreditimpian.Model.ModelKecamatan.ResponseKecamatan;
 import com.application.kreditimpian.Model.ModelKotaKecamatan.ResponseKotaKecamatan;
 import com.application.kreditimpian.Model.ModelMember.ResponseMember;
@@ -121,6 +122,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
     ResultItem reqresultItem;
     List<ResultItem> resultItemList = new ArrayList<>();
+    List<com.application.kreditimpian.Model.ModelImagePromo.DataItem> getPromtion = new ArrayList<>();
 
 
     com.application.kreditimpian.Model.ModelGeodirectories.ResultItem reqResultCity;
@@ -683,6 +685,8 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             return "0" + String.valueOf(input);
         }
     }
+
+
 
 
     private void updatemember() {

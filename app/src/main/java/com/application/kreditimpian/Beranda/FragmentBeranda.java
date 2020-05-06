@@ -32,6 +32,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterViewFlipper;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -59,6 +60,8 @@ import com.application.kreditimpian.Marketplace.FragKategoriKomputer.KategoriKom
 import com.application.kreditimpian.Marketplace.FragKategoriOtomotif.KategoriOtomotif;
 import com.application.kreditimpian.Marketplace.FragKategoriProperty.KategoriProperty;
 import com.application.kreditimpian.Marketplace.FragKategorihandphone.KategoriHandphone;
+import com.application.kreditimpian.Model.ModelImagePromo.DataItem;
+import com.application.kreditimpian.Model.ModelImagePromo.ResponseImagePromo;
 import com.application.kreditimpian.Model.ModelMerchant.ResponseMerchant;
 import com.application.kreditimpian.Model.ModelMerchant.ResultItem;
 import com.application.kreditimpian.Model.ModelMitra;
@@ -68,6 +71,7 @@ import com.application.kreditimpian.Model.ModelOnShoppingCart.ResponseOnShopping
 import com.application.kreditimpian.Notifikasi.NotifikasiActivity;
 import com.application.kreditimpian.R;
 import com.application.kreditimpian.TransactionProcess.Cart;
+import com.application.kreditimpian._flipper.FlipperAdapter;
 import com.application.kreditimpian._sliders.FragmentSlider;
 import com.application.kreditimpian._sliders.SliderIndicator;
 import com.application.kreditimpian._sliders.SliderPagerAdapter;
@@ -139,7 +143,9 @@ public class FragmentBeranda extends Fragment {
     List<ResultItem> resultItemList = new ArrayList<>();
     AdapterMerchant adapterMerchant;
 
+    List<DataItem> getImagePromo = new ArrayList<>();
     String id, username;
+    private AdapterViewFlipper adapterViewFlipper;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -194,6 +200,7 @@ public class FragmentBeranda extends Fragment {
         sliderView = rootView.findViewById(R.id.sliderView);
         mLinearLayout = rootView.findViewById(R.id.pagesContainer);
         //mShimmerViewContainer = rootView.findViewById(R.id.shimmer_view_container);
+        adapterViewFlipper = rootView.findViewById(R.id.adapterViewFlipper);
 
         sharedPrefManager = new SharedPrefManager(getActivity());
         String decode = sharedPrefManager.getSpDecode();
@@ -325,7 +332,7 @@ public class FragmentBeranda extends Fragment {
             bottomSheetDialogFragment.show(getFragmentManager(), bottomSheetDialogFragment.getTag());
         });
 
-        setupSlider();
+        //setupSlider();
 
 
         ButterKnife.bind(this, rootView);
@@ -343,13 +350,48 @@ public class FragmentBeranda extends Fragment {
         rv_merchant.setLayoutManager(mLayoutManager);
         rv_merchant.setItemAnimator(new DefaultItemAnimator());
         getResultList();
-
         getNotifikasi();
-
         getOnShoppingCart();
+
+        getPromotion();
 
     }
 
+    private void getPromotion(){
+
+        mApiService.getImageSlider().enqueue(new Callback<ResponseImagePromo>() {
+            @Override
+            public void onResponse(Call<ResponseImagePromo> call, Response<ResponseImagePromo> response) {
+
+                if(response.body().getResponseCode()==200){
+                    FlipperAdapter adapter = new FlipperAdapter(getActivity(), (ArrayList<DataItem>) response.body().getData());
+                    adapterViewFlipper.setAdapter(adapter);
+                    adapterViewFlipper.setFlipInterval(700);
+                    adapterViewFlipper.startFlipping();
+
+                    sliderView.setDurationScroll(800);
+                    final List<com.application.kreditimpian.Model.ModelImagePromo.DataItem> getImage = response.body().getData();
+
+                    mAdapter = new SliderPagerAdapter(getFragmentManager(), response.body().getData());
+                    sliderView.setAdapter(mAdapter);
+                    sliderView.setClickable(true);
+                    mIndicator = new SliderIndicator(getActivity(), mLinearLayout, sliderView, R.drawable.indicator_circle);
+                    mIndicator.setPageCount(getImage.size());
+                    mIndicator.show();
+
+                }else {
+
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseImagePromo> call, Throwable t) {
+
+            }
+        });
+    }
     @SuppressWarnings("unchecked")
     private void getNotifikasi() {
         ModelNotifikasi modelNotifikasi = new ModelNotifikasi();
@@ -503,12 +545,12 @@ public class FragmentBeranda extends Fragment {
     }
 
 
-    private void setupSlider() {
+   /* private void setupSlider() {
         sliderView.setDurationScroll(800);
         List<Fragment> fragments = new ArrayList<>();
-        fragments.add(FragmentSlider.newInstance("https://development.kreditimpian.com/images/banners/banner-women-calculator.png"));
-        fragments.add(FragmentSlider.newInstance("https://development.kreditimpian.com/images/banners/upgrade-impian-anda3.png"));
-        fragments.add(FragmentSlider.newInstance("https://kreditimpian.id/images/banners/hitung-1.png"));
+        fragments.add(FragmentSlider.newInstance("https://kreditimpian.id/images/banners/banner-web-ramadhan-1-1.png"));
+        fragments.add(FragmentSlider.newInstance("https://kreditimpian.id/images/banners/hitung2-1.png"));
+        fragments.add(FragmentSlider.newInstance("https://kreditimpian.id/images/banners/banner-web-ramadhan-1.png"));
         fragments.add(FragmentSlider.newInstance("https://kreditimpian.id/images/banners/bca-2-2.png"));
 
 
@@ -520,7 +562,7 @@ public class FragmentBeranda extends Fragment {
         mIndicator.show();
 
 
-    }
+    }*/
 
 
     @Override
@@ -627,6 +669,8 @@ public class FragmentBeranda extends Fragment {
         });
 
     }
+
+
 
 
 

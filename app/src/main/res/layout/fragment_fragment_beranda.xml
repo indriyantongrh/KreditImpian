@@ -617,6 +617,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent">
 
+                            <AdapterViewFlipper
+                                android:visibility="gone"
+
+                                android:id="@+id/adapterViewFlipper"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+                            </AdapterViewFlipper>
+
                             <com.application.kreditimpian._sliders.SliderView
                                 android:id="@+id/sliderView"
                                 android:layout_width="wrap_content"

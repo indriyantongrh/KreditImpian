@@ -36,6 +36,7 @@ import com.application.kreditimpian.LoginRegister.LoginUser;
 import com.application.kreditimpian.Marketplace.FragmentMarketplace;
 import com.application.kreditimpian.Model.ModelDetailMember.DataItem;
 import com.application.kreditimpian.Model.ModelDetailMember.ResponseDetailMember;
+import com.application.kreditimpian.Model.ModelImagePromo.ResponseImagePromo;
 import com.application.kreditimpian.Model.ModelOnShoppingCart.ResponseOnShoppingCart;
 import com.application.kreditimpian.R;
 import com.application.kreditimpian.SimulasiKredit.FragmentSimulasiKredit;
@@ -115,7 +116,7 @@ public class MenuUtama extends AppCompatActivity {
         fragment = new FragmentBeranda();
         loadFragment(fragment);
         //return true;
-
+        getPromotion();
         //mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -241,6 +242,21 @@ public class MenuUtama extends AppCompatActivity {
         setIntent.addCategory(Intent.CATEGORY_HOME);
         setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(setIntent);
+    }
+
+    private void getPromotion(){
+
+        mApiService.getImageSlider().enqueue(new Callback<ResponseImagePromo>() {
+            @Override
+            public void onResponse(Call<ResponseImagePromo> call, Response<ResponseImagePromo> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseImagePromo> call, Throwable t) {
+
+            }
+        });
     }
 
 

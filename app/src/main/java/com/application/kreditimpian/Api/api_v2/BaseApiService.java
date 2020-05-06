@@ -264,7 +264,6 @@ public interface BaseApiService {
     @GET("ApiMobile/getidcity")
     Call<ResponseCityRajaOngkir> getCityGeodirectories();
 
-
     @GET("ApiMobile/banners")
     Call<ResponseImagePromo> getImageSlider();
 
