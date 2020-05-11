@@ -6,7 +6,7 @@ package com.application.kreditimpian.Constan;
 public class ConstanTransaction {
 
     public static final String KEY_ID_PRODUCT = "id_product";
-    public static final String KEY_STATUS= "status";
+    public static final String KEY_STATUS = "status";
     public static final String KEY_NUMBER = "number";
     public static final String KEY_REFERENCE_ID = "reference_id";
     public static final String KEY_ID_TRANSACTION = "id_transaction";

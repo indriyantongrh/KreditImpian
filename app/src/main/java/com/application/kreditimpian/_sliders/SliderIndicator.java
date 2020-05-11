@@ -27,8 +27,8 @@ public class SliderIndicator implements ViewPager.OnPageChangeListener {
     private int mPageCount;
     private int mInitialPage = 0;
 
-    private int defaultSizeInDp = 12;
-    private int defaultSpacingInDp = 12;
+    private int defaultSizeInDp = 8;
+    private int defaultSpacingInDp = 8;
 
     public SliderIndicator(@NonNull Context context,
                            @NonNull LinearLayout containerView,
@@ -94,7 +94,7 @@ public class SliderIndicator implements ViewPager.OnPageChangeListener {
             int dimen = mSize != 0 ? res.getDimensionPixelSize(mSize) : ((int) res.getDisplayMetrics().density * defaultSizeInDp);
             int margin = mSpacing != 0 ? res.getDimensionPixelSize(mSpacing) : ((int) res.getDisplayMetrics().density * defaultSpacingInDp);
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(dimen, dimen);
-            lp.setMargins(i == 0 ? 0 : margin, 0, 0, 0);
+            lp.setMargins(i == 0 ? 0 : margin, 5, 0, 0);
             view.setLayoutParams(lp);
             view.setBackgroundResource(mDrawable);
             view.setSelected(i == 0);
@@ -129,7 +129,7 @@ public class SliderIndicator implements ViewPager.OnPageChangeListener {
                     mViewPager.setCurrentItem(moveTo);
                 }
             }, 2500);
-        }catch (Exception e){
+        } catch (Exception e) {
         }
     }
 

@@ -36,7 +36,8 @@ public class DataSaudara extends AppCompatActivity {
         onBackPressed();
         return true;
     }
-   @Override
+
+    @Override
     public void onBackPressed() {
         finish();
     }

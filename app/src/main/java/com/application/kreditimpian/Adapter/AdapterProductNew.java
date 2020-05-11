@@ -30,8 +30,8 @@ public class AdapterProductNew extends RecyclerView.Adapter<AdapterProductNew.Pr
     List<ResultItem> resultItemList;
     Context mContext;
 
-    public AdapterProductNew(Context context, List<ResultItem> resultList){
-        this.mContext  = context;
+    public AdapterProductNew(Context context, List<ResultItem> resultList) {
+        this.mContext = context;
         resultItemList = resultList;
 
     }
@@ -39,7 +39,7 @@ public class AdapterProductNew extends RecyclerView.Adapter<AdapterProductNew.Pr
     @NonNull
     @Override
     public ProductHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_product, parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_product, parent, false);
         return new ProductHolder(view);
     }
 
@@ -58,9 +58,9 @@ public class AdapterProductNew extends RecyclerView.Adapter<AdapterProductNew.Pr
         int Price_Capital = (Integer.parseInt(resultItem.getPriceCapital()));
         int Price_Sale = (Integer.parseInt(resultItem.getPriceSale()));
 
-        if (Price_Capital == Price_Sale){
+        if (Price_Capital == Price_Sale) {
             holder.txt_price_capital.setVisibility(View.GONE);
-        }else {
+        } else {
             holder.txt_price_sale.setVisibility(View.VISIBLE);
         }
 

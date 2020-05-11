@@ -1,7 +1,6 @@
 package com.application.kreditimpian._sliders;
 
 
-
 import android.content.Context;
 
 import androidx.fragment.app.Fragment;
@@ -38,7 +37,6 @@ public class SliderPagerAdapter extends FragmentStatePagerAdapter {
     public int getCount() {
         return Integer.MAX_VALUE;
     }
-
 
 
 }

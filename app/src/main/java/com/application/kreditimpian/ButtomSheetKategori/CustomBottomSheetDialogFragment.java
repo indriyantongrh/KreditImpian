@@ -20,13 +20,13 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
  * Created by Nikola D. on 2/25/2016.
  */
 public class CustomBottomSheetDialogFragment extends BottomSheetDialogFragment {
-    CardView btn_tourandtravel,btn_haji,btn_umkm,btn_coorporate,btn_pendanaan,btn_multiproduct,btn_elektronik;
+    CardView btn_tourandtravel, btn_haji, btn_umkm, btn_coorporate, btn_pendanaan, btn_multiproduct, btn_elektronik;
 
     private BottomSheetBehavior.BottomSheetCallback mBottomSheetBehaviorCallback = new BottomSheetBehavior.BottomSheetCallback() {
 
         @Override
         public void onStateChanged(@NonNull View bottomSheet, int newState) {
-         ///   setStateText(newState);
+            ///   setStateText(newState);
             if (newState == BottomSheetBehavior.STATE_HIDDEN) {
                 dismiss();
             }
@@ -35,7 +35,7 @@ public class CustomBottomSheetDialogFragment extends BottomSheetDialogFragment {
 
         @Override
         public void onSlide(@NonNull View bottomSheet, float slideOffset) {
-           /// setOffsetText(slideOffset);
+            /// setOffsetText(slideOffset);
         }
     };
 
@@ -49,7 +49,7 @@ public class CustomBottomSheetDialogFragment extends BottomSheetDialogFragment {
     public void onViewCreated(View contentView, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(contentView, savedInstanceState);
 
-        
+
     }
 
     @SuppressLint("RestrictedApi")
@@ -58,7 +58,6 @@ public class CustomBottomSheetDialogFragment extends BottomSheetDialogFragment {
         super.setupDialog(dialog, style);
         View contentView = View.inflate(getContext(), R.layout.buttonsheet_kategori, null);
         dialog.setContentView(contentView);
-
 
 
         CoordinatorLayout.LayoutParams layoutParams =

@@ -47,7 +47,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DetailAlamat extends AppCompatActivity {
-    TextView textid_distric,textid_geodirectory;
+    TextView textid_distric, textid_geodirectory;
     ProgressDialog pDialog;
     ImageButton btnback;
     SharedPrefManager sharedPrefManager;
@@ -57,14 +57,14 @@ public class DetailAlamat extends AppCompatActivity {
     TextView text_mainaddress, text_kecamatan, text_kota, text_id;
     private HashMap<String, String> Kecamatanvalues;
     Spinner spinnerkecamatan_pengiriman, spinnerkota_pengiriman;
-    EditText txtnamaalamat,txtnamapenerima,txtnomorhandphone,txtkodepospengiriman,txtalamatpengririman;
+    EditText txtnamaalamat, txtnamapenerima, txtnomorhandphone, txtkodepospengiriman, txtalamatpengririman;
     Button btnupdate, btndelete, btnUbah, btnUbahKecamatan;
-    String id, nameCity, id_member,id_geodirectory,address_name,phone,receiver,address,postal_code,district,main_address;
+    String id, nameCity, id_member, id_geodirectory, address_name, phone, receiver, address, postal_code, district, main_address;
     private HashMap<String, String> cityvalues;
     private HashMap<String, String> districtvalue;
     ConnectivityManager conMgr;
     LinearLayout LinearKota, LinearKecamatan;
-    SmartMaterialSpinner spinKota,spinKecamatan;
+    SmartMaterialSpinner spinKota, spinKecamatan;
     ConstraintLayout layout6, layout5;
 
     @Override
@@ -148,10 +148,10 @@ public class DetailAlamat extends AppCompatActivity {
         id_geodirectory = intent.getStringExtra(ConstansAddress.KEY_ID_GEODIRECTORY);
         district = intent.getStringExtra(ConstansAddress.KEY_DISTRICT);
         main_address = intent.getStringExtra(ConstansAddress.KEY_MAIN_ADDRESS);
-        if(main_address.equals("YES")){
+        if (main_address.equals("YES")) {
             btndelete.setVisibility(View.GONE);
             SwitchAddress.setChecked(true);
-        }else if (main_address.equals("NO")){
+        } else if (main_address.equals("NO")) {
             btndelete.setVisibility(View.VISIBLE);
             SwitchAddress.setChecked(false);
         }
@@ -163,14 +163,14 @@ public class DetailAlamat extends AppCompatActivity {
         txtnomorhandphone.setText(phone);
         txtalamatpengririman.setText(address);
         txtkodepospengiriman.setText(postal_code);
-        text_mainaddress.setText(main_address);;
+        text_mainaddress.setText(main_address);
+        ;
 
 
         getCityRajaOngkir();
         getKotaKecamatan();
         getSubdistrict();
-     ///   getGeoDistrict();
-
+        ///   getGeoDistrict();
 
 
         btnUbah.setOnClickListener(new View.OnClickListener() {
@@ -212,27 +212,27 @@ public class DetailAlamat extends AppCompatActivity {
     }
 
     /*Menampilkan City using API Cirecle Creative */
-    private void getCityRajaOngkir(){
+    private void getCityRajaOngkir() {
 
         cityvalues = new HashMap<>();
         mApiService.getCityGeodirectories().enqueue(new Callback<ResponseCityRajaOngkir>() {
             @Override
             public void onResponse(Call<ResponseCityRajaOngkir> call, Response<ResponseCityRajaOngkir> response) {
 
-                if(response.body() !=null){
+                if (response.body() != null) {
                     //// String citySelected = spinnerkota_pengiriman.getItemAtPosition(p).toString();
                     List<ResultsItem> getCity = response.body().getRajaongkir().getResults();
                     List<String> listSpinner = new ArrayList<String>();
-                    String[] idcity = new String[getCity.size() +1];
-                    String[] city = new String[getCity.size() +1];
-                    String[] type = new String[getCity.size() +1];
+                    String[] idcity = new String[getCity.size() + 1];
+                    String[] city = new String[getCity.size() + 1];
+                    String[] type = new String[getCity.size() + 1];
                     city[0] = "-- Pilih Kota --";
-                    for (int i = 0; i < getCity.size(); i++){
+                    for (int i = 0; i < getCity.size(); i++) {
                         ///listSpinner.add(getCity.get(i).getIdParent());
-                        city[i + 1] = (getCity.get(i).getType()+" ")+(getCity.get(i).getCityName());
+                        city[i + 1] = (getCity.get(i).getType() + " ") + (getCity.get(i).getCityName());
                         type[i + 1] = getCity.get(i).getType();
                         idcity[i + 1] = getCity.get(i).getCityId();
-                        cityvalues.put(city[i + 1], idcity[i + 1] );
+                        cityvalues.put(city[i + 1], idcity[i + 1]);
 //                         id = getCity.get(i).getId();
 //                         nameCity = getCity.get(i).getName();
                         ///listSpinner.add(nameCity);
@@ -246,8 +246,8 @@ public class DetailAlamat extends AppCompatActivity {
                     spinKota.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                            if(position>0){
-                                String cityvalues = getCity.get(position - 1 ).getCityId();
+                            if (position > 0) {
+                                String cityvalues = getCity.get(position - 1).getCityId();
                                 //Toast.makeText(TambahAlamatPengiriman.this, "id kota anda "+cityvalues , Toast.LENGTH_LONG).show();
                                 textid_geodirectory.setText(cityvalues);
                                 getSubDistrict();
@@ -267,8 +267,8 @@ public class DetailAlamat extends AppCompatActivity {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                            if(position>0){
-                                String cityvalues = getCity.get(position - 1 ).getCityId();
+                            if (position > 0) {
+                                String cityvalues = getCity.get(position - 1).getCityId();
                                 //Toast.makeText(TambahAlamatPengiriman.this, "id kota anda "+cityvalues , Toast.LENGTH_LONG).show();
                                 textid_geodirectory.setText(cityvalues);
                                 getSubDistrict();
@@ -302,7 +302,7 @@ public class DetailAlamat extends AppCompatActivity {
 
 
     /*MEnampilkan City using API Cirecle Creative*/
-    private void getSubDistrict(){
+    private void getSubDistrict() {
 
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
@@ -318,18 +318,18 @@ public class DetailAlamat extends AppCompatActivity {
             @Override
             public void onResponse(Call<ResponseSubDistrictRajaOngkir> call, Response<ResponseSubDistrictRajaOngkir> response) {
                 pDialog.dismiss();
-                if(response.body() !=null){
+                if (response.body() != null) {
                     //// String citySelected = spinnerkota_pengiriman.getItemAtPosition(p).toString();
                     List<com.application.kreditimpian.Model.ModelSubDistrictRajaOngkir.ResultsItem> getKecamatan = response.body().getRajaongkir().getResults();
                     List<String> listSpinner = new ArrayList<String>();
-                    String[] idKecamatan = new String[getKecamatan.size() +1];
-                    String[] Kecamatan = new String[getKecamatan.size() +1];
+                    String[] idKecamatan = new String[getKecamatan.size() + 1];
+                    String[] Kecamatan = new String[getKecamatan.size() + 1];
                     Kecamatan[0] = "-- Pilih Kecamatan --";
-                    for (int i = 0; i < getKecamatan.size(); i++){
+                    for (int i = 0; i < getKecamatan.size(); i++) {
                         ///listSpinner.add(getCity.get(i).getIdParent());
                         Kecamatan[i + 1] = getKecamatan.get(i).getSubdistrictName();
                         idKecamatan[i + 1] = getKecamatan.get(i).getSubdistrictId();
-                        Kecamatanvalues.put(Kecamatan[i + 1], idKecamatan[i + 1] );
+                        Kecamatanvalues.put(Kecamatan[i + 1], idKecamatan[i + 1]);
 //                         id = getCity.get(i).getId();
 //                         nameCity = getCity.get(i).getName();
                         ///listSpinner.add(nameCity);
@@ -343,8 +343,8 @@ public class DetailAlamat extends AppCompatActivity {
                     spinKecamatan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                            if(position>0){
-                                String Kecamatanvalues = getKecamatan.get(position - 1 ).getSubdistrictId();
+                            if (position > 0) {
+                                String Kecamatanvalues = getKecamatan.get(position - 1).getSubdistrictId();
                                 textid_distric.setText(Kecamatanvalues);
                                 ///Toast.makeText(TambahAlamatPengiriman.this, " id KEcamtan anda "+Kecamatanvalues, Toast.LENGTH_LONG).show();
 
@@ -362,8 +362,8 @@ public class DetailAlamat extends AppCompatActivity {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                            if(position>0){
-                                String Kecamatanvalues = getKecamatan.get(position - 1 ).getSubdistrictId();
+                            if (position > 0) {
+                                String Kecamatanvalues = getKecamatan.get(position - 1).getSubdistrictId();
                                 textid_distric.setText(Kecamatanvalues);
                                 ///Toast.makeText(TambahAlamatPengiriman.this, " id KEcamtan anda "+Kecamatanvalues, Toast.LENGTH_LONG).show();
 
@@ -393,7 +393,7 @@ public class DetailAlamat extends AppCompatActivity {
 
 
     /*Fungsi untk mengambil data kota dan kecamatan*/
-    private void getKotaKecamatan(){
+    private void getKotaKecamatan() {
 
         HashMap<String, String> params = new HashMap<>();
         params.put("id_addresses", text_id.getText().toString());
@@ -403,14 +403,14 @@ public class DetailAlamat extends AppCompatActivity {
             public void onResponse(Call<ResponseCitySubDistrict> call, Response<ResponseCitySubDistrict> response) {
                 if (response.body().getRajaongkir().getStatus().getCode() == 200) {
                     ResponseCitySubDistrict responseKotaKecamatan = response.body();
-                   /// List<Results> detail = responseKotaKecamatan.getRajaongkir().getResults();
+                    /// List<Results> detail = responseKotaKecamatan.getRajaongkir().getResults();
 
-                    text_kota.setText("Kota Pengirim : "+responseKotaKecamatan.getRajaongkir().getResults().getCityName());
+                    text_kota.setText("Kota Pengirim : " + responseKotaKecamatan.getRajaongkir().getResults().getCityName());
                     //text_kecamatan.setText("Kecamatan pengirim: "+detail.get(0).getNamaKecamatan());
 
-                    if(text_kota.equals("Kota yang anda pilih : "+responseKotaKecamatan.getRajaongkir().getResults().getCityName())){
+                    if (text_kota.equals("Kota yang anda pilih : " + responseKotaKecamatan.getRajaongkir().getResults().getCityName())) {
                         btnUbah.setVisibility(View.VISIBLE);
-                    }else if (text_kota.equals("Kota yang anda pilih : "+null)){
+                    } else if (text_kota.equals("Kota yang anda pilih : " + null)) {
                         ///LinearKota.setVisibility(View.VISIBLE);
                         layout5.setVisibility(View.VISIBLE);
                         btnUbah.setVisibility(View.GONE);
@@ -437,9 +437,7 @@ public class DetailAlamat extends AppCompatActivity {
     }
 
 
-
-
-    private void UpdateAddreses(){
+    private void UpdateAddreses() {
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
         pDialog.setMessage("Memberbarui data Alamat");
@@ -466,7 +464,7 @@ public class DetailAlamat extends AppCompatActivity {
         mApiService.updateAddreses(id, params).enqueue(new Callback<ResponseAddress>() {
             @Override
             public void onResponse(Call<ResponseAddress> call, Response<ResponseAddress> response) {
-                if(response.body().getResponseCode() == 200){
+                if (response.body().getResponseCode() == 200) {
                     AlertDialog alertDialog = new AlertDialog.Builder(DetailAlamat.this).create();
 
                     alertDialog.setTitle("Sukses");
@@ -480,12 +478,12 @@ public class DetailAlamat extends AppCompatActivity {
                     });
 
                     alertDialog.show();
-                   // finish();
+                    // finish();
                     ///Toast.makeText(DetailAlamat.this, response.body().getMessage() , Toast.LENGTH_LONG).show();
                     /*Intent intent = new Intent(DetailAlamat.this, AlamatPengiriman.class);
                     startActivity(intent);*/
 
-                }else {
+                } else {
                     Toast.makeText(DetailAlamat.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
@@ -498,7 +496,7 @@ public class DetailAlamat extends AppCompatActivity {
 
     }
 
-    private void DeleteAddreses(){
+    private void DeleteAddreses() {
 
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
@@ -508,7 +506,7 @@ public class DetailAlamat extends AppCompatActivity {
         mApiService.deleteAddreses(id, sharedPrefManager.getSpIdMember()).enqueue(new Callback<ResponseAddress>() {
             @Override
             public void onResponse(Call<ResponseAddress> call, Response<ResponseAddress> response) {
-                if(response.body().getResponseCode() == 200){
+                if (response.body().getResponseCode() == 200) {
                     AlertDialog alertDialog = new AlertDialog.Builder(DetailAlamat.this).create();
                     alertDialog.setTitle("Sukses");
                     alertDialog.setMessage("Alamat berhasil dihapus.");
@@ -521,13 +519,13 @@ public class DetailAlamat extends AppCompatActivity {
                     });
 
                     alertDialog.show();
-                   /* Toast.makeText(DetailAlamat.this, response.body().getMessage() , Toast.LENGTH_LONG).show();
-                    *//*Intent intent = new Intent(DetailAlamat.this, AlamatPengiriman.class);
+                    /* Toast.makeText(DetailAlamat.this, response.body().getMessage() , Toast.LENGTH_LONG).show();
+                     *//*Intent intent = new Intent(DetailAlamat.this, AlamatPengiriman.class);
                     startActivity(intent);
                     DetailAlamat.super.onBackPressed();*//*
                     finish();
                     onBackPressed();*/
-                }else {
+                } else {
                     Toast.makeText(DetailAlamat.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
@@ -541,7 +539,7 @@ public class DetailAlamat extends AppCompatActivity {
     }
 
 
-    private void getSubdistrict(){
+    private void getSubdistrict() {
         HashMap<String, String> params = new HashMap<>();
         params.put("id_addresses", text_id.getText().toString());
 
@@ -552,12 +550,12 @@ public class DetailAlamat extends AppCompatActivity {
                     ResponseSubdistrict responseSubdistrict = response.body();
                     /// List<Results> detail = responseKotaKecamatan.getRajaongkir().getResults();
 
-                    text_kecamatan.setText("Kecamatan Pengirim : "+responseSubdistrict.getRajaongkir().getResults().getSubdistrictName());
+                    text_kecamatan.setText("Kecamatan Pengirim : " + responseSubdistrict.getRajaongkir().getResults().getSubdistrictName());
                     //text_kecamatan.setText("Kecamatan pengirim: "+detail.get(0).getNamaKecamatan());
 
-                    if(text_kecamatan.equals("Kecamatan yang anda pilih : "+responseSubdistrict.getRajaongkir().getResults().getSubdistrictName())){
+                    if (text_kecamatan.equals("Kecamatan yang anda pilih : " + responseSubdistrict.getRajaongkir().getResults().getSubdistrictName())) {
                         btnUbahKecamatan.setVisibility(View.VISIBLE);
-                    }else if (text_kecamatan.equals("Kecamatan yang anda pilih : "+null)){
+                    } else if (text_kecamatan.equals("Kecamatan yang anda pilih : " + null)) {
                         LinearKecamatan.setVisibility(View.VISIBLE);
                         btnUbahKecamatan.setVisibility(View.GONE);
                     }

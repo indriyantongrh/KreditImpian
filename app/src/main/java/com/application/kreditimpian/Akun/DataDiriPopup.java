@@ -71,27 +71,27 @@ public class DataDiriPopup extends AppCompatActivity implements View.OnClickList
     private static final int PERMISSION_REQUEST_CODE = 200;
     private int mYear, mMonth, mDay;
     ImageButton btnback;
-    Button btnuploadfoto,btnuploadktp,btnuploadnpwp, btnUbahKecamatan, btnUbah;
+    Button btnuploadfoto, btnuploadktp, btnuploadnpwp, btnUbahKecamatan, btnUbah;
     ImageView imagektp, imagenpwp, imageself;
     Spinner spinnerjeniskelamin, spinnerstatus, spinneragama, spinnerstatusrumah,
             spinnerkredit, spinnerkota_saudaraa, spinnerkecamatn_saudara;
     Button btnsimpan;
-    TextView id_kota, id_kecamatan, text_kota,text_kecamatan, textjeniskelamin, textstatus, textagama, textkredit, textstatusrumah;
+    TextView id_kota, id_kecamatan, text_kota, text_kecamatan, textjeniskelamin, textstatus, textagama, textkredit, textstatusrumah;
     EditText txtnamalengkap, txttempatlahir, txttanggallahir, txtnikktp, txtnomornpwp, txtpekerjaan, txtpendapatan,
             txtjumlahtanggungan, txtalamatemail, txtibukandung, txtnomorhandphone, txtnomortlp, txtfacebook,
             txttwitter, txtinstagram, txtnamasaudara, txtnomorhandphonesaudara, txtkodepos_saudara, txtalamat_saudara;
     private HashMap<String, String> cityvalues;
     private HashMap<String, String> Kecamatanvalues;
     private HashMap<String, String> districtvalue;
-    LinearLayout LinearKota,LinearKecamatan;
+    LinearLayout LinearKota, LinearKecamatan;
     ConstraintLayout layout6, layout5;
-    SmartMaterialSpinner spinKota,spinKecamatan;
+    SmartMaterialSpinner spinKota, spinKecamatan;
     ProgressDialog loading;
     SharedPrefManager sharedPrefManager;
     Context mContext;
     BaseApiService mApiService;
     String fullname, idprofile,
-            imgphoto ="",
+            imgphoto = "",
             imgktp = "";
     ProgressDialog pDialog;
     //untuk upload gambar
@@ -181,8 +181,6 @@ public class DataDiriPopup extends AppCompatActivity implements View.OnClickList
         btnuploadnpwp = findViewById(R.id.btnuploadnpwp);
 
 
-
-
         txtalamatemail.setText(email);
         txtnomorhandphone.setText(msisdn);
 
@@ -228,10 +226,10 @@ public class DataDiriPopup extends AppCompatActivity implements View.OnClickList
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 String jenisKelamin = adapter.getItem(position);
-                if(jenisKelamin.equals("Perempuan")){
+                if (jenisKelamin.equals("Perempuan")) {
                     textjeniskelamin.setText("FEMALE");
 
-                }else if(jenisKelamin.equals("Laki-laki")){
+                } else if (jenisKelamin.equals("Laki-laki")) {
                     textjeniskelamin.setText("MALE");
                 }
 
@@ -251,13 +249,13 @@ public class DataDiriPopup extends AppCompatActivity implements View.OnClickList
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 String status = adapterStatus.getItem(position);
-                if(status.equals("Sendiri")){
+                if (status.equals("Sendiri")) {
                     textstatus.setText("SINGLE");
 
-                }else if(status.equals("Menikah")){
+                } else if (status.equals("Menikah")) {
                     textstatus.setText("MARRIED");
 
-                }else if(status.equals("Cerai")){
+                } else if (status.equals("Cerai")) {
                     textstatus.setText("DIVORCED");
                 }
             }
@@ -276,22 +274,21 @@ public class DataDiriPopup extends AppCompatActivity implements View.OnClickList
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 String agama = adapterReligion.getItem(position);
-                if(agama.equals("Hindu")){
+                if (agama.equals("Hindu")) {
                     textagama.setText("HINDU");
 
-                }else if(agama.equals("Islam")){
+                } else if (agama.equals("Islam")) {
                     textagama.setText("MOSLEM");
 
-                }else if(agama.equals("Kristen")){
+                } else if (agama.equals("Kristen")) {
                     textagama.setText("CHRISTIAN");
 
-                }else if(agama.equals("Katolik")){
+                } else if (agama.equals("Katolik")) {
                     textagama.setText("CATHOLIC");
 
-                }else if(agama.equals("Budha")){
+                } else if (agama.equals("Budha")) {
                     textagama.setText("BUDDHA");
                 }
-
 
 
             }
@@ -310,16 +307,16 @@ public class DataDiriPopup extends AppCompatActivity implements View.OnClickList
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 String statusrumah = adapterRumah.getItem(position);
-                if(statusrumah.equals("Kontrak")){
+                if (statusrumah.equals("Kontrak")) {
                     textstatusrumah.setText("CONTRACT");
 
-                }else if(statusrumah.equals("Rumah Sendiri")){
+                } else if (statusrumah.equals("Rumah Sendiri")) {
                     textstatusrumah.setText("PERMANENT");
 
-                }else if(statusrumah.equals("Kos")){
+                } else if (statusrumah.equals("Kos")) {
                     textstatusrumah.setText("BOARDING");
 
-                }else if(statusrumah.equals("Ikut Orang Tua")){
+                } else if (statusrumah.equals("Ikut Orang Tua")) {
                     textstatusrumah.setText("FOLLOW_PARENTS");
 
                 }
@@ -341,10 +338,10 @@ public class DataDiriPopup extends AppCompatActivity implements View.OnClickList
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String kredit = adapterKredit.getItem(position);
-                if(kredit.equals("Iya")){
+                if (kredit.equals("Iya")) {
                     textkredit.setText("YES");
 
-                }else if(kredit.equals("Tidak")){
+                } else if (kredit.equals("Tidak")) {
                     textkredit.setText("NO");
 
                 }
@@ -569,12 +566,12 @@ public class DataDiriPopup extends AppCompatActivity implements View.OnClickList
                     txtpendapatan.setError("Tidak boleh kosong");
                 else if (isEmpty(family_dependent))
                     txtjumlahtanggungan.setError("Tidak boleh kosong");
-                else if (isEmpty(contact_office))
-                    txtnomortlp.setError("Tidak boleh kosong");
+                /*else if (isEmpty(contact_office))
+                    txtnomortlp.setError("Tidak boleh kosong");*/
                 else if (isEmpty(family_dependent))
                     txtjumlahtanggungan.setError("Tidak boleh kosong");
-                else if (isEmpty(contact_office))
-                    txtnomortlp.setError("Tidak boleh kosong");
+                /*else if (isEmpty(contact_office))
+                    txtnomortlp.setError("Tidak boleh kosong");*/
                 else if (isEmpty(namasaudara))
                     txtnamasaudara.setError("Tidak boleh kosong");
                 else if (isEmpty(nomorhpsaudara))
@@ -585,27 +582,27 @@ public class DataDiriPopup extends AppCompatActivity implements View.OnClickList
                     txtibukandung.setError("Tidak boleh kosong");
                 else if (isEmpty(alamatsaudara))
                     txtalamat_saudara.setError("Tidak boleh kosong");
-                else if (spinnerjeniskelamin.getSelectedItem().equals("Jenis Kelamin")){
+                else if (spinnerjeniskelamin.getSelectedItem().equals("Jenis Kelamin")) {
                     Toast.makeText(DataDiriPopup.this, "Anda belum mengisi jenis kelamin", Toast.LENGTH_LONG).show();
-                }else if(spinneragama.getSelectedItem().equals("Pilih Agama")){
+                } else if (spinneragama.getSelectedItem().equals("Pilih Agama")) {
                     Toast.makeText(DataDiriPopup.this, "Anda belum mengisi Agama", Toast.LENGTH_LONG).show();
-                }else if(spinnerstatus.getSelectedItem().equals("Pilih Status")){
+                } else if (spinnerstatus.getSelectedItem().equals("Pilih Status")) {
                     Toast.makeText(DataDiriPopup.this, "Anda belum mengisi Status", Toast.LENGTH_LONG).show();
-                }else if(spinnerstatusrumah.getSelectedItem().equals("Status Tempat Tinggal")){
+                } else if (spinnerstatusrumah.getSelectedItem().equals("Status Tempat Tinggal")) {
                     Toast.makeText(DataDiriPopup.this, "Anda belum mengisi Status Tempat Tinggal", Toast.LENGTH_LONG).show();
-                }else if(spinnerkredit.getSelectedItem().equals("Apakah Anda memiliki kredit/cicilan yang sedang berjalan?")){
+                } else if (spinnerkredit.getSelectedItem().equals("Apakah Anda memiliki kredit/cicilan yang sedang berjalan?")) {
                     Toast.makeText(DataDiriPopup.this, "Anda belum mengisi pernyataan kredit", Toast.LENGTH_LONG).show();
                 }/*else if(spinnerkota_saudaraa.getSelectedItem().equals("-- Pilih Kota --")){
                     Toast.makeText(DataDiri.this, "Anda belum mengisi Kota saudara anda", Toast.LENGTH_LONG).show();
                 }else if(spinnerkecamatn_saudara.getSelectedItem().equals("-- Pilih Kecamatan --")){
                     Toast.makeText(DataDiri.this, "Anda belum mengisi Kecamatan saudara anda", Toast.LENGTH_LONG).show();
-                }*/ else if(id_kota.getText().toString().equals("null")){
-                    if(spinnerkota_saudaraa.getSelectedItem().equals("-- Pilih Kota --")){
+                }*/ else if (id_kota.getText().toString().equals("null")) {
+                    if (spinnerkota_saudaraa.getSelectedItem().equals("-- Pilih Kota --")) {
                         Toast.makeText(DataDiriPopup.this, "Anda belum mengisi Kota saudara anda", Toast.LENGTH_LONG).show();
                     }
 
-                } else if(id_kecamatan.getText().toString().equals("null")){
-                    if(spinnerkecamatn_saudara.getSelectedItem().equals("-- Pilih Kecamatan --")){
+                } else if (id_kecamatan.getText().toString().equals("null")) {
+                    if (spinnerkecamatn_saudara.getSelectedItem().equals("-- Pilih Kecamatan --")) {
                         Toast.makeText(DataDiriPopup.this, "Anda belum mengisi Kecamatan saudara anda", Toast.LENGTH_LONG).show();
                     }
                 }
@@ -645,7 +642,7 @@ public class DataDiriPopup extends AppCompatActivity implements View.OnClickList
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
-                                txttanggallahir.setText( year + "-" + convertDate(monthOfYear + 1) + "-"+ convertDate(dayOfMonth));
+                                txttanggallahir.setText(year + "-" + convertDate(monthOfYear + 1) + "-" + convertDate(dayOfMonth));
 
                             }
                         }, mYear, mMonth, mDay);
@@ -798,7 +795,7 @@ public class DataDiriPopup extends AppCompatActivity implements View.OnClickList
     }
 
     /*Upload Foto */
-    private void UploadFoto(){
+    private void UploadFoto() {
 
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
@@ -831,7 +828,7 @@ public class DataDiriPopup extends AppCompatActivity implements View.OnClickList
     }
 
     /*Upload KTP */
-    private void UploadKtp(){
+    private void UploadKtp() {
 
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
@@ -863,7 +860,7 @@ public class DataDiriPopup extends AppCompatActivity implements View.OnClickList
     }
 
     /*Upload NPWP */
-    private void UploadNpwp(){
+    private void UploadNpwp() {
 
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
@@ -1169,16 +1166,16 @@ public class DataDiriPopup extends AppCompatActivity implements View.OnClickList
                     txtkodepos_saudara.setText(detail.get(0).getPostalCode());
                     id_kota.setText(detail.get(0).getNonsiblingIdGeodirectory());
                     id_kecamatan.setText(detail.get(0).getNonsiblingIdDistrict());
-                    text_kota.setText("Kota Saudara anda : "+detail.get(0).getName_city_profile());
-                    text_kecamatan.setText("Kecamatan Saudara anda : "+detail.get(0).getName_district_profile());
+                    text_kota.setText("Kota Saudara anda : " + detail.get(0).getName_city_profile());
+                    text_kecamatan.setText("Kecamatan Saudara anda : " + detail.get(0).getName_district_profile());
 
-                    if(id_kota.getText().toString().equals(id_kota.getText().toString())){
+                    if (id_kota.getText().toString().equals(id_kota.getText().toString())) {
                         text_kota.setVisibility(View.VISIBLE);
                         btnUbah.setVisibility(View.VISIBLE);
                         ///LinearKota.setVisibility(View.GONE);
                         layout5.setVisibility(View.GONE);
 
-                    }else if(id_kota.getText().toString().equals("null")){
+                    } else if (id_kota.getText().toString().equals("null")) {
                         text_kota.setVisibility(View.GONE);
                         btnUbah.setVisibility(View.GONE);
                         //LinearKota.setVisibility(View.VISIBLE);
@@ -1187,14 +1184,14 @@ public class DataDiriPopup extends AppCompatActivity implements View.OnClickList
                     }
 
                     getSubdistrictProfile();
-                    if(id_kecamatan.getText().toString().equals(id_kecamatan.getText().toString())){
+                    if (id_kecamatan.getText().toString().equals(id_kecamatan.getText().toString())) {
                         text_kecamatan.setVisibility(View.VISIBLE);
                         btnUbahKecamatan.setVisibility(View.VISIBLE);
                         ///LinearKecamatan.setVisibility(View.GONE);
                         layout6.setVisibility(View.GONE);
 
 
-                    }else if(id_kecamatan.getText().toString().equals("null")){
+                    } else if (id_kecamatan.getText().toString().equals("null")) {
                         text_kecamatan.setVisibility(View.GONE);
                         btnUbahKecamatan.setVisibility(View.GONE);
                         //LinearKecamatan.setVisibility(View.VISIBLE);
@@ -1233,7 +1230,7 @@ public class DataDiriPopup extends AppCompatActivity implements View.OnClickList
     }
 
     /*get data kecamatan*/
-    private void getSubdistrictProfile(){
+    private void getSubdistrictProfile() {
 
         HashMap<String, String> params = new HashMap<>();
         params.put("id_district", id_kecamatan.getText().toString());
@@ -1242,12 +1239,12 @@ public class DataDiriPopup extends AppCompatActivity implements View.OnClickList
             @Override
             public void onResponse(Call<ResponseSubdistrict> call, Response<ResponseSubdistrict> response) {
 
-                if(response.body().getRajaongkir().getStatus().getCode() == 200){
+                if (response.body().getRajaongkir().getStatus().getCode() == 200) {
                     ResponseSubdistrict responseKotaKecamatan = response.body();
 
-                    text_kecamatan.setText("Kecamatan Saudara anda : "+responseKotaKecamatan.getRajaongkir().getResults().getSubdistrictName());
+                    text_kecamatan.setText("Kecamatan Saudara anda : " + responseKotaKecamatan.getRajaongkir().getResults().getSubdistrictName());
 
-                }else{
+                } else {
                     text_kecamatan.setVisibility(View.GONE);
                     btnUbahKecamatan.setVisibility(View.GONE);
                     ////LinearKecamatan.setVisibility(View.VISIBLE);
@@ -1264,31 +1261,28 @@ public class DataDiriPopup extends AppCompatActivity implements View.OnClickList
     }
 
 
-
-
-
     /*Menampilkan City using API Cirecle Creative */
-    private void getCityRajaOngkir(){
+    private void getCityRajaOngkir() {
 
         cityvalues = new HashMap<>();
         mApiService.getCityGeodirectories().enqueue(new Callback<ResponseCityRajaOngkir>() {
             @Override
             public void onResponse(Call<ResponseCityRajaOngkir> call, Response<ResponseCityRajaOngkir> response) {
 
-                if(response.body() !=null){
+                if (response.body() != null) {
                     //// String citySelected = spinnerkota_pengiriman.getItemAtPosition(p).toString();
                     List<ResultsItem> getCity = response.body().getRajaongkir().getResults();
                     List<String> listSpinner = new ArrayList<String>();
-                    String[] idcity = new String[getCity.size() +1];
-                    String[] city = new String[getCity.size() +1];
-                    String[] type = new String[getCity.size() +1];
+                    String[] idcity = new String[getCity.size() + 1];
+                    String[] city = new String[getCity.size() + 1];
+                    String[] type = new String[getCity.size() + 1];
                     city[0] = "-- Pilih Kota --";
-                    for (int i = 0; i < getCity.size(); i++){
+                    for (int i = 0; i < getCity.size(); i++) {
                         ///listSpinner.add(getCity.get(i).getIdParent());
-                        city[i + 1] = (getCity.get(i).getType()+" ")+(getCity.get(i).getCityName());
+                        city[i + 1] = (getCity.get(i).getType() + " ") + (getCity.get(i).getCityName());
                         type[i + 1] = getCity.get(i).getType();
                         idcity[i + 1] = getCity.get(i).getCityId();
-                        cityvalues.put(city[i + 1], idcity[i + 1] );
+                        cityvalues.put(city[i + 1], idcity[i + 1]);
 //                         id = getCity.get(i).getId();
 //                         nameCity = getCity.get(i).getName();
                         ///listSpinner.add(nameCity);
@@ -1302,8 +1296,8 @@ public class DataDiriPopup extends AppCompatActivity implements View.OnClickList
                     spinKota.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                            if(position>0){
-                                String cityvalues = getCity.get(position - 1 ).getCityId();
+                            if (position > 0) {
+                                String cityvalues = getCity.get(position - 1).getCityId();
                                 ////Toast.makeText(DataDiri.this, "id kota anda "+cityvalues , Toast.LENGTH_LONG).show();
                                 id_kota.setText(cityvalues);
                                 getSubDistrict();
@@ -1319,14 +1313,13 @@ public class DataDiriPopup extends AppCompatActivity implements View.OnClickList
                     });
 
 
-
                     spinnerkota_saudaraa.setAdapter(adapter);
                     spinnerkota_saudaraa.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                            if(position>0){
-                                String cityvalues = getCity.get(position - 1 ).getCityId();
+                            if (position > 0) {
+                                String cityvalues = getCity.get(position - 1).getCityId();
                                 //Toast.makeText(TambahAlamatPengiriman.this, "id kota anda "+cityvalues , Toast.LENGTH_LONG).show();
                                 id_kota.setText(cityvalues);
                                 getSubDistrict();
@@ -1359,7 +1352,7 @@ public class DataDiriPopup extends AppCompatActivity implements View.OnClickList
     }
 
     /*MEnampilkan City using API Cirecle Creative*/
-    private void getSubDistrict(){
+    private void getSubDistrict() {
 
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
@@ -1375,18 +1368,18 @@ public class DataDiriPopup extends AppCompatActivity implements View.OnClickList
             @Override
             public void onResponse(Call<ResponseSubDistrictRajaOngkir> call, Response<ResponseSubDistrictRajaOngkir> response) {
                 pDialog.dismiss();
-                if(response.body() !=null){
+                if (response.body() != null) {
                     //// String citySelected = spinnerkota_pengiriman.getItemAtPosition(p).toString();
                     List<com.application.kreditimpian.Model.ModelSubDistrictRajaOngkir.ResultsItem> getKecamatan = response.body().getRajaongkir().getResults();
                     List<String> listSpinner = new ArrayList<String>();
-                    String[] idKecamatan = new String[getKecamatan.size() +1];
-                    String[] Kecamatan = new String[getKecamatan.size() +1];
+                    String[] idKecamatan = new String[getKecamatan.size() + 1];
+                    String[] Kecamatan = new String[getKecamatan.size() + 1];
                     Kecamatan[0] = "-- Pilih Kecamatan --";
-                    for (int i = 0; i < getKecamatan.size(); i++){
+                    for (int i = 0; i < getKecamatan.size(); i++) {
                         ///listSpinner.add(getCity.get(i).getIdParent());
                         Kecamatan[i + 1] = getKecamatan.get(i).getSubdistrictName();
                         idKecamatan[i + 1] = getKecamatan.get(i).getSubdistrictId();
-                        Kecamatanvalues.put(Kecamatan[i + 1], idKecamatan[i + 1] );
+                        Kecamatanvalues.put(Kecamatan[i + 1], idKecamatan[i + 1]);
 //                         id = getCity.get(i).getId();
 //                         nameCity = getCity.get(i).getName();
                         ///listSpinner.add(nameCity);
@@ -1400,8 +1393,8 @@ public class DataDiriPopup extends AppCompatActivity implements View.OnClickList
                     spinKecamatan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                            if(position>0){
-                                String Kecamatanvalues = getKecamatan.get(position - 1 ).getSubdistrictId();
+                            if (position > 0) {
+                                String Kecamatanvalues = getKecamatan.get(position - 1).getSubdistrictId();
                                 id_kecamatan.setText(Kecamatanvalues);
                                 ///Toast.makeText(DataDiri.this, " id KEcamtan anda "+Kecamatanvalues, Toast.LENGTH_LONG).show();
 
@@ -1419,8 +1412,8 @@ public class DataDiriPopup extends AppCompatActivity implements View.OnClickList
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                            if(position>0){
-                                String Kecamatanvalues = getKecamatan.get(position - 1 ).getSubdistrictId();
+                            if (position > 0) {
+                                String Kecamatanvalues = getKecamatan.get(position - 1).getSubdistrictId();
                                 id_kecamatan.setText(Kecamatanvalues);
                                 ///Toast.makeText(DataDiri.this, " id KEcamtan anda "+Kecamatanvalues, Toast.LENGTH_LONG).show();
 
@@ -1447,7 +1440,6 @@ public class DataDiriPopup extends AppCompatActivity implements View.OnClickList
         });
 
     }
-
 
 
     /*set Permision*/

@@ -22,6 +22,7 @@ public class PreferenceHelper {
         edit.putBoolean(ID, loginorout);
         edit.commit();
     }
+
     public boolean getIsLogin() {
         return app_prefs.getBoolean(ID, false);
     }
@@ -31,6 +32,7 @@ public class PreferenceHelper {
         edit.putString(USERNAME, loginorout);
         edit.commit();
     }
+
     public String getUsername() {
         return app_prefs.getString(USERNAME, "");
     }
@@ -40,6 +42,7 @@ public class PreferenceHelper {
         edit.putString(EMAIL, loginorout);
         edit.commit();
     }
+
     public String getEmail() {
         return app_prefs.getString(EMAIL, "");
     }

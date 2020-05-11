@@ -20,7 +20,7 @@ public class FlipperAdapter extends BaseAdapter {
     private Context mCtx;
     private ArrayList<DataItem> ImagePromo;
 
-    public FlipperAdapter(Context mCtx, ArrayList<DataItem> ImagePromo){
+    public FlipperAdapter(Context mCtx, ArrayList<DataItem> ImagePromo) {
         this.mCtx = mCtx;
         this.ImagePromo = ImagePromo;
     }

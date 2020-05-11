@@ -47,7 +47,7 @@ public class AdapterMitra extends RecyclerView.Adapter<AdapterMitra.ViewHolder> 
     public void onBindViewHolder(AdapterMitra.ViewHolder viewHolder, int i) {
 
         viewHolder.txt_nama_mitra.setText(mFilteredList.get(i).getName());
-       /// viewHolder.txt_kota_lomba.setText(mFilteredList.get(i).getKota_lomba());
+        /// viewHolder.txt_kota_lomba.setText(mFilteredList.get(i).getKota_lomba());
       /*  Glide.with(context)
                 .load(mFilteredList.get(i).getPhoto())
                 .placeholder(R.drawable.no_image)
@@ -67,7 +67,7 @@ public class AdapterMitra extends RecyclerView.Adapter<AdapterMitra.ViewHolder> 
         if (mFilteredList == null)
             return 0;
         else
-            return  mFilteredList.size();
+            return mFilteredList.size();
     }
 
     @Override
@@ -98,6 +98,7 @@ public class AdapterMitra extends RecyclerView.Adapter<AdapterMitra.ViewHolder> 
                 filterResults.values = mFilteredList;
                 return filterResults;
             }
+
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
                 mFilteredList = (ArrayList<ModelMitra>) filterResults.values;
@@ -108,24 +109,24 @@ public class AdapterMitra extends RecyclerView.Adapter<AdapterMitra.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView txt_nama_mitra,
-                txt_id,txt_foto;
+                txt_id, txt_foto;
         private ImageView imagemitra;
 
         public ViewHolder(View view) {
             super(view);
 
-            txt_nama_mitra = (TextView)view.findViewById(R.id.txt_nama_mitra);
-           // txt_tanggal = (TextView)view.findViewById(R.id.txt_tanggal);
-           // txt_kota_lomba = (TextView)view.findViewById(R.id.txt_kota_lomba);
-            txt_id = (TextView)view.findViewById(R.id.txt_id);
-           //// txt_lokasi_lomba = (TextView)view.findViewById(R.id.txt_lokasi_lomba);
-            imagemitra = (ImageView)view.findViewById(R.id.imagemitra);
+            txt_nama_mitra = (TextView) view.findViewById(R.id.txt_nama_mitra);
+            // txt_tanggal = (TextView)view.findViewById(R.id.txt_tanggal);
+            // txt_kota_lomba = (TextView)view.findViewById(R.id.txt_kota_lomba);
+            txt_id = (TextView) view.findViewById(R.id.txt_id);
+            //// txt_lokasi_lomba = (TextView)view.findViewById(R.id.txt_lokasi_lomba);
+            imagemitra = (ImageView) view.findViewById(R.id.imagemitra);
 
-            txt_foto = (TextView)view.findViewById(R.id.txt_foto);
-           ///// txt_deskripsi = (TextView)view.findViewById(R.id.txt_deskripsi);
+            txt_foto = (TextView) view.findViewById(R.id.txt_foto);
+            ///// txt_deskripsi = (TextView)view.findViewById(R.id.txt_deskripsi);
 
 
-           //// view.setOnClickListener(this);
+            //// view.setOnClickListener(this);
 
         }
 
@@ -136,7 +137,7 @@ public class AdapterMitra extends RecyclerView.Adapter<AdapterMitra.ViewHolder> 
             ///detail.putExtra("tanggal_lomba", txt_tanggal.getText());
             ///detail.putExtra("kota_lomba", txt_kota_lomba.getText());
 
-           /// detail.putExtra("id", txt_id.getText());
+            /// detail.putExtra("id", txt_id.getText());
             ///detail.putExtra("lokasi_lomba", txt_lokasi_lomba.getText());
             ////detail.putExtra("deskripsi", txt_deskripsi.getText());
             ///detail.putExtra("foto", txt_foto.getText());

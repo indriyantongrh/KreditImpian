@@ -64,7 +64,7 @@ public class ForgotPassword extends AppCompatActivity {
         });
     }
 
-    private void ForgotPassword(){
+    private void ForgotPassword() {
 
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
@@ -81,23 +81,23 @@ public class ForgotPassword extends AppCompatActivity {
             @Override
             public void onResponse(Call<ResponseForgotPassword> call, Response<ResponseForgotPassword> response) {
                 pDialog.dismiss();
-                    if(response.body().getStatus()==200) {
-                        ///Toast.makeText(ForgotPassword.this, response.body().getResult().toString(), Toast.LENGTH_LONG).show();
+                if (response.body().getStatus() == 200) {
+                    ///Toast.makeText(ForgotPassword.this, response.body().getResult().toString(), Toast.LENGTH_LONG).show();
 
-                        textalert.setVisibility(View.GONE);
-                        AlertDialog alertDialog = new AlertDialog.Builder(ForgotPassword.this).create();
+                    textalert.setVisibility(View.GONE);
+                    AlertDialog alertDialog = new AlertDialog.Builder(ForgotPassword.this).create();
 
-                        alertDialog.setTitle("Email berhasil terkriim");
-                        alertDialog.setMessage("Cek pada Inbox anda dan klik link yang ada pada isi email tersebut");
-                        alertDialog.setIcon(R.drawable.successfully);
-                        alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                finish();
+                    alertDialog.setTitle("Email berhasil terkriim");
+                    alertDialog.setMessage("Cek pada Inbox anda dan klik link yang ada pada isi email tersebut");
+                    alertDialog.setIcon(R.drawable.successfully);
+                    alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
 
-                            }
-                        });
+                        }
+                    });
 
-                        alertDialog.show();
+                    alertDialog.show();
 
 
                        /*AlertDialog.Builder ImageDialog = new AlertDialog.Builder(ForgotPassword.this);
@@ -118,13 +118,13 @@ public class ForgotPassword extends AppCompatActivity {
                         ImageDialog.show();*/
 
 
-                    }else {
-                        pDialog.dismiss();
-                        textalert.setVisibility(View.VISIBLE);
-                        ////Toast.makeText(ForgotPassword .this,"Email tidak ditemukan",Toast.LENGTH_LONG).show();
+                } else {
+                    pDialog.dismiss();
+                    textalert.setVisibility(View.VISIBLE);
+                    ////Toast.makeText(ForgotPassword .this,"Email tidak ditemukan",Toast.LENGTH_LONG).show();
 
 
-                    }
+                }
 
                 /*if (response.body().getStatus()==200){
 

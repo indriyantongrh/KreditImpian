@@ -16,11 +16,9 @@ public class Constans {
     public static final String KEY_STOCK = "stock";
     public static final String KEY_IMAGE = "image";
     public static final String KEY_WEIGHT_VALUE = "weight_value";
-    public static final String KEY_WEIGHT= "weight";
+    public static final String KEY_WEIGHT = "weight";
     public static final String KEY_NAME_MERCHNAT = "name";
     public static final String KEY_CITY_MERCHANT = "city";
-
-
 
 
 }

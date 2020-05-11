@@ -611,7 +611,7 @@
                     <RelativeLayout
                         android:id="@+id/layout_top"
                         android:layout_width="wrap_content"
-                        android:layout_height="130dp">
+                        android:layout_height="160dp">
 
                         <FrameLayout
                             android:layout_width="wrap_content"

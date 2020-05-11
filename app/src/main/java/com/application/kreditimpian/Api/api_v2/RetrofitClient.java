@@ -64,11 +64,10 @@ public class RetrofitClient {
 //    }
 
 
-
     SharedPrefManager sharedPrefManager;
     private static Retrofit retrofit = null;
 
-    public static Retrofit getClient(String baseUrl){
+    public static Retrofit getClient(String baseUrl) {
 
         OkHttpClient.Builder okhttpBuilder = new OkHttpClient.Builder()
                 .readTimeout(360, TimeUnit.SECONDS)
@@ -78,15 +77,14 @@ public class RetrofitClient {
             @Override
             public Response intercept(@NotNull Chain chain) throws IOException {
 
-                    Request request = chain.request();
-                    Request.Builder newRequest = request.newBuilder()
-                                                .addHeader("Authorization","Bearer " + SP_TOKEN);
+                Request request = chain.request();
+                Request.Builder newRequest = request.newBuilder()
+                        .addHeader("Authorization", "Bearer " + SP_TOKEN);
 
-                    return chain.proceed(newRequest.build());
+                return chain.proceed(newRequest.build());
 
             }
         });
-
 
 
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
@@ -96,7 +94,7 @@ public class RetrofitClient {
 //                                    //.addInterceptor(new TokenAuthenticator(ontext))
 //                                    .build();
 
-        if (retrofit == null){
+        if (retrofit == null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(baseUrl)
                     .addConverterFactory(GsonConverterFactory.create())

@@ -83,7 +83,7 @@ public class AdapterMitraSelected extends RecyclerView.Adapter<AdapterMitraSelec
                 } else {
                     count--;
                 }
-                if(count > 3 ){
+                if (count > 3) {
                     holder.checkBoxMitra.setChecked(false);
                 }
 

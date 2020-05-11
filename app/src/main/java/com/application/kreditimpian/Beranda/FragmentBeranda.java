@@ -101,9 +101,9 @@ public class FragmentBeranda extends Fragment {
     CardView btn_lainya, btn_handphone, btn_laptop, btn_otomotif, btn_forniture, btn_fashion, btn_olahraga, btn_property;
     ImageButton btn_fotoimpian, btnupload, btncari, btnupgrade;
     RecyclerView rv_mitra;
-    String datalist ;
+    String datalist;
     TextView textCartItemCount;
-    ImageView imagefoto,btnCart;
+    ImageView imagefoto, btnCart;
     Bitmap bitmap, decoded;
     int PICK_IMAGE_REQUEST = 1;
     int bitmap_size = 60; // range 1 - 100
@@ -223,8 +223,6 @@ public class FragmentBeranda extends Fragment {
         Toast.makeText(getActivity(), "ini id ke-"+result.getId(), Toast.LENGTH_SHORT).show();*/
 
 
-
-
         btnupload.setOnClickListener(view -> {
             // Stopping Shimmer Effect's animation after data is loaded to ListView
 
@@ -268,7 +266,7 @@ public class FragmentBeranda extends Fragment {
 
 
             FragmentTransaction fr = getFragmentManager().beginTransaction();
-            fr.replace(R.id.frame_container, new KategoriHandphone(),null).addToBackStack(null);
+            fr.replace(R.id.frame_container, new KategoriHandphone(), null).addToBackStack(null);
             ///fr.addToBackStack(null);
             fr.commit();
         });
@@ -276,7 +274,7 @@ public class FragmentBeranda extends Fragment {
         btn_laptop.setOnClickListener(view -> {
             ///Toast.makeText(getActivity(), "Ini kategori Laptop", Toast.LENGTH_SHORT).show();
             FragmentTransaction fr = getFragmentManager().beginTransaction();
-            fr.replace(R.id.frame_container, new KategoriKomputer(),null).addToBackStack(null);
+            fr.replace(R.id.frame_container, new KategoriKomputer(), null).addToBackStack(null);
             fr.addToBackStack(null);
             fr.commit();
         });
@@ -284,7 +282,7 @@ public class FragmentBeranda extends Fragment {
         btn_otomotif.setOnClickListener(view -> {
             //Toast.makeText(getActivity(), "Ini kategori Otomotif", Toast.LENGTH_SHORT).show();
             FragmentTransaction fr = getFragmentManager().beginTransaction();
-            fr.replace(R.id.frame_container, new KategoriOtomotif(),null).addToBackStack(null);
+            fr.replace(R.id.frame_container, new KategoriOtomotif(), null).addToBackStack(null);
             fr.addToBackStack(null);
             fr.commit();
 
@@ -293,7 +291,7 @@ public class FragmentBeranda extends Fragment {
 
         btn_forniture.setOnClickListener(view -> {
             FragmentTransaction fr = getFragmentManager().beginTransaction();
-            fr.replace(R.id.frame_container, new KategoriForniture(),null).addToBackStack(null);
+            fr.replace(R.id.frame_container, new KategoriForniture(), null).addToBackStack(null);
             fr.addToBackStack(null);
             fr.commit();
         });
@@ -302,7 +300,7 @@ public class FragmentBeranda extends Fragment {
 
             //Toast.makeText(getActivity(), "Ini kategori Olahraga", Toast.LENGTH_SHORT).show();
             FragmentTransaction fr = getFragmentManager().beginTransaction();
-            fr.replace(R.id.frame_container, new KategoriHobi(),null).addToBackStack(null);
+            fr.replace(R.id.frame_container, new KategoriHobi(), null).addToBackStack(null);
             fr.addToBackStack(null);
             fr.commit();
 
@@ -311,7 +309,7 @@ public class FragmentBeranda extends Fragment {
         btn_property.setOnClickListener(view -> {
             ///Toast.makeText(getActivity(), "Ini kategori Property", Toast.LENGTH_SHORT).show();
             FragmentTransaction fr = getFragmentManager().beginTransaction();
-            fr.replace(R.id.frame_container, new KategoriProperty(),null).addToBackStack(null);
+            fr.replace(R.id.frame_container, new KategoriProperty(), null).addToBackStack(null);
             fr.addToBackStack(null);
             fr.commit();
         });
@@ -319,7 +317,7 @@ public class FragmentBeranda extends Fragment {
         btn_fashion.setOnClickListener(view -> {
             /// Toast.makeText(getActivity(), "Ini kategori Fashion", Toast.LENGTH_SHORT).show();
             FragmentTransaction fr = getFragmentManager().beginTransaction();
-            fr.replace(R.id.frame_container, new KategoriFashion(),null).addToBackStack(null);
+            fr.replace(R.id.frame_container, new KategoriFashion(), null).addToBackStack(null);
             fr.addToBackStack(null);
             fr.commit();
 
@@ -357,13 +355,13 @@ public class FragmentBeranda extends Fragment {
 
     }
 
-    private void getPromotion(){
+    private void getPromotion() {
 
         mApiService.getImageSlider().enqueue(new Callback<ResponseImagePromo>() {
             @Override
             public void onResponse(Call<ResponseImagePromo> call, Response<ResponseImagePromo> response) {
 
-                if(response.body().getResponseCode()==200){
+                if (response.body().getResponseCode() == 200) {
                     FlipperAdapter adapter = new FlipperAdapter(getActivity(), (ArrayList<DataItem>) response.body().getData());
                     adapterViewFlipper.setAdapter(adapter);
                     adapterViewFlipper.setFlipInterval(700);
@@ -379,7 +377,7 @@ public class FragmentBeranda extends Fragment {
                     mIndicator.setPageCount(getImage.size());
                     mIndicator.show();
 
-                }else {
+                } else {
 
                 }
 
@@ -392,6 +390,7 @@ public class FragmentBeranda extends Fragment {
             }
         });
     }
+
     @SuppressWarnings("unchecked")
     private void getNotifikasi() {
         ModelNotifikasi modelNotifikasi = new ModelNotifikasi();
@@ -451,7 +450,6 @@ public class FragmentBeranda extends Fragment {
             }
         });
     }
-
 
 
     //////////////////////////////
@@ -584,11 +582,10 @@ public class FragmentBeranda extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
 
 
-
         int id = item.getItemId();
 
         if (id == R.id.notifikasi) {
-            startActivity( new Intent(getContext(), NotifikasiActivity.class));
+            startActivity(new Intent(getContext(), NotifikasiActivity.class));
             ((Activity) Objects.requireNonNull(getContext())).finish();
         }
         if (id == R.id.cartshop) {
@@ -623,8 +620,7 @@ public class FragmentBeranda extends Fragment {
     }
 
 
-
-    private void getOnShoppingCart(){
+    private void getOnShoppingCart() {
 
         mApiService.getOnShoppingCart(sharedPrefManager.getSpIdMember()).enqueue(new Callback<ResponseOnShoppingCart>() {
             @Override
@@ -669,9 +665,6 @@ public class FragmentBeranda extends Fragment {
         });
 
     }
-
-
-
 
 
 //    @Override

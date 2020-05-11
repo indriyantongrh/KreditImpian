@@ -30,7 +30,7 @@ public class AdapterRequetsProduct extends RecyclerView.Adapter<AdapterRequetsPr
     List<DataItem> dataItemList;
     Context mContext;
 
-    public AdapterRequetsProduct(Context context, List<DataItem> dataList){
+    public AdapterRequetsProduct(Context context, List<DataItem> dataList) {
         this.mContext = context;
         dataItemList = dataList;
     }
@@ -44,12 +44,12 @@ public class AdapterRequetsProduct extends RecyclerView.Adapter<AdapterRequetsPr
 
     @Override
     public void onBindViewHolder(@NonNull HolderRequestProduct holder, int position) {
-        final DataItem  dataItem =  dataItemList.get(position);
+        final DataItem dataItem = dataItemList.get(position);
 
         holder.txt_id.setText(dataItem.getIdMember());
         holder.txt_id_transaction.setText(dataItem.getIdTransaction());
         holder.txt_status_pesanan.setText(dataItem.getStatus());
-        holder.txt_nomor_invoice.setText("Order ID #"+dataItem.getNumber());
+        holder.txt_nomor_invoice.setText("Order ID #" + dataItem.getNumber());
         holder.txt_reference_id.setText(dataItem.getReferenceId());
         holder.txt_id_product_category.setText(dataItem.getIdProductCategory());
         holder.txt_image.setText(dataItem.getContent());
@@ -77,13 +77,12 @@ public class AdapterRequetsProduct extends RecyclerView.Adapter<AdapterRequetsPr
                 .into(holder.image);
 
 
-
     }
 
     @Override
     public int getItemCount() {
 
-            return dataItemList.size();
+        return dataItemList.size();
     }
 
     public class HolderRequestProduct extends RecyclerView.ViewHolder {

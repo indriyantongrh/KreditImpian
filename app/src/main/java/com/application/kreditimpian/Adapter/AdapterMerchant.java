@@ -27,15 +27,15 @@ public class AdapterMerchant extends RecyclerView.Adapter<AdapterMerchant.Holder
     List<ResultItem> resultItemList;
     Context mContext;
 
-    public AdapterMerchant(Context context, List<ResultItem> resultList){
-        this.mContext=context;
+    public AdapterMerchant(Context context, List<ResultItem> resultList) {
+        this.mContext = context;
         resultItemList = resultList;
     }
 
     @NonNull
     @Override
     public HolderMerchant onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_merchant, parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_merchant, parent, false);
         return new HolderMerchant(view);
     }
 
@@ -58,7 +58,6 @@ public class AdapterMerchant extends RecyclerView.Adapter<AdapterMerchant.Holder
     }
 
     public class HolderMerchant extends RecyclerView.ViewHolder {
-
 
 
         @BindView(R.id.txt_name_merchant)
@@ -119,9 +118,6 @@ public class AdapterMerchant extends RecyclerView.Adapter<AdapterMerchant.Holder
         TextView txt_image_category;
         @BindView(R.id.txt_city)
         TextView txt_city;
-
-
-
 
 
         public HolderMerchant(@NonNull View itemView) {

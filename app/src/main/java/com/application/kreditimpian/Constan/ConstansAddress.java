@@ -6,7 +6,7 @@ package com.application.kreditimpian.Constan;
 public class ConstansAddress {
 
     public static final String KEY_ID = "id";
-    public static final String KEY_ID_MEMBER= "id_member";
+    public static final String KEY_ID_MEMBER = "id_member";
     public static final String KEY_ID_GEODIRECTORY = "id_geodirectory";
     public static final String KEY_RECEIVER = "receiver";
     public static final String KEY_POSTAL_CODE = "postal_code";

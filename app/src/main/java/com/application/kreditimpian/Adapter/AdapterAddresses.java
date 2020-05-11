@@ -47,20 +47,20 @@ public class AdapterAddresses extends RecyclerView.Adapter<AdapterAddresses.Hold
     Context mContext;
 
     //This will add all the items in the adapter's list
-    public  void addAllItems(List<DataItem> items) {
+    public void addAllItems(List<DataItem> items) {
         dataItemList.addAll(items);
         notifyDataSetChanged();
     }
 
-    public  AdapterAddresses(Context context , List<DataItem> dataList){
-        this.mContext= context;
+    public AdapterAddresses(Context context, List<DataItem> dataList) {
+        this.mContext = context;
         dataItemList = dataList;
     }
 
     @NonNull
     @Override
     public HolderAdresses onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-       View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_addresses, parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_addresses, parent, false);
         return new HolderAdresses(view);
     }
 
@@ -82,14 +82,14 @@ public class AdapterAddresses extends RecyclerView.Adapter<AdapterAddresses.Hold
 
 
         /*Jika alamat utama value nya YES maka Switch Checked*/
-         String AlamatUtama = dataItem.getMainAddress();
-        if(AlamatUtama.equals("YES")){
-           /// holder.SwitchAddress.setChecked(true);
+        String AlamatUtama = dataItem.getMainAddress();
+        if (AlamatUtama.equals("YES")) {
+            /// holder.SwitchAddress.setChecked(true);
             holder.SwitchAddress.setVisibility(View.GONE);
             holder.tvAlamatUtama.setVisibility(View.VISIBLE);
             holder.textMainAdress.setVisibility(View.GONE);
 
-        }else if (AlamatUtama.equals("NO")){
+        } else if (AlamatUtama.equals("NO")) {
             holder.SwitchAddress.setChecked(false);
 
         }
@@ -135,21 +135,20 @@ public class AdapterAddresses extends RecyclerView.Adapter<AdapterAddresses.Hold
         TextView textMainAdress;
 
 
-
         public HolderAdresses(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
 
             mApiService = UtilsApi.getAPIService();
-           /// sharedPrefManager = new SharedPrefManager(mContext);
+            /// sharedPrefManager = new SharedPrefManager(mContext);
 
             /*unutk Switch Alamat utama*/
             SwitchAddress.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if(isChecked ){
+                    if (isChecked) {
                         UpdateAddreses();
-                    }else {
+                    } else {
                         UpdateAddreses();
 
                     }
@@ -157,7 +156,7 @@ public class AdapterAddresses extends RecyclerView.Adapter<AdapterAddresses.Hold
             });
         }
 
-        private void UpdateAddreses(){
+        private void UpdateAddreses() {
             HashMap<String, String> params = new HashMap<>();
             /*params.put("address_name", txt_nama_alamat.getText().toString());
             params.put("phone", txt_nomor_handphone.getText().toString());
@@ -174,15 +173,15 @@ public class AdapterAddresses extends RecyclerView.Adapter<AdapterAddresses.Hold
                 AddressMain = SwitchAddress.getTextOff().toString();
             params.put("main_address", AddressMain.trim());
 
-            mApiService.updateMainAddress(txt_id.getText().toString(),params).enqueue(new Callback<ResponseAddress>() {
+            mApiService.updateMainAddress(txt_id.getText().toString(), params).enqueue(new Callback<ResponseAddress>() {
                 @Override
                 public void onResponse(Call<ResponseAddress> call, Response<ResponseAddress> response) {
-                    if(response.body().getResponseCode() == 200){
-                       // Toast.makeText(mContext, response.body().getMessage() , Toast.LENGTH_LONG).show();
+                    if (response.body().getResponseCode() == 200) {
+                        // Toast.makeText(mContext, response.body().getMessage() , Toast.LENGTH_LONG).show();
                         Log.v("Jajal ", "Sukses Switch On");
 
 
-                    }else {
+                    } else {
                         Log.v("Jajal ", "Sukses Switch Of");
 
                         ///Toast.makeText(mContext, response.body().getMessage(), Toast.LENGTH_SHORT).show();

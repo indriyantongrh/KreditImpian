@@ -32,7 +32,7 @@ public class AdapterProductBaru extends RecyclerView.Adapter<AdapterProductBaru.
     List<ResultItem> resultItemList;
     Context mContext;
 
-    public AdapterProductBaru(Context context, List<ResultItem> resultList){
+    public AdapterProductBaru(Context context, List<ResultItem> resultList) {
         this.mContext = context;
         resultItemList = resultList;
     }
@@ -41,51 +41,51 @@ public class AdapterProductBaru extends RecyclerView.Adapter<AdapterProductBaru.
     @NonNull
     @Override
     public HolerProduct onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_product, parent,false);
-        return  new HolerProduct(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_product, parent, false);
+        return new HolerProduct(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull HolerProduct holder, int position) {
-            final ResultItem resultItem = resultItemList.get(position);
+        final ResultItem resultItem = resultItemList.get(position);
 
-            holder.txt_id.setText(resultItem.getId());
-            holder.txt_id_product_category.setText(resultItem.getIdProductCategory());
-            holder.txt_id_currency.setText(resultItem.getIdCurrency());
-            holder.txt_name_product.setText(resultItem.getName());
-            holder.txt_description.setText(resultItem.getDescription());
-            holder.txt_sku.setText(resultItem.getSku());
-            holder.txt_stock.setText(resultItem.getStock());
-            Locale localeID = new Locale("in", "ID");
-            NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
-            int Price_Capital = (Integer.parseInt(resultItem.getPriceCapital()));
-            int Price_Sale = (Integer.parseInt(resultItem.getPriceSale()));
+        holder.txt_id.setText(resultItem.getId());
+        holder.txt_id_product_category.setText(resultItem.getIdProductCategory());
+        holder.txt_id_currency.setText(resultItem.getIdCurrency());
+        holder.txt_name_product.setText(resultItem.getName());
+        holder.txt_description.setText(resultItem.getDescription());
+        holder.txt_sku.setText(resultItem.getSku());
+        holder.txt_stock.setText(resultItem.getStock());
+        Locale localeID = new Locale("in", "ID");
+        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+        int Price_Capital = (Integer.parseInt(resultItem.getPriceCapital()));
+        int Price_Sale = (Integer.parseInt(resultItem.getPriceSale()));
 
-            if (Price_Capital == Price_Sale) {
-                holder.txt_price_capital.setVisibility(View.GONE);
-            }else  {
+        if (Price_Capital == Price_Sale) {
+            holder.txt_price_capital.setVisibility(View.GONE);
+        } else {
             holder.txt_price_capital.setVisibility(View.VISIBLE);
-                }
-            holder.txt_price_capital.setText(formatRupiah.format(Price_Capital));
-            holder.txt_price_sale.setText(formatRupiah.format(Price_Sale));
-            holder.txt_condition.setText(resultItem.getCondition());
-            holder.txt_deliverable.setText(resultItem.getDeliverable());
-            holder.txt_downloadable.setText(resultItem.getDownloadable());
-            holder.txt_target_gender.setText(resultItem.getTargetGender());
-            holder.txt_target_age.setText(resultItem.getTargetAge());
-            holder.txt_visibility.setText(resultItem.getVisibility());
-            Glide.with(mContext)
-                    .load(resultItem.getImage())
-                    .placeholder(R.drawable.no_image)
-                    .error(R.drawable.no_image)
-                    .into(holder.image);
-            holder.txt_image.setText(resultItem.getImage());
-            holder.txt_weight.setText(resultItem.getMetadata().getWeight());
-            holder.txt_weight_value.setText(resultItem.getMetadata().getWeightValue());
-            holder.txt_name_merchant.setText(resultItem.getMerchant().getName());
-            holder.txt_id_company_category.setText(resultItem.getMerchant().getIdCompanyCategory());
-            holder.txt_id_merchant.setText(resultItem.getMerchant().getId());
-            holder.txt_location_merchant.setText(resultItem.getMerchant().getCity());
+        }
+        holder.txt_price_capital.setText(formatRupiah.format(Price_Capital));
+        holder.txt_price_sale.setText(formatRupiah.format(Price_Sale));
+        holder.txt_condition.setText(resultItem.getCondition());
+        holder.txt_deliverable.setText(resultItem.getDeliverable());
+        holder.txt_downloadable.setText(resultItem.getDownloadable());
+        holder.txt_target_gender.setText(resultItem.getTargetGender());
+        holder.txt_target_age.setText(resultItem.getTargetAge());
+        holder.txt_visibility.setText(resultItem.getVisibility());
+        Glide.with(mContext)
+                .load(resultItem.getImage())
+                .placeholder(R.drawable.no_image)
+                .error(R.drawable.no_image)
+                .into(holder.image);
+        holder.txt_image.setText(resultItem.getImage());
+        holder.txt_weight.setText(resultItem.getMetadata().getWeight());
+        holder.txt_weight_value.setText(resultItem.getMetadata().getWeightValue());
+        holder.txt_name_merchant.setText(resultItem.getMerchant().getName());
+        holder.txt_id_company_category.setText(resultItem.getMerchant().getIdCompanyCategory());
+        holder.txt_id_merchant.setText(resultItem.getMerchant().getId());
+        holder.txt_location_merchant.setText(resultItem.getMerchant().getCity());
 
     }
 
@@ -164,7 +164,7 @@ public class AdapterProductBaru extends RecyclerView.Adapter<AdapterProductBaru.
         }
     }
 
-    public void addListBarang(List<ResultItem> listBarang){
+    public void addListBarang(List<ResultItem> listBarang) {
 
         /*for(ResultItem dataBarang  : listBarang)
         {

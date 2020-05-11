@@ -32,7 +32,7 @@ public class AdapterHistoryTransaction extends RecyclerView.Adapter<AdapterHisto
     List<DataItem> dataItemList;
     Context mContext;
 
-    public AdapterHistoryTransaction(Context context, List<DataItem> dataList){
+    public AdapterHistoryTransaction(Context context, List<DataItem> dataList) {
         this.mContext = context;
         dataItemList = dataList;
     }
@@ -46,14 +46,14 @@ public class AdapterHistoryTransaction extends RecyclerView.Adapter<AdapterHisto
 
     @Override
     public void onBindViewHolder(@NonNull HolderHistoryTransaction holder, int position) {
-        final DataItem dataItem =  dataItemList.get(position);
+        final DataItem dataItem = dataItemList.get(position);
 
         holder.txt_id.setText(dataItem.getId());
         holder.txt_id_transaction.setText(dataItem.getIdTransaction());
         holder.txt_status_pesanan.setText(dataItem.getStatus());
         //holder.txt_timestamp.setText((Integer) dataItem.getTimestamp());
-       /// holder.txt_expires.setText((Integer) dataItem.getExpires());
-        holder.txt_nomor_invoice.setText("Order ID #"+dataItem.getNumber());
+        /// holder.txt_expires.setText((Integer) dataItem.getExpires());
+        holder.txt_nomor_invoice.setText("Order ID #" + dataItem.getNumber());
         holder.txt_id_product_category.setText(dataItem.getIdProductCategory());
         holder.txt_id_product.setText(dataItem.getIdProduct());
         holder.txt_name_product.setText(dataItem.getName());
@@ -207,8 +207,6 @@ public class AdapterHistoryTransaction extends RecyclerView.Adapter<AdapterHisto
         TextView txt_address_label;
         @BindView(R.id.txt_district)
         TextView txt_district;
-
-
 
 
         public HolderHistoryTransaction(@NonNull View itemView) {

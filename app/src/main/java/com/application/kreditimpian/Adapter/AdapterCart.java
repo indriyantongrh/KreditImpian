@@ -56,6 +56,7 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.HolderCart> {
     Context mContext;
     String number;
     AdapterCart adapterCart;
+
     public AdapterCart(Context context, List<DataItem> dataList) {
         this.mContext = context;
         dataItemList = dataList;
@@ -123,7 +124,6 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.HolderCart> {
 //    }
 
 
-
     public class HolderCart extends RecyclerView.ViewHolder {
 
         @BindView(R.id.btnclick)
@@ -157,7 +157,6 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.HolderCart> {
             ButterKnife.bind(this, itemView);
 
             mApiService = UtilsApi.getAPIService();
-
 
 
             btnclick.setOnClickListener(new View.OnClickListener() {
@@ -238,24 +237,20 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.HolderCart> {
             });
 
 
-
-
-
-
         }
 
-        private void deleteCart(){
+        private void deleteCart() {
             String number = txt_number.getText().toString();
 
 
             mApiService.deleteCart(number).enqueue(new Callback<ResponseDeleteShopingCart>() {
                 @Override
                 public void onResponse(Call<ResponseDeleteShopingCart> call, Response<ResponseDeleteShopingCart> response) {
-                    if(response.body().getResponseCode()==200){
+                    if (response.body().getResponseCode() == 200) {
                         Toast.makeText(mContext, "Barang dihapus", Toast.LENGTH_LONG).show();
 
-                         notifyDataSetChanged();
-                    }else {
+                        notifyDataSetChanged();
+                    } else {
                         Toast.makeText(mContext, "Gagal hapus", Toast.LENGTH_LONG).show();
                     }
 
@@ -263,7 +258,7 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.HolderCart> {
 
                 @Override
                 public void onFailure(Call<ResponseDeleteShopingCart> call, Throwable t) {
-                   //// progressBar.dismiss();
+                    //// progressBar.dismiss();
                     Toast.makeText(mContext, "Gagal Refresh", Toast.LENGTH_SHORT).show();
                 }
             });
@@ -271,9 +266,7 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.HolderCart> {
         }
 
 
-
     }
-
 
 
 }

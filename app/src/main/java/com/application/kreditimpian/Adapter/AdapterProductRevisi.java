@@ -30,7 +30,7 @@ public class AdapterProductRevisi extends RecyclerView.Adapter<AdapterProductRev
     List<ResultItem> resultItemList;
     Context mContect;
 
-    public AdapterProductRevisi(Context context, List<ResultItem> resultList){
+    public AdapterProductRevisi(Context context, List<ResultItem> resultList) {
         this.mContect = context;
         resultItemList = resultList;
     }
@@ -38,7 +38,7 @@ public class AdapterProductRevisi extends RecyclerView.Adapter<AdapterProductRev
     @NonNull
     @Override
     public HolderProduct onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_product, parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_product, parent, false);
         return new HolderProduct(view);
     }
 
@@ -57,9 +57,9 @@ public class AdapterProductRevisi extends RecyclerView.Adapter<AdapterProductRev
         int Price_Capital = (Integer.parseInt(resultItem.getPriceCapital()));
         int Price_Sale = (Integer.parseInt(resultItem.getPriceSale()));
 
-        if (Price_Capital == Price_Sale){
+        if (Price_Capital == Price_Sale) {
             holder.txt_price_capital.setVisibility(View.GONE);
-        }else {
+        } else {
             holder.txt_price_sale.setVisibility(View.VISIBLE);
         }
 
@@ -99,7 +99,7 @@ public class AdapterProductRevisi extends RecyclerView.Adapter<AdapterProductRev
     @Override
     public int getItemCount() {
 
-            return resultItemList.size();
+        return resultItemList.size();
     }
 
     public class HolderProduct extends RecyclerView.ViewHolder {
@@ -160,6 +160,7 @@ public class AdapterProductRevisi extends RecyclerView.Adapter<AdapterProductRev
         ImageView imagemerchant;
         @BindView(R.id.txt_image_merchant)
         TextView txt_image_merchant;
+
         public HolderProduct(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);

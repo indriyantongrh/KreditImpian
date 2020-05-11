@@ -112,12 +112,12 @@ public interface BaseApiService {
 
     @GET("ApiMobile/mainadrsyes")
     Call<ResponseAddress> updateMainAddress(@Query("id") String id,
-                                         @QueryMap HashMap<String, String> params);
+                                            @QueryMap HashMap<String, String> params);
 
     @GET("ApiMobile/gantipassword")
     Call<ResponseAddress> ResetPassword(@Query("id_sysuser") String id_sysuser, @QueryMap HashMap<String, String> params);
 
-     @FormUrlEncoded
+    @FormUrlEncoded
     @POST("ApiMobile/insertprofile")
     Call<ResponseMemberInsert> InsertMember(@FieldMap HashMap<String, String> params);
 
@@ -180,7 +180,6 @@ public interface BaseApiService {
     @FormUrlEncoded
     @POST("ApiMobile/insertMetaDataProductTransactionDatabaseBcaApi")
     Call<ResponseTransactionAPI> postPengajuanCheckout(@FieldMap HashMap<String, String> params);
-
 
 
     @FormUrlEncoded
@@ -276,7 +275,6 @@ public interface BaseApiService {
     Call<ResponseSubdistrict> getSubdistrcit(@QueryMap HashMap<String, String> params);
 
 
-
     @Headers({
             "Accept: application/json"
     })
@@ -302,9 +300,6 @@ public interface BaseApiService {
                                       @Query("religion") String religion,
                                       @Query("number_citizen") String number_citizen,
                                       @Query("number_taxpayer") String number_taxpayer);
-
-
-
 
 
     @GET("members?id={id}")
@@ -384,9 +379,9 @@ public interface BaseApiService {
 
     @FormUrlEncoded
     @POST("ApiMobile2/register")
-    Call<NewResponseRegister> registerMember (@Field("username") String username,
-                                          @Field("email") String email,
-                                          @Field("phone") String phone,
-                                          @Field("password") String password,
-                                          @Field("password_confirm") String password_confirm);
+    Call<NewResponseRegister> registerMember(@Field("username") String username,
+                                             @Field("email") String email,
+                                             @Field("phone") String phone,
+                                             @Field("password") String password,
+                                             @Field("password_confirm") String password_confirm);
 }

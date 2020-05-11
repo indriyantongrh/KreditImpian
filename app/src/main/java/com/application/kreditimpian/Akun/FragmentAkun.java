@@ -54,9 +54,9 @@ import java.util.Objects;
 public class FragmentAkun extends Fragment {
 
     ImageView image;
-    CardView btndetailakun, btnstatuspesanan,btnchat ,btnhistorypesanan,btnfavorite,btnkonfirmasi, btngantipassword,btnlogout,btnalamatpengiriman ;
-    TextView txt_nama_akun,textchat;
-    RelativeLayout RelativDataMember,RelativAlamatPengiriman,RelativHistoryPesanan,RelativGantiPassword,RelativLogout;
+    CardView btndetailakun, btnstatuspesanan, btnchat, btnhistorypesanan, btnfavorite, btnkonfirmasi, btngantipassword, btnlogout, btnalamatpengiriman;
+    TextView txt_nama_akun, textchat;
+    RelativeLayout RelativDataMember, RelativAlamatPengiriman, RelativHistoryPesanan, RelativGantiPassword, RelativLogout;
     GoogleSignInClient mGoogleSignInClient;
     private GoogleApiClient mGoogleApiClient;
 
@@ -69,7 +69,8 @@ public class FragmentAkun extends Fragment {
     String tag_json_obj = "json_obj_req";
     SharedPreferences sharedpreferences;
     Boolean session = false;
-    String id, value_email, value_token, value_nomorhp, email, username;;
+    String id, value_email, value_token, value_nomorhp, email, username;
+    ;
     public static final String my_shared_preferences = "my_shared_preferences";
     public static final String session_status = "session_status";
     BaseApiService mApiService;
@@ -78,17 +79,18 @@ public class FragmentAkun extends Fragment {
     private JWT jwt;
     private String decoded;
     private String token;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_fragment_akun, container, false);
+        View view = inflater.inflate(R.layout.fragment_fragment_akun, container, false);
         txt_nama_akun = view.findViewById(R.id.txt_nama_akun);
         image = view.findViewById(R.id.image);
 
 
         sharedPrefManager = new SharedPrefManager(getActivity());
-       /// String id = sharedPrefManager.getSPID();
+        /// String id = sharedPrefManager.getSPID();
         String email = sharedPrefManager.getSPEmail();
         String token = sharedPrefManager.getSPToken();
         String usernameMember = sharedPrefManager.getSpUserUsername();
@@ -96,7 +98,7 @@ public class FragmentAkun extends Fragment {
         String id_user = sharedPrefManager.getSpIdUser();
         String id_member = sharedPrefManager.getSpIdMember();
 
-     ////   Toast.makeText(getActivity(), "Id member anda "+id_member, Toast.LENGTH_LONG).show();
+        ////   Toast.makeText(getActivity(), "Id member anda "+id_member, Toast.LENGTH_LONG).show();
 
         ///Toast.makeText(getActivity(),token, Toast.LENGTH_SHORT).show();
         txt_nama_akun.setText(usernameMember);
@@ -107,8 +109,7 @@ public class FragmentAkun extends Fragment {
 //        DecodedJWT jwtIdent = JWT.decode(token);
 //        Toast.makeText(getActivity(),"ini hasil decode"+jwtIdent, Toast.LENGTH_SHORT).show();
 
-            /// getUsername();
-
+        /// getUsername();
 
 
         try {
@@ -117,7 +118,7 @@ public class FragmentAkun extends Fragment {
             e.printStackTrace();
         }
 
-        Gson gson =  new Gson();
+        Gson gson = new Gson();
         String json = gson.toJson(decoded);
         ///System.out.println(json);
         //Toast.makeText(LoginUser.this, "Gson anda" + json, Toast.LENGTH_LONG).show();
@@ -133,7 +134,6 @@ public class FragmentAkun extends Fragment {
         }
 
         ///Toast.makeText(getActivity(),"ini hasil decode"+decoded, Toast.LENGTH_SHORT).show();
-
 
 
         // Configure sign-in to request the user's ID, email address, and basic
@@ -172,13 +172,13 @@ public class FragmentAkun extends Fragment {
         });
         textchat = view.findViewById(R.id.textchat);
         btnchat = view.findViewById(R.id.btnchat);
-            btnchat.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+        btnchat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 Toast.makeText(getActivity(), "Fitur segera hadir", Toast.LENGTH_LONG).show();
 //                    StringtoJson();
-                }
-            });
+            }
+        });
 
 
         btnalamatpengiriman = view.findViewById(R.id.btnalamatpengiriman);
@@ -199,7 +199,7 @@ public class FragmentAkun extends Fragment {
         RelativHistoryPesanan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               //// Toast.makeText(getActivity(), "Fitur segera hadir", Toast.LENGTH_LONG).show();
+                //// Toast.makeText(getActivity(), "Fitur segera hadir", Toast.LENGTH_LONG).show();
 
                 ///Intent intent = new Intent(getActivity(), RiwayatPesanan.class);
                 Intent intent = new Intent(getActivity(), HistoryPesanan.class);
@@ -258,7 +258,6 @@ public class FragmentAkun extends Fragment {
                     public void onClick(DialogInterface dialog, int which) {
 
 
-
                         sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, false);
                         startActivity(new Intent(getActivity(), LoginUser.class)
                                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
@@ -302,20 +301,19 @@ public class FragmentAkun extends Fragment {
     }
 
 
-
     private void signOut() {
         mGoogleSignInClient.signOut()
                 .addOnCompleteListener(getActivity(), new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        Toast.makeText(getActivity(),"Anda berhasil keluar!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), "Anda berhasil keluar!", Toast.LENGTH_LONG).show();
                         getActivity().finish();
                     }
                 });
     }
 
 
-    private void StringtoJson(){
+    private void StringtoJson() {
         try {
             decoded = JWTParser.decoded(token);
             Log.d("My App", decoded);
@@ -330,7 +328,7 @@ public class FragmentAkun extends Fragment {
             String id = obj.getString("id");
             String email = obj.getString("email");
             String username = obj.getString("username");
-            Log.d("My Id", id+email+username);
+            Log.d("My Id", id + email + username);
             Log.d("My App", obj.toString());
 
         } catch (Throwable t) {
@@ -380,7 +378,6 @@ public class FragmentAkun extends Fragment {
 //        });
 //
 //    }
-
 
 
 //    private void getResultUser() {

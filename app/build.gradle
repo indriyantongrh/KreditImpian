@@ -29,6 +29,13 @@ android {
         abortOnError false
         ignoreWarnings true //false
     }
+    sourceSets {
+        main {
+            assets {
+                srcDirs 'src/main/assets', 'src/main/assets/'
+            }
+        }
+    }
 }
 
 dependencies {
@@ -138,6 +145,7 @@ dependencies {
     //Firebase Messaging library for Sending push Notifications
     implementation 'com.google.firebase:firebase-messaging:11.8.0'
     //implementation 'com.cossacklabs.com:themis:+' // better to check which version is current latest and link to it
+    implementation 'com.github.barteksc:android-pdf-viewer:2.8.2' //pdf viewer
 }
 
 apply plugin: 'com.google.gms.google-services'

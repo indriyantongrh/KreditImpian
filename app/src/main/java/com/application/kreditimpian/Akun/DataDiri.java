@@ -87,12 +87,12 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
     private static final int PERMISSION_REQUEST_CODE = 200;
     private int mYear, mMonth, mDay;
     ImageButton btnback;
-    Button btnuploadfoto,btnuploadktp,btnuploadnpwp, btnUbahKecamatan, btnUbah;
+    Button btnuploadfoto, btnuploadktp, btnuploadnpwp, btnUbahKecamatan, btnUbah;
     ImageView imagektp, imagenpwp, imageself;
     Spinner spinnerjeniskelamin, spinnerstatus, spinneragama, spinnerstatusrumah,
             spinnerkredit, spinnerkota_saudaraa, spinnerkecamatn_saudara;
     Button btnsimpan;
-    TextView id_kota, id_kecamatan, text_kota,text_kecamatan, textjeniskelamin, textstatus, textagama, textkredit, textstatusrumah;
+    TextView id_kota, id_kecamatan, text_kota, text_kecamatan, textjeniskelamin, textstatus, textagama, textkredit, textstatusrumah;
     EditText txtnamalengkap, txttempatlahir, txttanggallahir, txtnikktp, txtnomornpwp, txtpekerjaan, txtpendapatan,
             txtjumlahtanggungan, txtalamatemail, txtibukandung, txtnomorhandphone, txtnomortlp, txtfacebook,
             txttwitter, txtinstagram, txtnamasaudara, txtnomorhandphonesaudara, txtkodepos_saudara, txtalamat_saudara;
@@ -100,15 +100,15 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
     private HashMap<String, String> Kecamatanvalues;
     private HashMap<String, String> districtvalue;
     ConstraintLayout layout6, layout5;
-    SmartMaterialSpinner spinKota,spinKecamatan;
-    LinearLayout LinearKota,LinearKecamatan;
+    SmartMaterialSpinner spinKota, spinKecamatan;
+    LinearLayout LinearKota, LinearKecamatan;
     ProgressDialog loading;
     SharedPrefManager sharedPrefManager;
     Context mContext;
     BaseApiService mApiService;
     String fullname, idprofile,
-    imgphoto ="",
-    imgktp = "";
+            imgphoto = "",
+            imgktp = "";
     ProgressDialog pDialog;
     //untuk upload gambar
     Bitmap bitmap, decoded_1, decoded_2, decoded_3;
@@ -204,19 +204,17 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         btnuploadnpwp = findViewById(R.id.btnuploadnpwp);
 
 
-
-
         txtalamatemail.setText(email);
         txtnomorhandphone.setText(msisdn);
 
 
-        List<String> gender = new ArrayList<String>();
+        List<String> gender = new ArrayList<String>();/*List Gender*/
         gender.add(0, "Jenis Kelamin");
         gender.add("Perempuan");
         gender.add("Laki-laki");
 
 
-        List<String> religion = new ArrayList<String>();
+        List<String> religion = new ArrayList<String>(); /* List regional */
         religion.add(0, "Pilih Agama");
         religion.add("Hindu");
         religion.add("Islam");
@@ -225,24 +223,25 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         religion.add("Budha");
 
 
-        List<String> Status = new ArrayList<String>();
+        List<String> Status = new ArrayList<String>();  /*List Status pesanan*/
         Status.add(0, "Pilih Status");
         Status.add("Sendiri");
         Status.add("Menikah");
         Status.add("Cerai");
 
-        List<String> Kredit = new ArrayList<String>();
+        List<String> Kredit = new ArrayList<String>(); /*List kredit*/
         Kredit.add(0, "Apakah Anda memiliki kredit/cicilan yang sedang berjalan?");
         Kredit.add("Iya");
         Kredit.add("Tidak");
 
-        List<String> TempatTinggal = new ArrayList<String>();
+        List<String> TempatTinggal = new ArrayList<String>(); /*List tempat tinggal*/
         TempatTinggal.add(0, "Status Tempat Tinggal");
         TempatTinggal.add("Kontrak");
         TempatTinggal.add("Rumah Sendiri");
         TempatTinggal.add("Kos");
         TempatTinggal.add("Ikut Orang Tua");
 
+        /*Spiner gender*/
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(DataDiri.this, android.R.layout.simple_spinner_item, gender);
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinnerjeniskelamin.setAdapter(adapter);
@@ -251,10 +250,10 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 String jenisKelamin = adapter.getItem(position);
-                if(jenisKelamin.equals("Perempuan")){
+                if (jenisKelamin.equals("Perempuan")) {
                     textjeniskelamin.setText("FEMALE");
 
-                }else if(jenisKelamin.equals("Laki-laki")){
+                } else if (jenisKelamin.equals("Laki-laki")) {
                     textjeniskelamin.setText("MALE");
                 }
 
@@ -266,6 +265,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             }
         });
 
+        /*Spiner status*/
         ArrayAdapter<String> adapterStatus = new ArrayAdapter<String>(DataDiri.this, android.R.layout.simple_spinner_item, Status);
         adapterStatus.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinnerstatus.setAdapter(adapterStatus);
@@ -274,13 +274,13 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 String status = adapterStatus.getItem(position);
-                if(status.equals("Sendiri")){
+                if (status.equals("Sendiri")) {
                     textstatus.setText("SINGLE");
 
-                }else if(status.equals("Menikah")){
+                } else if (status.equals("Menikah")) {
                     textstatus.setText("MARRIED");
 
-                }else if(status.equals("Cerai")){
+                } else if (status.equals("Cerai")) {
                     textstatus.setText("DIVORCED");
                 }
             }
@@ -291,6 +291,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             }
         });
 
+        /*Spiner religion*/
         ArrayAdapter<String> adapterReligion = new ArrayAdapter<String>(DataDiri.this, android.R.layout.simple_spinner_item, religion);
         adapterReligion.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinneragama.setAdapter(adapterReligion);
@@ -299,22 +300,21 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 String agama = adapterReligion.getItem(position);
-                if(agama.equals("Hindu")){
+                if (agama.equals("Hindu")) {
                     textagama.setText("HINDU");
 
-                }else if(agama.equals("Islam")){
+                } else if (agama.equals("Islam")) {
                     textagama.setText("MOSLEM");
 
-                }else if(agama.equals("Kristen")){
+                } else if (agama.equals("Kristen")) {
                     textagama.setText("CHRISTIAN");
 
-                }else if(agama.equals("Katolik")){
+                } else if (agama.equals("Katolik")) {
                     textagama.setText("CATHOLIC");
 
-                }else if(agama.equals("Budha")){
+                } else if (agama.equals("Budha")) {
                     textagama.setText("BUDDHA");
                 }
-
 
 
             }
@@ -325,6 +325,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             }
         });
 
+        /*Spiner tempat tinggal*/
         ArrayAdapter<String> adapterRumah = new ArrayAdapter<String>(DataDiri.this, android.R.layout.simple_spinner_item, TempatTinggal);
         adapterRumah.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinnerstatusrumah.setAdapter(adapterRumah);
@@ -333,16 +334,16 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 String statusrumah = adapterRumah.getItem(position);
-                if(statusrumah.equals("Kontrak")){
+                if (statusrumah.equals("Kontrak")) {
                     textstatusrumah.setText("CONTRACT");
 
-                }else if(statusrumah.equals("Rumah Sendiri")){
+                } else if (statusrumah.equals("Rumah Sendiri")) {
                     textstatusrumah.setText("PERMANENT");
 
-                }else if(statusrumah.equals("Kos")){
+                } else if (statusrumah.equals("Kos")) {
                     textstatusrumah.setText("BOARDING");
 
-                }else if(statusrumah.equals("Ikut Orang Tua")){
+                } else if (statusrumah.equals("Ikut Orang Tua")) {
                     textstatusrumah.setText("FOLLOW_PARENTS");
 
                 }
@@ -356,7 +357,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             }
         });
 
-
+        /*Spiner Kredit*/
         ArrayAdapter<String> adapterKredit = new ArrayAdapter<String>(DataDiri.this, android.R.layout.simple_spinner_item, Kredit);
         adapterKredit.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinnerkredit.setAdapter(adapterKredit);
@@ -364,10 +365,10 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String kredit = adapterKredit.getItem(position);
-                if(kredit.equals("Iya")){
+                if (kredit.equals("Iya")) {
                     textkredit.setText("YES");
 
-                }else if(kredit.equals("Tidak")){
+                } else if (kredit.equals("Tidak")) {
                     textkredit.setText("NO");
 
                 }
@@ -384,7 +385,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             @Override
             public void onClick(View v) {
 
-                    UploadFoto();
+                UploadFoto();
 
             }
         });
@@ -394,7 +395,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             @Override
             public void onClick(View v) {
 
-                    UploadKtp();
+                UploadKtp();
 
             }
         });
@@ -410,10 +411,10 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         getCityRajaOngkir();
         /// getGeoDistrict();
 
+        /* btn/tombol image view foto diri*/
         imageself.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 
                 //pakai alert dialog
                 android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(DataDiri.this);
@@ -445,7 +446,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
         });
 
-
+        /* btn/tombol image view foto KTP*/
         imagektp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -477,7 +478,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             }
         });
 
-
+        /* btn/tombol image view foto NPWP*/
         imagenpwp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -511,6 +512,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             }
         });
 
+        /*untuk tombol ubah kota*/
         btnUbah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -521,6 +523,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             }
         });
 
+        /*untuk tombol ubah kecamatan*/
         btnUbahKecamatan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -531,7 +534,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             }
         });
 
-
+        /*EditText clicked date*/
         txttanggallahir.setOnClickListener(this);
         btnback = findViewById(R.id.btnback);
         btnback.setOnClickListener(new View.OnClickListener() {
@@ -592,12 +595,12 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                     txtpendapatan.setError("Tidak boleh kosong");
                 else if (isEmpty(family_dependent))
                     txtjumlahtanggungan.setError("Tidak boleh kosong");
-                else if (isEmpty(contact_office))
-                    txtnomortlp.setError("Tidak boleh kosong");
+                /*else if (isEmpty(contact_office))
+                    txtnomortlp.setError("Tidak boleh kosong");*/
                 else if (isEmpty(family_dependent))
                     txtjumlahtanggungan.setError("Tidak boleh kosong");
-                else if (isEmpty(contact_office))
-                    txtnomortlp.setError("Tidak boleh kosong");
+                /*else if (isEmpty(contact_office))
+                    txtnomortlp.setError("Tidak boleh kosong");*/
                 else if (isEmpty(namasaudara))
                     txtnamasaudara.setError("Tidak boleh kosong");
                 else if (isEmpty(nomorhpsaudara))
@@ -608,27 +611,27 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                     txtibukandung.setError("Tidak boleh kosong");
                 else if (isEmpty(alamatsaudara))
                     txtalamat_saudara.setError("Tidak boleh kosong");
-                else if (spinnerjeniskelamin.getSelectedItem().equals("Jenis Kelamin")){
+                else if (spinnerjeniskelamin.getSelectedItem().equals("Jenis Kelamin")) {
                     Toast.makeText(DataDiri.this, "Anda belum mengisi jenis kelamin", Toast.LENGTH_LONG).show();
-                }else if(spinneragama.getSelectedItem().equals("Pilih Agama")){
+                } else if (spinneragama.getSelectedItem().equals("Pilih Agama")) {
                     Toast.makeText(DataDiri.this, "Anda belum mengisi Agama", Toast.LENGTH_LONG).show();
-                }else if(spinnerstatus.getSelectedItem().equals("Pilih Status")){
+                } else if (spinnerstatus.getSelectedItem().equals("Pilih Status")) {
                     Toast.makeText(DataDiri.this, "Anda belum mengisi Status", Toast.LENGTH_LONG).show();
-                }else if(spinnerstatusrumah.getSelectedItem().equals("Status Tempat Tinggal")){
+                } else if (spinnerstatusrumah.getSelectedItem().equals("Status Tempat Tinggal")) {
                     Toast.makeText(DataDiri.this, "Anda belum mengisi Status Tempat Tinggal", Toast.LENGTH_LONG).show();
-                }else if(spinnerkredit.getSelectedItem().equals("Apakah Anda memiliki kredit/cicilan yang sedang berjalan?")){
+                } else if (spinnerkredit.getSelectedItem().equals("Apakah Anda memiliki kredit/cicilan yang sedang berjalan?")) {
                     Toast.makeText(DataDiri.this, "Anda belum mengisi pernyataan kredit", Toast.LENGTH_LONG).show();
                 }/*else if(spinnerkota_saudaraa.getSelectedItem().equals("-- Pilih Kota --")){
                     Toast.makeText(DataDiri.this, "Anda belum mengisi Kota saudara anda", Toast.LENGTH_LONG).show();
                 }else if(spinnerkecamatn_saudara.getSelectedItem().equals("-- Pilih Kecamatan --")){
                     Toast.makeText(DataDiri.this, "Anda belum mengisi Kecamatan saudara anda", Toast.LENGTH_LONG).show();
-                }*/ else if(id_kota.getText().toString().equals("null")){
-                        if(spinnerkota_saudaraa.getSelectedItem().equals("-- Pilih Kota --")){
+                }*/ else if (id_kota.getText().toString().equals("null")) {
+                    if (spinnerkota_saudaraa.getSelectedItem().equals("-- Pilih Kota --")) {
                         Toast.makeText(DataDiri.this, "Anda belum mengisi Kota saudara anda", Toast.LENGTH_LONG).show();
-                        }
+                    }
 
-                    } else if(id_kecamatan.getText().toString().equals("null")){
-                        if(spinnerkecamatn_saudara.getSelectedItem().equals("-- Pilih Kecamatan --")){
+                } else if (id_kecamatan.getText().toString().equals("null")) {
+                    if (spinnerkecamatn_saudara.getSelectedItem().equals("-- Pilih Kecamatan --")) {
                         Toast.makeText(DataDiri.this, "Anda belum mengisi Kecamatan saudara anda", Toast.LENGTH_LONG).show();
                     }
                 }
@@ -668,7 +671,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
-                                txttanggallahir.setText( year + "-" + convertDate(monthOfYear + 1) + "-"+ convertDate(dayOfMonth));
+                                txttanggallahir.setText(year + "-" + convertDate(monthOfYear + 1) + "-" + convertDate(dayOfMonth));
 
                             }
                         }, mYear, mMonth, mDay);
@@ -685,8 +688,6 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             return "0" + String.valueOf(input);
         }
     }
-
-
 
 
     private void updatemember() {
@@ -761,7 +762,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         params.put("phone", txtnomorhandphone.getText().toString());
         params.put("birthplace", txttempatlahir.getText().toString());
         params.put("birthday", txttanggallahir.getText().toString());
-       /// params.put("gender", spinnerjeniskelamin.getSelectedItem().toString());
+        /// params.put("gender", spinnerjeniskelamin.getSelectedItem().toString());
         params.put("gender", textjeniskelamin.getText().toString());
         params.put("marital", textstatus.getText().toString());
         params.put("religion", textagama.getText().toString());
@@ -822,7 +823,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
     }
 
     /*Upload Foto */
-    private void UploadFoto(){
+    private void UploadFoto() {
 
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
@@ -855,7 +856,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
     }
 
     /*Upload KTP */
-    private void UploadKtp(){
+    private void UploadKtp() {
 
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
@@ -887,7 +888,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
     }
 
     /*Upload NPWP */
-    private void UploadNpwp(){
+    private void UploadNpwp() {
 
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
@@ -1193,16 +1194,16 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                     txtkodepos_saudara.setText(detail.get(0).getPostalCode());
                     id_kota.setText(detail.get(0).getNonsiblingIdGeodirectory());
                     id_kecamatan.setText(detail.get(0).getNonsiblingIdDistrict());
-                    text_kota.setText("Kota Saudara anda : "+detail.get(0).getName_city_profile());
-                    text_kecamatan.setText("Kecamatan Saudara anda : "+detail.get(0).getName_district_profile());
+                    text_kota.setText("Kota Saudara anda : " + detail.get(0).getName_city_profile());
+                    text_kecamatan.setText("Kecamatan Saudara anda : " + detail.get(0).getName_district_profile());
 
-                    if(id_kota.getText().toString().equals(id_kota.getText().toString())){
+                    if (id_kota.getText().toString().equals(id_kota.getText().toString())) {
                         text_kota.setVisibility(View.VISIBLE);
                         btnUbah.setVisibility(View.VISIBLE);
                         ///LinearKota.setVisibility(View.GONE);
                         layout5.setVisibility(View.GONE);
 
-                    }else if(id_kota.getText().toString().equals("null")){
+                    } else if (id_kota.getText().toString().equals("null")) {
                         text_kota.setVisibility(View.GONE);
                         btnUbah.setVisibility(View.GONE);
                         //LinearKota.setVisibility(View.VISIBLE);
@@ -1211,14 +1212,14 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                     }
 
                     getSubdistrictProfile();
-                    if(id_kecamatan.getText().toString().equals(id_kecamatan.getText().toString())){
+                    if (id_kecamatan.getText().toString().equals(id_kecamatan.getText().toString())) {
                         text_kecamatan.setVisibility(View.VISIBLE);
                         btnUbahKecamatan.setVisibility(View.VISIBLE);
                         ///LinearKecamatan.setVisibility(View.GONE);
                         layout6.setVisibility(View.GONE);
 
 
-                    }else if(id_kecamatan.getText().toString().equals("null")){
+                    } else if (id_kecamatan.getText().toString().equals("null")) {
                         text_kecamatan.setVisibility(View.GONE);
                         btnUbahKecamatan.setVisibility(View.GONE);
                         //LinearKecamatan.setVisibility(View.VISIBLE);
@@ -1230,12 +1231,12 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                             .load(detail.get(0).getPhoto())
                             .into(imageself);
 
-                  // imgphoto = "1";
+                    // imgphoto = "1";
                     Glide.with(DataDiri.this)
                             .load(detail.get(0).getCitizen())
                             .into(imagektp);
 
-                   /// imgktp = "1";
+                    /// imgktp = "1";
                     Glide.with(DataDiri.this)
                             .load(detail.get(0).getTaxpayer())
                             .into(imagenpwp);
@@ -1257,7 +1258,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
     }
 
     /*get data kecamatan*/
-    private void getSubdistrictProfile(){
+    private void getSubdistrictProfile() {
 
         HashMap<String, String> params = new HashMap<>();
         params.put("id_district", id_kecamatan.getText().toString());
@@ -1266,12 +1267,12 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             @Override
             public void onResponse(Call<ResponseSubdistrict> call, Response<ResponseSubdistrict> response) {
 
-                if(response.body().getRajaongkir().getStatus().getCode() == 200){
+                if (response.body().getRajaongkir().getStatus().getCode() == 200) {
                     ResponseSubdistrict responseKotaKecamatan = response.body();
 
-                    text_kecamatan.setText("Kecamatan Saudara anda : "+responseKotaKecamatan.getRajaongkir().getResults().getSubdistrictName());
+                    text_kecamatan.setText("Kecamatan Saudara anda : " + responseKotaKecamatan.getRajaongkir().getResults().getSubdistrictName());
 
-                }else{
+                } else {
                     text_kecamatan.setVisibility(View.GONE);
                     btnUbahKecamatan.setVisibility(View.GONE);
                     ////LinearKecamatan.setVisibility(View.VISIBLE);
@@ -1288,30 +1289,28 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
     }
 
 
-
-
-    /*Menampilkan City using API Cirecle Creative */
-    private void getCityRajaOngkir(){
+    /*Menampilkan City using API RajaOngkir*/
+    private void getCityRajaOngkir() {
 
         cityvalues = new HashMap<>();
         mApiService.getCityGeodirectories().enqueue(new Callback<ResponseCityRajaOngkir>() {
             @Override
             public void onResponse(Call<ResponseCityRajaOngkir> call, Response<ResponseCityRajaOngkir> response) {
 
-                if(response.body() !=null){
+                if (response.body() != null) {
                     //// String citySelected = spinnerkota_pengiriman.getItemAtPosition(p).toString();
                     List<ResultsItem> getCity = response.body().getRajaongkir().getResults();
                     List<String> listSpinner = new ArrayList<String>();
-                    String[] idcity = new String[getCity.size() +1];
-                    String[] city = new String[getCity.size() +1];
-                    String[] type = new String[getCity.size() +1];
+                    String[] idcity = new String[getCity.size() + 1];
+                    String[] city = new String[getCity.size() + 1];
+                    String[] type = new String[getCity.size() + 1];
                     city[0] = "-- Pilih Kota --";
-                    for (int i = 0; i < getCity.size(); i++){
+                    for (int i = 0; i < getCity.size(); i++) {
                         ///listSpinner.add(getCity.get(i).getIdParent());
-                        city[i + 1] = (getCity.get(i).getType()+" ")+(getCity.get(i).getCityName());
+                        city[i + 1] = (getCity.get(i).getType() + " ") + (getCity.get(i).getCityName());
                         type[i + 1] = getCity.get(i).getType();
                         idcity[i + 1] = getCity.get(i).getCityId();
-                        cityvalues.put(city[i + 1], idcity[i + 1] );
+                        cityvalues.put(city[i + 1], idcity[i + 1]);
 //                         id = getCity.get(i).getId();
 //                         nameCity = getCity.get(i).getName();
                         ///listSpinner.add(nameCity);
@@ -1325,8 +1324,8 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                     spinKota.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                            if(position>0){
-                                String cityvalues = getCity.get(position - 1 ).getCityId();
+                            if (position > 0) {
+                                String cityvalues = getCity.get(position - 1).getCityId();
                                 ////Toast.makeText(DataDiri.this, "id kota anda "+cityvalues , Toast.LENGTH_LONG).show();
                                 id_kota.setText(cityvalues);
                                 getSubDistrict();
@@ -1347,8 +1346,8 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                            if(position>0){
-                                String cityvalues = getCity.get(position - 1 ).getCityId();
+                            if (position > 0) {
+                                String cityvalues = getCity.get(position - 1).getCityId();
                                 //Toast.makeText(TambahAlamatPengiriman.this, "id kota anda "+cityvalues , Toast.LENGTH_LONG).show();
                                 id_kota.setText(cityvalues);
                                 getSubDistrict();
@@ -1381,7 +1380,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
     }
 
     /*MEnampilkan City using API Cirecle Creative*/
-    private void getSubDistrict(){
+    private void getSubDistrict() {
 
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
@@ -1397,18 +1396,18 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
             @Override
             public void onResponse(Call<ResponseSubDistrictRajaOngkir> call, Response<ResponseSubDistrictRajaOngkir> response) {
                 pDialog.dismiss();
-                if(response.body() !=null){
+                if (response.body() != null) {
                     //// String citySelected = spinnerkota_pengiriman.getItemAtPosition(p).toString();
                     List<com.application.kreditimpian.Model.ModelSubDistrictRajaOngkir.ResultsItem> getKecamatan = response.body().getRajaongkir().getResults();
                     List<String> listSpinner = new ArrayList<String>();
-                    String[] idKecamatan = new String[getKecamatan.size() +1];
-                    String[] Kecamatan = new String[getKecamatan.size() +1];
+                    String[] idKecamatan = new String[getKecamatan.size() + 1];
+                    String[] Kecamatan = new String[getKecamatan.size() + 1];
                     Kecamatan[0] = "-- Pilih Kecamatan --";
-                    for (int i = 0; i < getKecamatan.size(); i++){
+                    for (int i = 0; i < getKecamatan.size(); i++) {
                         ///listSpinner.add(getCity.get(i).getIdParent());
                         Kecamatan[i + 1] = getKecamatan.get(i).getSubdistrictName();
                         idKecamatan[i + 1] = getKecamatan.get(i).getSubdistrictId();
-                        Kecamatanvalues.put(Kecamatan[i + 1], idKecamatan[i + 1] );
+                        Kecamatanvalues.put(Kecamatan[i + 1], idKecamatan[i + 1]);
 //                         id = getCity.get(i).getId();
 //                         nameCity = getCity.get(i).getName();
                         ///listSpinner.add(nameCity);
@@ -1422,8 +1421,8 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                     spinKecamatan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                            if(position>0){
-                                String Kecamatanvalues = getKecamatan.get(position - 1 ).getSubdistrictId();
+                            if (position > 0) {
+                                String Kecamatanvalues = getKecamatan.get(position - 1).getSubdistrictId();
                                 id_kecamatan.setText(Kecamatanvalues);
                                 ///Toast.makeText(DataDiri.this, " id KEcamtan anda "+Kecamatanvalues, Toast.LENGTH_LONG).show();
 
@@ -1441,8 +1440,8 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                            if(position>0){
-                                String Kecamatanvalues = getKecamatan.get(position - 1 ).getSubdistrictId();
+                            if (position > 0) {
+                                String Kecamatanvalues = getKecamatan.get(position - 1).getSubdistrictId();
                                 id_kecamatan.setText(Kecamatanvalues);
                                 ///Toast.makeText(DataDiri.this, " id KEcamtan anda "+Kecamatanvalues, Toast.LENGTH_LONG).show();
 
@@ -1469,7 +1468,6 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         });
 
     }
-
 
 
     /*Menampilkan data  City*/

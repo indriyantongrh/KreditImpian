@@ -76,14 +76,13 @@ public class FragmentSimulasiGadget extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 //((TextView) parentView.getChildAt(0)).setTextColor(Color.WHITE);
-                String st =spinneruangmuka.getSelectedItem().toString();
-                int pos =spinneruangmuka.getSelectedItemPosition();
+                String st = spinneruangmuka.getSelectedItem().toString();
+                int pos = spinneruangmuka.getSelectedItemPosition();
                 String hargaBrg = edHargaBarang.getText().toString();
 
-                if(hargaBrg.isEmpty()){
+                if (hargaBrg.isEmpty()) {
                     Toast.makeText(getActivity(), "Masukan harga barang", Toast.LENGTH_LONG).show();
-                }
-                else if (spinneruangmuka.getSelectedItem().equals("Uang muka")) {
+                } else if (spinneruangmuka.getSelectedItem().equals("Uang muka")) {
                     Toast.makeText(getActivity(), "Uang muka diisi terlebih dahulu", Toast.LENGTH_LONG).show();
                 } else if (spinnertenor.getSelectedItem().equals("6 bulan")) {
                     ///Toast.makeText(getActivity(), "Pilih Unag muka terlebih dahulu", Toast.LENGTH_LONG).show();
@@ -218,158 +217,158 @@ public class FragmentSimulasiGadget extends Fragment {
                     edHargaBarang.setError("Masukan harga barang");
                 else
 
-                //((TextView) parentView.getChildAt(0)).setTextColor(Color.WHITE);
-                 if (spinneruangmuka.getSelectedItem().equals("10%")) {
-                    rupiah = Double.parseDouble(edHargaBarang.getText().toString().replace(".", ""));
-                    uangmuka = rupiah * 0.1;  //perhitungan
+                    //((TextView) parentView.getChildAt(0)).setTextColor(Color.WHITE);
+                    if (spinneruangmuka.getSelectedItem().equals("10%")) {
+                        rupiah = Double.parseDouble(edHargaBarang.getText().toString().replace(".", ""));
+                        uangmuka = rupiah * 0.1;  //perhitungan
 
-                    uangadmin = uangmuka + 150000;
-                    txtjumlahdp.setText(Double.toString(uangadmin));  //output
-
-
-                    uangadmin = Double.parseDouble(txtjumlahdp.getText().toString());
-                    kursindonesia = (DecimalFormat)
-                            DecimalFormat.getCurrencyInstance();
-                    formatRp = new DecimalFormatSymbols();
-                    formatRp.setCurrencySymbol("Rp.");
-                    formatRp.setMonetaryDecimalSeparator(',');
-                    formatRp.setGroupingSeparator('.');
-                    kursindonesia.setDecimalFormatSymbols(formatRp);
-
-                    txtjumlahdp.setText(String.valueOf(kursindonesia.format(uangadmin)));
+                        uangadmin = uangmuka + 150000;
+                        txtjumlahdp.setText(Double.toString(uangadmin));  //output
 
 
-                } else if (spinneruangmuka.getSelectedItem().equals("15%")) {
-                     rupiah = Double.parseDouble(edHargaBarang.getText().toString().replace(".", ""));
-                    uangmuka = rupiah * 0.15;  //perhitungan
-                    uangadmin = uangmuka + 150000;
-                    txtjumlahdp.setText(Double.toString(uangadmin));  //output
+                        uangadmin = Double.parseDouble(txtjumlahdp.getText().toString());
+                        kursindonesia = (DecimalFormat)
+                                DecimalFormat.getCurrencyInstance();
+                        formatRp = new DecimalFormatSymbols();
+                        formatRp.setCurrencySymbol("Rp.");
+                        formatRp.setMonetaryDecimalSeparator(',');
+                        formatRp.setGroupingSeparator('.');
+                        kursindonesia.setDecimalFormatSymbols(formatRp);
+
+                        txtjumlahdp.setText(String.valueOf(kursindonesia.format(uangadmin)));
 
 
-                    uangadmin = Double.parseDouble(txtjumlahdp.getText().toString());
-                    kursindonesia = (DecimalFormat)
-                            DecimalFormat.getCurrencyInstance();
-                    formatRp = new DecimalFormatSymbols();
-                    formatRp.setCurrencySymbol("Rp.");
-                    formatRp.setMonetaryDecimalSeparator(',');
-                    formatRp.setGroupingSeparator('.');
-                    kursindonesia.setDecimalFormatSymbols(formatRp);
-
-                    txtjumlahdp.setText(String.valueOf(kursindonesia.format(uangadmin)));
-
-                } else if (spinneruangmuka.getSelectedItem().equals("20%")) {
-                     rupiah = Double.parseDouble(edHargaBarang.getText().toString().replace(".", ""));
-
-                     uangmuka = rupiah * 0.2;  //perhitungan
-                    uangadmin = uangmuka + 150000;
-                    txtjumlahdp.setText(Double.toString(uangadmin));  //output
+                    } else if (spinneruangmuka.getSelectedItem().equals("15%")) {
+                        rupiah = Double.parseDouble(edHargaBarang.getText().toString().replace(".", ""));
+                        uangmuka = rupiah * 0.15;  //perhitungan
+                        uangadmin = uangmuka + 150000;
+                        txtjumlahdp.setText(Double.toString(uangadmin));  //output
 
 
-                    uangadmin = Double.parseDouble(txtjumlahdp.getText().toString());
-                    kursindonesia = (DecimalFormat)
-                            DecimalFormat.getCurrencyInstance();
-                    formatRp = new DecimalFormatSymbols();
-                    formatRp.setCurrencySymbol("Rp.");
-                    formatRp.setMonetaryDecimalSeparator(',');
-                    formatRp.setGroupingSeparator('.');
-                    kursindonesia.setDecimalFormatSymbols(formatRp);
+                        uangadmin = Double.parseDouble(txtjumlahdp.getText().toString());
+                        kursindonesia = (DecimalFormat)
+                                DecimalFormat.getCurrencyInstance();
+                        formatRp = new DecimalFormatSymbols();
+                        formatRp.setCurrencySymbol("Rp.");
+                        formatRp.setMonetaryDecimalSeparator(',');
+                        formatRp.setGroupingSeparator('.');
+                        kursindonesia.setDecimalFormatSymbols(formatRp);
 
-                    txtjumlahdp.setText(String.valueOf(kursindonesia.format(uangadmin)));
-                } else if (spinneruangmuka.getSelectedItem().equals("25%")) {
-                     rupiah = Double.parseDouble(edHargaBarang.getText().toString().replace(".", ""));
-                     uangmuka = rupiah * 0.25;  //perhitungan
-                    uangadmin = uangmuka + 150000;
-                    txtjumlahdp.setText(Double.toString(uangadmin));  //output
+                        txtjumlahdp.setText(String.valueOf(kursindonesia.format(uangadmin)));
 
+                    } else if (spinneruangmuka.getSelectedItem().equals("20%")) {
+                        rupiah = Double.parseDouble(edHargaBarang.getText().toString().replace(".", ""));
 
-                    uangadmin = Double.parseDouble(txtjumlahdp.getText().toString());
-                    kursindonesia = (DecimalFormat)
-                            DecimalFormat.getCurrencyInstance();
-                    formatRp = new DecimalFormatSymbols();
-                    formatRp.setCurrencySymbol("Rp.");
-                    formatRp.setMonetaryDecimalSeparator(',');
-                    formatRp.setGroupingSeparator('.');
-                    kursindonesia.setDecimalFormatSymbols(formatRp);
-
-                    txtjumlahdp.setText(String.valueOf(kursindonesia.format(uangadmin)));
-
-                } else if (spinneruangmuka.getSelectedItem().equals("30%")) {
-                     rupiah = Double.parseDouble(edHargaBarang.getText().toString().replace(".", ""));
-                     uangmuka = rupiah * 0.30;  //perhitungan
-                    uangadmin = uangmuka + 150000;
-                    txtjumlahdp.setText(Double.toString(uangadmin));  //output
+                        uangmuka = rupiah * 0.2;  //perhitungan
+                        uangadmin = uangmuka + 150000;
+                        txtjumlahdp.setText(Double.toString(uangadmin));  //output
 
 
-                    uangadmin = Double.parseDouble(txtjumlahdp.getText().toString());
-                    kursindonesia = (DecimalFormat)
-                            DecimalFormat.getCurrencyInstance();
-                    formatRp = new DecimalFormatSymbols();
-                    formatRp.setCurrencySymbol("Rp.");
-                    formatRp.setMonetaryDecimalSeparator(',');
-                    formatRp.setGroupingSeparator('.');
-                    kursindonesia.setDecimalFormatSymbols(formatRp);
+                        uangadmin = Double.parseDouble(txtjumlahdp.getText().toString());
+                        kursindonesia = (DecimalFormat)
+                                DecimalFormat.getCurrencyInstance();
+                        formatRp = new DecimalFormatSymbols();
+                        formatRp.setCurrencySymbol("Rp.");
+                        formatRp.setMonetaryDecimalSeparator(',');
+                        formatRp.setGroupingSeparator('.');
+                        kursindonesia.setDecimalFormatSymbols(formatRp);
 
-                    txtjumlahdp.setText(String.valueOf(kursindonesia.format(uangadmin)));
-
-                } else if (spinneruangmuka.getSelectedItem().equals("35%")) {
-                     rupiah = Double.parseDouble(edHargaBarang.getText().toString().replace(".", ""));
-                     uangmuka = rupiah * 0.35;  //perhitungan
-                    uangadmin = uangmuka + 150000;
-                    txtjumlahdp.setText(Double.toString(uangadmin));  //output
-
-
-                    uangadmin = Double.parseDouble(txtjumlahdp.getText().toString());
-                    kursindonesia = (DecimalFormat)
-                            DecimalFormat.getCurrencyInstance();
-                    formatRp = new DecimalFormatSymbols();
-                    formatRp.setCurrencySymbol("Rp.");
-                    formatRp.setMonetaryDecimalSeparator(',');
-                    formatRp.setGroupingSeparator('.');
-                    kursindonesia.setDecimalFormatSymbols(formatRp);
-
-                    txtjumlahdp.setText(String.valueOf(kursindonesia.format(uangadmin)));
-
-                } else if (spinneruangmuka.getSelectedItem().equals("40%")) {
-                     rupiah = Double.parseDouble(edHargaBarang.getText().toString().replace(".", ""));
-
-                     uangmuka = rupiah * 0.40;  //perhitungan
-                    uangadmin = uangmuka + 150000;
-                    txtjumlahdp.setText(Double.toString(uangadmin));  //output
+                        txtjumlahdp.setText(String.valueOf(kursindonesia.format(uangadmin)));
+                    } else if (spinneruangmuka.getSelectedItem().equals("25%")) {
+                        rupiah = Double.parseDouble(edHargaBarang.getText().toString().replace(".", ""));
+                        uangmuka = rupiah * 0.25;  //perhitungan
+                        uangadmin = uangmuka + 150000;
+                        txtjumlahdp.setText(Double.toString(uangadmin));  //output
 
 
-                    uangadmin = Double.parseDouble(txtjumlahdp.getText().toString());
-                    kursindonesia = (DecimalFormat)
-                            DecimalFormat.getCurrencyInstance();
-                    formatRp = new DecimalFormatSymbols();
-                    formatRp.setCurrencySymbol("Rp.");
-                    formatRp.setMonetaryDecimalSeparator(',');
-                    formatRp.setGroupingSeparator('.');
-                    kursindonesia.setDecimalFormatSymbols(formatRp);
+                        uangadmin = Double.parseDouble(txtjumlahdp.getText().toString());
+                        kursindonesia = (DecimalFormat)
+                                DecimalFormat.getCurrencyInstance();
+                        formatRp = new DecimalFormatSymbols();
+                        formatRp.setCurrencySymbol("Rp.");
+                        formatRp.setMonetaryDecimalSeparator(',');
+                        formatRp.setGroupingSeparator('.');
+                        kursindonesia.setDecimalFormatSymbols(formatRp);
 
-                    txtjumlahdp.setText(String.valueOf(kursindonesia.format(uangadmin)));
+                        txtjumlahdp.setText(String.valueOf(kursindonesia.format(uangadmin)));
 
-                } else if (spinneruangmuka.getSelectedItem().equals("45%")) {
-                     rupiah = Double.parseDouble(edHargaBarang.getText().toString().replace(".", ""));
+                    } else if (spinneruangmuka.getSelectedItem().equals("30%")) {
+                        rupiah = Double.parseDouble(edHargaBarang.getText().toString().replace(".", ""));
+                        uangmuka = rupiah * 0.30;  //perhitungan
+                        uangadmin = uangmuka + 150000;
+                        txtjumlahdp.setText(Double.toString(uangadmin));  //output
 
-                     uangmuka = rupiah * 0.45;  //perhitungan
-                    uangadmin = uangmuka + 150000;
-                    txtjumlahdp.setText(Double.toString(uangadmin));  //output
+
+                        uangadmin = Double.parseDouble(txtjumlahdp.getText().toString());
+                        kursindonesia = (DecimalFormat)
+                                DecimalFormat.getCurrencyInstance();
+                        formatRp = new DecimalFormatSymbols();
+                        formatRp.setCurrencySymbol("Rp.");
+                        formatRp.setMonetaryDecimalSeparator(',');
+                        formatRp.setGroupingSeparator('.');
+                        kursindonesia.setDecimalFormatSymbols(formatRp);
+
+                        txtjumlahdp.setText(String.valueOf(kursindonesia.format(uangadmin)));
+
+                    } else if (spinneruangmuka.getSelectedItem().equals("35%")) {
+                        rupiah = Double.parseDouble(edHargaBarang.getText().toString().replace(".", ""));
+                        uangmuka = rupiah * 0.35;  //perhitungan
+                        uangadmin = uangmuka + 150000;
+                        txtjumlahdp.setText(Double.toString(uangadmin));  //output
 
 
-                    uangadmin = Double.parseDouble(txtjumlahdp.getText().toString());
-                    kursindonesia = (DecimalFormat)
-                            DecimalFormat.getCurrencyInstance();
-                    formatRp = new DecimalFormatSymbols();
-                    formatRp.setCurrencySymbol("Rp.");
-                    formatRp.setMonetaryDecimalSeparator(',');
-                    formatRp.setGroupingSeparator('.');
-                    kursindonesia.setDecimalFormatSymbols(formatRp);
+                        uangadmin = Double.parseDouble(txtjumlahdp.getText().toString());
+                        kursindonesia = (DecimalFormat)
+                                DecimalFormat.getCurrencyInstance();
+                        formatRp = new DecimalFormatSymbols();
+                        formatRp.setCurrencySymbol("Rp.");
+                        formatRp.setMonetaryDecimalSeparator(',');
+                        formatRp.setGroupingSeparator('.');
+                        kursindonesia.setDecimalFormatSymbols(formatRp);
 
-                    txtjumlahdp.setText(String.valueOf(kursindonesia.format(uangadmin)));
+                        txtjumlahdp.setText(String.valueOf(kursindonesia.format(uangadmin)));
 
-                } else {
+                    } else if (spinneruangmuka.getSelectedItem().equals("40%")) {
+                        rupiah = Double.parseDouble(edHargaBarang.getText().toString().replace(".", ""));
 
-                }
+                        uangmuka = rupiah * 0.40;  //perhitungan
+                        uangadmin = uangmuka + 150000;
+                        txtjumlahdp.setText(Double.toString(uangadmin));  //output
+
+
+                        uangadmin = Double.parseDouble(txtjumlahdp.getText().toString());
+                        kursindonesia = (DecimalFormat)
+                                DecimalFormat.getCurrencyInstance();
+                        formatRp = new DecimalFormatSymbols();
+                        formatRp.setCurrencySymbol("Rp.");
+                        formatRp.setMonetaryDecimalSeparator(',');
+                        formatRp.setGroupingSeparator('.');
+                        kursindonesia.setDecimalFormatSymbols(formatRp);
+
+                        txtjumlahdp.setText(String.valueOf(kursindonesia.format(uangadmin)));
+
+                    } else if (spinneruangmuka.getSelectedItem().equals("45%")) {
+                        rupiah = Double.parseDouble(edHargaBarang.getText().toString().replace(".", ""));
+
+                        uangmuka = rupiah * 0.45;  //perhitungan
+                        uangadmin = uangmuka + 150000;
+                        txtjumlahdp.setText(Double.toString(uangadmin));  //output
+
+
+                        uangadmin = Double.parseDouble(txtjumlahdp.getText().toString());
+                        kursindonesia = (DecimalFormat)
+                                DecimalFormat.getCurrencyInstance();
+                        formatRp = new DecimalFormatSymbols();
+                        formatRp.setCurrencySymbol("Rp.");
+                        formatRp.setMonetaryDecimalSeparator(',');
+                        formatRp.setGroupingSeparator('.');
+                        kursindonesia.setDecimalFormatSymbols(formatRp);
+
+                        txtjumlahdp.setText(String.valueOf(kursindonesia.format(uangadmin)));
+
+                    } else {
+
+                    }
             }
 
             @Override
@@ -421,7 +420,6 @@ public class FragmentSimulasiGadget extends Fragment {
 
 
         });*/
-
 
 
         return view;

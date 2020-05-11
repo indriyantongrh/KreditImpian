@@ -16,13 +16,13 @@ import java.util.List;
 /**
  * Created by indriyanto Nugroho on 9 Jan 2020.
  */
-public class AdapterStatusPesanan extends RecyclerView.Adapter<AdapterStatusPesanan.StatusPesananHolder>  {
+public class AdapterStatusPesanan extends RecyclerView.Adapter<AdapterStatusPesanan.StatusPesananHolder> {
 
     List<ResultItem> resultItemList;
     Context mContext;
 
-    public AdapterStatusPesanan(Context context, List<ResultItem> resultList){
-        this.mContext  = context;
+    public AdapterStatusPesanan(Context context, List<ResultItem> resultList) {
+        this.mContext = context;
         resultItemList = resultList;
 
     }
@@ -30,15 +30,13 @@ public class AdapterStatusPesanan extends RecyclerView.Adapter<AdapterStatusPesa
     @NonNull
     @Override
     public StatusPesananHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_history_pesanan, parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_history_pesanan, parent, false);
         return new StatusPesananHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull StatusPesananHolder holder, int position) {
         final ResultItem resultItem = resultItemList.get(position);
-
-
 
 
     }

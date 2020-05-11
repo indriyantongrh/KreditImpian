@@ -10,6 +10,7 @@ import com.application.kreditimpian.Marketplace.FragKategoriTravel.KategoriTrave
 import com.application.kreditimpian.Marketplace.FragKategoriUmkm.KategoriUmkm;
 import com.application.kreditimpian.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+
 import android.content.Context;
 import android.os.Bundle;
 
@@ -23,7 +24,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 public class ButtonSheet_Kategori extends BottomSheetDialogFragment {
     private BottomSheetListener mListener;
-    CardView btn_tourandtravel,btn_haji,btn_umkm,btn_coorporate,btn_pendanaan,btn_multiproduct,btn_elektronik;
+    CardView btn_tourandtravel, btn_haji, btn_umkm, btn_coorporate, btn_pendanaan, btn_multiproduct, btn_elektronik;
 
     @Nullable
     @Override
@@ -119,8 +120,6 @@ public class ButtonSheet_Kategori extends BottomSheetDialogFragment {
 
             }
         });
-
-
 
 
         return rootView;

@@ -49,14 +49,14 @@ public class AdapterSelectedTenor extends RecyclerView.Adapter<AdapterSelectedTe
     BaseApiService mApiservice;
 
     Context mContext;
-    private String tenor ="", code,
+    private String tenor = "", code,
             cicilan;
-    private  ProductMeta productMeta;
+    private ProductMeta productMeta;
     public static final Locale localeID = new Locale("in", "ID");
 
-    public AdapterSelectedTenor (Context context, ProductMeta productMeta, ArrayList<CompaniesDataItem> companiesList){
-        this.mContext= context;
-       companiesDataItemList = companiesList;
+    public AdapterSelectedTenor(Context context, ProductMeta productMeta, ArrayList<CompaniesDataItem> companiesList) {
+        this.mContext = context;
+        companiesDataItemList = companiesList;
         this.productMeta = productMeta;
         Log.v("jajal", "masuk1");
     }
@@ -66,17 +66,17 @@ public class AdapterSelectedTenor extends RecyclerView.Adapter<AdapterSelectedTe
     @Override
     public HolderTenor onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_pilih_tenor, parent, false);
-        return  new HolderTenor(view);
+        return new HolderTenor(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull HolderTenor holder, int position) {
 
         Log.v("jajal", "masuk2");
-        final  CompaniesDataItem data = companiesDataItemList.get(position);
+        final CompaniesDataItem data = companiesDataItemList.get(position);
 
         holder.tvIdCreditor.setText(data.getIdCompany());
-       holder.tvDownpayment.setText(data.getDownPayment());
+        holder.tvDownpayment.setText(data.getDownPayment());
         holder.tvNamaKendaraan.setText(productMeta.getName());
         holder.tvPriceSale.setText(productMeta.getPriceSale());
         holder.tvPriceCapital.setText(productMeta.getPriceCapital());
@@ -93,14 +93,14 @@ public class AdapterSelectedTenor extends RecyclerView.Adapter<AdapterSelectedTe
             stringArrayList.add(modelPinjaman.getBulan() + " bulan X Rp. " + String.format(localeID, "%,d", Long.parseLong(String.valueOf(modelPinjaman.getCicilan()))));
         }
 
-     holder.spinCicilan.setItem(stringArrayList);
+        holder.spinCicilan.setItem(stringArrayList);
         holder.spinCicilan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 tenor = data.getDataCicilan().get(position).getBulan();
                 cicilan = data.getDataCicilan().get(position).getCicilan();
-                Log.v("jajal", tenor+"tenr");
-                Log.v("jajal", cicilan+"cicilan");
+                Log.v("jajal", tenor + "tenr");
+                Log.v("jajal", cicilan + "cicilan");
             }
 
             @Override
@@ -144,7 +144,6 @@ public class AdapterSelectedTenor extends RecyclerView.Adapter<AdapterSelectedTe
             ButterKnife.bind(this, itemView);
 
 
-
             Intent intent = ((Activity) mContext).getIntent();
             String id_member = intent.getStringExtra("id_member");
             String id_product = intent.getStringExtra("id_product");
@@ -165,9 +164,9 @@ public class AdapterSelectedTenor extends RecyclerView.Adapter<AdapterSelectedTe
 
                     int SpinnerText = spinCicilan.getSelectedItemPosition();
                     ////Toast.makeText(mContext, ""+SpinnerText , Toast.LENGTH_LONG).show();
-                    if(SpinnerText!=-1){
+                    if (SpinnerText != -1) {
                         Intent intent = new Intent(mContext, TransactionCheckout.class);
-                        intent.putExtra("id_member", id_member );
+                        intent.putExtra("id_member", id_member);
                         intent.putExtra("id_product", id_product);
                         intent.putExtra("number", number);
                         intent.putExtra("id_product_category", id_product_category);
@@ -179,13 +178,13 @@ public class AdapterSelectedTenor extends RecyclerView.Adapter<AdapterSelectedTe
                         intent.putExtra("courier", courier);
                         intent.putExtra("note", note);
                         intent.putExtra("id_transaction", id_transaction);
-                        intent.putExtra("tenor", tenor );
+                        intent.putExtra("tenor", tenor);
                         intent.putExtra("cicilan", cicilan);
                         intent.putExtra("downpayment", tvDownpayment.getText().toString());
                         intent.putExtra("name_mitra", tvMitraKredit.getText().toString());
                         intent.putExtra("id_creditor", tvIdCreditor.getText().toString());
                         mContext.startActivity(intent);
-                    }else{
+                    } else {
 
                         ///Toast.makeText(mContext, "Anda belum memilih tenor" , Toast.LENGTH_LONG).show();
                         AlertDialog alertDialog = new AlertDialog.Builder(mContext).create();
@@ -203,7 +202,7 @@ public class AdapterSelectedTenor extends RecyclerView.Adapter<AdapterSelectedTe
                         alertDialog.show();
                     }
 
-                  ///  Toast.makeText(mContext, "Downpayment "+tvDownpayment.getText().toString(), Toast.LENGTH_LONG).show();
+                    ///  Toast.makeText(mContext, "Downpayment "+tvDownpayment.getText().toString(), Toast.LENGTH_LONG).show();
 
                 }
             });

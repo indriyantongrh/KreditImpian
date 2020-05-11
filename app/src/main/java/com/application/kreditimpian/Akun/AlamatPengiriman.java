@@ -91,12 +91,12 @@ public class AlamatPengiriman extends AppCompatActivity {
 
     }
 
-    private void LoadAdresess(){
+    private void LoadAdresess() {
         progressBar = ProgressDialog.show(AlamatPengiriman.this, null, "Harap Tunggu...", true, false);
         mApiService.getAllAddesses(sharedPrefManager.getSpIdMember()).enqueue(new Callback<ResponseListAlamat>() {
             @Override
             public void onResponse(Call<ResponseListAlamat> call, Response<ResponseListAlamat> response) {
-                if(response.body().getResponseCode()==200){
+                if (response.body().getResponseCode() == 200) {
                     swipeRefresh.setRefreshing(false);
                     progressBar.dismiss();
                     final List<DataItem> Addresses = response.body().getData();
@@ -105,8 +105,8 @@ public class AlamatPengiriman extends AppCompatActivity {
                     adapterAddresses.notifyDataSetChanged();
                     adapterAddresses.addAllItems(Addresses);
                     ///empty.setVisibility(View.GONE);
-                   initDataIntent(Addresses);
-                }else {
+                    initDataIntent(Addresses);
+                } else {
                     progressBar.dismiss();
                     empty.setVisibility(View.VISIBLE);
                 }
@@ -123,10 +123,11 @@ public class AlamatPengiriman extends AppCompatActivity {
 
     }
 
-    private void initDataIntent(final List<DataItem> detaiList){
+    private void initDataIntent(final List<DataItem> detaiList) {
         ListAlamat.addOnItemTouchListener(
                 new RecyclerItemClickListener(mContext, new RecyclerItemClickListener.OnItemClickListener() {
-                    @Override public void onItemClick(View view, int position) {
+                    @Override
+                    public void onItemClick(View view, int position) {
 
                         String id = detaiList.get(position).getId();
                         String id_member = detaiList.get(position).getIdMember();

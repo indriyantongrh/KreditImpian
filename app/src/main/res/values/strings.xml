@@ -24,7 +24,7 @@
     <string name="cancel_message">Cancelled by user.</string>
 
     <string name="capture_deny_message">Capture image won\'t work without both permissions.</string>
-
+    <string name="toast_pick_file_error">Unable to pick file. Check status of file manager.</string>
 
     <string-array name="jeniskelamin">
         <item>Pilih Jenis Kelamin</item>

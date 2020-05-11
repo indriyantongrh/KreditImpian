@@ -34,7 +34,7 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ProductH
     List<ImagesItem> imageItemList;
     Context mContext;
 
-    public AdapterProduct(Context context, List<ResultItem> resultList){
+    public AdapterProduct(Context context, List<ResultItem> resultList) {
         this.mContext = context;
         resultItemList = resultList;
 
@@ -43,14 +43,14 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ProductH
     @NonNull
     @Override
     public ProductHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_product, parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_product, parent, false);
         return new ProductHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ProductHolder holder, int position) {
         final ResultItem resultItem = resultItemList.get(position);
-       /// final ImagesItem imageItem = imageItemList.get(position);
+        /// final ImagesItem imageItem = imageItemList.get(position);
 
         holder.txt_id.setText(resultItem.getId());
         holder.txt_id_currency.setText(resultItem.getIdCurrency());

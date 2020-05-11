@@ -203,6 +203,9 @@
                 android:background="@drawable/borderorangev2"
                 ></Button>
 
+
+
+
             <!--Register Tex-->
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -255,17 +258,28 @@
         </LinearLayout>
 
     <LinearLayout
+        android:gravity="center|bottom"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <TextView
-            android:text="Kreditimpian v.1.7.0"
+            android:id="@+id/tvKebijakanPrivacy"
+            android:text="Kebijakan Privacy"
             android:gravity="center|bottom"
             android:textSize="10dp"
             android:foregroundGravity="bottom"
             android:textColor="@color/colorBlack"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text=" | Kreditimpian v.1.7.5"
+            android:gravity="center|bottom"
+            android:textSize="10dp"
+            android:foregroundGravity="bottom"
+            android:textColor="@color/colorBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 

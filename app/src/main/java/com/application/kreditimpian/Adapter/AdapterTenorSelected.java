@@ -20,12 +20,12 @@ import butterknife.ButterKnife;
 /**
  * Created by indriyanto Nugroho on 3 Feb 2020.
  */
-public class AdapterTenorSelected  extends RecyclerView.Adapter<AdapterTenorSelected.HolderTenorSelected> {
+public class AdapterTenorSelected extends RecyclerView.Adapter<AdapterTenorSelected.HolderTenorSelected> {
 
     List<DataItem> dataItemList;
     Context mContext;
 
-    public AdapterTenorSelected(Context context, List<DataItem>  datalist){
+    public AdapterTenorSelected(Context context, List<DataItem> datalist) {
         this.mContext = context;
         dataItemList = datalist;
     }
@@ -34,8 +34,8 @@ public class AdapterTenorSelected  extends RecyclerView.Adapter<AdapterTenorSele
     @NonNull
     @Override
     public AdapterTenorSelected.HolderTenorSelected onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_tenor_selected, parent,false);
-        return  new HolderTenorSelected(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_tenor_selected, parent, false);
+        return new HolderTenorSelected(view);
     }
 
     @Override
@@ -43,7 +43,6 @@ public class AdapterTenorSelected  extends RecyclerView.Adapter<AdapterTenorSele
         final DataItem dataItem = dataItemList.get(position);
 
         holder.txt_name_mitra.setText(dataItem.getPrice());
-
 
 
     }

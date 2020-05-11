@@ -36,6 +36,7 @@ import com.application.kreditimpian.Model.ModelLogin.ResponseLogin;
 import com.application.kreditimpian.Model.ModelLoginMember.ResponseLoginMember;
 import com.application.kreditimpian.Model.ModelUserDetail.ResultItem;
 import com.application.kreditimpian.Model.ModelValidationSMS.ResponseSmsOTP;
+import com.application.kreditimpian.PdfViewer.KebijakanPrivacy;
 import com.application.kreditimpian.R;
 import com.application.kreditimpian.ResponseMessage.ResponseLoginSucces;
 import com.auth0.android.jwt.JWT;
@@ -129,7 +130,7 @@ public class LoginUser extends AppCompatActivity {
     ProgressDialog loading;
 
     Button btnLogin, btnDaftar;
-    TextView btnregister, tvLupapassword;
+    TextView btnregister, tvLupapassword, tvKebijakanPrivacy;
     EditText txtusername, txtpassword;
 
     SignInButton signin;
@@ -152,6 +153,8 @@ public class LoginUser extends AppCompatActivity {
         txtusername =findViewById(R.id.txtusername);
         txtpassword =findViewById(R.id.txtpassword);
         btnDaftar = findViewById(R.id.btnDaftar);
+        tvKebijakanPrivacy = findViewById(R.id.tvKebijakanPrivacy);
+
 
         mApiService = UtilsApi.getAPIService();
         sharedPrefManager = new SharedPrefManager(this);
@@ -183,6 +186,14 @@ public class LoginUser extends AppCompatActivity {
             }
         });
 
+        tvKebijakanPrivacy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginUser.this, KebijakanPrivacy.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
 
 

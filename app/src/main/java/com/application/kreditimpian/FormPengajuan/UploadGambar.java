@@ -21,7 +21,6 @@ import java.io.IOException;
 public class UploadGambar extends AppCompatActivity {
 
 
-
     ImageView image;
     Bitmap bitmap, decoded;
     int PICK_IMAGE_REQUEST = 1;
@@ -42,7 +41,6 @@ public class UploadGambar extends AppCompatActivity {
 
 
     }
-
 
 
     //untuk upload image, compress .JPEG ke bitmap
@@ -78,6 +76,7 @@ public class UploadGambar extends AppCompatActivity {
             }
         }
     }
+
     /*Menampilkan gambar*/
     private void setToImageView(Bitmap bmp) {
         //compress image

@@ -26,13 +26,13 @@ import static android.text.TextUtils.isEmpty;
 
 public class FragmentSimulasiLaptop extends Fragment {
     SeekBar seekBar;
-    TextView txtvalue, txttenor,txttagihan, txtjumlahdp;
+    TextView txtvalue, txttenor, txttagihan, txtjumlahdp;
     Spinner spinnertenor, spinneruangmuka;
     EditText edHargaBarang;
     DecimalFormat kursindonesia;
-    Double rupiah,rupiahspinner;
+    Double rupiah, rupiahspinner;
     DecimalFormatSymbols formatRp;
-    Double hargabarang,tenor,hargaperbulan,bungakredit,uangmuka,uangadmin,umkurangiharga;
+    Double hargabarang, tenor, hargaperbulan, bungakredit, uangmuka, uangadmin, umkurangiharga;
 
 
     @Override
@@ -44,7 +44,7 @@ public class FragmentSimulasiLaptop extends Fragment {
         // initiate  views
         /// seekBar=(SeekBar)view.findViewById(R.id.seekBar);
         txtvalue = view.findViewById(R.id.txtvalue);
-        txttagihan= view.findViewById(R.id.txttagihan);
+        txttagihan = view.findViewById(R.id.txttagihan);
         txtjumlahdp = view.findViewById(R.id.txtjumlahdp);
         BubbleSeekBar bubbleseekBar = view.findViewById(R.id.bubbleseekBar);
         txttenor = view.findViewById(R.id.txttenor);
@@ -55,8 +55,8 @@ public class FragmentSimulasiLaptop extends Fragment {
         spinneruangmuka = view.findViewById(R.id.spinneruangmuka);
 
         /// spinner tagihan perbulan
-        String [] values =
-                {"Tenor","6 bulan","9 bulan","12 bulan","18 bulan","24 bulan",};
+        String[] values =
+                {"Tenor", "6 bulan", "9 bulan", "12 bulan", "18 bulan", "24 bulan",};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, values);
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinnertenor.setAdapter(adapter);
@@ -67,7 +67,7 @@ public class FragmentSimulasiLaptop extends Fragment {
 
                 //((TextView) parentView.getChildAt(0)).setTextColor(Color.WHITE);
 
-                if(spinneruangmuka.getSelectedItem().equals("Uang muka")){
+                if (spinneruangmuka.getSelectedItem().equals("Uang muka")) {
                     Toast.makeText(getActivity(), "Uang muka diisi terlebih dahulu", Toast.LENGTH_LONG).show();
                 } else if (spinnertenor.getSelectedItem().equals("6 bulan")) {
                     txttenor.setText("6 bulan");
@@ -76,7 +76,7 @@ public class FragmentSimulasiLaptop extends Fragment {
                     umkurangiharga = rupiah - uangmuka;
                     bungakredit = rupiah * 0.01;
 
-                    hargaperbulan = umkurangiharga/6 + bungakredit;  //perhitungan
+                    hargaperbulan = umkurangiharga / 6 + bungakredit;  //perhitungan
                     txttagihan.setText(Double.toString(hargaperbulan));  //output
 
 
@@ -92,14 +92,14 @@ public class FragmentSimulasiLaptop extends Fragment {
                     txttagihan.setText(String.valueOf(kursindonesia.format(hargaperbulan)));
 
 
-                }else if (spinnertenor.getSelectedItem().equals("9 bulan")){
+                } else if (spinnertenor.getSelectedItem().equals("9 bulan")) {
                     txttenor.setText("9 bulan");
 
                     umkurangiharga = rupiah - uangmuka;
                     bungakredit = rupiah * 0.01;
                     //                   rupiah  = Double.parseDouble(txtvalue.getText().toString());
 ///                    TagihanBulanan();
-                    hargaperbulan = umkurangiharga/9 + bungakredit;  //perhitungan
+                    hargaperbulan = umkurangiharga / 9 + bungakredit;  //perhitungan
                     txttagihan.setText(Double.toString(hargaperbulan));  //output
 
 
@@ -114,12 +114,12 @@ public class FragmentSimulasiLaptop extends Fragment {
 
                     txttagihan.setText(String.valueOf(kursindonesia.format(hargaperbulan)));
 
-                }else if (spinnertenor.getSelectedItem().equals("12 bulan")){
+                } else if (spinnertenor.getSelectedItem().equals("12 bulan")) {
                     txttenor.setText("12 bulan");
                     umkurangiharga = rupiah - uangmuka;
                     bungakredit = rupiah * 0.01;
 ///                    TagihanBulanan();
-                    hargaperbulan = umkurangiharga/12 + bungakredit;  //perhitungan
+                    hargaperbulan = umkurangiharga / 12 + bungakredit;  //perhitungan
                     txttagihan.setText(Double.toString(hargaperbulan));  //output
 
 
@@ -134,12 +134,12 @@ public class FragmentSimulasiLaptop extends Fragment {
 
                     txttagihan.setText(String.valueOf(kursindonesia.format(hargaperbulan)));
 
-                }else if (spinnertenor.getSelectedItem().equals("18 bulan")){
+                } else if (spinnertenor.getSelectedItem().equals("18 bulan")) {
                     txttenor.setText("18 bulan");
                     umkurangiharga = rupiah - uangmuka;
                     bungakredit = rupiah * 0.01;
 ///                    TagihanBulanan();
-                    hargaperbulan = umkurangiharga/18+bungakredit;  //perhitungan
+                    hargaperbulan = umkurangiharga / 18 + bungakredit;  //perhitungan
                     txttagihan.setText(Double.toString(hargaperbulan));  //output
 
 
@@ -154,13 +154,13 @@ public class FragmentSimulasiLaptop extends Fragment {
 
                     txttagihan.setText(String.valueOf(kursindonesia.format(hargaperbulan)));
 
-                }else if (spinnertenor.getSelectedItem().equals("24 bulan")){
+                } else if (spinnertenor.getSelectedItem().equals("24 bulan")) {
                     txttenor.setText("24 bulan");
 
                     umkurangiharga = rupiah - uangmuka;
                     bungakredit = rupiah * 0.01;
 ///                    TagihanBulanan();
-                    hargaperbulan = umkurangiharga/24+bungakredit;  //perhitungan
+                    hargaperbulan = umkurangiharga / 24 + bungakredit;  //perhitungan
                     txttagihan.setText(Double.toString(hargaperbulan));  //output
 
 
@@ -176,7 +176,7 @@ public class FragmentSimulasiLaptop extends Fragment {
                     txttagihan.setText(String.valueOf(kursindonesia.format(hargaperbulan)));
 
 
-                }else {
+                } else {
 
                 }
             }
@@ -188,8 +188,8 @@ public class FragmentSimulasiLaptop extends Fragment {
         });
 
         /// spinner uang muka
-        String [] valuesuangmuka =
-                {"Uang muka","10%","15%","20%","25%","30%","35%","40","45%",};
+        String[] valuesuangmuka =
+                {"Uang muka", "10%", "15%", "20%", "25%", "30%", "35%", "40", "45%",};
         ArrayAdapter<String> adapteruangmuka = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, valuesuangmuka);
         adapteruangmuka.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinneruangmuka.setAdapter(adapteruangmuka);
@@ -204,9 +204,9 @@ public class FragmentSimulasiLaptop extends Fragment {
                     edHargaBarang.setError("Masukan harga barang");
                 else if (spinneruangmuka.getSelectedItem().equals("10%")) {
                     rupiah = Double.parseDouble(edHargaBarang.getText().toString().replace(".", ""));
-                    uangmuka = rupiah*0.1;  //perhitungan
+                    uangmuka = rupiah * 0.1;  //perhitungan
 
-                    uangadmin = uangmuka+150000;
+                    uangadmin = uangmuka + 150000;
                     txtjumlahdp.setText(Double.toString(uangadmin));  //output
 
 
@@ -222,10 +222,10 @@ public class FragmentSimulasiLaptop extends Fragment {
                     txtjumlahdp.setText(String.valueOf(kursindonesia.format(uangadmin)));
 
 
-                }else if (spinneruangmuka.getSelectedItem().equals("15%")){
+                } else if (spinneruangmuka.getSelectedItem().equals("15%")) {
                     rupiah = Double.parseDouble(edHargaBarang.getText().toString().replace(".", ""));
-                    uangmuka = rupiah*0.15;  //perhitungan
-                    uangadmin = uangmuka+150000;
+                    uangmuka = rupiah * 0.15;  //perhitungan
+                    uangadmin = uangmuka + 150000;
                     txtjumlahdp.setText(Double.toString(uangadmin));  //output
 
 
@@ -240,10 +240,10 @@ public class FragmentSimulasiLaptop extends Fragment {
 
                     txtjumlahdp.setText(String.valueOf(kursindonesia.format(uangadmin)));
 
-                }else if (spinneruangmuka.getSelectedItem().equals("20%")){
+                } else if (spinneruangmuka.getSelectedItem().equals("20%")) {
                     rupiah = Double.parseDouble(edHargaBarang.getText().toString().replace(".", ""));
-                    uangmuka = rupiah*0.2;  //perhitungan
-                    uangadmin = uangmuka+150000;
+                    uangmuka = rupiah * 0.2;  //perhitungan
+                    uangadmin = uangmuka + 150000;
                     txtjumlahdp.setText(Double.toString(uangadmin));  //output
 
 
@@ -257,10 +257,10 @@ public class FragmentSimulasiLaptop extends Fragment {
                     kursindonesia.setDecimalFormatSymbols(formatRp);
 
                     txtjumlahdp.setText(String.valueOf(kursindonesia.format(uangadmin)));
-                }else if (spinneruangmuka.getSelectedItem().equals("25%")){
+                } else if (spinneruangmuka.getSelectedItem().equals("25%")) {
                     rupiah = Double.parseDouble(edHargaBarang.getText().toString().replace(".", ""));
-                    uangmuka = rupiah*0.25;  //perhitungan
-                    uangadmin = uangmuka+150000;
+                    uangmuka = rupiah * 0.25;  //perhitungan
+                    uangadmin = uangmuka + 150000;
                     txtjumlahdp.setText(Double.toString(uangadmin));  //output
 
 
@@ -275,10 +275,10 @@ public class FragmentSimulasiLaptop extends Fragment {
 
                     txtjumlahdp.setText(String.valueOf(kursindonesia.format(uangadmin)));
 
-                }else if (spinneruangmuka.getSelectedItem().equals("30%")){
+                } else if (spinneruangmuka.getSelectedItem().equals("30%")) {
                     rupiah = Double.parseDouble(edHargaBarang.getText().toString().replace(".", ""));
-                    uangmuka = rupiah*0.30;  //perhitungan
-                    uangadmin = uangmuka+150000;
+                    uangmuka = rupiah * 0.30;  //perhitungan
+                    uangadmin = uangmuka + 150000;
                     txtjumlahdp.setText(Double.toString(uangadmin));  //output
 
 
@@ -293,10 +293,10 @@ public class FragmentSimulasiLaptop extends Fragment {
 
                     txtjumlahdp.setText(String.valueOf(kursindonesia.format(uangadmin)));
 
-                }else if (spinneruangmuka.getSelectedItem().equals("35%")){
+                } else if (spinneruangmuka.getSelectedItem().equals("35%")) {
                     rupiah = Double.parseDouble(edHargaBarang.getText().toString().replace(".", ""));
-                    uangmuka = rupiah*0.35;  //perhitungan
-                    uangadmin = uangmuka+150000;
+                    uangmuka = rupiah * 0.35;  //perhitungan
+                    uangadmin = uangmuka + 150000;
                     txtjumlahdp.setText(Double.toString(uangadmin));  //output
 
 
@@ -311,10 +311,10 @@ public class FragmentSimulasiLaptop extends Fragment {
 
                     txtjumlahdp.setText(String.valueOf(kursindonesia.format(uangadmin)));
 
-                }else if (spinneruangmuka.getSelectedItem().equals("40%")){
+                } else if (spinneruangmuka.getSelectedItem().equals("40%")) {
                     rupiah = Double.parseDouble(edHargaBarang.getText().toString().replace(".", ""));
-                    uangmuka = rupiah*0.40;  //perhitungan
-                    uangadmin = uangmuka+150000;
+                    uangmuka = rupiah * 0.40;  //perhitungan
+                    uangadmin = uangmuka + 150000;
                     txtjumlahdp.setText(Double.toString(uangadmin));  //output
 
 
@@ -329,10 +329,10 @@ public class FragmentSimulasiLaptop extends Fragment {
 
                     txtjumlahdp.setText(String.valueOf(kursindonesia.format(uangadmin)));
 
-                }else if (spinneruangmuka.getSelectedItem().equals("45%")){
+                } else if (spinneruangmuka.getSelectedItem().equals("45%")) {
                     rupiah = Double.parseDouble(edHargaBarang.getText().toString().replace(".", ""));
-                    uangmuka = rupiah*0.45;  //perhitungan
-                    uangadmin = uangmuka+150000;
+                    uangmuka = rupiah * 0.45;  //perhitungan
+                    uangadmin = uangmuka + 150000;
                     txtjumlahdp.setText(Double.toString(uangadmin));  //output
 
 
@@ -347,7 +347,7 @@ public class FragmentSimulasiLaptop extends Fragment {
 
                     txtjumlahdp.setText(String.valueOf(kursindonesia.format(uangadmin)));
 
-                }else {
+                } else {
 
                 }
             }
@@ -467,9 +467,9 @@ public class FragmentSimulasiLaptop extends Fragment {
         return view;
     }
 
-    private void TagihanBulanan(){
+    private void TagihanBulanan() {
 
-        rupiah  = Double.parseDouble(txtvalue.getText().toString());
+        rupiah = Double.parseDouble(txtvalue.getText().toString());
 
 
     }

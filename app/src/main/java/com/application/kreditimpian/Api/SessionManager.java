@@ -11,16 +11,16 @@ import java.util.HashMap;
 
 public class SessionManager {
 
-        SharedPreferences sharedPreferences;
-        public SharedPreferences.Editor editor;
-        public Context context;
-        int PRIVATE_MODE = 0;
+    SharedPreferences sharedPreferences;
+    public SharedPreferences.Editor editor;
+    public Context context;
+    int PRIVATE_MODE = 0;
 
-        private static final String PREF_NAME = "LOGIN";
-        private static final String LOGIN = "IS_LOGIN";
-        private static final String ID = "id";
-        private static final String USERNAME = "username";
-        private static final String EMAIL = "email";
+    private static final String PREF_NAME = "LOGIN";
+    private static final String LOGIN = "IS_LOGIN";
+    private static final String ID = "id";
+    private static final String USERNAME = "username";
+    private static final String EMAIL = "email";
 
 
     public SessionManager(Context context) {
@@ -29,7 +29,7 @@ public class SessionManager {
         editor = sharedPreferences.edit();
     }
 
-    public void createSession(String id, String username, String email){
+    public void createSession(String id, String username, String email) {
         editor.putBoolean("LOGIN", true);
         editor.putString(ID, id);
         editor.putString(USERNAME, username);
@@ -37,13 +37,13 @@ public class SessionManager {
         editor.apply();
     }
 
-    public  boolean isLoggin(){
+    public boolean isLoggin() {
         return sharedPreferences.getBoolean(LOGIN, false);
 
     }
 
-    public void checkLogin(){
-        if (!this.isLoggin()){
+    public void checkLogin() {
+        if (!this.isLoggin()) {
             Intent intent = new Intent(context, LoginUser.class);
             context.startActivity(intent);
             ((MenuUtama) context).finish();
@@ -51,16 +51,16 @@ public class SessionManager {
         }
     }
 
-    public HashMap<String, String> getUserDetail(){
+    public HashMap<String, String> getUserDetail() {
         HashMap<String, String> user = new HashMap<>();
-        user.put(ID, sharedPreferences.getString(ID,"ID not found"));
-        user.put(USERNAME, sharedPreferences.getString(USERNAME,"Username not found"));
-        user.put(EMAIL, sharedPreferences.getString(EMAIL,"Email not found"));
+        user.put(ID, sharedPreferences.getString(ID, "ID not found"));
+        user.put(USERNAME, sharedPreferences.getString(USERNAME, "Username not found"));
+        user.put(EMAIL, sharedPreferences.getString(EMAIL, "Email not found"));
 
-        return  user;
+        return user;
     }
 
-    public void logout(){
+    public void logout() {
         editor.clear();
         editor.commit();
         Intent intent = new Intent(context, LoginUser.class);

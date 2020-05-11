@@ -23,12 +23,12 @@ import butterknife.ButterKnife;
 /**
  * Created by indriyanto Nugroho on 22 Apr 2020.
  */
-public class AdapterMultiguna  extends RecyclerView.Adapter<AdapterMultiguna.HolderMultiguna> {
+public class AdapterMultiguna extends RecyclerView.Adapter<AdapterMultiguna.HolderMultiguna> {
 
     List<DataItem> dataItemList;
     Context mContext;
 
-    public AdapterMultiguna(Context context, List<DataItem> dataList){
+    public AdapterMultiguna(Context context, List<DataItem> dataList) {
         this.mContext = context;
         dataItemList = dataList;
     }
@@ -43,7 +43,7 @@ public class AdapterMultiguna  extends RecyclerView.Adapter<AdapterMultiguna.Hol
 
     @Override
     public void onBindViewHolder(@NonNull HolderMultiguna holder, int position) {
-        final DataItem  dataItem =  dataItemList.get(position);
+        final DataItem dataItem = dataItemList.get(position);
 
         holder.txt_id.setText(dataItem.getIdMember());
         holder.txt_id_transaction.setText(dataItem.getIdTransaction());
@@ -58,13 +58,13 @@ public class AdapterMultiguna  extends RecyclerView.Adapter<AdapterMultiguna.Hol
         holder.txt_pinjaman.setText(dataItem.getLoan());
         holder.txt_type_multiguna.setText(dataItem.getVehicles());
         holder.txt_image.setText(dataItem.getImages());
-        holder.txt_nomor_invoice.setText("Order ID "+dataItem.getNumber());
+        holder.txt_nomor_invoice.setText("Order ID " + dataItem.getNumber());
         holder.txt_status_pesanan.setText(dataItem.getStatus());
         String typeMultiguna = dataItem.getVehicles();
         String textMultiguna = "Multiguna Motor";
-        if (typeMultiguna.equals("motorcycle")){
+        if (typeMultiguna.equals("motorcycle")) {
             holder.txt_name_product.setText("Multiguna Motor");
-        }else if (typeMultiguna.equals("car")){
+        } else if (typeMultiguna.equals("car")) {
             holder.txt_name_product.setText("Multiguna Mobil");
         }
 
@@ -83,8 +83,6 @@ public class AdapterMultiguna  extends RecyclerView.Adapter<AdapterMultiguna.Hol
                 .placeholder(R.drawable.no_image)
                 .error(R.drawable.no_image)
                 .into(holder.image);
-
-
 
 
     }
@@ -180,8 +178,6 @@ public class AdapterMultiguna  extends RecyclerView.Adapter<AdapterMultiguna.Hol
         TextView txt_address_label;
         @BindView(R.id.txt_district)
         TextView txt_district;
-
-
 
 
         public HolderMultiguna(@NonNull View itemView) {
