@@ -621,7 +621,19 @@ public class DataDiriPopup extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onBackPressed() {
-        finish();
+        AlertDialog alertDialog = new AlertDialog.Builder(DataDiriPopup.this).create();
+
+        alertDialog.setTitle("Peringatan");
+        alertDialog.setMessage("Lengkapi form yang tersedia.");
+        alertDialog.setIcon(R.drawable.alert);
+        alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                alertDialog.dismiss();
+            }
+        });
+
+        alertDialog.show();
+        //finish();
     }
 
 
@@ -771,7 +783,7 @@ public class DataDiriPopup extends AppCompatActivity implements View.OnClickList
                     alertDialog.setIcon(R.drawable.successfully);
                     alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            Intent keMenuUtama = new Intent(DataDiriPopup.this, MenuUtama.class);
+                            Intent keMenuUtama = new Intent(DataDiriPopup.this, TambahAlamatPengirimanPopup.class);
                             startActivity(keMenuUtama);
                             finish();
                         }

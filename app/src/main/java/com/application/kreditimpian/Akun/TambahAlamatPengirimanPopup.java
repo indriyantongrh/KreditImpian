@@ -3,7 +3,9 @@ package com.application.kreditimpian.Akun;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,7 +14,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -21,19 +22,16 @@ import android.widget.Toast;
 import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
+import com.application.kreditimpian.MenuUtama.MenuUtama;
 import com.application.kreditimpian.Model.ModelAddress.ResponseAddress;
 import com.application.kreditimpian.Model.ModelCityRajaOngkir.ResponseCityRajaOngkir;
 import com.application.kreditimpian.Model.ModelCityRajaOngkir.ResultsItem;
-import com.application.kreditimpian.Model.ModelGeodirectories.ResponseGeodirectories;
-import com.application.kreditimpian.Model.ModelGeodirectories.ResultItem;
 import com.application.kreditimpian.Model.ModelGeodirectory.DataItem;
 import com.application.kreditimpian.Model.ModelGeodirectory.ResponseGeodirectory;
 import com.application.kreditimpian.Model.ModelKecamatan.ResponseKecamatan;
 import com.application.kreditimpian.Model.ModelSubDistrictRajaOngkir.ResponseSubDistrictRajaOngkir;
 import com.application.kreditimpian.R;
 import com.chivorn.smartmaterialspinner.SmartMaterialSpinner;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -45,7 +43,8 @@ import retrofit2.Response;
 
 import static android.text.TextUtils.isEmpty;
 
-public class TambahAlamatPengiriman extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class TambahAlamatPengirimanPopup extends AppCompatActivity {
+
     ProgressDialog pDialog;
     ImageButton btnback;
     SharedPrefManager sharedPrefManager;
@@ -68,12 +67,9 @@ public class TambahAlamatPengiriman extends AppCompatActivity implements Adapter
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tambah_alamat_pengiriman);
-        setActionBarTitle("Tambah Alamat Pengiriman");
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);// set drawable icon
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setContentView(R.layout.activity_tambah_alamat_pengiriman_popup);
         mApiService = UtilsApi.getAPIService();
-        sharedPrefManager = new SharedPrefManager(TambahAlamatPengiriman.this);
+        sharedPrefManager = new SharedPrefManager(TambahAlamatPengirimanPopup.this);
         spinnerkecamatan_pengiriman = findViewById(R.id.spinnerkecamatan_pengiriman);
         spinnerkota_pengiriman = findViewById(R.id.spinnerkota_pengiriman);
         textid_geodirectory = findViewById(R.id.textid_geodirectory);
@@ -81,6 +77,7 @@ public class TambahAlamatPengiriman extends AppCompatActivity implements Adapter
 
 
         SwitchAddress = findViewById(R.id.SwitchAddress);
+        SwitchAddress.setChecked(true);
         txtnamaalamat = findViewById(R.id.txtnamaalamat);
         txtnamapenerima = findViewById(R.id.txtnamapenerima);
         txtnomorhandphone = findViewById(R.id.txtnomorhandphone);
@@ -96,25 +93,6 @@ public class TambahAlamatPengiriman extends AppCompatActivity implements Adapter
         ///   getGeoDistrict();
         /* getGeoCity(); */ /*Komen API di buat mas NIght unutk get City*/
         getCityRajaOngkir();
-
-//
-//        /*Get Detail Addreses*/
-//        Intent intent = getIntent();
-//        id = intent.getStringExtra(ConstansAddress.KEY_ID);
-//        id_member = intent.getStringExtra(ConstansAddress.KEY_ID_MEMBER);
-//        address_name = intent.getStringExtra(ConstansAddress.KEY_ADDRESS_NAME);
-//        receiver = intent.getStringExtra(ConstansAddress.KEY_RECEIVER);
-//        phone = intent.getStringExtra(ConstansAddress.KEY_PHONE);
-//        address = intent.getStringExtra(ConstansAddress.KEY_ADDRESS);
-//        postal_code = intent.getStringExtra(ConstansAddress.KEY_POSTAL_CODE);
-//        id_geodirectory = intent.getStringExtra(ConstansAddress.KEY_ID_GEODIRECTORY);
-//        district = intent.getStringExtra(ConstansAddress.KEY_DISTRICT);
-//
-//        txtnamapenerima.setText(receiver);
-//        txtnamaalamat.setText(address_name);
-//        txtnomorhandphone.setText(phone);
-//        txtalamatpengririman.setText(address);
-//        txtkodepospengiriman.setText(postal_code);
 
         btnsimpan_pengiriman.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,9 +112,9 @@ public class TambahAlamatPengiriman extends AppCompatActivity implements Adapter
                 else if (isEmpty(poscodeaddress))
                     txtkodepospengiriman.setError("Masukan Kode pos");
                 else if (spinKota.getSelectedItem().equals("-- Pilih Kota --")) {
-                    Toast.makeText(TambahAlamatPengiriman.this, "Kota penerima belum diisi", Toast.LENGTH_LONG).show();
+                    Toast.makeText(TambahAlamatPengirimanPopup.this, "Kota penerima belum diisi", Toast.LENGTH_LONG).show();
                 } else if (spinKecamatan.getSelectedItem().equals("-- Pilih Kecamatan --")) {
-                    Toast.makeText(TambahAlamatPengiriman.this, "Kecamatan penerima belum diisi", Toast.LENGTH_LONG).show();
+                    Toast.makeText(TambahAlamatPengirimanPopup.this, "Kecamatan penerima belum diisi", Toast.LENGTH_LONG).show();
                 } else if (isEmpty(address))
                     txtalamatpengririman.setError("Masukan alamat penerima");
                 else
@@ -147,6 +125,24 @@ public class TambahAlamatPengiriman extends AppCompatActivity implements Adapter
         });
 
     }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog alertDialog = new AlertDialog.Builder(TambahAlamatPengirimanPopup.this).create();
+
+        alertDialog.setTitle("Peringatan");
+        alertDialog.setMessage("Lengkapi form yang tersedia.");
+        alertDialog.setIcon(R.drawable.alert);
+        alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+               alertDialog.dismiss();
+            }
+        });
+
+        alertDialog.show();
+        //finish();
+    }
+
 
     /*Method Insert Data Alamat*/
     private void insertAddress() {
@@ -182,19 +178,29 @@ public class TambahAlamatPengiriman extends AppCompatActivity implements Adapter
 
                 pDialog.dismiss();
                 if (response.body() != null) {
-                    Toast.makeText(TambahAlamatPengiriman.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(TambahAlamatPengiriman.this, AlamatPengiriman.class);
-                    startActivity(intent);
-                    finish();
+                    Toast.makeText(TambahAlamatPengirimanPopup.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    AlertDialog alertDialog = new AlertDialog.Builder(TambahAlamatPengirimanPopup.this).create();
+
+                    alertDialog.setTitle("Sukses");
+                    alertDialog.setMessage("Data diri berhasil disimpan.");
+                    alertDialog.setIcon(R.drawable.successfully);
+                    alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent keMenuUtama = new Intent(TambahAlamatPengirimanPopup.this, MenuUtama.class);
+                            startActivity(keMenuUtama);
+                            finish();
+                        }
+                    });
+                    alertDialog.show();
                 } else {
-                    Toast.makeText(TambahAlamatPengiriman.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TambahAlamatPengirimanPopup.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
 
 
             @Override
             public void onFailure(Call<ResponseAddress> call, Throwable t) {
-                Toast.makeText(TambahAlamatPengiriman.this, "Koneksi anda bermasalah, coba ulangi lagi", Toast.LENGTH_SHORT).show();
+                Toast.makeText(TambahAlamatPengirimanPopup.this, "Koneksi anda bermasalah, coba ulangi lagi", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -226,7 +232,7 @@ public class TambahAlamatPengiriman extends AppCompatActivity implements Adapter
 
                     }
                     // Set hasil result json ke dalam adapter spinner
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(TambahAlamatPengiriman.this,
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(TambahAlamatPengirimanPopup.this,
                             android.R.layout.simple_spinner_item, city);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -254,7 +260,7 @@ public class TambahAlamatPengiriman extends AppCompatActivity implements Adapter
 
                 } else {
                     loading.dismiss();
-                    Toast.makeText(TambahAlamatPengiriman.this, "Gagal mengambil data ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TambahAlamatPengirimanPopup.this, "Gagal mengambil data ", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -294,7 +300,7 @@ public class TambahAlamatPengiriman extends AppCompatActivity implements Adapter
 
                     }
                     // Set hasil result json ke dalam adapter spinner
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(TambahAlamatPengiriman.this,
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(TambahAlamatPengirimanPopup.this,
                             android.R.layout.simple_spinner_item, Kecamatan);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spinKecamatan.setAdapter(adapter);
@@ -337,7 +343,7 @@ public class TambahAlamatPengiriman extends AppCompatActivity implements Adapter
 
                 } else {
                     loading.dismiss();
-                    Toast.makeText(TambahAlamatPengiriman.this, "Gagal mengambil data ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TambahAlamatPengirimanPopup.this, "Gagal mengambil data ", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -379,7 +385,7 @@ public class TambahAlamatPengiriman extends AppCompatActivity implements Adapter
 
                     }
                     // Set hasil result json ke dalam adapter spinner
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(TambahAlamatPengiriman.this,
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(TambahAlamatPengirimanPopup.this,
                             android.R.layout.simple_spinner_item, city);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spinKota.setAdapter(adapter);
@@ -426,7 +432,7 @@ public class TambahAlamatPengiriman extends AppCompatActivity implements Adapter
 
                 } else {
                     loading.dismiss();
-                    Toast.makeText(TambahAlamatPengiriman.this, "Gagal mengambil data ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TambahAlamatPengirimanPopup.this, "Gagal mengambil data ", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -476,7 +482,7 @@ public class TambahAlamatPengiriman extends AppCompatActivity implements Adapter
 
                     }
                     // Set hasil result json ke dalam adapter spinner
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(TambahAlamatPengiriman.this,
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(TambahAlamatPengirimanPopup.this,
                             android.R.layout.simple_spinner_item, Kecamatan);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spinKecamatan.setAdapter(adapter);
@@ -518,7 +524,7 @@ public class TambahAlamatPengiriman extends AppCompatActivity implements Adapter
 
                 } else {
                     pDialog.dismiss();
-                    Toast.makeText(TambahAlamatPengiriman.this, "Gagal mengambil data ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TambahAlamatPengirimanPopup.this, "Gagal mengambil data ", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -529,155 +535,4 @@ public class TambahAlamatPengiriman extends AppCompatActivity implements Adapter
         });
 
     }
-
-
-/*    private void getGeoCityyy(){
-
-        cityvalues = new HashMap<>();
-        mApiService.getCity().enqueue(new Callback<ResponseGeodirectory>() {
-            @Override
-            public void onResponse(Call<ResponseGeodirectory> call, Response<ResponseGeodirectory> response) {
-                if(response.body() !=null){
-                   //// String citySelected = spinnerkota_pengiriman.getItemAtPosition(p).toString();
-                    List<DataItem> getCity = response.body().getData();
-                    getCity(getCity);
-                //                    spinnerkota_pengiriman.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                        @Override
-//                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                            int city_id = Integer.parseInt(listSpinner.get(position));
-//                            Log.i("your_city_id", String.valueOf(city_id));
-////                            int item = spinnerkota_pengiriman.getSelectedItemPosition();
-////
-////                            id = spinnerkota_pengiriman.getSelectedItem().toString()
-//                        }
-//                    });
-                } else {
-                    loading.dismiss();
-                   /// Toast.makeText(TambahAlamatPengiriman.this, "Gagal mengambil data dosen", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseGeodirectory> call, Throwable t) {
-
-            }
-        });
-    }*/
-
-/*    private void getCity(List<DataItem> getCity){
-        this.getCity = getCity;
-        List<String> listSpinner = new ArrayList<String>();
-        String[] idcity = new String[getCity.size() +1];
-        String[] city = new String[getCity.size() +1];
-        city[0] = "-- Pilih Kota --";
-        for (int i = 0; i < getCity.size(); i++){
-            ///listSpinner.add(getCity.get(i).getIdParent());
-            city[i + 1] = getCity.get(i).getName();
-            idcity[i + 1] = getCity.get(i).getId();
-            cityvalues.put(city[i + 1], idcity[i + 1] );
-//                         id = getCity.get(i).getId();
-//                         nameCity = getCity.get(i).getName();
-            ///listSpinner.add(nameCity);
-
-        }
-        // Set hasil result json ke dalam adapter spinner
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(TambahAlamatPengiriman.this,
-                android.R.layout.simple_spinner_item, city);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerkota_pengiriman.setAdapter(adapter);
-        spinnerkota_pengiriman.setOnItemSelectedListener(this);
-
-    }*/
-
-    private void getGeoDistrict() {
-
-        districtvalue = new HashMap<>();
-        mApiService.getDistrict().enqueue(new Callback<ResponseGeodirectory>() {
-            @Override
-            public void onResponse(Call<ResponseGeodirectory> call, Response<ResponseGeodirectory> response) {
-                if (response.body() != null) {
-                    List<DataItem> getDistrictArray = response.body().getData();
-                    List<String> listSpinner = new ArrayList<String>();
-                    String[] iddistrict = new String[getDistrictArray.size() + 1];
-                    String[] district = new String[getDistrictArray.size() + 1];
-                    district[0] = "-- Pilih Kecamatan --";
-                    for (int i = 0; i < getDistrictArray.size(); i++) {
-                        ///listSpinner.add(getCity.get(i).getIdParent());
-                        district[i + 1] = getDistrictArray.get(i).getName();
-                        iddistrict[i + 1] = getDistrictArray.get(i).getId();
-                        cityvalues.put(district[i + 1], iddistrict[i + 1]);
-
-//                        listSpinner.add(getDistrict.get(i).getId());
-//                        listSpinner.add(getDistrict.get(i).getName());
-                    }
-                    // Set hasil result json ke dalam adapter spinner
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(TambahAlamatPengiriman.this,
-                            android.R.layout.simple_spinner_item, district);
-                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    spinnerkecamatan_pengiriman.setAdapter(adapter);
-                    spinnerkecamatan_pengiriman.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                            if (position > 0) {
-                                String districtvalue = getDistrictArray.get(position - 1).getId();
-                                textid_distric.setText(districtvalue);
-                                /// Toast.makeText(TambahAlamatPengiriman.this, " ini id Kecamatan  "+districtvalue, Toast.LENGTH_LONG).show();
-
-                            }
-                        }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> parent) {
-
-                        }
-                    });
-                } else {
-                    loading.dismiss();
-                    Toast.makeText(TambahAlamatPengiriman.this, "Gagal mengambil data dosen", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseGeodirectory> call, Throwable t) {
-
-            }
-        });
-
-
-    }
-
-
-    private void setActionBarTitle(String title) {
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle(title);
-        }
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        if (view == spinnerkota_pengiriman) {
-            if (position > 0) {
-                String cityvalues = getCity.get(position - 1).getId();
-                this.cityvaluess = cityvalues;
-                Toast.makeText(TambahAlamatPengiriman.this, " ini id City " + cityvalues, Toast.LENGTH_LONG).show();
-            }
-        }
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
-
-//    @Override
-//    public void onBackPressed() {
-//        finish();
-//    }
-
 }

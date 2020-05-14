@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Akun.TambahAlamatPengirimanPopup">
+
+    <FrameLayout
+        android:id="@+id/frame_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+    <LinearLayout
+        android:id="@+id/linera1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="0dp"
+        tools:ignore="MissingConstraints">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:visibility="gone"
+            app:popupTheme="@style/ThemeOverlay.AppCompat"
+            tools:ignore="MissingConstraints">
+
+
+            <ImageButton
+                android:id="@+id/btnback"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_toLeftOf="@id/btnback"
+                android:background="@android:color/transparent"
+                android:src="@drawable/backwhite" />
+
+            <ImageView
+                android:id="@+id/logotop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/btnback"
+                android:foregroundGravity="center"
+                android:paddingTop="15dp"
+                android:paddingRight="50dp"
+                android:paddingBottom="10dp"
+                android:src="@drawable/logoputihkredit" />
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            tools:ignore="MissingConstraints">
+
+            <LinearLayout
+                android:id="@+id/linera2"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:fontFamily="@font/jipatharegular"
+                    android:gravity="center"
+                    android:paddingBottom="10dp"
+                    android:text="Alamat Pengiriman"
+                    android:textColor="#000"
+                    android:textSize="35dp"
+                    android:visibility="gone" />
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="37dp"
+                    android:background="@drawable/borderhitam"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/txtnamaalamat"
+                        android:layout_width="match_parent"
+                        android:layout_height="53dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/jipatharegular"
+                        android:hint="Alamat Rumah, Kantor, Apartemen, Dropship"
+                        android:inputType="text"
+                        android:textSize="26dp" />
+
+                </LinearLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="37dp"
+                    android:background="@drawable/borderhitam"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/txtnamapenerima"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/jipatharegular"
+                        android:hint="Nama Penerima"
+                        android:inputType="text"
+                        android:textSize="26dp" />
+
+                </LinearLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="37dp"
+                    android:background="@drawable/borderhitam"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/txtnomorhandphone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/jipatharegular"
+                        android:hint="Nomor Handphone"
+                        android:inputType="number"
+                        android:textSize="26dp" />
+
+                </LinearLayout>
+
+
+                <!--Border-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout5"
+                    android:background="@drawable/borderorangev2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layout4">
+
+                    <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                        android:id="@+id/spinKota"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen3dp"
+                        android:layout_marginEnd="@dimen/dimen3dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:smsp_floatingLabelText=""
+                        app:layout_goneMarginStart="15dp"
+                        app:smsp_hint="Pilih Kota / Kabupaten"
+                        app:smsp_hintColor="@color/colorOrange"
+                        app:smsp_isSearchable="true"
+                        app:smsp_itemColor="@color/colorOrange"
+                        app:smsp_itemListColor="@color/colorOrange"
+                        app:smsp_itemListHintBackgroundColor="@color/colorOrange"
+                        app:smsp_itemListHintColor="@android:color/white"
+                        app:smsp_multilineError="false"
+                        app:smsp_searchHeaderBackgroundColor="@color/colorOrange"
+                        app:smsp_searchHeaderText="Cari Kota / Kabupaten"
+                        app:smsp_searchHeaderTextColor="@color/colorwhite"
+                        app:smsp_searchHint="Masukan Keyword"
+                        app:smsp_searchHintColor="@color/colorOrange"
+                        app:smsp_selectedItemListColor="#FF5252"
+                        app:smsp_underlineColor="@color/colorOrange" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="37dp"
+                    android:background="@drawable/borderhitam"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <Spinner
+                        android:id="@+id/spinnerkota_pengiriman"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:entries="@array/kota"
+                        android:fontFamily="@font/jipatharegular"></Spinner>
+                </LinearLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout6"
+                    android:background="@drawable/borderorangev2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layout4">
+
+                    <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                        android:id="@+id/spinKecamatan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen3dp"
+                        android:layout_marginEnd="@dimen/dimen3dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:smsp_floatingLabelText=""
+                        app:smsp_hint="Pilih Kecamatan"
+                        app:smsp_hintColor="@color/colorOrange"
+                        app:smsp_isSearchable="true"
+                        app:smsp_itemColor="@color/colorOrange"
+                        app:smsp_itemListColor="@color/colorOrange"
+                        app:smsp_itemListHintBackgroundColor="@color/colorOrange"
+                        app:smsp_itemListHintColor="@android:color/white"
+                        app:smsp_multilineError="false"
+                        app:smsp_searchHeaderBackgroundColor="@color/colorOrange"
+                        app:smsp_searchHeaderText="Cari Kecamatan"
+                        app:smsp_searchHeaderTextColor="@color/colorwhite"
+                        app:smsp_searchHint="Masukan Keyword"
+                        app:smsp_searchHintColor="@color/colorOrange"
+                        app:smsp_selectedItemListColor="#FF5252"
+                        app:smsp_underlineColor="@color/colorOrange" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="37dp"
+                    android:background="@drawable/borderhitam"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <Spinner
+                        android:id="@+id/spinnerkecamatan_pengiriman"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:entries="@array/kecamatan"
+                        android:fontFamily="@font/jipatharegular"></Spinner>
+                </LinearLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="37dp"
+                    android:background="@drawable/borderhitam"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/txtkodepospengiriman"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/jipatharegular"
+                        android:hint="Kode Post"
+                        android:inputType="number"
+                        android:textSize="26dp" />
+
+                </LinearLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:background="@drawable/borderhitam"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/txtalamatpengririman"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/jipatharegular"
+                        android:gravity="top"
+                        android:hint="Alamat Anda"
+                        android:inputType="textMultiLine"
+                        android:lines="9"
+                        android:textSize="26dp" />
+
+                </LinearLayout>
+
+
+                <!--Border-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jadikan alamat Utama " />
+
+                    <Switch
+                        android:id="@+id/SwitchAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:gravity="right"
+                        android:textOff="NO"
+                        android:textOn="YES" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textid_geodirectory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="id geodirectory"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/textid_distric"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="id geodirectory"
+                    android:visibility="gone" />
+
+                <!--Button-->
+                <Button
+                    android:id="@+id/btnsimpan_pengiriman"
+                    style="?android:textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/btnorange"
+                    android:fontFamily="@font/jipatharegular"
+                    android:text="SIMPAN ALamat"
+                    android:textColor="#fff"
+                    android:textSize="25sp"
+                    android:textStyle="bold"></Button>
+
+
+                <!--Border-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
+
+                <!--Button-->
+                <Button
+                    android:id="@+id/btnDelete"
+                    style="?android:textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/cartwhite"
+                    android:fontFamily="@font/jipatharegular"
+                    android:text="Hapus Alamat"
+                    android:textColor="@color/colorOrange"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:visibility="gone"></Button>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

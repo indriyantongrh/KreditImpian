@@ -97,8 +97,6 @@ public class FragHistoryMultiguna extends Fragment {
         listMultiguna.setItemAnimator(new DefaultItemAnimator());
 
         getListMultiguna();
-
-
         return view;
     }
 
@@ -115,22 +113,18 @@ public class FragHistoryMultiguna extends Fragment {
                     ///progressBar.dismiss();
                     if (response.body().getResponseCode()==200) {
                         swipeRefresh.setRefreshing(false);
-
                         final List<DataItem> HistoryTransaction = response.body().getData();
-
                         listMultiguna.setAdapter(new AdapterMultiguna(mContext, HistoryTransaction));
                         adapterMultiguna.notifyDataSetChanged();
                         empty.setVisibility(View.GONE);
                         initDataIntent(HistoryTransaction);
                     }else {
                         swipeRefresh.setRefreshing(false);
-
                         empty.setVisibility(View.VISIBLE);
                     }
 
                 } else {
                     swipeRefresh.setRefreshing(false);
-
                     Toast.makeText(mContext, "Gagal Refresh", Toast.LENGTH_SHORT).show();
                 }
             }
