@@ -598,14 +598,7 @@
                 </RelativeLayout>
 
 
-                <com.facebook.shimmer.ShimmerFrameLayout
-                    android:id="@+id/shimmer_view_container"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="15dp"
-                    android:orientation="vertical"
-                    shimmer:duration="100">
+
 
                     <!--Image Slider-->
                     <RelativeLayout
@@ -619,7 +612,6 @@
 
                             <AdapterViewFlipper
                                 android:visibility="gone"
-
                                 android:id="@+id/adapterViewFlipper"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent">
@@ -648,7 +640,7 @@
                             android:orientation="horizontal" />
 
                     </RelativeLayout>
-                </com.facebook.shimmer.ShimmerFrameLayout>
+
 
                 <LinearLayout
                     android:id="@+id/linearpromo"

@@ -264,7 +264,7 @@
 
         <TextView
             android:id="@+id/tvKebijakanPrivacy"
-            android:text="Kebijakan Privacy"
+            android:text="Kebijakan Privacy | "
             android:gravity="center|bottom"
             android:textSize="10dp"
             android:foregroundGravity="bottom"
@@ -273,7 +273,7 @@
             android:layout_height="wrap_content"/>
 
         <TextView
-            android:text=" | Kreditimpian v.1.7.5"
+            android:id="@+id/tvVersion"
             android:gravity="center|bottom"
             android:textSize="10dp"
             android:foregroundGravity="bottom"

@@ -18,16 +18,12 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.application.kreditimpian.Adapter.AdapterMultiguna;
-import com.application.kreditimpian.Adapter.AdapterRequetsProduct;
 import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
-import com.application.kreditimpian.Constan.ConstanHistoryPesanan;
-import com.application.kreditimpian.HistoryPesanan.TabProductRequest.DetailHistoryRequestProduct;
 import com.application.kreditimpian.Marketplace.FragSemuaKategori.RecyclerItemClickListener;
 import com.application.kreditimpian.Model.ModelMultiguna.DataItem;
 import com.application.kreditimpian.Model.ModelMultiguna.ResponseMultiguna;
-import com.application.kreditimpian.Model.ModelRequestProduct.ResponseRequestProduct;
 import com.application.kreditimpian.R;
 
 import java.util.ArrayList;
@@ -57,6 +53,7 @@ public class FragHistoryMultiguna extends Fragment {
     Context mContext;
 
     List<DataItem> resultItemList = new ArrayList<>();
+    private    List<DataItem> dataItem;
     AdapterMultiguna adapterMultiguna;
 
     public FragHistoryMultiguna() {
@@ -118,9 +115,12 @@ public class FragHistoryMultiguna extends Fragment {
                         adapterMultiguna.notifyDataSetChanged();
                         empty.setVisibility(View.GONE);
                         initDataIntent(HistoryTransaction);
-                    }else {
+                    }else if(response.body().getResponseCode()==201) {
                         swipeRefresh.setRefreshing(false);
                         empty.setVisibility(View.VISIBLE);
+                    }else{
+                        Toast.makeText(mContext, "Gagal Refresh", Toast.LENGTH_SHORT).show();
+
                     }
 
                 } else {

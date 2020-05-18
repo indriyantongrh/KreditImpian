@@ -107,7 +107,6 @@ public class FragmentBeranda extends Fragment {
     Bitmap bitmap, decoded;
     int PICK_IMAGE_REQUEST = 1;
     int bitmap_size = 60; // range 1 - 100
-
     AdapterCart adapterCart;
     ConnectivityManager conMgr;
     AdapterMitra adapterMitra;
@@ -201,6 +200,8 @@ public class FragmentBeranda extends Fragment {
         mLinearLayout = rootView.findViewById(R.id.pagesContainer);
         //mShimmerViewContainer = rootView.findViewById(R.id.shimmer_view_container);
         adapterViewFlipper = rootView.findViewById(R.id.adapterViewFlipper);
+       /* shimmer_view_container = rootView.findViewById(R.id.shimmer_view_container);
+        shimmer_view_container.startShimmer();*/
 
         sharedPrefManager = new SharedPrefManager(getActivity());
         String decode = sharedPrefManager.getSpDecode();
@@ -362,6 +363,7 @@ public class FragmentBeranda extends Fragment {
             public void onResponse(Call<ResponseImagePromo> call, Response<ResponseImagePromo> response) {
 
                 if (response.body().getResponseCode() == 200) {
+                  //  shimmer_view_container.stopShimmer();
                     FlipperAdapter adapter = new FlipperAdapter(getActivity(), (ArrayList<DataItem>) response.body().getData());
                     adapterViewFlipper.setAdapter(adapter);
                     adapterViewFlipper.setFlipInterval(700);

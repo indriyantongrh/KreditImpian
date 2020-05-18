@@ -158,7 +158,7 @@ public class FragPermintaanBarang extends Fragment {
                         String filename = detaiList.get(position).getContent();
                         String berat = detaiList.get(position).getWeightValue();
                         String id_city = detaiList.get(position).getCompanyCity().getIdGeodirectory();
-                        String id_destination = detaiList.get(position).getMember_city();
+                        String id_destination = detaiList.get(position).getMemberCity();
 
 
 

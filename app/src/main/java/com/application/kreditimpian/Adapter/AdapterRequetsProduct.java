@@ -57,11 +57,11 @@ public class AdapterRequetsProduct extends RecyclerView.Adapter<AdapterRequetsPr
         holder.txt_description.setText(dataItem.getDescription());
         Locale localeID = new Locale("in", "ID");
         NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
-        int Price_Capital = (Integer.parseInt(dataItem.getPriceSale()));
+        int Price_Capital = (Integer.parseInt((String) dataItem.getPriceSale()));
         holder.txt_price_sale.setText(formatRupiah.format(Price_Capital));
-        holder.txt_weight_value.setText(dataItem.getWeightValue());
+        holder.txt_weight_value.setText( dataItem.getWeightValue());
         holder.txt_id_city.setText(dataItem.getCompanyCity().getIdGeodirectory());
-        holder.txt_id_destination.setText(dataItem.getMember_city());
+        holder.txt_id_destination.setText( dataItem.getMemberCity());
 
 
 

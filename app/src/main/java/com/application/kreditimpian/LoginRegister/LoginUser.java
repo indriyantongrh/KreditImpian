@@ -8,6 +8,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -69,7 +71,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONStringer;
+import org.jsoup.Jsoup;
 
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Base64;
@@ -81,7 +85,6 @@ import java.util.concurrent.TimeUnit;
 import butterknife.internal.Utils;
 import io.jsonwebtoken.Jwt;
 import io.jsonwebtoken.io.Decoder;
-import io.jsonwebtoken.io.IOException;
 import io.jsonwebtoken.lang.Assert;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -109,7 +112,7 @@ public class LoginUser extends AppCompatActivity {
     private static final String TAG_MESSAGE = "message";
     int success;
     ProgressDialog pDialog;
-
+    String sCurrentVersion, sLatestVersion;
     Context mContext;
     //ProgressDialog progressDialog;
 
@@ -130,7 +133,7 @@ public class LoginUser extends AppCompatActivity {
     ProgressDialog loading;
 
     Button btnLogin, btnDaftar;
-    TextView btnregister, tvLupapassword, tvKebijakanPrivacy;
+    TextView btnregister, tvLupapassword, tvKebijakanPrivacy, tvVersion;
     EditText txtusername, txtpassword;
 
     SignInButton signin;
@@ -154,7 +157,10 @@ public class LoginUser extends AppCompatActivity {
         txtpassword =findViewById(R.id.txtpassword);
         btnDaftar = findViewById(R.id.btnDaftar);
         tvKebijakanPrivacy = findViewById(R.id.tvKebijakanPrivacy);
-
+        tvVersion = findViewById(R.id.tvVersion);
+        sCurrentVersion = BuildConfig.VERSION_NAME;
+        tvVersion.setText("V"+sCurrentVersion);
+        new GetLatestVersion().execute();
 
         mApiService = UtilsApi.getAPIService();
         sharedPrefManager = new SharedPrefManager(this);
@@ -583,4 +589,71 @@ public class LoginUser extends AppCompatActivity {
         //// Toast.makeText(this,"Keluar aplikasi!", Toast.LENGTH_LONG).show();
 
     }
+
+
+    private class GetLatestVersion extends AsyncTask<String, Void,String> {
+        @Override
+        protected String doInBackground(String... strings) {
+            try {
+                sLatestVersion = Jsoup
+                        .connect("https://play.google.com/store/apps/details?id=" +getPackageName())
+                        .timeout(3000)
+                        .get()
+                        .select("div.hAyfc:nth-child(4)>"+
+                                "span:nth-child(2) > div:nth-child(1)"+
+                                "> span:nth-child(1)")
+                        .first()
+                        .ownText();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return sLatestVersion;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            ///get Current Version
+            sCurrentVersion = BuildConfig.VERSION_NAME;
+
+            if(sLatestVersion != null){
+                /// version conver float
+                float cVersion = Float.parseFloat (sCurrentVersion);
+                float lVersion = Float.parseFloat (sLatestVersion);
+                //check condition version greater than curren version
+                if(lVersion > cVersion){
+                    // Create update
+                    updateAlertDIalog();
+                }
+            }
+
+        }
+
+        private void updateAlertDIalog() {
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(LoginUser.this);
+            builder.setTitle("Update Kredit Impian");
+            builder.setCancelable(false);
+            builder.setMessage("Update versi terbaru tersedia");
+            builder.setPositiveButton("Update Sekarang", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("market://detail?id=" +getPackageName())));
+                    dialog.dismiss();
+                }
+            });
+
+            builder.setNegativeButton("Batal", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+
+            builder.show();
+
+        }
+    }
+
 }
