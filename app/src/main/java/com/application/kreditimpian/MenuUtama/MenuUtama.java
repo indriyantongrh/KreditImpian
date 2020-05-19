@@ -355,17 +355,17 @@ public class MenuUtama extends AppCompatActivity {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     startActivity(new Intent(Intent.ACTION_VIEW,
-                            Uri.parse("market://detail?id=" +getPackageName())));
+                            Uri.parse("market://details?id=" +getPackageName())));
                     dialog.dismiss();
                 }
             });
 
-            builder.setNegativeButton("Batal", new DialogInterface.OnClickListener() {
+            /*builder.setNegativeButton("Batal", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.cancel();
                 }
-            });
+            });*/
 
             builder.show();
 
