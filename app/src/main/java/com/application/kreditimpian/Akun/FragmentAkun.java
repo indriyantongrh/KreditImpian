@@ -31,6 +31,7 @@ import com.application.kreditimpian.HistoryPesanan.RiwayatPesanan;
 import com.application.kreditimpian.KonfirmasiPembayaran.KonfirmasiPembayaran;
 import com.application.kreditimpian.LoginRegister.LoginUser;
 
+import com.application.kreditimpian.PdfViewer.KebijakanPrivacy;
 import com.application.kreditimpian.R;
 import com.auth0.android.jwt.JWT;
 import com.bumptech.glide.Glide;
@@ -56,7 +57,7 @@ public class FragmentAkun extends Fragment {
     ImageView image;
     CardView btndetailakun, btnstatuspesanan, btnchat, btnhistorypesanan, btnfavorite, btnkonfirmasi, btngantipassword, btnlogout, btnalamatpengiriman;
     TextView txt_nama_akun, textchat;
-    RelativeLayout RelativDataMember, RelativAlamatPengiriman, RelativHistoryPesanan, RelativGantiPassword, RelativLogout;
+    RelativeLayout RelativDataMember, RelativAlamatPengiriman, RelativHistoryPesanan, RelativGantiPassword, RelativLogout,RelativTermandCondition,RelativTentangKami ;
     GoogleSignInClient mGoogleSignInClient;
     private GoogleApiClient mGoogleApiClient;
 
@@ -242,6 +243,18 @@ public class FragmentAkun extends Fragment {
             }
 
         });
+
+
+        RelativTermandCondition = view.findViewById(R.id.RelativTermandCondition);
+        RelativTermandCondition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), KebijakanPrivacy.class);
+                getActivity().startActivity(intent);
+            }
+        });
+
+        RelativTentangKami = view.findViewById(R.id.RelativTentangKami);
 
         btnlogout = view.findViewById(R.id.btnlogout);
         RelativLogout = view.findViewById(R.id.RelativLogout);

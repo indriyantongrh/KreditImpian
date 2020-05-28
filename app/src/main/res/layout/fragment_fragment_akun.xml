@@ -158,7 +158,8 @@
                             android:id="@+id/imgDataMember"
                             android:layout_width="50sp"
                             android:layout_height="50sp"
-                            android:layout_margin="10dp"
+                            android:layout_margin="5dp"
+                            android:padding="10dp"
                             android:src="@drawable/iconmenumember" />
 
                         <TextView
@@ -171,7 +172,7 @@
                             android:fontFamily="@font/cosimabold"
                             android:text="Data Member"
                             android:textColor="@color/colorBlack"
-                            android:textSize="15sp" />
+                            android:textSize="12sp" />
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -182,9 +183,9 @@
                             <ImageView
                                 android:id="@+id/backrigt"
                                 android:layout_width="50sp"
-                                android:layout_height="50sp"
-                                android:layout_margin="10dp"
-                                android:padding="12dp"
+                                android:layout_height="50dp"
+                                android:padding="13dp"
+                                android:layout_margin="5dp"
                                 android:src="@drawable/ic_back_right" />
                         </RelativeLayout>
 
@@ -212,7 +213,8 @@
                             android:id="@+id/imgAlamatPengiriman"
                             android:layout_width="50sp"
                             android:layout_height="50sp"
-                            android:layout_margin="10dp"
+                            android:layout_margin="5dp"
+                            android:padding="10dp"
                             android:src="@drawable/iconmenualamatpengiriman" />
 
                         <TextView
@@ -227,7 +229,7 @@
                             android:fontFamily="@font/cosimabold"
                             android:text="Alamat Pengiriman"
                             android:textColor="@color/colorBlack"
-                            android:textSize="15sp" />
+                            android:textSize="12sp" />
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -238,8 +240,8 @@
                             <ImageView
                                 android:layout_width="50sp"
                                 android:layout_height="50sp"
-                                android:layout_margin="10dp"
-                                android:padding="12dp"
+                                android:padding="13dp"
+                                android:layout_margin="5dp"
                                 android:src="@drawable/ic_back_right" />
                         </RelativeLayout>
 
@@ -266,7 +268,8 @@
                             android:id="@+id/imgHistoryPesanan"
                             android:layout_width="50sp"
                             android:layout_height="50sp"
-                            android:layout_margin="10dp"
+                            android:layout_margin="5dp"
+                            android:padding="10dp"
                             android:src="@drawable/iconmenuhistorytransaction" />
 
                         <TextView
@@ -281,7 +284,7 @@
                             android:fontFamily="@font/cosimabold"
                             android:text="History Pesanan"
                             android:textColor="@color/colorBlack"
-                            android:textSize="15sp" />
+                            android:textSize="12sp" />
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -292,8 +295,8 @@
                             <ImageView
                                 android:layout_width="50sp"
                                 android:layout_height="50sp"
-                                android:layout_margin="10dp"
-                                android:padding="12dp"
+                                android:padding="13dp"
+                                android:layout_margin="5dp"
                                 android:src="@drawable/ic_back_right" />
                         </RelativeLayout>
 
@@ -322,7 +325,8 @@
                             android:id="@+id/imgGantiPassword"
                             android:layout_width="50sp"
                             android:layout_height="50sp"
-                            android:layout_margin="10dp"
+                            android:layout_margin="5dp"
+                            android:padding="10dp"
                             android:src="@drawable/iconmenupassword" />
 
                         <TextView
@@ -337,7 +341,7 @@
                             android:fontFamily="@font/cosimabold"
                             android:text="Ganti Password"
                             android:textColor="@color/colorBlack"
-                            android:textSize="15sp" />
+                            android:textSize="12sp" />
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -348,8 +352,8 @@
                             <ImageView
                                 android:layout_width="50sp"
                                 android:layout_height="50sp"
-                                android:layout_margin="10dp"
-                                android:padding="12dp"
+                                android:padding="13dp"
+                                android:layout_margin="5dp"
                                 android:src="@drawable/ic_back_right" />
                         </RelativeLayout>
 
@@ -357,6 +361,121 @@
 
                     <!--Border-->
                     <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@+id/LinearImage"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="50sp"
+                        android:background="#FF6802"
+                        android:orientation="horizontal"></LinearLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/RelativTermandCondition"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp">
+
+
+                        <ImageView
+                            android:id="@+id/imgTermandCondition"
+                            android:layout_width="50sp"
+                            android:layout_height="50sp"
+                            android:layout_margin="5dp"
+                            android:padding="10dp"
+                            android:src="@drawable/iconmenutermcondition" />
+
+                        <TextView
+                            android:id="@+id/textTermandCondition"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_toRightOf="@id/imgTermandCondition"
+                            android:fontFamily="@font/cosimabold"
+                            android:text="Kebijakan dan Privasi"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="12sp" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/textTermandCondition"
+                            android:gravity="right">
+
+                            <ImageView
+                                android:layout_width="50sp"
+                                android:layout_height="50sp"
+                                android:padding="13dp"
+                                android:layout_margin="5dp"
+                                android:src="@drawable/ic_back_right" />
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+                    <!--Border-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@+id/LinearImage"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="50sp"
+                        android:background="#FF6802"
+                        android:orientation="horizontal"></LinearLayout>
+
+
+                    <RelativeLayout
+                        android:visibility="gone"
+                        android:id="@+id/RelativTentangKami"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp">
+
+
+                        <ImageView
+                            android:id="@+id/imgTentangKami"
+                            android:layout_width="50sp"
+                            android:layout_height="50sp"
+                            android:layout_margin="5dp"
+                            android:padding="10dp"
+                            android:src="@drawable/iconmenutentangkami" />
+
+                        <TextView
+                            android:id="@+id/textTentangKami"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_toRightOf="@id/imgTentangKami"
+                            android:fontFamily="@font/cosimabold"
+                            android:text="Tentang Kami"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="12sp" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/textTentangKami"
+                            android:gravity="right">
+
+                            <ImageView
+                                android:layout_width="50sp"
+                                android:layout_height="50sp"
+                                android:padding="13dp"
+                                android:layout_margin="5dp"
+                                android:src="@drawable/ic_back_right" />
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+                    <!--Border-->
+                    <LinearLayout
+                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_below="@+id/LinearImage"
@@ -377,7 +496,8 @@
                             android:id="@+id/imgLogout"
                             android:layout_width="50sp"
                             android:layout_height="50sp"
-                            android:layout_margin="10dp"
+                            android:layout_margin="5dp"
+                            android:padding="10dp"
                             android:src="@drawable/iconmenulogout" />
 
                         <TextView
@@ -392,7 +512,7 @@
                             android:fontFamily="@font/cosimabold"
                             android:text="Logout"
                             android:textColor="@color/colorBlack"
-                            android:textSize="15sp" />
+                            android:textSize="12sp" />
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -403,8 +523,8 @@
                             <ImageView
                                 android:layout_width="50sp"
                                 android:layout_height="50sp"
-                                android:layout_margin="10dp"
-                                android:padding="12dp"
+                                android:padding="13dp"
+                                android:layout_margin="5dp"
                                 android:src="@drawable/ic_back_right" />
                         </RelativeLayout>
 
