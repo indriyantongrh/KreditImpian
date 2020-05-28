@@ -19,6 +19,7 @@ import com.application.kreditimpian.Model.ModelMerchant.ResponseMerchant;
 import com.application.kreditimpian.Model.ModelMitraSelected.ResponseMitraSelected;
 import com.application.kreditimpian.Model.ModelMultiguna.ResponseMultiguna;
 import com.application.kreditimpian.Model.ModelNewHistoryPesanan.ResponseNewHistoryPesanan;
+import com.application.kreditimpian.Model.ModelNotifFitur.ResponseNotifFitur;
 import com.application.kreditimpian.Model.ModelOnShoppingCart.ResponseOnShoppingCart;
 import com.application.kreditimpian.Model.ModelOngkoskirim.ResponseOngkir;
 import com.application.kreditimpian.Model.ModelPengajuanCatalog.ResponsePengajuanCatalog;
@@ -190,6 +191,9 @@ public interface BaseApiService {
     @POST("ApiMobile/getHistoryMultigunaMotor")
     Call<ResponseMultiguna> getMultiguna(@FieldMap HashMap<String, String> params);
 
+    @FormUrlEncoded
+    @POST("ApiMobile2/getnotifmultigunaandfitur")
+    Call<ResponseNotifFitur> getnotifikasiFitur(@FieldMap HashMap<String, String> params);
 
     /*KOnfirmasi dp*/
     @FormUrlEncoded
@@ -370,6 +374,8 @@ public interface BaseApiService {
     Call<ResponseBody> getnotifikasi(
             @Field("id_member") String id_member
     );
+
+
 
     @FormUrlEncoded
     @POST("updateSeennotification")

@@ -68,6 +68,7 @@ import com.application.kreditimpian.Model.ModelMitra;
 
 import com.application.kreditimpian.Model.ModelNotifikasi.ModelNotifikasi;
 import com.application.kreditimpian.Model.ModelOnShoppingCart.ResponseOnShoppingCart;
+import com.application.kreditimpian.Notifikasi.Notifikasi;
 import com.application.kreditimpian.Notifikasi.NotifikasiActivity;
 import com.application.kreditimpian.R;
 import com.application.kreditimpian.TransactionProcess.Cart;
@@ -587,7 +588,8 @@ public class FragmentBeranda extends Fragment {
         int id = item.getItemId();
 
         if (id == R.id.notifikasi) {
-            startActivity(new Intent(getContext(), NotifikasiActivity.class));
+            ///startActivity(new Intent(getContext(), NotifikasiActivity.class));
+            startActivity(new Intent(getContext(), Notifikasi.class));
             ((Activity) Objects.requireNonNull(getContext())).finish();
         }
         if (id == R.id.cartshop) {

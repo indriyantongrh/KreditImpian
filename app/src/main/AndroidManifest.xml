@@ -34,7 +34,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Akun.TambahAlamatPengirimanPopup"></activity>
+        <activity android:name=".Notifikasi.Notifikasi"></activity>
+        <activity android:name=".Akun.TambahAlamatPengirimanPopup" />
         <activity android:name=".PdfViewer.KebijakanPrivacy" />
         <activity android:name=".HistoryPesanan.TabMultiguna.DetailMultiguna" />
         <activity android:name=".HistoryPesanan.TabProductRequest.DetailHistoryRequestProduct" />
