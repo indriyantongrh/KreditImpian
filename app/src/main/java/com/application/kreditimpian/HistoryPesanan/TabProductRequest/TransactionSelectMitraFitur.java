@@ -1,4 +1,4 @@
-package com.application.kreditimpian.TransactionProcess;
+package com.application.kreditimpian.HistoryPesanan.TabProductRequest;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -19,7 +19,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,14 +28,15 @@ import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
 import com.application.kreditimpian.Constan.ConstanTransaction;
-import com.application.kreditimpian.Model.ModelCicilan.CompaniesDataItem;
-import com.application.kreditimpian.Model.ModelCicilan.DataCicilanItem;
-import com.application.kreditimpian.Model.ModelCicilan.ProductMeta;
-import com.application.kreditimpian.Model.ModelCicilan.ResponseCicilan;
+import com.application.kreditimpian.Model.ModelCicilanFitur.CompaniesDataItem;
+import com.application.kreditimpian.Model.ModelCicilanFitur.DataCicilanItem;
+import com.application.kreditimpian.Model.ModelCicilanFitur.ResponseModelCicilanFitur;
 import com.application.kreditimpian.Model.ModelMitraSelected.DataItem;
 import com.application.kreditimpian.Model.ModelMitraSelected.ResponseMitraSelected;
 import com.application.kreditimpian.Model.ModelOngkoskirim.ResponseOngkir;
 import com.application.kreditimpian.R;
+import com.application.kreditimpian.TransactionProcess.TransactionSelectMitra;
+import com.application.kreditimpian.TransactionProcess.TransactionSelectTenor;
 import com.bumptech.glide.Glide;
 
 import org.json.JSONArray;
@@ -55,7 +55,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class TransactionSelectMitra extends AppCompatActivity {
+public class TransactionSelectMitraFitur extends AppCompatActivity {
+
     private Context context;
     ProgressDialog pDialog;
     ProgressDialog progressBar;
@@ -101,10 +102,12 @@ public class TransactionSelectMitra extends AppCompatActivity {
     @BindView(R.id.txt_destination)
     TextView txt_destination;
     @BindView(R.id.text_image)
-     TextView text_image;
+    TextView text_image;
     @BindView(R.id.swipeRefresh)
     SwipeRefreshLayout swipeRefresh;
     // String id_product_category;
+    @BindView(R.id.txt_harga_barang)
+    TextView txt_harga_barang;
 
     DataItem reqDataItem;
     SharedPrefManager sharedPrefManager;
@@ -118,31 +121,25 @@ public class TransactionSelectMitra extends AppCompatActivity {
     boolean check = false;
     private JSONArray jsonArray, jsonArray1;
 
-    private ProductMeta productMeta;
     private CompaniesDataItem companiesDataItem;
     private DataCicilanItem dataCicilanItem;
-    private ArrayList<ResponseCicilan> responseCicilans;
+    private ArrayList<ResponseModelCicilanFitur> responseCicilans;
     private ArrayList<CompaniesDataItem> companiesDataItemArrayList;
     private ArrayList<DataCicilanItem> dataCicilanItemArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_transaction_select_mitra);
-
+        setContentView(R.layout.activity_transaction_select_mitra_fitur);
 
 
         setActionBarTitle("Pilih mitra yang kamu mau");
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);// set drawable icon
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ButterKnife.bind(this);
-        mContext = TransactionSelectMitra.this;
-        sharedPrefManager = new SharedPrefManager(TransactionSelectMitra.this);
+        mContext = TransactionSelectMitraFitur.this;
+        sharedPrefManager = new SharedPrefManager(TransactionSelectMitraFitur.this);
         mApiService = UtilsApi.getAPIService();
-
-
-        /*get Selected Mitra*/
-
 
         Intent intent = getIntent();
         String id_product = intent.getStringExtra(ConstanTransaction.KEY_ID_PRODUCT);
@@ -153,18 +150,14 @@ public class TransactionSelectMitra extends AppCompatActivity {
         String nomor_invoice = intent.getStringExtra(ConstanTransaction.KEY_NUMBER);
         String imageProduct = intent.getStringExtra(ConstanTransaction.KEY_FILENAME_TRANSACTION);
         String status = intent.getStringExtra(ConstanTransaction.KEY_STATUS);
+        String harga_barang = intent.getStringExtra(ConstanTransaction.KEY_PRICE_SALE_TRANSACTION);
         String weight = intent.getStringExtra(ConstanTransaction.KEY_WEIGHT_TRANSACTION);
         String origin = intent.getStringExtra(ConstanTransaction.KEY_ORIGIN_TRANSACTION);
         String destination = intent.getStringExtra(ConstanTransaction.KEY_DESTINATION_TRANSACTION);
 
-        ////Toast.makeText(TransactionSelectMitra.this, ""+nomor_invoice, Toast.LENGTH_LONG).show();
-
-       /// Log.d("ini id kategorimu ", ConstanTransaction.KEY_ID_PRODUCT_CATEGORY_TRANSACTION);
-
-        ///convert String to Rupiah Curerncy
         Locale localeID = new Locale("in", "ID");
         NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
-        int price_capital = (Integer.parseInt(intent.getStringExtra(ConstanTransaction.KEY_PRICE_CAPITAL_TRANSACTION)));
+        int price_capital = (Integer.parseInt(intent.getStringExtra(ConstanTransaction.KEY_PRICE_SALE_TRANSACTION)));
         int price_sale = (Integer.parseInt(intent.getStringExtra(ConstanTransaction.KEY_PRICE_SALE_TRANSACTION)));
 
         if (price_capital == price_sale) {
@@ -181,10 +174,11 @@ public class TransactionSelectMitra extends AppCompatActivity {
         txt_status.setText(status);
         txt_id_transaction.setText(id_transaction);
         txt_name_product.setText(nameProduct);
-        txt_price_capital.setText(formatRupiah.format(price_capital));
+       /// txt_price_capital.setText(formatRupiah.format(price_capital));
         txt_price_sale.setText(formatRupiah.format(price_sale));
         txt_weight.setText(weight);
         txt_origin.setText(origin);
+        txt_harga_barang.setText(harga_barang);
         txt_destination.setText(destination);
         text_image.setText(imageProduct);
         Log.v("jajal",  sharedPrefManager.getSpIdMember()+": idMember");
@@ -195,14 +189,14 @@ public class TransactionSelectMitra extends AppCompatActivity {
         Log.v("jajal", status+": idstatus");
         Log.v("jajal", id_transaction+": idTransaction");
         Log.v("jajal", nameProduct+": nameproduk");
-        Log.v("jajal", price_capital+": pricecapital");
+       /// Log.v("jajal", price_capital+": pricecapital");
         Log.v("jajal", price_sale+": pricesale");
         Log.v("jajal", weight+": weight");
         Log.v("jajal", origin+": origin");
         Log.v("jajal", destination+": destination");
         Log.v("jajal", imageProduct+"image");
 
-        Glide.with(TransactionSelectMitra.this)
+        Glide.with(TransactionSelectMitraFitur.this)
                 .load(imageProduct)
                 .placeholder(R.drawable.no_image)
                 .error(R.drawable.no_image)
@@ -211,9 +205,9 @@ public class TransactionSelectMitra extends AppCompatActivity {
         /*get ongkir by API*/
         getOngkir();
 
-        adapterMitraSelected = new AdapterMitraSelected(TransactionSelectMitra.this);
+        adapterMitraSelected = new AdapterMitraSelected(TransactionSelectMitraFitur.this);
         rvMitra.setAdapter(adapterMitraSelected);
-        GridLayoutManager mLayoutManager = new GridLayoutManager(TransactionSelectMitra.this, 1, GridLayoutManager.VERTICAL, false);
+        GridLayoutManager mLayoutManager = new GridLayoutManager(TransactionSelectMitraFitur.this, 1, GridLayoutManager.VERTICAL, false);
         rvMitra.setLayoutManager(mLayoutManager);
         rvMitra.setItemAnimator(new DefaultItemAnimator());
         swipeRefresh.setColorScheme(android.R.color.holo_orange_dark,
@@ -230,8 +224,6 @@ public class TransactionSelectMitra extends AppCompatActivity {
         });
         selectedMitra();
 
-
-
         btnSelanjutnya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -242,7 +234,7 @@ public class TransactionSelectMitra extends AppCompatActivity {
                     Toast.makeText(TransactionSelectMitra.this, "Silahkan pilih mitra\nminimal 1\nmaximal 3", Toast.LENGTH_LONG).show();
                 } else */if(spinnercourier.getSelectedItem().equals("-- Pilih Pengiriman --")) {
                     //Toast.makeText(TransactionSelectMitra.this, "Pilih jasa pengiriman barang anda", Toast.LENGTH_LONG).show();
-                    AlertDialog alertDialog = new AlertDialog.Builder(TransactionSelectMitra.this).create();
+                    AlertDialog alertDialog = new AlertDialog.Builder(TransactionSelectMitraFitur.this).create();
                     alertDialog.setTitle("Info");
                     alertDialog.setMessage("Anda belum mengisi jasa pengiriman.");
                     alertDialog.setIcon(R.drawable.alert);
@@ -257,25 +249,14 @@ public class TransactionSelectMitra extends AppCompatActivity {
                     NextTenor();
                 }
 
-                /*if(dataItem.isCheck()){
-                    NextTenor();
-                }else {
-                    Toast.makeText(TransactionSelectMitra.this, "Anda belum memilih Tenor", Toast.LENGTH_LONG).show();
 
-                }*/
-
-
-//                Intent intent = new Intent(TransactionSelectMitra.this  , TransactionSelectTenor.class );
-//                startActivity(intent);
-//                Intent intent = new Intent(TransactionSelectMitra.this, TransactionSelectTenor.class);
-//                startActivity(intent);
 
             }
         });
-
     }
 
-    private void NextTenor() {
+
+    private void NextTenor(){
         String id_member = sharedPrefManager.getSpIdMember();
         String id_product_category = txt_id_product_category.getText().toString();
         String id_product = txt_id.getText().toString();
@@ -284,10 +265,11 @@ public class TransactionSelectMitra extends AppCompatActivity {
         String note = txt_note.getText().toString();
         String estimasipengiman = tv_estimasipengiriman.getText().toString();
         String price_capital = txt_price_capital.getText().toString();
-        String price_sale = txt_price_sale.getText().toString();
+        String price_sale = txt_harga_barang.getText().toString();
         String name_product = txt_name_product.getText().toString();
         String image_product = text_image.getText().toString();
         String id_transaction = txt_id_transaction.getText().toString();
+
 
         Log.v("btnNext", id_member+": id_member");
         Log.v("btnNext", id_product_category+": id_member");
@@ -313,7 +295,7 @@ public class TransactionSelectMitra extends AppCompatActivity {
                 mitraStringBuilder.append(dataItem.getIdCompany()).append("|");
             }
         }
-       /// Toast.makeText(TransactionSelectMitra.this, ""+mitraStringBuilder+id_member+id_product_category+id_product+number+courier+note+estimasipengiman, Toast.LENGTH_LONG ).show();
+        /// Toast.makeText(TransactionSelectMitra.this, ""+mitraStringBuilder+id_member+id_product_category+id_product+number+courier+note+estimasipengiman, Toast.LENGTH_LONG ).show();
         ///Log.v("jajal2", number+ " bismillah");
         for (int i = 0; i < dataItemList.size(); i++) {
             if (dataItem.isCheck()) {
@@ -327,13 +309,13 @@ public class TransactionSelectMitra extends AppCompatActivity {
 
 
         HashMap<String, String> params = new HashMap<>();
-        params.put("id_member",sharedPrefManager.getSpIdMember() );
+        //params.put("id_member",sharedPrefManager.getSpIdMember() );
         params.put("id_product_category", txt_id_product_category.getText().toString());
-        params.put("id_product",  txt_id.getText().toString());
-        params.put("number", txt_number.getText().toString());
         params.put("list_id_company", mitraStringBuilder.toString());
+        params.put("price_sale", txt_harga_barang.getText().toString());
 
-        Call<ResponseBody> getCicilan = mApiService.getCicilanProduct(params);
+
+        Call<ResponseBody> getCicilan = mApiService.getCicilanProductFitur(params);
 
         getCicilan.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -346,7 +328,7 @@ public class TransactionSelectMitra extends AppCompatActivity {
                             responseCicilans = new ArrayList<>();
                             if(jsonObject.getString("response_code").equals("200")){
                                 jsonObject = new JSONObject(jsonObject.getString("data"));
-                                productMeta = new ProductMeta();
+/*                                productMeta = new ProductMeta();
                                 jsonObject3 = new JSONObject(jsonObject.getString("product_meta"));
                                 productMeta.setIdProduct(jsonObject3.getString("id_product"));
                                 productMeta.setNumber(jsonObject3.getString("number"));
@@ -356,37 +338,36 @@ public class TransactionSelectMitra extends AppCompatActivity {
                                 productMeta.setFilename(jsonObject3.getString("filename"));
                                 productMeta.setIdProductCategory(jsonObject3.getString("id_product_category"));
                                 productMeta.setPriceCapital(jsonObject3.getString("price_capital"));
-                                productMeta.setPriceSale(jsonObject3.getString("price_sale"));
+                                productMeta.setPriceSale(jsonObject3.getString("price_sale"));*/
 
-                                    companiesDataItemArrayList = new ArrayList<>();
-                                    jsonArray = new JSONArray(jsonObject.getString("companies_data"));
-                                    for (int i = 0; i < jsonArray.length(); i++){
-                                        jsonObject = jsonArray.getJSONObject(i);
-                                        companiesDataItem = new CompaniesDataItem();
-                                        companiesDataItem.setIdCompany(jsonObject.getString("id_company"));
-                                        companiesDataItem.setName(jsonObject.getString("name"));
-                                        companiesDataItem.setDownPayment(jsonObject.getString("downPayment"));
+                                companiesDataItemArrayList = new ArrayList<>();
+                                jsonArray = new JSONArray(jsonObject.getString("companies_data"));
+                                for (int i = 0; i < jsonArray.length(); i++){
+                                    jsonObject = jsonArray.getJSONObject(i);
+                                    companiesDataItem = new CompaniesDataItem();
+                                    companiesDataItem.setIdCompany(jsonObject.getString("id_company"));
+                                    companiesDataItem.setName(jsonObject.getString("name"));
+                                    companiesDataItem.setDownPayment(jsonObject.getString("downPayment"));
 
-                                        dataCicilanItemArrayList = new ArrayList<>();
-                                        jsonArray1 = new JSONArray(jsonObject.getString("data_cicilan"));
-                                        for (int j = 0; j < jsonArray1.length(); j++) {
-                                            jsonObject1 = jsonArray1.getJSONObject(j);
-                                            dataCicilanItem = new DataCicilanItem();
-                                            dataCicilanItem.setBulan(jsonObject1.getString("bulan"));
-                                            dataCicilanItem.setCicilan(jsonObject1.getString("cicilan"));
-                                            dataCicilanItemArrayList.add(dataCicilanItem);
-                                        }
-                                        companiesDataItem.setDataCicilan(dataCicilanItemArrayList);
-                                        companiesDataItemArrayList.add(companiesDataItem);
+                                    dataCicilanItemArrayList = new ArrayList<>();
+                                    jsonArray1 = new JSONArray(jsonObject.getString("data_cicilan"));
+                                    for (int j = 0; j < jsonArray1.length(); j++) {
+                                        jsonObject1 = jsonArray1.getJSONObject(j);
+                                        dataCicilanItem = new DataCicilanItem();
+                                        dataCicilanItem.setBulan(jsonObject1.getString("bulan"));
+                                        dataCicilanItem.setCicilan(jsonObject1.getString("cicilan"));
+                                        dataCicilanItemArrayList.add(dataCicilanItem);
                                     }
+                                    companiesDataItem.setDataCicilan(dataCicilanItemArrayList);
+                                    companiesDataItemArrayList.add(companiesDataItem);
+                                }
 
 
-                               // Log.v("jajal product", jsonObject1+ "");
-                               /// Log.v("jajal mitra", jsonObject1+ "");
+                                // Log.v("jajal product", jsonObject1+ "");
+                                /// Log.v("jajal mitra", jsonObject1+ "");
 
-                                Intent intent = new Intent(TransactionSelectMitra.this, TransactionSelectTenor.class);
+                                Intent intent = new Intent(TransactionSelectMitraFitur.this, TransactionSelectTenorFitur.class);
                                 intent.putExtra("datalist", companiesDataItemArrayList);
-                                intent.putExtra("productMeta", productMeta);
                                 intent.putExtra("id_member",id_member);
                                 intent.putExtra("id_product_category",id_product_category);
                                 intent.putExtra("id_product",id_product);
@@ -401,6 +382,7 @@ public class TransactionSelectMitra extends AppCompatActivity {
                                 intent.putExtra("id_transaction", id_transaction);
                                 startActivity(intent);
                                 finish();
+
                             }
 
 
@@ -409,26 +391,26 @@ public class TransactionSelectMitra extends AppCompatActivity {
                         }
 
 
-                        //Log.v("jajal", ""+response.body().string()+ "bismillah");
-                        //Toast.makeText(TransactionSelectMitra.this," response message "+response.body().string(),Toast.LENGTH_LONG).show();
+                    //Log.v("jajal", ""+response.body().string()+ "bismillah");
+                    //Toast.makeText(TransactionSelectMitra.this," response message "+response.body().string(),Toast.LENGTH_LONG).show();
                     if(response.errorBody()!=null)
-                        Toast.makeText(TransactionSelectMitra.this," response message Error "+response.errorBody().string(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(TransactionSelectMitraFitur.this," response message Error "+response.errorBody().string(),Toast.LENGTH_LONG).show();
                 }catch (Exception e){
                     e.printStackTrace();
                 }
 
-           }
+            }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Toast.makeText(TransactionSelectMitra.this, "Invalid response from server 2", Toast.LENGTH_SHORT).show();
+                Toast.makeText(TransactionSelectMitraFitur.this, "Invalid response from server 2", Toast.LENGTH_SHORT).show();
             }
         });
 
 
 
-
     }
+
 
     private void getOngkir(){
         logisticvalue = new HashMap<Integer, String>();
@@ -453,7 +435,7 @@ public class TransactionSelectMitra extends AppCompatActivity {
                         cost[i + 1] = getLogistic.get(i).getCost();
                         logisticvalue.put(cost[i + 1], name[i + 1] );
                     }
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(TransactionSelectMitra.this,
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(TransactionSelectMitraFitur.this,
                             android.R.layout.simple_spinner_item, name);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spinnercourier.setAdapter(adapter);
@@ -464,7 +446,7 @@ public class TransactionSelectMitra extends AppCompatActivity {
                             if(position>0){
                                 Integer logisticvalue = getLogistic.get(position - 1 ).getCost();
                                 tv_estimasipengiriman.setText(String.valueOf(logisticvalue));
-                               ///// Toast.makeText(TransactionSelectMitra.this, " "+logisticvalue, Toast.LENGTH_LONG).show();
+                                ///// Toast.makeText(TransactionSelectMitra.this, " "+logisticvalue, Toast.LENGTH_LONG).show();
 
                             }
                         }
@@ -474,7 +456,7 @@ public class TransactionSelectMitra extends AppCompatActivity {
 
                         }
                     });
-                        //
+                    //
                     ///Toast.makeText(TransactionSelectMitra.this, response.body().getData().toString(), Toast.LENGTH_LONG).show();
                 }
 
@@ -482,7 +464,7 @@ public class TransactionSelectMitra extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponseOngkir> call, Throwable t) {
-                Toast.makeText(TransactionSelectMitra.this, "Perikasa Internet Anda" , Toast.LENGTH_LONG).show();
+                Toast.makeText(TransactionSelectMitraFitur.this, "Perikasa Internet Anda" , Toast.LENGTH_LONG).show();
             }
         });
 
@@ -514,7 +496,7 @@ public class TransactionSelectMitra extends AppCompatActivity {
 
                 } else {
                     swipeRefresh.setRefreshing(false);
-                    Toast.makeText(TransactionSelectMitra.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TransactionSelectMitraFitur.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -546,5 +528,4 @@ public class TransactionSelectMitra extends AppCompatActivity {
         super.onBackPressed();
         finish();
     }
-
 }

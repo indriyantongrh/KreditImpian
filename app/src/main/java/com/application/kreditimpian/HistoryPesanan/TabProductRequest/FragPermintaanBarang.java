@@ -146,6 +146,7 @@ public class FragPermintaanBarang extends Fragment {
                 new RecyclerItemClickListener(mContext, new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
 
+
                         String id_transactions = detaiList.get(position).getIdTransaction();
                         String status = detaiList.get(position).getStatus();
                         String timestamp = detaiList.get(position).getTimestamp();

@@ -171,6 +171,10 @@ public interface BaseApiService {
     Call<ResponseBody> getCicilanProduct(@FieldMap HashMap<String, String> params);
 
     @FormUrlEncoded
+    @POST("ApiMobile/getTenorByCompanyUploadImpian")
+    Call<ResponseBody> getCicilanProductFitur(@FieldMap HashMap<String, String> params);
+
+    @FormUrlEncoded
     @POST("ApiMobile/insertMetaDataProductTransaction")
     Call<ResponsePengajuanCatalog> postPengajuan(@FieldMap HashMap<String, String> params);
 

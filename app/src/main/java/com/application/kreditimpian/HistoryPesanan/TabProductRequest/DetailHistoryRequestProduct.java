@@ -85,7 +85,7 @@ public class DetailHistoryRequestProduct extends AppCompatActivity {
         ButterKnife.bind(this);
         Intent intent = getIntent();
         String id = intent.getStringExtra(ConstanHistoryPesanan.KEY_ID);
-        String id_transactions = intent.getStringExtra(ConstanHistoryPesanan.KEY_ID_TRANSACTION);
+        String id_transaction = intent.getStringExtra(ConstanHistoryPesanan.KEY_ID_TRANSACTION);
         String status = intent.getStringExtra(ConstanHistoryPesanan.KEY_STATUS);
         String number = intent.getStringExtra(ConstanHistoryPesanan.KEY_NUMBER);
         String name = intent.getStringExtra(ConstanHistoryPesanan.KEY_NAME_PRODUCT);
@@ -94,6 +94,7 @@ public class DetailHistoryRequestProduct extends AppCompatActivity {
         String postal_code = intent.getStringExtra(ConstanHistoryPesanan.KEY_POSTAL_CODE);
         String id_product_category = intent.getStringExtra(ConstanHistoryPesanan.KEY_ID_PRODUCT_CATEGORY);
         String id_product = intent.getStringExtra(ConstanHistoryPesanan.KEY_ID_PRODUCT);
+        String reference_id = intent.getStringExtra(ConstanHistoryPesanan.KEY_ID_PRODUCT);
         String price_sale = intent.getStringExtra(ConstanHistoryPesanan.KEY_PRICE_SALE);
         String filename = intent.getStringExtra("content");
         String weight_value = intent.getStringExtra("weight_value");
@@ -134,15 +135,17 @@ public class DetailHistoryRequestProduct extends AppCompatActivity {
                             case DialogInterface.BUTTON_POSITIVE:
                                 //Yes button clicked
 
-                                Intent intent = new Intent(DetailHistoryRequestProduct.this, TransactionSelectMitra.class);
+                                Intent intent = new Intent(DetailHistoryRequestProduct.this, TransactionSelectMitraFitur.class);
                                 intent.putExtra("id_member", sharedPrefManager.getSpIdMember());
+                                intent.putExtra("id_product", id_product);
+                                intent.putExtra("reference_id", reference_id);
+                                intent.putExtra("id_transaction", id_transaction);
                                 intent.putExtra("status", status);
                                 intent.putExtra("number", number);
                                 intent.putExtra("id_product_category",id_product_category);
                                 intent.putExtra("weight",weight_value);
                                 intent.putExtra("origin", id_geodirectory);
                                 intent.putExtra("price_sale",price_sale);
-                                intent.putExtra("price_capital",price_sale);
                                 intent.putExtra("filename",filename);
                                 intent.putExtra("name",name);
                                 intent.putExtra("destination",member_city);
@@ -151,6 +154,8 @@ public class DetailHistoryRequestProduct extends AppCompatActivity {
                                 finish();
 
 
+                                Log.v("data intent", "id product :"+id_product);
+                                Log.v("data intent", "id transactions :"+id_transaction);
                                 Log.v("data intent", "status :"+status);
                                 Log.v("data intent", "id member : "+sharedPrefManager.getSpIdMember());
                                 Log.v("data intent", "nomor invoice :"+number);
