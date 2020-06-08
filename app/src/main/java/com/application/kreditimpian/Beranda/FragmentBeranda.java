@@ -26,6 +26,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -66,6 +67,7 @@ import com.application.kreditimpian.Model.ModelMerchant.ResponseMerchant;
 import com.application.kreditimpian.Model.ModelMerchant.ResultItem;
 import com.application.kreditimpian.Model.ModelMitra;
 
+import com.application.kreditimpian.Model.ModelNotifFitur.ResponseNotifFitur;
 import com.application.kreditimpian.Model.ModelNotifikasi.ModelNotifikasi;
 import com.application.kreditimpian.Model.ModelOnShoppingCart.ResponseOnShoppingCart;
 import com.application.kreditimpian.Notifikasi.Notifikasi;
@@ -82,6 +84,7 @@ import com.facebook.shimmer.ShimmerFrameLayout;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -351,6 +354,7 @@ public class FragmentBeranda extends Fragment {
         rv_merchant.setItemAnimator(new DefaultItemAnimator());
         getResultList();
         getNotifikasi();
+        getNotifikasiFitur();
         getOnShoppingCart();
 
         getPromotion();
@@ -414,6 +418,36 @@ public class FragmentBeranda extends Fragment {
                 }
             }
         });
+    }
+
+    private void getNotifikasiFitur(){
+        HashMap<String, String> params = new HashMap<>();
+        params.put("id_member", sharedPrefManager.getSpIdMember());
+
+        mApiService.getnotifikasiFitur(params).enqueue(new Callback<ResponseNotifFitur>() {
+            @Override
+            public void onResponse(Call<ResponseNotifFitur> call, Response<ResponseNotifFitur> response) {
+                if(response.body().getResponseCode() == 200){
+
+                    final List<com.application.kreditimpian.Model.ModelNotifFitur.DataItem> NotifFitur = response.body().getData();
+                    if(NotifFitur.get(0).getStatus().equals("SEEN")){
+                        totalnotif++;
+                    }
+                    if (totalnotif > 0) {
+                        menu.getItem(1).setIcon(ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.notification_unseen));
+                    }
+
+                }else{
+                    Log.d("Notif", "get notif gagal");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseNotifFitur> call, Throwable t) {
+
+            }
+        });
+
     }
 
     private void getResultList() {
