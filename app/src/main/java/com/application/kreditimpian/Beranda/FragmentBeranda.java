@@ -44,6 +44,7 @@ import android.widget.Toast;
 import com.application.kreditimpian.Adapter.AdapterCart;
 import com.application.kreditimpian.Adapter.AdapterMerchant;
 import com.application.kreditimpian.Adapter.AdapterMitra;
+import com.application.kreditimpian.Adapter.AdapterMitraKami;
 import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
@@ -67,6 +68,7 @@ import com.application.kreditimpian.Model.ModelMerchant.ResponseMerchant;
 import com.application.kreditimpian.Model.ModelMerchant.ResultItem;
 import com.application.kreditimpian.Model.ModelMitra;
 
+import com.application.kreditimpian.Model.ModelMitraKami.ResponseMitraKami;
 import com.application.kreditimpian.Model.ModelNotifFitur.ResponseNotifFitur;
 import com.application.kreditimpian.Model.ModelNotifikasi.ModelNotifikasi;
 import com.application.kreditimpian.Model.ModelOnShoppingCart.ResponseOnShoppingCart;
@@ -104,7 +106,6 @@ public class FragmentBeranda extends Fragment {
     private ShimmerFrameLayout mShimmerViewContainer;
     CardView btn_lainya, btn_handphone, btn_laptop, btn_otomotif, btn_forniture, btn_fashion, btn_olahraga, btn_property;
     ImageButton btn_fotoimpian, btnupload, btncari, btnupgrade;
-    RecyclerView rv_mitra;
     String datalist;
     TextView textCartItemCount;
     ImageView imagefoto, btnCart;
@@ -138,13 +139,20 @@ public class FragmentBeranda extends Fragment {
 
     @BindView(R.id.rv_merchant)
     RecyclerView rv_merchant;
+    @BindView(R.id.rv_mitra)
+    RecyclerView rv_mitra;
     @BindView(R.id.pbLoading)
     ProgressBar pbLoading;
+    @BindView(R.id.pbLoading2)
+    ProgressBar pbLoading2;
 
     BaseApiService mApiService;
     Context mContext;
     List<ResultItem> resultItemList = new ArrayList<>();
     AdapterMerchant adapterMerchant;
+
+    List<com.application.kreditimpian.Model.ModelMitraKami.ResultItem> resultItemList1 = new ArrayList<>();
+    AdapterMitraKami adapterMitraKami;
 
     List<DataItem> getImagePromo = new ArrayList<>();
     String id, username;
@@ -179,7 +187,7 @@ public class FragmentBeranda extends Fragment {
             requestPermission();
         }
 
-        rv_mitra = rootView.findViewById(R.id.rv_mitra);
+        //rv_mitra = rootView.findViewById(R.id.rv_mitra);
         imagefoto = rootView.findViewById(R.id.imagefoto);
         btn_handphone = rootView.findViewById(R.id.btn_handphone);
         btn_laptop = rootView.findViewById(R.id.btn_laptop);
@@ -352,7 +360,13 @@ public class FragmentBeranda extends Fragment {
         GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 1, GridLayoutManager.HORIZONTAL, false);
         rv_merchant.setLayoutManager(mLayoutManager);
         rv_merchant.setItemAnimator(new DefaultItemAnimator());
+
+        adapterMitraKami = new AdapterMitraKami(getActivity(), resultItemList1);
+        GridLayoutManager mLayoutManager1 = new GridLayoutManager(getActivity(), 1, GridLayoutManager.HORIZONTAL, false);
+        rv_mitra.setLayoutManager(mLayoutManager1);
+        rv_mitra.setItemAnimator(new DefaultItemAnimator());
         getResultList();
+        getMitra();
         getNotifikasi();
         getNotifikasiFitur();
         getOnShoppingCart();
@@ -450,6 +464,42 @@ public class FragmentBeranda extends Fragment {
 
     }
 
+    private void getMitra(){
+
+        mApiService.getMitraKami().enqueue(new Callback<ResponseMitraKami>() {
+            @Override
+            public void onResponse(Call<ResponseMitraKami> call, Response<ResponseMitraKami> response) {
+                pbLoading2.setVisibility(View.GONE);
+                if (response.isSuccessful()) {
+                    ///progressBar.dismiss();
+                    if (response.body().getStatus() == 200) {
+                        //swipeRefresh.setRefreshing(false);
+                        ///progressBar.dismiss();
+                        final List<com.application.kreditimpian.Model.ModelMitraKami.ResultItem> AllMitra = response.body().getResult();
+
+                        rv_mitra.setAdapter(new AdapterMitraKami(mContext, AllMitra));
+                        adapterMitraKami.notifyDataSetChanged();
+                        ///empty.setVisibility(View.GONE);
+                        //initDataIntent(Allproduct);
+                    } else {
+                        //progressBar.dismiss();
+                        ///empty.setVisibility(View.VISIBLE);
+                    }
+
+                } else {
+                    //progressBar.dismiss();
+                    pbLoading.setVisibility(View.GONE);
+                    Toast.makeText(mContext, "Gagal Refresh", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseMitraKami> call, Throwable t) {
+
+            }
+        });
+    }
+
     private void getResultList() {
         ///progressBar = ProgressDialog.show(getActivity(), null, "Harap Tunggu...", true, false);
 
@@ -490,6 +540,7 @@ public class FragmentBeranda extends Fragment {
 
 
     //////////////////////////////
+/*
     private void initViewMitra() {
         rv_mitra.setHasFixedSize(true);
         final RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
@@ -501,6 +552,7 @@ public class FragmentBeranda extends Fragment {
         rv_mitra.setAdapter(adapterMitra);
         adapterMitra.notifyDataSetChanged();
     }
+*/
 
 
 ////////////////////////////

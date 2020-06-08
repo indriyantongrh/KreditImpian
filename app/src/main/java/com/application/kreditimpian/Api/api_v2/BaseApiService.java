@@ -16,6 +16,7 @@ import com.application.kreditimpian.Model.ModelLogin.ResponseLogin;
 import com.application.kreditimpian.Model.ModelMember.ResponseMember;
 import com.application.kreditimpian.Model.ModelMemberInsert.ResponseMemberInsert;
 import com.application.kreditimpian.Model.ModelMerchant.ResponseMerchant;
+import com.application.kreditimpian.Model.ModelMitraKami.ResponseMitraKami;
 import com.application.kreditimpian.Model.ModelMitraSelected.ResponseMitraSelected;
 import com.application.kreditimpian.Model.ModelMultiguna.ResponseMultiguna;
 import com.application.kreditimpian.Model.ModelNewHistoryPesanan.ResponseNewHistoryPesanan;
@@ -213,6 +214,9 @@ public interface BaseApiService {
     //getAllProduct
     @GET("companies?id_company_category=1")
     Call<ResponseMerchant> getMerchnat();
+
+    @GET("companies?id_company_category=2")
+    Call<ResponseMitraKami> getMitraKami();
 
     /*Get all Product with limit and page*/// Check Uncheck
     /*@GET("products?status=PUBLISH")
