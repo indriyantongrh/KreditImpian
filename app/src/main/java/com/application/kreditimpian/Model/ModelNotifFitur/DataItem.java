@@ -28,6 +28,30 @@ public class DataItem{
 	@SerializedName("status")
 	private String status;
 
+	@SerializedName("name")
+	private String name;
+
+	public String getPrice_sale() {
+		return price_sale;
+	}
+
+	public void setPrice_sale(String price_sale) {
+		this.price_sale = price_sale;
+	}
+
+	@SerializedName("price_sale")
+	private String price_sale;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+
 	public void setMetadata(String metadata){
 		this.metadata = metadata;
 	}

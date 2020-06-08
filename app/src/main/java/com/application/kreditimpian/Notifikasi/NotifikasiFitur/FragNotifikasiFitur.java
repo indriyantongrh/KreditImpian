@@ -1,6 +1,7 @@
 package com.application.kreditimpian.Notifikasi.NotifikasiFitur;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -22,6 +23,8 @@ import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
 import com.application.kreditimpian.FormPengajuan.UpgradeImpian.viewmodel.UpgradeImpianViewModel;
+import com.application.kreditimpian.HistoryPesanan.TabMultiguna.DetailMultiguna;
+import com.application.kreditimpian.Marketplace.FragSemuaKategori.RecyclerItemClickListener;
 import com.application.kreditimpian.Model.ModelNotifFitur.DataItem;
 import com.application.kreditimpian.Model.ModelNotifFitur.ResponseNotifFitur;
 import com.application.kreditimpian.Notifikasi.NotifikasiAdapter;
@@ -119,7 +122,7 @@ public class FragNotifikasiFitur extends Fragment {
                     rvNotifikasi.setAdapter(new AdapterNotifFitur(mContext, ListNotif));
                     adapterNotifFitur.notifyDataSetChanged();
                     empty.setVisibility(View.GONE);
-
+                    initDataIntent(ListNotif);
                 }else {
                     Toast.makeText(getContext(), "Error 1", Toast.LENGTH_LONG).show();
 
@@ -162,5 +165,39 @@ public class FragNotifikasiFitur extends Fragment {
             }
         });*/
     }
+
+    private void initDataIntent(final List<DataItem> detaiList){
+        rvNotifikasi.addOnItemTouchListener(
+                new RecyclerItemClickListener(mContext, new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+
+                        String id_member = detaiList.get(position).getIdMember();
+                        String message = detaiList.get(position).getMessage();
+                        String metadata = detaiList.get(position).getMetadata();
+                        String status = detaiList.get(position).getStatus();
+                        String id_product_request = detaiList.get(position).getIdProductRequest();
+                        String content = detaiList.get(position).getContent();
+                        String method = detaiList.get(position).getMethod();
+                        String record_create_timestamp = detaiList.get(position).getRecordCreateTimestamp();
+                        String name = detaiList.get(position).getName();
+                        String price_sale = detaiList.get(position).getPrice_sale();
+
+
+                        Intent detailProductRequest = new Intent(mContext, DetailNotifikasiFitur.class);
+                        detailProductRequest.putExtra("id_member", id_member);
+                        detailProductRequest.putExtra("message", message);
+                        detailProductRequest.putExtra("metadata", metadata);
+                        detailProductRequest.putExtra("status", status);
+                        detailProductRequest.putExtra("id_product_request", id_product_request);
+                        detailProductRequest.putExtra("content", content);
+                        detailProductRequest.putExtra("method", method);
+                        detailProductRequest.putExtra("record_create_timestamp", record_create_timestamp);
+                        detailProductRequest.putExtra("name", name);
+                        detailProductRequest.putExtra("price_sale", price_sale);
+                        startActivity(detailProductRequest);
+                    }
+                }));
+    }
+
 
 }

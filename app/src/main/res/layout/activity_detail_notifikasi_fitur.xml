@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Notifikasi.NotifikasiFitur.DetailNotifikasiFitur">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        tools:ignore="MissingConstraints">
+
+
+        <RelativeLayout
+            android:id="@+id/RelativeTransaction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            tools:ignore="MissingConstraints">
+
+            <LinearLayout
+                android:id="@+id/linearstatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp">
+
+                <TextView
+                    android:id="@+id/text_status_pesanan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="9dp"
+                    android:text="Status"
+                    android:textColor="@color/colorBlack" />
+
+
+                <TextView
+                    android:id="@+id/txt_status_pesanan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="9dp"
+                    android:gravity="center"
+                    android:text="Status Pesanan"
+                    android:textColor="@color/colorOrange"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <!--Border-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/linearstatus"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:background="#FF6802"></LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/linearnomorinvoice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linearstatus"
+                android:orientation="vertical"
+                android:paddingTop="3dp"
+                android:paddingBottom="7dp">
+
+                <TextView
+                    android:id="@+id/text_nomor_invoice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="9dp"
+                    android:text="Metode Pengajuan"
+                    android:textColor="@color/colorBlack" />
+
+
+                <TextView
+                    android:id="@+id/txt_nomor_invoice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="9dp"
+                    android:text="Metode pengajuan"
+                    android:textColor="@color/colorOrange" />
+
+            </LinearLayout>
+            <!--Border-->
+            <LinearLayout
+                android:id="@+id/boder2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/linearnomorinvoice"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:background="#FF6802"></LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:id="@+id/LinearImage"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/boder2"
+                android:orientation="vertical"
+                android:paddingTop="5dp">
+
+                <TextView
+                    android:id="@+id/text_detail_barang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="9dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Detail Barang"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="match_parent"
+                    android:layout_height="125dp"
+                    android:layout_marginStart="8dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/no_image" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txt_name_product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/boder2"
+                android:layout_marginStart="8dp"
+                android:layout_toRightOf="@+id/LinearImage"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:paddingTop="20dp"
+                android:text="Nama Product"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#636363"
+                android:textSize="14dp"
+                tools:ignore="NotSibling" />
+
+            <TextView
+                android:id="@+id/txt_price_capital"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_name_product"
+                android:layout_marginStart="8dp"
+                android:layout_toRightOf="@+id/LinearImage"
+                android:background="@drawable/strikethrough"
+                android:fontFamily="@font/cosimabold"
+                android:text="Harga Asli"
+                android:textColor="#9C9C9C"
+                android:textSize="12dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txt_price_sale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_price_capital"
+                android:layout_marginStart="8dp"
+                android:layout_toRightOf="@+id/LinearImage"
+                android:text="Harga Diskon"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_name_merchant"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_price_sale"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+                android:gravity="right"
+                android:text="Nama Merchant"
+                android:textSize="12dp"
+                android:visibility="gone" />
+
+
+
+        </RelativeLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -430,7 +430,7 @@ public class FragmentBeranda extends Fragment {
                 if(response.body().getResponseCode() == 200){
 
                     final List<com.application.kreditimpian.Model.ModelNotifFitur.DataItem> NotifFitur = response.body().getData();
-                    if(NotifFitur.get(0).getStatus().equals("SEEN")){
+                    if(NotifFitur.get(0).getStatus().equals("UNSEEN")){
                         totalnotif++;
                     }
                     if (totalnotif > 0) {

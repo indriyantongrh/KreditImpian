@@ -45,7 +45,21 @@ public class AdapterNotifFitur extends RecyclerView.Adapter<AdapterNotifFitur.Ho
         holder.txtMessageNotif.setText(dataItem.getMessage());
         holder.txtTglNotif.setText(dataItem.getRecordCreateTimestamp());
 
-    }
+        if(dataItem.getName()==null){
+            holder.name.setText("");
+
+        }else if(dataItem.getPrice_sale()==null){
+            holder.price_sale.setText("Harga Menunggu Konfirmasi Admin");
+        }
+
+        if(dataItem.getMethod().equals("MULTIFUNCTION")||dataItem.getName()==null){
+            holder.name.setVisibility(View.GONE);
+            holder.price_sale.setVisibility(View.GONE);
+        }else if(dataItem.getMethod().equals("MULTIFUNCTION")||dataItem.getPrice_sale()==null){
+            holder.name.setVisibility(View.GONE);
+            holder.price_sale.setVisibility(View.GONE);
+        }
+}
 
     @Override
     public int getItemCount() {
@@ -69,8 +83,10 @@ public class AdapterNotifFitur extends RecyclerView.Adapter<AdapterNotifFitur.Ho
         TextView filename;
         @BindView(R.id.id_product)
         TextView id_product;
-
-
+        @BindView(R.id.name)
+        TextView name;
+        @BindView(R.id.price_sale)
+        TextView price_sale;
 
 
         public HolderNotifFitur(@NonNull View itemView) {
