@@ -101,7 +101,7 @@
                             android:layout_height="match_parent"
                             android:layout_centerHorizontal="true"
                             android:background="@android:color/transparent"
-                            android:src="@drawable/iconcamera60px" />
+                            android:src="@drawable/iconfotoimpian" />
 
                         <TextView
                             android:id="@+id/text1"
@@ -113,7 +113,8 @@
                             android:gravity="center"
                             android:text="Foto Impian"
                             android:textColor="@color/colorOrange"
-                            android:textSize="23sp" />
+                            android:textStyle="bold"
+                            android:textSize="18sp" />
 
                     </RelativeLayout>
 
@@ -132,7 +133,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@android:color/transparent"
-                            android:src="@drawable/iconupload60px" />
+                            android:src="@drawable/uploadimpian" />
 
                         <TextView
                             android:id="@+id/textupload"
@@ -144,7 +145,8 @@
                             android:gravity="center"
                             android:text="Upload Impian"
                             android:textColor="@color/colorOrange"
-                            android:textSize="23sp" />
+                            android:textStyle="bold"
+                            android:textSize="18sp" />
 
                     </RelativeLayout>
 
@@ -164,7 +166,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@android:color/transparent"
-                            android:src="@drawable/iconsearch60x" />
+                            android:src="@drawable/cariimpian" />
 
                         <TextView
                             android:id="@+id/textcari"
@@ -176,7 +178,8 @@
                             android:gravity="center"
                             android:text="Cari Impian"
                             android:textColor="@color/colorOrange"
-                            android:textSize="23sp" />
+                            android:textStyle="bold"
+                            android:textSize="18sp" />
                     </RelativeLayout>
 
                     <!--Button Cari Impian Anda-->
@@ -194,7 +197,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@android:color/transparent"
-                            android:src="@drawable/iconupgrade60px" />
+                            android:src="@drawable/upgradeimpian" />
 
                         <TextView
                             android:id="@+id/textupgrade"
@@ -206,7 +209,8 @@
                             android:gravity="center"
                             android:text="Upgrade Impian"
                             android:textColor="@color/colorOrange"
-                            android:textSize="23sp" />
+                            android:textStyle="bold"
+                            android:textSize="18sp" />
                     </RelativeLayout>
 
 

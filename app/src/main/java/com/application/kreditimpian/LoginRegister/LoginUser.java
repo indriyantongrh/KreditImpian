@@ -389,7 +389,7 @@ public class LoginUser extends AppCompatActivity {
             }
             @Override
             public void onFailure(Call<ResponseLogin> call, Throwable t) {
-                pDialog.dismiss();
+                alertDialog.dismiss();
             }
         });
 
