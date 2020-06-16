@@ -72,7 +72,7 @@ public class KonfirmasiPembayaran extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         String id_transactions = extras.getString(KEY_ID_TRANSACTION);
         id_transaction.setText(id_transactions);
-        Toast.makeText(KonfirmasiPembayaran.this, "id transaction "+id_transactions, Toast.LENGTH_LONG).show();
+        ///Toast.makeText(KonfirmasiPembayaran.this, "id transaction "+id_transactions, Toast.LENGTH_LONG).show();
 
         btnkonfirmasi.setOnClickListener(new View.OnClickListener() {
             @Override

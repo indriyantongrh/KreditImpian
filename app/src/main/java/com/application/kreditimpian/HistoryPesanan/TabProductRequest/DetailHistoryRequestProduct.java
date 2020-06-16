@@ -17,6 +17,8 @@ import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
 import com.application.kreditimpian.Constan.ConstanHistoryPesanan;
+import com.application.kreditimpian.HistoryPesanan.TabRiwayatPesananan.DetailHistoryPesanan;
+import com.application.kreditimpian.KonfirmasiPembayaran.KonfirmasiPembayaran;
 import com.application.kreditimpian.R;
 import com.application.kreditimpian.TransactionProcess.TransactionSelectMitra;
 import com.bumptech.glide.Glide;
@@ -65,6 +67,11 @@ public class DetailHistoryRequestProduct extends AppCompatActivity {
     TextView tvAlamatPengiriman;
     @BindView(R.id.btnNext)
     Button btnNext;
+    @BindView(R.id.informationTransfer)
+    LinearLayout informationTransfer;
+    @BindView(R.id.btnuploaddp)
+    Button btnuploaddp;
+
     private String KEY_ID_TRANSACTION = "id_transaction";
     BaseApiService mApiService;
 
@@ -124,6 +131,21 @@ public class DetailHistoryRequestProduct extends AppCompatActivity {
         if (txt_status_pesanan.getText().toString().equals("ON_REQUEST_CONFIRM")){
             informationNextTransaction.setVisibility(View.VISIBLE);
         }
+
+        if (txt_status_pesanan.getText().toString().equals("CONFIRMED_CREDITOR")){
+            informationTransfer.setVisibility(View.VISIBLE);
+        }
+
+        btnuploaddp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent Klik = new Intent(DetailHistoryRequestProduct.this, KonfirmasiPembayaran.class);
+                Klik.putExtra(KEY_ID_TRANSACTION, id_transaction);
+                startActivity(Klik);
+                finish();
+            }
+        });
+
 
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override

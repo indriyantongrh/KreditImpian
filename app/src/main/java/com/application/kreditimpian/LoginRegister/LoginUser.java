@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,6 +32,7 @@ import com.application.kreditimpian.Api.api_v2.UtilsApi;
 import com.application.kreditimpian.BuildConfig;
 import com.application.kreditimpian.DecodeUtils.JWTUtils;
 import com.application.kreditimpian.ForgotPassword.ForgotPassword;
+import com.application.kreditimpian.LoadingDialog.LoadingDialog;
 import com.application.kreditimpian.MainActivity;
 import com.application.kreditimpian.MenuUtama.MenuUtama;
 import com.application.kreditimpian.Model.ModelLogin.DataItem;
@@ -59,6 +61,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.internal.bind.JsonTreeWriter;
 import com.google.gson.reflect.TypeToken;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -143,16 +146,50 @@ public class LoginUser extends AppCompatActivity {
     BaseApiService mApiService;
     SessionManager sessionManager;
 
+    AlertDialog alertDialog;
+    private AVLoadingIndicatorView Loading;
+    private static final String[] INDICATORS=new String[]{
+            "BallPulseIndicator",
+            "BallGridPulseIndicator",
+            "BallClipRotateIndicator",
+            "BallClipRotatePulseIndicator",
+            "SquareSpinIndicator",
+            "BallClipRotateMultipleIndicator",
+            "BallPulseRiseIndicator",
+            "BallRotateIndicator",
+            "CubeTransitionIndicator",
+            "BallZigZagIndicator",
+            "BallZigZagDeflectIndicator",
+            "BallTrianglePathIndicator",
+            "BallScaleIndicator",
+            "LineScaleIndicator",
+            "LineScalePartyIndicator",
+            "BallScaleMultipleIndicator",
+            "BallPulseSyncIndicator",
+            "BallBeatIndicator",
+            "LineScalePulseOutIndicator",
+            "LineScalePulseOutRapidIndicator",
+            "BallScaleRippleIndicator",
+            "BallScaleRippleMultipleIndicator",
+            "BallSpinFadeLoaderIndicator",
+            "LineSpinFadeLoaderIndicator",
+            "TriangleSkewSpinIndicator",
+            "PacmanIndicator",
+            "BallGridBeatIndicator",
+            "SemiCircleSpinIndicator",
+            "com.wang.avi.sample.MyCustomIndicator"
+    };
 
-
-    private JWT jwt;
-    private String decoded;
-    private String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_user);
+
+        /*Loading= (AVLoadingIndicatorView) findViewById(R.id.Loading);
+        Loading.setIndicator("BallPulseSyncIndicator");*/
+
+
         txtusername =findViewById(R.id.txtusername);
         txtpassword =findViewById(R.id.txtpassword);
         btnDaftar = findViewById(R.id.btnDaftar);
@@ -161,6 +198,8 @@ public class LoginUser extends AppCompatActivity {
         sCurrentVersion = BuildConfig.VERSION_NAME;
         tvVersion.setText("Kredit Impian v."+sCurrentVersion);
         new GetLatestVersion().execute();
+
+
 
         mApiService = UtilsApi.getAPIService();
         sharedPrefManager = new SharedPrefManager(this);
@@ -216,6 +255,7 @@ public class LoginUser extends AppCompatActivity {
                     txtpassword.setError("Password harap diisi");
 
                 else
+
                     LoginMemberValidation();
                     //UserLogin();
                    ///LoginUser();
@@ -301,11 +341,14 @@ public class LoginUser extends AppCompatActivity {
 
 
     public void LoginMemberValidation(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        pDialog = new ProgressDialog(this);
-        pDialog.setCancelable(false);
-        pDialog.setMessage("Loading ...");
-        pDialog.show();
+        LayoutInflater inflater = getLayoutInflater();
+        builder.setView(inflater.inflate(R.layout.loading_dialog, null));
+        builder.setCancelable(false);
+        alertDialog = builder.create();
+        alertDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        alertDialog.show();
 
 
         HashMap<String, String> params = new HashMap<>();
@@ -316,8 +359,8 @@ public class LoginUser extends AppCompatActivity {
         Validation.enqueue(new Callback<ResponseLogin>() {
             @Override
             public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
-                pDialog.dismiss();
-
+///                pDialog.dismiss();
+                ///stopAnim();
 
                 if (response.body().getResponseCode() == 200) {
 
@@ -654,6 +697,17 @@ public class LoginUser extends AppCompatActivity {
             builder.show();
 
         }
+    }
+
+    void startAnim(){
+        Loading.show();
+        Loading.setVisibility(View.VISIBLE);
+        // or avi.smoothToShow();
+    }
+
+    void stopAnim(){
+        Loading.hide();
+        // or avi.smoothToHide();
     }
 
 }

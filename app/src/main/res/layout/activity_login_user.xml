@@ -283,4 +283,16 @@
 
     </LinearLayout>
 
+
+<!--    <com.wang.avi.AVLoadingIndicatorView-->
+<!--        android:id="@+id/Loading"-->
+<!--        style="@style/AVLoadingIndicatorView"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:indicatorColor="@color/colorOrange"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:layout_centerInParent="true"-->
+<!--        android:foregroundGravity="center"-->
+<!--        android:visibility="visible"-->
+<!--        app:indicatorName="BallPulseIndicator" />-->
 </LinearLayout>

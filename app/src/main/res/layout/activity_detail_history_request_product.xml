@@ -666,6 +666,89 @@
             </LinearLayout>
 
 
+            <LinearLayout
+                android:id="@+id/informationTransfer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/border5"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/text_selamat_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/colorBlack"
+                    android:text="Yeaayy!!! Selamat pengajuan Kredit anda sudah di stujui oleh penyedia kredit. n\ Langkah selanjutnya silhkan melakukan transfer ke nomor rekining dibawah ini." />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardinformationTransfer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text_selamat_text"
+                    android:layout_marginLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/borderhitam">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="170dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/borderhitam"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nomor Rekening"
+                            android:textColor="@color/colorBlack" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0854965869758757"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="PT.Hilari Hitec Dinamis"
+                            android:textColor="@color/colorBlack" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="30dp"
+                            android:gravity="center"
+                            android:text="Harap transfer sesuai dengan nominal yang tercantum \n pada total pembayaan"
+                            android:textColor="@color/colorBlack" />
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <Button
+                    android:id="@+id/btnuploaddp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="10dp"
+                    android:layout_below="@+id/cardinformationTransfer"
+                    android:background="@drawable/btnorange"
+                    android:textColor="@color/colorwhite"
+                    android:text="Konfirmasi Pembayaran" />
+
+            </LinearLayout>
+
         </RelativeLayout>
 
 

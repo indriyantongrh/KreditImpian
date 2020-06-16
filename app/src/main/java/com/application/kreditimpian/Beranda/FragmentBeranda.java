@@ -2,6 +2,7 @@ package com.application.kreditimpian.Beranda;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -118,6 +119,7 @@ public class FragmentBeranda extends Fragment {
     private ArrayList<ModelMitra> mArrayList;
 
     public static final String BASE_URL = BuildConfig.BASE_URL;
+    AlertDialog alertDialog;
 
     Dialog pDialog;
 
@@ -356,6 +358,7 @@ public class FragmentBeranda extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+
         adapterMerchant = new AdapterMerchant(getActivity(), resultItemList);
         GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 1, GridLayoutManager.HORIZONTAL, false);
         rv_merchant.setLayoutManager(mLayoutManager);
@@ -370,7 +373,6 @@ public class FragmentBeranda extends Fragment {
         getNotifikasi();
         getNotifikasiFitur();
         getOnShoppingCart();
-
         getPromotion();
 
     }
