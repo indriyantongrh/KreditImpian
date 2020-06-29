@@ -8,47 +8,211 @@
     tools:context=".Beranda.FragmentBeranda">
 
 
-    <FrameLayout
-        android:id="@+id/frame_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
-
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/linera1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="0dp">
+        android:orientation="vertical">
 
-        <!--                <androidx.appcompat.widget.Toolbar-->
-        <!--                    android:id="@+id/toolbar"-->
-        <!--                    android:layout_width="match_parent"-->
-        <!--                    android:layout_height="?attr/actionBarSize"-->
-        <!--                    android:background="?attr/colorPrimary"-->
-        <!--                    app:popupTheme="@style/ThemeOverlay.AppCompat"-->
-        <!--                    tools:ignore="MissingConstraints">-->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="70sp"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/ThemeOverlay.AppCompat"
+            tools:ignore="MissingConstraints">
 
-        <!--                    <ImageView-->
-        <!--                        android:id="@+id/logo"-->
-        <!--                        android:paddingTop="15dp"-->
-        <!--                        android:layout_width="320dp"-->
-        <!--                        android:paddingBottom="10dp"-->
-        <!--                        android:layout_height="wrap_content"-->
-        <!--                        android:foregroundGravity="center"-->
-        <!--                        android:paddingLeft="40dp"-->
-        <!--                        android:src="@drawable/logoputihkredit"/>-->
+        </androidx.appcompat.widget.Toolbar>
 
-        <!--                    <ImageButton-->
-        <!--                        android:id="@+id/notifikasi"-->
-        <!--                        android:layout_width="30dp"-->
-        <!--                        android:layout_height="30dp"-->
-        <!--                        android:visibility="gone"-->
-        <!--                        android:background="@color/colorOrange"-->
-        <!--                        android:src="@drawable/notifikasiputih"/>-->
+        <LinearLayout
+            android:id="@+id/linera23"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="0dp">
 
-        <!--                </androidx.appcompat.widget.Toolbar>-->
+            <!--Design Fitur-->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:paddingBottom="10dp"
+                app:cardCornerRadius="10dp"
+                app:strokeColor="@color/colorOrange"
+                app:strokeWidth="1.5dp">
+
+                <!--layout Fitur Kredit Impian-->
+                <LinearLayout
+                    android:id="@+id/fiturekreditimpian"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:baselineAligned="false"
+                    android:gravity="center|center_horizontal"
+                    android:orientation="horizontal">
+
+
+                        <!--Card Foto Impian-->
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/btnFotoimpian"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:focusable="true"
+                            app:cardBackgroundColor="@android:color/transparent"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="0dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:id="@+id/imageFotoImpian"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="10dp"
+                                    android:src="@drawable/iconfotoimpian"
+
+                                    />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:fontFamily="@font/jipatharegular"
+                                    android:gravity="center"
+                                    android:text="Foto Impian"
+                                    android:textColor="@color/colorOrange"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+                            </RelativeLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <!--Card Upload Impian-->
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/btnUploadImpian"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:focusable="true"
+                            app:cardBackgroundColor="@android:color/transparent"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="0dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:id="@+id/imageUploadImpian"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="10dp"
+                                    android:src="@drawable/uploadimpian"
+
+                                    />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:fontFamily="@font/jipatharegular"
+                                    android:gravity="center"
+                                    android:text="Upload Impian"
+                                    android:textColor="@color/colorOrange"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+                            </RelativeLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <!--Card Cari Impian-->
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/btnCariImpian"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:focusable="true"
+                            app:cardBackgroundColor="@android:color/transparent"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="0dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:id="@+id/imageCariImpian"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="10dp"
+                                    android:src="@drawable/cariimpian"
+
+                                    />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:fontFamily="@font/jipatharegular"
+                                    android:gravity="center"
+                                    android:text="Cari Impian"
+                                    android:textColor="@color/colorOrange"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+                            </RelativeLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <!--Card Upgrade Impian-->
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/btnUpgradeImpian"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:focusable="true"
+                            app:cardBackgroundColor="@android:color/transparent"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="0dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:id="@+id/imageUpgradeImpian"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="10dp"
+                                    android:src="@drawable/upgradeimpian"
+
+                                    />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:fontFamily="@font/jipatharegular"
+                                    android:gravity="center"
+                                    android:text="Upgrade Impian"
+                                    android:textColor="@color/colorOrange"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+                            </RelativeLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+
+
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+        </LinearLayout>
 
         <!--Effect loading seperti gojek-->
         <!--        <com.facebook.shimmer.ShimmerFrameLayout
@@ -61,547 +225,429 @@
                     shimmer:duration="100">-->
 
 
-        <androidx.core.widget.NestedScrollView
+        <LinearLayout
+            android:id="@+id/lineraScroll"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="#fff"
-            tools:ignore="MissingConstraints">
+            android:layout_below="@+id/linera23"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical"
+            android:padding="0dp">
 
-            <LinearLayout
-                android:id="@+id/linera2"
-                android:layout_width="match_parent"
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:background="#fff"
-                android:orientation="vertical"
-                android:padding="0dp">
+                tools:ignore="MissingConstraints">
 
 
-
-                <!--layout Fitur Kredit Impian-->
                 <LinearLayout
-                    android:id="@+id/fiturekreditimpian"
+                    android:id="@+id/linera2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:gravity="center"
-                    android:paddingTop="10dp">
-
-                    <!-- Button Foto Impian Anda-->
-                    <RelativeLayout
-                        android:layout_width="90dp"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:clickable="true"
-                        android:focusable="true">
-
-                        <ImageButton
-                            android:id="@+id/btn_fotoimpian"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_centerHorizontal="true"
-                            android:background="@android:color/transparent"
-                            android:src="@drawable/iconfotoimpian" />
-
-                        <TextView
-                            android:id="@+id/text1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/btn_fotoimpian"
-                            android:layout_alignParentBottom="true"
-                            android:fontFamily="@font/jipatharegular"
-                            android:gravity="center"
-                            android:text="Foto Impian"
-                            android:textColor="@color/colorOrange"
-                            android:textStyle="bold"
-                            android:textSize="18sp" />
-
-                    </RelativeLayout>
-
-                    <!-- Button Upload Impian Anda-->;
-
-                    <RelativeLayout
-                        android:layout_width="90dp"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:background="#fff"
-                        android:clickable="true"
-                        android:focusable="true">
-
-                        <ImageButton
-                            android:id="@+id/btnupload"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@android:color/transparent"
-                            android:src="@drawable/uploadimpian" />
-
-                        <TextView
-                            android:id="@+id/textupload"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/btnupload"
-                            android:layout_alignParentBottom="true"
-                            android:fontFamily="@font/jipatharegular"
-                            android:gravity="center"
-                            android:text="Upload Impian"
-                            android:textColor="@color/colorOrange"
-                            android:textStyle="bold"
-                            android:textSize="18sp" />
-
-                    </RelativeLayout>
+                    android:background="#fff"
+                    android:orientation="vertical"
+                    android:padding="0dp">
 
 
-                    <!--Button Cari Impian Anda-->
-                    <RelativeLayout
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:clickable="true"
-                        android:focusable="true"
-
-                        >
-
-                        <ImageButton
-                            android:id="@+id/btncari"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@android:color/transparent"
-                            android:src="@drawable/cariimpian" />
-
-                        <TextView
-                            android:id="@+id/textcari"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/btncari"
-                            android:layout_alignParentBottom="true"
-                            android:fontFamily="@font/jipatharegular"
-                            android:gravity="center"
-                            android:text="Cari Impian"
-                            android:textColor="@color/colorOrange"
-                            android:textStyle="bold"
-                            android:textSize="18sp" />
-                    </RelativeLayout>
-
-                    <!--Button Cari Impian Anda-->
-                    <RelativeLayout
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:clickable="true"
-                        android:focusable="true"
-
-                        >
-
-                        <ImageButton
-                            android:id="@+id/btnupgrade"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@android:color/transparent"
-                            android:src="@drawable/upgradeimpian" />
-
-                        <TextView
-                            android:id="@+id/textupgrade"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/btnupgrade"
-                            android:layout_alignParentBottom="true"
-                            android:fontFamily="@font/jipatharegular"
-                            android:gravity="center"
-                            android:text="Upgrade Impian"
-                            android:textColor="@color/colorOrange"
-                            android:textStyle="bold"
-                            android:textSize="18sp" />
-                    </RelativeLayout>
-
-
-                </LinearLayout>
-
-
-                <!--Kategori-->
-
-                <TextView
-                    android:id="@+id/text_masakan"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/rv_beranda"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center"
-                    android:text="Pilih Kategori"
-                    android:textColor="@color/colorOrange"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:visibility="gone" />
-
-
-                <!--Baris pertama-->
-                <RelativeLayout
-                    android:id="@+id/baris1"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:layout_marginHorizontal="0dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:gravity="center">
-
-                    <!--Card Fashion-->
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/btn_handphone"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:layout_marginLeft="0dp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        app:cardCornerRadius="15dp">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <ImageView
-                                android:id="@+id/imageView42"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_margin="10dp"
-                                android:src="@drawable/handphone" />
-                        </RelativeLayout>
-                    </androidx.cardview.widget.CardView>
+                    <!--Kategori-->
 
                     <TextView
+                        android:id="@+id/text_masakan"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignStart="@id/btn_handphone"
-                        android:layout_alignEnd="@+id/btn_handphone"
-                        android:layout_alignParentBottom="true"
-                        android:fontFamily="@font/jipatharegular"
+                        android:layout_below="@+id/rv_beranda"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="10dp"
                         android:gravity="center"
-                        android:text="Handphone"
+                        android:text="--- Pilih Kategori ---"
                         android:textColor="@color/colorOrange"
-                        android:textSize="15sp"
+                        android:textSize="10sp"
                         android:textStyle="bold" />
 
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="5dp"
+                        app:strokeWidth="1dp">
 
-                    <!--Card laptop-->
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/btn_laptop"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:layout_marginLeft="30dp"
-                        android:layout_toRightOf="@id/btn_handphone"
-                        android:clickable="true"
-                        android:focusable="true"
-                        app:cardCornerRadius="15dp">
-
-                        <RelativeLayout
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
 
-                            <ImageView
-                                android:id="@+id/imageView52"
+                            <!--Baris pertama-->
+                            <RelativeLayout
+                                android:id="@+id/baris1"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_margin="10dp"
-                                android:src="@drawable/laptop" />
-                        </RelativeLayout>
-                    </androidx.cardview.widget.CardView>
+                                android:layout_height="80dp"
+                                android:layout_marginHorizontal="0dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:gravity="center">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignStart="@id/btn_laptop"
-                        android:layout_alignEnd="@+id/btn_laptop"
-                        android:layout_alignParentBottom="true"
-                        android:fontFamily="@font/jipatharegular"
-                        android:gravity="center"
-                        android:text="Komputer"
-                        android:textColor="@color/colorOrange"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+                                <!--Card Fashion-->
+                                <com.google.android.material.card.MaterialCardView
+                                    android:id="@+id/btn_handphone"
+                                    android:layout_width="55dp"
+                                    android:layout_height="55dp"
+                                    android:layout_marginLeft="0dp"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    app:cardCornerRadius="30dp">
 
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
 
-                    <!--Card laptop-->
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/btn_otomotif"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:layout_marginLeft="30dp"
-                        android:layout_toRightOf="@id/btn_laptop"
-                        android:clickable="true"
-                        android:focusable="true"
-                        app:cardCornerRadius="15dp">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <ImageView
-                                android:id="@+id/imgotomotif"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_margin="10dp"
-                                android:src="@drawable/otomotif" />
-                        </RelativeLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignStart="@id/btn_otomotif"
-                        android:layout_alignEnd="@+id/btn_otomotif"
-                        android:layout_alignParentBottom="true"
-                        android:fontFamily="@font/jipatharegular"
-                        android:gravity="center"
-                        android:text="Otomotif"
-                        android:textColor="@color/colorOrange"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/btn_forniture"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:layout_marginLeft="30dp"
-                        android:layout_toRightOf="@id/btn_otomotif"
-                        android:clickable="true"
-                        android:focusable="true"
-                        app:cardCornerRadius="15dp">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <ImageView
-                                android:id="@+id/imageView62"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_margin="10dp"
-                                android:src="@drawable/forniture" />
-
-                        </RelativeLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignStart="@id/btn_forniture"
-                        android:layout_alignEnd="@+id/btn_forniture"
-                        android:layout_alignParentBottom="true"
-                        android:fontFamily="@font/jipatharegular"
-                        android:gravity="center"
-                        android:text="Forniture"
-                        android:textColor="@color/colorOrange"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-
-
-                    <!--
-
-                                        &lt;!&ndash;Card Fashion&ndash;&gt;
-                                        <androidx.cardview.widget.CardView
-                                            android:id="@+id/btn_umkm"
-                                            android:layout_width="55dp"
-                                            android:layout_height="55dp"
-                                            android:clickable="true"
-                                            android:focusable="true"
-                                            android:layout_marginLeft="30dp"
-                                            android:layout_toRightOf="@id/btn_forniture"
-                                            app:cardCornerRadius="15dp">
-
-                                            <RelativeLayout
-                                                android:layout_width="match_parent"
-                                                android:layout_height="match_parent">
-
-                                                <ImageView
-                                                    android:id="@+id/iamga"
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="match_parent"
-                                                    android:layout_margin="10dp"
-                                                    android:src="@drawable/umkm" />
-                                            </RelativeLayout>
-                                        </androidx.cardview.widget.CardView>
-
-                                        <TextView
+                                        <ImageView
+                                            android:id="@+id/imageView42"
                                             android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:layout_alignParentBottom="true"
-                                            android:gravity="center"
-                                            android:text="UMKM"
-                                            android:textStyle="bold"
-                                            android:textColor="@color/colorOrange"
-                                            android:layout_alignStart="@id/btn_umkm"
-                                            android:layout_alignEnd="@+id/btn_umkm"
-                                            android:fontFamily="@font/jipatharegular"
-                                            android:textSize="14sp" />
-                    -->
+                                            android:layout_height="match_parent"
+                                            android:layout_margin="10dp"
+                                            android:src="@drawable/handphone" />
+                                    </RelativeLayout>
+                                </com.google.android.material.card.MaterialCardView>
 
-                </RelativeLayout>
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignStart="@id/btn_handphone"
+                                    android:layout_alignEnd="@+id/btn_handphone"
+                                    android:layout_alignParentBottom="true"
+                                    android:fontFamily="@font/jipatharegular"
+                                    android:gravity="center"
+                                    android:text="Handphone"
+                                    android:textColor="@color/colorOrange"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
 
-                <!--Baris ke dua-->
+
+                                <!--Card laptop-->
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/btn_laptop"
+                                    android:layout_width="55dp"
+                                    android:layout_height="55dp"
+                                    android:layout_marginLeft="30dp"
+                                    android:layout_toRightOf="@id/btn_handphone"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    app:cardCornerRadius="30dp">
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+                                        <ImageView
+                                            android:id="@+id/imageView52"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_margin="10dp"
+                                            android:src="@drawable/laptop" />
+                                    </RelativeLayout>
+                                </androidx.cardview.widget.CardView>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignStart="@id/btn_laptop"
+                                    android:layout_alignEnd="@+id/btn_laptop"
+                                    android:layout_alignParentBottom="true"
+                                    android:fontFamily="@font/jipatharegular"
+                                    android:gravity="center"
+                                    android:text="Komputer"
+                                    android:textColor="@color/colorOrange"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
 
 
-                <RelativeLayout
-                    android:id="@+id/baris2"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:layout_marginHorizontal="0dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:gravity="center">
+                                <!--Card laptop-->
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/btn_otomotif"
+                                    android:layout_width="55dp"
+                                    android:layout_height="55dp"
+                                    android:layout_marginLeft="30dp"
+                                    android:layout_toRightOf="@id/btn_laptop"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    app:cardCornerRadius="30dp">
 
-                    <!--Card Fashion-->
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/btn_fashion"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:layout_marginLeft="0dp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        app:cardCornerRadius="15dp">
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                                        <ImageView
+                                            android:id="@+id/imgotomotif"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_margin="10dp"
+                                            android:src="@drawable/otomotif" />
+                                    </RelativeLayout>
+                                </androidx.cardview.widget.CardView>
 
-                            <ImageView
-                                android:id="@+id/imageView4"
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignStart="@id/btn_otomotif"
+                                    android:layout_alignEnd="@+id/btn_otomotif"
+                                    android:layout_alignParentBottom="true"
+                                    android:fontFamily="@font/jipatharegular"
+                                    android:gravity="center"
+                                    android:text="Otomotif"
+                                    android:textColor="@color/colorOrange"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+
+
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/btn_forniture"
+                                    android:layout_width="55dp"
+                                    android:layout_height="55dp"
+                                    android:layout_marginLeft="30dp"
+                                    android:layout_toRightOf="@id/btn_otomotif"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    app:cardCornerRadius="30dp">
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+                                        <ImageView
+                                            android:id="@+id/imageView62"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_margin="10dp"
+                                            android:src="@drawable/forniture" />
+
+                                    </RelativeLayout>
+                                </androidx.cardview.widget.CardView>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignStart="@id/btn_forniture"
+                                    android:layout_alignEnd="@+id/btn_forniture"
+                                    android:layout_alignParentBottom="true"
+                                    android:fontFamily="@font/jipatharegular"
+                                    android:gravity="center"
+                                    android:text="Forniture"
+                                    android:textColor="@color/colorOrange"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+
+
+                                <!--
+
+                                                    &lt;!&ndash;Card Fashion&ndash;&gt;
+                                                    <androidx.cardview.widget.CardView
+                                                        android:id="@+id/btn_umkm"
+                                                        android:layout_width="55dp"
+                                                        android:layout_height="55dp"
+                                                        android:clickable="true"
+                                                        android:focusable="true"
+                                                        android:layout_marginLeft="30dp"
+                                                        android:layout_toRightOf="@id/btn_forniture"
+                                                        app:cardCornerRadius="15dp">
+
+                                                        <RelativeLayout
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="match_parent">
+
+                                                            <ImageView
+                                                                android:id="@+id/iamga"
+                                                                android:layout_width="match_parent"
+                                                                android:layout_height="match_parent"
+                                                                android:layout_margin="10dp"
+                                                                android:src="@drawable/umkm" />
+                                                        </RelativeLayout>
+                                                    </androidx.cardview.widget.CardView>
+
+                                                    <TextView
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:layout_alignParentBottom="true"
+                                                        android:gravity="center"
+                                                        android:text="UMKM"
+                                                        android:textStyle="bold"
+                                                        android:textColor="@color/colorOrange"
+                                                        android:layout_alignStart="@id/btn_umkm"
+                                                        android:layout_alignEnd="@+id/btn_umkm"
+                                                        android:fontFamily="@font/jipatharegular"
+                                                        android:textSize="14sp" />
+                                -->
+
+                            </RelativeLayout>
+
+                            <!--Baris ke dua-->
+                            <RelativeLayout
+                                android:id="@+id/baris2"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_margin="10dp"
-                                android:src="@drawable/fashion" />
-                        </RelativeLayout>
-                    </androidx.cardview.widget.CardView>
+                                android:layout_height="80dp"
+                                android:layout_marginHorizontal="0dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:gravity="center">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignStart="@id/btn_fashion"
-                        android:layout_alignEnd="@+id/btn_fashion"
-                        android:layout_alignParentBottom="true"
-                        android:fontFamily="@font/jipatharegular"
-                        android:gravity="center"
-                        android:text="Fashion"
-                        android:textColor="@color/colorOrange"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+                                <!--Card Fashion-->
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/btn_fashion"
+                                    android:layout_width="55dp"
+                                    android:layout_height="55dp"
+                                    android:layout_marginLeft="0dp"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    app:cardCornerRadius="30dp">
 
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
 
-                    <!--Card Olahraga-->
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/btn_olahraga"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:layout_marginLeft="30dp"
-                        android:layout_toRightOf="@id/btn_fashion"
-                        android:clickable="true"
-                        android:focusable="true"
-                        app:cardCornerRadius="15dp">
+                                        <ImageView
+                                            android:id="@+id/imageView4"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_margin="10dp"
+                                            android:src="@drawable/fashion" />
+                                    </RelativeLayout>
+                                </androidx.cardview.widget.CardView>
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <ImageView
-                                android:id="@+id/imageView5"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_margin="10dp"
-                                android:src="@drawable/olahraga" />
-                        </RelativeLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignStart="@id/btn_olahraga"
-                        android:layout_alignEnd="@+id/btn_olahraga"
-                        android:layout_alignParentBottom="true"
-                        android:fontFamily="@font/jipatharegular"
-                        android:gravity="center"
-                        android:text="Hobi"
-                        android:textColor="@color/colorOrange"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignStart="@id/btn_fashion"
+                                    android:layout_alignEnd="@+id/btn_fashion"
+                                    android:layout_alignParentBottom="true"
+                                    android:fontFamily="@font/jipatharegular"
+                                    android:gravity="center"
+                                    android:text="Fashion"
+                                    android:textColor="@color/colorOrange"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
 
 
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/btn_property"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:layout_marginLeft="30dp"
-                        android:layout_toRightOf="@id/btn_olahraga"
-                        android:clickable="true"
-                        android:focusable="true"
-                        app:cardCornerRadius="15dp">
+                                <!--Card Olahraga-->
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/btn_olahraga"
+                                    android:layout_width="55dp"
+                                    android:layout_height="55dp"
+                                    android:layout_marginLeft="30dp"
+                                    android:layout_toRightOf="@id/btn_fashion"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    app:cardCornerRadius="30dp">
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
 
-                            <ImageView
-                                android:id="@+id/imageView36"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_margin="10dp"
-                                android:src="@drawable/property" />
+                                        <ImageView
+                                            android:id="@+id/imageView5"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_margin="10dp"
+                                            android:src="@drawable/olahraga" />
+                                    </RelativeLayout>
+                                </androidx.cardview.widget.CardView>
 
-                        </RelativeLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignStart="@id/btn_property"
-                        android:layout_alignEnd="@+id/btn_property"
-                        android:layout_alignParentBottom="true"
-                        android:fontFamily="@font/jipatharegular"
-                        android:gravity="center"
-                        android:text="Property"
-                        android:textColor="@color/colorOrange"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/btn_lainya"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:layout_marginLeft="30dp"
-                        android:layout_toRightOf="@id/btn_property"
-                        android:clickable="true"
-                        android:focusable="true"
-                        app:cardCornerRadius="15dp">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <ImageView
-                                android:id="@+id/imageView6"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_margin="10dp"
-                                android:src="@drawable/lainya" />
-
-                        </RelativeLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignStart="@id/btn_lainya"
-                        android:layout_alignEnd="@+id/btn_lainya"
-                        android:layout_alignParentBottom="true"
-                        android:fontFamily="@font/jipatharegular"
-                        android:gravity="center"
-                        android:text="Lainnya"
-                        android:textColor="@color/colorOrange"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-
-                </RelativeLayout>
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignStart="@id/btn_olahraga"
+                                    android:layout_alignEnd="@+id/btn_olahraga"
+                                    android:layout_alignParentBottom="true"
+                                    android:fontFamily="@font/jipatharegular"
+                                    android:gravity="center"
+                                    android:text="Hobi"
+                                    android:textColor="@color/colorOrange"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
 
 
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/btn_property"
+                                    android:layout_width="55dp"
+                                    android:layout_height="55dp"
+                                    android:layout_marginLeft="30dp"
+                                    android:layout_toRightOf="@id/btn_olahraga"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    app:cardCornerRadius="30dp">
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+                                        <ImageView
+                                            android:id="@+id/imageView36"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_margin="10dp"
+                                            android:src="@drawable/property" />
+
+                                    </RelativeLayout>
+                                </androidx.cardview.widget.CardView>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignStart="@id/btn_property"
+                                    android:layout_alignEnd="@+id/btn_property"
+                                    android:layout_alignParentBottom="true"
+                                    android:fontFamily="@font/jipatharegular"
+                                    android:gravity="center"
+                                    android:text="Property"
+                                    android:textColor="@color/colorOrange"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+
+
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/btn_lainya"
+                                    android:layout_width="55dp"
+                                    android:layout_height="55dp"
+                                    android:layout_marginLeft="30dp"
+                                    android:layout_toRightOf="@id/btn_property"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    app:cardCornerRadius="30dp">
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+                                        <ImageView
+                                            android:id="@+id/imageView6"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_margin="10dp"
+                                            android:src="@drawable/lainya" />
+
+                                    </RelativeLayout>
+                                </androidx.cardview.widget.CardView>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignStart="@id/btn_lainya"
+                                    android:layout_alignEnd="@+id/btn_lainya"
+                                    android:layout_alignParentBottom="true"
+                                    android:fontFamily="@font/jipatharegular"
+                                    android:gravity="center"
+                                    android:text="Lainnya"
+                                    android:textColor="@color/colorOrange"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
 
 
                     <!--Image Slider-->
@@ -615,11 +661,10 @@
                             android:layout_height="match_parent">
 
                             <AdapterViewFlipper
-                                android:visibility="gone"
                                 android:id="@+id/adapterViewFlipper"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent">
-                            </AdapterViewFlipper>
+                                android:layout_height="match_parent"
+                                android:visibility="gone"></AdapterViewFlipper>
 
                             <com.application.kreditimpian._sliders.SliderView
                                 android:id="@+id/sliderView"
@@ -646,124 +691,124 @@
                     </RelativeLayout>
 
 
-                <LinearLayout
-                    android:id="@+id/linearpromo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/layout_artikel"
-                    android:orientation="vertical"
-                    android:visibility="visible">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:id="@+id/text_mitra"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="20dp"
-                            android:fontFamily="@font/jipatharegular"
-                            android:text="Mitra kami"
-                            android:textColor="@color/colorOrange"
-                            android:textSize="23sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/txt_lihat_promo"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginEnd="10dp"
-                            android:fontFamily="@font/jipatharegular"
-                            android:text="Lihat Lainnya >"
-                            android:visibility="gone"
-                            android:textColor="@color/colorOrange"
-                            android:textStyle="bold" />
-                    </RelativeLayout>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv_mitra"
+                    <LinearLayout
+                        android:id="@+id/linearpromo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:scrollbars="horizontal"
-                        app:cardBackgroundColor="#efefef" />
+                        android:layout_below="@+id/layout_artikel"
+                        android:orientation="vertical"
+                        android:visibility="visible">
 
-                    <ProgressBar
-                        android:id="@+id/pbLoading2"
-                        android:layout_width="wrap_content"
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/text_mitra"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="20dp"
+                                android:fontFamily="@font/jipatharegular"
+                                android:text="Mitra kami"
+                                android:textColor="@color/colorOrange"
+                                android:textSize="23sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/txt_lihat_promo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginEnd="10dp"
+                                android:fontFamily="@font/jipatharegular"
+                                android:text="Lihat Lainnya >"
+                                android:textColor="@color/colorOrange"
+                                android:textStyle="bold"
+                                android:visibility="gone" />
+                        </RelativeLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_mitra"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:scrollbars="horizontal"
+                            app:cardBackgroundColor="#efefef" />
+
+                        <ProgressBar
+                            android:id="@+id/pbLoading2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_gravity="center"
+                            android:foregroundGravity="center" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearmerchant"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_gravity="center"
-                        android:foregroundGravity="center" />
+                        android:layout_below="@+id/layout_artikel"
+                        android:layout_marginBottom="15dp"
+                        android:orientation="vertical"
+                        android:paddingBottom="20dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/text_merchant"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="20dp"
+                                android:fontFamily="@font/jipatharegular"
+                                android:text="Merchant "
+                                android:textColor="@color/colorOrange"
+                                android:textSize="23sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/txt_lihat_merchant"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginEnd="10dp"
+                                android:fontFamily="@font/jipatharegular"
+                                android:text="Lihat Lainnya >"
+                                android:textColor="@color/colorOrange"
+                                android:textStyle="bold"
+                                android:visibility="gone" />
+                        </RelativeLayout>
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_merchant"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:scrollbars="horizontal"
+                            app:cardBackgroundColor="#efefef" />
+
+                        <ProgressBar
+                            android:id="@+id/pbLoading"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_gravity="center"
+                            android:foregroundGravity="center" />
+
+                    </LinearLayout>
+
 
                 </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/linearmerchant"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/layout_artikel"
-                    android:layout_marginBottom="15dp"
-                    android:orientation="vertical"
-                    android:paddingBottom="20dp">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:id="@+id/text_merchant"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="20dp"
-                            android:fontFamily="@font/jipatharegular"
-                            android:text="Merchant "
-                            android:textColor="@color/colorOrange"
-                            android:textSize="23sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/txt_lihat_merchant"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginEnd="10dp"
-                            android:fontFamily="@font/jipatharegular"
-                            android:text="Lihat Lainnya >"
-                            android:textColor="@color/colorOrange"
-                            android:textStyle="bold"
-                            android:visibility="gone" />
-                    </RelativeLayout>
-
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv_merchant"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:scrollbars="horizontal"
-                        app:cardBackgroundColor="#efefef" />
-
-                    <ProgressBar
-                        android:id="@+id/pbLoading"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_gravity="center"
-                        android:foregroundGravity="center" />
-
-                </LinearLayout>
-
-
-            </LinearLayout>
-        </androidx.core.widget.NestedScrollView>
-
-    </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+    </RelativeLayout>
 
 </FrameLayout>

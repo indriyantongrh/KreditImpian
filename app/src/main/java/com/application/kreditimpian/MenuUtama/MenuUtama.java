@@ -142,7 +142,7 @@ public class MenuUtama extends AppCompatActivity {
         toolbar = getSupportActionBar();
         Fragment fragment;
         toolbar.setIcon(R.drawable.logoputih);
-        toolbar.setTitle("Kategori Impianmu");
+        toolbar.setTitle("Kredit Impianmu");
         fragment = new FragmentBeranda();
         loadFragment(fragment);
         //return true;

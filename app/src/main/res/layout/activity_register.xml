@@ -284,7 +284,49 @@
 
                 </LinearLayout>
 
+
             </LinearLayout>
+
+        <!--Login Panel-->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            >
+
+            <CheckBox
+                android:id="@+id/cbkebijakanpriva"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/cosimabold"
+                android:textSize="14dp"
+                android:text="Saya menyetujui \n menjadi member"/>
+
+            <TextView
+                android:id="@+id/tvKebijakanPrivacy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/cosimabold"
+                android:textSize="14dp"
+                android:textColor="@color/colorOrange"
+                android:text="kebijakan dan syarat \n Kreditimpian.id"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/cosimabold"
+                android:textSize="14dp"
+                android:text="ketentuan"/>
+             Kreditimpian.id
+
+        </LinearLayout>
 
 
             <!--Button-->

@@ -385,6 +385,7 @@ public class LoginUser extends AppCompatActivity {
                     }
                 } else {
                     Toast.makeText(LoginUser.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    alertDialog.dismiss();
                 }
             }
             @Override

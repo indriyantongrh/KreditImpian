@@ -2,12 +2,16 @@ package com.application.kreditimpian.LoginRegister;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,9 +23,12 @@ import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.Api.SuccessMessage;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.BuildConfig;
+import com.application.kreditimpian.MenuUtama.MenuUtama;
 import com.application.kreditimpian.Model.ModelErrorMessage.APIError;
 import com.application.kreditimpian.Model.RegisterModel.RegisterResponse;
 import com.application.kreditimpian.Model.ResponseRegisterBaru.NewResponseRegister;
+import com.application.kreditimpian.PdfViewer.KebijakanPrivacy;
+import com.application.kreditimpian.PdfViewer.KebijakanPrivacyRegister;
 import com.application.kreditimpian.R;
 import com.application.kreditimpian.ResponseMessage.ResponseRegister;
 import com.google.gson.Gson;
@@ -48,7 +55,8 @@ public class Register extends AppCompatActivity {
     private int mCounter = 0;
     String id;
     Button btnbuatakun;
-    TextView btnLogin;
+    CheckBox cbkebijakanpriva;
+    TextView btnLogin , tvKebijakanPrivacy;
     TextView txtusername, txtemail,txtpassword,txtconfirmpassword,nomortelepon;
      private String URL = "https://demo.kreditimpian.com/api/";
     Intent intent;
@@ -75,6 +83,9 @@ public class Register extends AppCompatActivity {
         txtpassword = (EditText) findViewById(R.id.txtpassword);
         txtconfirmpassword =(EditText) findViewById(R.id.txtconfirmpassword);
         nomortelepon = (EditText) findViewById(R.id.nomortelepon);
+        tvKebijakanPrivacy = findViewById(R.id.tvKebijakanPrivacy);
+        cbkebijakanpriva = findViewById(R.id.cbkebijakanpriva);
+
 
         btnbuatakun = findViewById(R.id.btnbuatakun);
         btnbuatakun.setOnClickListener(new View.OnClickListener() {
@@ -97,8 +108,13 @@ public class Register extends AppCompatActivity {
                      txtconfirmpassword.setError("Konfirmasi harap diisi");
                 else if (isEmpty(phone))
                     nomortelepon.setError("Nomor Telepon harap diisi");
-                else
-                     TambahUser();
+                else  if (cbkebijakanpriva.isChecked()==false) {
+                     DialogAlert();
+                    //Toast.makeText(Register.this, "Anda belum pilih persetujuan Kebijakan dan Syarat member Kreditimpian.id", Toast.LENGTH_LONG).show();
+                }
+                else{
+                    TambahUser();
+                }
                      ///RegisterCheck();
                 ///TambahUser();
             }
@@ -113,6 +129,15 @@ public class Register extends AppCompatActivity {
             }
         });
 
+
+        tvKebijakanPrivacy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Register.this, KebijakanPrivacyRegister.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     public void TambahUser() {
@@ -187,6 +212,21 @@ public class Register extends AppCompatActivity {
                 Toast.makeText(Register.this, "Register member tidak berhasil, Koneksi internet terputus.", Toast.LENGTH_SHORT).show();
             }
         });
+
+    }
+
+    private void DialogAlert(){
+        AlertDialog alertDialog = new AlertDialog.Builder(Register.this).create();
+        alertDialog.setTitle("Info");
+        alertDialog.setMessage("Anda belum pilih persetujuan Kebijakan dan Syarat member Kreditimpian.id");
+        alertDialog.setIcon(R.drawable.alert);
+        alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                alertDialog.dismiss();
+
+            }
+        });
+        alertDialog.show();
 
     }
 

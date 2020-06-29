@@ -105,7 +105,8 @@ import retrofit2.Response;
 public class FragmentBeranda extends Fragment {
 
     private ShimmerFrameLayout mShimmerViewContainer;
-    CardView btn_lainya, btn_handphone, btn_laptop, btn_otomotif, btn_forniture, btn_fashion, btn_olahraga, btn_property;
+    CardView btn_lainya, btn_handphone, btn_laptop, btn_otomotif, btn_forniture, btn_fashion, btn_olahraga, btn_property,
+            btnFotoimpian,btnUploadImpian,btnCariImpian,btnUpgradeImpian ;
     ImageButton btn_fotoimpian, btnupload, btncari, btnupgrade;
     String datalist;
     TextView textCartItemCount;
@@ -198,10 +199,10 @@ public class FragmentBeranda extends Fragment {
         btn_fashion = rootView.findViewById(R.id.btn_fashion);
         btn_olahraga = rootView.findViewById(R.id.btn_olahraga);
         btn_property = rootView.findViewById(R.id.btn_property);
-        btnupload = rootView.findViewById(R.id.btnupload);
-        btn_fotoimpian = rootView.findViewById(R.id.btn_fotoimpian);
-        btncari = rootView.findViewById(R.id.btncari);
-        btnupgrade = rootView.findViewById(R.id.btnupgrade);
+        btnUploadImpian = rootView.findViewById(R.id.btnUploadImpian);
+        btnFotoimpian = rootView.findViewById(R.id.btnFotoimpian);
+        btnCariImpian = rootView.findViewById(R.id.btnCariImpian);
+        btnUpgradeImpian = rootView.findViewById(R.id.btnUpgradeImpian);
         btn_handphone = rootView.findViewById(R.id.btn_handphone);
         btn_laptop = rootView.findViewById(R.id.btn_laptop);
         btn_otomotif = rootView.findViewById(R.id.btn_otomotif);
@@ -238,7 +239,7 @@ public class FragmentBeranda extends Fragment {
         Toast.makeText(getActivity(), "ini id ke-"+result.getId(), Toast.LENGTH_SHORT).show();*/
 
 
-        btnupload.setOnClickListener(view -> {
+        btnUploadImpian.setOnClickListener(view -> {
             // Stopping Shimmer Effect's animation after data is loaded to ListView
 
             ///   Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -249,14 +250,14 @@ public class FragmentBeranda extends Fragment {
 
         });
 
-        btn_fotoimpian.setOnClickListener(view -> {
+        btnFotoimpian.setOnClickListener(view -> {
 
             Intent intent = new Intent(getActivity(), StepFotoProduct.class);
             getActivity().startActivity(intent);
 
         });
 
-        btncari.setOnClickListener(view -> {
+        btnCariImpian.setOnClickListener(view -> {
 
             ///   Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             //// startActivityForResult(intent, 0);
@@ -266,7 +267,7 @@ public class FragmentBeranda extends Fragment {
 
         });
 
-        btnupgrade.setOnClickListener(view -> {
+        btnUpgradeImpian.setOnClickListener(view -> {
 
             ///   Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             //// startActivityForResult(intent, 0);

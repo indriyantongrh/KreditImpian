@@ -21,17 +21,6 @@
             app:popupTheme="@style/ThemeOverlay.AppCompat"
             tools:ignore="MissingConstraints">
 
-            <!--                            <ImageView-->
-            <!--                                android:id="@+id/logo"-->
-            <!--                                android:paddingTop="15dp"-->
-            <!--                                android:layout_width="320dp"-->
-            <!--                                android:paddingBottom="10dp"-->
-            <!--                                android:layout_height="wrap_content"-->
-            <!--                                android:foregroundGravity="center"-->
-            <!--                                android:paddingLeft="40dp"-->
-            <!--                                android:src="@drawable/logoputihkredit"/>-->
-
-
         </androidx.appcompat.widget.Toolbar>
 
         <LinearLayout

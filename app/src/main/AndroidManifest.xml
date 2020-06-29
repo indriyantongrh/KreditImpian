@@ -56,6 +56,7 @@
         <activity android:name=".TransactionProcess.TransactionCheckout" />
         <activity android:name=".TransactionProcess.TransactionSelectTenor" />
         <activity android:name=".TransactionProcess.TransactionSelectMitra" />
+        <activity android:name=".PdfViewer.KebijakanPrivacyRegister" />
         <activity android:name=".Akun.DetailAlamat" />
         <activity android:name=".Akun.AlamatPengiriman" />
         <activity android:name=".HistoryPesanan.TabRiwayatPesananan.DetailHistoryPesanan" />
