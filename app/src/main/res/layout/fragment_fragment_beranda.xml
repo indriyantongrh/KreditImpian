@@ -46,15 +46,11 @@
                 <!--layout Fitur Kredit Impian-->
                 <LinearLayout
                     android:id="@+id/fiturekreditimpian"
-                    android:layout_width="match_parent"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:baselineAligned="false"
                     android:gravity="center|center_horizontal"
                     android:orientation="horizontal">
-
 
                         <!--Card Foto Impian-->
                         <androidx.cardview.widget.CardView
@@ -203,8 +199,6 @@
                                     android:textStyle="bold" />
                             </RelativeLayout>
                         </com.google.android.material.card.MaterialCardView>
-
-
 
 
                 </LinearLayout>

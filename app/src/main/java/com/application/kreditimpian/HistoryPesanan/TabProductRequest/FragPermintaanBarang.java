@@ -110,7 +110,12 @@ public class FragPermintaanBarang extends Fragment {
             public void onResponse(Call<ResponseRequestProduct> call, Response<ResponseRequestProduct> response) {
                 if (response.isSuccessful()){
                     ///progressBar.dismiss();
-                    if (response.body().getResponseCode()==200) {
+                    if (response.body().getResponseCode()==200 || response.body().getData()==null){
+                        swipeRefresh.setRefreshing(false);
+                        ///progressBar.dismiss();
+                        empty.setVisibility(View.VISIBLE);
+                    }
+                    else if (response.body().getResponseCode()==200) {
                         swipeRefresh.setRefreshing(false);
 
                         final List<DataItem> HistoryTransaction = response.body().getData();

@@ -25,19 +25,21 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <uses-feature android:name="android.hardware.screen.portrait" />
+
     <application
         android:allowBackup="true"
+        android:configChanges="keyboard|orientation|keyboardHidden|screenSize"
         android:icon="@mipmap/iconapps"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/iconapps"
-        android:supportsRtl="true"
         android:screenOrientation="portrait"
-        android:configChanges="keyboard|orientation|keyboardHidden|screenSize"
+        android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Notifikasi.NotifikasiFitur.DetailNotifikasiFitur"
-            ></activity>
+        <activity android:name=".Notifikasi.NotifikasiV2.NotifikasiV2"></activity>
+        <activity android:name=".Notifikasi.NotifikasiFitur.DetailNotifikasiFitur" />
         <activity android:name=".HistoryPesanan.TabProductRequest.TransactionSelectTenorFitur" />
         <activity android:name=".HistoryPesanan.TabProductRequest.TransactionSelectMitraFitur" />
         <activity android:name=".Notifikasi.Notifikasi" />

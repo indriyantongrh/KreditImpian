@@ -423,7 +423,10 @@ public class FragmentBeranda extends Fragment {
         UpgradeImpianViewModel upgradeImpianViewModel = new ViewModelProvider(getViewModelStore(), new ViewModelFactory(getContext())).get(UpgradeImpianViewModel.class);
         upgradeImpianViewModel.setModelNotifikasi(modelNotifikasi);
         upgradeImpianViewModel.getNotifikasi().observe(getViewLifecycleOwner(), hashMap -> {
-            if (hashMap.get("code").toString().equals("200")) {
+            if (hashMap.get("code").toString().equals("200") || hashMap.get("data").toString().equals(null)) {
+                Log.d("Notif", "get notif gagal");
+            }
+            else if (hashMap.get("code").toString().equals("200")) {
                 ArrayList<ModelNotifikasi> modelNotifikasis = (ArrayList<ModelNotifikasi>) hashMap.get("list");
                 for (int i = 0; i < modelNotifikasis.size(); i++) {
                     if (modelNotifikasis.get(i).getStatus().equals("UNSEEN")) {
@@ -447,15 +450,27 @@ public class FragmentBeranda extends Fragment {
                 if(response.body().getResponseCode() == 200){
 
                     final List<com.application.kreditimpian.Model.ModelNotifFitur.DataItem> NotifFitur = response.body().getData();
-                    if(NotifFitur.get(0).getStatus().equals("UNSEEN")){
+                    if( NotifFitur==null) {
+                        Log.d("Notif", "get notif gagal");
+
+                    }
+                    else if(NotifFitur.get(0).getStatus().equals("UNSEEN")){
                         totalnotif++;
                     }
                     if (totalnotif > 0) {
                         menu.getItem(1).setIcon(ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.notification_unseen));
                     }
 
-                }else{
+          /*          *//*untuk jika responsecode 200 dengan data null*//*
+                }else if(response.body().getResponseCode() == 200){
+                    final List<com.application.kreditimpian.Model.ModelNotifFitur.DataItem> NotifFitur2 = response.body().getData();
+                    if (NotifFitur2 == null){
+                        Log.d("Notif", "get notif gagal");
+
+                    }*/
+                }else {
                     Log.d("Notif", "get notif gagal");
+
                 }
             }
 
