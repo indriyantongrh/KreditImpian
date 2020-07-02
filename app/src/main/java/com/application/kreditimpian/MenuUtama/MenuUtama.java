@@ -131,7 +131,6 @@ public class MenuUtama extends AppCompatActivity {
             }
         }
 
-
         ///for Update Google Play store
         new GetLatestVersion().execute();
 
@@ -146,6 +145,7 @@ public class MenuUtama extends AppCompatActivity {
         fragment = new FragmentBeranda();
         loadFragment(fragment);
         //return true;
+        Log.d("ID user", sharedPrefManager.getSpIdUser()+" id user");
 
         //mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);

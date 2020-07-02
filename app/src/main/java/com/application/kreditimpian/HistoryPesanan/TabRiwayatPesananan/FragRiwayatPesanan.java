@@ -1,8 +1,11 @@
 package com.application.kreditimpian.HistoryPesanan.TabRiwayatPesananan;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -41,7 +44,7 @@ import retrofit2.Response;
 public class FragRiwayatPesanan extends Fragment {
 
     SharedPrefManager sharedPrefManager;
-
+    ConnectivityManager conMgr;
     @BindView(R.id.listHistoryPesanan)
     RecyclerView listHistoryPesanan;
     @BindView(R.id.swipeRefresh)
@@ -102,7 +105,6 @@ public class FragRiwayatPesanan extends Fragment {
 
     private void getHistoryTransaction(){
         swipeRefresh.setRefreshing(true);
-
         ///progressBar = ProgressDialog.show(getActivity(), null, "Loading...", true, false);
 
         HashMap<String, String> params = new HashMap<>();
@@ -113,7 +115,7 @@ public class FragRiwayatPesanan extends Fragment {
             public void onResponse(Call<ResponseNewHistoryPesanan> call, Response<ResponseNewHistoryPesanan> response) {
                 if (response.isSuccessful()){
                     ///progressBar.dismiss();
-                    if (response.body().getResponseCode()==200 || response.body().getData()==null){
+                    if (response.body().getData()==null){
                         swipeRefresh.setRefreshing(false);
                         ///progressBar.dismiss();
                         empty.setVisibility(View.VISIBLE);
@@ -143,7 +145,7 @@ public class FragRiwayatPesanan extends Fragment {
 
             @Override
             public void onFailure(Call<ResponseNewHistoryPesanan> call, Throwable t) {
-                progressBar.dismiss();
+                swipeRefresh.setRefreshing(false);
                 Toast.makeText(mContext,"Koneksi anda bermasalah", Toast.LENGTH_SHORT).show();
             }
         });
@@ -252,6 +254,37 @@ public class FragRiwayatPesanan extends Fragment {
                     }
                 }));
 
+    }
+
+    private void CheckCOnection(){
+
+        conMgr = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        {
+            if (conMgr.getActiveNetworkInfo() != null
+                    && conMgr.getActiveNetworkInfo().isAvailable()
+                    && conMgr.getActiveNetworkInfo().isConnected()) {
+            } else {
+                ///Toast.makeText(getApplicationContext(), "Tidak ada akses Internet",Toast.LENGTH_LONG).show();
+                try {
+                    AlertDialog alertDialog = new AlertDialog.Builder(getContext()).create();
+
+                    alertDialog.setTitle("Info");
+                    alertDialog.setMessage("Internet tidak tersedia, Periksa konektivitas internet Anda dan coba lagi");
+                    alertDialog.setIcon(R.drawable.no_connection);
+                    alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            getActivity().finish();
+
+                        }
+                    });
+
+                    alertDialog.show();
+                } catch (Exception e) {
+                    /// Log.d(Constants. , "Show Dialog: " + e.getMessage());
+                }
+
+            }
+        }
     }
 
 }

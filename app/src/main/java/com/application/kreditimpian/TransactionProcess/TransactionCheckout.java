@@ -92,34 +92,8 @@ public class TransactionCheckout extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);// set drawable icon
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        {
-            if (conMgr.getActiveNetworkInfo() != null
-                    && conMgr.getActiveNetworkInfo().isAvailable()
-                    && conMgr.getActiveNetworkInfo().isConnected()) {
-            } else {
-                ///Toast.makeText(getApplicationContext(), "Tidak ada akses Internet",Toast.LENGTH_LONG).show();
-                try {
-                    AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-
-                    alertDialog.setTitle("Info");
-                    alertDialog.setMessage("Internet tidak tersedia, Periksa konektivitas internet Anda dan coba lagi");
-                    alertDialog.setIcon(R.drawable.no_connection);
-                    alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            finish();
-
-                        }
-                    });
-
-                    alertDialog.show();
-                } catch (Exception e) {
-                    /// Log.d(Constants. , "Show Dialog: " + e.getMessage());
-                }
-
-            }
-        }
-
+        /*Check Conection*/
+        CheckCOnection();
 
         radiogroup = (RadioGroup) findViewById(R.id.radiogroup);
         radiomethodpayment = findViewById(R.id.radiomethodpayment);
@@ -245,6 +219,7 @@ public class TransactionCheckout extends AppCompatActivity {
         pDialog.setCancelable(false);
         pDialog.setMessage("Tunggu...");
         pDialog.show();
+        ///CheckCOnection();
 
         HashMap<String, String> params = new HashMap<>();
         params.put("id_member",sharedPrefManager.getSpIdMember() );
@@ -269,6 +244,7 @@ public class TransactionCheckout extends AppCompatActivity {
                     startActivity(intent1);
                     finish();
                 }else {
+                    pDialog.dismiss();
                     Toast.makeText(TransactionCheckout.this, "Gagal Checkout, harap cek koneksi anda." , Toast.LENGTH_LONG).show();
 
                 }
@@ -276,10 +252,42 @@ public class TransactionCheckout extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponseTransactionAPI> call, Throwable t) {
+                pDialog.dismiss();
                 Toast.makeText(TransactionCheckout.this, "Internet anda bermasalah" , Toast.LENGTH_LONG).show();
 
             }
         });
+    }
+
+    private void CheckCOnection(){
+
+        conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        {
+            if (conMgr.getActiveNetworkInfo() != null
+                    && conMgr.getActiveNetworkInfo().isAvailable()
+                    && conMgr.getActiveNetworkInfo().isConnected()) {
+            } else {
+                ///Toast.makeText(getApplicationContext(), "Tidak ada akses Internet",Toast.LENGTH_LONG).show();
+                try {
+                    AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+
+                    alertDialog.setTitle("Info");
+                    alertDialog.setMessage("Internet tidak tersedia, Periksa konektivitas internet Anda dan coba lagi");
+                    alertDialog.setIcon(R.drawable.no_connection);
+                    alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+
+                        }
+                    });
+
+                    alertDialog.show();
+                } catch (Exception e) {
+                    /// Log.d(Constants. , "Show Dialog: " + e.getMessage());
+                }
+
+            }
+        }
     }
 
     private void setActionBarTitle(String title) {

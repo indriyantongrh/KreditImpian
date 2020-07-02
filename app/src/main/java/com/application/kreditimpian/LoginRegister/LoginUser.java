@@ -379,6 +379,8 @@ public class LoginUser extends AppCompatActivity {
 //                        String username = txtusername.getText().toString();
 //                        sharedPrefManager.saveSPString(SharedPrefManager.SP_USERNAME, username);
 
+                        Log.d("data id user", d.getIdUser()+ " ini dia");
+
                         startActivity(new Intent(LoginUser.this, MenuUtama.class)
                                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
                         finish();
