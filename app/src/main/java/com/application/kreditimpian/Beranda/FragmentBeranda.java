@@ -72,6 +72,9 @@ import com.application.kreditimpian.Model.ModelMitra;
 import com.application.kreditimpian.Model.ModelMitraKami.ResponseMitraKami;
 import com.application.kreditimpian.Model.ModelNotifFitur.ResponseNotifFitur;
 import com.application.kreditimpian.Model.ModelNotifikasi.ModelNotifikasi;
+import com.application.kreditimpian.Model.ModelNotifikasiFeature.ResponseNotifikasiFeature;
+import com.application.kreditimpian.Model.ModelNotifikasiFeatures.ResponseNotifikasiFeatures;
+import com.application.kreditimpian.Model.ModelNotifikasiProducts.ResponseNotifikasiProducts;
 import com.application.kreditimpian.Model.ModelOnShoppingCart.ResponseOnShoppingCart;
 import com.application.kreditimpian.Notifikasi.Notifikasi;
 import com.application.kreditimpian.Notifikasi.NotifikasiActivity;
@@ -371,7 +374,8 @@ public class FragmentBeranda extends Fragment {
         rv_mitra.setItemAnimator(new DefaultItemAnimator());
         getResultList();
         getMitra();
-        getNotifikasi();
+        //getNotifikasi();
+        getNotifikasiProduct();
         getNotifikasiFitur();
         getOnShoppingCart();
         getPromotion();
@@ -440,16 +444,58 @@ public class FragmentBeranda extends Fragment {
         });
     }
 
+    private void getNotifikasiProduct(){
+        HashMap<String, String> params = new HashMap<>();
+        params.put("id_member", sharedPrefManager.getSpIdMember());
+
+        mApiService.getNotifikasiProduct(params).enqueue(new Callback<ResponseNotifikasiProducts>() {
+            @Override
+            public void onResponse(Call<ResponseNotifikasiProducts> call, Response<ResponseNotifikasiProducts> response) {
+                if(response.body().getStatus() == 200){
+
+                    final List<com.application.kreditimpian.Model.ModelNotifikasiProducts.ResultItem> NotifFitur = response.body().getResult();
+                    if( NotifFitur==null) {
+                        Log.d("Notif", "get notif gagal");
+
+                    }
+                    else if(NotifFitur.get(0).getStatus().equals("UNSEEN")){
+                        totalnotif++;
+                    }
+                    if (totalnotif > 0) {
+                        menu.getItem(1).setIcon(ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.notification_unseen));
+                    }
+
+                    /*          *//*untuk jika responsecode 200 dengan data null*//*
+                }else if(response.body().getResponseCode() == 200){
+                    final List<com.application.kreditimpian.Model.ModelNotifFitur.DataItem> NotifFitur2 = response.body().getData();
+                    if (NotifFitur2 == null){
+                        Log.d("Notif", "get notif gagal");
+
+                    }*/
+                }else {
+                    Log.d("Notif", "get notif gagal");
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseNotifikasiProducts> call, Throwable t) {
+
+            }
+        });
+
+    }
+
     private void getNotifikasiFitur(){
         HashMap<String, String> params = new HashMap<>();
         params.put("id_member", sharedPrefManager.getSpIdMember());
 
-        mApiService.getnotifikasiFitur(params).enqueue(new Callback<ResponseNotifFitur>() {
+        mApiService.getNotifikasiFeature(params).enqueue(new Callback<ResponseNotifikasiFeatures>() {
             @Override
-            public void onResponse(Call<ResponseNotifFitur> call, Response<ResponseNotifFitur> response) {
-                if(response.body().getResponseCode() == 200){
+            public void onResponse(Call<ResponseNotifikasiFeatures> call, Response<ResponseNotifikasiFeatures> response) {
+                if(response.body().getStatus() == 200){
 
-                    final List<com.application.kreditimpian.Model.ModelNotifFitur.DataItem> NotifFitur = response.body().getData();
+                    final List<com.application.kreditimpian.Model.ModelNotifikasiFeatures.ResultItem> NotifFitur = response.body().getResult();
                     if( NotifFitur==null) {
                         Log.d("Notif", "get notif gagal");
 
@@ -475,7 +521,7 @@ public class FragmentBeranda extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<ResponseNotifFitur> call, Throwable t) {
+            public void onFailure(Call<ResponseNotifikasiFeatures> call, Throwable t) {
 
             }
         });

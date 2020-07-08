@@ -14,6 +14,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/layout1">
+
+        <LinearLayout
+            android:id="@+id/Linear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            tools:ignore="MissingConstraints">
+
+
+        <ImageView
+            android:src="@drawable/notificationimage"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_toRightOf="@+id/txtMessageNotif"
+            android:layout_gravity="center_vertical"
+            tools:ignore="MissingConstraints" />
+
     <com.codesgood.views.JustifiedTextView
         android:id="@+id/txtMessageNotif"
         android:layout_width="match_parent"
@@ -28,6 +46,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+        </LinearLayout>
     <TextView
         android:id="@+id/txtTglNotif"
         android:layout_width="wrap_content"
@@ -37,7 +56,8 @@
         android:textColor="@android:color/black"
         android:textSize="@dimen/tulisan10sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtMessageNotif" />
+        app:layout_constraintTop_toBottomOf="@+id/Linear" />
+
 
         <TextView
             android:id="@+id/status"

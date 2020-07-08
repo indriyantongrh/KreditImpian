@@ -12,6 +12,7 @@ import com.application.kreditimpian.HistoryPesanan.TabRiwayatPesananan.FragRiway
 import com.application.kreditimpian.MenuUtama.MenuUtama;
 import com.application.kreditimpian.Notifikasi.NotifikasiFitur.FragNotifikasiFitur;
 import com.application.kreditimpian.Notifikasi.NotifikasiKatalog.FragNotifikasiKatalog;
+import com.application.kreditimpian.Notifikasi.NotifikasiProduct.FragNotifikasiProduct;
 import com.application.kreditimpian.R;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.tabs.TabLayout;
@@ -36,7 +37,8 @@ public class Notifikasi extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.AddFragment( new FragNotifikasiKatalog(), "Katalog");
+        adapter.AddFragment( new FragNotifikasiProduct(), "Katalog");
+        ///adapter.AddFragment( new FragNotifikasiKatalog(), "Katalog");
         adapter.AddFragment(new FragNotifikasiFitur(), "Fitur Kredit Impian");
 
         viewPager.setAdapter(adapter);

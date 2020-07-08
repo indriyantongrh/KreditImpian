@@ -21,6 +21,10 @@ import com.application.kreditimpian.Model.ModelMitraSelected.ResponseMitraSelect
 import com.application.kreditimpian.Model.ModelMultiguna.ResponseMultiguna;
 import com.application.kreditimpian.Model.ModelNewHistoryPesanan.ResponseNewHistoryPesanan;
 import com.application.kreditimpian.Model.ModelNotifFitur.ResponseNotifFitur;
+import com.application.kreditimpian.Model.ModelNotifikasiFeature.ResponseNotifikasiFeature;
+import com.application.kreditimpian.Model.ModelNotifikasiFeatures.ResponseNotifikasiFeatures;
+
+import com.application.kreditimpian.Model.ModelNotifikasiProducts.ResponseNotifikasiProducts;
 import com.application.kreditimpian.Model.ModelOnShoppingCart.ResponseOnShoppingCart;
 import com.application.kreditimpian.Model.ModelOngkoskirim.ResponseOngkir;
 import com.application.kreditimpian.Model.ModelPengajuanCatalog.ResponsePengajuanCatalog;
@@ -187,6 +191,11 @@ public interface BaseApiService {
     @POST("ApiMobile/insertMetaDataProductTransactionDatabaseBcaApi")
     Call<ResponseTransactionAPI> postPengajuanCheckout(@FieldMap HashMap<String, String> params);
 
+    @GET("system/modules/users/notifications/products-only")
+    Call<ResponseNotifikasiProducts> getNotifikasiProduct(@QueryMap HashMap<String, String> params);
+
+    @GET("system/modules/users/notifications/features-only")
+    Call<ResponseNotifikasiFeatures> getNotifikasiFeature(@QueryMap HashMap<String, String> params);
 
     @FormUrlEncoded
     @POST("ApiMobile/getallhistorytransactionreq")

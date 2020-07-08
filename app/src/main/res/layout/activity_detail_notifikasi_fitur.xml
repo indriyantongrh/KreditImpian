@@ -77,7 +77,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginLeft="9dp"
-                    android:text="Metode Pengajuan"
+                    android:text="Nomor Invoice"
                     android:textColor="@color/colorBlack" />
 
 
@@ -87,19 +87,61 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginLeft="9dp"
-                    android:text="Metode pengajuan"
+                    android:text="Nomor Invoice"
                     android:textColor="@color/colorOrange" />
 
             </LinearLayout>
+
             <!--Border-->
             <LinearLayout
-                android:id="@+id/boder2"
+                android:id="@+id/boder3"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_below="@+id/linearnomorinvoice"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:background="#FF6802"></LinearLayout>
+                android:background="#FF6802"
+                android:orientation="horizontal"></LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearmitrakredit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linearnomorinvoice"
+                android:orientation="vertical"
+                android:paddingTop="3dp"
+                android:paddingBottom="7dp">
+
+                <TextView
+                    android:id="@+id/text_nama_mitra"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="9dp"
+                    android:text="Mitra Kredit"
+                    android:textColor="@color/colorBlack" />
+
+                <TextView
+                    android:id="@+id/txt_nama_mitra"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="9dp"
+                    android:text="name mitra"
+                    android:textColor="@color/colorOrange" />
+
+            </LinearLayout>
+
+            <!--Border-->
+            <LinearLayout
+                android:id="@+id/boder2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/linearmitrakredit"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:background="#FF6802"
+                android:orientation="horizontal"></LinearLayout>
 
 
 
@@ -186,7 +228,393 @@
                 android:textSize="12dp"
                 android:visibility="gone" />
 
+            <!--Border-->
+            <LinearLayout
+                android:id="@+id/boder23"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/LinearImage"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:background="#FF6802"
+                android:orientation="vertical"></LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/linearDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_below="@+id/boder23"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_detail_transaction"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/LinearImage"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="9dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Detail Transaksi"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/lineardownpayment"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linearDetail"
+                android:layout_marginRight="5dp"
+                android:orientation="horizontal"
+                android:weightSum="1.0">
+
+                <TextView
+                    android:id="@+id/TextDownpayment"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight=".4"
+                    android:gravity="left"
+                    android:text="Downpayment"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".05"
+                    android:gravity="center"
+                    android:text=":"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/tvDownpayment"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textDetailTrasaction"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight=".5"
+                    android:text="Value Downpayment"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearTenor"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lineardownpayment"
+                android:layout_marginRight="5dp"
+                android:orientation="horizontal"
+                android:weightSum="1.0">
+
+                <TextView
+                    android:id="@+id/texttenor"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight=".4"
+                    android:gravity="left"
+                    android:text="Tenor"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".05"
+                    android:gravity="center"
+                    android:text=":"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/tvTenor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textDetailTrasaction"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight=".5"
+                    android:text="Tenor"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearAngsuran"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linearTenor"
+                android:layout_marginRight="5dp"
+                android:orientation="horizontal"
+                android:weightSum="1.0">
+
+                <TextView
+                    android:id="@+id/textAngsuran"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight=".4"
+                    android:gravity="left"
+                    android:text="Angsuran"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".05"
+                    android:gravity="center"
+                    android:text=":"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/tvInstallment"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textDetailTrasaction"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight=".5"
+                    android:text="Installment"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearOngkosKirim"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linearAngsuran"
+                android:layout_marginRight="5dp"
+                android:orientation="horizontal"
+                android:weightSum="1.0">
+
+                <TextView
+                    android:id="@+id/textOngkosKirim"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight=".4"
+                    android:gravity="left"
+                    android:text="Ongkos Kirim"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".05"
+                    android:gravity="center"
+                    android:text=":"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/tvOngkoskirim"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textDetailTrasaction"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight=".5"
+                    android:text="Ongkos Kirim"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/linearKurir"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linearOngkosKirim"
+                android:layout_marginRight="5dp"
+                android:orientation="horizontal"
+                android:weightSum="1.0">
+
+                <TextView
+                    android:id="@+id/textKurir"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight=".4"
+                    android:gravity="left"
+                    android:text="Kurir"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".05"
+                    android:gravity="center"
+                    android:text=":"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/tvKurir"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textDetailTrasaction"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight=".5"
+                    android:text="Kurir"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearTotalPembayaran"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linearKurir"
+                android:layout_marginRight="5dp"
+                android:orientation="horizontal"
+                android:weightSum="1.0">
+
+                <TextView
+                    android:id="@+id/textTotalPembayaran"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight=".4"
+                    android:gravity="left"
+                    android:text="Total Pembayaran"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".05"
+                    android:gravity="center"
+                    android:text=":"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/tvTotalPembayaran"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textDetailTrasaction"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight=".5"
+                    android:text="Total Pembayaran"
+                    android:textColor="@color/colorOrange"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linerPaymentMethod"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linearTotalPembayaran"
+                android:layout_marginRight="5dp"
+                android:orientation="horizontal"
+                android:weightSum="1.0">
+
+                <TextView
+                    android:id="@+id/textPaymentMethod"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight=".4"
+                    android:gravity="left"
+                    android:text="Methode Pembayaran"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".05"
+                    android:gravity="center"
+                    android:text=":"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/tvPaymentMethod"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textDetailTrasaction"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight=".5"
+                    android:text="Methode Pembayaran"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/border4"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/linerPaymentMethod"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="10dp"
+                android:background="#FF6802"
+                android:orientation="horizontal"></LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearALamat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/border4"
+                android:layout_marginRight="5dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/text_Alamat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="9dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Alamat Pengiriman"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvAlamatPengiriman"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:gravity="left"
+                    android:text="Alamat"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15dp" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/border5"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/linearALamat"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="10dp"
+                android:background="#FF6802"
+                android:orientation="horizontal"></LinearLayout>
 
         </RelativeLayout>
 
