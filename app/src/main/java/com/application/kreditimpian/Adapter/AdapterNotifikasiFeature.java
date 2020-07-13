@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -27,7 +28,7 @@ public class AdapterNotifikasiFeature extends RecyclerView.Adapter<AdapterNotifi
     List<ResultItem> resultItemList;
     Context mContext;
 
-    public AdapterNotifikasiFeature(Context context, List<ResultItem> dataList){
+    public AdapterNotifikasiFeature(Context context, List<ResultItem> dataList) {
         this.mContext = context;
         resultItemList = dataList;
     }
@@ -43,6 +44,7 @@ public class AdapterNotifikasiFeature extends RecyclerView.Adapter<AdapterNotifi
     public void onBindViewHolder(@NonNull HolderNotifikasi holder, int position) {
 
         final ResultItem resultItem = resultItemList.get(position);
+
 
         holder.txtMessageNotif.setText(resultItem.getMessage());
         holder.txtTglNotif.setText(resultItem.getTransaction().getProduct().getTimestamp().getDate());

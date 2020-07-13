@@ -97,6 +97,7 @@ public class FragHistoryMultiguna extends Fragment {
         listMultiguna.setLayoutManager(mLayoutManager);
         listMultiguna.setItemAnimator(new DefaultItemAnimator());
 
+
         getListMultiguna();
         return view;
     }
@@ -124,8 +125,8 @@ public class FragHistoryMultiguna extends Fragment {
                         empty.setVisibility(View.GONE);
                         initDataIntent(HistoryTransaction);
                     }else if(response.body().getResponseCode()==201) {
-                        swipeRefresh.setRefreshing(false);
-                        empty.setVisibility(View.VISIBLE);
+                            swipeRefresh.setRefreshing(false);
+                            empty.setVisibility(View.VISIBLE);
                     }else{
                         Toast.makeText(mContext, "Gagal Refresh", Toast.LENGTH_SHORT).show();
 

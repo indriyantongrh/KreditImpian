@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 ///import com.application.kreditimpian.Model.ModelHistoryTransaction.DataItem;
 ///import com.application.kreditimpian.Model.ModelHistoryPesanan.DataItem;
-import com.application.kreditimpian.Model.ModelNewHistoryPesanan.DataItem;
+import com.application.kreditimpian.Model.ModelHistoryCatalog.DataItem;
 import com.application.kreditimpian.R;
 import com.bumptech.glide.Glide;
 
@@ -87,6 +87,8 @@ public class AdapterHistoryTransaction extends RecyclerView.Adapter<AdapterHisto
         holder.txt_note.setText(dataItem.getNote());
         holder.txt_ongkos_kirim.setText(dataItem.getPostalFee());
         holder.txt_installment.setText(dataItem.getInstallment().getJsonMember0());
+        ///String Installmen = dataItem.getInstallment().getJsonMember0();
+       /// holder.txt_installment.setText(Installmen);
         holder.txt_total_pembayaran.setText(dataItem.getTotalPembayaran());
         holder.txt_address.setText(dataItem.getShipping().getSend().getAddress());
         holder.txt_address_label.setText(dataItem.getShipping().getSend().getAddressLabel());

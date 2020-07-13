@@ -67,8 +67,9 @@ public class FragNotifikasiFitur extends Fragment {
     BaseApiService mApiService;
     AdapterNotifikasiFeature adapterNotifikasiFeature;
     List<ResultItem> resultItemList = new ArrayList<>();
-/*    AdapterNotifFitur adapterNotifFitur;
-    List<DataItem> resultItemList = new ArrayList<>();*/
+
+    /*    AdapterNotifFitur adapterNotifFitur;
+        List<DataItem> resultItemList = new ArrayList<>();*/
     public FragNotifikasiFitur() {
         // Required empty public constructor
     }
@@ -78,7 +79,7 @@ public class FragNotifikasiFitur extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view=  inflater.inflate(R.layout.fragment_frag_notifikasi_fitur, container, false);
+        View view = inflater.inflate(R.layout.fragment_frag_notifikasi_fitur, container, false);
         context = getActivity();
         empty = view.findViewById(R.id.empty);
         rvNotifikasi = view.findViewById(R.id.rvNotifikasi);
@@ -113,8 +114,7 @@ public class FragNotifikasiFitur extends Fragment {
         getNotifFitur();
 
 
-
-        return  view;
+        return view;
     }
 
     private void getNotifFitur() {
@@ -125,14 +125,14 @@ public class FragNotifikasiFitur extends Fragment {
         mApiService.getNotifikasiFeature(params).enqueue(new Callback<ResponseNotifikasiFeatures>() {
             @Override
             public void onResponse(Call<ResponseNotifikasiFeatures> call, Response<ResponseNotifikasiFeatures> response) {
-                if(response.body().getStatus()==200){
+                if (response.body().getStatus() == 200) {
                     swipeRefresh.setRefreshing(false);
                     final List<ResultItem> ListNotif = response.body().getResult();
                     rvNotifikasi.setAdapter(new AdapterNotifikasiFeature(mContext, ListNotif));
                     adapterNotifikasiFeature.notifyDataSetChanged();
                     empty.setVisibility(View.GONE);
                     initDataIntent(ListNotif);
-                }else {
+                } else {
                     swipeRefresh.setRefreshing(false);
                     empty.setVisibility(View.VISIBLE);
 
@@ -147,36 +147,36 @@ public class FragNotifikasiFitur extends Fragment {
 
     }
 
-   /* private void getNotifFitur(){
+    /* private void getNotifFitur(){
 
-        swipeRefresh.setRefreshing(true);
-        HashMap<String, String> params = new HashMap<>();
-        params.put("id_member", sharedPrefManager.getSpIdMember());
+         swipeRefresh.setRefreshing(true);
+         HashMap<String, String> params = new HashMap<>();
+         params.put("id_member", sharedPrefManager.getSpIdMember());
 
-        mApiService.getnotifikasiFitur(params).enqueue(new Callback<ResponseNotifFitur>() {
-            @Override
-            public void onResponse(Call<ResponseNotifFitur> call, Response<ResponseNotifFitur> response) {
-                if(response.body().getResponseCode()==200){
-                    swipeRefresh.setRefreshing(false);
-                    final List<DataItem> ListNotif = response.body().getData();
-                    rvNotifikasi.setAdapter(new AdapterNotifFitur(mContext, ListNotif));
-                    adapterNotifFitur.notifyDataSetChanged();
-                    empty.setVisibility(View.GONE);
-                    initDataIntent(ListNotif);
-                }else {
-                    Toast.makeText(getContext(), "Error 1", Toast.LENGTH_LONG).show();
+         mApiService.getnotifikasiFitur(params).enqueue(new Callback<ResponseNotifFitur>() {
+             @Override
+             public void onResponse(Call<ResponseNotifFitur> call, Response<ResponseNotifFitur> response) {
+                 if(response.body().getResponseCode()==200){
+                     swipeRefresh.setRefreshing(false);
+                     final List<DataItem> ListNotif = response.body().getData();
+                     rvNotifikasi.setAdapter(new AdapterNotifFitur(mContext, ListNotif));
+                     adapterNotifFitur.notifyDataSetChanged();
+                     empty.setVisibility(View.GONE);
+                     initDataIntent(ListNotif);
+                 }else {
+                     Toast.makeText(getContext(), "Error 1", Toast.LENGTH_LONG).show();
 
-                }
-            }
+                 }
+             }
 
-            @Override
-            public void onFailure(Call<ResponseNotifFitur> call, Throwable t) {
-                Toast.makeText(getContext(), "Error 2", Toast.LENGTH_LONG).show();
+             @Override
+             public void onFailure(Call<ResponseNotifFitur> call, Throwable t) {
+                 Toast.makeText(getContext(), "Error 2", Toast.LENGTH_LONG).show();
 
-            }
-        });
+             }
+         });
 
-   *//*     HashMap<String, String> params = new HashMap<>();
+    *//*     HashMap<String, String> params = new HashMap<>();
         params.put("id_member", sharedPrefManager.getSpIdMember());
 
         mApiService.getnotifikasiFitur(params).enqueue(new Callback<ResponseNotifFitur>() {
@@ -206,19 +206,20 @@ public class FragNotifikasiFitur extends Fragment {
         });*//*
     }
 */
-    private void initDataIntent(final List<ResultItem> detaiList){
+    private void initDataIntent(final List<ResultItem> detaiList) {
         rvNotifikasi.addOnItemTouchListener(
                 new RecyclerItemClickListener(mContext, new RecyclerItemClickListener.OnItemClickListener() {
-                    @Override public void onItemClick(View view, int position) {
+                    @Override
+                    public void onItemClick(View view, int position) {
 
                         String status = detaiList.get(position).getMetadata();
                         String number = detaiList.get(position).getTransaction().getNumber();
                         String id_product = detaiList.get(position).getTransaction().getProduct().getId();
                         String id_product_category = detaiList.get(position).getTransaction().getProduct().getIdProductCategory();
                         String name = detaiList.get(position).getTransaction().getProduct().getName();
-                       String price_capital = detaiList.get(position).getTransaction().getProduct().getPriceSale();
+                        String price_capital = detaiList.get(position).getTransaction().getProduct().getPriceSale();
                         String price_sale = detaiList.get(position).getTransaction().getProduct().getPriceSale();
-                         String image = detaiList.get(position).getTransaction().getProduct().getImage();
+                        String image = detaiList.get(position).getTransaction().getProduct().getImage();
                         //String name_merchant = detaiList.get(position).getTransaction().getProduct().getMerchant().getName();
                         String name_company = detaiList.get(position).getTransaction().getCreditor().getName();
                         String tenor = detaiList.get(position).getTransaction().getMetadata().getTenor();
@@ -226,6 +227,10 @@ public class FragNotifikasiFitur extends Fragment {
                         String note = detaiList.get(position).getTransaction().getMetadata().getNote();
                         String postal_fee = detaiList.get(position).getTransaction().getMetadata().getPostalFee();
                         String address_label = detaiList.get(position).getTransaction().getMetadata().getShipping().getSend().getAddressLabel();
+                        if (detaiList.get(position).getTransaction().getMetadata().getShipping().getSend().getAddressLabel() == null) {
+                            Toast.makeText(getContext(), "menunggu konfirmasi user", Toast.LENGTH_LONG).show();
+                        }
+
                         String receiver = detaiList.get(position).getTransaction().getMetadata().getShipping().getSend().getReceiver();
                         String mobile = detaiList.get(position).getTransaction().getMetadata().getShipping().getSend().getMobile();
                         String city = detaiList.get(position).getTransaction().getMetadata().getShipping().getSend().getNameCity();
@@ -235,7 +240,7 @@ public class FragNotifikasiFitur extends Fragment {
                         String installment = detaiList.get(position).getTransaction().getMetadata().getInstallment().getJsonMember0();
                         String total_pembayaran = detaiList.get(position).getTransaction().getMetadata().getTotalPembayaran();
                         String courier = detaiList.get(position).getTransaction().getMetadata().getCourier();
-                        String name_district= detaiList.get(position).getTransaction().getMetadata().getShipping().getSend().getNameDistrict();
+                        String name_district = detaiList.get(position).getTransaction().getMetadata().getShipping().getSend().getNameDistrict();
                         String name_city = detaiList.get(position).getTransaction().getMetadata().getShipping().getSend().getNameCity();
                         String postal_code = detaiList.get(position).getTransaction().getMetadata().getShipping().getSend().getPostalCode();
 
@@ -270,8 +275,8 @@ public class FragNotifikasiFitur extends Fragment {
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_ID_PRODUCT, id_product);
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_ID_PRODUCT_CATEGORY, id_product_category);*/
                         /// detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_CURRENCY, id_currency);
-  /*                      detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_NAME_PRODUCT, name);
-                        *//*detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_DESCRIPTION, description);
+                        /*                      detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_NAME_PRODUCT, name);
+                         *//*detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_DESCRIPTION, description);
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_SKU, sku);
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_STOCK, stock);*//*
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_PRICE_SALE, price_capital);
@@ -303,7 +308,7 @@ public class FragNotifikasiFitur extends Fragment {
 */
                         startActivity(detailNotifikasi);
                         getActivity().finish();
-    }
+                    }
                 }));
 
     }

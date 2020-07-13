@@ -59,6 +59,67 @@ public class DetailNotifikasiFitur extends AppCompatActivity {
 
         ButterKnife.bind(this);
         Intent intent = getIntent();
+        if(intent !=null){
+            // do something you want
+            String priceSale = intent.getStringExtra("price_sale");
+            String metadata = intent.getStringExtra("metadata");
+            String content = intent.getStringExtra("image");
+            String name = intent.getStringExtra("name");
+            String method = intent.getStringExtra("method");
+            String number = intent.getStringExtra("number");
+            String namecompay = intent.getStringExtra("name_company");
+            ///convert String to Rupiah Curerncy
+            Locale localeID = new Locale("in", "ID");
+            NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+            int price_capital = (Integer.parseInt(intent.getStringExtra("price_sale")));
+            int price_sale = (Integer.parseInt(intent.getStringExtra("price_sale")));
+            int down_payment = (Integer.parseInt(intent.getStringExtra("down_payment")));
+            String tenor = intent.getStringExtra("tenor");
+            int installment = (Integer.parseInt(intent.getStringExtra("installment")));
+            int total_pembayaran = (Integer.parseInt(intent.getStringExtra("total_pembayaran")));
+            int postal_fee = (Integer.parseInt(intent.getStringExtra("postal_fee")));
+            String courier = intent.getStringExtra("courier");
+            String payment_method = intent.getStringExtra("payment_method");
+            String address_label = intent.getStringExtra("address_label");
+            String receiver = intent.getStringExtra("receiver");
+            String address = intent.getStringExtra("address");
+            String name_district = intent.getStringExtra("name_district");
+            String name_city = intent.getStringExtra("name_city");
+            String postal_code = intent.getStringExtra("postal_code");
+            String mobile = intent.getStringExtra("mobile");
+
+
+            txt_name_product.setText(name);
+            /// txt_price_sale.setText(priceSale);
+            txt_price_sale.setText(formatRupiah.format(price_sale));
+            txt_status_pesanan.setText(metadata);
+            txt_nama_mitra.setText(namecompay);
+            txt_nomor_invoice.setText("Order ID #"+number);
+            tvDownpayment.setText(formatRupiah.format(down_payment));
+            tvTenor.setText(tenor+" Bulan");
+            tvInstallment.setText(formatRupiah.format(installment));
+            tvTotalPembayaran.setText(formatRupiah.format(total_pembayaran));
+            tvOngkoskirim.setText(formatRupiah.format(postal_fee));
+            tvKurir.setText(courier);
+            tvPaymentMethod.setText(payment_method);
+            Glide.with(DetailNotifikasiFitur.this)
+                    .load(content)
+                    .placeholder(R.drawable.no_image)
+                    .error(R.drawable.no_image)
+                    .into(image);
+
+            if(priceSale==null){
+                txt_price_sale.setText("Harga Menunggu Konfirmasi Admin");
+            }
+            if(namecompay==null){
+                txt_nama_mitra.setText("Tunggu konfimasi admin");
+            }
+
+
+            tvAlamatPengiriman.setText(""+address_label+"\n"+"Nama penerima : " +receiver+ "\n" + "Alamat :" +address+ "\n" +name_district+" , "+name_city+"\n"+"Koder pos : "+postal_code+"\n"+mobile);
+
+        }
+
         String priceSale = intent.getStringExtra("price_sale");
         String metadata = intent.getStringExtra("metadata");
         String content = intent.getStringExtra("image");
@@ -109,6 +170,10 @@ public class DetailNotifikasiFitur extends AppCompatActivity {
          if(priceSale==null){
              txt_price_sale.setText("Harga Menunggu Konfirmasi Admin");
         }
+         if(namecompay==null){
+             txt_nama_mitra.setText("Tunggu konfimasi admin");
+         }
+
 
         tvAlamatPengiriman.setText(""+address_label+"\n"+"Nama penerima : " +receiver+ "\n" + "Alamat :" +address+ "\n" +name_district+" , "+name_city+"\n"+"Koder pos : "+postal_code+"\n"+mobile);
 

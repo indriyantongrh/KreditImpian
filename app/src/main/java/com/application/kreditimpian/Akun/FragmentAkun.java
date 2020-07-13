@@ -125,14 +125,14 @@ public class FragmentAkun extends Fragment {
         //Toast.makeText(LoginUser.this, "Gson anda" + json, Toast.LENGTH_LONG).show();
 
 
-        JSONArray ja = null;
+ /*       JSONArray ja = null;
         try {
             ja = new JSONArray(json);
             String result = ja.getJSONObject(0).getString("email");
             System.out.println(result);
         } catch (JSONException e) {
             e.printStackTrace();
-        }
+        }*/
 
         ///Toast.makeText(getActivity(),"ini hasil decode"+decoded, Toast.LENGTH_SHORT).show();
 

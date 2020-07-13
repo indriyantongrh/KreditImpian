@@ -71,7 +71,7 @@ public class RiwayatPesanan extends AppCompatActivity {
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                getHistoryTransaction();
+                ///getHistoryTransaction();
                 swipeRefresh.setRefreshing(false);
             }
         });
@@ -80,16 +80,16 @@ public class RiwayatPesanan extends AppCompatActivity {
         ButterKnife.bind(this);
         mContext = RiwayatPesanan.this;
         mApiService = UtilsApi.getAPIService();
-        adapterHistoryTransaction = new AdapterHistoryTransaction(RiwayatPesanan.this, resultItemList);
+/*        adapterHistoryTransaction = new AdapterHistoryTransaction(RiwayatPesanan.this, resultItemList);
         //RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         GridLayoutManager mLayoutManager = new GridLayoutManager(RiwayatPesanan.this, 1, GridLayoutManager.VERTICAL, false);
         listHistoryPesanan.setLayoutManager(mLayoutManager);
-        listHistoryPesanan.setItemAnimator(new DefaultItemAnimator());
+        listHistoryPesanan.setItemAnimator(new DefaultItemAnimator());*/
 
-        getHistoryTransaction();
+        //getHistoryTransaction();
     }
 
-    private void getHistoryTransaction(){
+/*    private void getHistoryTransaction(){
 
         progressBar = ProgressDialog.show(RiwayatPesanan.this, null, "Loading...", true, false);
 
@@ -232,7 +232,7 @@ public class RiwayatPesanan extends AppCompatActivity {
             }
         }));
 
-    }
+    }*/
 
     private void setActionBarTitle(String title) {
         if (getSupportActionBar() != null) {

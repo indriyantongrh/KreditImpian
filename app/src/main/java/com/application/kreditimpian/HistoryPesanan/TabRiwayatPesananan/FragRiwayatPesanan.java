@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,10 +27,14 @@ import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
 import com.application.kreditimpian.Constan.ConstanHistoryPesanan;
 import com.application.kreditimpian.Marketplace.FragSemuaKategori.RecyclerItemClickListener;
-import com.application.kreditimpian.Model.ModelNewHistoryPesanan.DataItem;
-import com.application.kreditimpian.Model.ModelNewHistoryPesanan.ResponseNewHistoryPesanan;
+import com.application.kreditimpian.Model.ModelHistoryCatalog.DataItem;
+import com.application.kreditimpian.Model.ModelHistoryCatalog.ResponseHistoryCatalog;
+/*import com.application.kreditimpian.Model.ModelNewHistoryPesanan.DataItem;
+import com.application.kreditimpian.Model.ModelNewHistoryPesanan.ResponseNewHistoryPesanan;*/
 import com.application.kreditimpian.R;
 
+import java.io.IOException;
+import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -65,10 +70,9 @@ public class FragRiwayatPesanan extends Fragment {
     }
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view= inflater.inflate(R.layout.fragment_riwayat_pesanana, container, false);
+        View view = inflater.inflate(R.layout.fragment_riwayat_pesanana, container, false);
 
         sharedPrefManager = new SharedPrefManager(getActivity());
         swipeRefresh = view.findViewById(R.id.swipeRefresh);
@@ -80,7 +84,8 @@ public class FragRiwayatPesanan extends Fragment {
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                getHistoryTransaction();
+                getHistoryCatalog();
+                ///getHistoryTransaction();
                 swipeRefresh.setRefreshing(false);
             }
         });
@@ -94,70 +99,117 @@ public class FragRiwayatPesanan extends Fragment {
         GridLayoutManager mLayoutManager = new GridLayoutManager(getContext(), 1, GridLayoutManager.VERTICAL, false);
         listHistoryPesanan.setLayoutManager(mLayoutManager);
         listHistoryPesanan.setItemAnimator(new DefaultItemAnimator());
+        listHistoryPesanan.setAdapter(adapterHistoryTransaction);
 
+       /// Toast.makeText(getActivity(), "Data id member mu "+sharedPrefManager.getSpIdMember(), Toast.LENGTH_LONG).show();
 
-
-        getHistoryTransaction();
-
+        // getHistoryTransaction();
+        getHistoryCatalog();
 
         return view;
     }
 
-    private void getHistoryTransaction(){
+    private void getHistoryCatalog() {
+        swipeRefresh.setRefreshing(true);
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("id_member", sharedPrefManager.getSpIdMember());
+
+        mApiService.getHistoryTransaction(params).enqueue(new Callback<ResponseHistoryCatalog>() {
+            @Override
+            public void onResponse(Call<ResponseHistoryCatalog> call, Response<ResponseHistoryCatalog> response) {
+
+                if (response.body() !=null) {
+                    swipeRefresh.setRefreshing(false);
+                    Log.v(String.valueOf(getContext()), "data response" + response.body().getData() + "");
+                    final List<com.application.kreditimpian.Model.ModelHistoryCatalog.DataItem> HistoryCatalog = response.body().getData();
+                    listHistoryPesanan.setAdapter(new AdapterHistoryTransaction(mContext, HistoryCatalog));
+                    adapterHistoryTransaction.notifyDataSetChanged();
+                    empty.setVisibility(View.GONE);
+                    initDataIntent(HistoryCatalog);
+                } else if (response.body().getResponseCode() == 201) {
+                    swipeRefresh.setRefreshing(false);
+                    empty.setVisibility(View.VISIBLE);
+                } else {
+                    Toast.makeText(mContext, "Gagal Refresh", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseHistoryCatalog> call, Throwable t) {
+                swipeRefresh.setRefreshing(false);
+                Log.v("jajal", t.getMessage());
+                /*Toast.makeText(mContext, "Koneksi anda bermasalah", Toast.LENGTH_SHORT).show();*/
+                if (t instanceof SocketTimeoutException) {
+                    //toast // log
+                    Toast.makeText(mContext, "Koneksi anda bermasalah 1", Toast.LENGTH_SHORT).show();
+                } else if (t instanceof IOException) {
+                    //toast // log
+                    Toast.makeText(mContext, "Koneksi anda bermasalah 2", Toast.LENGTH_SHORT).show();
+                } else {
+                    //toast // log
+                    Log.v("jajal", t.getMessage());
+                    Toast.makeText(mContext, "Koneksi anda bermasalah 3", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+    }
+
+
+  /*  private void getHistoryTransaction() {
         swipeRefresh.setRefreshing(true);
         ///progressBar = ProgressDialog.show(getActivity(), null, "Loading...", true, false);
 
         HashMap<String, String> params = new HashMap<>();
         params.put("id_member", sharedPrefManager.getSpIdMember());
 
-        mApiService.getHistoryTransaction(params).enqueue(new Callback<ResponseNewHistoryPesanan>() {
+        mApiService.getHistoryTransaction(params).enqueue(new Callback<ResponseHistoryCatalog>() {
             @Override
-            public void onResponse(Call<ResponseNewHistoryPesanan> call, Response<ResponseNewHistoryPesanan> response) {
-                if (response.isSuccessful()){
+            public void onResponse(Call<ResponseHistoryCatalog> call, Response<ResponseHistoryCatalog> response) {
+
+                ///progressBar.dismiss();
+                   *//* if (response.body().getData()==null){
+                        swipeRefresh.setRefreshing(false);
+                        ///progressBar.dismiss();
+                        empty.setVisibility(View.VISIBLE);
+                    }
+                    else*//*
+                if (response.body().getResponseCode() == 200) {
+                    swipeRefresh.setRefreshing(false);
                     ///progressBar.dismiss();
-                    if (response.body().getData()==null){
-                        swipeRefresh.setRefreshing(false);
-                        ///progressBar.dismiss();
-                        empty.setVisibility(View.VISIBLE);
-                    }
-                    else if (response.body().getResponseCode()==200) {
-                        swipeRefresh.setRefreshing(false);
-                        ///progressBar.dismiss();
-                        final List<DataItem> HistoryTransaction = response.body().getData();
+                    final List<DataItem> HistoryTransaction = response.body().getData();
 
-                        listHistoryPesanan.setAdapter(new AdapterHistoryTransaction(mContext, HistoryTransaction));
-                        adapterHistoryTransaction.notifyDataSetChanged();
+                    listHistoryPesanan.setAdapter(new AdapterHistoryTransaction(mContext, HistoryTransaction));
+                    adapterHistoryTransaction.notifyDataSetChanged();
 
-                        empty.setVisibility(View.GONE);
-                        initDataIntent(HistoryTransaction);
-                    }else {
-                        swipeRefresh.setRefreshing(false);
-                        ///progressBar.dismiss();
-                        empty.setVisibility(View.VISIBLE);
-                    }
-
+                    empty.setVisibility(View.GONE);
+                    initDataIntent(HistoryTransaction);
                 } else {
                     swipeRefresh.setRefreshing(false);
-                    //progressBar.dismiss();
-                    Toast.makeText(mContext, "Gagal Refresh", Toast.LENGTH_SHORT).show();
+                    ///progressBar.dismiss();
+                    empty.setVisibility(View.VISIBLE);
                 }
+
             }
 
             @Override
-            public void onFailure(Call<ResponseNewHistoryPesanan> call, Throwable t) {
+            public void onFailure(Call<ResponseHistoryCatalog> call, Throwable t) {
                 swipeRefresh.setRefreshing(false);
-                Toast.makeText(mContext,"Koneksi anda bermasalah", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "Koneksi anda bermasalah", Toast.LENGTH_SHORT).show();
             }
         });
 
-    }
+    }*/
 
-    private void initDataIntent(final List<DataItem> detaiList){
+    private void initDataIntent(final List<com.application.kreditimpian.Model.ModelHistoryCatalog.DataItem> detaiList) {
         listHistoryPesanan.addOnItemTouchListener(
                 new RecyclerItemClickListener(mContext, new RecyclerItemClickListener.OnItemClickListener() {
-                    @Override public void onItemClick(View view, int position) {
+                    @Override
+                    public void onItemClick(View view, int position) {
 
-                        String id =detaiList.get(position).getId();
+                        String id = detaiList.get(position).getId();
                         String id_transactions = detaiList.get(position).getIdTransaction();
                         String status = detaiList.get(position).getStatus();
                         String timestamp = detaiList.get(position).getTimestamp();
@@ -196,7 +248,7 @@ public class FragRiwayatPesanan extends Fragment {
                         String district = detaiList.get(position).getShipping().getSend().getDistrict();
                         String address = detaiList.get(position).getShipping().getSend().getAddress();
                         String payment_method = detaiList.get(position).getPaymentMethod();
-                        String installment = detaiList.get(position).getInstallment().getJsonMember0();
+                       String installment = detaiList.get(position).getInstallment().getJsonMember0();
                         String total_pembayaran = detaiList.get(position).getTotalPembayaran();
                         String courier = detaiList.get(position).getCourier();
                         String name_city = detaiList.get(position).getNameCity();
@@ -256,7 +308,7 @@ public class FragRiwayatPesanan extends Fragment {
 
     }
 
-    private void CheckCOnection(){
+    private void CheckCOnection() {
 
         conMgr = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         {
