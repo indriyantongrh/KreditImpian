@@ -11,9 +11,12 @@ buildscript {
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.4'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
         classpath 'com.jakewharton:butterknife-gradle-plugin:10.1.0'
-        classpath 'com.google.gms:google-services:4.2.0'
+        classpath 'com.google.gms:google-services:4.3.3'
+
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+        // Check that you have the Google Services Gradle plugin v4.3.2 or later
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.0.0-beta02'
     }
 }
 

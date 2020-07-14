@@ -1,6 +1,9 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
+apply plugin: 'com.google.firebase.crashlytics'
+
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.1"
@@ -141,12 +144,20 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:11.8.0'
     //Firebase Messaging library for Sending push Notifications
     implementation 'com.google.firebase:firebase-messaging:11.8.0'
+    // Recommended: Add the Firebase SDK for Google Analytics.
+    //implementation 'com.google.firebase:firebase-analytics:17.4.3'
+    // Add the Firebase Crashlytics SDK.
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.9.8'
+
+
+
     //implementation 'com.cossacklabs.com:themis:+' // better to check which version is current latest and link to it
     implementation 'com.github.barteksc:android-pdf-viewer:2.8.2' //pdf viewer
 
     implementation 'org.jsoup:jsoup:1.13.1' //CheckedUpdate Playstore
     implementation 'com.google.android.play:core:1.7.2' //CheckedUpdate Playstore
     implementation 'com.wang.avi:library:2.1.3' //LoadingScreen
+
+
 }
 
-apply plugin: 'com.google.gms.google-services'
