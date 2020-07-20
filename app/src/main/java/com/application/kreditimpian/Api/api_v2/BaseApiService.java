@@ -4,6 +4,7 @@ package com.application.kreditimpian.Api.api_v2;
 import com.application.kreditimpian.Model.ModelAddress.ResponseAddress;
 import com.application.kreditimpian.Model.ModelCityRajaOngkir.ResponseCityRajaOngkir;
 import com.application.kreditimpian.Model.ModelCitySubDistrict.ResponseCitySubDistrict;
+import com.application.kreditimpian.Model.ModelConfirmProduct.ResponseConfirmProduct;
 import com.application.kreditimpian.Model.ModelDeleteShopingCart.ResponseDeleteShopingCart;
 import com.application.kreditimpian.Model.ModelDetailMember.ResponseDetailMember;
 import com.application.kreditimpian.Model.ModelFOrgotPassword.ResponseForgotPassword;
@@ -206,6 +207,10 @@ public interface BaseApiService {
     @FormUrlEncoded
     @POST("ApiMobile/getallhistorytransactionreq")
     Call<ResponseRequestProduct> getProductRequest(@FieldMap HashMap<String, String> params);
+
+    @FormUrlEncoded
+    @POST("transactions/logs/create")
+    Call<ResponseConfirmProduct> postConfirmProduct(@FieldMap HashMap<String, String> params);
 
     @FormUrlEncoded
     @POST("ApiMobile/getHistoryMultigunaMotor")

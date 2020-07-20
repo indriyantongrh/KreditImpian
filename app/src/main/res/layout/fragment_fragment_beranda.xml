@@ -665,6 +665,24 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent" />
 
+
+                            <com.wang.avi.AVLoadingIndicatorView
+                                android:id="@+id/Loading"
+                                style="@style/AVLoadingIndicatorView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:layout_gravity="center"
+                                android:foregroundGravity="center"
+                                android:visibility="visible"
+                                app:indicatorColor="@color/colorOrange"
+                                app:indicatorName="BallClipRotateIndicator"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:ignore="MissingConstraints" />
+
                         </FrameLayout>
 
                         <View
@@ -731,13 +749,31 @@
                             android:scrollbars="horizontal"
                             app:cardBackgroundColor="#efefef" />
 
-                        <ProgressBar
+                        <!--<ProgressBar
                             android:id="@+id/pbLoading2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
                             android:layout_gravity="center"
-                            android:foregroundGravity="center" />
+                            android:foregroundGravity="center" />-->
+
+
+                        <com.wang.avi.AVLoadingIndicatorView
+                            android:id="@+id/LoadingMitra"
+                            style="@style/AVLoadingIndicatorView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_gravity="center"
+                            android:foregroundGravity="center"
+                            android:visibility="visible"
+                            app:indicatorColor="@color/colorOrange"
+                            app:indicatorName="BallClipRotateIndicator"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="MissingConstraints" />
 
                     </LinearLayout>
 
@@ -789,13 +825,30 @@
                             android:scrollbars="horizontal"
                             app:cardBackgroundColor="#efefef" />
 
-                        <ProgressBar
+                        <!--<ProgressBar
                             android:id="@+id/pbLoading"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
                             android:layout_gravity="center"
-                            android:foregroundGravity="center" />
+                            android:foregroundGravity="center" />-->
+
+                        <com.wang.avi.AVLoadingIndicatorView
+                            android:id="@+id/LoadingMerchant"
+                            style="@style/AVLoadingIndicatorView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_gravity="center"
+                            android:foregroundGravity="center"
+                            android:visibility="visible"
+                            app:indicatorColor="@color/colorOrange"
+                            app:indicatorName="BallClipRotateIndicator"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="MissingConstraints" />
 
                     </LinearLayout>
 

@@ -98,6 +98,7 @@ import java.util.Objects;
 import com.application.kreditimpian.FormPengajuan.StepFotoProduct;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.gson.Gson;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -106,7 +107,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class FragmentBeranda extends Fragment {
-
+    private AVLoadingIndicatorView Loading;
+    private AVLoadingIndicatorView LoadingMitra;
+    private AVLoadingIndicatorView LoadingMerchant;
     private ShimmerFrameLayout mShimmerViewContainer;
     CardView btn_lainya, btn_handphone, btn_laptop, btn_otomotif, btn_forniture, btn_fashion, btn_olahraga, btn_property,
             btnFotoimpian,btnUploadImpian,btnCariImpian,btnUpgradeImpian ;
@@ -147,10 +150,6 @@ public class FragmentBeranda extends Fragment {
     RecyclerView rv_merchant;
     @BindView(R.id.rv_mitra)
     RecyclerView rv_mitra;
-    @BindView(R.id.pbLoading)
-    ProgressBar pbLoading;
-    @BindView(R.id.pbLoading2)
-    ProgressBar pbLoading2;
 
     BaseApiService mApiService;
     Context mContext;
@@ -216,6 +215,9 @@ public class FragmentBeranda extends Fragment {
         modal = rootView.findViewById(R.id.btn_lainya);
         sliderView = rootView.findViewById(R.id.sliderView);
         mLinearLayout = rootView.findViewById(R.id.pagesContainer);
+        Loading = rootView.findViewById(R.id.Loading);
+        LoadingMitra = rootView.findViewById(R.id.LoadingMitra);
+        LoadingMerchant = rootView.findViewById(R.id.LoadingMerchant);
         //mShimmerViewContainer = rootView.findViewById(R.id.shimmer_view_container);
         adapterViewFlipper = rootView.findViewById(R.id.adapterViewFlipper);
        /* shimmer_view_container = rootView.findViewById(R.id.shimmer_view_container);
@@ -226,20 +228,7 @@ public class FragmentBeranda extends Fragment {
         idMember = sharedPrefManager.getSpIdMember();
         Gson gson = new Gson();
         String jsonconvert = gson.toJson(decode);
-//        try {
-//            JSONArray jsonArray = new JSONArray(jsonconvert);
-//            JSONObject jsonObject = jsonArray.getJSONObject(1);
-//            String id = jsonObject.getString("id");
-//            System.out.println("Cek id saya : "+id);
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
 
-        /// Toast.makeText(getActivity(), "Identitas mu "+ sharedPrefManager.getSPID(), Toast.LENGTH_SHORT).show();
-
-/*        Result result = SharedPrefManager.getInstance(getActivity()).getResult();
-
-        Toast.makeText(getActivity(), "ini id ke-"+result.getId(), Toast.LENGTH_SHORT).show();*/
 
 
         btnUploadImpian.setOnClickListener(view -> {
@@ -387,7 +376,7 @@ public class FragmentBeranda extends Fragment {
         mApiService.getImageSlider().enqueue(new Callback<ResponseImagePromo>() {
             @Override
             public void onResponse(Call<ResponseImagePromo> call, Response<ResponseImagePromo> response) {
-
+                Loading.setVisibility(View.GONE);
                 if (response.body().getResponseCode() == 200) {
                   //  shimmer_view_container.stopShimmer();
                     FlipperAdapter adapter = new FlipperAdapter(getActivity(), (ArrayList<DataItem>) response.body().getData());
@@ -533,7 +522,7 @@ public class FragmentBeranda extends Fragment {
         mApiService.getMitraKami().enqueue(new Callback<ResponseMitraKami>() {
             @Override
             public void onResponse(Call<ResponseMitraKami> call, Response<ResponseMitraKami> response) {
-                pbLoading2.setVisibility(View.GONE);
+                LoadingMitra.setVisibility(View.GONE);
                 if (response.isSuccessful()) {
                     ///progressBar.dismiss();
                     if (response.body().getStatus() == 200) {
@@ -552,7 +541,7 @@ public class FragmentBeranda extends Fragment {
 
                 } else {
                     //progressBar.dismiss();
-                    pbLoading.setVisibility(View.GONE);
+                    LoadingMitra.setVisibility(View.GONE);
                     Toast.makeText(mContext, "Gagal Refresh", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -570,7 +559,8 @@ public class FragmentBeranda extends Fragment {
         mApiService.getMerchnat().enqueue(new Callback<ResponseMerchant>() {
             @Override
             public void onResponse(Call<ResponseMerchant> call, Response<ResponseMerchant> response) {
-                pbLoading.setVisibility(View.GONE);
+                LoadingMerchant.setVisibility(View.GONE);
+
                 if (response.isSuccessful()) {
                     ///progressBar.dismiss();
                     if (response.body().getStatus() == 200) {
@@ -589,7 +579,7 @@ public class FragmentBeranda extends Fragment {
 
                 } else {
                     //progressBar.dismiss();
-                    pbLoading.setVisibility(View.GONE);
+                    LoadingMerchant.setVisibility(View.GONE);
                     Toast.makeText(mContext, "Gagal Refresh", Toast.LENGTH_SHORT).show();
                 }
             }
