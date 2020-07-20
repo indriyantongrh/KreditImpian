@@ -1600,35 +1600,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
     }
 
 
-/*    private void getKotaKecamatan(){
 
-        HashMap<String, String> params = new HashMap<>();
-        params.put("id_addresses", text_id.getText().toString());
-
-        mApiService.getKotaKecamatan(params).enqueue(new Callback<ResponseKotaKecamatan>() {
-            @Override
-            public void onResponse(Call<ResponseKotaKecamatan> call, Response<ResponseKotaKecamatan> response) {
-                if (response.body().getResponseCode() == 200) {
-                    ResponseKotaKecamatan responseKotaKecamatan = response.body();
-                    List<com.application.kreditimpian.Model.ModelKotaKecamatan.DataItem> detail = responseKotaKecamatan.getData();
-
-                    text_kota.setText("Kota yang anda pilih : "+detail.get(0).getNamaKota());
-                    text_kecamatan.setText("Kecamatan yang anda pilih : "+detail.get(0).getNamaKecamatan());
-
-
-
-                } else {
-                    Toast.makeText(DataDiri.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseKotaKecamatan> call, Throwable t) {
-
-            }
-        });
-
-    }*/
 
 
     /*set Permision*/

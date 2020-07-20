@@ -97,24 +97,6 @@ public class TambahAlamatPengiriman extends AppCompatActivity implements Adapter
         /* getGeoCity(); */ /*Komen API di buat mas NIght unutk get City*/
         getCityRajaOngkir();
 
-//
-//        /*Get Detail Addreses*/
-//        Intent intent = getIntent();
-//        id = intent.getStringExtra(ConstansAddress.KEY_ID);
-//        id_member = intent.getStringExtra(ConstansAddress.KEY_ID_MEMBER);
-//        address_name = intent.getStringExtra(ConstansAddress.KEY_ADDRESS_NAME);
-//        receiver = intent.getStringExtra(ConstansAddress.KEY_RECEIVER);
-//        phone = intent.getStringExtra(ConstansAddress.KEY_PHONE);
-//        address = intent.getStringExtra(ConstansAddress.KEY_ADDRESS);
-//        postal_code = intent.getStringExtra(ConstansAddress.KEY_POSTAL_CODE);
-//        id_geodirectory = intent.getStringExtra(ConstansAddress.KEY_ID_GEODIRECTORY);
-//        district = intent.getStringExtra(ConstansAddress.KEY_DISTRICT);
-//
-//        txtnamapenerima.setText(receiver);
-//        txtnamaalamat.setText(address_name);
-//        txtnomorhandphone.setText(phone);
-//        txtalamatpengririman.setText(address);
-//        txtkodepospengiriman.setText(postal_code);
 
         btnsimpan_pengiriman.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -531,63 +513,7 @@ public class TambahAlamatPengiriman extends AppCompatActivity implements Adapter
     }
 
 
-/*    private void getGeoCityyy(){
 
-        cityvalues = new HashMap<>();
-        mApiService.getCity().enqueue(new Callback<ResponseGeodirectory>() {
-            @Override
-            public void onResponse(Call<ResponseGeodirectory> call, Response<ResponseGeodirectory> response) {
-                if(response.body() !=null){
-                   //// String citySelected = spinnerkota_pengiriman.getItemAtPosition(p).toString();
-                    List<DataItem> getCity = response.body().getData();
-                    getCity(getCity);
-                //                    spinnerkota_pengiriman.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                        @Override
-//                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                            int city_id = Integer.parseInt(listSpinner.get(position));
-//                            Log.i("your_city_id", String.valueOf(city_id));
-////                            int item = spinnerkota_pengiriman.getSelectedItemPosition();
-////
-////                            id = spinnerkota_pengiriman.getSelectedItem().toString()
-//                        }
-//                    });
-                } else {
-                    loading.dismiss();
-                   /// Toast.makeText(TambahAlamatPengiriman.this, "Gagal mengambil data dosen", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseGeodirectory> call, Throwable t) {
-
-            }
-        });
-    }*/
-
-/*    private void getCity(List<DataItem> getCity){
-        this.getCity = getCity;
-        List<String> listSpinner = new ArrayList<String>();
-        String[] idcity = new String[getCity.size() +1];
-        String[] city = new String[getCity.size() +1];
-        city[0] = "-- Pilih Kota --";
-        for (int i = 0; i < getCity.size(); i++){
-            ///listSpinner.add(getCity.get(i).getIdParent());
-            city[i + 1] = getCity.get(i).getName();
-            idcity[i + 1] = getCity.get(i).getId();
-            cityvalues.put(city[i + 1], idcity[i + 1] );
-//                         id = getCity.get(i).getId();
-//                         nameCity = getCity.get(i).getName();
-            ///listSpinner.add(nameCity);
-
-        }
-        // Set hasil result json ke dalam adapter spinner
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(TambahAlamatPengiriman.this,
-                android.R.layout.simple_spinner_item, city);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerkota_pengiriman.setAdapter(adapter);
-        spinnerkota_pengiriman.setOnItemSelectedListener(this);
-
-    }*/
 
     private void getGeoDistrict() {
 

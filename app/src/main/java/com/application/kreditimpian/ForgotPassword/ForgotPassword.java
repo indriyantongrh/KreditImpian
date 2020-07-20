@@ -71,9 +71,6 @@ public class ForgotPassword extends AppCompatActivity {
         pDialog.setMessage("Loading...");
         pDialog.show();
 
-//        HashMap<String, String> params = new HashMap<>();
-//        params.put("username", txtemail.getText().toString());
-//        Toast.makeText(ForgotPassword.this, ""+params , Toast.LENGTH_LONG).show();
 
         String username = Edusername.getText().toString();
 
@@ -100,22 +97,7 @@ public class ForgotPassword extends AppCompatActivity {
                     alertDialog.show();
 
 
-                       /*AlertDialog.Builder ImageDialog = new AlertDialog.Builder(ForgotPassword.this);
-                        LayoutInflater inflater = getLayoutInflater();
-                        View dialogLayout = inflater.inflate(R.layout.image_layout, null);
-                        ///ImageDialog.setPositiveButton("OK", null);
-                        ImageDialog.setView(dialogLayout);
-                        ImageDialog.setTitle("Email terkirim! Cek inbox anda ");
-                        ImageDialog.setNegativeButton("Kembali", new DialogInterface.OnClickListener()
-                        {
-                            public void onClick(DialogInterface arg0, int arg1)
-                            {
-                                Intent intent = new Intent(ForgotPassword.this, LoginUser.class);
-                                startActivity(intent);
-                                finish();
-                            }
-                        });
-                        ImageDialog.show();*/
+
 
 
                 } else {
@@ -126,17 +108,7 @@ public class ForgotPassword extends AppCompatActivity {
 
                 }
 
-                /*if (response.body().getStatus()==200){
 
-                    Toast.makeText(ForgotPassword.this, "Silahkan cek email anda", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(ForgotPassword.this, LoginUser.class);
-                    startActivity(intent);
-                    finish();
-
-                }else {
-                    Toast.makeText(ForgotPassword.this, "Email belum terdaftar", Toast.LENGTH_LONG).show();
-
-                }*/
             }
 
             @Override

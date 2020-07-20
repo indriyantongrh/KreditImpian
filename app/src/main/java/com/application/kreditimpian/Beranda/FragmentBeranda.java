@@ -811,53 +811,5 @@ public class FragmentBeranda extends Fragment {
     }
 
 
-//    @Override
-//    public void onBackPressed() {
-//        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-//
-//        /// builder.setTitle("Keluar ");
-//        builder.setMessage("Apakah kamu yakin ingin keluar dari aplikasi ?");
-//
-//        builder.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
-//            public void onClick(DialogInterface dialog, int which) {
-//
-//
-//
-//                moveTaskToBack(true);
-//                finish();
-//                //// new DetailAplikasiSaya.HapusData().execute();
-//                dialog.dismiss();
-//            }
-//
-//        });
-//        builder.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
-//
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//
-//                // Do nothing
-//                dialog.dismiss();
-//            }
-//        });
-//
-//        AlertDialog alert = builder.create();
-//        alert.show();
-//        //// Toast.makeText(this,"Keluar aplikasi!", Toast.LENGTH_LONG).show();
-//
-//    }
-
-//
-//    @Override
-//    public void onAttach(Context context) {
-//        super.onAttach(context);
-//
-//        mActivity = getActivity();
-//    }
-//
-//    @Override
-//    public void onDetach() {
-//        super.onDetach();
-//        mActivity = null;
-//    }
 
 }

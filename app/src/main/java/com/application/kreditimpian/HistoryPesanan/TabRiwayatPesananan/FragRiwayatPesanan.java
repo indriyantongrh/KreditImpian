@@ -158,50 +158,7 @@ public class FragRiwayatPesanan extends Fragment {
     }
 
 
-  /*  private void getHistoryTransaction() {
-        swipeRefresh.setRefreshing(true);
-        ///progressBar = ProgressDialog.show(getActivity(), null, "Loading...", true, false);
 
-        HashMap<String, String> params = new HashMap<>();
-        params.put("id_member", sharedPrefManager.getSpIdMember());
-
-        mApiService.getHistoryTransaction(params).enqueue(new Callback<ResponseHistoryCatalog>() {
-            @Override
-            public void onResponse(Call<ResponseHistoryCatalog> call, Response<ResponseHistoryCatalog> response) {
-
-                ///progressBar.dismiss();
-                   *//* if (response.body().getData()==null){
-                        swipeRefresh.setRefreshing(false);
-                        ///progressBar.dismiss();
-                        empty.setVisibility(View.VISIBLE);
-                    }
-                    else*//*
-                if (response.body().getResponseCode() == 200) {
-                    swipeRefresh.setRefreshing(false);
-                    ///progressBar.dismiss();
-                    final List<DataItem> HistoryTransaction = response.body().getData();
-
-                    listHistoryPesanan.setAdapter(new AdapterHistoryTransaction(mContext, HistoryTransaction));
-                    adapterHistoryTransaction.notifyDataSetChanged();
-
-                    empty.setVisibility(View.GONE);
-                    initDataIntent(HistoryTransaction);
-                } else {
-                    swipeRefresh.setRefreshing(false);
-                    ///progressBar.dismiss();
-                    empty.setVisibility(View.VISIBLE);
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<ResponseHistoryCatalog> call, Throwable t) {
-                swipeRefresh.setRefreshing(false);
-                Toast.makeText(mContext, "Koneksi anda bermasalah", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-    }*/
 
     private void initDataIntent(final List<com.application.kreditimpian.Model.ModelHistoryCatalog.DataItem> detaiList) {
         listHistoryPesanan.addOnItemTouchListener(

@@ -230,92 +230,11 @@ public class Register extends AppCompatActivity {
 
     }
 
-    private void registerMember(){
-
-
-        String username = txtusername.getText().toString();
-        String email = txtemail.getText().toString();
-        String phone = nomortelepon.getText().toString();
-        String password = txtpassword.getText().toString();
-        String password_confirm = txtconfirmpassword.getText().toString();
-
-        Toast.makeText(Register.this, ""+username+email+phone+password+password_confirm, Toast.LENGTH_LONG).show();
-       /* mApiService.registerMember(username, email, phone, password, password_confirm).enqueue(new Callback<NewResponseRegister>() {
-            @Override
-            public void onResponse(Call<NewResponseRegister> call, Response<NewResponseRegister> response) {
-
-                if(response.body().getResponseCode()==200){
-                    Toast.makeText(Register.this, response.body().getMessage(), Toast.LENGTH_LONG).show();
-                }else {
-                    Toast.makeText(Register.this, "Data yang anda masukan salah", Toast.LENGTH_LONG).show();
-
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<NewResponseRegister> call, Throwable t) {
-                Toast.makeText(Register.this, "Koneksi anda terputus", Toast.LENGTH_LONG).show();
-            }
-        });*/
-    }
 
 
 
-/*    private void RegisterCheck(){
-
-        pDialog = new ProgressDialog(this);
-        pDialog.setCancelable(false);
-        pDialog.setMessage("Loading. ..");
-        pDialog.show();
-
-        //mengambil data dari edittext
-        String username = txtusername.getText().toString();
-        String email = txtemail.getText().toString();
-        String phone = nomortelepon.getText().toString();
-        String password = txtpassword.getText().toString();
-        String password_confirm = txtconfirmpassword.getText().toString();
 
 
-        OkHttpClient client = new OkHttpClient.Builder()
-                .followRedirects(FALSE)
-                .followSslRedirects(FALSE)
-                .connectTimeout(100, TimeUnit.SECONDS)
-                .readTimeout(100, TimeUnit.SECONDS).build();
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BuildConfig.BASE_URL).client(client)
-                .addConverterFactory(GsonConverterFactory.create()).build();
-
-        RequestInterface api = retrofit.create(RequestInterface.class);
-        Call<RegisterResponse> callRegister = api.create_member(username, email, phone, password, password_confirm);
-            callRegister.enqueue(new Callback<RegisterResponse>() {
-                @Override
-                public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
-
-                    if(response.isSuccessful()){
-                        pDialog.dismiss();
-                        if(response.body().getResult() != null){
-                            Toast.makeText(Register.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-
-                        } else {
-                            Toast.makeText(Register.this, "The username or password is incorrect", Toast.LENGTH_SHORT).show();
-                        }
-                    } else {
-
-                        Toast.makeText(Register.this, "Error! Please try again!", Toast.LENGTH_SHORT).show();
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<RegisterResponse> call, Throwable t) {
-                    pDialog.dismiss();
-                    Log.v("jajal", t.getMessage());
-                    Toast.makeText(Register.this, "Tidak response", Toast.LENGTH_LONG).show();
-                }
-            });
-
-
-    }*/
     private void showDialog() {
         if (!pDialog.isShowing())
             pDialog.show();
