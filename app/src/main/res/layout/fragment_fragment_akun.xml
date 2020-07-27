@@ -414,6 +414,62 @@
                         android:background="#FF6802"
                         android:orientation="horizontal"></LinearLayout>
 
+                    <RelativeLayout
+                        android:id="@+id/RelativSarandanKomplain"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp">
+
+
+                        <ImageView
+                            android:id="@+id/imgSarandanKomplain"
+                            android:layout_width="50sp"
+                            android:layout_height="50sp"
+                            android:layout_margin="5dp"
+                            android:padding="10dp"
+                            android:src="@drawable/iconmenutermcondition" />
+
+                        <TextView
+                            android:id="@+id/textSarandanKomplain"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_toRightOf="@id/imgSarandanKomplain"
+                            android:fontFamily="@font/cosimabold"
+                            android:text="Saran dan Komplain"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="12sp" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/textSarandanKomplain"
+                            android:gravity="right">
+
+                            <ImageView
+                                android:layout_width="50sp"
+                                android:layout_height="50sp"
+                                android:padding="13dp"
+                                android:layout_margin="5dp"
+                                android:src="@drawable/ic_back_right" />
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+                    <!--Border-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@+id/LinearImage"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="50sp"
+                        android:background="#FF6802"
+                        android:orientation="horizontal"></LinearLayout>
+
 
                     <RelativeLayout
                         android:visibility="gone"

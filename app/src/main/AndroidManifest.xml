@@ -38,7 +38,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Notifikasi.NotifikasiV2.NotifikasiV2"></activity>
+        <activity android:name=".SaranKomplain.SarandanKomplain"></activity>
+        <activity android:name=".Notifikasi.NotifikasiV2.NotifikasiV2" />
         <activity android:name=".Notifikasi.NotifikasiFitur.DetailNotifikasiFitur" />
         <activity android:name=".HistoryPesanan.TabProductRequest.TransactionSelectTenorFitur" />
         <activity android:name=".HistoryPesanan.TabProductRequest.TransactionSelectMitraFitur" />
@@ -114,17 +115,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-<!--        <service android:name=".PushNotifikasi.FirebaseInstanceIdService">
+        <!--
+        <service android:name=".PushNotifikasi.FirebaseInstanceIdService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
-        </service>-->
-
-        <service
-            android:name=".FcmV2.MyFirebaseIntanceService">
+        </service>
+        -->
+        <service android:name=".FcmV2.MyFirebaseIntanceService">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
     </application>

@@ -177,6 +177,8 @@ public class DetailNotifikasiFitur extends AppCompatActivity {
 
         tvAlamatPengiriman.setText(""+address_label+"\n"+"Nama penerima : " +receiver+ "\n" + "Alamat :" +address+ "\n" +name_district+" , "+name_city+"\n"+"Koder pos : "+postal_code+"\n"+mobile);
 
+
+
     }
 
     @Override

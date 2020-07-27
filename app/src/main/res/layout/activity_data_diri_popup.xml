@@ -79,8 +79,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:paddingBottom="@dimen/padding_10"
                     android:text="Masukan foto wajah" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textSize="8dp"
+                    android:textStyle="italic"
+                    android:textColor="@color/colorOrange"
+                    android:text="*wajib diisi" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/imageself"
@@ -99,6 +106,8 @@
                     app:civ_border_color="#FFFFFFFF"
                     app:civ_border_width="3dp"
                     app:civ_fill_color="#efeeee" />
+
+
 
                 <Button
                     android:id="@+id/btnuploadfoto"
@@ -284,7 +293,17 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/sairaregular"
-                        android:text="Dikumen KTP" />
+                        android:text="Dokumen KTP" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="bottom|right"
+                        android:textSize="10dp"
+                        android:textStyle="italic"
+                        android:textColor="@color/colorOrange"
+                        android:text="*foto KTP wajib diisi" />
                 </LinearLayout>
 
                 <LinearLayout

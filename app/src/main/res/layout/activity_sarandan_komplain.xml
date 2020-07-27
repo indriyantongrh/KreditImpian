@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SaranKomplain.SarandanKomplain">
+
+
+    <FrameLayout
+        android:id="@+id/frame_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+    <LinearLayout
+        android:id="@+id/linera2"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:background="@drawable/borderhitam"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/txtEmail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/jipatharegular"
+                android:hint="Email"
+                android:inputType="none"
+                android:textSize="26dp" />
+        </LinearLayout>
+
+        <!--Border-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:background="#fff"></LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:background="@drawable/borderhitam"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/spinnerPilih"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/jipatharegular"
+                android:textSize="26dp"></Spinner>
+
+
+        </LinearLayout>
+
+        <!--Border-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:background="#fff"></LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearnomorinvoice"
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:background="@drawable/borderhitam"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/txtNumberInvoice"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/jipatharegular"
+                android:hint="Nomor Pesanan"
+                android:inputType="text"
+                android:textSize="26dp" />
+        </LinearLayout>
+
+        <!--Border-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:background="#fff"></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="@drawable/borderhitam"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/txtBody"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/jipatharegular"
+                android:gravity="top"
+                android:hint="Jelaskan maksud anda"
+                android:inputType="textMultiLine"
+                android:lines="9"
+                android:textSize="26dp" />
+
+        </LinearLayout>
+
+
+        <!--Button-->
+        <Button
+            android:id="@+id/btnSUbmit"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/btnorange"
+            android:fontFamily="@font/jipatharegular"
+            android:text="Kirim"
+            android:textColor="#fff"
+            android:textSize="25sp"
+            android:textStyle="bold"></Button>
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
