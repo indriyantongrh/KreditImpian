@@ -23,6 +23,7 @@ import com.application.kreditimpian.Api.SuccessMessage;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
 import com.application.kreditimpian.FormPengajuan.SuccessMengajukan;
+import com.application.kreditimpian.LoginRegister.LoginUser;
 import com.application.kreditimpian.Model.ModelPengajuanCatalog.ResponsePengajuanCatalog;
 import com.application.kreditimpian.Model.ModelTransactionAPI.ResponseTransactionAPI;
 import com.application.kreditimpian.R;
@@ -75,7 +76,7 @@ public class TransactionCheckout extends AppCompatActivity {
     @BindView(R.id.tvInstalment)
     TextView tvInstalment;
     RadioGroup radiogroup;
-    RadioButton radioButton,radiomethodpayment;
+    RadioButton radioButton, radiomethodpayment;
     int Doublebiayakirim, DoubleDownpayment, TotalPembayaran;
     SharedPrefManager sharedPrefManager;
     @BindView(R.id.btnAjukansekarang)
@@ -139,16 +140,16 @@ public class TransactionCheckout extends AppCompatActivity {
         txt_price_sale.setText(price_sale);
         tvMitraKredit.setText(name_mitra);
         tvBiayaKirim.setText(estimasipengiman);
-        tvCicilan.setText(tenor +" Bulan x Rp. "+cicilan);
+        tvCicilan.setText(tenor + " Bulan x Rp. " + cicilan);
         tvJasaPengiriman.setText(courier);
-        tvNomorInvoice.setText("Nomor Invoice : " +number);
+        tvNomorInvoice.setText("Nomor Invoice : " + number);
         tvDownpayment.setText(downpayment);
         txt_price_sale.setText(price_sale);
         tvNote.setText(note);
 
         DoubleDownpayment = Integer.parseInt(downpayment);
         Doublebiayakirim = Integer.parseInt(estimasipengiman);
-        TotalPembayaran = (DoubleDownpayment + Doublebiayakirim );
+        TotalPembayaran = (DoubleDownpayment + Doublebiayakirim);
         tvTotalPembayaran.setText(String.valueOf(TotalPembayaran));
 
         Glide.with(TransactionCheckout.this)
@@ -161,15 +162,12 @@ public class TransactionCheckout extends AppCompatActivity {
 */
 
 
-
-
-
         btnAjukansekarang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ///Checkbtnkeputusan(v);
 
-                if(radiogroup.getCheckedRadioButtonId()==-1){
+                if (radiogroup.getCheckedRadioButtonId() == -1) {
                     ///Toast.makeText(TransactionCheckout.this, "Anda belum memilih methode pemabayaran", Toast.LENGTH_LONG).show();
                     AlertDialog alertDialog = new AlertDialog.Builder(TransactionCheckout.this).create();
 
@@ -183,11 +181,36 @@ public class TransactionCheckout extends AppCompatActivity {
                     });
 
                     alertDialog.show();
-                }else{
-                    int radioid =  radiogroup.getCheckedRadioButtonId();
+                } else {
+                    int radioid = radiogroup.getCheckedRadioButtonId();
                     radioButton = findViewById(radioid);
                     ////Toast.makeText(TransactionCheckout.this,"Check button " + radioButton.getText(), Toast.LENGTH_SHORT).show();
-                    postTransaction();
+                    ///postTransaction();
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(TransactionCheckout.this);
+
+                    builder.setTitle("Informasi");
+                    builder.setMessage("Kredit Impian akan menghubungi kamu melalui WhatsApp untuk konfirmasi pesanan kamu dan meminta beberapa data yang tidak tercantum di Aplikasi.");
+
+                    builder.setPositiveButton("Setuju", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            postTransaction();
+                            dialog.dismiss();
+                        }
+
+                    });
+                    builder.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            // Do nothing
+                            dialog.dismiss();
+                        }
+                    });
+
+                    AlertDialog alert = builder.create();
+                    alert.show();
                 }
 
                 ///postTransaction();
@@ -198,22 +221,21 @@ public class TransactionCheckout extends AppCompatActivity {
 
     }
 
-    public void Checkbtnkeputusan(View v){
+    public void Checkbtnkeputusan(View v) {
 
-        if(radiogroup.getCheckedRadioButtonId()==-1){
+        if (radiogroup.getCheckedRadioButtonId() == -1) {
             Toast.makeText(TransactionCheckout.this, "Anda belum memilih methode pemabayaran", Toast.LENGTH_LONG).show();
-        }else{
-            int radioid =  radiogroup.getCheckedRadioButtonId();
+        } else {
+            int radioid = radiogroup.getCheckedRadioButtonId();
 
             radioButton = findViewById(radioid);
             ///Toast.makeText(this,"Check button " + radioButton.getText(), Toast.LENGTH_SHORT).show();
         }
 
 
-
     }
 
-    private void postTransaction(){
+    private void postTransaction() {
 
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
@@ -222,14 +244,14 @@ public class TransactionCheckout extends AppCompatActivity {
         ///CheckCOnection();
 
         HashMap<String, String> params = new HashMap<>();
-        params.put("id_member",sharedPrefManager.getSpIdMember() );
+        params.put("id_member", sharedPrefManager.getSpIdMember());
         params.put("id_transaction", tvIdTransaction.getText().toString());
-        params.put("down_payment",  tvDownpayment.getText().toString());
-        params.put("tenor", tvTenor2.getText().toString() );
+        params.put("down_payment", tvDownpayment.getText().toString());
+        params.put("tenor", tvTenor2.getText().toString());
         params.put("note", tvNote.getText().toString());
         params.put("id_company", tvIdCreditor.getText().toString());
         params.put("postal_fee", tvBiayaKirim.getText().toString());
-        params.put("courier" , tvJasaPengiriman.getText().toString());
+        params.put("courier", tvJasaPengiriman.getText().toString());
         params.put("installment", tvInstalment.getText().toString());
         params.put("payment_method", radioButton.getText().toString());
         params.put("price_sale", txt_price_sale.getText().toString());
@@ -237,15 +259,15 @@ public class TransactionCheckout extends AppCompatActivity {
         mApiService.postPengajuanCheckout(params).enqueue(new Callback<ResponseTransactionAPI>() {
             @Override
             public void onResponse(Call<ResponseTransactionAPI> call, Response<ResponseTransactionAPI> response) {
-               pDialog.dismiss();
-                if(response.body().getResponseCode()==200){
+                pDialog.dismiss();
+                if (response.body().getResponseCode() == 200) {
                     //Toast.makeText(TransactionCheckout.this, response.body().getMessage() , Toast.LENGTH_LONG).show();
                     Intent intent1 = new Intent(TransactionCheckout.this, SuccessMengajukan.class);
                     startActivity(intent1);
                     finish();
-                }else {
+                } else {
                     pDialog.dismiss();
-                    Toast.makeText(TransactionCheckout.this, "Gagal Checkout, harap cek koneksi anda." , Toast.LENGTH_LONG).show();
+                    Toast.makeText(TransactionCheckout.this, "Gagal Checkout, harap cek koneksi anda.", Toast.LENGTH_LONG).show();
 
                 }
             }
@@ -253,13 +275,13 @@ public class TransactionCheckout extends AppCompatActivity {
             @Override
             public void onFailure(Call<ResponseTransactionAPI> call, Throwable t) {
                 pDialog.dismiss();
-                Toast.makeText(TransactionCheckout.this, "Internet anda bermasalah" , Toast.LENGTH_LONG).show();
+                Toast.makeText(TransactionCheckout.this, "Internet anda bermasalah", Toast.LENGTH_LONG).show();
 
             }
         });
     }
 
-    private void CheckCOnection(){
+    private void CheckCOnection() {
 
         conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         {

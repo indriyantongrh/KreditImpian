@@ -2,13 +2,18 @@ package com.application.kreditimpian.SaranKomplain;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.GantidanRisetPassword.GantiPassword;
@@ -22,6 +27,7 @@ public class SarandanKomplain extends AppCompatActivity {
     TextView txtEmail, txtBody;
     Spinner spinnerPilih;
     LinearLayout linearnomorinvoice;
+    Button btnSubmit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +42,7 @@ public class SarandanKomplain extends AppCompatActivity {
         txtEmail = findViewById(R.id.txtEmail);
         txtBody = findViewById(R.id.txtBody);
         spinnerPilih = findViewById(R.id.spinnerPilih);
+        btnSubmit = findViewById(R.id.btnSubmit);
         linearnomorinvoice = findViewById(R.id.linearnomorinvoice);
         String email = sharedPrefManager.getSPEmail();
         txtEmail.setText(email);
@@ -68,8 +75,42 @@ public class SarandanKomplain extends AppCompatActivity {
             }
         });
 
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendEmail();
+            }
+        });
+
 
     }
+
+    protected void sendEmail() {
+        Log.i("Send email", "");
+
+        String[] TO = {"indriyantongrhh@gmail.com"};
+        String[] CC = {"xyz@gmail.com"};
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        emailIntent.setData(Uri.parse("mailto:"));
+        emailIntent.setType("text/plain");
+
+
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+        emailIntent.putExtra(Intent.EXTRA_CC, CC);
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your subject");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message goes here");
+
+        try {
+            startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+            finish();
+            Log.i("Finished sending email...", "");
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(SarandanKomplain.this,
+                    "There is no email client installed.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
 
     private void setActionBarTitle(String title) {
         if (getSupportActionBar() != null) {

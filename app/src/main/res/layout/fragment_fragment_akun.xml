@@ -412,9 +412,11 @@
                         android:layout_marginLeft="50dp"
                         android:layout_marginRight="50sp"
                         android:background="#FF6802"
+                        android:visibility="gone"
                         android:orientation="horizontal"></LinearLayout>
 
                     <RelativeLayout
+                        android:visibility="gone"
                         android:id="@+id/RelativSarandanKomplain"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

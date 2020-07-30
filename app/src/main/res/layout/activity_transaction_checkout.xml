@@ -567,6 +567,45 @@
         </androidx.cardview.widget.CardView>
 
 
+        <!--MethodepEMbayaran-->
+        <androidx.cardview.widget.CardView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:visibility="gone"
+            android:focusable="true"
+            app:cardCornerRadius="5dp"
+            android:background="@drawable/borderorange"
+            android:backgroundTint="#fff"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            tools:ignore="MissingConstraints">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:orientation="vertical"
+                >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorBlack"
+                android:text="Catatan :"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorBlack"
+                android:text="Kredit Impian akan menghubungi kamu melalui WhatsApp untuk konfirmasi pesanan kamu dan meminta beberapa data yang tidak tercantum di Aplikasi."/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
         <Button
             android:id="@+id/btnAjukansekarang"
             style="?android:textAppearanceSmall"
