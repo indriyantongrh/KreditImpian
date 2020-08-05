@@ -79,7 +79,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Masukan foto wajah" />
+                    android:text="Upload foto diri dengan memegang KTP" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -378,7 +378,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/sairaregular"
-                        android:text="Dokumen NPWP(Optional)" />
+                        android:text="Dokumen Slip Gaji/Rekening Koran " />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="bottom|right"
+                        android:textSize="10dp"
+                        android:textStyle="italic"
+                        android:textColor="@color/colorOrange"
+                        android:text="*Wajib diisi" /> />
                 </LinearLayout>
 
                 <LinearLayout
@@ -874,8 +883,8 @@
                     android:layout_height="wrap_content"
                     android:paddingTop="5dp"
                     android:text="Nama kota"
+                    android:visibility="gone"
                     android:textColor="@color/colorOrange"
-
                     android:textSize="16dp" />
 
 
@@ -904,6 +913,7 @@
                     android:layout_margin="10dp"
                     android:background="@drawable/btnorange"
                     android:text="Ubah Kota"
+                    android:visibility="gone"
                     android:textColor="@color/colorwhite" />
 
                 <!--Border-->
@@ -954,7 +964,7 @@
                     android:layout_height="wrap_content"
                     android:paddingTop="5dp"
                     android:text="Nama Kecamatan"
-
+                    android:visibility="gone"
                     android:textColor="@color/colorOrange" />
 
                 <LinearLayout
@@ -981,6 +991,7 @@
                     android:background="@drawable/btnorange"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
+                    android:visibility="gone"
                     android:text="Ubah Kecamatan"
                     android:textColor="@color/colorwhite" />
 

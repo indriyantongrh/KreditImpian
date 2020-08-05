@@ -364,7 +364,7 @@ public class FragmentBeranda extends Fragment {
         getResultList();
         getMitra();
         //getNotifikasi();
-        getNotifikasiProduct();
+       // getNotifikasiProduct();
         getNotifikasiFitur();
         getOnShoppingCart();
         getPromotion();

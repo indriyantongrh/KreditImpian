@@ -411,14 +411,12 @@
                                     <RelativeLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent">
-
                                         <ImageView
                                             android:id="@+id/imageView62"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
                                             android:layout_margin="10dp"
                                             android:src="@drawable/forniture" />
-
                                     </RelativeLayout>
                                 </androidx.cardview.widget.CardView>
 
@@ -430,7 +428,7 @@
                                     android:layout_alignParentBottom="true"
                                     android:fontFamily="@font/jipatharegular"
                                     android:gravity="center"
-                                    android:text="Forniture"
+                                    android:text="Furniture"
                                     android:textColor="@color/colorOrange"
                                     android:textSize="15sp"
                                     android:textStyle="bold" />
