@@ -30,6 +30,7 @@ import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
 import com.application.kreditimpian.BuildConfig;
+import com.application.kreditimpian.CustomDialog.CustomDialog;
 import com.application.kreditimpian.DecodeUtils.JWTUtils;
 import com.application.kreditimpian.ForgotPassword.ForgotPassword;
 import com.application.kreditimpian.LoadingDialog.LoadingDialog;
@@ -118,7 +119,7 @@ public class LoginUser extends AppCompatActivity {
     String sCurrentVersion, sLatestVersion;
     Context mContext;
     //ProgressDialog progressDialog;
-
+    private AlertDialog dialog;
     private PreferenceHelper preferenceHelper;
 
 
@@ -188,7 +189,7 @@ public class LoginUser extends AppCompatActivity {
 
         /*Loading= (AVLoadingIndicatorView) findViewById(R.id.Loading);
         Loading.setIndicator("BallPulseSyncIndicator");*/
-
+       /// final CustomDialog customDialog = new CustomDialog(LoginUser.this);
 
         txtusername =findViewById(R.id.txtusername);
         txtpassword =findViewById(R.id.txtpassword);
@@ -218,6 +219,7 @@ public class LoginUser extends AppCompatActivity {
 
                 Intent intent = new Intent(LoginUser.this, ForgotPassword.class);
                 startActivity(intent);
+
 
             }
         });
@@ -349,6 +351,15 @@ public class LoginUser extends AppCompatActivity {
         alertDialog = builder.create();
         alertDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         alertDialog.show();
+       /* AlertDialog.Builder builder = new AlertDialog.Builder(LoginUser.this);
+
+        LayoutInflater inflater = getLayoutInflater();
+        builder.setView(inflater.inflate(R.layout.customdialog, null));
+        builder.setCancelable(false);
+
+        dialog= builder.create();
+        dialog.show();*/
+
 
 
         HashMap<String, String> params = new HashMap<>();

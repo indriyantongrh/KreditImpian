@@ -91,6 +91,7 @@ public class MenuUtama extends AppCompatActivity {
     SessionManager sessionManager;
     ConnectivityManager conMgr;
     AlertDialog alertDialog;
+    AlertDialog alertDialogLoading;
 
     private AppUpdateManager mAppUpdateManager;
     String newVersion;
@@ -158,7 +159,14 @@ public class MenuUtama extends AppCompatActivity {
 
     /*Untuk Load data diri jika belm lengkap diminta unutk mengisi*/
     public void LoadDataDiri() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
+        LayoutInflater inflater = getLayoutInflater();
+        builder.setView(inflater.inflate(R.layout.loading_dialog, null));
+        builder.setCancelable(false);
+        alertDialogLoading = builder.create();
+        alertDialogLoading.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        alertDialogLoading.show();
 
 
         HashMap<String, String> params = new HashMap<>();
@@ -167,8 +175,10 @@ public class MenuUtama extends AppCompatActivity {
         mApiService.getDetailMember(params).enqueue(new Callback<ResponseDetailMember>() {
             @Override
             public void onResponse(Call<ResponseDetailMember> call, Response<ResponseDetailMember> response) {
-
                 if (response.body().getResponseCode() == 200) {
+                    alertDialogLoading.dismiss();
+
+
                     ResponseDetailMember responseDetailMember = response.body();
                     List<DataItem> detail = responseDetailMember.getData();
 
@@ -186,7 +196,7 @@ public class MenuUtama extends AppCompatActivity {
 
 
                 } else {
-
+                    alertDialogLoading.dismiss();
                     AlertDialog alertDialog = new AlertDialog.Builder(MenuUtama.this).create();
                     alertDialog.setTitle("Info");
                     alertDialog.setCancelable(false);
