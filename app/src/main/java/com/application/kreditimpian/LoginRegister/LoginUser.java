@@ -351,14 +351,6 @@ public class LoginUser extends AppCompatActivity {
         alertDialog = builder.create();
         alertDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         alertDialog.show();
-       /* AlertDialog.Builder builder = new AlertDialog.Builder(LoginUser.this);
-
-        LayoutInflater inflater = getLayoutInflater();
-        builder.setView(inflater.inflate(R.layout.customdialog, null));
-        builder.setCancelable(false);
-
-        dialog= builder.create();
-        dialog.show();*/
 
 
 

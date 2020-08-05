@@ -177,8 +177,6 @@ public class MenuUtama extends AppCompatActivity {
             public void onResponse(Call<ResponseDetailMember> call, Response<ResponseDetailMember> response) {
                 if (response.body().getResponseCode() == 200) {
                     alertDialogLoading.dismiss();
-
-
                     ResponseDetailMember responseDetailMember = response.body();
                     List<DataItem> detail = responseDetailMember.getData();
 

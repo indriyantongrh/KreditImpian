@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,11 +32,16 @@ import com.application.kreditimpian.Model.ModelNotifFitur.DataItem;
 import com.application.kreditimpian.Model.ModelNotifFitur.ResponseNotifFitur;
 import com.application.kreditimpian.Model.ModelNotifikasiFeature.ResponseNotifikasiFeature;
 //import com.application.kreditimpian.Model.ModelNotifikasiFeature.ResultItem;
+import com.application.kreditimpian.Model.ModelNotifikasiFeatures.JsonMember0;
+import com.application.kreditimpian.Model.ModelNotifikasiFeatures.Metadata;
 import com.application.kreditimpian.Model.ModelNotifikasiFeatures.ResponseNotifikasiFeatures;
 import com.application.kreditimpian.Model.ModelNotifikasiFeatures.ResultItem;
+import com.application.kreditimpian.Model.ModelNotifikasiFeatures.Send;
+import com.application.kreditimpian.Model.ModelNotifikasiFeatures.Shipping;
 import com.application.kreditimpian.Notifikasi.DetailNotifikasi;
 import com.application.kreditimpian.Notifikasi.NotifikasiAdapter;
 import com.application.kreditimpian.R;
+import com.shockwave.pdfium.PdfDocument;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -110,9 +116,7 @@ public class FragNotifikasiFitur extends Fragment {
         GridLayoutManager mLayoutManager = new GridLayoutManager(getContext(), 1, GridLayoutManager.VERTICAL, false);
         rvNotifikasi.setLayoutManager(mLayoutManager);
         rvNotifikasi.setItemAnimator(new DefaultItemAnimator());
-
         getNotifFitur();
-
 
         return view;
     }
@@ -147,70 +151,60 @@ public class FragNotifikasiFitur extends Fragment {
 
     }
 
-    /* private void getNotifFitur(){
-
-         swipeRefresh.setRefreshing(true);
-         HashMap<String, String> params = new HashMap<>();
-         params.put("id_member", sharedPrefManager.getSpIdMember());
-
-         mApiService.getnotifikasiFitur(params).enqueue(new Callback<ResponseNotifFitur>() {
-             @Override
-             public void onResponse(Call<ResponseNotifFitur> call, Response<ResponseNotifFitur> response) {
-                 if(response.body().getResponseCode()==200){
-                     swipeRefresh.setRefreshing(false);
-                     final List<DataItem> ListNotif = response.body().getData();
-                     rvNotifikasi.setAdapter(new AdapterNotifFitur(mContext, ListNotif));
-                     adapterNotifFitur.notifyDataSetChanged();
-                     empty.setVisibility(View.GONE);
-                     initDataIntent(ListNotif);
-                 }else {
-                     Toast.makeText(getContext(), "Error 1", Toast.LENGTH_LONG).show();
-
-                 }
-             }
-
-             @Override
-             public void onFailure(Call<ResponseNotifFitur> call, Throwable t) {
-                 Toast.makeText(getContext(), "Error 2", Toast.LENGTH_LONG).show();
-
-             }
-         });
-
-    *//*     HashMap<String, String> params = new HashMap<>();
-        params.put("id_member", sharedPrefManager.getSpIdMember());
-
-        mApiService.getnotifikasiFitur(params).enqueue(new Callback<ResponseNotifFitur>() {
-            @Override
-            public void onResponse(Call<ResponseNotifFitur> call, Response<ResponseNotifFitur> response) {
-                    if (response.body().getResponseCode()==200) {
-                        swipeRefresh.setRefreshing(false);
-
-                        final List<DataItem> ListNotif = response.body().getData();
-                        Toast.makeText(getContext(), "data list : "+ListNotif, Toast.LENGTH_LONG).show();
-                       *//**//* rvNotifikasi.setAdapter(new AdapterNotifFitur(mContext, HistoryTransaction));
-                        adapterNotifFitur.notifyDataSetChanged();
-                        empty.setVisibility(View.GONE);*//**//*
-                        ///initDataIntent(HistoryTransaction);
-                    }else {
-                        swipeRefresh.setRefreshing(false);
-                        empty.setVisibility(View.VISIBLE);
-                    }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseNotifFitur> call, Throwable t) {
-                /// progressBar.dismiss();
-                swipeRefresh.setRefreshing(false);
-                Toast.makeText(mContext,"Koneksi anda bermasalah", Toast.LENGTH_SHORT).show();
-            }
-        });*//*
-    }
-*/
     private void initDataIntent(final List<ResultItem> detaiList) {
         rvNotifikasi.addOnItemTouchListener(
                 new RecyclerItemClickListener(mContext, new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
+
+                        /*if (detaiList.get(position).getTransaction().getMetadata().getShipping().getSend().getAddressLabel() == null) {
+                            Toast.makeText(getContext(), "menunggu konfirmasi user", Toast.LENGTH_LONG).show();
+                        }*/
+                        /*Handdle null di model*/
+                        if (detaiList.get(position).getTransaction().getMetadata().getDownPayment() == null) {
+                            Log.v("jajal1", "data dp kosong");
+                        }else{
+                            Log.v("jajal1", "data dp ada");
+                        }
+                        if (detaiList.get(position).getTransaction().getMetadata().getShipping() != null) {
+                            Log.v("jajal2", "data Shipping2 kosong");
+
+                        }else{
+                            Log.v("jajal2", "data Shipping2 ada");
+                        }
+
+                        if (detaiList.get(position).getTransaction().getMetadata().getShipping().getSend() !=null){
+                            Log.v("jajal3", "data Send kosong");
+                        }else {
+                            Log.v("jajal3", " data send ada");
+                        }
+
+                        /*Handdle null di model*/
+                        if (detaiList.get(position).getTransaction().getMetadata().getInstallment() != null){
+                            Log.v("jajal4", "data Instalment kosong");
+
+                        }else{
+                            Log.v("jajal4", "data Instalment ada");
+
+                        }
+
+                        if (detaiList.get(position).getTransaction().getMetadata().getShipping().getSend().getAddressLabel() !=null){
+                            Log.v("jajal5", "data Address Label kosong");
+                        }else {
+                            Log.v("jajal5", "data Address Label ada");
+                        }
+
+                       if( detaiList.get(position).getTransaction()!=null &&
+                                detaiList.get(position).getTransaction().getMetadata()!=null&&
+                                detaiList.get(position).getTransaction().getMetadata().getShipping()!=null &&
+                               detaiList.get(position).getTransaction().getMetadata().getShipping().getSend() !=null
+                       ){
+
+                           Log.v("jajal6", "data Kosng nih");
+
+                       }else{
+                           Log.v("jajal6", "data ada");
+                       }
 
                         String status = detaiList.get(position).getMetadata();
                         String number = detaiList.get(position).getTransaction().getNumber();
@@ -220,32 +214,33 @@ public class FragNotifikasiFitur extends Fragment {
                         String price_capital = detaiList.get(position).getTransaction().getProduct().getPriceSale();
                         String price_sale = detaiList.get(position).getTransaction().getProduct().getPriceSale();
                         String image = detaiList.get(position).getTransaction().getProduct().getImage();
-                        //String name_merchant = detaiList.get(position).getTransaction().getProduct().getMerchant().getName();
+
                         String name_company = detaiList.get(position).getTransaction().getCreditor().getName();
                         String tenor = detaiList.get(position).getTransaction().getMetadata().getTenor();
                         String down_payment = detaiList.get(position).getTransaction().getMetadata().getDownPayment();
                         String note = detaiList.get(position).getTransaction().getMetadata().getNote();
                         String postal_fee = detaiList.get(position).getTransaction().getMetadata().getPostalFee();
-                        String address_label = detaiList.get(position).getTransaction().getMetadata().getShipping().getSend().getAddressLabel();
-                        if (detaiList.get(position).getTransaction().getMetadata().getShipping().getSend().getAddressLabel() == null) {
-                            Toast.makeText(getContext(), "menunggu konfirmasi user", Toast.LENGTH_LONG).show();
-                        }
 
+
+                        String payment_method = detaiList.get(position).getTransaction().getMetadata().getPaymentMethod();
+                        String installment = detaiList.get(position).getTransaction().getMetadata().getInstallment().getJsonMember0();
+                        String total_pembayaran = detaiList.get(position).getTransaction().getMetadata().getTotalPembayaran();
+                        String courier = detaiList.get(position).getTransaction().getMetadata().getCourier();
+
+
+                        String address_label = detaiList.get(position).getTransaction().getMetadata().getShipping().getSend().getAddressLabel();
                         String receiver = detaiList.get(position).getTransaction().getMetadata().getShipping().getSend().getReceiver();
                         String mobile = detaiList.get(position).getTransaction().getMetadata().getShipping().getSend().getMobile();
                         String city = detaiList.get(position).getTransaction().getMetadata().getShipping().getSend().getNameCity();
                         String district = detaiList.get(position).getTransaction().getMetadata().getShipping().getSend().getNameDistrict();
                         String address = detaiList.get(position).getTransaction().getMetadata().getShipping().getSend().getAddress();
-                        String payment_method = detaiList.get(position).getTransaction().getMetadata().getPaymentMethod();
-                        String installment = detaiList.get(position).getTransaction().getMetadata().getInstallment().getJsonMember0();
-                        String total_pembayaran = detaiList.get(position).getTransaction().getMetadata().getTotalPembayaran();
-                        String courier = detaiList.get(position).getTransaction().getMetadata().getCourier();
                         String name_district = detaiList.get(position).getTransaction().getMetadata().getShipping().getSend().getNameDistrict();
                         String name_city = detaiList.get(position).getTransaction().getMetadata().getShipping().getSend().getNameCity();
                         String postal_code = detaiList.get(position).getTransaction().getMetadata().getShipping().getSend().getPostalCode();
 
-                        Intent detailNotifikasi = new Intent(getActivity(), DetailNotifikasiFitur.class);
 
+
+                        Intent detailNotifikasi = new Intent(getActivity(), DetailNotifikasiFitur.class);
                         detailNotifikasi.putExtra("metadata", status);
                         detailNotifikasi.putExtra("number", number);
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_NAME_PRODUCT, name);
@@ -256,62 +251,26 @@ public class FragNotifikasiFitur extends Fragment {
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_DOWN_PAYMENT, down_payment);
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_TENOR, tenor);
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_POSTAL_FEE, postal_fee);
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_PAYMENT_METHOD, payment_method);
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_INSTALLMENT, installment);
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_TOTAL_PEMBAYARAN, total_pembayaran);
+                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_COURIER, courier);
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_ADDRESS_LABEL, address_label);
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_RECEIVER, receiver);
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_MOBILE, mobile);
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_CITY, city);
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_DISTRICT, district);
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_ADDRESS, address);
-                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_PAYMENT_METHOD, payment_method);
-                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_INSTALLMENT, installment);
-                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_TOTAL_PEMBAYARAN, total_pembayaran);
-                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_COURIER, courier);
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_NAME_CITY, name_city);
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_NAME_DISTRICT, name_district);
                         detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_POSTAL_CODE, postal_code);
 
-                        /*detailNotifikasi.putExtra("metadata", status);
-                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_NUMBER, number);
-                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_ID_PRODUCT, id_product);
-                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_ID_PRODUCT_CATEGORY, id_product_category);*/
-                        /// detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_CURRENCY, id_currency);
-                        /*                      detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_NAME_PRODUCT, name);
-                         *//*detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_DESCRIPTION, description);
-                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_SKU, sku);
-                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_STOCK, stock);*//*
-                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_PRICE_SALE, price_capital);
-                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_PRICE_SALE, price_sale);
 
-                        /// detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_FILENAME, filename);
-                        ///detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_ID_MERCHANT, id_merchant);
-                        ///detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_NAME_MERCHANT, name_merchant);
-                        ///detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_ID_COMPANY, id_company);
-                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_NAME_COMPANY, name_company);
-                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_TENOR, tenor);
-                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_DOWN_PAYMENT, down_payment);
-                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_NOTE, note);
-                        // detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_ID_CREDITOR, id_creditor);
-                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_POSTAL_FEE, postal_fee);
-                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_ADDRESS_LABEL, address_label);
-                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_RECEIVER, receiver);
-                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_MOBILE, mobile);
-                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_CITY, city);
-                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_DISTRICT, district);
-                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_ADDRESS, address);
-                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_PAYMENT_METHOD, payment_method);
-                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_INSTALLMENT, installment);
-                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_TOTAL_PEMBAYARAN, total_pembayaran);
-                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_COURIER, courier);
-                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_NAME_CITY, name_city);
-                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_NAME_DISTRICT, name_district);
-                        detailNotifikasi.putExtra(ConstanHistoryPesanan.KEY_POSTAL_CODE, postal_code);
-*/
                         startActivity(detailNotifikasi);
                         getActivity().finish();
+
                     }
                 }));
 
     }
-
-
 }

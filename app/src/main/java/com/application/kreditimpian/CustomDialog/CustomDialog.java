@@ -14,6 +14,8 @@ public class CustomDialog {
     private Activity activity;
     private AlertDialog dialog;
 
+
+
      CustomDialog(Activity mActivity){
         activity = mActivity;
     }
