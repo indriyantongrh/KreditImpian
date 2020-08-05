@@ -156,6 +156,8 @@ public class TransactionSelectMitra extends AppCompatActivity {
         String weight = intent.getStringExtra(ConstanTransaction.KEY_WEIGHT_TRANSACTION);
         String origin = intent.getStringExtra(ConstanTransaction.KEY_ORIGIN_TRANSACTION);
         String destination = intent.getStringExtra(ConstanTransaction.KEY_DESTINATION_TRANSACTION);
+        String priceSale = intent.getStringExtra(ConstanTransaction.KEY_PRICE_CAPITAL_TRANSACTION);
+        String priceCapital = intent.getStringExtra(ConstanTransaction.KEY_PRICE_SALE_TRANSACTION);
 
         ////Toast.makeText(TransactionSelectMitra.this, ""+nomor_invoice, Toast.LENGTH_LONG).show();
 

@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -194,6 +195,19 @@ public class TransactionCheckout extends AppCompatActivity {
 
                     builder.setPositiveButton("Setuju", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
+
+                            Log.v("jajal", "id member: "+sharedPrefManager.getSpIdMember());
+                            Log.v("jajal", "id trnasaksi: "+id_transaction);
+                            Log.v("jajal", "Downpayment: "+downpayment);
+                            Log.v("jajal", "Tenor: "+tenor);
+                            Log.v("jajal", "catatan: "+note);
+                            Log.v("jajal", "id kreditor: "+id_creditor);
+                            Log.v("jajal", "biaya kirim: "+estimasipengiman);
+                            Log.v("jajal", "Jasa pengiriman:"+courier);
+                            Log.v("jajal", "Installment: "+cicilan);
+                            Log.v("jajal", "Bank transfer:"+radioButton.getText().toString());
+                            Log.v("jajal", "harga barang: "+price_sale.replace(".", "" ).replace("Rp", ""));
+
                             postTransaction();
                             dialog.dismiss();
                         }
@@ -254,7 +268,7 @@ public class TransactionCheckout extends AppCompatActivity {
         params.put("courier", tvJasaPengiriman.getText().toString());
         params.put("installment", tvInstalment.getText().toString());
         params.put("payment_method", radioButton.getText().toString());
-        params.put("price_sale", txt_price_sale.getText().toString());
+        params.put("price_sale", txt_price_sale.getText().toString().replace(".", "" ).replace("Rp", ""));
 
         mApiService.postPengajuanCheckout(params).enqueue(new Callback<ResponseTransactionAPI>() {
             @Override
