@@ -57,13 +57,10 @@ public class FragRiwayatPesanan extends Fragment {
     ProgressDialog progressBar;
     @BindView(R.id.empty)
     ImageView empty;
-
     BaseApiService mApiService;
     Context mContext;
-
     List<DataItem> resultItemList = new ArrayList<>();
     AdapterHistoryTransaction adapterHistoryTransaction;
-
 
     public FragRiwayatPesanan() {
         // Required empty public constructor
@@ -101,7 +98,7 @@ public class FragRiwayatPesanan extends Fragment {
         listHistoryPesanan.setItemAnimator(new DefaultItemAnimator());
         listHistoryPesanan.setAdapter(adapterHistoryTransaction);
 
-       /// Toast.makeText(getActivity(), "Data id member mu "+sharedPrefManager.getSpIdMember(), Toast.LENGTH_LONG).show();
+        /// Toast.makeText(getActivity(), "Data id member mu "+sharedPrefManager.getSpIdMember(), Toast.LENGTH_LONG).show();
 
         // getHistoryTransaction();
         getHistoryCatalog();
@@ -111,15 +108,35 @@ public class FragRiwayatPesanan extends Fragment {
 
     private void getHistoryCatalog() {
         swipeRefresh.setRefreshing(true);
-
         HashMap<String, String> params = new HashMap<>();
         params.put("id_member", sharedPrefManager.getSpIdMember());
-
         mApiService.getHistoryTransaction(params).enqueue(new Callback<ResponseHistoryCatalog>() {
             @Override
             public void onResponse(Call<ResponseHistoryCatalog> call, Response<ResponseHistoryCatalog> response) {
+                if (response.isSuccessful()) {
+                    if (response.body().getResponseCode() == 200) {
+                        swipeRefresh.setRefreshing(false);
+                        Log.v(String.valueOf(getContext()), "data response" + response.body().getData() + "");
+                        final List<com.application.kreditimpian.Model.ModelHistoryCatalog.DataItem> HistoryCatalog = response.body().getData();
+                        listHistoryPesanan.setAdapter(new AdapterHistoryTransaction(mContext, HistoryCatalog));
+                        adapterHistoryTransaction.notifyDataSetChanged();
+                        empty.setVisibility(View.GONE);
+                        initDataIntent(HistoryCatalog);
+                    }else if (response.body().getData() != null  | response.body().getResponseCode()==201) {
+                        swipeRefresh.setRefreshing(false);
+                        empty.setVisibility(View.VISIBLE);
+                    } else
+                        {
+                        swipeRefresh.setRefreshing(false);
+                        empty.setVisibility(View.VISIBLE);
+                    }
 
-                if (response.body() !=null) {
+                }else  {
+                    swipeRefresh.setRefreshing(false);
+                    Toast.makeText(mContext, "Gagal Refresh", Toast.LENGTH_SHORT).show();
+                }
+
+               /* if (response.body() != null) {
                     swipeRefresh.setRefreshing(false);
                     Log.v(String.valueOf(getContext()), "data response" + response.body().getData() + "");
                     final List<com.application.kreditimpian.Model.ModelHistoryCatalog.DataItem> HistoryCatalog = response.body().getData();
@@ -132,7 +149,7 @@ public class FragRiwayatPesanan extends Fragment {
                     empty.setVisibility(View.VISIBLE);
                 } else {
                     Toast.makeText(mContext, "Gagal Refresh", Toast.LENGTH_SHORT).show();
-                }
+                }*/
             }
 
             @Override
@@ -156,8 +173,6 @@ public class FragRiwayatPesanan extends Fragment {
         });
 
     }
-
-
 
 
     private void initDataIntent(final List<com.application.kreditimpian.Model.ModelHistoryCatalog.DataItem> detaiList) {
@@ -205,7 +220,7 @@ public class FragRiwayatPesanan extends Fragment {
                         String district = detaiList.get(position).getShipping().getSend().getDistrict();
                         String address = detaiList.get(position).getShipping().getSend().getAddress();
                         String payment_method = detaiList.get(position).getPaymentMethod();
-                       String installment = detaiList.get(position).getInstallment().getJsonMember0();
+                        String installment = detaiList.get(position).getInstallment().getJsonMember0();
                         String total_pembayaran = detaiList.get(position).getTotalPembayaran();
                         String courier = detaiList.get(position).getCourier();
                         String name_city = detaiList.get(position).getNameCity();

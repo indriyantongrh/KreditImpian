@@ -45,10 +45,8 @@ public class AdapterNotifikasiFeature extends RecyclerView.Adapter<AdapterNotifi
 
         final ResultItem resultItem = resultItemList.get(position);
 
-
         holder.txtMessageNotif.setText(resultItem.getMessage());
         holder.txtTglNotif.setText(resultItem.getTransaction().getProduct().getTimestamp().getDate());
-
 
     }
 

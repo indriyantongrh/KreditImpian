@@ -4,6 +4,14 @@ import com.google.gson.annotations.SerializedName;
 
 public class JsonMember0{
 
+	private static JsonMember0 JsonMember0;
+	public static JsonMember0 getInstance(){
+		if (JsonMember0 == null){
+			JsonMember0 = new JsonMember0();
+		}
+		return JsonMember0;
+	}
+
 	@SerializedName("code")
 	private String code;
 

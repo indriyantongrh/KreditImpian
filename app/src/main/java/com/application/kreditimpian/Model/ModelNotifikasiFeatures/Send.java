@@ -4,6 +4,8 @@ import com.google.gson.annotations.SerializedName;
 
 public class Send{
 
+	private static Send send;
+
 	@SerializedName("address")
 	private String address;
 
@@ -30,6 +32,13 @@ public class Send{
 
 	@SerializedName("postal_code")
 	private String postalCode;
+
+	public static Send getInstance(){
+		if(send==null){
+			send = new Send();
+		}
+		return send;
+	}
 
 	public void setAddress(String address){
 		this.address = address;

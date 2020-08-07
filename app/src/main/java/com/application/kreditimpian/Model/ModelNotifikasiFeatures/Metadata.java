@@ -28,6 +28,8 @@ public class Metadata{
 	@SerializedName("down_payment")
 	private String downPayment;
 
+
+
 	@SerializedName("product_name")
 	private String productName;
 
@@ -256,4 +258,8 @@ public class Metadata{
 	public String getBankName(){
 		return bankName;
 	}
+
+
+
+
 }
