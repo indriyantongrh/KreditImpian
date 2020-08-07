@@ -404,7 +404,6 @@ public interface BaseApiService {
     );
 
 
-
     @FormUrlEncoded
     @POST("updateSeennotification")
     Call<ResponseBody> updateSeen(

@@ -8,291 +8,372 @@
     android:orientation="vertical"
     tools:context=".LoginRegister.LoginUser">
 
-<!--
-    <ScrollView
+    <!--
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">-->
+
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">-->
+        android:layout_height="150dp"
+        android:gravity="center|left"
+        android:paddingTop="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="15dp"
+        android:fontFamily="@font/lilgroteskbold"
+        android:textSize="26dp"
+        android:textColor="@color/colorOrange"
+        android:text="Selamat datang kembali!"/>
 
     <ImageView
         android:id="@+id/image12"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="150dp"
+        android:layout_marginBottom="15dp"
+        android:padding="45dp"
         android:paddingHorizontal="10dp"
         android:paddingTop="45dp"
-        android:padding="45dp"
-        android:layout_marginBottom="15dp"
         android:src="@drawable/logobirukredit" />
 
 
-        <LinearLayout
-            android:orientation="vertical"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:theme="@style/TextLabel"
+            app:hintEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
-
-
-            <!--Login Panel-->
-            <LinearLayout
-                android:orientation="horizontal"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/lilgroteskregular"
+                android:hint="Username Anda"
+                android:inputType="text"
+                android:textSize="18sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:theme="@style/TextLabel"
+            app:hintEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout1"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/colorOrange">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lilgroteskregular"
+                android:hint="Password Anda"
+                android:inputType="textPassword"
+                android:paddingTop="@dimen/dimen0dp"
+                android:textSize="18sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tvLupapassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:fontFamily="@font/lilgroteskregular"
+            android:gravity="right"
+            android:text="Lupa password ?"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp" />
+
+        <!--Login Panel-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <!--Icon Layout-->
+            <LinearLayout
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/orange_left_corner_bg"
+                android:orientation="vertical"
+
                 >
 
-                <!--Icon Layout-->
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/orange_left_corner_bg"
 
-                    >
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical">
 
-                    <LinearLayout
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="40dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/username"></ImageView>
+                </LinearLayout>
+                <!--Button Border-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@drawable/warnaputih"
+                    android:orientation="vertical"></LinearLayout>
 
-                        android:orientation="vertical"
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="40dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/password"></ImageView>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/whiterightcornerbg"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="60dp"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/username_layout"
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:gravity="center_horizontal|center_vertical"
-                        >
+                        android:layout_height="match_parent"
+                        android:theme="@style/TextLabel"
+                        app:errorEnabled="true">
 
-                        <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="40dp"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/username">
-                        </ImageView>
-                    </LinearLayout>
-                    <!--Button Border-->
-                    <LinearLayout
-                        android:background="@drawable/warnaputih"
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"></LinearLayout>
-
-                    <LinearLayout
-
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:gravity="center_horizontal|center_vertical"
-                        >
-
-                        <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="40dp"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/password">
-                        </ImageView>
-                    </LinearLayout>
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtusername"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:background="@android:color/transparent"
+                            android:hint="Username Anda"
+                            android:inputType="text"
+                            android:textSize="15sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
 
+                <!--Border-->
                 <LinearLayout
-                    android:background="@drawable/whiterightcornerbg"
-                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#FF6802"></LinearLayout>
+
+                <LinearLayout
                     android:layout_width="fill_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="60dp"
+                    android:orientation="vertical">
 
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="fill_parent"
-                        android:layout_height="60dp">
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/username_layout"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            app:errorEnabled="true">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/txtusername"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginRight="10dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:textSize="15sp"
-                                android:background="@android:color/transparent"
-                                android:inputType="text"
-                                android:hint="Username Anda"
-                                />
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                    </LinearLayout>
-
-                    <!--Border-->
-                    <LinearLayout
-                        android:background="#FF6802"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/new_password_layout"
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"></LinearLayout>
-
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="fill_parent"
-                        android:layout_height="60dp">
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/new_password_layout"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            app:errorEnabled="true"
-                            app:passwordToggleTint="@color/colorOrange"
-                            app:passwordToggleEnabled="true">
+                        android:layout_height="match_parent"
+                        android:theme="@style/TextLabel"
+                        app:errorEnabled="true"
+                        app:passwordToggleEnabled="true"
+                        app:passwordToggleTint="@color/colorOrange">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/txtpassword"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:textSize="15sp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
                             android:background="@android:color/transparent"
-                            android:inputType="textPassword"
                             android:hint="Password Anda"
-                            />
-                        </com.google.android.material.textfield.TextInputLayout>
-                    </LinearLayout>
-
-
+                            android:inputType="textPassword"
+                            android:textSize="15sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
 
-            </LinearLayout>
 
-
-
-            <!--Button-->
-            <Button
-                android:id="@+id/btnLogin"
-                style="?android:textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="16dp"
-                android:text="MASUK"
-                android:textStyle="bold"
-                android:textColor="#fff"
-                android:fontFamily="@font/jipatharegular"
-                android:textSize="23dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/btnorangev2"
-                ></Button>
-
-            <TextView
-                android:id="@+id/tvLupapassword"
-                android:text="Lupa password ?"
-                android:gravity="center"
-                android:textColor="@color/colorBlack"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"/>
-
-
-            <Button
-                android:id="@+id/btnDaftar"
-                style="?android:textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:text="Buat Akun"
-                android:textStyle="bold"
-                android:textColor="@color/colorBlack"
-                android:fontFamily="@font/jipatharegular"
-                android:textSize="23dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/borderorangev2"
-                ></Button>
-
-
-
-
-            <!--Register Tex-->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="40dp"
-                android:layout_gravity="center"
-                >
-
-            <com.google.android.gms.common.SignInButton
-                android:id="@+id/sign_in_button"
-                android:layout_gravity="center"
-                android:visibility="gone"
-                android:layout_width="200dp"
-                android:layout_height="50dp" />
-
-            </LinearLayout>
-
-
-            <!--Register Tex-->
-            <LinearLayout
-                android:visibility="gone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="40dp"
-                android:layout_gravity="center"
-                >
-
-                <TextView
-                    android:id="@+id/textRegister"
-                    android:text="Apakah anda belum memiliki akun ?"
-                    android:fontFamily="@font/sairaregular"
-                    android:textSize="15dp"
-                    android:textColor="#000"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/btnregister"
-                    android:text=" Register"
-                    android:fontFamily="@font/sairaregular"
-                    android:textSize="16dp"
-                    android:textColor="#000"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
             </LinearLayout>
 
         </LinearLayout>
 
+
+        <!--Button-->
+        <Button
+            android:id="@+id/btnLogin"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/btnorangev2"
+            android:fontFamily="@font/lilgroteskregular"
+            android:text="M a s u k"
+            android:textColor="#fff"
+            android:textSize="17dp"
+            android:textStyle="bold"></Button>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center|center_horizontal"
+            android:gravity="center|center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/TextBuatAKun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:fontFamily="@font/lilgroteskregular"
+            android:text="Belum jadi member?"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/txtBuatAkun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:textStyle="bold"
+            android:text="  Buat akun"
+            android:fontFamily="@font/lilgroteskregular"
+            android:textColor="@color/colorOrange"
+            android:textSize="14sp" />
+        </LinearLayout>
+
+        <Button
+            android:visibility="gone"
+            android:id="@+id/btnDaftar"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/borderorangev2"
+            android:fontFamily="@font/jipatharegular"
+            android:text="Buat Akun"
+            android:textColor="@color/colorBlack"
+            android:textSize="23dp"
+            android:textStyle="bold"></Button>
+
+
+        <!--Register Tex-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:orientation="horizontal">
+
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/sign_in_button"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+
+        <!--Register Tex-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/textRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sairaregular"
+                android:text="Apakah anda belum memiliki akun ?"
+                android:textColor="#000"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/btnregister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sairaregular"
+                android:text=" Register"
+                android:textColor="#000"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
+
     <LinearLayout
-        android:gravity="center|bottom"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:gravity="center|bottom">
 
         <TextView
             android:id="@+id/tvKebijakanPrivacy"
-            android:text="Kebijakan Privacy | "
-            android:gravity="center|bottom"
-            android:textSize="10dp"
-            android:foregroundGravity="bottom"
-            android:textColor="@color/colorBlack"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:foregroundGravity="bottom"
+            android:gravity="center|bottom"
+            android:text="Kebijakan Privacy | "
+            android:textColor="@color/colorBlack"
+            android:textSize="10dp" />
 
         <TextView
             android:id="@+id/tvVersion"
-            android:gravity="center|bottom"
-            android:textSize="10dp"
-            android:foregroundGravity="bottom"
-            android:textColor="@color/colorBlack"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:foregroundGravity="bottom"
+            android:gravity="center|bottom"
+            android:textColor="@color/colorBlack"
+            android:textSize="10dp" />
 
     </LinearLayout>
 
 
-<!--    <com.wang.avi.AVLoadingIndicatorView-->
-<!--        android:id="@+id/Loading"-->
-<!--        style="@style/AVLoadingIndicatorView"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:indicatorColor="@color/colorOrange"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:layout_centerInParent="true"-->
-<!--        android:foregroundGravity="center"-->
-<!--        android:visibility="visible"-->
-<!--        app:indicatorName="BallPulseIndicator" />-->
+    <!--    <com.wang.avi.AVLoadingIndicatorView-->
+    <!--        android:id="@+id/Loading"-->
+    <!--        style="@style/AVLoadingIndicatorView"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        app:indicatorColor="@color/colorOrange"-->
+    <!--        android:layout_gravity="center"-->
+    <!--        android:layout_centerInParent="true"-->
+    <!--        android:foregroundGravity="center"-->
+    <!--        android:visibility="visible"-->
+    <!--        app:indicatorName="BallPulseIndicator" />-->
 </LinearLayout>

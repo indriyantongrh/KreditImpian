@@ -137,8 +137,8 @@ public class LoginUser extends AppCompatActivity {
     ProgressDialog loading;
 
     Button btnLogin, btnDaftar;
-    TextView btnregister, tvLupapassword, tvKebijakanPrivacy, tvVersion;
-    EditText txtusername, txtpassword;
+    TextView btnregister, tvLupapassword, tvKebijakanPrivacy, tvVersion, txtBuatAkun;
+    EditText txtUsername, txtPassword;
 
     SignInButton signin;
     GoogleSignInClient mGoogleSignInClient;
@@ -191,8 +191,9 @@ public class LoginUser extends AppCompatActivity {
         Loading.setIndicator("BallPulseSyncIndicator");*/
        /// final CustomDialog customDialog = new CustomDialog(LoginUser.this);
 
-        txtusername =findViewById(R.id.txtusername);
-        txtpassword =findViewById(R.id.txtpassword);
+        txtUsername =findViewById(R.id.txtUsername);
+        txtBuatAkun =findViewById(R.id.txtBuatAkun);
+        txtPassword =findViewById(R.id.txtPassword);
         btnDaftar = findViewById(R.id.btnDaftar);
         tvKebijakanPrivacy = findViewById(R.id.tvKebijakanPrivacy);
         tvVersion = findViewById(R.id.tvVersion);
@@ -225,7 +226,7 @@ public class LoginUser extends AppCompatActivity {
         });
 
         ///btnregister = findViewById(R.id.btnregister);
-        btnDaftar.setOnClickListener(new View.OnClickListener() {
+        txtBuatAkun.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Register.class);
@@ -249,12 +250,12 @@ public class LoginUser extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String username = txtusername.getText().toString();
-                String password = txtpassword.getText().toString();
+                String username = txtUsername.getText().toString();
+                String password = txtPassword.getText().toString();
                 if (isEmpty(username))
-                    txtusername.setError("Username harap diisi");
+                    txtUsername.setError("Username harap diisi");
                 else if (isEmpty(password))
-                    txtpassword.setError("Password harap diisi");
+                    txtPassword.setError("Password harap diisi");
 
                 else
 
@@ -355,8 +356,8 @@ public class LoginUser extends AppCompatActivity {
 
 
         HashMap<String, String> params = new HashMap<>();
-        params.put("username", txtusername.getText().toString());
-        params.put("password", txtpassword.getText().toString());
+        params.put("username", txtUsername.getText().toString());
+        params.put("password", txtPassword.getText().toString());
 
         Call<ResponseLogin> Validation = mApiService.getLogin(params) ;
         Validation.enqueue(new Callback<ResponseLogin>() {
@@ -486,7 +487,7 @@ public class LoginUser extends AppCompatActivity {
 
             AlertDialog.Builder builder = new AlertDialog.Builder(LoginUser.this);
             builder.setTitle("Update Kredit Impian");
-            builder.setCancelable(false);
+            builder.setCancelable(true);
             builder.setMessage("Update versi terbaru tersedia");
             builder.setPositiveButton("Update Sekarang", new DialogInterface.OnClickListener() {
                 @Override

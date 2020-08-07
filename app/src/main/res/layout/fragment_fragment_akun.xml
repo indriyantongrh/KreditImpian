@@ -85,7 +85,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_toRightOf="@+id/image"
-                            android:fontFamily="@font/cosimabold"
+                            android:fontFamily="@font/lilgroteskregular"
                             android:gravity="center"
                             android:text="Selamat datang kembali "
                             android:textAppearance="@android:style/TextAppearance.WindowTitle"
@@ -98,9 +98,8 @@
                             android:id="@+id/txt_nama_akun"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-
                             android:layout_toRightOf="@+id/txthai"
-                            android:fontFamily="@font/cosimabold"
+                            android:fontFamily="@font/lilgroteskregular"
                             android:gravity="center"
                             android:text="Nama"
                             android:textAppearance="@android:style/TextAppearance.WindowTitle"
@@ -158,10 +157,10 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="15dp"
                             android:layout_toRightOf="@id/imgDataMember"
-                            android:fontFamily="@font/cosimabold"
+                            android:fontFamily="@font/lilgroteskregular"
                             android:text="Data Member"
                             android:textColor="@color/colorBlack"
-                            android:textSize="12sp" />
+                            android:textSize="17sp" />
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -215,10 +214,10 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
                             android:layout_toRightOf="@id/imgAlamatPengiriman"
-                            android:fontFamily="@font/cosimabold"
+                            android:fontFamily="@font/lilgroteskregular"
                             android:text="Alamat Pengiriman"
                             android:textColor="@color/colorBlack"
-                            android:textSize="12sp" />
+                            android:textSize="17sp" />
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -270,10 +269,10 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
                             android:layout_toRightOf="@id/imgHistoryPesanan"
-                            android:fontFamily="@font/cosimabold"
+                            android:fontFamily="@font/lilgroteskregular"
                             android:text="History Pesanan"
                             android:textColor="@color/colorBlack"
-                            android:textSize="12sp" />
+                            android:textSize="17sp" />
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -327,10 +326,10 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
                             android:layout_toRightOf="@id/imgGantiPassword"
-                            android:fontFamily="@font/cosimabold"
+                            android:fontFamily="@font/lilgroteskregular"
                             android:text="Ganti Password"
                             android:textColor="@color/colorBlack"
-                            android:textSize="12sp" />
+                            android:textSize="17sp" />
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -383,10 +382,10 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
                             android:layout_toRightOf="@id/imgTermandCondition"
-                            android:fontFamily="@font/cosimabold"
+                            android:fontFamily="@font/lilgroteskregular"
                             android:text="Kebijakan dan Privasi"
                             android:textColor="@color/colorBlack"
-                            android:textSize="12sp" />
+                            android:textSize="17sp" />
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -556,10 +555,10 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
                             android:layout_toRightOf="@id/imgLogout"
-                            android:fontFamily="@font/cosimabold"
+                            android:fontFamily="@font/lilgroteskregular"
                             android:text="Logout"
                             android:textColor="@color/colorBlack"
-                            android:textSize="12sp" />
+                            android:textSize="17sp" />
 
                         <RelativeLayout
                             android:layout_width="match_parent"

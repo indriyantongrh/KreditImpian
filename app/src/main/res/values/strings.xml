@@ -140,6 +140,8 @@
     <string name="selesai">Selesai</string>
     <string name="namaprodukkosong">Nama Produk tidak boleh kosong</string>
     <string name="deskripsikosong">Deskripsi tidak boleh kosong</string>
+    <string name="username">Username Anda</string>
+    <string name="password">Password Anda</string>
 
     <!--VIa Catalog-->
     <string name="cicilan">Cicilan :</string>

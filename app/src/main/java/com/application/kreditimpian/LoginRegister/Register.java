@@ -78,11 +78,11 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        txtusername = (EditText) findViewById(R.id.txtusername);
-        txtemail = (EditText) findViewById(R.id.txtemail);
-        txtpassword = (EditText) findViewById(R.id.txtpassword);
-        txtconfirmpassword =(EditText) findViewById(R.id.txtconfirmpassword);
-        nomortelepon = (EditText) findViewById(R.id.nomortelepon);
+        txtusername = (EditText) findViewById(R.id.txtUsername);
+        txtemail = (EditText) findViewById(R.id.txtEmail);
+        txtpassword = (EditText) findViewById(R.id.txtPassword);
+        txtconfirmpassword =(EditText) findViewById(R.id.txtConfirmPassword);
+        nomortelepon = (EditText) findViewById(R.id.txtNomorHandphone);
         tvKebijakanPrivacy = findViewById(R.id.tvKebijakanPrivacy);
         cbkebijakanpriva = findViewById(R.id.cbkebijakanpriva);
 

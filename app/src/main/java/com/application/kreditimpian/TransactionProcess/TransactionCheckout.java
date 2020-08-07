@@ -207,7 +207,6 @@ public class TransactionCheckout extends AppCompatActivity {
                             Log.v("jajal", "Installment: "+cicilan);
                             Log.v("jajal", "Bank transfer:"+radioButton.getText().toString());
                             Log.v("jajal", "harga barang: "+price_sale.replace(".", "" ).replace("Rp", ""));
-
                             postTransaction();
                             dialog.dismiss();
                         }

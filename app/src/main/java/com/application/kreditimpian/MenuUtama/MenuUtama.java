@@ -363,7 +363,7 @@ public class MenuUtama extends AppCompatActivity {
 
             AlertDialog.Builder builder = new AlertDialog.Builder(MenuUtama.this);
             builder.setTitle("Update Kredit Impian");
-            builder.setCancelable(false);
+            builder.setCancelable(true);
             builder.setMessage("Update versi terbaru tersedia");
             builder.setPositiveButton("Update Sekarang", new DialogInterface.OnClickListener() {
                 @Override
