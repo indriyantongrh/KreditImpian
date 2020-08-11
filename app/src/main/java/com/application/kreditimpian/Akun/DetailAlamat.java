@@ -37,6 +37,7 @@ import com.application.kreditimpian.Model.ModelSubDistrict.ResponseSubdistrict;
 import com.application.kreditimpian.Model.ModelSubDistrictRajaOngkir.ResponseSubDistrictRajaOngkir;
 import com.application.kreditimpian.R;
 import com.chivorn.smartmaterialspinner.SmartMaterialSpinner;
+import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -57,7 +58,7 @@ public class DetailAlamat extends AppCompatActivity {
     TextView text_mainaddress, text_kecamatan, text_kota, text_id;
     private HashMap<String, String> Kecamatanvalues;
     Spinner spinnerkecamatan_pengiriman, spinnerkota_pengiriman;
-    EditText txtnamaalamat, txtnamapenerima, txtnomorhandphone, txtkodepospengiriman, txtalamatpengririman;
+    TextInputEditText txtnamaalamat, txtnamapenerima, txtnomorhandphone, txtkodepospengiriman, txtalamatpengririman;
     Button btnupdate, btndelete, btnUbah, btnUbahKecamatan;
     String id, nameCity, id_member, id_geodirectory, address_name, phone, receiver, address, postal_code, district, main_address;
     private HashMap<String, String> cityvalues;

@@ -32,6 +32,7 @@ import com.application.kreditimpian.Model.ModelKecamatan.ResponseKecamatan;
 import com.application.kreditimpian.Model.ModelSubDistrictRajaOngkir.ResponseSubDistrictRajaOngkir;
 import com.application.kreditimpian.R;
 import com.chivorn.smartmaterialspinner.SmartMaterialSpinner;
+import com.google.android.material.textfield.TextInputEditText;
 
 import org.w3c.dom.Text;
 
@@ -54,7 +55,7 @@ public class TambahAlamatPengiriman extends AppCompatActivity implements Adapter
     Switch SwitchAddress;
     TextView textid_distric, textid_geodirectory;
     Spinner spinnerkecamatan_pengiriman, spinnerkota_pengiriman;
-    EditText txtnamaalamat, txtnamapenerima, txtnomorhandphone, txtkodepospengiriman, txtalamatpengririman;
+    TextInputEditText txtnamaalamat, txtnamapenerima, txtnomorhandphone, txtkodepospengiriman, txtalamatpengririman;
     Button btnsimpan_pengiriman;
     SmartMaterialSpinner spinKota, spinKecamatan;
     ConstraintLayout layout6, layout5;

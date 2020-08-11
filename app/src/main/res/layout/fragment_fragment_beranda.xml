@@ -80,11 +80,11 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentBottom="true"
-                                    android:fontFamily="@font/jipatharegular"
+                                    android:fontFamily="@font/lilgroteskregular"
                                     android:gravity="center"
                                     android:text="Foto Impian"
                                     android:textColor="@color/colorOrange"
-                                    android:textSize="15sp"
+                                    android:textSize="11sp"
                                     android:textStyle="bold" />
                             </RelativeLayout>
                         </androidx.cardview.widget.CardView>
@@ -117,11 +117,11 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentBottom="true"
-                                    android:fontFamily="@font/jipatharegular"
+                                    android:fontFamily="@font/lilgroteskregular"
                                     android:gravity="center"
                                     android:text="Upload Impian"
                                     android:textColor="@color/colorOrange"
-                                    android:textSize="15sp"
+                                    android:textSize="11sp"
                                     android:textStyle="bold" />
                             </RelativeLayout>
                         </com.google.android.material.card.MaterialCardView>
@@ -154,11 +154,11 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentBottom="true"
-                                    android:fontFamily="@font/jipatharegular"
+                                    android:fontFamily="@font/lilgroteskregular"
                                     android:gravity="center"
                                     android:text="Cari Impian"
                                     android:textColor="@color/colorOrange"
-                                    android:textSize="15sp"
+                                    android:textSize="11sp"
                                     android:textStyle="bold" />
                             </RelativeLayout>
                         </com.google.android.material.card.MaterialCardView>
@@ -191,11 +191,11 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentBottom="true"
-                                    android:fontFamily="@font/jipatharegular"
+                                    android:fontFamily="@font/lilgroteskregular"
                                     android:gravity="center"
                                     android:text="Upgrade Impian"
                                     android:textColor="@color/colorOrange"
-                                    android:textSize="15sp"
+                                    android:textSize="11sp"
                                     android:textStyle="bold" />
                             </RelativeLayout>
                         </com.google.android.material.card.MaterialCardView>
@@ -253,10 +253,11 @@
                         android:layout_below="@+id/rv_beranda"
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="10dp"
+                        android:fontFamily="@font/lilgroteskregular"
                         android:gravity="center"
-                        android:text="--- Pilih Kategori ---"
+                        android:text="-- Pilih Kategori --"
                         android:textColor="@color/colorOrange"
-                        android:textSize="10sp"
+                        android:textSize="13sp"
                         android:textStyle="bold" />
 
                     <com.google.android.material.card.MaterialCardView
@@ -314,12 +315,12 @@
                                     android:layout_alignStart="@id/btn_handphone"
                                     android:layout_alignEnd="@+id/btn_handphone"
                                     android:layout_alignParentBottom="true"
-                                    android:fontFamily="@font/jipatharegular"
+                                    android:fontFamily="@font/lilgroteskregular"
                                     android:gravity="center"
                                     android:text="Handphone"
                                     android:textColor="@color/colorOrange"
-                                    android:textSize="15sp"
-                                    android:textStyle="bold" />
+                                    android:textSize="11sp"
+                                     />
 
 
                                 <!--Card laptop-->
@@ -352,12 +353,12 @@
                                     android:layout_alignStart="@id/btn_laptop"
                                     android:layout_alignEnd="@+id/btn_laptop"
                                     android:layout_alignParentBottom="true"
-                                    android:fontFamily="@font/jipatharegular"
+                                    android:fontFamily="@font/lilgroteskregular"
                                     android:gravity="center"
                                     android:text="Komputer"
                                     android:textColor="@color/colorOrange"
-                                    android:textSize="15sp"
-                                    android:textStyle="bold" />
+                                    android:textSize="11sp"
+                                  />
 
 
                                 <!--Card laptop-->
@@ -390,12 +391,12 @@
                                     android:layout_alignStart="@id/btn_otomotif"
                                     android:layout_alignEnd="@+id/btn_otomotif"
                                     android:layout_alignParentBottom="true"
-                                    android:fontFamily="@font/jipatharegular"
+                                    android:fontFamily="@font/lilgroteskregular"
                                     android:gravity="center"
                                     android:text="Otomotif"
                                     android:textColor="@color/colorOrange"
-                                    android:textSize="15sp"
-                                    android:textStyle="bold" />
+                                    android:textSize="11sp"
+                                   />
 
 
                                 <androidx.cardview.widget.CardView
@@ -426,12 +427,12 @@
                                     android:layout_alignStart="@id/btn_forniture"
                                     android:layout_alignEnd="@+id/btn_forniture"
                                     android:layout_alignParentBottom="true"
-                                    android:fontFamily="@font/jipatharegular"
+                                    android:fontFamily="@font/lilgroteskregular"
                                     android:gravity="center"
                                     android:text="Furniture"
                                     android:textColor="@color/colorOrange"
-                                    android:textSize="15sp"
-                                    android:textStyle="bold" />
+                                    android:textSize="11sp"
+                                    />
 
 
                                 <!--
@@ -515,12 +516,12 @@
                                     android:layout_alignStart="@id/btn_fashion"
                                     android:layout_alignEnd="@+id/btn_fashion"
                                     android:layout_alignParentBottom="true"
-                                    android:fontFamily="@font/jipatharegular"
+                                    android:fontFamily="@font/lilgroteskregular"
                                     android:gravity="center"
                                     android:text="Fashion"
                                     android:textColor="@color/colorOrange"
-                                    android:textSize="15sp"
-                                    android:textStyle="bold" />
+                                    android:textSize="11sp"
+                                     />
 
 
                                 <!--Card Olahraga-->
@@ -553,12 +554,12 @@
                                     android:layout_alignStart="@id/btn_olahraga"
                                     android:layout_alignEnd="@+id/btn_olahraga"
                                     android:layout_alignParentBottom="true"
-                                    android:fontFamily="@font/jipatharegular"
+                                    android:fontFamily="@font/lilgroteskregular"
                                     android:gravity="center"
                                     android:text="Hobi"
                                     android:textColor="@color/colorOrange"
-                                    android:textSize="15sp"
-                                    android:textStyle="bold" />
+                                    android:textSize="11sp"
+                                    />
 
 
                                 <androidx.cardview.widget.CardView
@@ -591,12 +592,12 @@
                                     android:layout_alignStart="@id/btn_property"
                                     android:layout_alignEnd="@+id/btn_property"
                                     android:layout_alignParentBottom="true"
-                                    android:fontFamily="@font/jipatharegular"
+                                    android:fontFamily="@font/lilgroteskregular"
                                     android:gravity="center"
                                     android:text="Property"
                                     android:textColor="@color/colorOrange"
-                                    android:textSize="15sp"
-                                    android:textStyle="bold" />
+                                    android:textSize="11sp"
+                                    />
 
 
                                 <androidx.cardview.widget.CardView
@@ -629,12 +630,12 @@
                                     android:layout_alignStart="@id/btn_lainya"
                                     android:layout_alignEnd="@+id/btn_lainya"
                                     android:layout_alignParentBottom="true"
-                                    android:fontFamily="@font/jipatharegular"
+                                    android:fontFamily="@font/lilgroteskregular"
                                     android:gravity="center"
                                     android:text="Lainnya"
                                     android:textColor="@color/colorOrange"
-                                    android:textSize="15sp"
-                                    android:textStyle="bold" />
+                                    android:textSize="11sp"
+                                    />
 
                             </RelativeLayout>
 
@@ -719,10 +720,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
                                 android:layout_marginTop="20dp"
-                                android:fontFamily="@font/jipatharegular"
+                                android:fontFamily="@font/lilgroteskregular"
                                 android:text="Mitra kami"
                                 android:textColor="@color/colorOrange"
-                                android:textSize="23sp"
+                                android:textSize="15sp"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -794,10 +795,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
                                 android:layout_marginTop="20dp"
-                                android:fontFamily="@font/jipatharegular"
+                                android:fontFamily="@font/lilgroteskregular"
                                 android:text="Merchant "
                                 android:textColor="@color/colorOrange"
-                                android:textSize="23sp"
+                                android:textSize="15sp"
                                 android:textStyle="bold" />
 
                             <TextView

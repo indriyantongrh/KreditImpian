@@ -51,7 +51,1370 @@
                 android:src="@drawable/logoputihkredit" />
         </androidx.appcompat.widget.Toolbar>
 
+
         <androidx.core.widget.NestedScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            tools:ignore="MissingConstraints">
+
+
+            <LinearLayout
+                android:id="@+id/linera2"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:fontFamily="@font/jipatharegular"
+                    android:gravity="center"
+                    android:paddingBottom="10dp"
+                    android:text="Data pribadi"
+                    android:textColor="#000"
+                    android:textSize="35dp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Upload foto diri dengan memegang KTP" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="*wajib diisi"
+                    android:textColor="@color/colorOrange"
+                    android:textSize="9dp"
+                    android:textStyle="italic" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imageself"
+                    android:layout_width="140dp"
+                    android:layout_height="120dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="true"
+                    android:elevation="5dp"
+                    android:focusable="true"
+                    android:foregroundGravity="center"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/icon_user"
+                    app:civ_border_color="#FFFFFFFF"
+                    app:civ_border_width="3dp"
+                    app:civ_fill_color="#efeeee" />
+
+                <Button
+                    android:id="@+id/btnuploadfoto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/btnorange"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="Simpan foto"
+                    android:textColor="@color/colorwhite"
+                    android:visibility="gone" />
+
+
+                <TextView
+                    android:id="@+id/txt_image_diri"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="@dimen/text_margin"
+                    android:theme="@style/TextLabel"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtnamalengkap"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lilgroteskregular"
+                        android:hint="Nama Lengkap"
+                        android:inputType="text"
+                        android:paddingTop="@dimen/dimen0dp"
+                        android:textSize="@dimen/tulisan18sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <!--Border-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="@color/transparent"></LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin"
+                    android:layout_marginEnd="@dimen/text_margin"
+                    android:theme="@style/TextLabel"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txttempatlahir"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lilgroteskregular"
+                        android:hint="Tempat Tinggal"
+                        android:inputType="text"
+                        android:paddingTop="@dimen/dimen0dp"
+                        android:textSize="@dimen/tulisan18sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <!--Border-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="@color/transparent"></LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin"
+                    android:layout_marginEnd="@dimen/text_margin"
+                    android:theme="@style/TextLabel"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txttanggallahir"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:editable="false"
+                        android:fontFamily="@font/lilgroteskregular"
+                        android:hint="Tanggal Lahir"
+                        android:inputType="text"
+                        android:paddingTop="@dimen/dimen0dp"
+                        android:textSize="@dimen/tulisan18sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                \
+
+                <!--Border-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="#fff"></LinearLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin"
+                    android:layout_marginEnd="@dimen/text_margin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layout2">
+
+                    <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                        android:id="@+id/spinnerjeniskelamin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen3dp"
+                        android:layout_marginEnd="@dimen/dimen3dp"
+                        android:spinnerMode="dropdown"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:smsp_floatingLabelText=""
+                        app:smsp_hint="Pilih Status"
+                        app:smsp_hintColor="@color/colorOrange"
+                        app:smsp_itemColor="@color/colorOrange"
+                        app:smsp_itemListColor="@color/colorOrange"
+                        app:smsp_itemListHintBackgroundColor="@color/colorOrange"
+                        app:smsp_itemListHintColor="@android:color/white"
+                        app:smsp_multilineError="false"
+                        app:smsp_selectedItemListColor="#FF5252"
+                        app:smsp_underlineColor="@color/colorOrange" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <!--dihapus-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="37dp"
+                    android:background="@drawable/borderhitam"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <Spinner
+                        android:id="@+id/spinnerjeniskelaminw"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="26dp"></Spinner>
+
+                    <TextView
+                        android:id="@+id/textjeniskemalin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="#fff"></LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin"
+                    android:layout_marginEnd="@dimen/text_margin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                        android:id="@+id/spinnerstatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen3dp"
+                        android:layout_marginEnd="@dimen/dimen3dp"
+                        android:spinnerMode="dropdown"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:smsp_floatingLabelText=""
+                        app:smsp_hint="Pilih Status"
+                        app:smsp_hintColor="@color/colorOrange"
+                        app:smsp_itemColor="@color/colorOrange"
+                        app:smsp_itemListColor="@color/colorOrange"
+                        app:smsp_itemListHintBackgroundColor="@color/colorOrange"
+                        app:smsp_itemListHintColor="@android:color/white"
+                        app:smsp_multilineError="false"
+                        app:smsp_selectedItemListColor="#FF5252"
+                        app:smsp_underlineColor="@color/colorOrange" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="37dp"
+                    android:background="@drawable/borderhitam"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <Spinner
+                        android:id="@+id/spinnerstatusW"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="26dp"></Spinner>
+
+                    <TextView
+                        android:id="@+id/textstatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="#fff"></LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin"
+                    android:layout_marginEnd="@dimen/text_margin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layout2">
+
+                    <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                        android:id="@+id/spinneragama"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen3dp"
+                        android:layout_marginEnd="@dimen/dimen3dp"
+                        android:spinnerMode="dropdown"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:smsp_floatingLabelText=""
+                        app:smsp_hint="Pilih Agama"
+                        app:smsp_hintColor="@color/colorOrange"
+                        app:smsp_itemColor="@color/colorOrange"
+                        app:smsp_itemListColor="@color/colorOrange"
+                        app:smsp_itemListHintBackgroundColor="@color/colorOrange"
+                        app:smsp_itemListHintColor="@android:color/white"
+                        app:smsp_multilineError="false"
+                        app:smsp_selectedItemListColor="#FF5252"
+                        app:smsp_underlineColor="@color/colorOrange" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="37dp"
+                    android:background="@drawable/borderhitam"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <Spinner
+                        android:id="@+id/spinneragamae"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="26dp"></Spinner>
+
+                    <TextView
+                        android:id="@+id/textagama"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+
+                <!--Border-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#fff">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/sairaregular"
+                        android:text="Dokumen KTP" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="bottom|right"
+                        android:text="*foto KTP wajib diisi"
+                        android:textColor="@color/colorOrange"
+                        android:textSize="10dp"
+                        android:textStyle="italic" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="@drawable/borderorange"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imagektp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/upload" />
+
+
+                    <TextView
+                        android:id="@+id/txt_image_ktp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone" />
+
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnuploadktp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/btnorange"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="Simpan ktp"
+                    android:textColor="@color/colorwhite"
+                    android:visibility="gone" />
+
+                <!--Border-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="#fff"></LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin"
+                    android:layout_marginEnd="@dimen/text_margin"
+                    android:theme="@style/TextLabel"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtnikktp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lilgroteskregular"
+                        android:hint="NIK KTP"
+                        android:inputType="text"
+                        android:paddingTop="@dimen/dimen0dp"
+                        android:textSize="@dimen/tulisan18sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#fff">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/sairaregular"
+                        android:text="Dokumen Slip Gaji/Rekening Koran " />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="bottom|right"
+                        android:text="*Wajib diisi"
+                        android:textColor="@color/colorOrange"
+                        android:textSize="10dp"
+                        android:textStyle="italic" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="@drawable/borderorange"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imagenpwp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/upload" />
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/txt_image_npwp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Note : jika tidak memiliki NPWP dapat diganti Slip Gaji"
+                    android:textColor="@color/colorOrange"
+                    android:textSize="10dp"
+                    android:textStyle="italic"
+                    android:visibility="gone" />
+
+
+                <Button
+                    android:id="@+id/btnuploadnpwp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/btnorange"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="Simpan npwp"
+                    android:textColor="@color/colorwhite"
+                    android:visibility="gone" />
+
+
+                <!--Border-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin"
+                    android:layout_marginEnd="@dimen/text_margin"
+                    android:theme="@style/TextLabel"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtnomornpwp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lilgroteskregular"
+                        android:hint="Nomor NPWP (Optional)"
+                        android:inputType="number"
+                        android:paddingTop="@dimen/dimen0dp"
+                        android:textSize="@dimen/tulisan18sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin"
+                    android:layout_marginEnd="@dimen/text_margin"
+                    android:theme="@style/TextLabel"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtpekerjaan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lilgroteskregular"
+                        android:hint="Pekerjaan"
+                        android:inputType="text"
+                        android:paddingTop="@dimen/dimen0dp"
+                        android:textSize="@dimen/tulisan18sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <!--Border-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin"
+                    android:layout_marginEnd="@dimen/text_margin"
+                    android:theme="@style/TextLabel"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtpendapatan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lilgroteskregular"
+                        android:hint="Penghasilan"
+                        android:inputType="number"
+                        android:paddingTop="@dimen/dimen0dp"
+                        android:textSize="@dimen/tulisan18sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <!--Border-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin"
+                    android:layout_marginEnd="@dimen/text_margin"
+                    android:theme="@style/TextLabel"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtjumlahtanggungan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lilgroteskregular"
+                        android:hint="Penghasilan"
+                        android:inputType="number"
+                        android:paddingTop="@dimen/dimen0dp"
+                        android:textSize="@dimen/tulisan18sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <!--Border-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="#fff"></LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin"
+                    android:layout_marginEnd="@dimen/text_margin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layout2">
+
+                    <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                        android:id="@+id/spinnerkredit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen3dp"
+                        android:layout_marginEnd="@dimen/dimen3dp"
+                        android:spinnerMode="dropdown"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:smsp_floatingLabelText=""
+                        app:smsp_hint="APakah Anda memiliki kredit/cicilan sedang berjalan?"
+                        app:smsp_hintColor="@color/colorOrange"
+                        app:smsp_itemColor="@color/colorOrange"
+                        app:smsp_itemListColor="@color/colorOrange"
+                        app:smsp_itemListHintBackgroundColor="@color/colorOrange"
+                        app:smsp_itemListHintColor="@android:color/white"
+                        app:smsp_multilineError="false"
+                        app:smsp_selectedItemListColor="#FF5252"
+                        app:smsp_underlineColor="@color/colorOrange" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="37dp"
+                    android:background="@drawable/borderhitam"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <Spinner
+                        android:id="@+id/spinnerkredite"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="26dp"></Spinner>
+
+                    <TextView
+                        android:id="@+id/textkredit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="#fff"></LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin"
+                    android:layout_marginEnd="@dimen/text_margin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layout2">
+
+                    <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                        android:id="@+id/spinnerstatusrumah"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen3dp"
+                        android:layout_marginEnd="@dimen/dimen3dp"
+                        android:spinnerMode="dropdown"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:smsp_floatingLabelText=""
+                        app:smsp_hint="APakah Anda memiliki kredit/cicilan sedang berjalan?"
+                        app:smsp_hintColor="@color/colorOrange"
+                        app:smsp_itemColor="@color/colorOrange"
+                        app:smsp_itemListColor="@color/colorOrange"
+                        app:smsp_itemListHintBackgroundColor="@color/colorOrange"
+                        app:smsp_itemListHintColor="@android:color/white"
+                        app:smsp_multilineError="false"
+                        app:smsp_selectedItemListColor="#FF5252"
+                        app:smsp_underlineColor="@color/colorOrange" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="37dp"
+                    android:background="@drawable/borderhitam"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <Spinner
+                        android:id="@+id/spinnerstatusrumaho"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/jipatharegular"
+                        android:textSize="26dp"></Spinner>
+
+                    <TextView
+                        android:id="@+id/textstatusrumah"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin"
+                    android:layout_marginEnd="@dimen/text_margin"
+                    android:theme="@style/TextLabel"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtalamatemail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:editable="false"
+                        android:fontFamily="@font/lilgroteskregular"
+                        android:hint="Alamat Email"
+                        android:inputType="none"
+                        android:paddingTop="@dimen/dimen0dp"
+                        android:textSize="@dimen/tulisan18sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <!--Border-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin"
+                    android:layout_marginEnd="@dimen/text_margin"
+                    android:theme="@style/TextLabel"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtibukandung"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lilgroteskregular"
+                        android:hint="Nama Ibu Kandung"
+                        android:inputType="text"
+                        android:paddingTop="@dimen/dimen0dp"
+                        android:textSize="@dimen/tulisan18sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin"
+                    android:layout_marginEnd="@dimen/text_margin"
+                    android:theme="@style/TextLabel"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtnomorhandphone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:editable="false"
+                        android:fontFamily="@font/lilgroteskregular"
+                        android:hint="Nomor Telepon"
+                        android:inputType="none"
+                        android:paddingTop="@dimen/dimen0dp"
+                        android:textSize="@dimen/tulisan18sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin"
+                    android:layout_marginEnd="@dimen/text_margin"
+                    android:theme="@style/TextLabel"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtnomortlp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lilgroteskregular"
+                        android:hint="Nomor Telepon Kantor"
+                        android:inputType="number"
+                        android:paddingTop="@dimen/dimen0dp"
+                        android:textSize="@dimen/tulisan18sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin"
+                    android:layout_marginEnd="@dimen/text_margin"
+                    android:theme="@style/TextLabel"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtfacebook"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lilgroteskregular"
+                        android:hint="Facebook"
+                        android:inputType="text"
+                        android:paddingTop="@dimen/dimen0dp"
+                        android:textSize="@dimen/tulisan18sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin"
+                    android:layout_marginEnd="@dimen/text_margin"
+                    android:theme="@style/TextLabel"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txttwitter"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lilgroteskregular"
+                        android:hint="Twitter"
+                        android:inputType="text"
+                        android:paddingTop="@dimen/dimen0dp"
+                        android:textSize="@dimen/tulisan18sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:background="#fff"></LinearLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin"
+                    android:layout_marginEnd="@dimen/text_margin"
+                    android:theme="@style/TextLabel"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtinstagram"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lilgroteskregular"
+                        android:hint="Instagram"
+                        android:inputType="text"
+                        android:paddingTop="@dimen/dimen0dp"
+                        android:textSize="@dimen/tulisan18sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="#fff"></LinearLayout>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:fontFamily="@font/lilgroteskbold"
+                    android:gravity="left"
+                    android:paddingBottom="10dp"
+                    android:text="Data Saudara tidak se-rumah"
+                    android:textColor="#000"
+                    android:textSize="20dp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin"
+                    android:layout_marginEnd="@dimen/text_margin"
+                    android:theme="@style/TextLabel"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtnamasaudara"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lilgroteskregular"
+                        android:hint="Nama Saudara"
+                        android:inputType="text"
+                        android:paddingTop="@dimen/dimen0dp"
+                        android:textSize="@dimen/tulisan18sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <!--Border-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="#fff"></LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin"
+                    android:layout_marginEnd="@dimen/text_margin"
+                    android:theme="@style/TextLabel"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtnomorhandphonesaudara"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lilgroteskregular"
+                        android:hint="Nomor Handphone Saudara"
+                        android:inputType="number"
+                        android:paddingTop="@dimen/dimen0dp"
+                        android:textSize="@dimen/tulisan18sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <!--Border-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="#fff"></LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvKota"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorOrange"
+                    android:textSize="12dp" />
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/borderorangev2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layout4">
+
+                    <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                        android:id="@+id/spinKota"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen3dp"
+                        android:layout_marginEnd="@dimen/dimen3dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:smsp_floatingLabelText=""
+                        app:smsp_hint="Pilih Kota / Kabupaten"
+                        app:smsp_hintColor="@color/colorOrange"
+                        app:smsp_isSearchable="true"
+                        app:smsp_itemColor="@color/colorOrange"
+                        app:smsp_itemListColor="@color/colorOrange"
+                        app:smsp_itemListHintBackgroundColor="@color/colorOrange"
+                        app:smsp_itemListHintColor="@android:color/white"
+                        app:smsp_multilineError="false"
+                        app:smsp_searchHeaderBackgroundColor="@color/colorOrange"
+                        app:smsp_searchHeaderText="Cari Kota / Kabupaten"
+                        app:smsp_searchHeaderTextColor="@color/colorwhite"
+                        app:smsp_searchHint="Masukan Keyword"
+                        app:smsp_searchHintColor="@color/colorOrange"
+                        app:smsp_selectedItemListColor="#FF5252"
+                        app:smsp_underlineColor="@color/colorOrange" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/text_kota"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:text="Nama kota"
+                    android:textColor="@color/colorOrange"
+
+                    android:textSize="16dp" />
+
+
+                <LinearLayout
+                    android:id="@+id/LinearKota"
+                    android:layout_width="match_parent"
+                    android:layout_height="37dp"
+                    android:background="@drawable/borderhitam"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <Spinner
+                        android:id="@+id/spinnerkota_saudaraa"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:entries="@array/kota"></Spinner>
+
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnUbah"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/btnorange"
+                    android:text="Ubah Kota"
+                    android:textColor="@color/colorwhite" />
+
+                <!--Border-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="#fff"></LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/borderorangev2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layout4">
+
+                    <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                        android:id="@+id/spinKecamatan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen3dp"
+                        android:layout_marginEnd="@dimen/dimen3dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:smsp_floatingLabelText=""
+                        app:smsp_hint="Pilih Kecamatan"
+                        app:smsp_hintColor="@color/colorOrange"
+                        app:smsp_isSearchable="true"
+                        app:smsp_itemColor="@color/colorOrange"
+                        app:smsp_itemListColor="@color/colorOrange"
+                        app:smsp_itemListHintBackgroundColor="@color/colorOrange"
+                        app:smsp_itemListHintColor="@android:color/white"
+                        app:smsp_multilineError="false"
+                        app:smsp_searchHeaderBackgroundColor="@color/colorOrange"
+                        app:smsp_searchHeaderText="Cari Kecamatan"
+                        app:smsp_searchHeaderTextColor="@color/colorwhite"
+                        app:smsp_searchHint="Masukan Keyword"
+                        app:smsp_searchHintColor="@color/colorOrange"
+                        app:smsp_selectedItemListColor="#FF5252"
+                        app:smsp_underlineColor="@color/colorOrange" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/text_kecamatan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:text="Nama Kecamatan"
+
+                    android:textColor="@color/colorOrange" />
+
+                <LinearLayout
+                    android:id="@+id/LinearKecamatan"
+                    android:layout_width="match_parent"
+                    android:layout_height="37dp"
+                    android:background="@drawable/borderhitam"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <Spinner
+                        android:id="@+id/spinnerkecamatn_saudara"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:entries="@array/kecamatan"></Spinner>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnUbahKecamatan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/btnorange"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="Ubah Kecamatan"
+                    android:textColor="@color/colorwhite" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#fff"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/kecamatanSelected"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kecamatan Yang anda Pilih"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="#fff"></LinearLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin"
+                    android:layout_marginEnd="@dimen/text_margin"
+                    android:theme="@style/TextLabel"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtkodepos_saudara"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lilgroteskregular"
+                        android:hint="Kode Pos"
+                        android:inputType="number"
+                        android:paddingTop="@dimen/dimen0dp"
+                        android:textSize="@dimen/tulisan18sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!--dihapus-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="37dp"
+                    android:background="@drawable/borderhitam"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <EditText
+                        android:id="@+id/txtkodepos_saudara"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/jipatharegular"
+                        android:hint="Kode Pos"
+                        android:inputType="number"
+                        android:textSize="26dp" />
+
+                </LinearLayout>
+
+                <!--Border-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="#fff"></LinearLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin"
+                    android:layout_marginEnd="@dimen/text_margin"
+                    android:theme="@style/TextLabel"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtalamat_saudara"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lilgroteskregular"
+                        android:gravity="top"
+                        android:hint="Alamat"
+                        android:inputType="textLongMessage"
+                        android:lines="9"
+                        android:paddingTop="@dimen/dimen0dp"
+                        android:textSize="@dimen/tulisan18sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!--dihapus-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:background="@drawable/borderhitam"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <EditText
+                        android:id="@+id/txtalamat_saudara"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/jipatharegular"
+                        android:gravity="top"
+                        android:hint="Alamat"
+                        android:inputType="textMultiLine"
+                        android:maxLines="9"
+                        android:textSize="26dp" />
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/id_kota"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="id_kota"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/id_kecamatan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="id_kecamatan"
+                    android:visibility="gone" />
+
+
+                <!--Border-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="#fff"></LinearLayout>
+
+
+                <!--Button-->
+                <Button
+                    android:id="@+id/btnsimpan"
+                    style="?android:textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/btnorange"
+                    android:fontFamily="@font/jipatharegular"
+                    android:text="SIMPAN DATA"
+                    android:textColor="#fff"
+                    android:textSize="25sp"
+                    android:textStyle="bold"></Button>
+
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+       <!-- <androidx.core.widget.NestedScrollView
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             tools:ignore="MissingConstraints">
@@ -150,7 +1513,7 @@
 
                 </LinearLayout>
 
-                <!--Border-->
+                &lt;!&ndash;Border&ndash;&gt;
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="15dp"
@@ -175,7 +1538,7 @@
                         android:textSize="26dp" />
                 </LinearLayout>
 
-                <!--Border-->
+                &lt;!&ndash;Border&ndash;&gt;
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="15dp"
@@ -201,7 +1564,7 @@
                         android:textSize="26dp" />
                 </LinearLayout>
 
-                <!--Border-->
+                &lt;!&ndash;Border&ndash;&gt;
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="15dp"
@@ -227,7 +1590,7 @@
                         android:visibility="gone" />
                 </LinearLayout>
 
-                <!--Border-->
+                &lt;!&ndash;Border&ndash;&gt;
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="15dp"
@@ -254,7 +1617,7 @@
 
                 </LinearLayout>
 
-                <!--Border-->
+                &lt;!&ndash;Border&ndash;&gt;
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="15dp"
@@ -282,7 +1645,7 @@
                 </LinearLayout>
 
 
-                <!--Border-->
+                &lt;!&ndash;Border&ndash;&gt;
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
@@ -341,7 +1704,7 @@
                     android:textColor="@color/colorwhite"
                     android:visibility="gone" />
 
-                <!--Border-->
+                &lt;!&ndash;Border&ndash;&gt;
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="15dp"
@@ -367,7 +1730,7 @@
                         android:textSize="26dp" />
                 </LinearLayout>
 
-                <!--Border-->
+                &lt;!&ndash;Border&ndash;&gt;
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
@@ -425,7 +1788,7 @@
                     android:visibility="gone" />
 
 
-                <!--Border-->
+                &lt;!&ndash;Border&ndash;&gt;
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="15dp"
@@ -452,7 +1815,7 @@
                 </LinearLayout>
 
 
-                <!--Border-->
+                &lt;!&ndash;Border&ndash;&gt;
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="15dp"
@@ -477,7 +1840,7 @@
                         android:textSize="26dp" />
                 </LinearLayout>
 
-                <!--Border-->
+                &lt;!&ndash;Border&ndash;&gt;
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="15dp"
@@ -502,7 +1865,7 @@
                         android:textSize="26dp" />
                 </LinearLayout>
 
-                <!--Border-->
+                &lt;!&ndash;Border&ndash;&gt;
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="15dp"
@@ -527,7 +1890,7 @@
                         android:textSize="26dp" />
                 </LinearLayout>
 
-                <!--Border-->
+                &lt;!&ndash;Border&ndash;&gt;
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="15dp"
@@ -554,7 +1917,7 @@
 
                 </LinearLayout>
 
-                <!--Border-->
+                &lt;!&ndash;Border&ndash;&gt;
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="15dp"
@@ -580,7 +1943,7 @@
                         android:visibility="gone" />
                 </LinearLayout>
 
-                <!--Border-->
+                &lt;!&ndash;Border&ndash;&gt;
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="15dp"
@@ -608,7 +1971,7 @@
                         android:textSize="26dp" />
                 </LinearLayout>
 
-                <!--Border-->
+                &lt;!&ndash;Border&ndash;&gt;
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="15dp"
@@ -634,7 +1997,7 @@
                         android:textSize="26dp" />
                 </LinearLayout>
 
-                <!--Border-->
+                &lt;!&ndash;Border&ndash;&gt;
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="15dp"
@@ -661,7 +2024,7 @@
                         android:textSize="26dp" />
                 </LinearLayout>
 
-                <!--Border-->
+                &lt;!&ndash;Border&ndash;&gt;
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="15dp"
@@ -686,7 +2049,7 @@
                         android:textSize="26dp" />
                 </LinearLayout>
 
-                <!--Border-->
+                &lt;!&ndash;Border&ndash;&gt;
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="15dp"
@@ -711,7 +2074,7 @@
                         android:textSize="26dp" />
                 </LinearLayout>
 
-                <!--Border-->
+                &lt;!&ndash;Border&ndash;&gt;
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="15dp"
@@ -736,7 +2099,7 @@
                         android:textSize="26dp" />
                 </LinearLayout>
 
-                <!--Border-->
+                &lt;!&ndash;Border&ndash;&gt;
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="15dp"
@@ -761,7 +2124,7 @@
                         android:textSize="26dp" />
                 </LinearLayout>
 
-                <!--Border-->
+                &lt;!&ndash;Border&ndash;&gt;
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="15dp"
@@ -800,7 +2163,7 @@
 
                 </LinearLayout>
 
-                <!--Border-->
+                &lt;!&ndash;Border&ndash;&gt;
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="15dp"
@@ -827,7 +2190,7 @@
 
                 </LinearLayout>
 
-                <!--Border-->
+                &lt;!&ndash;Border&ndash;&gt;
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="15dp"
@@ -916,7 +2279,7 @@
                     android:visibility="gone"
                     android:textColor="@color/colorwhite" />
 
-                <!--Border-->
+                &lt;!&ndash;Border&ndash;&gt;
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="15dp"
@@ -1011,7 +2374,7 @@
                         android:visibility="gone" />
                 </LinearLayout>
 
-                <!--Border-->
+                &lt;!&ndash;Border&ndash;&gt;
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="15dp"
@@ -1038,7 +2401,7 @@
 
                 </LinearLayout>
 
-                <!--Border-->
+                &lt;!&ndash;Border&ndash;&gt;
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="15dp"
@@ -1082,14 +2445,14 @@
                     android:visibility="gone" />
 
 
-                <!--Border-->
+                &lt;!&ndash;Border&ndash;&gt;
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="15dp"
                     android:background="#fff"></LinearLayout>
 
 
-                <!--Button-->
+                &lt;!&ndash;Button&ndash;&gt;
                 <Button
                     android:id="@+id/btnsimpan"
                     style="?android:textAppearanceSmall"
@@ -1108,7 +2471,7 @@
 
             </LinearLayout>
 
-        </androidx.core.widget.NestedScrollView>
+        </androidx.core.widget.NestedScrollView>-->
     </LinearLayout>
 
 

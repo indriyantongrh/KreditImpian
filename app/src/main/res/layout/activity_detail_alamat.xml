@@ -75,87 +75,105 @@
                     android:textSize="35dp"
                     android:visibility="gone" />
 
-                <LinearLayout
 
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout1"
                     android:layout_width="match_parent"
-                    android:layout_height="37dp"
-                    android:background="@drawable/borderhitam"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="@dimen/text_margin"
+                    android:theme="@style/TextLabel"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    <EditText
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txtnamaalamat"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:background="@android:color/transparent"
-                        android:fontFamily="@font/jipatharegular"
-                        android:hint="Alamat Rumah, Kantor, Apartemen, Dropship"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lilgroteskregular"
+                        android:hint="Alamat Rumah, Kantor, Apartement"
                         android:inputType="text"
-                        android:textSize="26dp" />
+                        android:paddingTop="@dimen/dimen0dp"
+                        android:textSize="@dimen/tulisan18sp" />
+                </com.google.android.material.textfield.TextInputLayout>
 
 
-                </LinearLayout>
+
 
                 <!--Border-->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"
+                    android:layout_height="1dp"
                     android:background="#fff"></LinearLayout>
 
-                <LinearLayout
-
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout1"
                     android:layout_width="match_parent"
-                    android:layout_height="37dp"
-                    android:background="@drawable/borderhitam"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="@dimen/text_margin"
+                    android:theme="@style/TextLabel"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    <EditText
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txtnamapenerima"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:background="@android:color/transparent"
-                        android:fontFamily="@font/jipatharegular"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lilgroteskregular"
                         android:hint="Nama Penerima"
                         android:inputType="text"
-                        android:textSize="26dp" />
+                        android:paddingTop="@dimen/dimen0dp"
+                        android:textSize="@dimen/tulisan18sp" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                </LinearLayout>
+
+
 
                 <!--Border-->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"
+                    android:layout_height="1dp"
                     android:background="#fff"></LinearLayout>
 
-                <LinearLayout
-
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout1"
                     android:layout_width="match_parent"
-                    android:layout_height="37dp"
-                    android:background="@drawable/borderhitam"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="@dimen/text_margin"
+                    android:theme="@style/TextLabel"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    <EditText
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txtnomorhandphone"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:background="@android:color/transparent"
-                        android:fontFamily="@font/jipatharegular"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lilgroteskregular"
                         android:hint="Nomor Handphone"
                         android:inputType="number"
-                        android:textSize="26dp" />
+                        android:paddingTop="@dimen/dimen0dp"
+                        android:textSize="@dimen/tulisan18sp" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                </LinearLayout>
+
+
 
 
                 <!--Border-->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"
+                    android:layout_height="1dp"
                     android:background="#fff"></LinearLayout>
 
 
@@ -372,26 +390,31 @@
                     android:layout_height="15dp"
                     android:background="#fff"></LinearLayout>
 
-                <LinearLayout
 
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout1"
                     android:layout_width="match_parent"
-                    android:layout_height="37dp"
-                    android:background="@drawable/borderhitam"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="@dimen/text_margin"
+                    android:theme="@style/TextLabel"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    <EditText
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txtkodepospengiriman"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:background="@android:color/transparent"
-                        android:fontFamily="@font/jipatharegular"
-                        android:hint="Kode Post"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lilgroteskregular"
+                        android:hint="Kode Pos"
                         android:inputType="number"
-                        android:textSize="26dp" />
+                        android:paddingTop="@dimen/dimen0dp"
+                        android:textSize="@dimen/tulisan18sp" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                </LinearLayout>
 
                 <!--Border-->
                 <LinearLayout
@@ -399,27 +422,32 @@
                     android:layout_height="15dp"
                     android:background="#fff"></LinearLayout>
 
-                <LinearLayout
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout1"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:background="@drawable/borderhitam"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin"
+                    android:layout_marginEnd="@dimen/text_margin"
+                    android:theme="@style/TextLabel"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    <EditText
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txtalamatpengririman"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:background="@android:color/transparent"
-                        android:fontFamily="@font/jipatharegular"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lilgroteskregular"
                         android:gravity="top"
-                        android:hint="Alamat Anda"
-                        android:inputType="textMultiLine"
+                        android:hint="Alamat"
+                        android:inputType="textLongMessage"
                         android:lines="9"
-                        android:textSize="26dp" />
+                        android:paddingTop="@dimen/dimen0dp"
+                        android:textSize="@dimen/tulisan18sp" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                </LinearLayout>
+
 
 
                 <!--Border-->

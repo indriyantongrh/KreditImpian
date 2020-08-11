@@ -63,6 +63,7 @@ import com.application.kreditimpian.R;
 
 import com.bumptech.glide.Glide;
 import com.chivorn.smartmaterialspinner.SmartMaterialSpinner;
+import com.google.android.material.textfield.TextInputEditText;
 
 
 import java.io.ByteArrayInputStream;
@@ -89,11 +90,12 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
     ImageButton btnback;
     Button btnuploadfoto, btnuploadktp, btnuploadnpwp, btnUbahKecamatan, btnUbah;
     ImageView imagektp, imagenpwp, imageself;
-    Spinner spinnerjeniskelamin, spinnerstatus, spinneragama, spinnerstatusrumah,
-            spinnerkredit, spinnerkota_saudaraa, spinnerkecamatn_saudara;
+    private SmartMaterialSpinner   spinnerstatusrumah, spinnerkredit, spinneragama, spinnerstatus,spinnerjeniskelamin;
+
+    Spinner spinnerkota_saudaraa, spinnerkecamatn_saudara;
     Button btnsimpan;
     TextView id_kota, id_kecamatan, text_kota, text_kecamatan, textjeniskelamin, textstatus, textagama, textkredit, textstatusrumah;
-    EditText txtnamalengkap, txttempatlahir, txttanggallahir, txtnikktp, txtnomornpwp, txtpekerjaan, txtpendapatan,
+    TextInputEditText txtnamalengkap, txttempatlahir, txttanggallahir, txtnikktp, txtnomornpwp, txtpekerjaan, txtpendapatan,
             txtjumlahtanggungan, txtalamatemail, txtibukandung, txtnomorhandphone, txtnomortlp, txtfacebook,
             txttwitter, txtinstagram, txtnamasaudara, txtnomorhandphonesaudara, txtkodepos_saudara, txtalamat_saudara;
     private HashMap<String, String> cityvalues;
@@ -440,7 +442,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
                 android.app.AlertDialog alert = builder.create();
                 alert.show();
 
-                btnuploadfoto.setVisibility(View.VISIBLE);
+               // btnuploadfoto.setVisibility(View.VISIBLE);
             }
 
 
@@ -473,7 +475,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
                 android.app.AlertDialog alert = builder.create();
                 alert.show();
-                btnuploadktp.setVisibility(View.VISIBLE);
+                ///btnuploadktp.setVisibility(View.VISIBLE);
 
             }
         });
@@ -506,7 +508,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
                 android.app.AlertDialog alert = builder.create();
                 alert.show();
-                btnuploadnpwp.setVisibility(View.VISIBLE);
+               /// btnuploadnpwp.setVisibility(View.VISIBLE);
 
 
             }
@@ -827,7 +829,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
-        pDialog.setMessage("Loading...");
+        pDialog.setMessage("Mengunggah Foto Selfie...");
         pDialog.show();
 
         HashMap<String, String> params = new HashMap<>();
@@ -860,7 +862,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
-        pDialog.setMessage("Loading...");
+        pDialog.setMessage("Mengunggah Foto KTP...");
         pDialog.show();
 
         HashMap<String, String> params = new HashMap<>();
@@ -892,7 +894,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
 
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
-        pDialog.setMessage("Loading...");
+        pDialog.setMessage("Mengunggah Foto NPWP...");
         pDialog.show();
 
         HashMap<String, String> params = new HashMap<>();
@@ -1643,7 +1645,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         decoded_1 = BitmapFactory.decodeStream(new ByteArrayInputStream(bytes.toByteArray()));
         //menampilkan gambar yang dipilih dari camera/gallery ke ImageView
         imageself.setImageBitmap(decoded_1);
-
+        UploadFoto();
     }
 
     //untuk set ke imageview
@@ -1654,6 +1656,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         decoded_2 = BitmapFactory.decodeStream(new ByteArrayInputStream(bytes.toByteArray()));
         //menampilkan gambar yang dipilih dari camera/gallery ke ImageView
         imagektp.setImageBitmap(decoded_2);
+        UploadKtp();
     }
 
     //untuk set ke imageview
@@ -1664,6 +1667,7 @@ public class DataDiri extends AppCompatActivity implements View.OnClickListener 
         decoded_3 = BitmapFactory.decodeStream(new ByteArrayInputStream(bytes.toByteArray()));
         //menampilkan gambar yang dipilih dari camera/gallery ke ImageView
         imagenpwp.setImageBitmap(decoded_3);
+        UploadNpwp();
     }
 
     @Override
