@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +32,7 @@ import com.application.kreditimpian.TransactionProcess.TransactionSelectTenor;
 import com.bumptech.glide.Glide;
 import com.chivorn.smartmaterialspinner.SmartMaterialSpinner;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -75,11 +77,32 @@ public class AdapterSelectedTenor extends RecyclerView.Adapter<AdapterSelectedTe
         Log.v("jajal", "masuk2");
         final CompaniesDataItem data = companiesDataItemList.get(position);
 
+
+        Locale localeID = new Locale("in", "ID");
+        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+
         holder.tvIdCreditor.setText(data.getIdCompany());
-        holder.tvDownpayment.setText(data.getDownPayment());
         holder.tvNamaKendaraan.setText(productMeta.getName());
-        holder.tvPriceSale.setText(productMeta.getPriceSale());
-        holder.tvPriceCapital.setText(productMeta.getPriceCapital());
+        //holder.tvPriceSale.setText(productMeta.getPriceSale());
+        ///holder.tvPriceCapital.setText(productMeta.getPriceCapital());
+        int DownPayment = (Integer.parseInt(data.getDownPayment()));
+        int Price_Capital = (Integer.parseInt(productMeta.getPriceCapital()));
+        int Price_Sale = (Integer.parseInt(productMeta.getPriceSale()));
+
+        if (Price_Capital == Price_Sale) {
+            holder.tvPriceCapital.setVisibility(View.GONE);
+
+        } else {
+            holder.tvPriceSale.setVisibility(View.VISIBLE);
+        }
+        if (Price_Capital >= Price_Sale){
+            holder.tvPriceCapital.setVisibility(View.GONE);
+        }
+        holder.tvDownpayment.setText(formatRupiah.format(DownPayment));
+        holder.tvPriceCapital.setText(formatRupiah.format(Price_Capital));
+        holder.tvPriceCapital.setPaintFlags( Paint.STRIKE_THRU_TEXT_FLAG);
+        holder.tvPriceSale.setText(formatRupiah.format(Price_Sale));
+
         Glide.with(mContext)
                 .load(productMeta.getFilename())
                 .placeholder(R.drawable.no_image)

@@ -32,7 +32,9 @@ import com.bumptech.glide.Glide;
 
 import org.jetbrains.annotations.TestOnly;
 
+import java.text.NumberFormat;
 import java.util.HashMap;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -120,15 +122,19 @@ public class TransactionCheckout extends AppCompatActivity {
         String price_capital = intent.getStringExtra("price_capital");
         String price_sale = intent.getStringExtra("price_sale");
         String name_product = intent.getStringExtra("name_product");
-        String estimasipengiman = intent.getStringExtra("estimasipengiman");
+        String estimasipengiman = intent.getStringExtra("estimasipengiman").replace("Rp","").replace(".","");
         String courier = intent.getStringExtra("courier");
         String note = intent.getStringExtra("note");
         String tenor = intent.getStringExtra("tenor");
         String cicilan = intent.getStringExtra("cicilan");
-        String downpayment = intent.getStringExtra("downpayment");
+        String downpayment = intent.getStringExtra("downpayment").replace("Rp","").replace(".","");
         String name_mitra = intent.getStringExtra("name_mitra");
         String id_transaction = intent.getStringExtra("id_transaction");
         String id_creditor = intent.getStringExtra("id_creditor");
+        Locale localeID = new Locale("in", "ID");
+        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+        int DownPayment = (Integer.parseInt(downpayment));
+        int EstimasiPengiriman = (Integer.parseInt(estimasipengiman));
 
 
         tvInstalment.setText(cicilan);
@@ -140,18 +146,20 @@ public class TransactionCheckout extends AppCompatActivity {
         txt_price_capital.setText(price_capital);
         txt_price_sale.setText(price_sale);
         tvMitraKredit.setText(name_mitra);
-        tvBiayaKirim.setText(estimasipengiman);
+        tvBiayaKirim.setText(formatRupiah.format(EstimasiPengiriman));
         tvCicilan.setText(tenor + " Bulan x Rp. " + cicilan);
         tvJasaPengiriman.setText(courier);
         tvNomorInvoice.setText("Nomor Invoice : " + number);
-        tvDownpayment.setText(downpayment);
+        tvDownpayment.setText(formatRupiah.format(DownPayment));
         txt_price_sale.setText(price_sale);
         tvNote.setText(note);
+
 
         DoubleDownpayment = Integer.parseInt(downpayment);
         Doublebiayakirim = Integer.parseInt(estimasipengiman);
         TotalPembayaran = (DoubleDownpayment + Doublebiayakirim);
-        tvTotalPembayaran.setText(String.valueOf(TotalPembayaran));
+        int totaPembayaran = (Integer.parseInt(String.valueOf(TotalPembayaran)));
+        tvTotalPembayaran.setText(formatRupiah.format(totaPembayaran));
 
         Glide.with(TransactionCheckout.this)
                 .load(image_product)
@@ -263,7 +271,7 @@ public class TransactionCheckout extends AppCompatActivity {
         params.put("tenor", tvTenor2.getText().toString());
         params.put("note", tvNote.getText().toString());
         params.put("id_company", tvIdCreditor.getText().toString());
-        params.put("postal_fee", tvBiayaKirim.getText().toString());
+        params.put("postal_fee", tvBiayaKirim.getText().toString().replace(".", "" ).replace("Rp", ""));
         params.put("courier", tvJasaPengiriman.getText().toString());
         params.put("installment", tvInstalment.getText().toString());
         params.put("payment_method", radioButton.getText().toString());

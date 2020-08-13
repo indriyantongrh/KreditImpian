@@ -433,6 +433,9 @@ public class TransactionSelectMitra extends AppCompatActivity {
     }
 
     private void getOngkir(){
+        Locale localeID = new Locale("in", "ID");
+        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+
         logisticvalue = new HashMap<Integer, String>();
         HashMap<String, String> params = new HashMap<>();
         params.put("origin", txt_origin.getText().toString() );
@@ -465,7 +468,8 @@ public class TransactionSelectMitra extends AppCompatActivity {
 
                             if(position>0){
                                 Integer logisticvalue = getLogistic.get(position - 1 ).getCost();
-                                tv_estimasipengiriman.setText(String.valueOf(logisticvalue));
+                                //tv_estimasipengiriman.setText(String.valueOf(logisticvalue));
+                                tv_estimasipengiriman.setText(formatRupiah.format(logisticvalue));
                                ///// Toast.makeText(TransactionSelectMitra.this, " "+logisticvalue, Toast.LENGTH_LONG).show();
 
                             }
