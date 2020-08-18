@@ -1,12 +1,15 @@
 package com.application.kreditimpian.LoginRegister;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -19,93 +22,48 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.application.kreditimpian.Akun.DataDiri;
-import com.application.kreditimpian.Api.ApiHeader.AuthorizationResponse;
-import com.application.kreditimpian.Api.ApiHeader.ServiceClient;
-import com.application.kreditimpian.Api.JWTParser;
 import com.application.kreditimpian.Api.PreferenceHelper;
-import com.application.kreditimpian.Api.RequestInterface;
 import com.application.kreditimpian.Api.SessionManager;
 import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
 import com.application.kreditimpian.BuildConfig;
-import com.application.kreditimpian.CustomDialog.CustomDialog;
-import com.application.kreditimpian.DecodeUtils.JWTUtils;
 import com.application.kreditimpian.ForgotPassword.ForgotPassword;
-import com.application.kreditimpian.LoadingDialog.LoadingDialog;
-import com.application.kreditimpian.MainActivity;
 import com.application.kreditimpian.MenuUtama.MenuUtama;
 import com.application.kreditimpian.Model.ModelLogin.DataItem;
 import com.application.kreditimpian.Model.ModelLogin.ResponseLogin;
-import com.application.kreditimpian.Model.ModelLoginMember.ResponseLoginMember;
-import com.application.kreditimpian.Model.ModelUserDetail.ResultItem;
-import com.application.kreditimpian.Model.ModelValidationSMS.ResponseSmsOTP;
 import com.application.kreditimpian.PdfViewer.KebijakanPrivacy;
 import com.application.kreditimpian.R;
-import com.application.kreditimpian.ResponseMessage.ResponseLoginSucces;
-import com.auth0.android.jwt.JWT;
-import com.auth0.jwt.exceptions.JWTDecodeException;
-import com.auth0.jwt.interfaces.Claim;
-import com.auth0.jwt.interfaces.DecodedJWT;
-import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.common.util.Base64Utils;
 import com.google.android.gms.tasks.Task;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
-import com.google.gson.internal.bind.JsonTreeWriter;
-import com.google.gson.reflect.TypeToken;
+import com.google.android.play.core.appupdate.AppUpdateInfo;
+import com.google.android.play.core.appupdate.AppUpdateManager;
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
+import com.google.android.play.core.install.model.AppUpdateType;
+import com.google.android.play.core.install.model.UpdateAvailability;
+import com.google.android.play.core.tasks.OnSuccessListener;
 import com.wang.avi.AVLoadingIndicatorView;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.protocol.HTTP;
-import org.apache.http.util.EntityUtils;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.json.JSONStringer;
 import org.jsoup.Jsoup;
 
 import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
-import butterknife.internal.Utils;
-import io.jsonwebtoken.Jwt;
-import io.jsonwebtoken.io.Decoder;
-import io.jsonwebtoken.lang.Assert;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
+import eu.dkaratzas.android.inapp.update.Constants;
+import eu.dkaratzas.android.inapp.update.InAppUpdateManager;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 
-import static android.text.TextUtils.htmlEncode;
 import static android.text.TextUtils.isEmpty;
-import static com.application.kreditimpian.Api.JWTParser.decoded;
-import static com.application.kreditimpian.Api.SharedPrefManager.SP_ID;
-
-import java.io.UnsupportedEncodingException;
-import java.util.Base64;
+import static com.crashlytics.android.Crashlytics.log;
 
 
 public class LoginUser extends AppCompatActivity {
@@ -117,6 +75,7 @@ public class LoginUser extends AppCompatActivity {
     int success;
     ProgressDialog pDialog;
     String sCurrentVersion, sLatestVersion;
+    int sCurrentVersionCode, sLatestVersionCode;
     Context mContext;
     //ProgressDialog progressDialog;
     private AlertDialog dialog;
@@ -180,12 +139,23 @@ public class LoginUser extends AppCompatActivity {
             "SemiCircleSpinIndicator",
             "com.wang.avi.sample.MyCustomIndicator"
     };
+    private AppUpdateManager mAppUpdateManager;
+    private static final int RC_APP_UPDATE = 21;
+
+    private static final int REQ_CODE_VERSION_UPDATE = 19;
+    private InAppUpdateManager inAppUpdateManager;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_user);
+
+        /*inAppUpdateManager = InAppUpdateManager.Builder(this, REQ_CODE_VERSION_UPDATE)
+                .resumeUpdates(true) // Resume the update, if the update was stalled. Default is true
+                .mode(Constants.UpdateMode.IMMEDIATE);
+
+        inAppUpdateManager.checkForAppUpdate();*/ /// Update Immediate
 
         /*Loading= (AVLoadingIndicatorView) findViewById(R.id.Loading);
         Loading.setIndicator("BallPulseSyncIndicator");*/
@@ -201,7 +171,7 @@ public class LoginUser extends AppCompatActivity {
         tvVersion.setText("Kredit Impian v."+sCurrentVersion);
         new GetLatestVersion().execute();
 
-
+       /// Checkupdate();
 
         mApiService = UtilsApi.getAPIService();
         sharedPrefManager = new SharedPrefManager(this);
@@ -293,30 +263,46 @@ public class LoginUser extends AppCompatActivity {
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
 
-
-
     }
 
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == REQ_CODE_VERSION_UPDATE) {
+            if (resultCode == Activity.RESULT_CANCELED) {
+                // If the update is cancelled by the user,
+                // you can request to start the update again.
+                inAppUpdateManager.checkForAppUpdate();
 
+                Log.d("jajal", "Update flow failed! Result code: " + resultCode);
+            }
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
+
+    }
+
+/*    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == RC_APP_UPDATE){
+            Toast.makeText(this, " Start download ", Toast.LENGTH_SHORT).show();
+
+            if (resultCode != RESULT_OK){
+                Log.v("jajal", "Update failed"+resultCode);
+            }
+        }
+
+
+    }*/
 
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
 
-        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
-        if (requestCode == RC_SIGN_IN) {
-            // The Task returned from this call is always completed, no need to attach
-            // a listener.
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            handleSignInResult(task);
-        }
-    }
 
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
@@ -469,11 +455,26 @@ public class LoginUser extends AppCompatActivity {
         protected void onPostExecute(String s) {
             ///get Current Version
             sCurrentVersion = BuildConfig.VERSION_NAME;
+            //get Curren Verson Code
+            sCurrentVersionCode = BuildConfig.VERSION_CODE;
+
+/*
+            if(String.valueOf(sLatestVersionCode) != null){
+                /// version conver float
+                float cVersionCode = Float.parseFloat(String.valueOf(sCurrentVersionCode));
+                float lVersionCode = Float.parseFloat(String.valueOf(sLatestVersionCode));
+                //check condition version greater than curren version
+                if(lVersionCode > cVersionCode){
+                    // Create update
+                    updateAlertDIalog();
+                }
+            }*/
+
 
             if(sLatestVersion != null){
                 /// version conver float
                 float cVersion = Float.parseFloat (sCurrentVersion);
-                float lVersion = Float.parseFloat (sLatestVersion);
+                float lVersion = Float.parseFloat  (sLatestVersion);
                 //check condition version greater than curren version
                 if(lVersion > cVersion){
                     // Create update
@@ -520,5 +521,46 @@ public class LoginUser extends AppCompatActivity {
         Loading.hide();
         // or avi.smoothToHide();
     }
+
+    private void Checkupdate(){
+        // Creates instance of the manager.
+        AppUpdateManager appUpdateManager = AppUpdateManagerFactory.create(LoginUser.this);
+
+        // Returns an intent object that you use to check for an update.
+        com.google.android.play.core.tasks.Task<AppUpdateInfo> appUpdateInfoTask = appUpdateManager.getAppUpdateInfo();
+
+        // Checks that the platform will allow the specified type of update.
+        appUpdateInfoTask.addOnSuccessListener(appUpdateInfo -> {
+            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
+                    // For a flexible update, use AppUpdateType.FLEXIBLE
+                    && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
+                // Request the update.
+            }
+        });
+
+
+    }
+/*
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQUEST_CODE) {
+            if (resultCode != RESULT_OK) {
+                log("Update flow failed! Result code: " + resultCode);
+                // If the update is cancelled or fails,
+                // you can request to start the update again.
+            }
+        }
+
+
+*//*        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
+        if (requestCode == RC_SIGN_IN) {
+            // The Task returned from this call is always completed, no need to attach
+            // a listener.
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            handleSignInResult(task);
+        }*//*
+    }*/
 
 }
