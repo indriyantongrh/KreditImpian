@@ -55,8 +55,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
-import eu.dkaratzas.android.inapp.update.Constants;
-import eu.dkaratzas.android.inapp.update.InAppUpdateManager;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -143,7 +142,7 @@ public class LoginUser extends AppCompatActivity {
     private static final int RC_APP_UPDATE = 21;
 
     private static final int REQ_CODE_VERSION_UPDATE = 19;
-    private InAppUpdateManager inAppUpdateManager;
+
 
 
     @Override
@@ -272,7 +271,7 @@ public class LoginUser extends AppCompatActivity {
             if (resultCode == Activity.RESULT_CANCELED) {
                 // If the update is cancelled by the user,
                 // you can request to start the update again.
-                inAppUpdateManager.checkForAppUpdate();
+                ///inAppUpdateManager.checkForAppUpdate();
 
                 Log.d("jajal", "Update flow failed! Result code: " + resultCode);
             }

@@ -52,153 +52,153 @@
                     android:gravity="center|center_horizontal"
                     android:orientation="horizontal">
 
-                        <!--Card Foto Impian-->
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/btnFotoimpian"
-                            android:layout_width="80dp"
-                            android:layout_height="wrap_content"
-                            android:clickable="true"
-                            android:focusable="true"
-                            app:cardBackgroundColor="@android:color/transparent"
-                            app:cardCornerRadius="10dp"
-                            app:cardElevation="0dp">
+                    <!--Card Foto Impian-->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/btnFotoimpian"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardBackgroundColor="@android:color/transparent"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="0dp">
 
-                            <RelativeLayout
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/imageFotoImpian"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent">
+                                android:layout_height="match_parent"
+                                android:layout_margin="10dp"
+                                android:src="@drawable/iconfotoimpian"
 
-                                <ImageView
-                                    android:id="@+id/imageFotoImpian"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_margin="10dp"
-                                    android:src="@drawable/iconfotoimpian"
+                                />
 
-                                    />
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignParentBottom="true"
-                                    android:fontFamily="@font/lilgroteskregular"
-                                    android:gravity="center"
-                                    android:text="Foto Impian"
-                                    android:textColor="@color/colorOrange"
-                                    android:textSize="11sp"
-                                    android:textStyle="bold" />
-                            </RelativeLayout>
-                        </androidx.cardview.widget.CardView>
-
-                        <!--Card Upload Impian-->
-                        <com.google.android.material.card.MaterialCardView
-                            android:id="@+id/btnUploadImpian"
-                            android:layout_width="80dp"
-                            android:layout_height="wrap_content"
-                            android:clickable="true"
-                            android:focusable="true"
-                            app:cardBackgroundColor="@android:color/transparent"
-                            app:cardCornerRadius="10dp"
-                            app:cardElevation="0dp">
-
-                            <RelativeLayout
+                            <TextView
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent">
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:fontFamily="@font/lilgroteskregular"
+                                android:gravity="center"
+                                android:text="Foto Impian"
+                                android:textColor="@color/colorOrange"
+                                android:textSize="11sp"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
 
-                                <ImageView
-                                    android:id="@+id/imageUploadImpian"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_margin="10dp"
-                                    android:src="@drawable/uploadimpian"
+                    <!--Card Upload Impian-->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/btnUploadImpian"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardBackgroundColor="@android:color/transparent"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="0dp">
 
-                                    />
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
 
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignParentBottom="true"
-                                    android:fontFamily="@font/lilgroteskregular"
-                                    android:gravity="center"
-                                    android:text="Upload Impian"
-                                    android:textColor="@color/colorOrange"
-                                    android:textSize="11sp"
-                                    android:textStyle="bold" />
-                            </RelativeLayout>
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <!--Card Cari Impian-->
-                        <com.google.android.material.card.MaterialCardView
-                            android:id="@+id/btnCariImpian"
-                            android:layout_width="80dp"
-                            android:layout_height="wrap_content"
-                            android:clickable="true"
-                            android:focusable="true"
-                            app:cardBackgroundColor="@android:color/transparent"
-                            app:cardCornerRadius="10dp"
-                            app:cardElevation="0dp">
-
-                            <RelativeLayout
+                            <ImageView
+                                android:id="@+id/imageUploadImpian"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent">
+                                android:layout_height="match_parent"
+                                android:layout_margin="10dp"
+                                android:src="@drawable/uploadimpian"
 
-                                <ImageView
-                                    android:id="@+id/imageCariImpian"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_margin="10dp"
-                                    android:src="@drawable/cariimpian"
+                                />
 
-                                    />
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignParentBottom="true"
-                                    android:fontFamily="@font/lilgroteskregular"
-                                    android:gravity="center"
-                                    android:text="Cari Impian"
-                                    android:textColor="@color/colorOrange"
-                                    android:textSize="11sp"
-                                    android:textStyle="bold" />
-                            </RelativeLayout>
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <!--Card Upgrade Impian-->
-                        <com.google.android.material.card.MaterialCardView
-                            android:id="@+id/btnUpgradeImpian"
-                            android:layout_width="80dp"
-                            android:layout_height="wrap_content"
-                            android:clickable="true"
-                            android:focusable="true"
-                            app:cardBackgroundColor="@android:color/transparent"
-                            app:cardCornerRadius="10dp"
-                            app:cardElevation="0dp">
-
-                            <RelativeLayout
+                            <TextView
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent">
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:fontFamily="@font/lilgroteskregular"
+                                android:gravity="center"
+                                android:text="Upload Impian"
+                                android:textColor="@color/colorOrange"
+                                android:textSize="11sp"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+                    </com.google.android.material.card.MaterialCardView>
 
-                                <ImageView
-                                    android:id="@+id/imageUpgradeImpian"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_margin="10dp"
-                                    android:src="@drawable/upgradeimpian"
+                    <!--Card Cari Impian-->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/btnCariImpian"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardBackgroundColor="@android:color/transparent"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="0dp">
 
-                                    />
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
 
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignParentBottom="true"
-                                    android:fontFamily="@font/lilgroteskregular"
-                                    android:gravity="center"
-                                    android:text="Upgrade Impian"
-                                    android:textColor="@color/colorOrange"
-                                    android:textSize="11sp"
-                                    android:textStyle="bold" />
-                            </RelativeLayout>
-                        </com.google.android.material.card.MaterialCardView>
+                            <ImageView
+                                android:id="@+id/imageCariImpian"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_margin="10dp"
+                                android:src="@drawable/cariimpian"
+
+                                />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:fontFamily="@font/lilgroteskregular"
+                                android:gravity="center"
+                                android:text="Cari Impian"
+                                android:textColor="@color/colorOrange"
+                                android:textSize="11sp"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!--Card Upgrade Impian-->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/btnUpgradeImpian"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardBackgroundColor="@android:color/transparent"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="0dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/imageUpgradeImpian"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_margin="10dp"
+                                android:src="@drawable/upgradeimpian"
+
+                                />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:fontFamily="@font/lilgroteskregular"
+                                android:gravity="center"
+                                android:text="Upgrade Impian"
+                                android:textColor="@color/colorOrange"
+                                android:textSize="11sp"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+                    </com.google.android.material.card.MaterialCardView>
 
 
                 </LinearLayout>
@@ -320,7 +320,7 @@
                                     android:text="Handphone"
                                     android:textColor="@color/colorOrange"
                                     android:textSize="11sp"
-                                     />
+                                    />
 
 
                                 <!--Card laptop-->
@@ -358,7 +358,7 @@
                                     android:text="Komputer"
                                     android:textColor="@color/colorOrange"
                                     android:textSize="11sp"
-                                  />
+                                    />
 
 
                                 <!--Card laptop-->
@@ -396,7 +396,7 @@
                                     android:text="Otomotif"
                                     android:textColor="@color/colorOrange"
                                     android:textSize="11sp"
-                                   />
+                                    />
 
 
                                 <androidx.cardview.widget.CardView
@@ -521,7 +521,7 @@
                                     android:text="Fashion"
                                     android:textColor="@color/colorOrange"
                                     android:textSize="11sp"
-                                     />
+                                    />
 
 
                                 <!--Card Olahraga-->
