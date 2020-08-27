@@ -670,7 +670,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/lilgroteskregular"
-                        android:hint="Penghasilan"
+                        android:hint="Jumlah Tanggungan"
                         android:inputType="number"
                         android:paddingTop="@dimen/dimen0dp"
                         android:textSize="@dimen/tulisan18sp" />
@@ -766,7 +766,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:smsp_floatingLabelText=""
-                        app:smsp_hint="APakah Anda memiliki kredit/cicilan sedang berjalan?"
+                        app:smsp_hint="Status Tempat Tinggal"
                         app:smsp_hintColor="@color/colorOrange"
                         app:smsp_itemColor="@color/colorOrange"
                         app:smsp_itemListColor="@color/colorOrange"
