@@ -56,6 +56,7 @@ import com.application.kreditimpian.FormPengajuan.StepUploadProduct;
 import com.application.kreditimpian.FormPengajuan.UpgradeImpian.UpgradeImpian;
 import com.application.kreditimpian.FormPengajuan.UpgradeImpian.viewmodel.UpgradeImpianViewModel;
 import com.application.kreditimpian.FormPengajuan.UpgradeImpian.viewmodel.ViewModelFactory;
+import com.application.kreditimpian.Marketplace.FragKategoriElektronik.KategoriElektronik;
 import com.application.kreditimpian.Marketplace.FragKategoriFashion.KategoriFashion;
 import com.application.kreditimpian.Marketplace.FragKategoriForniture.KategoriForniture;
 import com.application.kreditimpian.Marketplace.FragKategoriHobi.KategoriHobi;
@@ -112,7 +113,7 @@ public class FragmentBeranda extends Fragment {
     private AVLoadingIndicatorView LoadingMerchant;
     private ShimmerFrameLayout mShimmerViewContainer;
     CardView btn_lainya, btn_handphone, btn_laptop, btn_otomotif, btn_forniture, btn_fashion, btn_olahraga, btn_property,
-            btnFotoimpian,btnUploadImpian,btnCariImpian,btnUpgradeImpian ;
+            btnFotoimpian,btnUploadImpian,btnCariImpian,btnUpgradeImpian ,btn_elektronik;
     ImageButton btn_fotoimpian, btnupload, btncari, btnupgrade;
     String datalist;
     TextView textCartItemCount;
@@ -200,7 +201,7 @@ public class FragmentBeranda extends Fragment {
         btn_forniture = rootView.findViewById(R.id.btn_forniture);
         btn_fashion = rootView.findViewById(R.id.btn_fashion);
         btn_olahraga = rootView.findViewById(R.id.btn_olahraga);
-        btn_property = rootView.findViewById(R.id.btn_property);
+        btn_elektronik = rootView.findViewById(R.id.btn_elektronik);
         btnUploadImpian = rootView.findViewById(R.id.btnUploadImpian);
         btnFotoimpian = rootView.findViewById(R.id.btnFotoimpian);
         btnCariImpian = rootView.findViewById(R.id.btnCariImpian);
@@ -210,7 +211,7 @@ public class FragmentBeranda extends Fragment {
         btn_otomotif = rootView.findViewById(R.id.btn_otomotif);
         btn_forniture = rootView.findViewById(R.id.btn_forniture);
         btn_olahraga = rootView.findViewById(R.id.btn_olahraga);
-        btn_property = rootView.findViewById(R.id.btn_property);
+        //btn_property = rootView.findViewById(R.id.btn_property);
         btn_fashion = rootView.findViewById(R.id.btn_fashion);
         modal = rootView.findViewById(R.id.btn_lainya);
         sliderView = rootView.findViewById(R.id.sliderView);
@@ -314,10 +315,10 @@ public class FragmentBeranda extends Fragment {
 
         });
 
-        btn_property.setOnClickListener(view -> {
+        btn_elektronik.setOnClickListener(view -> {
             ///Toast.makeText(getActivity(), "Ini kategori Property", Toast.LENGTH_SHORT).show();
             FragmentTransaction fr = getFragmentManager().beginTransaction();
-            fr.replace(R.id.frame_container, new KategoriProperty(), null).addToBackStack(null);
+            fr.replace(R.id.frame_container, new KategoriElektronik(), null).addToBackStack(null);
             fr.addToBackStack(null);
             fr.commit();
         });

@@ -563,25 +563,25 @@
 
 
                                 <androidx.cardview.widget.CardView
-                                    android:id="@+id/btn_property"
+                                    android:id="@+id/btn_elektronik"
                                     android:layout_width="55dp"
                                     android:layout_height="55dp"
                                     android:layout_marginLeft="30dp"
                                     android:layout_toRightOf="@id/btn_olahraga"
                                     android:clickable="true"
                                     android:focusable="true"
-                                    app:cardCornerRadius="30dp">
+                                    app:cardCornerRadius="15dp">
 
                                     <RelativeLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent">
 
                                         <ImageView
-                                            android:id="@+id/imageView36"
+                                            android:id="@+id/imageView36eo00"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
                                             android:layout_margin="10dp"
-                                            android:src="@drawable/property" />
+                                            android:src="@drawable/umkm" />
 
                                     </RelativeLayout>
                                 </androidx.cardview.widget.CardView>
@@ -589,15 +589,15 @@
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_alignStart="@id/btn_property"
-                                    android:layout_alignEnd="@+id/btn_property"
                                     android:layout_alignParentBottom="true"
-                                    android:fontFamily="@font/lilgroteskregular"
                                     android:gravity="center"
-                                    android:text="Property"
+                                    android:text="Elektronik"
+                                    android:textStyle="bold"
                                     android:textColor="@color/colorOrange"
-                                    android:textSize="11sp"
-                                    />
+                                    android:layout_alignStart="@id/btn_elektronik"
+                                    android:layout_alignEnd="@+id/btn_elektronik"
+                                    android:fontFamily="@font/jipatharegular"
+                                    android:textSize="15sp" />
 
 
                                 <androidx.cardview.widget.CardView
@@ -605,7 +605,7 @@
                                     android:layout_width="55dp"
                                     android:layout_height="55dp"
                                     android:layout_marginLeft="30dp"
-                                    android:layout_toRightOf="@id/btn_property"
+                                    android:layout_toRightOf="@id/btn_elektronik"
                                     android:clickable="true"
                                     android:focusable="true"
                                     app:cardCornerRadius="30dp">
