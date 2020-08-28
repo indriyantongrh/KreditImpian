@@ -114,7 +114,11 @@ public class FragRiwayatPesanan extends Fragment {
             @Override
             public void onResponse(Call<ResponseHistoryCatalog> call, Response<ResponseHistoryCatalog> response) {
                 if (response.isSuccessful()) {
-                    if (response.body().getResponseCode() == 200) {
+                    /*if ( response.body().getData()==null){ //// untuk handle null obk=ject
+                        swipeRefresh.setRefreshing(false);
+                        ///progressBar.dismiss();
+                        empty.setVisibility(View.VISIBLE);
+                    }else*/ if (response.body().getResponseCode() == 200) {
                         swipeRefresh.setRefreshing(false);
                         Log.v(String.valueOf(getContext()), "data response" + response.body().getData() + "");
                         final List<com.application.kreditimpian.Model.ModelHistoryCatalog.DataItem> HistoryCatalog = response.body().getData();
@@ -125,7 +129,7 @@ public class FragRiwayatPesanan extends Fragment {
                     }else if (response.body().getData() != null  | response.body().getResponseCode()==201) {
                         swipeRefresh.setRefreshing(false);
                         empty.setVisibility(View.VISIBLE);
-                    } else
+                    }else
                         {
                         swipeRefresh.setRefreshing(false);
                         empty.setVisibility(View.VISIBLE);
