@@ -33,11 +33,13 @@ import com.application.kreditimpian.Model.ModelCicilan.CompaniesDataItem;
 import com.application.kreditimpian.Model.ModelCicilan.DataCicilanItem;
 import com.application.kreditimpian.Model.ModelCicilan.ProductMeta;
 import com.application.kreditimpian.Model.ModelCicilan.ResponseCicilan;
+import com.application.kreditimpian.Model.ModelCostRajaongkir.ResponseCostRajaongkir;
 import com.application.kreditimpian.Model.ModelMitraSelected.DataItem;
 import com.application.kreditimpian.Model.ModelMitraSelected.ResponseMitraSelected;
 import com.application.kreditimpian.Model.ModelOngkoskirim.ResponseOngkir;
 import com.application.kreditimpian.R;
 import com.bumptech.glide.Glide;
+import com.chivorn.smartmaterialspinner.SmartMaterialSpinner;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -91,13 +93,10 @@ public class TransactionSelectMitra extends AppCompatActivity {
     EditText txt_note;
     @BindView(R.id.tv_estimasipengiriman)
     TextView tv_estimasipengiriman;
-
     @BindView(R.id.txt_weight)
     TextView txt_weight;
-
     @BindView(R.id.txt_origin)
     TextView txt_origin;
-
     @BindView(R.id.txt_destination)
     TextView txt_destination;
     @BindView(R.id.text_image)
@@ -106,11 +105,14 @@ public class TransactionSelectMitra extends AppCompatActivity {
     SwipeRefreshLayout swipeRefresh;
     // String id_product_category;
 
+    private SmartMaterialSpinner spinCostOngkir;
+
     DataItem reqDataItem;
     SharedPrefManager sharedPrefManager;
     BaseApiService mApiService;
     private List<DataItem> dataItemList = new ArrayList<>();
     private HashMap<Integer, String> logisticvalue;
+    private HashMap<Integer, String> CostOngkirvalue;
     private String responses;
     private JSONObject jsonObject, jsonObject1, jsonObject3,jsonObject2;
     AdapterMitraSelected adapterMitraSelected;
@@ -130,6 +132,7 @@ public class TransactionSelectMitra extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transaction_select_mitra);
 
+        spinCostOngkir = findViewById(R.id.spinCostOngkir);
 
 
         setActionBarTitle("Pilih mitra yang kamu mau");
@@ -142,7 +145,9 @@ public class TransactionSelectMitra extends AppCompatActivity {
 
 
         /*get Selected Mitra*/
-
+        /*get ongkir by API*/
+        getOngkir();
+        //getCostOngkir();
 
         Intent intent = getIntent();
         String id_product = intent.getStringExtra(ConstanTransaction.KEY_ID_PRODUCT);
@@ -210,8 +215,8 @@ public class TransactionSelectMitra extends AppCompatActivity {
                 .error(R.drawable.no_image)
                 .into(image);
 
-        /*get ongkir by API*/
-        getOngkir();
+
+
 
         adapterMitraSelected = new AdapterMitraSelected(TransactionSelectMitra.this);
         rvMitra.setAdapter(adapterMitraSelected);
@@ -429,6 +434,70 @@ public class TransactionSelectMitra extends AppCompatActivity {
 
 
 
+
+    }
+
+    private void getCostOngkir(){
+        Locale localeID = new Locale("in", "ID");
+        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+
+        CostOngkirvalue = new HashMap<Integer, String>();
+        HashMap<String, String> params = new HashMap<>();
+        params.put("origin", txt_origin.getText().toString() );
+        params.put("destination", txt_destination.getText().toString() );
+        params.put("weight", txt_weight.getText().toString() );
+
+        mApiService.getCostOngkir(params).enqueue(new Callback<ResponseCostRajaongkir>() {
+            @Override
+            public void onResponse(Call<ResponseCostRajaongkir> call, Response<ResponseCostRajaongkir> response) {
+                if(response.body() !=null){
+                    List<com.application.kreditimpian.Model.ModelCostRajaongkir.DataItem> getCostOngkir = response.body().getData();
+                    String[] company_name = new String[getCostOngkir.size() +1];
+                    Integer[] cost = new Integer[getCostOngkir.size() +1];
+                    company_name[0] = "Pilih Jasa Pengiriman";
+                    for (int i = 0; i < getCostOngkir.size(); i++) {
+                        ///listSpinner.add(getCity.get(i).getIdParent());
+                        company_name[i + 1] = getCostOngkir.get(i).getCompanyName();
+                        cost[i + 1] = getCostOngkir.get(i).getCost();
+                        CostOngkirvalue.put(cost[i + 1], company_name[i + 1] );
+                    }
+
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(TransactionSelectMitra.this,
+                            android.R.layout.simple_spinner_item, company_name);
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    spinnercourier.setAdapter(adapter);
+                    spinnercourier.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                            if(position>0){
+                                Integer Costlogisticvalue = getCostOngkir.get(position - 1 ).getCost();
+                                //tv_estimasipengiriman.setText(String.valueOf(logisticvalue));
+                                if(Costlogisticvalue.equals("null")){
+                                    tv_estimasipengiriman.setText("Logistik tidak mendukung");
+
+                                }else{
+                                    tv_estimasipengiriman.setText(formatRupiah.format(Costlogisticvalue));
+
+                                }
+                                ///// Toast.makeText(TransactionSelectMitra.this, " "+logisticvalue, Toast.LENGTH_LONG).show();
+
+                            }
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseCostRajaongkir> call, Throwable t) {
+
+            }
+        });
 
     }
 
