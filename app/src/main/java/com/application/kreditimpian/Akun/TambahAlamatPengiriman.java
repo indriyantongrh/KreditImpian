@@ -6,6 +6,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -373,6 +374,7 @@ public class TambahAlamatPengiriman extends AppCompatActivity implements Adapter
                                 String cityvalues = getCity.get(position - 1).getCityId();
                                 //Toast.makeText(TambahAlamatPengiriman.this, "id kota anda "+cityvalues , Toast.LENGTH_LONG).show();
                                 textid_geodirectory.setText(cityvalues);
+                                Log.v("jajal", "id"+cityvalues);
                                 getSubDistrict();
                                 ///getKecamatan();
 

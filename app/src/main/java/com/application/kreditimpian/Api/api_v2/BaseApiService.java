@@ -5,6 +5,7 @@ import com.application.kreditimpian.Model.ModelAddress.ResponseAddress;
 import com.application.kreditimpian.Model.ModelCityRajaOngkir.ResponseCityRajaOngkir;
 import com.application.kreditimpian.Model.ModelCitySubDistrict.ResponseCitySubDistrict;
 import com.application.kreditimpian.Model.ModelConfirmProduct.ResponseConfirmProduct;
+import com.application.kreditimpian.Model.ModelCostRajaongkir.ResponseCostRajaongkir;
 import com.application.kreditimpian.Model.ModelDeleteShopingCart.ResponseDeleteShopingCart;
 import com.application.kreditimpian.Model.ModelDetailMember.ResponseDetailMember;
 import com.application.kreditimpian.Model.ModelFOrgotPassword.ResponseForgotPassword;
@@ -168,6 +169,10 @@ public interface BaseApiService {
     /*API GET ONGKOS KIRIM*/
     @GET("ApiMobile/apiheadRajaongkir")
     Call<ResponseOngkir> getOngkir(@QueryMap HashMap<String, String> params);
+
+    /*API GET ONGKOS KIRIM Raja Ongkir pro*/
+    @GET("ApiMobile/costRajaOngkirPro")
+    Call<ResponseCostRajaongkir> getCostOngkir(@QueryMap HashMap<String, String> params);
 
     @GET("ApiMobile/getpaymentdata")
     Call<ResponseSelectedTenor> getTenorSelected(@Query("id_product") String id_product,
