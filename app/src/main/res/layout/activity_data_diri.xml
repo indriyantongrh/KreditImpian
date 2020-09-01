@@ -180,6 +180,7 @@
                         android:fontFamily="@font/lilgroteskregular"
                         android:hint="Tempat Tinggal"
                         android:inputType="text"
+                        android:editable="false"
                         android:paddingTop="@dimen/dimen0dp"
                         android:textSize="@dimen/tulisan18sp" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -207,16 +208,15 @@
                         android:id="@+id/txttanggallahir"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:editable="false"
                         android:fontFamily="@font/lilgroteskregular"
                         android:hint="Tanggal Lahir"
-                        android:inputType="text"
-                        android:paddingTop="@dimen/dimen0dp"
-                        android:textSize="@dimen/tulisan18sp" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:inputType="none"
+                        android:clickable="true"
+                android:editable="false"
+                android:paddingTop="@dimen/dimen0dp"
+                android:textSize="@dimen/tulisan18sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                \
 
                 <!--Border-->
                 <LinearLayout
