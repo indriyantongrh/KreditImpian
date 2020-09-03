@@ -11,7 +11,9 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,6 +21,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -36,10 +39,12 @@ import com.application.kreditimpian.Model.ModelCicilan.ResponseCicilan;
 import com.application.kreditimpian.Model.ModelCostRajaongkir.ResponseCostRajaongkir;
 import com.application.kreditimpian.Model.ModelMitraSelected.DataItem;
 import com.application.kreditimpian.Model.ModelMitraSelected.ResponseMitraSelected;
+import com.application.kreditimpian.Model.ModelNotifikasiFeature.Transaction;
 import com.application.kreditimpian.Model.ModelOngkoskirim.ResponseOngkir;
 import com.application.kreditimpian.R;
 import com.bumptech.glide.Glide;
 import com.chivorn.smartmaterialspinner.SmartMaterialSpinner;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -103,7 +108,10 @@ public class TransactionSelectMitra extends AppCompatActivity {
      TextView text_image;
     @BindView(R.id.swipeRefresh)
     SwipeRefreshLayout swipeRefresh;
-    // String id_product_category;
+    @BindView(R.id.progress_loader)
+    ProgressBar progress_loader;
+
+
 
     private SmartMaterialSpinner spinCostOngkir;
 
@@ -111,8 +119,7 @@ public class TransactionSelectMitra extends AppCompatActivity {
     SharedPrefManager sharedPrefManager;
     BaseApiService mApiService;
     private List<DataItem> dataItemList = new ArrayList<>();
-    private HashMap<Integer, String> logisticvalue;
-    private HashMap<Integer, String> CostOngkirvalue;
+    private HashMap<Integer, String> logisticvalue, CostOngkirvalue;
     private String responses;
     private JSONObject jsonObject, jsonObject1, jsonObject3,jsonObject2;
     AdapterMitraSelected adapterMitraSelected;
@@ -146,8 +153,8 @@ public class TransactionSelectMitra extends AppCompatActivity {
 
         /*get Selected Mitra*/
         /*get ongkir by API*/
-        getOngkir();
-        //getCostOngkir();
+        ///getOngkir();
+
 
         Intent intent = getIntent();
         String id_product = intent.getStringExtra(ConstanTransaction.KEY_ID_PRODUCT);
@@ -209,6 +216,11 @@ public class TransactionSelectMitra extends AppCompatActivity {
         Log.v("jajal", destination+": destination");
         Log.v("jajal", imageProduct+"image");
 
+        Log.v("jajal", "origintxt : "+txt_origin.getText().toString());
+        Log.v("jajal", "destinationtxt : "+txt_destination.getText().toString());
+        Log.v("jajal", "weighttxt : "+txt_weight.getText().toString());
+        Log.v("jajal", "estimasi pengiriman : "+tv_estimasipengiriman.getText().toString());
+
         Glide.with(TransactionSelectMitra.this)
                 .load(imageProduct)
                 .placeholder(R.drawable.no_image)
@@ -223,11 +235,14 @@ public class TransactionSelectMitra extends AppCompatActivity {
         GridLayoutManager mLayoutManager = new GridLayoutManager(TransactionSelectMitra.this, 1, GridLayoutManager.VERTICAL, false);
         rvMitra.setLayoutManager(mLayoutManager);
         rvMitra.setItemAnimator(new DefaultItemAnimator());
+
+
         swipeRefresh.setColorScheme(android.R.color.holo_orange_dark,
                 android.R.color.holo_orange_light,
                 android.R.color.holo_orange_dark,
                 android.R.color.holo_orange_light);
 
+        getCostOngkir();
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -247,7 +262,8 @@ public class TransactionSelectMitra extends AppCompatActivity {
                 /*if (!check) {
                     Log.v("Bismillah", check + "cekcb");
                     Toast.makeText(TransactionSelectMitra.this, "Silahkan pilih mitra\nminimal 1\nmaximal 3", Toast.LENGTH_LONG).show();
-                } else */if(spinnercourier.getSelectedItem().equals("-- Pilih Pengiriman --")) {
+                } else */
+                if(spinnercourier.getSelectedItem().equals("-- Pilih Pengiriman --")) {
                     //Toast.makeText(TransactionSelectMitra.this, "Pilih jasa pengiriman barang anda", Toast.LENGTH_LONG).show();
                     AlertDialog alertDialog = new AlertDialog.Builder(TransactionSelectMitra.this).create();
                     alertDialog.setTitle("Info");
@@ -260,7 +276,7 @@ public class TransactionSelectMitra extends AppCompatActivity {
                         }
                     });
                     alertDialog.show();
-                } else {
+                }else{
                     NextTenor();
                 }
 
@@ -438,48 +454,70 @@ public class TransactionSelectMitra extends AppCompatActivity {
     }
 
     private void getCostOngkir(){
+        progress_loader.setVisibility(View.VISIBLE);
         Locale localeID = new Locale("in", "ID");
         NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+        Intent intent = getIntent();
+        String origin = intent.getStringExtra("origin");
+        String destination = intent.getStringExtra("destination");
+        String weight = intent.getStringExtra("weight");
+
 
         CostOngkirvalue = new HashMap<Integer, String>();
         HashMap<String, String> params = new HashMap<>();
-        params.put("origin", txt_origin.getText().toString() );
-        params.put("destination", txt_destination.getText().toString() );
-        params.put("weight", txt_weight.getText().toString() );
+        params.put("origin", origin );
+        params.put("destination", destination);
+        params.put("weight",  weight);
+
+        Log.v("jajal", "value : "+params);
 
         mApiService.getCostOngkir(params).enqueue(new Callback<ResponseCostRajaongkir>() {
             @Override
             public void onResponse(Call<ResponseCostRajaongkir> call, Response<ResponseCostRajaongkir> response) {
+
                 if(response.body() !=null){
+                    progress_loader.setVisibility(View.GONE);
                     List<com.application.kreditimpian.Model.ModelCostRajaongkir.DataItem> getCostOngkir = response.body().getData();
+
+                    String[] name = new String[getCostOngkir.size() +1];
+                    String[] etd = new String[getCostOngkir.size() +1];
                     String[] company_name = new String[getCostOngkir.size() +1];
                     Integer[] cost = new Integer[getCostOngkir.size() +1];
-                    company_name[0] = "Pilih Jasa Pengiriman";
+                    name[0] = "-- Pilih Pengiriman --";
                     for (int i = 0; i < getCostOngkir.size(); i++) {
                         ///listSpinner.add(getCity.get(i).getIdParent());
+                        name[i + 1] = (getCostOngkir.get(i).getCompanyName());
                         company_name[i + 1] = getCostOngkir.get(i).getCompanyName();
+                        etd[i + 1] = getCostOngkir.get(i).getEtd();
                         cost[i + 1] = getCostOngkir.get(i).getCost();
-                        CostOngkirvalue.put(cost[i + 1], company_name[i + 1] );
+                        CostOngkirvalue.put(cost[i + 1], name[i + 1] );
                     }
-
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(TransactionSelectMitra.this,
-                            android.R.layout.simple_spinner_item, company_name);
+                            android.R.layout.simple_spinner_item, name);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spinnercourier.setAdapter(adapter);
                     spinnercourier.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
                             if(position>0){
-                                Integer Costlogisticvalue = getCostOngkir.get(position - 1 ).getCost();
-                                //tv_estimasipengiriman.setText(String.valueOf(logisticvalue));
-                                if(Costlogisticvalue.equals("null")){
-                                    tv_estimasipengiriman.setText("Logistik tidak mendukung");
+                                Integer LogisticCostvalue = getCostOngkir.get(position - 1 ).getCost();
+
+                                if(LogisticCostvalue==null){
+                                    Log.v("jajal ", "Tidak mendukung");
+                                    tv_estimasipengiriman.setText("Pengiriman tidak mendukung");
+                                    tv_estimasipengiriman.setTextColor(Color.RED);
+                                    btnSelanjutnya.setClickable(false);
+                                    Toast.makeText(TransactionSelectMitra.this, "Pilih kurir lain nya, untuk melanjutkan transaksi", Toast.LENGTH_LONG).show();
 
                                 }else{
-                                    tv_estimasipengiriman.setText(formatRupiah.format(Costlogisticvalue));
+                                    Log.v("jajal ", " ongkir :"+LogisticCostvalue);
+                                    tv_estimasipengiriman.setText(formatRupiah.format(LogisticCostvalue));
+                                    tv_estimasipengiriman.setTextColor(Color.BLACK);
+                                    btnSelanjutnya.setClickable(true);
 
                                 }
+
+                               // tv_estimasipengiriman.setText(formatRupiah.format(logisticvalue));
                                 ///// Toast.makeText(TransactionSelectMitra.this, " "+logisticvalue, Toast.LENGTH_LONG).show();
 
                             }
@@ -511,13 +549,17 @@ public class TransactionSelectMitra extends AppCompatActivity {
         params.put("destination", txt_destination.getText().toString() );
         params.put("weight", txt_weight.getText().toString() );
 
+        Log.v("jajal", "origin : "+txt_origin.getText().toString());
+        Log.v("jajal", "destination : "+txt_destination.getText().toString());
+        Log.v("jajal", "weight : "+txt_weight.getText().toString());
+
         mApiService.getOngkir(params).enqueue(new Callback<ResponseOngkir>() {
             @Override
             public void onResponse(Call<ResponseOngkir> call, Response<ResponseOngkir> response) {
                 if(response.body() !=null){
-
-
                     List<com.application.kreditimpian.Model.ModelOngkoskirim.DataItem> getLogistic =  response.body().getData();
+                    Log.v("jajal", new Gson().toJson(response.body()));
+
                     String[] name = new String[getLogistic.size() +1];
                     Integer[] cost = new Integer[getLogistic.size() +1];
                     name[0] = "-- Pilih Pengiriman --";
@@ -538,6 +580,7 @@ public class TransactionSelectMitra extends AppCompatActivity {
                             if(position>0){
                                 Integer logisticvalue = getLogistic.get(position - 1 ).getCost();
                                 //tv_estimasipengiriman.setText(String.valueOf(logisticvalue));
+                                Log.v("jajal", "ongkir : "+logisticvalue);
                                 tv_estimasipengiriman.setText(formatRupiah.format(logisticvalue));
                                ///// Toast.makeText(TransactionSelectMitra.this, " "+logisticvalue, Toast.LENGTH_LONG).show();
 
