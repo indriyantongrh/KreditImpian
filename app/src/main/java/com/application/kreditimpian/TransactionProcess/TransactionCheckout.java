@@ -267,7 +267,7 @@ public class TransactionCheckout extends AppCompatActivity {
         HashMap<String, String> params = new HashMap<>();
         params.put("id_member", sharedPrefManager.getSpIdMember());
         params.put("id_transaction", tvIdTransaction.getText().toString());
-        params.put("down_payment", tvDownpayment.getText().toString().replace(",00",""));
+        params.put("down_payment", tvDownpayment.getText().toString().replace(",00","").replace("Rp", ""));
         params.put("tenor", tvTenor2.getText().toString());
         params.put("note", tvNote.getText().toString());
         params.put("id_company", tvIdCreditor.getText().toString());
