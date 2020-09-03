@@ -251,13 +251,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/rv_beranda"
-                        android:layout_marginStart="0dp"
+                        android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
+                        android:layout_marginBottom="5dp"
                         android:fontFamily="@font/lilgroteskregular"
-                        android:gravity="center"
-                        android:text="-- Pilih Kategori --"
+                        android:gravity="left"
+                        android:text="| Kategori"
                         android:textColor="@color/colorOrange"
-                        android:textSize="13sp"
+                        android:textSize="17sp"
                         android:textStyle="bold" />
 
                     <com.google.android.material.card.MaterialCardView
@@ -592,12 +593,11 @@
                                     android:layout_alignParentBottom="true"
                                     android:gravity="center"
                                     android:text="Elektronik"
-                                    android:textStyle="bold"
                                     android:textColor="@color/colorOrange"
                                     android:layout_alignStart="@id/btn_elektronik"
                                     android:layout_alignEnd="@+id/btn_elektronik"
-                                    android:fontFamily="@font/jipatharegular"
-                                    android:textSize="15sp" />
+                                    android:fontFamily="@font/lilgroteskregular"
+                                    android:textSize="11sp" />
 
 
                                 <androidx.cardview.widget.CardView
@@ -714,6 +714,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
+
                             <TextView
                                 android:id="@+id/text_mitra"
                                 android:layout_width="wrap_content"
@@ -721,9 +722,9 @@
                                 android:layout_marginStart="10dp"
                                 android:layout_marginTop="20dp"
                                 android:fontFamily="@font/lilgroteskregular"
-                                android:text="Mitra kami"
+                                android:text="| Mitra kami"
                                 android:textColor="@color/colorOrange"
-                                android:textSize="15sp"
+                                android:textSize="17sp"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -796,9 +797,9 @@
                                 android:layout_marginStart="10dp"
                                 android:layout_marginTop="20dp"
                                 android:fontFamily="@font/lilgroteskregular"
-                                android:text="Merchant "
+                                android:text="| Merchant "
                                 android:textColor="@color/colorOrange"
-                                android:textSize="15sp"
+                                android:textSize="17sp"
                                 android:textStyle="bold" />
 
                             <TextView
