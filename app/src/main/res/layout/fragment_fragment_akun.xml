@@ -574,8 +574,26 @@
                                 android:src="@drawable/ic_back_right" />
                         </RelativeLayout>
 
+
+
                     </RelativeLayout>
 
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center|bottom">
+
+                           <TextView
+                            android:id="@+id/tvVersion"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:foregroundGravity="bottom"
+                            android:gravity="center|bottom"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="10dp" />
+
+                    </LinearLayout>
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/btndetailakun"

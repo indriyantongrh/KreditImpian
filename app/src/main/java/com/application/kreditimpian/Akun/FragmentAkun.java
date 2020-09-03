@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.application.kreditimpian.Api.JWTParser;
 import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
+import com.application.kreditimpian.BuildConfig;
 import com.application.kreditimpian.GantidanRisetPassword.GantiPassword;
 import com.application.kreditimpian.HistoryPesanan.HistoryPesanan;
 import com.application.kreditimpian.HistoryPesanan.RiwayatPesanan;
@@ -57,13 +58,13 @@ public class FragmentAkun extends Fragment {
 
     ImageView image;
     CardView btndetailakun, btnstatuspesanan, btnchat, btnhistorypesanan, btnfavorite, btnkonfirmasi, btngantipassword, btnlogout, btnalamatpengiriman;
-    TextView txt_nama_akun, textchat;
+    TextView txt_nama_akun, textchat, tvVersion;
     RelativeLayout RelativSarandanKomplain, RelativDataMember, RelativAlamatPengiriman, RelativHistoryPesanan, RelativGantiPassword, RelativLogout,RelativTermandCondition,RelativTentangKami ;
     GoogleSignInClient mGoogleSignInClient;
     private GoogleApiClient mGoogleApiClient;
 
     SharedPrefManager sharedPrefManager;
-
+    String sCurrentVersion;
     public final static String TAG_ID = "id";
     public final static String TAG_EMAIL = "email";
 
@@ -90,7 +91,9 @@ public class FragmentAkun extends Fragment {
         txt_nama_akun = view.findViewById(R.id.txt_nama_akun);
         image = view.findViewById(R.id.image);
 
-
+        tvVersion = view.findViewById(R.id.tvVersion);
+        sCurrentVersion = BuildConfig.VERSION_NAME;
+        tvVersion.setText("Kredit Impian V."+sCurrentVersion);
         sharedPrefManager = new SharedPrefManager(getActivity());
         /// String id = sharedPrefManager.getSPID();
         String email = sharedPrefManager.getSPEmail();
