@@ -174,7 +174,7 @@
                 android:layout_marginTop="@dimen/dots_margin_bottom"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="@dimen/dots_margin_bottom"
-                android:background="@drawable/btnorange"
+                android:background="@drawable/btnorangev2"
                 android:fontFamily="@font/jipatharegular"
                 android:minHeight="40dp"
                 android:text="@string/pilih"

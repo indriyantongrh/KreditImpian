@@ -53,7 +53,7 @@
         style="?android:textAppearanceSmall"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:background="@drawable/btnorange"
+        android:background="@drawable/btnorangev2"
         android:text="@string/selesai"
         android:textColor="#fff"
         android:textSize="@dimen/tulisan18sp"
