@@ -83,7 +83,7 @@ public class FragRiwayatPesanan extends Fragment {
             public void onRefresh() {
                 getHistoryCatalog();
                 ///getHistoryTransaction();
-                swipeRefresh.setRefreshing(false);
+
             }
         });
 
