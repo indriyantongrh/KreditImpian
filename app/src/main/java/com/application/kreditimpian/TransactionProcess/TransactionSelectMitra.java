@@ -44,6 +44,7 @@ import com.application.kreditimpian.Model.ModelOngkoskirim.ResponseOngkir;
 import com.application.kreditimpian.R;
 import com.bumptech.glide.Glide;
 import com.chivorn.smartmaterialspinner.SmartMaterialSpinner;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -140,6 +141,7 @@ public class TransactionSelectMitra extends AppCompatActivity {
         setContentView(R.layout.activity_transaction_select_mitra);
 
         spinCostOngkir = findViewById(R.id.spinCostOngkir);
+
 
 
         setActionBarTitle("Pilih mitra yang kamu mau");
@@ -477,6 +479,7 @@ public class TransactionSelectMitra extends AppCompatActivity {
 
                 if(response.body() !=null){
                     progress_loader.setVisibility(View.GONE);
+
                     List<com.application.kreditimpian.Model.ModelCostRajaongkir.DataItem> getCostOngkir = response.body().getData();
 
                     String[] name = new String[getCostOngkir.size() +1];
@@ -664,5 +667,7 @@ public class TransactionSelectMitra extends AppCompatActivity {
         super.onBackPressed();
         finish();
     }
+
+
 
 }
