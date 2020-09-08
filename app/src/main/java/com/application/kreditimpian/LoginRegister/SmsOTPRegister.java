@@ -39,7 +39,6 @@ public class SmsOTPRegister extends AppCompatActivity {
     private String KEY_USERNAME = "username";
     private String KEY_EMAIL = "email";
     private String KEY_NOMORHP = "phone" ;
-
     EditText txtkodeotp, txtfullname;
     Button btnverifikasi;
     ProgressDialog pDialog;
