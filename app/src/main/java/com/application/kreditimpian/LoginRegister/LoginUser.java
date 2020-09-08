@@ -74,7 +74,7 @@ public class LoginUser extends AppCompatActivity {
     int success;
     ProgressDialog pDialog;
     String sCurrentVersion, sLatestVersion;
-    int sCurrentVersionCode, sLatestVersionCode;
+    int sLatestVersionCode, sCurrentVersionCode;
     Context mContext;
     //ProgressDialog progressDialog;
     private AlertDialog dialog;
@@ -150,16 +150,6 @@ public class LoginUser extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_user);
 
-        /*inAppUpdateManager = InAppUpdateManager.Builder(this, REQ_CODE_VERSION_UPDATE)
-                .resumeUpdates(true) // Resume the update, if the update was stalled. Default is true
-                .mode(Constants.UpdateMode.IMMEDIATE);
-
-        inAppUpdateManager.checkForAppUpdate();*/ /// Update Immediate
-
-        /*Loading= (AVLoadingIndicatorView) findViewById(R.id.Loading);
-        Loading.setIndicator("BallPulseSyncIndicator");*/
-       /// final CustomDialog customDialog = new CustomDialog(LoginUser.this);
-
         txtUsername =findViewById(R.id.txtUsername);
         txtBuatAkun =findViewById(R.id.txtBuatAkun);
         txtPassword =findViewById(R.id.txtPassword);
@@ -229,10 +219,7 @@ public class LoginUser extends AppCompatActivity {
                 else
 
                     LoginMemberValidation();
-                    //UserLogin();
-                   ///LoginUser();
-                //Intent intent = new Intent(LoginUser.this, MenuUtama.class);
-                ///startActivity(intent);
+
 
 
             }
@@ -281,20 +268,7 @@ public class LoginUser extends AppCompatActivity {
 
     }
 
-/*    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == RC_APP_UPDATE){
-            Toast.makeText(this, " Start download ", Toast.LENGTH_SHORT).show();
-
-            if (resultCode != RESULT_OK){
-                Log.v("jajal", "Update failed"+resultCode);
-            }
-        }
-
-
-    }*/
 
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
@@ -454,8 +428,18 @@ public class LoginUser extends AppCompatActivity {
         protected void onPostExecute(String s) {
             ///get Current Version
             sCurrentVersion = BuildConfig.VERSION_NAME;
-            //get Curren Verson Code
+
+            //get version code
             sCurrentVersionCode = BuildConfig.VERSION_CODE;
+    /*    if (Integer.valueOf(sLatestVersionCode) !=null){
+            Integer CversionCode = Integer.parseInt(String.valueOf(sCurrentVersionCode));
+            Integer LversionCode = Integer.parseInt(String.valueOf(sLatestVersionCode));
+
+            if (LversionCode > CversionCode){
+                updateAlertDIalog();
+            }
+
+        }*/
 
 /*
             if(String.valueOf(sLatestVersionCode) != null){
@@ -469,7 +453,7 @@ public class LoginUser extends AppCompatActivity {
                 }
             }*/
 
-
+            // ini yang bisa
             if(sLatestVersion != null){
                 /// version conver float
                 float cVersion = Float.parseFloat (sCurrentVersion);
