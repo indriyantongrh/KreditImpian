@@ -176,11 +176,9 @@ public class Register extends AppCompatActivity {
         call.enqueue(new Callback<RegisterResponse>() {
             @Override
             public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
-              /////  Log.v("jajal", response.body().toString());
-                //String status = response.body().getStatus();
-              //  String message = response.body().getMessage();
                 pDialog.dismiss();
                 if (response.isSuccessful()) {
+
                     ///Toast.makeText(Register.this, "Registrasi berhasil, silahkan login.", Toast.LENGTH_SHORT).show();
                     ///Toast.makeText(Register.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), SmsOTPRegister.class);
@@ -196,7 +194,21 @@ public class Register extends AppCompatActivity {
                         APIError pojo = new APIError();
                         try {
                             pojo = gson.fromJson(response.errorBody().string(), APIError.class);
-                            Toast.makeText(getApplicationContext(), pojo.getMessage(), Toast.LENGTH_LONG).show();
+                            //Toast.makeText(getApplicationContext(), pojo.getMessage(), Toast.LENGTH_LONG).show();
+
+                                AlertDialog alertDialog = new AlertDialog.Builder(Register.this).create();
+                                alertDialog.setTitle("Pemberitahuan");
+                                alertDialog.setMessage(pojo.getMessage());
+                                alertDialog.setIcon(R.drawable.alert);
+                                alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        alertDialog.dismiss();
+
+                                    }
+                                });
+                                alertDialog.show();
+
+
                         } catch (IOException e) { }
                     }
 

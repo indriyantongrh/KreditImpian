@@ -11,8 +11,8 @@ android {
         applicationId "com.application.kreditimpian"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 28 //prev 27
-        versionName "3.5" // prev 3.4
+        versionCode 29 //prev 28
+        versionName "3.6" // prev 3.5
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "BASE_URL", "\"https://kreditimpian.id/api/\""
     }
