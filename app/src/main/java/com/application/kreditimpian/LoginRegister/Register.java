@@ -194,7 +194,6 @@ public class Register extends AppCompatActivity {
                         APIError pojo = new APIError();
                         try {
                             pojo = gson.fromJson(response.errorBody().string(), APIError.class);
-                            //Toast.makeText(getApplicationContext(), pojo.getMessage(), Toast.LENGTH_LONG).show();
 
                                 AlertDialog alertDialog = new AlertDialog.Builder(Register.this).create();
                                 alertDialog.setTitle("Pemberitahuan");
