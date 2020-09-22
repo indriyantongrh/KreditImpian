@@ -206,8 +206,6 @@ public class Register extends AppCompatActivity {
                                     }
                                 });
                                 alertDialog.show();
-
-
                         } catch (IOException e) { }
                     }
 

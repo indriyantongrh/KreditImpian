@@ -63,7 +63,6 @@
             android:layout_marginLeft="8dp"
             android:textColor="@color/colorOrange"
             android:textStyle="italic"
-
             android:text="* Perhitungan bersifat simulasi dan bertujuan sebagai ilustrasi. Cicilan bisa berubah sewaktu-waktu tanpa pemberitahuan "
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
