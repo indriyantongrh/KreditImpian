@@ -6,12 +6,12 @@ apply plugin: 'com.google.firebase.crashlytics'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.1"
+    buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.application.kreditimpian"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 29 //prev 28
+        versionCode 28 //prev 27
         versionName "3.6" // prev 3.5
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "BASE_URL", "\"https://kreditimpian.id/api/\""

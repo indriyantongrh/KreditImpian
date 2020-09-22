@@ -41,5 +41,15 @@
       <option name="name" value="maven" />
       <option name="url" value="file:/$PROJECT_DIR$/app/io.jsonwebtoken" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven" />
+      <option name="name" value="maven" />
+      <option name="url" value="file:$PROJECT_DIR$/io.jsonwebtoken" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven" />
+      <option name="name" value="maven" />
+      <option name="url" value="file:$PROJECT_DIR$/app/io.jsonwebtoken" />
+    </remote-repository>
   </component>
 </project>
