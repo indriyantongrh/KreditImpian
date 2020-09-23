@@ -35,6 +35,8 @@ import com.application.kreditimpian.Model.ModelPengajuanCatalog.ResponsePengajua
 import com.application.kreditimpian.Model.ModelProductBaru.ResponseProductBaru;
 
 
+import com.application.kreditimpian.Model.ModelProductMitra.DataItem;
+import com.application.kreditimpian.Model.ModelProductMitra.ResponseProductMitra;
 import com.application.kreditimpian.Model.ModelRequestProduct.ResponseRequestProduct;
 import com.application.kreditimpian.Model.ModelSelectedTenor.ResponseSelectedTenor;
 import com.application.kreditimpian.Model.ModelSubDistrict.ResponseSubdistrict;
@@ -295,6 +297,9 @@ public interface BaseApiService {
     @GET("products?id_product_category=29&status=PUBLISH")
     Call<ResponseProductBaru> getResultProperty();
 
+    //getProductMitra
+    @GET("ApiMobile/listproducts")
+    Call<ResponseProductMitra> getProductMitra(@QueryMap HashMap<String, String> params);
 
     //getCityBackupAPICircleCreative
     @GET("ApiMobile/getidcity")

@@ -1,15 +1,20 @@
 package com.application.kreditimpian.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.application.kreditimpian.Constan.ConstansProductMitra;
+import com.application.kreditimpian.DetailProductMitra.DetailProductMitra;
 import com.application.kreditimpian.Model.ModelMerchant.ResultItem;
 import com.application.kreditimpian.R;
 import com.bumptech.glide.Glide;
@@ -50,6 +55,20 @@ public class AdapterMerchant extends RecyclerView.Adapter<AdapterMerchant.Holder
                 .placeholder(R.drawable.no_image)
                 .error(R.drawable.no_image)
                 .into(holder.image_merchant);
+
+        holder.btnclickMerchant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ///Toast.makeText(mContext, "Klik merchant "+resultItem.getName(), Toast.LENGTH_LONG).show();
+
+                Intent detatailMerchant = new Intent(mContext , DetailProductMitra.class);
+                detatailMerchant.putExtra(ConstansProductMitra.KEY_ID_MERCHANT, resultItem.getId());
+                detatailMerchant.putExtra(ConstansProductMitra.KEY_NAME_MERCHANT, resultItem.getName());
+                detatailMerchant.putExtra(ConstansProductMitra.KEY_IMAGE_MERCHANT, resultItem.getImage());
+                detatailMerchant.putExtra(ConstansProductMitra.KEY_CITYP_MERCHANT, resultItem.getCity());
+                mContext.startActivity(detatailMerchant);
+            }
+        });
     }
 
     @Override
@@ -60,6 +79,8 @@ public class AdapterMerchant extends RecyclerView.Adapter<AdapterMerchant.Holder
     public class HolderMerchant extends RecyclerView.ViewHolder {
 
 
+        @BindView(R.id.btnclickMerchant)
+        CardView btnclickMerchant;
         @BindView(R.id.txt_name_merchant)
         TextView txt_name_merchant;
         @BindView(R.id.txt_id)
@@ -123,6 +144,7 @@ public class AdapterMerchant extends RecyclerView.Adapter<AdapterMerchant.Holder
         public HolderMerchant(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+
         }
     }
 }

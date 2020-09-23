@@ -51,6 +51,8 @@ import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
 import com.application.kreditimpian.BuildConfig;
 import com.application.kreditimpian.ButtomSheetKategori.CustomBottomSheetDialogFragment;
+import com.application.kreditimpian.Constan.ConstansProductMitra;
+import com.application.kreditimpian.DetailProductMitra.DetailProductMitra;
 import com.application.kreditimpian.FormPengajuan.StepIsiCariProduct;
 import com.application.kreditimpian.FormPengajuan.StepUploadProduct;
 import com.application.kreditimpian.FormPengajuan.UpgradeImpian.UpgradeImpian;
@@ -64,6 +66,7 @@ import com.application.kreditimpian.Marketplace.FragKategoriKomputer.KategoriKom
 import com.application.kreditimpian.Marketplace.FragKategoriOtomotif.KategoriOtomotif;
 import com.application.kreditimpian.Marketplace.FragKategoriProperty.KategoriProperty;
 import com.application.kreditimpian.Marketplace.FragKategorihandphone.KategoriHandphone;
+import com.application.kreditimpian.Marketplace.FragSemuaKategori.RecyclerItemClickListener;
 import com.application.kreditimpian.Model.ModelImagePromo.DataItem;
 import com.application.kreditimpian.Model.ModelImagePromo.ResponseImagePromo;
 import com.application.kreditimpian.Model.ModelMerchant.ResponseMerchant;
@@ -563,23 +566,18 @@ public class FragmentBeranda extends Fragment {
                 LoadingMerchant.setVisibility(View.GONE);
 
                 if (response.isSuccessful()) {
-                    ///progressBar.dismiss();
                     if (response.body().getStatus() == 200) {
-                        //swipeRefresh.setRefreshing(false);
-                        ///progressBar.dismiss();
+
                         final List<ResultItem> AllMerchant = response.body().getResult();
 
                         rv_merchant.setAdapter(new AdapterMerchant(mContext, AllMerchant));
                         adapterMerchant.notifyDataSetChanged();
-                        ///empty.setVisibility(View.GONE);
-                        //initDataIntent(Allproduct);
+                       //// initDataIntent(AllMerchant);
                     } else {
-                        //progressBar.dismiss();
-                        ///empty.setVisibility(View.VISIBLE);
+
                     }
 
                 } else {
-                    //progressBar.dismiss();
                     LoadingMerchant.setVisibility(View.GONE);
                     Toast.makeText(mContext, "Gagal Refresh", Toast.LENGTH_SHORT).show();
                 }
@@ -591,6 +589,31 @@ public class FragmentBeranda extends Fragment {
                 Toast.makeText(mContext, "Koneksi Internet Bermasalah", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void initDataIntent(final List<ResultItem> detailListMerchant) {
+        rv_merchant.addOnItemTouchListener(
+                new RecyclerItemClickListener(mContext, new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        String idMerchant = detailListMerchant.get(0).getId();
+                        String nameMerchant = detailListMerchant.get(0).getName();
+                        String cityMerchant = detailListMerchant.get(0).getCity();
+                        String imageMerchant = detailListMerchant.get(0).getImage();
+
+                        Toast.makeText(getActivity(), "id merchant"+idMerchant, Toast.LENGTH_LONG);
+
+                        Intent detatailMerchant = new Intent(mContext , DetailProductMitra.class);
+                        detatailMerchant.putExtra(ConstansProductMitra.KEY_ID_MERCHANT, idMerchant);
+                        detatailMerchant.putExtra(ConstansProductMitra.KEY_NAME_MERCHANT, nameMerchant);
+                        detatailMerchant.putExtra(ConstansProductMitra.KEY_IMAGE_MERCHANT, imageMerchant);
+                        detatailMerchant.putExtra(ConstansProductMitra.KEY_CITYP_MERCHANT, cityMerchant);
+                        startActivity(detatailMerchant);
+
+                    }
+                })
+        );
+
     }
 
 

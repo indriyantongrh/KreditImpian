@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailProductMitra.DetailProductMitra">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tvIdMerchant"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/CardimageMerchant"
+            android:layout_width="110dp"
+            android:layout_height="100dp"
+            android:padding="20dp"
+            app:cardCornerRadius="10dp"
+            android:layout_margin="15dp">
+
+            <ImageView
+                android:id="@+id/imageMerchant"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_margin="15dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvNameMerchant"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NameMerchant"
+                android:textSize="19sp"
+                android:textColor="@color/colorBlack"
+                android:fontFamily="@font/lilgroteskbold"/>
+
+            <TextView
+                android:id="@+id/tvCityMerchant"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CityMerchant"
+                android:textSize="14sp"
+                android:textColor="@color/colorOrange"
+                android:fontFamily="@font/lilgroteskbold"/>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+        <View
+            android:layout_below="@+id/image_merchant"
+            android:layout_width="match_parent"
+            android:paddingTop="5dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_height="1.5dp"
+            android:background="@color/colorOrange"/>
+
+        <ImageView
+            android:id="@+id/empty"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="30dp"
+            android:visibility="gone"
+            android:src="@drawable/emptyproduct"/>
+
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:layout_width="match_parent"
+                android:id="@+id/swipeRefresh"
+                android:layout_height="wrap_content">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/listProductMitra"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingTop="1dp"
+                    android:scrollbars="vertical">
+                </androidx.recyclerview.widget.RecyclerView>
+
+
+
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

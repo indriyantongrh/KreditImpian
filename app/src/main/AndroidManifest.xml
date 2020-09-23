@@ -38,7 +38,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".SaranKomplain.SarandanKomplain"></activity>
+        <activity android:name=".DetailProductMitra.DetailProductMitra"></activity>
+        <activity android:name=".SaranKomplain.SarandanKomplain" />
         <activity android:name=".Notifikasi.NotifikasiV2.NotifikasiV2" />
         <activity android:name=".Notifikasi.NotifikasiFitur.DetailNotifikasiFitur" />
         <activity android:name=".HistoryPesanan.TabProductRequest.TransactionSelectTenorFitur" />
@@ -64,7 +65,7 @@
         <activity android:name=".Akun.AlamatPengiriman" />
         <activity android:name=".HistoryPesanan.TabRiwayatPesananan.DetailHistoryPesanan" />
         <activity android:name=".FormPengajuan.UpgradeImpian.UpgradeImpian" /> <!-- <activity android:name=".CartCheckout.Cart" /> -->
-        <activity android:name=".DetailProduct" />
+        <activity android:name=".DetailProduct.DetailProduct" />
         <activity android:name=".TransactionProcess.Cart" />
         <activity android:name=".LoginRegister.SmsOTPRegister" />
         <activity android:name=".Marketplace.FragSemuaKategori.DetailSemuaKategori" />
