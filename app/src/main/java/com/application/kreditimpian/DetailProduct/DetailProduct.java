@@ -1,4 +1,4 @@
-package com.application.kreditimpian;
+package com.application.kreditimpian.DetailProduct;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
@@ -22,7 +22,7 @@ import com.application.kreditimpian.Model.ModelInsertShoppingCart.ResponseInsert
 import com.application.kreditimpian.Model.ModelProduct.ImagesItem;
 //import com.application.kreditimpian.Model.ModelProduct.ResultItem;
 import com.application.kreditimpian.Model.ModelProductNew.ResultItem;
-import com.application.kreditimpian.Model.ModelTransaction.ResponseTransaction;
+import com.application.kreditimpian.R;
 import com.application.kreditimpian.TransactionProcess.Cart;
 import com.bumptech.glide.Glide;
 

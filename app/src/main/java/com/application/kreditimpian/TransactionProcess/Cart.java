@@ -3,7 +3,6 @@ package com.application.kreditimpian.TransactionProcess;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -12,23 +11,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.application.kreditimpian.Adapter.AdapterAddresses;
 import com.application.kreditimpian.Adapter.AdapterCart;
 import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
 import com.application.kreditimpian.Constan.ConstanTransaction;
-import com.application.kreditimpian.Constan.Constans;
-import com.application.kreditimpian.DetailProduct;
 import com.application.kreditimpian.Marketplace.FragSemuaKategori.RecyclerItemClickListener;
 import com.application.kreditimpian.Model.ModelOnShoppingCart.DataItem;
 import com.application.kreditimpian.Model.ModelOnShoppingCart.ResponseOnShoppingCart;
-import com.application.kreditimpian.Model.ModelProductBaru.ResultItem;
-import com.application.kreditimpian.Model.ModelSelectedTenor.DataCicilanItem;
 import com.application.kreditimpian.R;
 
 import java.util.ArrayList;
@@ -37,8 +30,6 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static com.application.kreditimpian.Api.network.interceptor.MyApp.getContext;
 
 public class Cart extends AppCompatActivity {
     SwipeRefreshLayout swipeRefresh;

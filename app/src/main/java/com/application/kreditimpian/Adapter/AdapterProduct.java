@@ -1,7 +1,6 @@
 package com.application.kreditimpian.Adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.application.kreditimpian.DetailProduct;
 import com.application.kreditimpian.Model.ModelProduct.ImagesItem;
 import com.application.kreditimpian.Model.ModelProduct.ResultItem;
 import com.application.kreditimpian.R;

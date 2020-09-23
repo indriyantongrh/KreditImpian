@@ -22,7 +22,7 @@ import com.application.kreditimpian.Adapter.AdapterProductBaru;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
 
-import com.application.kreditimpian.DetailProduct;
+import com.application.kreditimpian.DetailProduct.DetailProduct;
 import com.application.kreditimpian.Constan.Constans;
 import com.application.kreditimpian.Marketplace.FragSemuaKategori.RecyclerItemClickListener;
 //import com.application.kreditimpian.Model.ModelProduct.ResponseProduct;

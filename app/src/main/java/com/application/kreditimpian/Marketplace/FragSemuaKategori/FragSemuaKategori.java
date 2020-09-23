@@ -5,14 +5,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,7 +24,7 @@ import com.application.kreditimpian.Api.SharedPrefManager;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
 import com.application.kreditimpian.Constan.Constans;
-import com.application.kreditimpian.DetailProduct;
+import com.application.kreditimpian.DetailProduct.DetailProduct;
 
 import com.application.kreditimpian.Model.ModelProductBaru.ResponseProductBaru;
 import com.application.kreditimpian.Model.ModelProductBaru.ResultItem;
@@ -40,8 +38,6 @@ import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static android.nfc.tech.MifareUltralight.PAGE_SIZE;
 
 
 public class FragSemuaKategori extends Fragment {
