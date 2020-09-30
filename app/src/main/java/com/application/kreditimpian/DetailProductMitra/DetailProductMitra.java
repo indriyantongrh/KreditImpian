@@ -19,7 +19,10 @@ import com.application.kreditimpian.Adapter.AdapterProductBaru;
 import com.application.kreditimpian.Adapter.AdapterProductMitra;
 import com.application.kreditimpian.Api.api_v2.BaseApiService;
 import com.application.kreditimpian.Api.api_v2.UtilsApi;
+import com.application.kreditimpian.Constan.Constans;
 import com.application.kreditimpian.Constan.ConstansProductMitra;
+import com.application.kreditimpian.DetailProduct.DetailProduct;
+import com.application.kreditimpian.Marketplace.FragSemuaKategori.RecyclerItemClickListener;
 import com.application.kreditimpian.Model.ModelProductBaru.ResultItem;
 import com.application.kreditimpian.Model.ModelProductMitra.DataItem;
 import com.application.kreditimpian.Model.ModelProductMitra.ResponseProductMitra;
@@ -64,8 +67,13 @@ public class DetailProductMitra extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_product_mitra);
+        Intent intent = getIntent();
+        String idMerchants = intent.getStringExtra(ConstansProductMitra.KEY_ID_MERCHANT);
+        String nameMerchants = intent.getStringExtra(ConstansProductMitra.KEY_NAME_MERCHANT);
+        String imageMerchants = intent.getStringExtra(ConstansProductMitra.KEY_IMAGE_MERCHANT);
+        String cityMerchants = intent.getStringExtra(ConstansProductMitra.KEY_CITYP_MERCHANT);
 
-        setActionBarTitle("Detail Merchant");
+        setActionBarTitle("Merchant "+nameMerchants);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);// set drawable icon
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -73,11 +81,7 @@ public class DetailProductMitra extends AppCompatActivity {
         mContext = DetailProductMitra.this;
         mApiService = UtilsApi.getAPIService();
 
-        Intent intent = getIntent();
-        String idMerchants = intent.getStringExtra(ConstansProductMitra.KEY_ID_MERCHANT);
-        String nameMerchants = intent.getStringExtra(ConstansProductMitra.KEY_NAME_MERCHANT);
-        String imageMerchants = intent.getStringExtra(ConstansProductMitra.KEY_IMAGE_MERCHANT);
-        String cityMerchants = intent.getStringExtra(ConstansProductMitra.KEY_CITYP_MERCHANT);
+
 
         tvIdMerchant.setText(idMerchants);
         ///Log.v("jajal data: "+params ,"jajal data");
@@ -131,16 +135,55 @@ public class DetailProductMitra extends AppCompatActivity {
                 swipeRefresh.setRefreshing(false);
                 if(response.body().getResponseCode()==200){
                     final List<DataItem> productMitra = response.body().getData();
-                    Toast.makeText(DetailProductMitra.this, "ini data anda"+productMitra, Toast.LENGTH_LONG).show();
 
                     listProductMitra.setAdapter(new AdapterProductMitra(mContext, productMitra));
                     adapterProductMitra.notifyDataSetChanged();
-
+                    initialIntent(productMitra);
                 }else {
                     swipeRefresh.setRefreshing(false);
                     empty.setVisibility(View.VISIBLE);
 
                 }
+            }
+
+            private void initialIntent(List<DataItem> productMitra) {
+                listProductMitra.addOnItemTouchListener(
+                        new RecyclerItemClickListener(mContext, new RecyclerItemClickListener.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
+                                String id = productMitra.get(position).getIdProduct();
+                                String id_product_category = productMitra.get(position).getIdProductCategory();
+                                String nameProduct = productMitra.get(position).getNameProduct();
+                                String description = productMitra.get(position).getDescription();
+                                String stock = productMitra.get(position).getStock();
+                                String price_capital = productMitra.get(position).getPriceCapital();
+                                String price_sale = productMitra.get(position).getPriceSale();
+                                String condition = productMitra.get(position).getCondition();
+                                String imageProduct = productMitra.get(position).getImage();
+                                String weight_value = productMitra.get(position).getWeightValue();
+                                String weight = productMitra.get(position).getWeight();
+                                String nameMerchant = productMitra.get(position).getNameCompany();
+
+                                Intent intenDetailProductMitra = new Intent(mContext, DetailProduct.class);
+                                intenDetailProductMitra.putExtra(Constans.KEY_ID, id);
+                                intenDetailProductMitra.putExtra(Constans.KEY_ID_PRODUCT_CATEGORY, id_product_category);
+                                intenDetailProductMitra.putExtra(Constans.KEY_NAME_PRODUCT, nameProduct);
+                                intenDetailProductMitra.putExtra(Constans.KEY_PRICE_CAPITAL, price_capital);
+                                intenDetailProductMitra.putExtra(Constans.KEY_PRICE_SALE, price_sale);
+                                intenDetailProductMitra.putExtra(Constans.KEY_DESCRIPTIOM, description);
+                                intenDetailProductMitra.putExtra(Constans.KEY_STOCK, stock);
+                                intenDetailProductMitra.putExtra(Constans.KEY_CONDITION, condition);
+                                intenDetailProductMitra.putExtra(Constans.KEY_IMAGE, imageProduct);
+                                intenDetailProductMitra.putExtra(Constans.KEY_WEIGHT_VALUE, weight_value);
+                                intenDetailProductMitra.putExtra(Constans.KEY_WEIGHT, weight);
+                                intenDetailProductMitra.putExtra(Constans.KEY_NAME_MERCHNAT, nameMerchant);
+                                startActivity(intenDetailProductMitra);
+
+
+                            }
+                        })
+                );
+
             }
 
             @Override

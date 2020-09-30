@@ -42,16 +42,41 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@drawable/bestseller"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"/>
+
             <TextView
                 android:id="@+id/tvNameMerchant"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="NameMerchant"
-                android:textSize="19sp"
+                android:textSize="20sp"
                 android:textColor="@color/colorBlack"
                 android:fontFamily="@font/lilgroteskbold"/>
+            </LinearLayout>
 
-            <TextView
+            <LinearLayout
+                android:layout_marginStart="27dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_margin="2dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/placemarker"/>
+
+                <TextView
                 android:id="@+id/tvCityMerchant"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -59,6 +84,7 @@
                 android:textSize="14sp"
                 android:textColor="@color/colorOrange"
                 android:fontFamily="@font/lilgroteskbold"/>
+            </LinearLayout>
 
 
         </LinearLayout>
@@ -68,6 +94,16 @@
             android:layout_below="@+id/image_merchant"
             android:layout_width="match_parent"
             android:paddingTop="5dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_height="1.5dp"
+            android:background="@color/colorOrange"/>
+
+        <View
+            android:layout_below="@+id/image_merchant"
+            android:layout_width="match_parent"
+            android:paddingTop="5dp"
+            android:layout_marginTop="2dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_height="1.5dp"
