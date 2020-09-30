@@ -3,7 +3,6 @@ apply plugin: 'com.google.gms.google-services'
 
 apply plugin: 'com.google.firebase.crashlytics'
 
-
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -11,8 +10,8 @@ android {
         applicationId "com.application.kreditimpian"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 28 //prev 27
-        versionName "3.6" // prev 3.5
+        versionCode 30 //prev 29
+        versionName "3.7" // prev 3.64
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "BASE_URL", "\"https://kreditimpian.id/api/\""
     }
@@ -84,11 +83,6 @@ dependencies {
     implementation 'com.google.android.exoplayer:exoplayer-core:2.7.2'
     implementation 'com.google.android.exoplayer:exoplayer-dash:2.7.2'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1'
-
-
-    //map
-    implementation 'com.google.android.gms:play-services-maps:16.0.0'
-    implementation 'com.google.android.gms:play-services-location:16.0.0'
 //    implementation 'com.google.android.gms:play-services:12.0.1'
 //    implementation 'com.google.android.gms:play-services-maps:12.0.1'
 //    implementation 'com.google.android.gms:play-services-location:12.0.1'
