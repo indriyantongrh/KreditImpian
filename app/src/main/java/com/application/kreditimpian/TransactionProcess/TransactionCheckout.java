@@ -139,7 +139,6 @@ public class TransactionCheckout extends AppCompatActivity {
 
         tvInstalment.setText(cicilan);
         tvTenor2.setText(tenor);
-
         tvIdTransaction.setText(id_transaction);
         tvIdCreditor.setText(id_creditor);
         txt_name_product.setText(name_product);
