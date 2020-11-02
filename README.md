@@ -10,6 +10,7 @@ This application uses the Java programming language with the Restfull API backen
 # Package
 
 - ### _flipper
+      This package for a
 
 - ### _sliders
 
