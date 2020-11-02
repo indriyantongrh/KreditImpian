@@ -11,75 +11,75 @@ This application uses the Java programming language with the Restfull API backen
 
 - ### _flipper
 
-### _sliders
+- ### _sliders
 
-### Adapter
+- ### Adapter
 
-### Akun
+- ### Akun
 
-### API
+- ### API
 
-### Beranda
+- ### Beranda
 
-### ButtomSheetKatagori
+- ### ButtomSheetKatagori
 
-### Constan
+- ### Constan
 
-### CustomDialog
+- ### CustomDialog
 
-### DecodeUtils
+- ### DecodeUtils
 
-### DetailProduct
+- ### DetailProduct
 
-### DetailProductMitra
+- ### DetailProductMitra
 
-### Favorite
+- ### Favorite
 
-### FCM
+- ### FCM
 
-### FCMV2
+- ### FCMV2
 
-### ForgotPassword
+- ### ForgotPassword
 
-### FormPengajuan
+- ### FormPengajuan
 
-### GantidanRisetPassword
+- ### GantidanRisetPassword
 
-### HistoryPesanan
+- ### HistoryPesanan
 
-### KonfirmasiPembayaran
+- ### KonfirmasiPembayaran
 
-### LoadingDialog
+- ### LoadingDialog
 
-### LofinRegister
+- ### LofinRegister
 
-### Marketplace
+- ### Marketplace
 
-### MenuUtama
+- ### MenuUtama
 
-### Mitra
+- ### Mitra
 
-### Model
+- ### Model
 
-### Notifikasi
+- ### Notifikasi
 
-### PdfViewer
+- ### PdfViewer
 
-### PushNotification
+- ### PushNotification
 
-### ResponseMessage
+- ### ResponseMessage
 
-### SaranKomplain
+- ### SaranKomplain
 
-### SimulasiKredit
+- ### SimulasiKredit
 
-### StatusPesanan
+- ### StatusPesanan
 
-### TransactionMitra
+- ### TransactionMitra
 
-### TransactionProcess
+- ### TransactionProcess
 
-### Utility
+- ### Utility
 
 
   - Import a HTML file and watch it magically convert to Markdown
