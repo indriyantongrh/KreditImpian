@@ -85,11 +85,14 @@ This application uses the Java programming language with the Restful API backend
  ## Clone Project
 
         # Menu bar VCS >> Git >> Clone
-  <img width="500" alt="portfolio_view" src="https://github.com/indriyantongrh/KreditImpian/blob/master/ImageClone/Screenshot%20at%20Nov%2002%2012-05-57%20PM.png">
+  <img width="400" alt="portfolio_view" src="https://github.com/indriyantongrh/KreditImpian/blob/master/ImageClone/Screenshot%20at%20Nov%2002%2012-05-57%20PM.png">
        
-        # Paste Link this
- <img width="500" alt="portfolio_view" src="https://github.com/indriyantongrh/KreditImpian/blob/master/ImageClone/Screenshot%20at%20Nov%2002%2012-10-33%20PM.png">
+        # Copy this link
+ <img width="300" alt="portfolio_view" src="https://github.com/indriyantongrh/KreditImpian/blob/master/ImageClone/Screenshot%20at%20Nov%2002%2012-10-33%20PM.png">
  
+        # Paste Link this form and press buttom Clone
+ <img width="400" alt="portfolio_view" src="https://github.com/indriyantongrh/KreditImpian/blob/master/ImageClone/Screenshot%20at%20Nov%2002%2012-48-02%20PM.png">
 
-
+## Contributing
+Create by [indriyantongrh](https://www.linkedin.com/in/indriyantongrh/) x [kreditimpian.id](https://www.kreditimpian.id) 
 
