@@ -94,6 +94,5 @@ This application uses the Java programming language with the Restful API backend
  <img width="400" alt="portfolio_view" src="https://github.com/indriyantongrh/KreditImpian/blob/master/ImageClone/Screenshot%20at%20Nov%2002%2012-48-02%20PM.png">
 
 ## Contributing
-Create by indriyantongrh -  [indriyantongrhh@gmail.com](indriyantongrhh@gmail.com) || [Linkedin](https://www.linkedin.com/in/indriyantongrh/) 
-
+Create by [indriyantongrh](https://www.linkedin.com/in/indriyantongrh/) x [kreditimpian.id](https://www.kreditimpian.id) 
 
