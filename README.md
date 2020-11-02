@@ -10,7 +10,7 @@ This application uses the Java programming language with the Restfull API backen
 # Package
 
 - ### _flipper
-    This package for for the image slider code in home Application
+        This package for for the image slider code in home Application
 - ### _sliders
 
 - ### Adapter
