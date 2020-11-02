@@ -204,7 +204,8 @@ public class TransactionCheckout extends AppCompatActivity {
 
                     builder.setPositiveButton("Setuju", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            if(tvIdCreditor.getText().equals("24")){
+                            ////Commant dibawah hilangkan jika Duha sudah ready
+                            /*if(tvIdCreditor.getText().equals("24")){
                                 Intent formduha = new Intent(TransactionCheckout.this, FormDuhaSyariah.class);
                                 formduha.putExtra("id_member", id_member);
                                 startActivity(formduha);
@@ -222,9 +223,14 @@ public class TransactionCheckout extends AppCompatActivity {
                                 Log.v("jajal", "Installment: " + cicilan);
                                 Log.v("jajal", "Bank transfer:" + radioButton.getText().toString());
                                 Log.v("jajal", "harga barang: " + price_sale.replace(".", "").replace("Rp", ""));
-                               //// postTransaction();
+
+
+                                postTransaction();
                                 dialog.dismiss();
-                            }
+                            }*/
+
+                            //dan jika duha syariah sudah ready maka postTransaction(); di command saja
+                            postTransaction();
                         }
 
                     });
