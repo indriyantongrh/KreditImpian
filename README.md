@@ -91,7 +91,7 @@ This application uses the Java programming language with the Restful API backend
  <img width="300" alt="portfolio_view" src="https://github.com/indriyantongrh/KreditImpian/blob/master/ImageClone/Screenshot%20at%20Nov%2002%2012-10-33%20PM.png">
  
         # Paste Link this form and press buttom Clone
- <img width="300" alt="portfolio_view" src="https://github.com/indriyantongrh/KreditImpian/blob/master/ImageClone/Screenshot%at%Nov%02%12-48-02%PM.png">
+ <img width="300" alt="portfolio_view" src="https://github.com/indriyantongrh/KreditImpian/blob/master/ImageClone/Screenshot%20at%20Nov%2002%2012-48-02%20PM.png">
 
 Screenshot at Nov 02 12-48-02 PM.png
 
