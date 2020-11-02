@@ -7,11 +7,80 @@
 
 This application uses the Java programming language with the Restfull API backend, and  using model MVC (Model - View - Controller)
 
-  - Type some Markdown on the left
-  - See HTML in the right
-  - Magic
+# Package
 
-# New Features!
+### _flipper
+
+### _sliders
+
+### Adapter
+
+### Akun
+
+### API
+
+### Beranda
+
+### ButtomSheetKatagori
+
+### Constan
+
+### CustomDialog
+
+### DecodeUtils
+
+### DetailProduct
+
+### DetailProductMitra
+
+### Favorite
+
+### FCM
+
+### FCMV2
+
+### ForgotPassword
+
+### FormPengajuan
+
+### GantidanRisetPassword
+
+### HistoryPesanan
+
+### KonfirmasiPembayaran
+
+### LoadingDialog
+
+### LofinRegister
+
+### Marketplace
+
+### MenuUtama
+
+### Mitra
+
+### Model
+
+### Notifikasi
+
+### PdfViewer
+
+### PushNotification
+
+### ResponseMessage
+
+### SaranKomplain
+
+### SimulasiKredit
+
+### StatusPesanan
+
+### TransactionMitra
+
+### TransactionProcess
+
+### Utility
+
 
   - Import a HTML file and watch it magically convert to Markdown
   - Drag and drop images (requires your Dropbox account be linked)
