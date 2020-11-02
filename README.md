@@ -9,7 +9,7 @@ This application uses the Java programming language with the Restfull API backen
 
 # Package
 
-### _flipper
+- ### _flipper
 
 ### _sliders
 
