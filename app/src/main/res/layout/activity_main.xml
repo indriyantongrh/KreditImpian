@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:paddingHorizontal="0dp"
-            android:src="@drawable/splacescreennow" />
+            android:src="@drawable/splashscreennow" />
 
         <TextView
             android:layout_width="wrap_content"

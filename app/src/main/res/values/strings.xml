@@ -3525,4 +3525,29 @@
         <item>WU 302 R+KRS BUS 4X4</item>
     </string-array>
 
+    <string-array name="lastEducstion">
+        <item>SD</item>
+        <item>SMP</item>
+        <item>SMA</item>
+        <item>D3</item>
+        <item>Sarjana (S1)</item>
+        <item>Megister (S2)</item>
+        <item>Doktor (S3)</item>
+    </string-array>
+
+    <string-array name="statusPegawai">
+        <item>Kontrak</item>
+        <item>Pegawai Tetap</item>
+    </string-array>
+
+    <string-array name="statusPekerjaan">
+        <item>Honorer</item>
+        <item>Pegawai Negeri</item>
+        <item>Pegawai Swasta</item>
+        <item>Profesional</item>
+        <item>Tidak Bekerja</item>
+        <item>Wiraswasta</item>
+        <item>Lain-lain</item>
+    </string-array>
+
 </resources>

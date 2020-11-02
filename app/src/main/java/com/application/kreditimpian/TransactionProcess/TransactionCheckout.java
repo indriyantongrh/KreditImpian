@@ -28,6 +28,7 @@ import com.application.kreditimpian.LoginRegister.LoginUser;
 import com.application.kreditimpian.Model.ModelPengajuanCatalog.ResponsePengajuanCatalog;
 import com.application.kreditimpian.Model.ModelTransactionAPI.ResponseTransactionAPI;
 import com.application.kreditimpian.R;
+import com.application.kreditimpian.TransactionMitra.DuhaSyariah.FormDuhaSyariah;
 import com.bumptech.glide.Glide;
 
 import org.jetbrains.annotations.TestOnly;
@@ -189,6 +190,7 @@ public class TransactionCheckout extends AppCompatActivity {
                     });
 
                     alertDialog.show();
+
                 } else {
                     int radioid = radiogroup.getCheckedRadioButtonId();
                     radioButton = findViewById(radioid);
@@ -202,20 +204,27 @@ public class TransactionCheckout extends AppCompatActivity {
 
                     builder.setPositiveButton("Setuju", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
+                            if(tvIdCreditor.getText().equals("24")){
+                                Intent formduha = new Intent(TransactionCheckout.this, FormDuhaSyariah.class);
+                                formduha.putExtra("id_member", id_member);
+                                startActivity(formduha);
+                                finish();
+                            }else {
 
-                            Log.v("jajal", "id member: "+sharedPrefManager.getSpIdMember());
-                            Log.v("jajal", "id trnasaksi: "+id_transaction);
-                            Log.v("jajal", "Downpayment: "+downpayment);
-                            Log.v("jajal", "Tenor: "+tenor);
-                            Log.v("jajal", "catatan: "+note);
-                            Log.v("jajal", "id kreditor: "+id_creditor);
-                            Log.v("jajal", "biaya kirim: "+estimasipengiman);
-                            Log.v("jajal", "Jasa pengiriman:"+courier);
-                            Log.v("jajal", "Installment: "+cicilan);
-                            Log.v("jajal", "Bank transfer:"+radioButton.getText().toString());
-                            Log.v("jajal", "harga barang: "+price_sale.replace(".", "" ).replace("Rp", ""));
-                            postTransaction();
-                            dialog.dismiss();
+                                Log.v("jajal", "id member: " + sharedPrefManager.getSpIdMember());
+                                Log.v("jajal", "id trnasaksi: " + id_transaction);
+                                Log.v("jajal", "Downpayment: " + downpayment);
+                                Log.v("jajal", "Tenor: " + tenor);
+                                Log.v("jajal", "catatan: " + note);
+                                Log.v("jajal", "id kreditor: " + id_creditor);
+                                Log.v("jajal", "biaya kirim: " + estimasipengiman);
+                                Log.v("jajal", "Jasa pengiriman:" + courier);
+                                Log.v("jajal", "Installment: " + cicilan);
+                                Log.v("jajal", "Bank transfer:" + radioButton.getText().toString());
+                                Log.v("jajal", "harga barang: " + price_sale.replace(".", "").replace("Rp", ""));
+                               //// postTransaction();
+                                dialog.dismiss();
+                            }
                         }
 
                     });
@@ -319,7 +328,6 @@ public class TransactionCheckout extends AppCompatActivity {
                     alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             finish();
-
                         }
                     });
 

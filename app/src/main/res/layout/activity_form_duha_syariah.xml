@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TransactionMitra.DuhaSyariah.FormDuhaSyariah">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        tools:ignore="MissingConstraints">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="vertical">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:background="#fff">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/lilgroteskregular"
+                android:text="Foto Selfie di Tempat Kerja" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:gravity="bottom|right"
+                android:text="*wajib diisi"
+                android:textColor="@color/colorOrange"
+                android:textSize="10dp"
+                android:textStyle="italic" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/borderorange"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/ivSelfieJob"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/upload" />
+
+
+            <TextView
+                android:id="@+id/txt_image_ktp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="@dimen/text_margin"
+            android:theme="@style/TextLabel"
+            app:hintEnabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edNamaPerusahaan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lilgroteskregular"
+                android:hint="Nama Perusahaan"
+                android:inputType="text"
+                android:paddingTop="@dimen/dimen0dp"
+                android:textSize="@dimen/tulisan18sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="@dimen/text_margin"
+            android:theme="@style/TextLabel"
+            app:hintEnabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edNomorTelepon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lilgroteskregular"
+                android:hint="Nomor Telepon Perusahaan"
+                android:inputType="number"
+                android:paddingTop="@dimen/dimen0dp"
+                android:textSize="@dimen/tulisan18sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin"
+            android:layout_marginEnd="@dimen/text_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout2">
+
+            <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                android:id="@+id/spinnerStatusKaryawan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen3dp"
+                android:layout_marginEnd="@dimen/dimen3dp"
+                android:spinnerMode="dropdown"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:smsp_floatingLabelText=""
+                app:smsp_hint="Status Karyawan"
+                app:smsp_hintColor="@color/colorOrange"
+                app:smsp_itemColor="@color/colorOrange"
+                app:smsp_itemListColor="@color/colorOrange"
+                app:smsp_itemListHintBackgroundColor="@color/colorOrange"
+                app:smsp_itemListHintColor="@android:color/white"
+                app:smsp_multilineError="false"
+                app:smsp_selectedItemListColor="#FF5252"
+                app:smsp_underlineColor="@color/colorOrange"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutDateKontrak"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="@dimen/text_margin"
+            android:theme="@style/TextLabel"
+            app:hintEnabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edTanggalKontrak"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lilgroteskregular"
+                android:hint="Masa Akhir Kontrak"
+                android:inputType="none"
+                android:clickable="true"
+                android:paddingTop="@dimen/dimen0dp"
+                android:textSize="@dimen/tulisan18sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin"
+            android:layout_marginEnd="@dimen/text_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout2">
+
+            <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                android:id="@+id/spinnerStatusPekerjaan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen3dp"
+                android:layout_marginEnd="@dimen/dimen3dp"
+                android:spinnerMode="dropdown"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:smsp_floatingLabelText=""
+                app:smsp_hint="Status Pekerjaan"
+                app:smsp_hintColor="@color/colorOrange"
+                app:smsp_itemColor="@color/colorOrange"
+                app:smsp_itemListColor="@color/colorOrange"
+                app:smsp_itemListHintBackgroundColor="@color/colorOrange"
+                app:smsp_itemListHintColor="@android:color/white"
+                app:smsp_multilineError="false"
+                app:smsp_selectedItemListColor="#FF5252"
+                app:smsp_underlineColor="@color/colorOrange"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="@dimen/text_margin"
+            android:theme="@style/TextLabel"
+            app:hintEnabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edJabatan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lilgroteskregular"
+                android:hint="Jabatan"
+                android:inputType="text"
+                android:paddingTop="@dimen/dimen0dp"
+                android:textSize="@dimen/tulisan18sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="@dimen/text_margin"
+            android:theme="@style/TextLabel"
+            app:hintEnabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edAlamatPerusahaan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lilgroteskregular"
+                android:hint="Alamat Perusahaan"
+                android:inputType="text"
+                android:paddingTop="@dimen/dimen0dp"
+                android:textSize="@dimen/tulisan18sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="@dimen/text_margin"
+            android:theme="@style/TextLabel"
+            app:hintEnabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edProvinsi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lilgroteskregular"
+                android:hint="Provinsi "
+                android:inputType="text"
+                android:paddingTop="@dimen/dimen0dp"
+                android:textSize="@dimen/tulisan18sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="@dimen/text_margin"
+            android:theme="@style/TextLabel"
+            app:hintEnabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edKota"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lilgroteskregular"
+                android:hint="Kota"
+                android:inputType="text"
+                android:paddingTop="@dimen/dimen0dp"
+                android:textSize="@dimen/tulisan18sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="@dimen/text_margin"
+            android:theme="@style/TextLabel"
+            app:hintEnabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edPenghasilan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lilgroteskregular"
+                android:hint="Penghasilan"
+                android:inputType="number"
+                android:paddingTop="@dimen/dimen0dp"
+                android:textSize="@dimen/tulisan18sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin"
+            android:layout_marginEnd="@dimen/text_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout2">
+
+            <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                android:id="@+id/spinnerLastEducation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen3dp"
+                android:layout_marginEnd="@dimen/dimen3dp"
+                android:spinnerMode="dropdown"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:smsp_floatingLabelText=""
+                app:smsp_hint="Pendidikan Terkahir"
+                app:smsp_hintColor="@color/colorOrange"
+                app:smsp_itemColor="@color/colorOrange"
+                app:smsp_itemListColor="@color/colorOrange"
+                app:smsp_itemListHintBackgroundColor="@color/colorOrange"
+                app:smsp_itemListHintColor="@android:color/white"
+                app:smsp_multilineError="false"
+                app:smsp_selectedItemListColor="#FF5252"
+                app:smsp_underlineColor="@color/colorOrange"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:background="#fff">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/lilgroteskregular"
+                android:text="Foto Slip Gaji" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:gravity="bottom|right"
+                android:text="*wajib diisi"
+                android:textColor="@color/colorOrange"
+                android:textSize="10dp"
+                android:textStyle="italic" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/borderorange"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/ivSlipGaji"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/upload" />
+
+
+            <TextView
+                android:id="@+id/txt_image_ktp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lilgroteskbold"
+            android:text="| Kontak Darurat"
+            android:textSize="20dp"
+            android:paddingTop="15dp"
+            android:layout_marginStart="5dp"
+            android:textColor="@color/colorOrange"
+            />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="@dimen/text_margin"
+            android:theme="@style/TextLabel"
+            app:hintEnabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edNamaKontak"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lilgroteskregular"
+                android:hint="Nama Kontak Darurat"
+                android:inputType="text"
+                android:paddingTop="@dimen/dimen0dp"
+                android:textSize="@dimen/tulisan18sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="@dimen/text_margin"
+            android:theme="@style/TextLabel"
+            app:hintEnabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edNomorTeleponEmergency"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lilgroteskregular"
+                android:hint="Nomor Kontak Darurat"
+                android:inputType="text"
+                android:paddingTop="@dimen/dimen0dp"
+                android:textSize="@dimen/tulisan18sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="@dimen/text_margin"
+            android:theme="@style/TextLabel"
+            app:hintEnabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edHubungan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lilgroteskregular"
+                android:hint="Hubungan Saudara"
+                android:inputType="text"
+                android:paddingTop="@dimen/dimen0dp"
+                android:textSize="@dimen/tulisan18sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnAjukansekarang"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textStyle="bold"
+            android:textColor="#fff"
+            android:fontFamily="@font/lilgroteskregular"
+            android:textSize="18dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/btnorangev2"
+            android:text="@string/ajukan_sekarang"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout8" />
+    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
