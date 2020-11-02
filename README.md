@@ -3,7 +3,7 @@
 # Documentation Kredit Impian
 
 
-[![Build Status](#)](#)
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](#)
 
 This application uses the Java programming language with the Restful API backend, and  using model MVC (Model - View - Controller)
 
