@@ -178,7 +178,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/lilgroteskregular"
-                        android:hint="Tempat Tinggal"
+                        android:hint="Tempat Lahir"
                         android:inputType="text"
                         android:paddingTop="@dimen/dimen0dp"
                         android:textSize="@dimen/tulisan18sp" />
